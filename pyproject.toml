@@ -5,7 +5,7 @@
 
 [project]
 # Change this to reference the name of your study
-name = "cumulus-library-renal-disease"
+name = "cumulus-library-kidney-transplant"
 # You can leave this alone to start. Only worry about it when you need to create
 # a package for other users
 version = "0.1.0"
@@ -18,7 +18,7 @@ dependencies = [
     "sqlfluff >= 3, <4",
 ]
 # You can alter this to discuss your study specifics
-description = "Prevalence analysis of kidney renal disease"
+description = "kidney transplant irAE (immuno related adverse events) related to immunosuppressive Rx post transplant"
 readme = "README.md"
 license = { text="Apache License 2.0" }
 classifiers = [
@@ -32,7 +32,7 @@ classifiers = [
 Home = "https://smarthealthit.org/cumulus-a-universal-sidecar-for-a-smart-learning-healthcare-system/"
 Documentation = "https://docs.smarthealthit.org/cumulus/"
 # Change this source to reference your github URL
-Source = "https://github.com/smart-on-fhir/cumulus-library-template"
+Source = "https://github.com/smart-on-fhir/cumulus-library-kidney-transplant"
 
 
 [build-system]
@@ -47,4 +47,4 @@ dev = [
 
 [tool.flit.sdist]
 # change this to the name of the study folder inside of the module directory
-include = ["template/"]
+include = ["kidney_transplant/"]
