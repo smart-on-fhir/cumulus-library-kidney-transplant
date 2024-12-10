@@ -1,8 +1,6 @@
-import os
 from typing import List
 from enum import Enum
 from fhirclient.models.coding import Coding
-from kidney_transplant import fhir2sql, common
 
 class Race(Enum):
     """
@@ -19,31 +17,3 @@ class Race(Enum):
         self.system = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-race'
         self.code = code
         self.display = display
-
-    def as_coding(self) -> Coding:
-        c = Coding()
-        c.system = self.system
-        c.code = self.code
-        c.display = self.display
-        return c
-
-
-def filepath(filename: str) -> str:
-    pwd = os.path.dirname(os.path.realpath(__file__))
-    return os.path.join(pwd, filename)
-
-def as_sql(race_list: None | List[Race]) -> str:
-    """
-    :param race_list: List of Race codes from CDC. Default = all races.
-    :return: str SQL statement for create view $studyname__demographic_race
-    """
-    """
-    :param race_list: list of supported race types
-    :return:
-    """
-    if not race_list:
-        race_list = list(Race)
-
-    race_list = [r.as_coding() for r in race_list]
-
-    return fhir2sql.coding2view('kidney_transplant__demographic_race', race_list)

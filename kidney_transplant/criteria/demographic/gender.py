@@ -1,22 +1,48 @@
-import os
-from kidney_transplant import fhir2sql, common
+from typing import List
+from enum import Enum
+from fhirclient.models.coding import Coding
+from kidney_transplant import fhir2sql
 
-def filepath(filename: str) -> str:
-    pwd = os.path.dirname(os.path.realpath(__file__))
-    return os.path.join(pwd, filename)
-
-def as_sql(female=True, male=True, other=True, unknown=True) -> str:
+class Gender(Enum):
     """
-    :param female: Default True (include)
-    :param male: Default True (include)
-    :param other: Default True (include)
-    :param unknown: Default True (include)
-    :return: str SQL statement for create view $studyname__demographic_gender
+    http://hl7.org/fhir/codesystem-gender-identity.html
+    http://hl7.org/fhir/patient.html#gender
+    http://hl7.org/fhir/valueset-administrative-gender.html
     """
-    _sql = common.read_text(filepath(__file__.replace('.py', '.sql')))
+    male = 'male'
+    female = 'female'
+    trans_female = 'transgender-female'
+    trans_male = 'transgender-male'
+    non_binary = 'non-binary'
+    non_disclose = 'non-disclose'
+    other = 'other'
+    unknown = 'unknown'
 
-    _sql = _sql.replace('$female', str(female))
-    _sql = _sql.replace('$male', str(male))
-    _sql = _sql.replace('$other', str(other))
-    _sql = _sql.replace('$unknown', str(unknown))
-    return _sql
+    def __init__(self, code=None):
+        self.system = 'http://hl7.org/fhir/ValueSet/administrative-gender'
+        self.code = code
+        self.display = code
+
+def sex2codelist(female=True, male=True, other=True, unknown=True) -> List[Coding]:
+    codelist = list()
+
+    if female:
+        codelist.append(Gender.female)
+    if male:
+        codelist.append(Gender.male)
+    if other:
+        codelist.append(Gender.other)
+    if unknown:
+        codelist.append(Gender.unknown)
+
+    return [fhir2sql.as_coding(c) for c in codelist]
+
+def include_sex(female=True, male=True, other=True, unknown=True) -> str:
+    return criteria_sex(female, male, other, unknown, True)
+
+def exclude_sex(female=True, male=True, other=True, unknown=True) -> str:
+    return criteria_sex(female, male, other, unknown, False)
+
+def criteria_sex(female=True, male=True, other=True, unknown=True, include=True) -> str:
+    codelist = sex2codelist(female, male, other, unknown)
+    return fhir2sql.criteria(codelist, 'demographic_sex', include)

@@ -1,32 +1,30 @@
 import os
 import json
+from enum import Enum
 from typing import List
-
 from fhirclient.models.coding import Coding
+from kidney_transplant import common
+
+PREFIX = 'kidney_transplant'
 
 def path_valueset(valueset_json: str) -> str:
     return os.path.join(os.path.dirname(__file__), 'valueset', valueset_json)
 
-def path_sql(view_name: str) -> str:
-    return os.path.join(os.path.dirname(__file__), f'{view_name}.sql')
+def path_athena(view_name: str) -> str:
+    return os.path.join(os.path.dirname(__file__), 'athena', f'{view_name}.sql')
 
-def load_valueset(filepath: str) -> dict:
-    print(f'\nload valueset:{filepath}')
-    with open(filepath, "r", encoding="UTF-8") as fp:
-        return json.load(fp)
+def load_valueset(valueset_json: str) -> dict:
+    return common.read_json(path_valueset(valueset_json))
 
-def save_sql(filepath, view_sql: str) -> str:
+def save_sql(view_name, view_sql: str) -> str:
     """
     :param view_name: create view as
     :param view_sql: SQL commands
-    :param outfile: default view_name.sql
     :return: outfile path
     """
-    with open(filepath, 'w') as fp:
-        fp.write(view_sql)
-    return filepath
+    return common.write_text(view_sql, path_athena(view_name))
 
-def valueset2coding(valueset_json) -> List[Coding]:
+def valueset2codelist(valueset_json) -> List[Coding]:
     """
     Obtain a list of Coding "concepts" from a ValueSet.
     This method currently supports only "include" of "concept" defined fields.
@@ -49,6 +47,21 @@ def valueset2coding(valueset_json) -> List[Coding]:
                 parsed.append(Coding(concept))
     return parsed
 
+def codesystem2valueset(code_system_json) -> List[Coding]:
+    """
+    ValueSet is not always available, sometimes "CodeSystem" is the FHIR spec.
+    :param code_system_json:
+    :return: List Coding (similar to ValueSet)
+    """
+    codesystem = load_valueset(code_system_json)
+    parsed = list()
+    url = codesystem.get('url')
+    if 'concept' in codesystem.keys():
+        for concept in codesystem['concept']:
+            concept['system'] = url
+            parsed.append(Coding(concept))
+    return parsed
+
 def escape(sql: str) -> str:
     """
     :param sql: SQL potentially containing special chars
@@ -56,170 +69,57 @@ def escape(sql: str) -> str:
     """
     return sql.replace("'", "").replace(";", ".")
 
-def coding2view(view_name: str, concept_list: List[Coding]) -> str:
+def as_coding_enum(enum_type: Enum) -> List[Coding]:
+    return [as_coding(c) for c in list(enum_type)]
+
+def as_coding(obj) -> Coding:
+    c = Coding()
+    c.code = obj.__dict__.get('code')
+    c.display = obj.__dict__.get('display')
+    c.system = obj.__dict__.get('system')
+    return c
+
+def codelist2view(codelist: List[Coding], view_name) -> str:
     """
+    :param codelist: list of concepts
     :param view_name: like define_type
-    :param concept_list: list of concepts to include in definition
     :return: SQL command
     """
     header = f"create or replace view {view_name} as select * from (values"
     footer = ") AS t (system, code, display) ;"
     content = list()
-    for concept in concept_list:
+    for concept in codelist:
         safe_display = escape(concept.display)
         content.append(f"('{concept.system}', '{concept.code}', '{safe_display}')")
     content = '\n,'.join(content)
     return header + '\n' + content + '\n' + footer
 
+def criteria(codelist: List[Coding], view_name: str, include: bool) -> str:
+    _criteria = 'include' if include else 'exclude'
+    _dest = f"{PREFIX}__{_criteria}_{view_name}"
+    _sql = codelist2view(codelist, _dest)
+    return save_sql(_dest, _sql)
 
-def define(view_name: str, fileset_json: List[str]) -> str:
+def include(codelist: List[Coding], view_name: str) -> str:
+    return criteria(codelist, view_name, include=True)
+
+def exclude(codelist: List[Coding], view_name: str) -> str:
+    return criteria(codelist, view_name, include=False)
+
+def criteria_valueset_list(valueset_json_list: List[str], view_name: str, include=True) -> str:
     """
+    :param valueset_json_list: VSAC ValueSet JSON files
     :param view_name: create view as
-    :param fileset_json: VSAC ValueSet JSON files
+    :param include=True (Default)
     :return: outfile path
     """
-    codings = list()
-    for filename in fileset_json:
-        codings += valueset2coding(path_valueset(filename))
+    codelist = list()
+    for filename in valueset_json_list:
+        codelist += valueset2codelist(path_valueset(filename))
+    return criteria(codelist, view_name, include)
 
-    return save_sql(path_sql(view_name), coding2view(view_name, codings))
+def include_valueset_list(valueset_json_list: List[str], view_name: str) -> str:
+    return criteria_valueset_list(valueset_json_list, view_name, include=True)
 
-def define_dx():
-    define('define_dx',
-           ['valueset_dx_icd10_ncqa.json', 'valueset_dx_snomed_ncqa.json'])
-
-    define('define_dx_essential',
-           ['valueset_dx_essential_icd10_ncqa.json', 'valueset_dx_essential_snomed_ncqa.json'])
-
-    define('define_dx_existing',
-           ['valueset_dx_preexisting_icd10.json', 'valueset_dx_preexisting_snomed.json'])
-
-def define_rx_include():
-    define('define_rx',
-           ['valueset_rx_rxnorm_aha.json'])
-
-def define_rx_exclude():
-    define('define_rx_exclude',
-           ['valueset_dementia_rx_rxnorm_aan.json',
-            'valueset_dementia_rx_rxnorm_ncqa.json'])
-
-
-def define_enc_include():
-    """
-    Outpatient type facilities, not ED Visit or Inpatient/Nursing/etc
-    """
-    define('define_enc_outpatient',
-           ['valueset_enc_outpatient_cpt_ncqa.json',
-            'valueset_enc_outpatient_hcpcs_ncqa.json',
-            'valueset_enc_outpatient_snomed_ncqa.json'])
-
-    define('define_enc_office',
-           ['valueset_enc_office_cpt_ncqa.json',
-            'valueset_enc_office_snomed_ncqa.json'])
-
-    define('define_enc_home',
-           ['valueset_enc_home_snomed_ncqa.json',
-            'valueset_enc_home_cpt_ncqa.json'])
-
-    define('define_enc_preventive',
-           ['valueset_enc_preventive_established_cpt_ncqa.json',
-            'valueset_enc_preventive_initial_cpt_ncqa.json'])
-
-    define('define_enc_wellness',
-           ['valueset_enc_wellness_cpt_ncqa.json',
-            'valueset_enc_wellness_hcpcs_ncqa.json'])
-
-    define('define_enc_telemed',
-           ['valueset_enc_telemed_cpt_ncqa.json',
-            'valueset_enc_telemed_snomed_ncqa.json'])
-
-
-def define_enc_exclude():
-    """
-    :return:
-    """
-    define('define_enc_edvisit',
-           ['valueset_enc_edvisit_cpt_ncqa.json',
-            'valueset_enc_edvisit_snomed_ncqa.json'])
-
-    define('define_enc_observation',
-           ['valueset_enc_observation_cpt_ncqa.json',
-            'valueset_enc_observation_snomed_tjc.json'])
-
-    define('define_enc_icu',
-           ['valueset_enc_icu_snomed_cdc.json',
-            'valueset_enc_icu_snomed_tjc.json'])
-
-    define('define_enc_inpatient',
-           ['valueset_enc_inpatient_acute_cpt_ncqa.json',
-            'valueset_enc_inpatient_acute_snomed_acep.json',
-            'valueset_enc_inpatient_acute_snomed_ncqa.json',
-            'valueset_enc_inpatient_non_acute_cpt_ncqa.json',
-            'valueset_enc_inpatient_non_acute_snomed_ncqa.json'])
-
-    define('define_enc_nursing',
-           ['valueset_enc_nursing_cpt_ncqa.json'])
-
-    define('define_enc_hospice',
-           ['valueset_enc_hospice_hcpcs.json',
-            'valueset_enc_hospice_hcpcs_ncqa.json'])
-
-    define('define_enc_palliative',
-           ['valueset_enc_palliative_hcpcs_ncqa.json',
-            'valueset_enc_palliative_snomed_ncqa.json'])
-
-def define_pregnancy():
-    define('define_pregnancy',
-           ['valueset_pregnancy_dx_icd10_aha.json',
-            'valueset_pregnancy_dx_snomed_aha.json'])
-
-def define_frailty():
-    define('define_frailty',
-           ['valueset_frailty_device_snomed_ncqa.json',
-            'valueset_frailty_dx_icd10_ncqa.json',
-            'valueset_frailty_dx_snomed_ncqa.json',
-            'valueset_frailty_enc_snomed_ncqa.json',
-            'valueset_frailty_enc_cpt_ncqa.json',
-            'valueset_frailty_enc_hcpcs_ncqa.json',
-            'valueset_frailty_symptom_snomed_ncqa.json',
-            'valueset_frailty_symptom_icd10_ncqa.json'])
-
-def define_advanced_illness():
-    define('define_advanced_illness',
-           ['valueset_advanced_illness_icd10_ncqa.json',
-            'valueset_advanced_illness_snomed_ncqa.json'])
-
-def define_esrd():
-    define('define_esrd',
-           ['valueset_esrd_dx_icd10_ncqa.json',
-            'valueset_esrd_dx_snomed_ncqa.json',
-            'valueset_esrd_documented_hcpcs.json',
-            'valueset_esrd_dialysis_cpt_ncqa.json',
-            'valueset_esrd_dialysis_hcpcs_ncqa.json',
-            'valueset_esrd_dialysis_snomed_ncqa.json',
-            'valueset_esrd_transplant_snomed_ncqa.json',
-            'valueset_esrd_transplant_icd10cm_ncqa.json',
-            'valueset_esrd_transplant_icd10pcs_ncqa.json'])
-
-
-def define_vaccine():
-    """
-    Common example of an outpatient procedure useful for testing.
-    """
-    define('define_vaccine',
-           ['valueset_vaccine_cvx_cste.json',
-            'valueset_vaccine_cvx_hl7.json',
-            'valueset_vaccine_rxnorm_cste.json',
-            'valueset_vaccine_rxnorm_hl7.json'])
-
-
-if __name__ == "__main__":
-    define_dx()
-    define_rx_include()
-    define_rx_exclude()
-    define_enc_include()
-    define_enc_exclude()
-    define_pregnancy()
-    define_esrd()
-    define_advanced_illness()
-    define_frailty()
+def exclude_valueset_list(valueset_json_list: List[str], view_name: str) -> str:
+    return criteria_valueset_list(valueset_json_list, view_name, include=False)
