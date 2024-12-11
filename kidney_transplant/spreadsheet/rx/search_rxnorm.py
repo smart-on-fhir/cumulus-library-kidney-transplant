@@ -51,13 +51,25 @@ class_moa = [
     'Macrolide',
     'systemic corticosteroid'
     'DMARD',
+    'CTLA-4'
     'mTOR Inhibitor']
+
+belatacept = [
+    'belatacept',
+    'Nulojix',
+]
+
+atg = ['ATG',
+       'Anti-Thymocyte Globulin',
+       'Anti Thymocyte Globulin']
 
 DRUG_LIST = [
     azathioprine,
     cyclosporin,
     tacrolimus,
-    sirolimus
+    sirolimus,
+    belatacept,
+    atg
 ]
 
 ###############################################################################
