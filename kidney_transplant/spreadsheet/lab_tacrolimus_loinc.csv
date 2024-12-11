@@ -1,0 +1,20 @@
+LOINC_NUM,COMPONENT,PROPERTY,TIME_ASPCT,SYSTEM,SCALE_TYP,METHOD_TYP,CLASS,VersionLastChanged,STATUS,CLASSTYPE,ORDER_OBS,EXTERNAL_COPYRIGHT_NOTICE,EXAMPLE_UNITS,LONG_COMMON_NAME,EXAMPLE_UCUM_UNITS,VersionFirstReleased,LHCForms,FormalName
+32594-4,Tacrolimus,Mass,Pt,Dose,Qn,,DRUGDOSE,2.73,ACTIVE,1,Observation,,mg,"Tacrolimus [Mass] of Dose",mg,2.08,false,Tacrolimus:Mass:Pt:Dose:Qn:
+92727-7,Tacrolimus,TmMCnc,Pt,Bld,Qn,,DRUG/TOX,2.66,ACTIVE,1,Both,,ug.h/L,"Tacrolimus [AUC] in Blood",ug.h/L,2.66,false,Tacrolimus:TmMCnc:Pt:Bld:Qn:
+11253-2,Tacrolimus,MCnc,Pt,Bld,Qn,,DRUG/TOX,2.73,ACTIVE,1,Both,,ug/L;ng/mL,"Tacrolimus [Mass/volume] in Blood",ng/mL,1.0j-a,false,Tacrolimus:MCnc:Pt:Bld:Qn:
+80550-7,Tacrolimus,MCnc,Pt,Bld.dot,Qn,,DRUG/TOX,2.61,ACTIVE,1,Both,,ug/L,"Tacrolimus [Mass/volume] in DBS",ug/L,2.56,false,Tacrolimus:MCnc:Pt:Bld.dot:Qn:
+32721-3,Tacrolimus,MCnc,Pt,Ser/Plas,Qn,,DRUG/TOX,2.73,ACTIVE,1,Both,,ng/mL,"Tacrolimus [Mass/volume] in Serum or Plasma",ng/mL,2.09,false,Tacrolimus:MCnc:Pt:Ser/Plas:Qn:
+77348-1,Tacrolimus^trough,MCnc,Pt,Bld,Qn,,DRUG/TOX,2.73,ACTIVE,1,Both,,ng/mL,"Tacrolimus [Mass/volume] in Blood --trough",ng/mL,2.52,false,Tacrolimus^trough:MCnc:Pt:Bld:Qn:
+74096-9,Tacrolimus,MCnc,Pt,Bld,Qn,IA,DRUG/TOX,2.73,ACTIVE,1,Both,,ng/mL,"Tacrolimus [Mass/volume] in Blood by Immunoassay",ng/mL,2.46,false,Tacrolimus:MCnc:Pt:Bld:Qn:IA
+74097-7,Tacrolimus,MCnc,Pt,Bld,Qn,LC/MS/MS,DRUG/TOX,2.73,ACTIVE,1,Both,,ng/mL,"Tacrolimus [Mass/volume] in Blood by LC/MS/MS",ng/mL,2.46,false,Tacrolimus:MCnc:Pt:Bld:Qn:LC/MS/MS
+76494-4,Tacrolimus,SCnc,Pt,Bld,Qn,IA,DRUG/TOX,2.56,ACTIVE,1,Both,,nmol/L,"Tacrolimus [Moles/volume] in Blood by Immunoassay",nmol/L,2.52,false,Tacrolimus:SCnc:Pt:Bld:Qn:IA
+92728-5,"Tacrolimus^4H post dose",MCnc,Pt,Bld,Qn,,DRUG/TOX,2.66,ACTIVE,1,Both,,ug/L,"Tacrolimus [Mass/volume] in Blood --4 hours post dose",ug/L,2.66,false,"Tacrolimus^4H post dose:MCnc:Pt:Bld:Qn:"
+33929-1,Tacrolimus^trough,MCnc,Pt,Ser/Plas,Qn,,DRUG/TOX,2.40,ACTIVE,1,Both,,ug/L,"Tacrolimus [Mass/volume] in Serum or Plasma --trough",ug/L,2.09,false,Tacrolimus^trough:MCnc:Pt:Ser/Plas:Qn:
+92729-3,"Tacrolimus^2H post dose",MCnc,Pt,Bld,Qn,,DRUG/TOX,2.66,ACTIVE,1,Both,,ug/L,"Tacrolimus [Mass/volume] in Blood --2 hours post dose",ug/L,2.66,false,"Tacrolimus^2H post dose:MCnc:Pt:Bld:Qn:"
+59822-7,"Tacrolimus^4H post dose",MCnc,Pt,Ser/Plas,Qn,,DRUG/TOX,2.70,ACTIVE,1,Both,,ug/L,"Tacrolimus [Mass/volume] in Serum or Plasma --4 hours post dose",ug/L,2.32,false,"Tacrolimus^4H post dose:MCnc:Pt:Ser/Plas:Qn:"
+92730-1,"Tacrolimus^1H post dose",MCnc,Pt,Bld,Qn,,DRUG/TOX,2.66,ACTIVE,1,Both,,ug/L,"Tacrolimus [Mass/volume] in Blood --1 hour post dose",ug/L,2.66,false,"Tacrolimus^1H post dose:MCnc:Pt:Bld:Qn:"
+59823-5,"Tacrolimus^2H post dose",MCnc,Pt,Ser/Plas,Qn,,DRUG/TOX,2.70,ACTIVE,1,Both,,ug/L,"Tacrolimus [Mass/volume] in Serum or Plasma --2 hours post dose",ug/L,2.32,false,"Tacrolimus^2H post dose:MCnc:Pt:Ser/Plas:Qn:"
+72946-7,"Tacrolimus induced neutrophil Ab.IgG",PrThr,Pt,Ser/Plas,Ord,"Flow cytometry",SERO,2.56,ACTIVE,1,Both,,,"Tacrolimus induced neutrophil IgG Ab [Presence] in Serum or Plasma by Flow cytometry (FC)",,2.44,false,"Tacrolimus induced neutrophil Ab.IgG:PrThr:Pt:Ser/Plas:Ord:Flow cytometry"
+72945-9,"Tacrolimus induced neutrophil Ab.IgM",PrThr,Pt,Ser/Plas,Ord,"Flow cytometry",SERO,2.56,ACTIVE,1,Both,,,"Tacrolimus induced neutrophil IgM Ab [Presence] in Serum or Plasma by Flow cytometry (FC)",,2.44,false,"Tacrolimus induced neutrophil Ab.IgM:PrThr:Pt:Ser/Plas:Ord:Flow cytometry"
+73133-1,"Tacrolimus induced platelet Ab.IgG",PrThr,Pt,Ser/Plas,Ord,"Flow cytometry",SERO,2.66,ACTIVE,1,Both,,,"Tacrolimus induced platelet IgG Ab [Presence] in Serum or Plasma by Flow cytometry (FC)",,2.44,false,"Tacrolimus induced platelet Ab.IgG:PrThr:Pt:Ser/Plas:Ord:Flow cytometry"
+73132-3,"Tacrolimus induced platelet Ab.IgM",PrThr,Pt,Ser/Plas,Ord,"Flow cytometry",SERO,2.66,ACTIVE,1,Both,,,"Tacrolimus induced platelet IgM Ab [Presence] in Serum or Plasma by Flow cytometry (FC)",,2.44,false,"Tacrolimus induced platelet Ab.IgM:PrThr:Pt:Ser/Plas:Ord:Flow cytometry"
