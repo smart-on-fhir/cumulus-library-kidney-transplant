@@ -1,0 +1,12 @@
+LOINC_NUM,COMPONENT,PROPERTY,TIME_ASPCT,SYSTEM,SCALE_TYP,METHOD_TYP,CLASS,VersionLastChanged,STATUS,CLASSTYPE,ORDER_OBS,EXTERNAL_COPYRIGHT_NOTICE,EXAMPLE_UNITS,LONG_COMMON_NAME,EXAMPLE_UCUM_UNITS,VersionFirstReleased,LHCForms,FormalName
+55454-3,"Hemoglobin A1c",-,Pt,Bld,-,,LABORDERS,2.66,DEPRECATED,1,Order,,,"Deprecated Hemoglobin A1c in Blood",,2.27,false,"Hemoglobin A1c:-:Pt:Bld:-:"
+41995-2,"Hemoglobin A1c",MCnc,Pt,Bld,Qn,,CHEM,2.73,ACTIVE,1,Both,,g/dL,"Hemoglobin A1c [Mass/volume] in Blood",g/dL,2.16,false,"Hemoglobin A1c:MCnc:Pt:Bld:Qn:"
+86910-7,"Hemoglobin A1c/Hemoglobin.total goal",MFr,Pt,Bld,Qn,,CLIN,2.63,ACTIVE,2,Both,,%,"Hemoglobin A1c/Hemoglobin.total goal Blood",%,2.63,false,"Hemoglobin A1c/Hemoglobin.total goal:MFr:Pt:Bld:Qn:"
+4548-4,"Hemoglobin A1c/Hemoglobin.total",MFr,Pt,Bld,Qn,,CHEM,2.73,ACTIVE,1,Both,,%,"Hemoglobin A1c/Hemoglobin.total in Blood",%,1.0,false,"Hemoglobin A1c/Hemoglobin.total:MFr:Pt:Bld:Qn:"
+71875-9,"Hemoglobin A1c/Hemoglobin.total",MFr.DF,Pt,Bld,Qn,,CHEM,2.73,ACTIVE,1,Both,,,"Hemoglobin A1c/Hemoglobin.total [Pure mass fraction] in Blood",,2.40,false,"Hemoglobin A1c/Hemoglobin.total:MFr.DF:Pt:Bld:Qn:"
+17855-8,"Hemoglobin A1c/Hemoglobin.total",MFr,Pt,Bld,Qn,Calculated,CHEM,2.73,ACTIVE,1,Both,,%,"Hemoglobin A1c/Hemoglobin.total in Blood by calculation",%,1.0l,false,"Hemoglobin A1c/Hemoglobin.total:MFr:Pt:Bld:Qn:Calculated"
+96595-4,"Hemoglobin A1c/Hemoglobin.total",MFr,Pt,Bld.dot,Qn,,CHEM,2.70,ACTIVE,1,Both,,%,"Hemoglobin A1c/Hemoglobin.total in DBS",%,2.69,false,"Hemoglobin A1c/Hemoglobin.total:MFr:Pt:Bld.dot:Qn:"
+4549-2,"Hemoglobin A1c/Hemoglobin.total",MFr,Pt,Bld,Qn,Electrophoresis,CHEM,2.73,ACTIVE,1,Both,,%,"Hemoglobin A1c/Hemoglobin.total in Blood by Electrophoresis",%,1.0,false,"Hemoglobin A1c/Hemoglobin.total:MFr:Pt:Bld:Qn:Electrophoresis"
+17856-6,"Hemoglobin A1c/Hemoglobin.total",MFr,Pt,Bld,Qn,HPLC,CHEM,2.73,ACTIVE,1,Both,,%,"Hemoglobin A1c/Hemoglobin.total in Blood by HPLC",%,1.0l,false,"Hemoglobin A1c/Hemoglobin.total:MFr:Pt:Bld:Qn:HPLC"
+62388-4,"Hemoglobin A1c/Hemoglobin.total",MFr,Pt,Bld,Qn,JDS/JSCC,CHEM,2.70,ACTIVE,1,Both,,%,"Hemoglobin A1c/Hemoglobin.total in Blood by JDS/JSCC protocol",%,2.34,false,"Hemoglobin A1c/Hemoglobin.total:MFr:Pt:Bld:Qn:JDS/JSCC"
+59261-8,"Hemoglobin A1c/Hemoglobin.total",SFr,Pt,Bld,Qn,IFCC,CHEM,2.73,ACTIVE,1,Both,,mmol/mol,"Hemoglobin A1c/Hemoglobin.total in Blood by IFCC protocol",%,2.32,false,"Hemoglobin A1c/Hemoglobin.total:SFr:Pt:Bld:Qn:IFCC"
