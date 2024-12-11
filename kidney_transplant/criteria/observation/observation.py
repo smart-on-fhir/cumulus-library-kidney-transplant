@@ -24,6 +24,6 @@ class ObservationCategory(Enum):
 
 def enum2codelist(category_list: List[ObservationCategory]) -> List[Coding]:
     if not category_list:
-        category_list = fhir2sql.codesystem2valueset('CodeSystem-observation-category.json')
+        category_list = fhir2sql.codesystem2codelist('CodeSystem-observation-category.json')
 
     return [fhir2sql.as_coding(c) for c in category_list]

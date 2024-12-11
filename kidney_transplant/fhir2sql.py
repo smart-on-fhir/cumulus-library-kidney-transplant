@@ -3,10 +3,15 @@ import json
 from enum import Enum
 from typing import List
 from fhirclient.models.coding import Coding
-from kidney_transplant import common
+from kidney_transplant import common, guard
 
 PREFIX = 'kidney_transplant'
 
+###############################################################################
+#
+# Files: JSON/SQL
+#
+###############################################################################
 def path_valueset(valueset_json: str) -> str:
     return os.path.join(os.path.dirname(__file__), 'valueset', valueset_json)
 
@@ -23,6 +28,12 @@ def save_sql(view_name, view_sql: str) -> str:
     :return: outfile path
     """
     return common.write_text(view_sql, path_athena(view_name))
+
+###############################################################################
+#
+# Transforms X->Y
+#
+###############################################################################
 
 def valueset2codelist(valueset_json) -> List[Coding]:
     """
@@ -47,7 +58,7 @@ def valueset2codelist(valueset_json) -> List[Coding]:
                 parsed.append(Coding(concept))
     return parsed
 
-def codesystem2valueset(code_system_json) -> List[Coding]:
+def codesystem2codelist(code_system_json) -> List[Coding]:
     """
     ValueSet is not always available, sometimes "CodeSystem" is the FHIR spec.
     :param code_system_json:
@@ -69,15 +80,6 @@ def escape(sql: str) -> str:
     """
     return sql.replace("'", "").replace(";", ".")
 
-def as_coding_enum(enum_type: Enum) -> List[Coding]:
-    return [as_coding(c) for c in list(enum_type)]
-
-def as_coding(obj) -> Coding:
-    c = Coding()
-    c.code = obj.__dict__.get('code')
-    c.display = obj.__dict__.get('display')
-    c.system = obj.__dict__.get('system')
-    return c
 
 def codelist2view(codelist: List[Coding], view_name) -> str:
     """

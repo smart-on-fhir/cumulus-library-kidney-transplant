@@ -8,104 +8,6 @@ from . import jsonifiers
 
 ###############################################################################
 #
-# Guard input types, fail fast
-#
-###############################################################################
-
-def guard_list(object) -> list:
-    if isinstance(object, list):
-        return object
-    return [object]
-
-def guard_range(object) -> range:
-    print(f'guard_range : {object}')
-    if isinstance(object, list):
-        return range(object[0], object[1])
-    if isinstance(object, tuple):
-        return range(object[0], object[1])
-    if isinstance(object, range):
-        return object
-
-    Exception(f'guard_range failed for {object}')
-
-def guard_range_or_none(object) -> range:
-    if not object:
-        return None
-    return guard_range(object)
-
-
-def uniq(unsorted: List[str]) -> List[str]:
-    """
-    :param unsorted: list of header names
-    :return: sorted list of unique header names
-    """
-    return sorted(list(set(unsorted)))
-
-###############################################################################
-#
-# Helper Functions: date and time
-#
-###############################################################################
-
-def parse_fhir_date(yyyy_mm_dd) -> FHIRDate:
-    """
-    :param yyyy_mm_dd: YEAR Month Date
-    :return: FHIR Date with only the date part.
-    """
-    if yyyy_mm_dd and isinstance(yyyy_mm_dd, FHIRDate):
-        return yyyy_mm_dd
-    if yyyy_mm_dd and isinstance(yyyy_mm_dd, str):
-        if len(yyyy_mm_dd) >= 10:
-            yyyy_mm_dd = yyyy_mm_dd[:10]
-            return FHIRDate(yyyy_mm_dd)
-
-def parse_date(value: str | None) -> datetime.date | None:
-    return parse_datetime(value).date()
-
-def parse_datetime(value: str | None) -> datetime.datetime | None:
-    """
-    Converts FHIR instant/dateTime/date types into a Python format.
-
-    - This tries to be very graceful - any errors will result in a None return.
-    - Missing month/day fields are treated as the earliest possible date (i.e. '1')
-
-    CAUTION: Returned datetime might be naive - which makes more sense for dates without a time.
-             The spec says any field with hours/minutes SHALL have a timezone.
-             But fields that are just dates SHALL NOT have a timezone.
-    """
-    if not value:
-        return None
-
-    try:
-        # Handle partial dates like "1980-12" (which spec allows, but fromisoformat can't handle)
-        pieces = value.split("-")
-        if len(pieces) == 1:
-            return datetime.datetime(int(pieces[0]), 1, 1)  # note: naive datetime
-        elif len(pieces) == 2:
-            return datetime.datetime(int(pieces[0]), int(pieces[1]), 1)  # note: naive datetime
-
-        # Until we depend on Python 3.11+, manually handle Z
-        value = value.replace("Z", "+00:00")
-
-        return datetime.datetime.fromisoformat(value)
-    except ValueError:
-        return None
-
-def datetime_now(local: bool = False) -> datetime.datetime:
-    """
-    Current date and time, suitable for use as a FHIR 'instant' data type
-
-    The returned datetime is always 'aware' (not 'naive').
-
-    :param local: whether to use local timezone or (if False) UTC
-    """
-    now = datetime.datetime.now(datetime.timezone.utc)
-    if local:
-        now = now.astimezone()
-    return now
-
-###############################################################################
-#
 # Read/Write Text/Json
 #
 ###############################################################################
@@ -230,4 +132,67 @@ def list_from_csv_column(file_csv: str, column: str, delimiter: str = ',', quote
     """
     return [row[column] for row in read_csv(file_csv=file_csv, delimiter=delimiter, quote_char=quote_char)]
 
+
+###############################################################################
+#
+# Helper Functions: date and time
+#
+###############################################################################
+
+def parse_fhir_date(yyyy_mm_dd) -> FHIRDate:
+    """
+    :param yyyy_mm_dd: YEAR Month Date
+    :return: FHIR Date with only the date part.
+    """
+    if yyyy_mm_dd and isinstance(yyyy_mm_dd, FHIRDate):
+        return yyyy_mm_dd
+    if yyyy_mm_dd and isinstance(yyyy_mm_dd, str):
+        if len(yyyy_mm_dd) >= 10:
+            yyyy_mm_dd = yyyy_mm_dd[:10]
+            return FHIRDate(yyyy_mm_dd)
+
+def parse_date(value: str | None) -> datetime.date | None:
+    return parse_datetime(value).date()
+
+def parse_datetime(value: str | None) -> datetime.datetime | None:
+    """
+    Converts FHIR instant/dateTime/date types into a Python format.
+
+    - This tries to be very graceful - any errors will result in a None return.
+    - Missing month/day fields are treated as the earliest possible date (i.e. '1')
+
+    CAUTION: Returned datetime might be naive - which makes more sense for dates without a time.
+             The spec says any field with hours/minutes SHALL have a timezone.
+             But fields that are just dates SHALL NOT have a timezone.
+    """
+    if not value:
+        return None
+
+    try:
+        # Handle partial dates like "1980-12" (which spec allows, but fromisoformat can't handle)
+        pieces = value.split("-")
+        if len(pieces) == 1:
+            return datetime.datetime(int(pieces[0]), 1, 1)  # note: naive datetime
+        elif len(pieces) == 2:
+            return datetime.datetime(int(pieces[0]), int(pieces[1]), 1)  # note: naive datetime
+
+        # Until we depend on Python 3.11+, manually handle Z
+        value = value.replace("Z", "+00:00")
+
+        return datetime.datetime.fromisoformat(value)
+    except ValueError:
+        return None
+
+def datetime_now(local: bool = False) -> datetime.datetime:
+    """
+    Current date and time, suitable for use as a FHIR 'instant' data type
+
+    The returned datetime is always 'aware' (not 'naive').
+
+    :param local: whether to use local timezone or (if False) UTC
+    """
+    now = datetime.datetime.now(datetime.timezone.utc)
+    if local:
+        now = now.astimezone()
+    return now
 
