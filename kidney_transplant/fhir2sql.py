@@ -12,6 +12,9 @@ PREFIX = 'kidney_transplant'
 # Files: JSON/SQL
 #
 ###############################################################################
+def exists_valueset(valueset_file: str) -> bool:
+    return os.path.exists(path_valueset(valueset_file))
+
 def path_valueset(valueset_json: str) -> str:
     return os.path.join(os.path.dirname(__file__), 'valueset', valueset_json)
 
@@ -20,6 +23,9 @@ def path_athena(view_name: str) -> str:
 
 def load_valueset(valueset_json: str) -> dict:
     return common.read_json(path_valueset(valueset_json))
+
+def make_subdir(subdir: str):
+    os.makedirs(path_valueset(subdir), exist_ok=True)
 
 def save_sql(view_name, view_sql: str) -> str:
     """
@@ -48,15 +54,25 @@ def valueset2codelist(valueset_json) -> List[Coding]:
     :param valueset_json: ValueSet file, expecially those provided by NLM/ONC/VSAC
     :return: list of codeable concepts (system, code, display) to include
     """
-    valueset = load_valueset(valueset_json)
+    if isinstance(valueset_json, str):
+        valueset_json = load_valueset(valueset_json)
+
     parsed = list()
 
-    for include in valueset['compose']['include']:
+    if not valueset_json.get('compose'):
+        print('warning, no valueset content. Extension?')
+        return list()
+
+    for include in valueset_json['compose']['include']:
         if 'concept' in include.keys():
             for concept in include['concept']:
                 concept['system'] = include['system']
                 parsed.append(Coding(concept))
     return parsed
+
+def expansion2codelist(valueset_json: dict) -> List[Coding]:
+    contains = valueset_json.get('expansion').get('contains')
+    return [Coding(c) for c in contains]
 
 def codesystem2codelist(code_system_json) -> List[Coding]:
     """

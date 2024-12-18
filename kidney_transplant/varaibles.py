@@ -1,5 +1,13 @@
+import os
 from enum import Enum
-from kidney_transplant import vsac
+from kidney_transplant import guard, common
+from kidney_transplant import vsac, fhir2sql
+
+###############################################################################
+#
+# Diagnoses
+#
+###############################################################################
 
 class DxKidney(Enum):
     renal_disease = '2.16.840.1.113762.1.4.1029.335'
@@ -15,13 +23,17 @@ class DxAutoimmune(Enum):
     inflammatory_and_autoimmune = '2.16.840.1.113762.1.4.1248.124'
     ibd = '2.16.840.1.113762.1.4.1078.879'
     crohns = '2.16.840.1.113762.1.4.1034.576'
-    arthritis = '2.16.840.1.113762.1.4.1222.651'
-    arthritis_dx = '2.16.840.1.113762.1.4.1222.81'
+    arthritis_ra = '2.16.840.1.113762.1.4.1222.651'
+    arthritis_disorders = '2.16.840.1.113762.1.4.1222.81'
 
 class DxCancer(Enum):
     cancer = '2.16.840.1.113883.3.526.3.1010'
     malignant_melanoma_sct = '2.16.840.1.113883.3.1434.1038'
     malignant_melanoma_icd10 = '2.16.840.1.113883.3.464.1003.108.11.1018'
+
+class DxImmunocompromised(Enum):
+    immunocompromised = '2.16.840.1.113883.3.666.5.1940'
+    immunocompromising = '2.16.840.1.113762.1.4.1235.212'
 
 class DxInfection(Enum):
     infection = '2.16.840.1.113883.17.4077.3.2054'
@@ -36,36 +48,60 @@ class DxInfection(Enum):
     hepatitis_b = '2.16.840.1.113883.3.464.1003.110.12.1025'
     hepatitis_c = '2.16.840.1.113762.1.4.1222.30'
 
-class DxImmunocompromised:
-    immunocompromised = '2.16.840.1.113883.3.666.5.1940'
-    immunocompromising = '2.16.840.1.113762.1.4.1235.212'
-
 class DxHeart(Enum):
     cardiomyopathy = '2.16.840.1.113762.1.4.1222.579'
     heart_attack = '2.16.840.1.113883.3.666.5.3011'
     heart_failure = '2.16.840.1.113762.1.4.1222.1543'
-    cardiovascular_cohort = ' 2.16.840.1.113762.1.4.1182.308'
+    cardiovascular_cohort = '2.16.840.1.113762.1.4.1182.308'
 
-class Rximmunocompromised:
-    immunocompromised_therapies = '2.16.840.1.113762.1.4.1235.212'
-
-class Dialysis(Enum):
-    dialysis = '2.16.840.1.113762.1.4.1078.342'
-
-class Surgery(Enum):
-    kidney_transplant = '2.16.840.1.113762.1.4.1078.16'
-    nephrectomy_sct = '2.16.840.1.113762.1.4.1248.200'
-    nephrectomy_icd10 = '2.16.840.1.113762.1.4.1248.4'
-    major_transplant = '2.16.840.1.113883.3.464.1003.198.12.1075'
-    solid_organ_transplant = '2.16.840.1.113762.1.4.1032.205'
-    solid_organ_transplant_recipient = '2.16.840.1.113762.1.4.1111.27'
-    surgery_cohort_icd10 = '2.16.840.1.113762.1.4.1182.127'
-
-class Diabetes(Enum):
+class DxDiabetes(Enum):
     preexisting_diabetes = '2.16.840.1.113883.3.464.1003.198.12.1075'
     diabetes_disorder = '2.16.840.1.113762.1.4.1219.35'
     td2_related_conditions = '2.16.840.1.113762.1.4.1078.440'
     complications_due_to_diabetes = '2.16.840.1.113762.1.4.1222.1537'
+
+class GroupDx(Enum):
+    dx_autoimmune = DxAutoimmune
+    dx_diabetes = DxDiabetes
+    dx_cancer = DxCancer
+    dx_heart = DxHeart
+    dx_kidney = DxKidney
+    dx_immunocompromised = DxImmunocompromised
+    dx_infection = DxInfection
+
+###############################################################################
+#
+# Surgery
+#
+###############################################################################
+class KidneyTransplant(Enum):
+    kidney_transplant = '2.16.840.1.113762.1.4.1078.16'
+    nephrectomy_sct = '2.16.840.1.113762.1.4.1248.200'
+    nephrectomy_icd10 = '2.16.840.1.113762.1.4.1248.4'
+
+class MajorTransplant(Enum):
+    major_transplant = '2.16.840.1.113883.3.464.1003.198.12.1075'
+    solid_organ_transplant = '2.16.840.1.113762.1.4.1032.205'
+    solid_organ_transplant_recipient = '2.16.840.1.113762.1.4.1111.27'
+    # surgery_cohort_icd10 = '2.16.840.1.113762.1.4.1182.127'
+
+class GroupTransplant(Enum):
+    transplant_kidney = KidneyTransplant
+    transplant_major = MajorTransplant
+
+###############################################################################
+# Kidney Dialysis
+###############################################################################
+class Dialysis(Enum):
+    dialysis = '2.16.840.1.113762.1.4.1078.342'
+
+###############################################################################
+#
+# Rx Medications
+#
+###############################################################################
+class Rximmunocompromised:
+    immunocompromised_therapies = '2.16.840.1.113762.1.4.1235.212'
 
 class RxDiabetes(Enum):
     diabetes_medications = '2.16.840.1.113762.1.4.1190.58'
@@ -79,6 +115,36 @@ class RxSubstance(Enum):
     substance_reactant = '2.16.840.1.113762.1.4.1010.1'
     common_substances_for_allergy_and_intollerance = '2.16.840.1.113762.1.4.1186.8'
     drug_class = '2.16.840.1.113883.3.88.12.80.18'
+
+class GroupRx(Enum):
+    rx_diabetes = RxDiabetes
+    rx_immunosuppressive = RxImmunosuppressive
+    # rx_substance = RxSubstance
+
+###############################################################################
+#
+# Lab Panels
+#
+###############################################################################
+class PanelCBC(Enum):
+    cbc_with_diff = '1.3.6.1.4.1.6997.4.1.2.271.13.38167.1.1.999.594'
+
+class PanelCMP(Enum):
+    bmp_cmp = '2.16.840.1.113762.1.4.1078.867'
+
+class PanelLFT(Enum):
+    hepatic_function = '2.16.840.1.113762.1.4.1078.867'
+
+class GroupLabPanel(Enum):
+    lab_panel_cbc = PanelCBC
+    lab_panel_cmp = PanelCMP
+    lab_panel_lft = PanelLFT
+
+###############################################################################
+#
+# Lab individual Labs
+#
+###############################################################################
 
 class LabGFR(Enum):
     eGFR = '2.16.840.1.113883.3.88.12.80.18'
@@ -98,15 +164,6 @@ class LabAutoimmune(Enum):
     t3 = '2.16.840.1.113762.1.4.1078.864'           # Triiodothyronine
     t4 = '2.16.840.1.113762.1.4.1078.865'           # Thyroxine
 
-class PanelCBC(Enum):
-    cbc_with_diff = '1.3.6.1.4.1.6997.4.1.2.271.13.38167.1.1.999.594'
-
-class PanelCMP(Enum):
-    bmp_cmp = '2.16.840.1.113762.1.4.1078.867'
-
-class PanelLFT(Enum):
-    hepatic_function = '2.16.840.1.113762.1.4.1078.867'
-
 class LabLFT(Enum):
     ggt = '2.16.840.1.113762.1.4.1222.806'
     pt_prothrombin_time = '2.16.840.1.113883.3.3616.200.110.102.5037'
@@ -116,3 +173,46 @@ class LabDiabetes(Enum):
     diabetes_screening = '2.16.840.1.113762.1.4.1221.122'
     glucose_test = '2.16.840.1.113762.1.4.1045.134'
 
+class GroupLab(Enum):
+    lab_gfr = LabGFR
+    lab_creatinine = LabCreatinine
+    lab_autoimmune = LabAutoimmune
+    lab_lft = LabLFT
+    lab_diabetes = LabDiabetes
+
+###############################################################################
+#
+# Process
+#
+###############################################################################
+def process_group(group):
+    api = vsac.UmlsApi()
+
+    for variable in list(group):
+        print(variable)
+        for valueset in list(variable.value):
+            print(valueset)
+            filename = fhir2sql.path_valueset(f"irae_{variable.name}/{valueset.name}.json")
+
+            if not os.path.exists(filename) and False:
+                json_list = api.get_vsac_valuesets(url=None, oid=valueset.value)
+                common.write_json(json_list, filename)
+            else:
+                json_list = common.read_json(filename)
+                code_list = list()
+
+            for entry in json_list:
+                code_list += fhir2sql.expansion2codelist(entry)
+
+            viewname = f"irae_{variable.name}_{valueset.name}"
+            _sql = fhir2sql.codelist2view(code_list, viewname)
+
+            fhir2sql.save_sql(viewname, _sql)
+
+
+if __name__ == "__main__":
+    process_group(GroupTransplant)
+    process_group(GroupDx)
+    process_group(GroupRx)
+    process_group(GroupLab)
+    process_group(GroupLabPanel)
