@@ -1,8 +1,8 @@
 import unittest
 from enum import Enum
 from typing import List, Dict
-from kidney_transplant import common, guard
-from kidney_transplant.criteria.demographic.race import Race
+from irae import common, guard
+from irae.criteria.demographic.race import Race
 
 class TestGuard(unittest.TestCase):
 

@@ -3,7 +3,7 @@ import json
 from enum import Enum
 from typing import List
 from fhirclient.models.coding import Coding
-from kidney_transplant import common, guard
+from irae import common, guard
 
 PREFIX = 'kidney_transplant'
 

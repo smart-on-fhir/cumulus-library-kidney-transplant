@@ -1,5 +1,5 @@
 import os
-from kidney_transplant import common, fhir2sql
+from irae import common, fhir2sql
 
 def filepath(filename: str) -> str:
     pwd = os.path.dirname(os.path.realpath(__file__))

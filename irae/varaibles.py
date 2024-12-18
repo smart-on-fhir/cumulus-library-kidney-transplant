@@ -1,7 +1,7 @@
 import os
 from enum import Enum
-from kidney_transplant import guard, common
-from kidney_transplant import vsac, fhir2sql
+from irae import guard, common
+from irae import vsac, fhir2sql
 
 ###############################################################################
 #

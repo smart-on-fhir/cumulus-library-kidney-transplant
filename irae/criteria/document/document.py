@@ -1,7 +1,7 @@
 import os
 from typing import List
 from fhirclient.models.coding import Coding
-from kidney_transplant import fhir2sql
+from irae import fhir2sql
 
 def include_document_type(doctype_list: List[Coding]) -> str:
     criteria_document_type(doctype_list, True)

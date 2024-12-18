@@ -1,8 +1,8 @@
-from kidney_transplant import fhir2sql, common, guard
-from kidney_transplant.fhir2sql import include, exclude
-from kidney_transplant.criteria.demographic import gender, race
-from kidney_transplant.criteria.encounter import study_period
-from kidney_transplant.criteria.encounter.encounter_class import EncounterClass
+from irae import fhir2sql, common, guard
+from irae.fhir2sql import include, exclude
+from irae.criteria.demographic import gender, race
+from irae.criteria.encounter import study_period
+from irae.criteria.encounter.encounter_class import EncounterClass
 
 
 codes = guard.as_coding(EncounterClass.EMER)

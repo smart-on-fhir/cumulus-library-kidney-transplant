@@ -2,7 +2,7 @@ import os
 from typing import List
 from enum import Enum
 from fhirclient.models.coding import Coding
-from kidney_transplant import fhir2sql, common
+from irae import fhir2sql, common
 
 class EncounterClass(Enum):
     AMB = ('AMB', 'ambulatory')
