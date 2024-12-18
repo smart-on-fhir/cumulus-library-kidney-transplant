@@ -42,17 +42,6 @@ azathioprine = [
     '6 Mercaptopurine'
 ]
 
-# For QA checking of missed false positives
-class_moa = [
-    'immunosuppressant',
-    'immunosuppressive',
-    'immunomod',
-    'calcineurin',
-    'Macrolide',
-    'systemic corticosteroid'
-    'DMARD',
-    'CTLA-4'
-    'mTOR Inhibitor']
 
 belatacept = [
     'belatacept',
@@ -71,6 +60,18 @@ DRUG_LIST = [
     belatacept,
     atg
 ]
+
+# For QA checking of missed false positives
+class_moa = [
+    'immunosuppressant',
+    'immunosuppressive',
+    'immunomod',
+    'calcineurin',
+    'Macrolide',
+    'systemic corticosteroid'
+    'DMARD',
+    'CTLA-4'
+    'mTOR Inhibitor']
 
 ###############################################################################
 #
