@@ -1,7 +1,7 @@
 from typing import List
 from enum import Enum
 from fhirclient.models.coding import Coding
-from irae import fhir2sql
+from irae import fhir2sql, guard
 
 class Gender(Enum):
     """
@@ -35,14 +35,14 @@ def sex2codelist(female=True, male=True, other=True, unknown=True) -> List[Codin
     if unknown:
         codelist.append(Gender.unknown)
 
-    return [fhir2sql.as_coding(c) for c in codelist]
+    return [guard.as_coding(c) for c in codelist]
 
-def include_sex(female=True, male=True, other=True, unknown=True) -> str:
-    return criteria_sex(female, male, other, unknown, True)
-
-def exclude_sex(female=True, male=True, other=True, unknown=True) -> str:
-    return criteria_sex(female, male, other, unknown, False)
-
-def criteria_sex(female=True, male=True, other=True, unknown=True, include=True) -> str:
-    codelist = sex2codelist(female, male, other, unknown)
-    return fhir2sql.criteria(codelist, 'demographic_sex', include)
+    # def include_sex(female=True, male=True, other=True, unknown=True) -> str:
+    #     return criteria_sex(female, male, other, unknown, True)
+    #
+    # def exclude_sex(female=True, male=True, other=True, unknown=True) -> str:
+    #     return criteria_sex(female, male, other, unknown, False)
+    #
+    # def criteria_sex(female=True, male=True, other=True, unknown=True, include=True) -> str:
+    #     codelist = sex2codelist(female, male, other, unknown)
+    #     return fhir2sql.criteria(codelist, 'demographic_sex', include)

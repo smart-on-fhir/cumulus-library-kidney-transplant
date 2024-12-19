@@ -1,12 +1,14 @@
-import os
-from irae import common, fhir2sql
+from irae import fhir2sql
 
-def filepath(filename: str) -> str:
-    pwd = os.path.dirname(os.path.realpath(__file__))
-    return os.path.join(pwd, filename)
+TEMPLATE_SQL = """
+create or replace view irae__study_period as select * from
+(VALUES
+    (date('$period_start'), date('$period_end'), $include_history)
+) AS t (period_start, period_end, include_history);
+"""
 
 def include(period_start='2016-01-01', period_end='2025-01-01', include_history=True):
-    _sql = common.read_text(filepath(__file__.replace('.py', '.sql')))
+    _sql = TEMPLATE_SQL
 
     _sql = _sql.replace('$period_start', period_start)
     _sql = _sql.replace('$period_end', period_end)

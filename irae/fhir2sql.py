@@ -5,7 +5,7 @@ from typing import List
 from fhirclient.models.coding import Coding
 from irae import common, guard
 
-PREFIX = 'kidney_transplant'
+PREFIX = 'irae'
 
 ###############################################################################
 #
@@ -20,6 +20,9 @@ def path_valueset(valueset_json: str) -> str:
 
 def path_athena(view_name: str) -> str:
     return os.path.join(os.path.dirname(__file__), 'athena', f'{view_name}.sql')
+
+def path_spreadsheet(table_filename: str) -> str:
+    return os.path.join(os.path.dirname(__file__), 'spreadsheet', f'{table_filename}')
 
 def load_valueset(valueset_json: str) -> dict:
     return common.read_json(path_valueset(valueset_json))
@@ -112,19 +115,19 @@ def codelist2view(codelist: List[Coding], view_name) -> str:
     content = '\n,'.join(content)
     return header + '\n' + content + '\n' + footer
 
-def criteria(codelist: List[Coding], view_name: str, include: bool) -> str:
-    _criteria = 'include' if include else 'exclude'
-    _dest = f"{PREFIX}__{_criteria}_{view_name}"
+def union_view_list(view_list: List[str], view_name: str) -> str:
+    _dest = f"{PREFIX}__{view_name}"
+    _header = f"create or replace view {PREFIX}__{view_name} as \n "
+    _select = [f"select '{item}' as subtype, system, code, display from \n {item}" for item in view_list]
+    _sql = _header + '\n UNION '.join(_select)
+    return save_sql(_dest, _sql)
+
+def define(codelist: List[Coding], view_name: str) -> str:
+    _dest = f"{PREFIX}__{view_name}"
     _sql = codelist2view(codelist, _dest)
     return save_sql(_dest, _sql)
 
-def include(codelist: List[Coding], view_name: str) -> str:
-    return criteria(codelist, view_name, include=True)
-
-def exclude(codelist: List[Coding], view_name: str) -> str:
-    return criteria(codelist, view_name, include=False)
-
-def criteria_valueset_list(valueset_json_list: List[str], view_name: str, include=True) -> str:
+def define_valueset_list(valueset_json_list: List[str], view_name: str, include=True) -> str:
     """
     :param valueset_json_list: VSAC ValueSet JSON files
     :param view_name: create view as
@@ -134,10 +137,10 @@ def criteria_valueset_list(valueset_json_list: List[str], view_name: str, includ
     codelist = list()
     for filename in valueset_json_list:
         codelist += valueset2codelist(path_valueset(filename))
-    return criteria(codelist, view_name, include)
+    return define(codelist, view_name, include)
 
-def include_valueset_list(valueset_json_list: List[str], view_name: str) -> str:
-    return criteria_valueset_list(valueset_json_list, view_name, include=True)
+def include(codelist: List[Coding], view_name: str) -> str:
+    return define(codelist, f'include_{view_name}')
 
-def exclude_valueset_list(valueset_json_list: List[str], view_name: str) -> str:
-    return criteria_valueset_list(valueset_json_list, view_name, include=False)
+def exclude(codelist: List[Coding], view_name: str) -> str:
+    return define(codelist, f'exclude_{view_name}')

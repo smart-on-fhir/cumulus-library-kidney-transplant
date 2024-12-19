@@ -1,8 +1,6 @@
 import unittest
-from enum import Enum
-from typing import List, Dict
-from irae import common, guard
-from irae.criteria.demographic.race import Race
+from irae import guard
+from irae.criteria.race import Race
 
 class TestGuard(unittest.TestCase):
 

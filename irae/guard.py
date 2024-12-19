@@ -51,7 +51,7 @@ def guard_list_coding(obj) -> List[Coding]:
     if is_list_type(obj, Coding):
         return obj
 
-    return [as_coding(c) for c in list(enum_type)]
+    return [as_coding(c) for c in list(obj)]
 
 def as_coding(obj) -> Coding:
     c = Coding()

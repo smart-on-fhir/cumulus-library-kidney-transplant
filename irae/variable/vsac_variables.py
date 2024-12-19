@@ -1,7 +1,9 @@
 import os
+from typing import List
 from enum import Enum
-from irae import guard, common
-from irae import vsac, fhir2sql
+from irae import common
+from irae import fhir2sql
+from irae.variable import vsac_api
 
 ###############################################################################
 #
@@ -71,58 +73,6 @@ class GroupDx(Enum):
 
 ###############################################################################
 #
-# Surgery
-#
-###############################################################################
-class KidneyTransplant(Enum):
-    kidney_transplant = '2.16.840.1.113762.1.4.1078.16'
-    nephrectomy_sct = '2.16.840.1.113762.1.4.1248.200'
-    nephrectomy_icd10 = '2.16.840.1.113762.1.4.1248.4'
-
-class MajorTransplant(Enum):
-    major_transplant = '2.16.840.1.113883.3.464.1003.198.12.1075'
-    solid_organ_transplant = '2.16.840.1.113762.1.4.1032.205'
-    solid_organ_transplant_recipient = '2.16.840.1.113762.1.4.1111.27'
-    # surgery_cohort_icd10 = '2.16.840.1.113762.1.4.1182.127'
-
-class GroupTransplant(Enum):
-    transplant_kidney = KidneyTransplant
-    transplant_major = MajorTransplant
-
-###############################################################################
-# Kidney Dialysis
-###############################################################################
-class Dialysis(Enum):
-    dialysis = '2.16.840.1.113762.1.4.1078.342'
-
-###############################################################################
-#
-# Rx Medications
-#
-###############################################################################
-class Rximmunocompromised:
-    immunocompromised_therapies = '2.16.840.1.113762.1.4.1235.212'
-
-class RxDiabetes(Enum):
-    diabetes_medications = '2.16.840.1.113762.1.4.1190.58'
-
-class RxImmunosuppressive(Enum):
-    immunosuppressive = '2.16.840.1.113762.1.4.1219.192'
-    systemic_therapy = '2.16.840.1.113883.3.666.5.803'
-    immune_modulators = '2.16.840.1.113762.1.4.1248.124'
-
-class RxSubstance(Enum):
-    substance_reactant = '2.16.840.1.113762.1.4.1010.1'
-    common_substances_for_allergy_and_intollerance = '2.16.840.1.113762.1.4.1186.8'
-    drug_class = '2.16.840.1.113883.3.88.12.80.18'
-
-class GroupRx(Enum):
-    rx_diabetes = RxDiabetes
-    rx_immunosuppressive = RxImmunosuppressive
-    # rx_substance = RxSubstance
-
-###############################################################################
-#
 # Lab Panels
 #
 ###############################################################################
@@ -182,37 +132,96 @@ class GroupLab(Enum):
 
 ###############################################################################
 #
-# Process
+# Transplant
 #
 ###############################################################################
-def process_group(group):
-    api = vsac.UmlsApi()
+class KidneyTransplant(Enum):
+    kidney_transplant = '2.16.840.1.113762.1.4.1078.16'
+    nephrectomy_sct = '2.16.840.1.113762.1.4.1248.200'
+    nephrectomy_icd10 = '2.16.840.1.113762.1.4.1248.4'
+
+class MajorTransplant(Enum):
+    major_transplant = '2.16.840.1.113883.3.464.1003.198.12.1075'
+    solid_organ_transplant = '2.16.840.1.113762.1.4.1032.205'
+    solid_organ_transplant_recipient = '2.16.840.1.113762.1.4.1111.27'
+    # surgery_cohort_icd10 = '2.16.840.1.113762.1.4.1182.127'
+
+class GroupTransplant(Enum):
+    transplant_kidney = KidneyTransplant
+    transplant_major = MajorTransplant
+
+###############################################################################
+# Kidney Dialysis
+###############################################################################
+class Dialysis(Enum):
+    dialysis = '2.16.840.1.113762.1.4.1078.342'
+
+###############################################################################
+#
+# Rx Medications
+#
+###############################################################################
+class Rximmunocompromised:
+    immunocompromised_therapies = '2.16.840.1.113762.1.4.1235.212'
+
+class RxDiabetes(Enum):
+    diabetes_medications = '2.16.840.1.113762.1.4.1190.58'
+
+class RxImmunosuppressive(Enum):
+    immunosuppressive = '2.16.840.1.113762.1.4.1219.192'
+    systemic_therapy = '2.16.840.1.113883.3.666.5.803'
+    immune_modulators = '2.16.840.1.113762.1.4.1248.124'
+
+class RxSubstance(Enum):
+    substance_reactant = '2.16.840.1.113762.1.4.1010.1'
+    common_substances_for_allergy_and_intollerance = '2.16.840.1.113762.1.4.1186.8'
+    drug_class = '2.16.840.1.113883.3.88.12.80.18'
+
+class GroupRx(Enum):
+    rx_diabetes = RxDiabetes
+    rx_immunosuppressive = RxImmunosuppressive
+    # rx_substance = RxSubstance
+
+###############################################################################
+#
+# Make
+#
+###############################################################################
+def make():
+    return make_group(GroupDx) + \
+           make_group(GroupRx) + \
+           make_group(GroupLab) + \
+           make_group(GroupLabPanel) + \
+           make_group(GroupTransplant)
+
+def make_group(group) -> List[str]:
+    api = vsac_api.UmlsApi()
+
+    outputs = list()
 
     for variable in list(group):
         print(variable)
         for valueset in list(variable.value):
             print(valueset)
-            filename = fhir2sql.path_valueset(f"irae_{variable.name}/{valueset.name}.json")
 
-            if not os.path.exists(filename) and False:
+            json_file = fhir2sql.path_valueset(f"{fhir2sql.PREFIX}__{variable.name}/{valueset.name}.json")
+            view_name = f"irae__{variable.name}_{valueset.name}"
+            view_file = fhir2sql.path_athena(view_name)
+
+            if not os.path.exists(json_file):
                 json_list = api.get_vsac_valuesets(url=None, oid=valueset.value)
-                common.write_json(json_list, filename)
-            else:
-                json_list = common.read_json(filename)
+                common.write_json(json_list, json_file)
+
+            if not os.path.exists(view_file):
                 code_list = list()
+                for entry in common.read_json(json_file):
+                    code_list += fhir2sql.expansion2codelist(entry)
+                _sql = fhir2sql.codelist2view(code_list, view_name)
+                fhir2sql.save_sql(view_name, _sql)
 
-            for entry in json_list:
-                code_list += fhir2sql.expansion2codelist(entry)
-
-            viewname = f"irae_{variable.name}_{valueset.name}"
-            _sql = fhir2sql.codelist2view(code_list, viewname)
-
-            fhir2sql.save_sql(viewname, _sql)
+            outputs.append(view_file)
+        return outputs
 
 
 if __name__ == "__main__":
-    process_group(GroupTransplant)
-    process_group(GroupDx)
-    process_group(GroupRx)
-    process_group(GroupLab)
-    process_group(GroupLabPanel)
+    make()
