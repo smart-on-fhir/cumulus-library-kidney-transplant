@@ -7,39 +7,63 @@ from irae.variable import vsac_api
 
 ###############################################################################
 #
+# Surgical
+#
+###############################################################################
+class Transplant(Enum):
+    kidney = '2.16.840.1.113762.1.4.1078.16'
+    solid_organ = '2.16.840.1.113762.1.4.1032.205'
+    recipient = '2.16.840.1.113762.1.4.1111.27'
+
+class Surgery(Enum):
+    major = '2.16.840.1.113883.3.464.1003.198.12.1075'
+    nephrectomy_sct = '2.16.840.1.113762.1.4.1248.200'
+    nephrectomy_icd10 = '2.16.840.1.113762.1.4.1248.4'
+    # cohort = '2.16.840.1.113762.1.4.1182.127'
+
+class GroupTransplant(Enum):
+    transplant = Transplant
+    surgery = Surgery
+
+
+###############################################################################
+#
 # Diagnoses
 #
 ###############################################################################
 
 class DxKidney(Enum):
+    condition = '2.16.840.1.113883.17.4077.3.2028'
     renal_disease = '2.16.840.1.113762.1.4.1029.335'
-    chronic_kidney_disease = '2.16.840.1.113762.1.4.1078.114'
-    ckd_stages = '2.16.840.1.113762.1.4.1222.159'
-    diabetic_nephropathy = '2.16.840.1.113883.3.464.1003.109.12.1004'
-    kidney_stones = '2.16.840.1.113883.17.4077.2.2009'
-    dkd_diabetic_kidney_disease = '2.16.840.1.113762.1.4.1078.124'
-    hypertensive_ckd = '2.16.840.1.113883.3.464.1003.109.12.1017'
     esrd = '2.16.840.1.113762.1.4.1235.172'
+    ckd = '2.16.840.1.113762.1.4.1078.114'
+    # ckd_stages = '2.16.840.1.113762.1.4.1222.159'
+    # stones = '2.16.840.1.113883.17.4077.2.2009'
+    diabetic_nephropathy = '2.16.840.1.113883.3.464.1003.109.12.1004'
+    diabetic_ckd = '2.16.840.1.113762.1.4.1078.124'
+    hypertensive_ckd = '2.16.840.1.113883.3.464.1003.109.12.1017'
+    nephrotic_syndrome = '2.16.840.1.113883.3.464.1003.109.12.1018'
 
 class DxAutoimmune(Enum):
-    inflammatory_and_autoimmune = '2.16.840.1.113762.1.4.1248.124'
+    inflammatory = '2.16.840.1.113762.1.4.1248.124'
     ibd = '2.16.840.1.113762.1.4.1078.879'
     crohns = '2.16.840.1.113762.1.4.1034.576'
     arthritis_ra = '2.16.840.1.113762.1.4.1222.651'
     arthritis_disorders = '2.16.840.1.113762.1.4.1222.81'
+    lupus = '2.16.840.1.113883.3.464.1003.117.12.1010'
 
 class DxCancer(Enum):
-    cancer = '2.16.840.1.113883.3.526.3.1010'
+    # any = '2.16.840.1.113883.3.526.3.1010'
     malignant_melanoma_sct = '2.16.840.1.113883.3.1434.1038'
     malignant_melanoma_icd10 = '2.16.840.1.113883.3.464.1003.108.11.1018'
 
-class DxImmunocompromised(Enum):
+class DxImmmunoCompromised(Enum):
     immunocompromised = '2.16.840.1.113883.3.666.5.1940'
     immunocompromising = '2.16.840.1.113762.1.4.1235.212'
 
 class DxInfection(Enum):
-    infection = '2.16.840.1.113883.17.4077.3.2054'
-    infectious_disease = '2.16.840.1.113883.10.20.22.5.306'
+    # any = '2.16.840.1.113883.17.4077.3.2054'
+    # id = '2.16.840.1.113883.10.20.22.5.306'
     bacterial = '2.16.840.1.113762.1.4.1200.288'
     pna = '2.16.840.1.113762.1.4.1078.738'
     cmv_icd10 = '2.16.840.1.113762.1.4.1146.2234'
@@ -52,24 +76,29 @@ class DxInfection(Enum):
 
 class DxHeart(Enum):
     cardiomyopathy = '2.16.840.1.113762.1.4.1222.579'
-    heart_attack = '2.16.840.1.113883.3.666.5.3011'
-    heart_failure = '2.16.840.1.113762.1.4.1222.1543'
-    cardiovascular_cohort = '2.16.840.1.113762.1.4.1182.308'
+    attack = '2.16.840.1.113883.3.666.5.3011'
+    failure = '2.16.840.1.113762.1.4.1222.1543'
+    cohort = '2.16.840.1.113762.1.4.1182.308'
+
+class DxHypertension(Enum):
+    essential = '2.16.840.1.113883.3.464.1003.104.12.1011'
+    any = '2.16.840.1.113762.1.4.1251.12'
 
 class DxDiabetes(Enum):
-    preexisting_diabetes = '2.16.840.1.113883.3.464.1003.198.12.1075'
-    diabetes_disorder = '2.16.840.1.113762.1.4.1219.35'
-    td2_related_conditions = '2.16.840.1.113762.1.4.1078.440'
-    complications_due_to_diabetes = '2.16.840.1.113762.1.4.1222.1537'
+    disorder = '2.16.840.1.113762.1.4.1219.35'
+    preexisting = '2.16.840.1.113883.3.464.1003.198.12.1075'
+    complications = '2.16.840.1.113762.1.4.1222.1537'
+    td2_related_dx = '2.16.840.1.113762.1.4.1078.440'
 
 class GroupDx(Enum):
     dx_autoimmune = DxAutoimmune
-    dx_diabetes = DxDiabetes
     dx_cancer = DxCancer
+    dx_diabetes = DxDiabetes
     dx_heart = DxHeart
-    dx_kidney = DxKidney
-    dx_immunocompromised = DxImmunocompromised
+    dx_htn = DxHypertension
+    dx_compromised = DxImmmunoCompromised
     dx_infection = DxInfection
+    dx_kidney = DxKidney
 
 ###############################################################################
 #
@@ -77,10 +106,10 @@ class GroupDx(Enum):
 #
 ###############################################################################
 class PanelCBC(Enum):
-    cbc_with_diff = '1.3.6.1.4.1.6997.4.1.2.271.13.38167.1.1.999.594'
+    with_diff = '1.3.6.1.4.1.6997.4.1.2.271.13.38167.1.1.999.594'
 
 class PanelCMP(Enum):
-    bmp_cmp = '2.16.840.1.113762.1.4.1078.867'
+    comprehensive = '2.16.840.1.113762.1.4.1078.867'
 
 class PanelLFT(Enum):
     hepatic_function = '2.16.840.1.113762.1.4.1078.867'
@@ -97,7 +126,7 @@ class GroupLabPanel(Enum):
 ###############################################################################
 
 class LabGFR(Enum):
-    eGFR = '2.16.840.1.113883.3.88.12.80.18'
+    eGFR = '2.16.840.1.113762.1.4.1078.397'
 
 class LabCreatinine(Enum):
     serum_cr = '2.16.840.1.113762.1.4.1146.2206'
@@ -120,7 +149,7 @@ class LabLFT(Enum):
     inr = '2.16.840.1.113883.3.117.1.7.1.213'
 
 class LabDiabetes(Enum):
-    diabetes_screening = '2.16.840.1.113762.1.4.1221.122'
+    screening = '2.16.840.1.113762.1.4.1221.122'
     glucose_test = '2.16.840.1.113762.1.4.1045.134'
 
 class GroupLab(Enum):
@@ -130,25 +159,6 @@ class GroupLab(Enum):
     lab_lft = LabLFT
     lab_diabetes = LabDiabetes
 
-###############################################################################
-#
-# Transplant
-#
-###############################################################################
-class KidneyTransplant(Enum):
-    kidney_transplant = '2.16.840.1.113762.1.4.1078.16'
-    nephrectomy_sct = '2.16.840.1.113762.1.4.1248.200'
-    nephrectomy_icd10 = '2.16.840.1.113762.1.4.1248.4'
-
-class MajorTransplant(Enum):
-    major_transplant = '2.16.840.1.113883.3.464.1003.198.12.1075'
-    solid_organ_transplant = '2.16.840.1.113762.1.4.1032.205'
-    solid_organ_transplant_recipient = '2.16.840.1.113762.1.4.1111.27'
-    # surgery_cohort_icd10 = '2.16.840.1.113762.1.4.1182.127'
-
-class GroupTransplant(Enum):
-    transplant_kidney = KidneyTransplant
-    transplant_major = MajorTransplant
 
 ###############################################################################
 # Kidney Dialysis
@@ -161,11 +171,14 @@ class Dialysis(Enum):
 # Rx Medications
 #
 ###############################################################################
-class Rximmunocompromised:
-    immunocompromised_therapies = '2.16.840.1.113762.1.4.1235.212'
+class RximmunoCompromised(Enum):
+    therapies = '2.16.840.1.113762.1.4.1235.212'
 
 class RxDiabetes(Enum):
-    diabetes_medications = '2.16.840.1.113762.1.4.1190.58'
+    drugs = '2.16.840.1.113762.1.4.1190.58'
+
+class RxHypertension(Enum):
+    htn_drugs = '2.16.840.1.113883.3.600.1476'
 
 class RxImmunosuppressive(Enum):
     immunosuppressive = '2.16.840.1.113762.1.4.1219.192'
@@ -177,9 +190,17 @@ class RxSubstance(Enum):
     common_substances_for_allergy_and_intollerance = '2.16.840.1.113762.1.4.1186.8'
     drug_class = '2.16.840.1.113883.3.88.12.80.18'
 
+class RxDiuretics(Enum):
+    thiazide = '2.16.840.1.113762.1.4.1078.8'
+    loop = '2.16.840.1.113762.1.4.1078.898'
+    potassium = '2.16.840.1.113762.1.4.1213.41'
+
 class GroupRx(Enum):
     rx_diabetes = RxDiabetes
+    rx_htn = RxHypertension
     rx_immunosuppressive = RxImmunosuppressive
+    rx_compromised = RximmunoCompromised
+    rx_diuretics = RxDiuretics
     # rx_substance = RxSubstance
 
 ###############################################################################
@@ -197,14 +218,15 @@ def make():
 def make_group(group) -> List[str]:
     api = vsac_api.UmlsApi()
 
-    outputs = list()
+    group_list = list()
 
     for variable in list(group):
         print(variable)
+        valueset_list = list()
         for valueset in list(variable.value):
             print(valueset)
 
-            json_file = fhir2sql.path_valueset(f"{fhir2sql.PREFIX}__{variable.name}/{valueset.name}.json")
+            json_file = fhir2sql.path_valueset(f"irae__{variable.name}/{valueset.name}.json")
             view_name = f"irae__{variable.name}_{valueset.name}"
             view_file = fhir2sql.path_athena(view_name)
 
@@ -219,8 +241,11 @@ def make_group(group) -> List[str]:
                 _sql = fhir2sql.codelist2view(code_list, view_name)
                 fhir2sql.save_sql(view_name, _sql)
 
-            outputs.append(view_file)
-        return outputs
+            group_list.append(view_file)
+            valueset_list.append(view_name)
+        group_list.append(fhir2sql.union_view_list(valueset_list, variable.name))
+
+    return group_list
 
 
 if __name__ == "__main__":

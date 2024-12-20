@@ -2,7 +2,7 @@ from irae import common
 from irae.fhir2sql import include
 from irae.criteria import gender, race, document, study_period
 from irae.criteria.encounter_class import EncounterClass
-from irae.variable import vsac_variables, custom_variables, union_variables
+from irae.variable import vsac_variables, custom_variables
 
 def make_gender() -> str:
     codes = gender.sex2codelist(female=True, male=True, other=True, unknown=False)
@@ -41,6 +41,8 @@ def make_document_practice() -> str:
 def make_variable_valuesets() -> str:
     pass
 
+def command_shell() -> str:
+    return "cumulus-library build -s ./ -t irae"
 
 def make():
     criteria_sql = [
@@ -52,10 +54,11 @@ def make():
         make_document_facility(),
         make_document_practice()]
 
-    variable_sql = [vsac_variables.make(),
-                    custom_variables.make(),
-                    union_variables.make()]
+    manifest = vsac_variables.make() + custom_variables.make()
+    manifest = ','.join([f"\n'{f}'" for f in manifest])
+    print(manifest)
 
+    common.write_text(manifest, 'manifest.txt')
 
 if __name__ == "__main__":
     make()

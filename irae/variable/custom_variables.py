@@ -18,6 +18,9 @@ LAB_LIST = ['azathioprine',
             'mycophenolate',
             'tacrolimus']
 
+def union_aspect(aspect: str, aspect_entries: list, view_name: str) -> str:
+    targets = [f'{fhir2sql.PREFIX}__{aspect}_{entry}' for entry in aspect_entries]
+    return fhir2sql.union_view_list(targets, view_name)
 
 def make_aspect(vocab: Vocab, aspect: str, aspect_entries: list, filetype='csv') -> List[str]:
     delimiter = ',' if filetype == 'csv' else '\t'
@@ -38,9 +41,19 @@ def make_lab() -> List[str]:
 def make_rx() -> List[str]:
     return make_aspect(Vocab.RXNORM, 'rx', RX_LIST, 'tsv')
 
+def make_union():
+    return [union_aspect('lab', LAB_LIST, f'lab_drug_levels'),
+            union_aspect('rx', RX_LIST, f'rx_drug_levels')]
+
 def make() -> List[str]:
-    return make_lab() + make_rx()
+    return make_lab() + make_rx() + make_union()
 
 
 if __name__ == "__main__":
     make()
+
+
+
+
+
+
