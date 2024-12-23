@@ -228,7 +228,7 @@ def make_group(group) -> List[str]:
 
             json_file = fhir2sql.path_valueset(f"irae__{variable.name}/{valueset.name}.json")
             view_name = f"irae__{variable.name}_{valueset.name}"
-            view_file = fhir2sql.path_athena(view_name)
+            view_file = fhir2sql.path_athena(f'{view_name}.sql')
 
             if not os.path.exists(json_file):
                 json_list = api.get_vsac_valuesets(url=None, oid=valueset.value)
@@ -239,7 +239,7 @@ def make_group(group) -> List[str]:
                 for entry in common.read_json(json_file):
                     code_list += fhir2sql.expansion2codelist(entry)
                 _sql = fhir2sql.codelist2view(code_list, view_name)
-                fhir2sql.save_sql(view_name, _sql)
+                fhir2sql.save_athena_sql(view_name, _sql)
 
             group_list.append(view_file)
             valueset_list.append(view_name)

@@ -12,31 +12,41 @@ PREFIX = 'irae'
 # Files: JSON/SQL
 #
 ###############################################################################
-def exists_valueset(valueset_file: str) -> bool:
-    return os.path.exists(path_valueset(valueset_file))
+def root(target=None) -> str:
+    if target:
+        return os.path.join(os.path.dirname(__file__), target)
+    else:
+        return os.path.dirname(__file__)
 
-def path_valueset(valueset_json: str) -> str:
-    return os.path.join(os.path.dirname(__file__), 'valueset', valueset_json)
-
-def path_athena(view_name: str) -> str:
-    return os.path.join(os.path.dirname(__file__), 'athena', f'{view_name}.sql')
-
-def path_spreadsheet(table_filename: str) -> str:
-    return os.path.join(os.path.dirname(__file__), 'spreadsheet', f'{table_filename}')
-
-def load_valueset(valueset_json: str) -> dict:
-    return common.read_json(path_valueset(valueset_json))
+def exists(target: str) -> bool:
+    return os.path.exists(target)
 
 def make_subdir(subdir: str):
     os.makedirs(path_valueset(subdir), exist_ok=True)
 
-def save_sql(view_name, view_sql: str) -> str:
-    """
-    :param view_name: create view as
-    :param view_sql: SQL commands
-    :return: outfile path
-    """
-    return common.write_text(view_sql, path_athena(view_name))
+def path_template(file_sql) -> str:
+    return os.path.join(os.path.dirname(__file__), 'template', file_sql)
+
+def load_template(file_sql) -> str:
+    return common.read_text(path_template(file_sql))
+
+def path_valueset(valueset_json: str) -> str:
+    return os.path.join(os.path.dirname(__file__), 'valueset', valueset_json)
+
+def load_valueset(valueset_json) -> dict:
+    return common.read_json(path_valueset(valueset_json))
+
+def path_athena(file_sql: str) -> str:
+    return os.path.join(os.path.dirname(__file__), 'athena', file_sql)
+
+def save_athena(file_sql: str, contents: str) -> str:
+    return common.write_text(contents, path_athena(file_sql))
+
+def save_athena_sql(view_name: str, contents: str) -> str:
+    return common.write_text(contents, path_athena(f'{view_name}.sql'))
+
+def path_spreadsheet(table_ext: str) -> str:
+    return os.path.join(os.path.dirname(__file__), 'spreadsheet', table_ext)
 
 ###############################################################################
 #
@@ -115,17 +125,27 @@ def codelist2view(codelist: List[Coding], view_name) -> str:
     content = '\n,'.join(content)
     return header + '\n' + content + '\n' + footer
 
+def values2view(view_name, cols: list, values: list) -> str:
+    values = ','.join(values)
+    cols = ','.join(cols)
+    sql = [f"create or replace view {view_name} as ",
+           f"select * from (values",
+           f"({values})",
+           f") AS t ({cols}) ;"]
+    sql = '\n'.join(sql)
+    return save_athena_sql(view_name, sql)
+
 def union_view_list(view_list: List[str], view_name: str) -> str:
     _dest = f"{PREFIX}__{view_name}"
     _header = f"create or replace view {PREFIX}__{view_name} as \n "
     _select = [f"select '{item}' as subtype, system, code, display from \n {item}" for item in view_list]
     _sql = _header + '\n UNION '.join(_select)
-    return save_sql(_dest, _sql)
+    return save_athena_sql(_dest, _sql)
 
 def define(codelist: List[Coding], view_name: str) -> str:
     _dest = f"{PREFIX}__{view_name}"
     _sql = codelist2view(codelist, _dest)
-    return save_sql(_dest, _sql)
+    return save_athena_sql(_dest, _sql)
 
 def define_valueset_list(valueset_json_list: List[str], view_name: str, include=True) -> str:
     """
