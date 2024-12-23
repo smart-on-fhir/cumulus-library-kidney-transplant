@@ -9,7 +9,8 @@ with study_period as
         (SP.include_history and E.period_start_day < SP.period_end) OR
         (E.period_start_day between SP.period_start and SP.period_end)
 )
-select
+select distinct
+    E.status,
     E.age_at_visit,
     E.gender,
     E.race_display,
