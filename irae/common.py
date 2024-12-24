@@ -47,10 +47,8 @@ def guard_range(obj) -> range:
 
 def as_coding_list(obj) -> List[Coding]:
     obj = guard_list(obj)
-
     if is_list_type(obj, Coding):
         return obj
-
     return [as_coding(c) for c in list(obj)]
 
 def as_coding(obj) -> Coding:

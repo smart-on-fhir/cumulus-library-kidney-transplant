@@ -157,7 +157,7 @@ class GroupLab(Enum):
     lab_creatinine = LabCreatinine
     lab_autoimmune = LabAutoimmune
     lab_lft = LabLFT
-    lab_diabetes = LabDiabetes
+    # lab_diabetes = LabDiabetes
 
 
 ###############################################################################
@@ -227,8 +227,10 @@ def list_variable_views() -> List[str]:
 #
 ###############################################################################
 def make():
+    file_list = list()
     for group in list_variable_groups():
-        make_variable_group(group)
+        file_list += make_variable_group(group)
+    return file_list
 
 def make_variable_group(group) -> List[str]:
     api = vsac_api.UmlsApi()
@@ -260,7 +262,3 @@ def make_variable_group(group) -> List[str]:
             valueset_list.append(view_name)
         group_list.append(fhir2sql.union_view_list(valueset_list, variable.name))
     return group_list
-
-
-if __name__ == "__main__":
-    make()

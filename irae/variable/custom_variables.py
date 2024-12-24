@@ -18,8 +18,15 @@ LAB_LIST = ['azathioprine',
             'mycophenolate',
             'tacrolimus']
 
+def list_variables() -> List[str]:
+    rx_list = [f'rx_{drug}' for drug in RX_LIST]
+    lab_list = [f'lab_{lab}' for lab in LAB_LIST]
+    union_list = ['rx_drug_levels', 'lab_drug_levels']
+    var_list = rx_list + lab_list + union_list
+    return [f'irae__{var}' for var in var_list]
+
 def union_aspect(aspect: str, aspect_entries: list, view_name: str) -> str:
-    targets = [f'{fhir2sql.PREFIX}__{aspect}_{entry}' for entry in aspect_entries]
+    targets = [f'irae__{aspect}_{entry}' for entry in aspect_entries]
     return fhir2sql.union_view_list(targets, view_name)
 
 def make_aspect(vocab: Vocab, aspect: str, aspect_entries: list, filetype='csv') -> List[str]:

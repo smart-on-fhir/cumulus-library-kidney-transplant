@@ -26,3 +26,10 @@ class EncounterClass(Enum):
         self.system = 'http://terminology.hl7.org/ValueSet/v3-ActEncounterCode'
         self.code = code
         self.display = display
+
+
+def include(enc_class_list=None) -> str:
+    if not enc_class_list:
+        enc_class_list = list(EncounterClass)
+    codes = common.as_coding_list(enc_class_list)
+    return fhir2sql.include(codes, 'enc_class')

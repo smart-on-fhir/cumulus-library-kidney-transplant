@@ -28,6 +28,7 @@ def get_coding_practice(code: str) -> Coding:
 
 def get_coding(code: str, valueset_json: str) -> Coding:
     """
+    Big(O) time for this method is slow (N), optimize if used heavily.
     :param code: code to find in valueset
     :param valueset_json: ValueSet containing [System, Code, Display]
     :return: Coding type
@@ -54,3 +55,25 @@ def get_valueset_facility() -> List[Coding]:
 
 def get_valueset_practice() -> List[Coding]:
     return fhir2sql.valueset2codelist(VALUESET_PRACTICE)
+
+###############################################################################
+#
+# Include
+#
+#   *DocType
+#   *Facility
+#   *Practice
+#
+###############################################################################
+
+def include_doc_type() -> str:
+    codes = get_valueset_doctype()
+    return fhir2sql.include(codes, 'doc_type')
+
+def include_doc_facility() -> str:
+    codes = get_valueset_facility()
+    return fhir2sql.include(codes, 'doc_facility')
+
+def include_doc_practice() -> str:
+    codes = get_valueset_practice()
+    return fhir2sql.include(codes, 'doc_practice')

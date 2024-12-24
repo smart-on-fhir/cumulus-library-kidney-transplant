@@ -1,6 +1,7 @@
 from typing import List
 from enum import Enum
 from fhirclient.models.coding import Coding
+from irae import common, fhir2sql
 
 class Race(Enum):
     """
@@ -17,3 +18,9 @@ class Race(Enum):
         self.system = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-race'
         self.code = code
         self.display = display
+
+def include(race_list=None) -> str:
+    if not race_list:
+        race_list = list(Race)
+    codes = common.as_coding_list(race_list)
+    return fhir2sql.include(codes, 'race')
