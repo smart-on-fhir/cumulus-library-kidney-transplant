@@ -205,17 +205,32 @@ class GroupRx(Enum):
 
 ###############################################################################
 #
+# LIST of
+#
+###############################################################################
+def list_variable_groups() -> List:
+    return [GroupTransplant, GroupDx, GroupRx, GroupLab, GroupLabPanel]
+
+def list_variables() -> List[str]:
+    variable_list = list()
+    for variable in list_variable_groups():
+        for valueset in list(variable.value):
+            variable_list.append(f"{variable.name}_{valueset.name}")
+    return variable_list
+
+def list_variable_views() -> List[str]:
+    return [f'irae__{v}' for v in list_variables()]
+
+###############################################################################
+#
 # Make
 #
 ###############################################################################
 def make():
-    return make_group(GroupDx) + \
-           make_group(GroupRx) + \
-           make_group(GroupLab) + \
-           make_group(GroupLabPanel) + \
-           make_group(GroupTransplant)
+    for group in list_variable_groups():
+        make_variable_group(group)
 
-def make_group(group) -> List[str]:
+def make_variable_group(group) -> List[str]:
     api = vsac_api.UmlsApi()
 
     group_list = list()
@@ -232,7 +247,7 @@ def make_group(group) -> List[str]:
 
             if not os.path.exists(json_file):
                 json_list = api.get_vsac_valuesets(url=None, oid=valueset.value)
-                common.write_json(json_list, json_file)
+                fhir2sql.save_valueset(json_file, json_list)
 
             if not os.path.exists(view_file):
                 code_list = list()
@@ -244,7 +259,6 @@ def make_group(group) -> List[str]:
             group_list.append(view_file)
             valueset_list.append(view_name)
         group_list.append(fhir2sql.union_view_list(valueset_list, variable.name))
-
     return group_list
 
 

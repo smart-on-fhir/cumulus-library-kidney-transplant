@@ -1,23 +1,23 @@
 from typing import List
-from irae import common
+from irae import common, counts
 from irae.fhir2sql import include, path_athena
 from irae.criteria import age_at_visit, gender, race, document, study_period
 from irae.criteria.encounter_class import EncounterClass
 from irae.variable import vsac_variables, custom_variables
 
 def make_study() -> List[str]:
-    criteria_sql = [
+    criteria = [
         make_study_period(),
         make_age_at_visit(),
+        make_encounter(),
         make_gender(),
         make_race(),
-        make_encounter(),
         make_document_type(),
         make_document_facility(),
         make_document_practice(),
     ]
 
-    file_list = criteria_sql + vsac_variables.make() + custom_variables.make()
+    file_list = criteria + vsac_variables.make() + custom_variables.make() + counts.make()
     write_manifest(file_list)
 
     return file_list
@@ -49,19 +49,19 @@ def make_race() -> str:
 
 def make_encounter() -> str:
     codes = common.as_coding_list(list(EncounterClass))
-    return include(codes, 'encounter_class')
+    return include(codes, 'enc_class')
 
 def make_document_type() -> str:
     codes = document.get_valueset_doctype()
-    return include(codes, 'document_type')
+    return include(codes, 'doc_type')
 
 def make_document_facility() -> str:
     codes = document.get_valueset_facility()
-    return include(codes, 'document_facility')
+    return include(codes, 'doc_facility')
 
 def make_document_practice() -> str:
     codes = document.get_valueset_practice()
-    return include(codes, 'document_practice')
+    return include(codes, 'doc_practice')
 
 def command_shell() -> str:
     return "cumulus-library build -s ./ -t irae"

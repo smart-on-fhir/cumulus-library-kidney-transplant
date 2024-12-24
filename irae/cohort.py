@@ -1,0 +1,62 @@
+from irae import fhir2sql, common
+
+STUDY_POP = 'irae__cohort_study_population'
+
+def select_from(tables: list) -> str:
+    return f'select * from \n {sql_list(tables)}'
+
+def sql_iter(clauses_list, operator=',') -> str:
+    if not isinstance(clauses_list, list):
+        return sql_iter([clauses_list])
+    return f' {operator} \n'.join(clauses_list)
+
+def sql_and(clauses_list) -> str:
+    return sql_iter(clauses_list, 'AND')
+
+def sql_or(clauses_list) -> str:
+    return sql_iter(clauses_list, 'OR')
+
+def sql_list(clauses_list) -> str:
+    return sql_iter(clauses_list, ',')
+
+def sql_paren(statement: str) -> str:
+    return f'({statement})'
+
+def ctas(cohort: str, variable: str, where: list) -> str:
+    sql = [f'create table {name_cohort(variable)} as ',
+           select_from([cohort, variable]),
+           'WHERE', sql_and(where)]
+
+    return '\n'.join(sql)
+
+def name_cohort(variable: str) -> str:
+    return variable.replace('irae__', 'irae__cohort_')
+
+def cohort_dx(variable: str) -> str:
+    source = f'{STUDY_POP}_dx'
+    where = [f'{source}.dx_code={variable}.code',
+             f'{source}.dx_system={variable}.system']
+
+    sql = ctas(source, variable, where)
+    return fhir2sql.save_athena_sql(name_cohort(variable), sql)
+
+def cohort_rx(variable: str) -> str:
+    source = f'{STUDY_POP}_rx'
+    where = [f'{source}.rx_code={variable}.code',
+             f'{source}.rx_system={variable}.system']
+
+    sql = ctas(source, variable, where)
+    return fhir2sql.save_athena_sql(name_cohort(variable), sql)
+
+def cohort_lab(variable: str) -> str:
+    source = f'{STUDY_POP}_lab'
+    where1 = [f'{source}.lab_observation_code={variable}.code',
+              f'{source}.lab_observation_system={variable}.system']
+    where2 = [f'{source}.lab_concept_code={variable}.code',
+              f'{source}.lab_concept_system={variable}.system']
+
+    where = sql_or([sql_paren(sql_and(where1)),
+                   sql_paren(sql_and(where2))])
+
+    sql = ctas(source, variable, [where])
+    return fhir2sql.save_athena_sql(name_cohort(variable), sql)

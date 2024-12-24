@@ -36,6 +36,9 @@ def path_valueset(valueset_json: str) -> str:
 def load_valueset(valueset_json) -> dict:
     return common.read_json(path_valueset(valueset_json))
 
+def save_valueset(valueset_json, contents: dict) -> str:
+    return common.write_json(contents, path_valueset(valueset_json))
+
 def path_athena(file_sql: str) -> str:
     return os.path.join(os.path.dirname(__file__), 'athena', file_sql)
 
