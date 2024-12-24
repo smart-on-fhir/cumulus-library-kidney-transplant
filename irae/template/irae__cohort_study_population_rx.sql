@@ -1,6 +1,6 @@
 create table irae__cohort_study_population_rx as
 select distinct
-    RX.status,
+    RX.status               as rx_status,
     RX.category_code        as rx_category_code,
     RX.category_system      as rx_category_system,
     RX.medication_code      as rx_code,

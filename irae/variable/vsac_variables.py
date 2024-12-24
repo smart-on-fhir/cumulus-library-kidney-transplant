@@ -45,7 +45,7 @@ class DxKidney(Enum):
     nephrotic_syndrome = '2.16.840.1.113883.3.464.1003.109.12.1018'
 
 class DxAutoimmune(Enum):
-    inflammatory = '2.16.840.1.113762.1.4.1248.124'
+    inflammatory = '2.16.840.1.113883.3.3157.1834'
     ibd = '2.16.840.1.113762.1.4.1078.879'
     crohns = '2.16.840.1.113762.1.4.1034.576'
     arthritis_ra = '2.16.840.1.113762.1.4.1222.651'
@@ -178,7 +178,7 @@ class RxDiabetes(Enum):
     drugs = '2.16.840.1.113762.1.4.1190.58'
 
 class RxHypertension(Enum):
-    htn_drugs = '2.16.840.1.113883.3.600.1476'
+    drugs = '2.16.840.1.113883.3.600.1476'
 
 class RxImmunosuppressive(Enum):
     immunosuppressive = '2.16.840.1.113762.1.4.1219.192'
@@ -213,9 +213,10 @@ def list_variable_groups() -> List:
 
 def list_variables() -> List[str]:
     variable_list = list()
-    for variable in list_variable_groups():
-        for valueset in list(variable.value):
-            variable_list.append(f"{variable.name}_{valueset.name}")
+    for group in list_variable_groups():
+        for variable in list(group):
+            for valueset in list(variable.value):
+                variable_list.append(f"{variable.name}_{valueset.name}")
     return variable_list
 
 def list_variable_views() -> List[str]:

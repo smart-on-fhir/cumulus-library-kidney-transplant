@@ -17,6 +17,9 @@ select distinct
     E.ethnicity_display,
     E.class_code          as enc_class_code,
     E.period_start_day    as enc_period_start_day,
+    E.period_start_week   as enc_period_start_week,
+    E.period_start_month  as enc_period_start_month,
+    E.period_start_year   as enc_period_start_year,
     E.period_end_day      as enc_period_end_day,
     E.servicetype_code    as enc_servicetype_code,
     E.servicetype_system  as enc_servicetype_system,
@@ -30,7 +33,7 @@ from
     core__encounter                 as E,
     study_period                    as SP,
     irae__include_gender            as G,
-    irae__include_encounter_class   as enc_class,
+    irae__include_enc_class         as enc_class,
     irae__include_age_at_visit      as age
 where
     (E.encounter_ref = SP.encounter_ref)  and

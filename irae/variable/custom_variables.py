@@ -19,10 +19,16 @@ LAB_LIST = ['azathioprine',
             'tacrolimus']
 
 def list_variables() -> List[str]:
-    rx_list = [f'rx_{drug}' for drug in RX_LIST]
-    lab_list = [f'lab_{lab}' for lab in LAB_LIST]
-    union_list = ['rx_drug_levels', 'lab_drug_levels']
-    var_list = rx_list + lab_list + union_list
+    return list_variables_rx() + list_variables_lab()
+
+def list_variables_rx() -> List[str]:
+    var_list = [f'rx_{drug}' for drug in RX_LIST]
+    var_list.append('rx_drug_levels')
+    return [f'irae__{var}' for var in var_list]
+
+def list_variables_lab() -> List[str]:
+    var_list = [f'lab_{lab}' for lab in LAB_LIST]
+    var_list.append('lab_drug_levels')
     return [f'irae__{var}' for var in var_list]
 
 def union_aspect(aspect: str, aspect_entries: list, view_name: str) -> str:
@@ -30,17 +36,15 @@ def union_aspect(aspect: str, aspect_entries: list, view_name: str) -> str:
     return fhir2sql.union_view_list(targets, view_name)
 
 def make_aspect(vocab: Vocab, aspect: str, aspect_entries: list, filetype='csv') -> List[str]:
+    file_list = list()
     delimiter = ',' if filetype == 'csv' else '\t'
-
-    sql_filelist = list()
-
     for entry in aspect_entries:
-        print(f'make {aspect}_{entry}')
+        print(f'custom_variables {aspect}_{entry}')
         filename = fhir2sql.path_spreadsheet(f'{aspect}_{entry}.{filetype}')
         reader = SpreadsheetReader(filename, entry, vocab)
         codes = reader.read_coding_list(delimiter)
-        sql_filelist.append(fhir2sql.define(codes, f'{aspect}_{entry}'))
-    return sql_filelist
+        file_list.append(fhir2sql.define(codes, f'{aspect}_{entry}'))
+    return file_list
 
 def make_lab() -> List[str]:
     return make_aspect(Vocab.LOINC, 'lab', LAB_LIST, 'csv')
@@ -54,13 +58,4 @@ def make_union():
 
 def make() -> List[str]:
     return make_lab() + make_rx() + make_union()
-
-
-if __name__ == "__main__":
-    make()
-
-
-
-
-
 
