@@ -2,7 +2,7 @@ create table irae__cohort_study_variables_timeline as
 select distinct
     dx_autoimmune,
     dx_cancer,
-    dx_compromised
+    dx_compromised,
     dx_diabetes,
     dx_heart,
     dx_htn,

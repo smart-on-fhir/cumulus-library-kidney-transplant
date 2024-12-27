@@ -27,21 +27,6 @@ def name_simple(table):
         return simple
     return table
 
-# def cube_dx(source='study_population_dx', cols=None) -> str:
-#     if not cols:
-#         cols = ['dx_category_code', 'dx_code'] + PAT + ENC
-#     return cube_enc(source, cols)
-#
-# def cube_rx(source='study_population_rx', cols=None) -> str:
-#     if not cols:
-#         cols = ['rx_category_code', 'rx_code'] + PAT + ENC
-#     return cube_enc(source, cols)
-#
-# def cube_lab(source='study_population_lab', cols=None) -> str:
-#     if not cols:
-#         cols = ['lab_observation_code'] + ENC
-#     return cube_enc(source, cols)
-
 def cube_enc(source='study_population', cols=None, cube_table=None) -> str:
     from_table = name_cohort(source)
 
@@ -89,7 +74,7 @@ def make_variable_timeline() -> List[str]:
     source = 'irae__cohort_study_variables_timeline'
     vars = ['dx_autoimmune',
             'dx_cancer',
-            'dx_compromised',
+            # 'dx_compromised',
             'dx_diabetes',
             'dx_heart',
             'dx_htn',
@@ -98,7 +83,7 @@ def make_variable_timeline() -> List[str]:
             'rx_transplant',
             'rx_immunosuppressive']
 
-    return [cube_pat(source, vars + PAT + MONTH),
+    return [cube_pat(source, vars),
             cube_enc(source, vars + ENC + MONTH)]
 
 def make():

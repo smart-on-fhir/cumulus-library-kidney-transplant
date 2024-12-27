@@ -27,8 +27,9 @@ def make_study() -> List[str]:
 def write_manifest(file_list: list) -> str:
     manifest = list()
     for file in file_list:
-        _, target = file.split('irae/')
-        manifest.append(f"'{target}'")
+        if 'irae/' in file:
+            _, file = file.split('irae/')
+        manifest.append(f"'{file}'")
     text = ',\n'.join(manifest)
     print(text)
     return common.write_text(text, path_athena('MANIFEST.TXT'))

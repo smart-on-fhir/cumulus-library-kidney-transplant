@@ -62,6 +62,19 @@ def cohort_lab(variable: str) -> str:
     sql = ctas(source, variable, where)
     return fhir2sql.save_athena_sql(name_cohort(variable), sql)
 
+def make_study_variable_timeline() -> List[str]:
+    file_list = list()
+    table_list = ['irae__cohort_study_variables_lookup',
+                  'irae__cohort_study_variables_table',
+                  'irae__cohort_study_variables_timeline']
+
+    for table in table_list:
+        file = f'{table}.sql'
+        text = common.read_text(fhir2sql.path_template(file))
+        file_list.append(common.write_text(text, fhir2sql.path_athena(file)))
+
+    return file_list
+
 def make() -> List[str]:
     file_list = list()
     variable_list = vsac_variables.list_variable_views() + custom_variables.list_variables()
@@ -72,4 +85,5 @@ def make() -> List[str]:
             file_list.append(cohort_rx(variable))
         elif '__lab' in variable:
             file_list.append(cohort_lab(variable))
-    return file_list
+
+    return file_list + make_study_variable_timeline()
