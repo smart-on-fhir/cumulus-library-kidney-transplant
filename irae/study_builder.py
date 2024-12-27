@@ -29,7 +29,9 @@ def write_manifest(file_list: list) -> str:
     for file in file_list:
         _, target = file.split('irae/')
         manifest.append(f"'{target}'")
-    return common.write_text(',\n'.join(manifest), path_athena('MANIFEST.TXT'))
+    text = ',\n'.join(manifest)
+    print(text)
+    return common.write_text(text, path_athena('MANIFEST.TXT'))
 
 def command_shell() -> str:
     # bch-aws-login while on VPN

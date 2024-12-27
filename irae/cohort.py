@@ -52,15 +52,14 @@ def cohort_rx(variable: str) -> str:
 
 def cohort_lab(variable: str) -> str:
     source = f'{STUDY_POP}_lab'
-    where1 = [f'{source}.lab_observation_code = {variable}.code',
-              f'{source}.lab_observation_system = {variable}.system']
-    where2 = [f'{source}.lab_concept_code = {variable}.code',
-              f'{source}.lab_concept_system = {variable}.system']
+    where = [f'{source}.lab_observation_code = {variable}.code',
+             f'{source}.lab_observation_system = {variable}.system']
+    # where2 = [f'{source}.lab_concept_code = {variable}.code',
+    #           f'{source}.lab_concept_system = {variable}.system']
+    # where = sql_or([sql_paren(sql_and(where1)),
+    #                sql_paren(sql_and(where2))])
 
-    where = sql_or([sql_paren(sql_and(where1)),
-                   sql_paren(sql_and(where2))])
-
-    sql = ctas(source, variable, [where])
+    sql = ctas(source, variable, where)
     return fhir2sql.save_athena_sql(name_cohort(variable), sql)
 
 def make() -> List[str]:

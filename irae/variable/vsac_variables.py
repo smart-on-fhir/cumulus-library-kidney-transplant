@@ -15,15 +15,21 @@ class Transplant(Enum):
     solid_organ = '2.16.840.1.113762.1.4.1032.205'
     recipient = '2.16.840.1.113762.1.4.1111.27'
 
-class Surgery(Enum):
+class Nephrectomy(Enum):
+    sct = '2.16.840.1.113762.1.4.1248.200'
+    icd10pcs = '2.16.840.1.113762.1.4.1248.4'
+
+class Dialysis(Enum):
+    services = '2.16.840.1.113883.3.464.1003.109.12.1013'
+
+class SurgeryOther(Enum):
     major = '2.16.840.1.113883.3.464.1003.198.12.1075'
-    nephrectomy_sct = '2.16.840.1.113762.1.4.1248.200'
-    nephrectomy_icd10 = '2.16.840.1.113762.1.4.1248.4'
     # cohort = '2.16.840.1.113762.1.4.1182.127'
 
-class GroupTransplant(Enum):
+class TypeProcedure(Enum):
     transplant = Transplant
-    surgery = Surgery
+    surgery = SurgeryOther
+    dialysis = Dialysis
 
 
 ###############################################################################
@@ -37,11 +43,7 @@ class DxKidney(Enum):
     renal_disease = '2.16.840.1.113762.1.4.1029.335'
     esrd = '2.16.840.1.113762.1.4.1235.172'
     ckd = '2.16.840.1.113762.1.4.1078.114'
-    # ckd_stages = '2.16.840.1.113762.1.4.1222.159'
-    # stones = '2.16.840.1.113883.17.4077.2.2009'
-    diabetic_nephropathy = '2.16.840.1.113883.3.464.1003.109.12.1004'
-    diabetic_ckd = '2.16.840.1.113762.1.4.1078.124'
-    hypertensive_ckd = '2.16.840.1.113883.3.464.1003.109.12.1017'
+    dialysis = '2.16.840.1.113762.1.4.1078.342'
     nephrotic_syndrome = '2.16.840.1.113883.3.464.1003.109.12.1018'
 
 class DxAutoimmune(Enum):
@@ -83,14 +85,17 @@ class DxHeart(Enum):
 class DxHypertension(Enum):
     essential = '2.16.840.1.113883.3.464.1003.104.12.1011'
     any = '2.16.840.1.113762.1.4.1251.12'
+    hypertensive_ckd = '2.16.840.1.113883.3.464.1003.109.12.1017'
 
 class DxDiabetes(Enum):
     disorder = '2.16.840.1.113762.1.4.1219.35'
     preexisting = '2.16.840.1.113883.3.464.1003.198.12.1075'
     complications = '2.16.840.1.113762.1.4.1222.1537'
     td2_related_dx = '2.16.840.1.113762.1.4.1078.440'
+    diabetic_nephropathy = '2.16.840.1.113883.3.464.1003.109.12.1004'
+    diabetic_ckd = '2.16.840.1.113762.1.4.1078.124'
 
-class GroupDx(Enum):
+class TypeDx(Enum):
     dx_autoimmune = DxAutoimmune
     dx_cancer = DxCancer
     dx_diabetes = DxDiabetes
@@ -114,7 +119,7 @@ class PanelCMP(Enum):
 class PanelLFT(Enum):
     hepatic_function = '2.16.840.1.113762.1.4.1078.867'
 
-class GroupLabPanel(Enum):
+class TypeLabPanel(Enum):
     lab_panel_cbc = PanelCBC
     lab_panel_cmp = PanelCMP
     lab_panel_lft = PanelLFT
@@ -152,7 +157,7 @@ class LabDiabetes(Enum):
     screening = '2.16.840.1.113762.1.4.1221.122'
     glucose_test = '2.16.840.1.113762.1.4.1045.134'
 
-class GroupLab(Enum):
+class TypeLab(Enum):
     lab_gfr = LabGFR
     lab_creatinine = LabCreatinine
     lab_autoimmune = LabAutoimmune
@@ -160,11 +165,6 @@ class GroupLab(Enum):
     # lab_diabetes = LabDiabetes
 
 
-###############################################################################
-# Kidney Dialysis
-###############################################################################
-class Dialysis(Enum):
-    dialysis = '2.16.840.1.113762.1.4.1078.342'
 
 ###############################################################################
 #
@@ -181,7 +181,7 @@ class RxHypertension(Enum):
     drugs = '2.16.840.1.113883.3.600.1476'
 
 class RxImmunosuppressive(Enum):
-    immunosuppressive = '2.16.840.1.113762.1.4.1219.192'
+    drugs = '2.16.840.1.113762.1.4.1219.192'
     systemic_therapy = '2.16.840.1.113883.3.666.5.803'
     immune_modulators = '2.16.840.1.113762.1.4.1248.124'
 
@@ -195,7 +195,7 @@ class RxDiuretics(Enum):
     loop = '2.16.840.1.113762.1.4.1078.898'
     potassium = '2.16.840.1.113762.1.4.1213.41'
 
-class GroupRx(Enum):
+class TypeRx(Enum):
     rx_diabetes = RxDiabetes
     rx_htn = RxHypertension
     rx_immunosuppressive = RxImmunosuppressive
@@ -208,19 +208,26 @@ class GroupRx(Enum):
 # LIST of
 #
 ###############################################################################
-def list_variable_groups() -> List:
-    return [GroupTransplant, GroupDx, GroupRx, GroupLab, GroupLabPanel]
+def list_variable_types() -> List:
+    return [TypeProcedure, TypeDx, TypeRx, TypeLab, TypeLabPanel]
 
 def list_variables() -> List[str]:
     variable_list = list()
-    for group in list_variable_groups():
-        for variable in list(group):
+    for vartype in list_variable_types():
+        for variable in list(vartype):
             for valueset in list(variable.value):
                 variable_list.append(f"{variable.name}_{valueset.name}")
     return variable_list
 
+def list_variable_groups() -> List[str]:
+    group_list = list()
+    for vartype in list_variable_types():
+        for variable in list(vartype):
+            group_list.append(variable.name)
+    return group_list
+
 def list_variable_views() -> List[str]:
-    return [f'irae__{v}' for v in list_variables()]
+    return [f'irae__{v}' for v in list_variables() + list_variable_groups()]
 
 ###############################################################################
 #
@@ -229,16 +236,16 @@ def list_variable_views() -> List[str]:
 ###############################################################################
 def make():
     file_list = list()
-    for group in list_variable_groups():
-        file_list += make_variable_group(group)
+    for vartype in list_variable_types():
+        file_list += make_variable_type(vartype)
     return file_list
 
-def make_variable_group(group) -> List[str]:
+def make_variable_type(vartype) -> List[str]:
     api = vsac_api.UmlsApi()
 
-    group_list = list()
+    type_list = list()
 
-    for variable in list(group):
+    for variable in list(vartype):
         print(variable)
         valueset_list = list()
         for valueset in list(variable.value):
@@ -259,7 +266,7 @@ def make_variable_group(group) -> List[str]:
                 _sql = fhir2sql.codelist2view(code_list, view_name)
                 fhir2sql.save_athena_sql(view_name, _sql)
 
-            group_list.append(view_file)
+            type_list.append(view_file)
             valueset_list.append(view_name)
-        group_list.append(fhir2sql.union_view_list(valueset_list, variable.name))
-    return group_list
+        type_list.append(fhir2sql.union_view_list(valueset_list, variable.name))
+    return type_list

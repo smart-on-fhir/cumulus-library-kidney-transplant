@@ -2,6 +2,8 @@ from typing import List
 from fhirclient.models.coding import Coding
 from irae import fhir2sql
 
+# https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.11.20.9.68/expansion/Latest
+
 VALUESET_DOCTYPE = 'valueset-c80-doc-typecodes.json'
 VALUESET_FACILITY = 'valueset-c80-facilitycodes.json'
 VALUESET_PRACTICE = 'valueset-c80-practice-codes.json'
