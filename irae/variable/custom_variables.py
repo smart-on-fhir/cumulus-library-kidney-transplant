@@ -6,16 +6,17 @@ RX_LIST = ['atg',
            'azathioprine',
            'belatacept',
            'cyclosporin',
+           'mycophenolate',
            'sirolimus',
            'tacrolimus']
 
 LAB_LIST = ['azathioprine',
-            'cyclosporin',
-            'hemoglobin_a1c',
-            'sirolimus',
             'azathioprine_tpmt_gene',
+            'cyclosporin',
             'cytomegalovirus',
+            'hemoglobin_a1c',
             'mycophenolate',
+            'sirolimus',
             'tacrolimus']
 
 def list_variables() -> List[str]:
@@ -23,12 +24,12 @@ def list_variables() -> List[str]:
 
 def list_variables_rx() -> List[str]:
     var_list = [f'rx_{drug}' for drug in RX_LIST]
-    var_list.append('rx_drug_levels')
+    var_list.append('rx_custom')
     return [f'irae__{var}' for var in var_list]
 
 def list_variables_lab() -> List[str]:
     var_list = [f'lab_{lab}' for lab in LAB_LIST]
-    var_list.append('lab_drug_levels')
+    var_list.append('lab_custom')
     return [f'irae__{var}' for var in var_list]
 
 def union_aspect(aspect: str, aspect_entries: list, view_name: str) -> str:
@@ -39,7 +40,7 @@ def make_aspect(vocab: Vocab, aspect: str, aspect_entries: list, filetype='csv')
     file_list = list()
     delimiter = ',' if filetype == 'csv' else '\t'
     for entry in aspect_entries:
-        print(f'custom_variables {aspect}_{entry}')
+        print(f'custom_variables.py {aspect}_{entry}')
         filename = fhir2sql.path_spreadsheet(f'{aspect}_{entry}.{filetype}')
         reader = SpreadsheetReader(filename, entry, vocab)
         codes = reader.read_coding_list(delimiter)
@@ -53,8 +54,8 @@ def make_rx() -> List[str]:
     return make_aspect(Vocab.RXNORM, 'rx', RX_LIST, 'tsv')
 
 def make_union():
-    return [union_aspect('lab', LAB_LIST, f'lab_drug_levels'),
-            union_aspect('rx', RX_LIST, f'rx_drug_levels')]
+    return [union_aspect('lab', LAB_LIST, f'lab_custom'),
+            union_aspect('rx', RX_LIST, f'rx_custom')]
 
 def make() -> List[str]:
     return make_lab() + make_rx() + make_union()

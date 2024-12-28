@@ -58,7 +58,7 @@ def make_study_population() -> List[str]:
             cube_enc('study_population_rx', RX),
             cube_enc('study_population_lab', LAB)]
 
-def make_variable_cohorts() -> List[str]:
+def make_variables() -> List[str]:
     file_list = list()
     variable_list = vsac_variables.list_variable_views() + custom_variables.list_variables()
     for variable in variable_list:
@@ -87,4 +87,4 @@ def make_variable_timeline() -> List[str]:
             cube_enc(source, vars + ENC + MONTH)]
 
 def make():
-    return make_study_population() + make_variable_cohorts() + make_variable_timeline()
+    return make_study_population() + make_variables() + make_variable_timeline()

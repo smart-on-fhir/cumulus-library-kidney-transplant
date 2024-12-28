@@ -5,13 +5,23 @@ from typing import List
 # Curated Keywords for Kidney Transplant Drugs
 #
 ###############################################################################
-tacrolimus = [
-    'tacrolimus',
-    'FK506',
-    'prograf',
-    'advagraf',
-    'Fujimycin',
-    'envarsus']
+atg = ['ATG',
+       'Anti-Thymocyte Globulin',
+       'Anti Thymocyte Globulin']
+
+azathioprine = [
+    'azathioprine',
+    'imuran',
+    'Azasan',
+    'Thiopurine immunosuppressant',
+    '6-Mercaptopurine',
+    '6 Mercaptopurine'
+]
+
+belatacept = [
+    'belatacept',
+    'Nulojix',
+]
 
 cyclosporin = [
     'cyclosporin',
@@ -24,6 +34,14 @@ cyclosporin = [
     'Cequa',
 ]
 
+mycophenolate = [
+    'mycophenolate',
+    'MMF',
+    'CellCept',
+    'Myfortic',
+    'Mycophenolic Acid'
+]
+
 sirolimus = [
     'sirolimus',
     'AY-22989',
@@ -33,32 +51,23 @@ sirolimus = [
     'Macrolide immunosuppressant'
 ]
 
-azathioprine = [
-    'azathioprine',
-    'imuran',
-    'Azasan',
-    'Thiopurine immunosuppressant',
-    '6-Mercaptopurine',
-    '6 Mercaptopurine'
-]
+tacrolimus = [
+    'tacrolimus',
+    'FK506',
+    'prograf',
+    'advagraf',
+    'Fujimycin',
+    'envarsus']
 
-
-belatacept = [
-    'belatacept',
-    'Nulojix',
-]
-
-atg = ['ATG',
-       'Anti-Thymocyte Globulin',
-       'Anti Thymocyte Globulin']
 
 DRUG_LIST = [
     azathioprine,
-    cyclosporin,
-    tacrolimus,
-    sirolimus,
+    atg,
     belatacept,
-    atg
+    cyclosporin,
+    mycophenolate,
+    sirolimus,
+    tacrolimus
 ]
 
 # For QA checking of missed false positives

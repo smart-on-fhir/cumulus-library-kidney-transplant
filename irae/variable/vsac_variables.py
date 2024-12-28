@@ -154,7 +154,7 @@ class LabLFT(Enum):
     inr = '2.16.840.1.113883.3.117.1.7.1.213'
 
 class LabDiabetes(Enum):
-    screening = '2.16.840.1.113762.1.4.1221.122'
+    # screening = '2.16.840.1.113762.1.4.1221.122'    # TODO use custom_variables.py HA1C instead?
     glucose_test = '2.16.840.1.113762.1.4.1045.134'
 
 class TypeLab(Enum):
@@ -162,8 +162,7 @@ class TypeLab(Enum):
     lab_creatinine = LabCreatinine
     lab_autoimmune = LabAutoimmune
     lab_lft = LabLFT
-    # lab_diabetes = LabDiabetes
-
+    lab_diabetes = LabDiabetes
 
 
 ###############################################################################
