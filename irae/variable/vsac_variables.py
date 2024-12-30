@@ -21,7 +21,7 @@ class SurgeryOther(Enum):
     major = '2.16.840.1.113883.3.464.1003.198.12.1075'
     # cohort = '2.16.840.1.113762.1.4.1182.127'
 
-class TypeProcedure(Enum):
+class AspectProcedure(Enum):
     proc_surgery = SurgeryOther
     proc_dialysis = Dialysis
     proc_nephrectomy = Nephrectomy
@@ -94,7 +94,7 @@ class DxDiabetes(Enum):
     diabetic_nephropathy = '2.16.840.1.113883.3.464.1003.109.12.1004'
     diabetic_ckd = '2.16.840.1.113762.1.4.1078.124'
 
-class TypeDx(Enum):
+class AspectDx(Enum):
     dx_transplant = DxTransplant
     dx_autoimmune = DxAutoimmune
     dx_cancer = DxCancer
@@ -119,7 +119,7 @@ class PanelCMP(Enum):
 class PanelLFT(Enum):
     hepatic_function = '2.16.840.1.113762.1.4.1078.867'
 
-class TypeLabPanel(Enum):
+class AspectLabPanel(Enum):
     lab_panel_cbc = PanelCBC
     lab_panel_cmp = PanelCMP
     lab_panel_lft = PanelLFT
@@ -157,7 +157,7 @@ class LabDiabetes(Enum):
     # screening = '2.16.840.1.113762.1.4.1221.122'    # TODO use custom_variables.py HA1C instead?
     glucose_test = '2.16.840.1.113762.1.4.1045.134'
 
-class TypeLab(Enum):
+class AspectLab(Enum):
     lab_gfr = LabGFR
     lab_creatinine = LabCreatinine
     lab_autoimmune = LabAutoimmune
@@ -194,7 +194,7 @@ class RxDiuretics(Enum):
     loop = '2.16.840.1.113762.1.4.1078.898'
     potassium = '2.16.840.1.113762.1.4.1213.41'
 
-class TypeRx(Enum):
+class AspectRx(Enum):
     rx_diabetes = RxDiabetes
     rx_htn = RxHypertension
     rx_immunosuppressive = RxImmunosuppressive
@@ -207,26 +207,23 @@ class TypeRx(Enum):
 # LIST of
 #
 ###############################################################################
-def list_variable_types() -> List:
-    return [TypeProcedure, TypeDx, TypeRx, TypeLab, TypeLabPanel]
+def list_aspects() -> List:
+    return [AspectProcedure, AspectDx, AspectRx, AspectLab, AspectLabPanel]
 
-def list_variables() -> List[str]:
-    variable_list = list()
-    for vartype in list_variable_types():
-        for variable in list(vartype):
+def list_view_valuesets() -> List[str]:
+    valueset_list = list()
+    for aspect in list_aspects():
+        for variable in list(aspect):
             for valueset in list(variable.value):
-                variable_list.append(f"{variable.name}_{valueset.name}")
-    return variable_list
+                valueset_list.append(f"{variable.name}_{valueset.name}")
+    return fhir2sql.prefix(valueset_list)
 
-def list_variable_groups() -> List[str]:
-    group_list = list()
-    for vartype in list_variable_types():
-        for variable in list(vartype):
-            group_list.append(variable.name)
-    return group_list
-
-def list_variable_views() -> List[str]:
-    return [f'irae__{v}' for v in list_variables() + list_variable_groups()]
+def list_view_variables() -> List[str]:
+    variable_list = list()
+    for aspect in list_aspects():
+        for variable in list(aspect):
+            variable_list.append(variable.name)
+    return fhir2sql.prefix(variable_list)
 
 ###############################################################################
 #
@@ -235,16 +232,16 @@ def list_variable_views() -> List[str]:
 ###############################################################################
 def make():
     file_list = list()
-    for vartype in list_variable_types():
-        file_list += make_variable_type(vartype)
+    for aspect in list_aspects():
+        file_list += make_aspect(aspect)
     return file_list
 
-def make_variable_type(vartype) -> List[str]:
+def make_aspect(aspect) -> List[str]:
     api = vsac_api.UmlsApi()
 
-    type_list = list()
+    var_list = list()
 
-    for variable in list(vartype):
+    for variable in list(aspect):
         print(variable)
         valueset_list = list()
         for valueset in list(variable.value):
@@ -265,7 +262,7 @@ def make_variable_type(vartype) -> List[str]:
                 _sql = fhir2sql.codelist2view(code_list, view_name)
                 fhir2sql.save_athena_sql(view_name, _sql)
 
-            type_list.append(view_file)
+            var_list.append(view_file)
             valueset_list.append(view_name)
-        type_list.append(fhir2sql.union_view_list(valueset_list, variable.name))
-    return type_list
+        var_list.append(fhir2sql.union_view_list(valueset_list, variable.name))
+    return var_list

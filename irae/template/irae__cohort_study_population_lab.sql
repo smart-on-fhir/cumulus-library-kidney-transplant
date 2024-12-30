@@ -10,7 +10,8 @@ select distinct
     observation_ref,
     study_population.*
 from
-    irae__cohort_study_population as study_population
-left join core__observation_lab as lab
-    on lab.encounter_ref = study_population.encounter_ref
+    irae__cohort_study_population as study_population,
+    core__observation_lab as lab
+where
+    on study_population.encounter_ref = lab.encounter_ref
 ;

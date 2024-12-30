@@ -74,9 +74,25 @@ def make_study_variable_timeline() -> List[str]:
 
     return file_list
 
+def make_study_variable_groups() -> List[str]:
+    group_list = list()
+    variable_list = vsac_variables.prefix() + custom_variables.list_view_valuesets()
+    for variable in variable_list:
+        if '__dx' in variable:
+            group_list.append(cohort_dx(variable))
+        elif '__rx' in variable:
+            group_list.append(cohort_rx(variable))
+        elif '__lab' in variable:
+            group_list.append(cohort_lab(variable))
+        elif '__proc' in variable:
+            group_list.append(cohort_proc(variable))
+        else:
+            raise Exception(f'unknown variable type {variable}')
+    return group_list + make_study_variable_timeline()
+
 def make() -> List[str]:
     file_list = list()
-    variable_list = vsac_variables.list_variable_views() + custom_variables.list_variables()
+    variable_list = vsac_variables.list_view_variables() + custom_variables.list_view_variables()
     for variable in variable_list:
         if '__dx' in variable:
             file_list.append(cohort_dx(variable))

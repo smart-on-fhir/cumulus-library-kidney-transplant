@@ -19,15 +19,18 @@ LAB_LIST = ['azathioprine',
             'sirolimus',
             'tacrolimus']
 
-def list_variables() -> List[str]:
-    return list_variables_rx() + list_variables_lab()
+def list_view_valuesets() -> List[str]:
+    return list_view_valuesets_rx() + list_view_valuesets_lab()
 
-def list_variables_rx() -> List[str]:
+def list_view_variables() -> List[str]:
+    return list_view_valuesets_rx() + list_view_valuesets_lab()
+
+def list_view_valuesets_rx() -> List[str]:
     var_list = [f'rx_{drug}' for drug in RX_LIST]
     var_list.append('rx_custom')
     return [f'irae__{var}' for var in var_list]
 
-def list_variables_lab() -> List[str]:
+def list_view_valuesets_lab() -> List[str]:
     var_list = [f'lab_{lab}' for lab in LAB_LIST]
     var_list.append('lab_custom')
     return [f'irae__{var}' for var in var_list]
@@ -59,4 +62,3 @@ def make_union():
 
 def make() -> List[str]:
     return make_lab() + make_rx() + make_union()
-

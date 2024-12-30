@@ -7,7 +7,8 @@ select distinct
     DX.condition_ref    as condition_ref,
     study_population.*
 from
-    irae__cohort_study_population as study_population
-left join core__condition as DX
-    on DX.encounter_ref = study_population.encounter_ref
+    irae__cohort_study_population as study_population,
+    core__condition as DX
+where
+    study_population.encounter_ref = DX.encounter_ref
 ;

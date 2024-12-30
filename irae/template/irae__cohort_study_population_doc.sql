@@ -8,7 +8,8 @@ select distinct
     doc.documentreference_ref,
     study_population.*
 from
-    irae__cohort_study_population as study_population
-left join core__documentreference as doc
-    on doc.encounter_ref = study_population.encounter_ref
+    irae__cohort_study_population as study_population,
+    core__documentreference as doc
+where
+    study_population.encounter_ref = doc.encounter_ref
 ;

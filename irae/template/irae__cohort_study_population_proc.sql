@@ -9,7 +9,8 @@ select distinct
     PROC.procedure_ref,
     study_population.*
 from
-    irae__cohort_study_population as study_population
-left join core__procedure as PROC
-    on PROC.encounter_ref = study_population.encounter_ref
+    irae__cohort_study_population as study_population,
+    core__procedure as PROC
+where
+    study_population.encounter_ref = PROC.encounter_ref
 ;

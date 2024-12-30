@@ -9,7 +9,8 @@ select distinct
     RX.medicationrequest_ref as medicationrequest_ref,
     study_population.*
 from
-    irae__cohort_study_population as study_population
-left join core__medicationrequest as RX
-    on RX.encounter_ref = study_population.encounter_ref
+    irae__cohort_study_population as study_population,
+    core__medicationrequest as RX
+where
+    study_population.encounter_ref = RX.encounter_ref
 ;

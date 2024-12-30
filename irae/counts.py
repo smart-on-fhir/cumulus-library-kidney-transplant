@@ -62,7 +62,7 @@ def make_study_population() -> List[str]:
 
 def make_variables() -> List[str]:
     file_list = list()
-    variable_list = vsac_variables.list_variable_views() + custom_variables.list_variables()
+    variable_list = vsac_variables.prefix() + custom_variables.list_view_valuesets()
     for variable in variable_list:
         if '__dx' in variable:
             file_list.append(cube_enc(variable, DX))
