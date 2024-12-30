@@ -20,7 +20,7 @@ def make_study() -> List[str]:
     casedef_sql = casedef.make()
     counts_sql = counts.make()
 
-    manifest_list = criteria_sql + studypop_sql + variables_sql + cohorts_sql + casedef_sql  # + counts_sql
+    manifest_list = criteria_sql + studypop_sql + variables_sql + cohorts_sql + casedef_sql + counts_sql
 
     write_manifest(manifest_list)
 

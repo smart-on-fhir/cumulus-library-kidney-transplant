@@ -20,6 +20,7 @@ study_prefix = "irae"
 
 file_names = [
 'athena/irae__include_study_period.sql',
+'athena/irae__include_cnt_encounter.sql',
 'athena/irae__include_age_at_visit.sql',
 'athena/irae__include_enc_class.sql',
 'athena/irae__include_gender.sql',
@@ -190,7 +191,9 @@ file_names = [
 'athena/irae__cohort_study_variables.sql',
 'athena/irae__cohort_study_variables_timeline.sql',
 'athena/irae__cohort_casedef.sql',
-'athena/irae__cohort_casedef_index.sql'
+'athena/irae__cohort_casedef_index.sql',
+'athena/irae__cohort_casedef_pre.sql',
+'athena/irae__cohort_casedef_post.sql'
 ]
 
 # The following section defines parameters related to exporting study data from
