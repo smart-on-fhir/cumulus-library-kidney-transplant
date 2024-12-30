@@ -27,8 +27,8 @@ select distinct
     E.type_code           as enc_type_code,
     E.type_system         as enc_type_system,
     E.type_display        as enc_type_display,
-    E.encounter_ref,
-    E.subject_ref
+    E.subject_ref,
+    E.encounter_ref
 from
     core__encounter                 as E,
     study_period                    as SP,

@@ -38,7 +38,6 @@ def cohort_dx(variable: str) -> str:
     source = f'{STUDY_POP}_dx'
     where = [f'{source}.dx_code = {variable}.code',
              f'{source}.dx_system = {variable}.system']
-
     sql = ctas(source, variable, where)
     return fhir2sql.save_athena_sql(name_cohort(variable), sql)
 
@@ -46,7 +45,6 @@ def cohort_rx(variable: str) -> str:
     source = f'{STUDY_POP}_rx'
     where = [f'{source}.rx_code = {variable}.code',
              f'{source}.rx_system = {variable}.system']
-
     sql = ctas(source, variable, where)
     return fhir2sql.save_athena_sql(name_cohort(variable), sql)
 
@@ -54,18 +52,19 @@ def cohort_lab(variable: str) -> str:
     source = f'{STUDY_POP}_lab'
     where = [f'{source}.lab_observation_code = {variable}.code',
              f'{source}.lab_observation_system = {variable}.system']
-    # where2 = [f'{source}.lab_concept_code = {variable}.code',
-    #           f'{source}.lab_concept_system = {variable}.system']
-    # where = sql_or([sql_paren(sql_and(where1)),
-    #                sql_paren(sql_and(where2))])
+    sql = ctas(source, variable, where)
+    return fhir2sql.save_athena_sql(name_cohort(variable), sql)
 
+def cohort_proc(variable: str) -> str:
+    source = f'{STUDY_POP}_proc'
+    where = [f'{source}.proc_code = {variable}.code',
+             f'{source}.proc_system = {variable}.system']
     sql = ctas(source, variable, where)
     return fhir2sql.save_athena_sql(name_cohort(variable), sql)
 
 def make_study_variable_timeline() -> List[str]:
     file_list = list()
-    table_list = ['irae__cohort_study_variables_lookup',
-                  'irae__cohort_study_variables_table',
+    table_list = ['irae__cohort_study_variables',
                   'irae__cohort_study_variables_timeline']
 
     for table in table_list:
@@ -85,5 +84,9 @@ def make() -> List[str]:
             file_list.append(cohort_rx(variable))
         elif '__lab' in variable:
             file_list.append(cohort_lab(variable))
+        elif '__proc' in variable:
+            file_list.append(cohort_proc(variable))
+        else:
+            raise Exception(f'unknown variable type {variable}')
 
     return file_list + make_study_variable_timeline()

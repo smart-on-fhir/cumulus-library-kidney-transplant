@@ -14,7 +14,9 @@ LAB = ['lab_observation_code'] + ENC
 def name_cohort(table: str) -> str:
     return f'{PREFIX}__cohort_{name_simple(table)}'
 
-def name_cube(table: str) -> str:
+def name_cube(table: str, suffix=None) -> str:
+    if suffix:
+        table = f'{table}_{suffix}'
     return f'{PREFIX}__cube_{name_simple(table)}'
 
 def name_simple(table):
@@ -70,21 +72,28 @@ def make_variables() -> List[str]:
             file_list.append(cube_enc(variable, LAB))
     return file_list
 
-def make_variable_timeline() -> List[str]:
+def make_timeline_dx() -> List[str]:
     source = 'irae__cohort_study_variables_timeline'
-    vars = ['dx_autoimmune',
-            'dx_cancer',
-            # 'dx_compromised',
-            'dx_diabetes',
-            'dx_heart',
-            'dx_htn',
-            'dx_infection',
-            'dx_kidney',
-            'rx_transplant',
-            'rx_immunosuppressive']
+    cols_dx = ['dx_autoimmune',
+               'dx_cancer',
+               'dx_compromised',
+               'dx_diabetes',
+               'dx_heart',
+               'dx_htn',
+               'dx_infection',
+               'dx_kidney']
+    return [cube_enc(source, cols_dx, name_cube(source, 'dx'))]
 
-    return [cube_pat(source, vars),
-            cube_enc(source, vars + ENC + MONTH)]
+def make_timeline_rx() -> List[str]:
+    source = 'irae__cohort_study_variables_timeline'
+    cols_dx = ['rx_custom',
+               'rx_diabetes',
+               'rx_diuretics',
+               'rx_immunosuppressive']
+    return [cube_enc(source, cols_dx, name_cube(source, 'rx'))]
+
+def make_timeline() -> List[str]:
+    return make_timeline_dx() + make_timeline_rx()
 
 def make():
-    return make_study_population() + make_variables() + make_variable_timeline()
+    return make_study_population() + make_variables() + make_timeline()

@@ -10,11 +10,6 @@ from irae.variable import vsac_api
 # Surgical
 #
 ###############################################################################
-class Transplant(Enum):
-    kidney = '2.16.840.1.113762.1.4.1078.16'
-    solid_organ = '2.16.840.1.113762.1.4.1032.205'
-    recipient = '2.16.840.1.113762.1.4.1111.27'
-
 class Nephrectomy(Enum):
     sct = '2.16.840.1.113762.1.4.1248.200'
     icd10pcs = '2.16.840.1.113762.1.4.1248.4'
@@ -27,9 +22,9 @@ class SurgeryOther(Enum):
     # cohort = '2.16.840.1.113762.1.4.1182.127'
 
 class TypeProcedure(Enum):
-    transplant = Transplant
-    surgery = SurgeryOther
-    dialysis = Dialysis
+    proc_surgery = SurgeryOther
+    proc_dialysis = Dialysis
+    proc_nephrectomy = Nephrectomy
 
 
 ###############################################################################
@@ -37,6 +32,10 @@ class TypeProcedure(Enum):
 # Diagnoses
 #
 ###############################################################################
+class DxTransplant(Enum):
+    kidney = '2.16.840.1.113762.1.4.1078.16'
+    solid_organ = '2.16.840.1.113762.1.4.1032.205'
+    recipient = '2.16.840.1.113762.1.4.1111.27'
 
 class DxKidney(Enum):
     condition = '2.16.840.1.113883.17.4077.3.2028'
@@ -96,6 +95,7 @@ class DxDiabetes(Enum):
     diabetic_ckd = '2.16.840.1.113762.1.4.1078.124'
 
 class TypeDx(Enum):
+    dx_transplant = DxTransplant
     dx_autoimmune = DxAutoimmune
     dx_cancer = DxCancer
     dx_diabetes = DxDiabetes

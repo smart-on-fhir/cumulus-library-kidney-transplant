@@ -4,7 +4,9 @@ from irae import fhir2sql, common
 TABLE = 'irae__cohort_study_population'
 
 def list_tables():
-    return [TABLE, f'{TABLE}_dx', f'{TABLE}_rx', f'{TABLE}_lab', f'{TABLE}_doc']
+    type_list = ['dx', 'rx', 'lab', 'doc', 'proc']
+    type_list = [f'{TABLE}_{t}' for t in type_list]
+    return [TABLE] + type_list
 
 def make() -> List[str]:
     file_list = list()
