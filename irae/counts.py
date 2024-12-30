@@ -5,8 +5,8 @@ from irae.variable import vsac_variables, custom_variables
 
 PAT = ['gender', 'race_display', 'ethnicity_display']
 ENC = ['age_at_visit', 'enc_class_code']
-DX = ['dx_category_code', 'dx_code'] + PAT + ENC
-RX = ['rx_category_code', 'rx_code'] + PAT + ENC
+DX = ['dx_category_code', 'dx_display'] + PAT + ENC
+RX = ['rx_category_code', 'rx_display'] + PAT + ENC
 MONTH = ['enc_period_start_month']
 YEAR = ['enc_period_start_year']
 LAB = ['lab_observation_code'] + ENC
@@ -62,7 +62,7 @@ def make_study_population() -> List[str]:
 
 def make_variables() -> List[str]:
     file_list = list()
-    variable_list = vsac_variables.prefix() + custom_variables.list_view_valuesets()
+    variable_list = vsac_variables.list_view_variables() + custom_variables.list_view_variables()
     for variable in variable_list:
         if '__dx' in variable:
             file_list.append(cube_enc(variable, DX))
@@ -82,7 +82,7 @@ def make_timeline_dx() -> List[str]:
                'dx_htn',
                'dx_infection',
                'dx_kidney']
-    return [cube_enc(source, cols_dx, name_cube(source, 'dx'))]
+    return [cube_pat(source, cols_dx, name_cube(source, 'dx_pat'))]
 
 def make_timeline_rx() -> List[str]:
     source = 'irae__cohort_study_variables_timeline'
@@ -90,7 +90,7 @@ def make_timeline_rx() -> List[str]:
                'rx_diabetes',
                'rx_diuretics',
                'rx_immunosuppressive']
-    return [cube_enc(source, cols_dx, name_cube(source, 'rx'))]
+    return [cube_enc(source, cols_dx, name_cube(source, 'rx_pat'))]
 
 def make_timeline() -> List[str]:
     return make_timeline_dx() + make_timeline_rx()

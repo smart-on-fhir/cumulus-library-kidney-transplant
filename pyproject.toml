@@ -47,4 +47,4 @@ dev = [
 
 [tool.flit.sdist]
 # change this to the name of the study folder inside of the module directory
-include = ["kidney_transplant/"]
+include = ["irae/"]

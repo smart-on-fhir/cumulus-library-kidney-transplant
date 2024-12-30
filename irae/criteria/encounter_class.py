@@ -1,7 +1,4 @@
-import os
-from typing import List
 from enum import Enum
-from fhirclient.models.coding import Coding
 from irae import fhir2sql, common
 
 class EncounterClass(Enum):

@@ -1,13 +1,14 @@
 from typing import List
 from irae import common, counts
 from irae.fhir2sql import path_athena
-from irae.criteria import age_at_visit, gender, race, encounter_class, study_period
+from irae.criteria import age_at_visit, gender, race, encounter_class, study_period, utilization
 from irae.variable import vsac_variables, custom_variables
-from irae import study_population, cohorts
+from irae import study_population, cohorts, casedef
 
 def make_study() -> List[str]:
     criteria_sql = [
         study_period.include('2016-01-01', '2025-01-01', False),
+        utilization.include(2, 1000),
         age_at_visit.include(0, 120),
         encounter_class.include(),
         gender.include(female=True, male=True, other=True, unknown=False),
@@ -16,9 +17,10 @@ def make_study() -> List[str]:
     studypop_sql = study_population.make()
     variables_sql = vsac_variables.make() + custom_variables.make()
     cohorts_sql = cohorts.make()
+    casedef_sql = casedef.make()
     counts_sql = counts.make()
 
-    manifest_list = criteria_sql + studypop_sql + variables_sql + cohorts_sql + counts_sql
+    manifest_list = criteria_sql + studypop_sql + variables_sql + cohorts_sql + casedef_sql  # + counts_sql
 
     write_manifest(manifest_list)
 

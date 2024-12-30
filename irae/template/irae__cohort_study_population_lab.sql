@@ -13,5 +13,5 @@ from
     irae__cohort_study_population as study_population,
     core__observation_lab as lab
 where
-    on study_population.encounter_ref = lab.encounter_ref
+    study_population.encounter_ref = lab.encounter_ref
 ;

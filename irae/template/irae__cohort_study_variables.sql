@@ -44,5 +44,5 @@ from
     irae__cohort_study_population as SP
 where
     variable_cohorts.encounter_ref = SP.encounter_ref
-
+;
 
