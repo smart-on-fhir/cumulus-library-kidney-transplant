@@ -1,102 +1,102 @@
 # IRAE Immune Related Adverse Events 
 
-|       Variable       |         Subtype          |                                                                         VSAC                                                                          |
-|:--------------------:|:------------------------:|:-----------------------------------------------------------------------------------------------------------------------------------------------------:|
-|     proc_surgery     ||                          |     |
-|     proc_surgery     |          major           |        [2.16.840.1.113883.3.464.1003.198.12.1075](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.464.1003.198.12.1075/expansion/Latest)        |
-|    proc_dialysis     ||                          |     |
-|    proc_dialysis     |         services         |        [2.16.840.1.113883.3.464.1003.109.12.1013](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.464.1003.109.12.1013/expansion/Latest)        |
-|   proc_nephrectomy   ||                          |     |
-|   proc_nephrectomy   |           sct            |                  [2.16.840.1.113762.1.4.1248.200](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1248.200/expansion/Latest)                  |
-|   proc_nephrectomy   |         icd10pcs         |                    [2.16.840.1.113762.1.4.1248.4](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1248.4/expansion/Latest)                    |
-|    dx_transplant     ||                          |     |
-|    dx_transplant     |          kidney          |                   [2.16.840.1.113762.1.4.1078.16](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1078.16/expansion/Latest)                   |
-|    dx_transplant     |       solid_organ        |                  [2.16.840.1.113762.1.4.1032.205](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1032.205/expansion/Latest)                  |
-|    dx_transplant     |        recipient         |                   [2.16.840.1.113762.1.4.1111.27](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1111.27/expansion/Latest)                   |
-|    dx_autoimmune     ||                          |     |
-|    dx_autoimmune     |       inflammatory       |                   [2.16.840.1.113883.3.3157.1834](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.3157.1834/expansion/Latest)                   |
-|    dx_autoimmune     |           ibd            |                  [2.16.840.1.113762.1.4.1078.879](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1078.879/expansion/Latest)                  |
-|    dx_autoimmune     |          crohns          |                  [2.16.840.1.113762.1.4.1034.576](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1034.576/expansion/Latest)                  |
-|    dx_autoimmune     |       arthritis_ra       |                  [2.16.840.1.113762.1.4.1222.651](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1222.651/expansion/Latest)                  |
-|    dx_autoimmune     |   arthritis_disorders    |                   [2.16.840.1.113762.1.4.1222.81](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1222.81/expansion/Latest)                   |
-|    dx_autoimmune     |          lupus           |        [2.16.840.1.113883.3.464.1003.117.12.1010](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.464.1003.117.12.1010/expansion/Latest)        |
-|      dx_cancer       ||                          |     |
-|      dx_cancer       |  malignant_melanoma_sct  |                   [2.16.840.1.113883.3.1434.1038](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.1434.1038/expansion/Latest)                   |
-|      dx_cancer       | malignant_melanoma_icd10 |        [2.16.840.1.113883.3.464.1003.108.11.1018](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.464.1003.108.11.1018/expansion/Latest)        |
-|     dx_diabetes      ||                          |     |
-|     dx_diabetes      |         disorder         |                   [2.16.840.1.113762.1.4.1219.35](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1219.35/expansion/Latest)                   |
-|     dx_diabetes      |       preexisting        |        [2.16.840.1.113883.3.464.1003.198.12.1075](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.464.1003.198.12.1075/expansion/Latest)        |
-|     dx_diabetes      |      complications       |                 [2.16.840.1.113762.1.4.1222.1537](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1222.1537/expansion/Latest)                 |
-|     dx_diabetes      |      td2_related_dx      |                  [2.16.840.1.113762.1.4.1078.440](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1078.440/expansion/Latest)                  |
-|     dx_diabetes      |   diabetic_nephropathy   |        [2.16.840.1.113883.3.464.1003.109.12.1004](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.464.1003.109.12.1004/expansion/Latest)        |
-|     dx_diabetes      |       diabetic_ckd       |                  [2.16.840.1.113762.1.4.1078.124](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1078.124/expansion/Latest)                  |
-|       dx_heart       ||                          |     |
-|       dx_heart       |      cardiomyopathy      |                  [2.16.840.1.113762.1.4.1222.579](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1222.579/expansion/Latest)                  |
-|       dx_heart       |          attack          |                  [2.16.840.1.113883.3.666.5.3011](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.666.5.3011/expansion/Latest)                  |
-|       dx_heart       |         failure          |                 [2.16.840.1.113762.1.4.1222.1543](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1222.1543/expansion/Latest)                 |
-|       dx_heart       |          cohort          |                  [2.16.840.1.113762.1.4.1182.308](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1182.308/expansion/Latest)                  |
-|        dx_htn        ||                          |     |
-|        dx_htn        |        essential         |        [2.16.840.1.113883.3.464.1003.104.12.1011](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.464.1003.104.12.1011/expansion/Latest)        |
-|        dx_htn        |           any            |                   [2.16.840.1.113762.1.4.1251.12](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1251.12/expansion/Latest)                   |
-|        dx_htn        |     hypertensive_ckd     |        [2.16.840.1.113883.3.464.1003.109.12.1017](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.464.1003.109.12.1017/expansion/Latest)        |
-|    dx_compromised    ||                          |     |
-|    dx_compromised    |    immunocompromised     |                  [2.16.840.1.113883.3.666.5.1940](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.666.5.1940/expansion/Latest)                  |
-|    dx_compromised    |    immunocompromising    |                  [2.16.840.1.113762.1.4.1235.212](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1235.212/expansion/Latest)                  |
-|     dx_infection     ||                          |     |
-|     dx_infection     |        bacterial         |                  [2.16.840.1.113762.1.4.1200.288](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1200.288/expansion/Latest)                  |
-|     dx_infection     |           pna            |                  [2.16.840.1.113762.1.4.1078.738](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1078.738/expansion/Latest)                  |
-|     dx_infection     |        cmv_icd10         |                 [2.16.840.1.113762.1.4.1146.2234](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1146.2234/expansion/Latest)                 |
-|     dx_infection     |         cmv_sct          |                 [2.16.840.1.113762.1.4.1146.2233](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1146.2233/expansion/Latest)                 |
-|     dx_infection     |           rsv            |                  [2.16.840.1.113762.1.4.1078.754](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1078.754/expansion/Latest)                  |
-|     dx_infection     |        influenza         |                  [2.16.840.1.113762.1.4.1078.747](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1078.747/expansion/Latest)                  |
-|     dx_infection     |         shingles         |                 [2.16.840.1.113762.1.4.1222.1478](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1222.1478/expansion/Latest)                 |
-|     dx_infection     |       hepatitis_b        |        [2.16.840.1.113883.3.464.1003.110.12.1025](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.464.1003.110.12.1025/expansion/Latest)        |
-|     dx_infection     |       hepatitis_c        |                   [2.16.840.1.113762.1.4.1222.30](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1222.30/expansion/Latest)                   |
-|      dx_kidney       ||                          |     |
-|      dx_kidney       |        condition         |                [2.16.840.1.113883.17.4077.3.2028](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.17.4077.3.2028/expansion/Latest)                |
-|      dx_kidney       |      renal_disease       |                  [2.16.840.1.113762.1.4.1029.335](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1029.335/expansion/Latest)                  |
-|      dx_kidney       |           esrd           |                  [2.16.840.1.113762.1.4.1235.172](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1235.172/expansion/Latest)                  |
-|      dx_kidney       |           ckd            |                  [2.16.840.1.113762.1.4.1078.114](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1078.114/expansion/Latest)                  |
-|      dx_kidney       |         dialysis         |                  [2.16.840.1.113762.1.4.1078.342](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1078.342/expansion/Latest)                  |
-|      dx_kidney       |    nephrotic_syndrome    |        [2.16.840.1.113883.3.464.1003.109.12.1018](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.464.1003.109.12.1018/expansion/Latest)        |
-|     rx_diabetes      ||                          |     |
-|     rx_diabetes      |          drugs           |                   [2.16.840.1.113762.1.4.1190.58](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1190.58/expansion/Latest)                   |
-|        rx_htn        ||                          |     |
-|        rx_htn        |          drugs           |                    [2.16.840.1.113883.3.600.1476](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.600.1476/expansion/Latest)                    |
-| rx_immunosuppressive ||                          |     |
-| rx_immunosuppressive |          drugs           |                  [2.16.840.1.113762.1.4.1219.192](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1219.192/expansion/Latest)                  |
-| rx_immunosuppressive |     systemic_therapy     |                   [2.16.840.1.113883.3.666.5.803](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.666.5.803/expansion/Latest)                   |
-| rx_immunosuppressive |    immune_modulators     |                  [2.16.840.1.113762.1.4.1248.124](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1248.124/expansion/Latest)                  |
-|    rx_compromised    ||                          |     |
-|    rx_compromised    |        therapies         |                  [2.16.840.1.113762.1.4.1235.212](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1235.212/expansion/Latest)                  |
-|     rx_diuretics     ||                          |     |
-|     rx_diuretics     |         thiazide         |                    [2.16.840.1.113762.1.4.1078.8](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1078.8/expansion/Latest)                    |
-|     rx_diuretics     |           loop           |                  [2.16.840.1.113762.1.4.1078.898](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1078.898/expansion/Latest)                  |
-|     rx_diuretics     |        potassium         |                   [2.16.840.1.113762.1.4.1213.41](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1213.41/expansion/Latest)                   |
-|       lab_gfr        ||                          |     |
-|       lab_gfr        |           eGFR           |                  [2.16.840.1.113762.1.4.1078.397](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1078.397/expansion/Latest)                  |
-|    lab_creatinine    ||                          |     |
-|    lab_creatinine    |         serum_cr         |                 [2.16.840.1.113762.1.4.1146.2206](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1146.2206/expansion/Latest)                 |
-|    lab_creatinine    |         urine_cr         |                   [2.16.840.1.113762.1.4.1178.87](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1178.87/expansion/Latest)                   |
-|    lab_creatinine    |    urine_alb_cr_ratio    |                 [2.16.840.1.113883.3.6929.3.1007](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.6929.3.1007/expansion/Latest)                 |
-|    lab_creatinine    |  urine_protein_cr_ratio  |                  [2.16.840.1.113762.1.4.1222.790](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1222.790/expansion/Latest)                  |
-|    lab_creatinine    |         blood_cr         |                  [2.16.840.1.113762.1.4.1222.111](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1222.111/expansion/Latest)                  |
-|    lab_autoimmune    ||                          |     |
-|    lab_autoimmune    |         serum_rf         |                  [2.16.840.1.113762.1.4.1222.812](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1222.812/expansion/Latest)                  |
-|    lab_autoimmune    |        blood_esr         |                 [2.16.840.1.113762.1.4.1222.1609](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1222.1609/expansion/Latest)                 |
-|    lab_autoimmune    |           crp            |                 [2.16.840.1.113762.1.4.1146.1933](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1146.1933/expansion/Latest)                 |
-|    lab_autoimmune    |           tsh            |                 [2.16.840.1.113762.1.4.1146.2156](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1146.2156/expansion/Latest)                 |
-|    lab_autoimmune    |            t3            |                  [2.16.840.1.113762.1.4.1078.864](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1078.864/expansion/Latest)                  |
-|    lab_autoimmune    |            t4            |                  [2.16.840.1.113762.1.4.1078.865](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1078.865/expansion/Latest)                  |
-|       lab_lft        ||                          |     |
-|       lab_lft        |           ggt            |                  [2.16.840.1.113762.1.4.1222.806](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1222.806/expansion/Latest)                  |
-|       lab_lft        |   pt_prothrombin_time    |       [2.16.840.1.113883.3.3616.200.110.102.5037](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.3616.200.110.102.5037/expansion/Latest)       |
-|       lab_lft        |           inr            |               [2.16.840.1.113883.3.117.1.7.1.213](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.117.1.7.1.213/expansion/Latest)               |
-|     lab_diabetes     ||                          |     |
-|     lab_diabetes     |       glucose_test       |                  [2.16.840.1.113762.1.4.1045.134](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1045.134/expansion/Latest)                  |
-|    lab_panel_cbc     ||                          |     |
-|    lab_panel_cbc     |        with_diff         | [1.3.6.1.4.1.6997.4.1.2.271.13.38167.1.1.999.594](https://vsac.nlm.nih.gov/valueset/1.3.6.1.4.1.6997.4.1.2.271.13.38167.1.1.999.594/expansion/Latest) |
-|    lab_panel_cmp     ||                          |     |
-|    lab_panel_cmp     |      comprehensive       |                  [2.16.840.1.113762.1.4.1078.867](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1078.867/expansion/Latest)                  |
-|    lab_panel_lft     ||                          |     |
-|    lab_panel_lft     |     hepatic_function     |                  [2.16.840.1.113762.1.4.1078.867](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1078.867/expansion/Latest)                  |
+|Variable|Subtype|VSAC|
+|:------:|:-----:|:---:|
+|**proc_surgery**||
+|proc_surgery|major|[2.16.840.1.113883.3.464.1003.198.12.1075](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.464.1003.198.12.1075/expansion/Latest)|
+|**proc_dialysis**||
+|proc_dialysis|services|[2.16.840.1.113883.3.464.1003.109.12.1013](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.464.1003.109.12.1013/expansion/Latest)|
+|**proc_nephrectomy**||
+|proc_nephrectomy|sct|[2.16.840.1.113762.1.4.1248.200](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1248.200/expansion/Latest)|
+|proc_nephrectomy|icd10pcs|[2.16.840.1.113762.1.4.1248.4](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1248.4/expansion/Latest)|
+|**dx_transplant**||
+|dx_transplant|kidney|[2.16.840.1.113762.1.4.1078.16](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1078.16/expansion/Latest)|
+|dx_transplant|solid_organ|[2.16.840.1.113762.1.4.1032.205](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1032.205/expansion/Latest)|
+|dx_transplant|recipient|[2.16.840.1.113762.1.4.1111.27](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1111.27/expansion/Latest)|
+|**dx_autoimmune**||
+|dx_autoimmune|inflammatory|[2.16.840.1.113883.3.3157.1834](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.3157.1834/expansion/Latest)|
+|dx_autoimmune|ibd|[2.16.840.1.113762.1.4.1078.879](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1078.879/expansion/Latest)|
+|dx_autoimmune|crohns|[2.16.840.1.113762.1.4.1034.576](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1034.576/expansion/Latest)|
+|dx_autoimmune|arthritis_ra|[2.16.840.1.113762.1.4.1222.651](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1222.651/expansion/Latest)|
+|dx_autoimmune|arthritis_disorders|[2.16.840.1.113762.1.4.1222.81](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1222.81/expansion/Latest)|
+|dx_autoimmune|lupus|[2.16.840.1.113883.3.464.1003.117.12.1010](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.464.1003.117.12.1010/expansion/Latest)|
+|**dx_cancer**||
+|dx_cancer|malignant_melanoma_sct|[2.16.840.1.113883.3.1434.1038](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.1434.1038/expansion/Latest)|
+|dx_cancer|malignant_melanoma_icd10|[2.16.840.1.113883.3.464.1003.108.11.1018](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.464.1003.108.11.1018/expansion/Latest)|
+|**dx_diabetes**||
+|dx_diabetes|disorder|[2.16.840.1.113762.1.4.1219.35](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1219.35/expansion/Latest)|
+|dx_diabetes|preexisting|[2.16.840.1.113883.3.464.1003.198.12.1075](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.464.1003.198.12.1075/expansion/Latest)|
+|dx_diabetes|complications|[2.16.840.1.113762.1.4.1222.1537](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1222.1537/expansion/Latest)|
+|dx_diabetes|td2_related_dx|[2.16.840.1.113762.1.4.1078.440](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1078.440/expansion/Latest)|
+|dx_diabetes|diabetic_nephropathy|[2.16.840.1.113883.3.464.1003.109.12.1004](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.464.1003.109.12.1004/expansion/Latest)|
+|dx_diabetes|diabetic_ckd|[2.16.840.1.113762.1.4.1078.124](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1078.124/expansion/Latest)|
+|**dx_heart**||
+|dx_heart|cardiomyopathy|[2.16.840.1.113762.1.4.1222.579](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1222.579/expansion/Latest)|
+|dx_heart|attack|[2.16.840.1.113883.3.666.5.3011](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.666.5.3011/expansion/Latest)|
+|dx_heart|failure|[2.16.840.1.113762.1.4.1222.1543](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1222.1543/expansion/Latest)|
+|dx_heart|cohort|[2.16.840.1.113762.1.4.1182.308](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1182.308/expansion/Latest)|
+|**dx_htn**||
+|dx_htn|essential|[2.16.840.1.113883.3.464.1003.104.12.1011](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.464.1003.104.12.1011/expansion/Latest)|
+|dx_htn|any|[2.16.840.1.113762.1.4.1251.12](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1251.12/expansion/Latest)|
+|dx_htn|hypertensive_ckd|[2.16.840.1.113883.3.464.1003.109.12.1017](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.464.1003.109.12.1017/expansion/Latest)|
+|**dx_compromised**||
+|dx_compromised|immunocompromised|[2.16.840.1.113883.3.666.5.1940](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.666.5.1940/expansion/Latest)|
+|dx_compromised|immunocompromising|[2.16.840.1.113762.1.4.1235.212](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1235.212/expansion/Latest)|
+|**dx_infection**||
+|dx_infection|bacterial|[2.16.840.1.113762.1.4.1200.288](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1200.288/expansion/Latest)|
+|dx_infection|pna|[2.16.840.1.113762.1.4.1078.738](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1078.738/expansion/Latest)|
+|dx_infection|cmv_icd10|[2.16.840.1.113762.1.4.1146.2234](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1146.2234/expansion/Latest)|
+|dx_infection|cmv_sct|[2.16.840.1.113762.1.4.1146.2233](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1146.2233/expansion/Latest)|
+|dx_infection|rsv|[2.16.840.1.113762.1.4.1078.754](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1078.754/expansion/Latest)|
+|dx_infection|influenza|[2.16.840.1.113762.1.4.1078.747](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1078.747/expansion/Latest)|
+|dx_infection|shingles|[2.16.840.1.113762.1.4.1222.1478](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1222.1478/expansion/Latest)|
+|dx_infection|hepatitis_b|[2.16.840.1.113883.3.464.1003.110.12.1025](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.464.1003.110.12.1025/expansion/Latest)|
+|dx_infection|hepatitis_c|[2.16.840.1.113762.1.4.1222.30](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1222.30/expansion/Latest)|
+|**dx_kidney**||
+|dx_kidney|condition|[2.16.840.1.113883.17.4077.3.2028](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.17.4077.3.2028/expansion/Latest)|
+|dx_kidney|renal_disease|[2.16.840.1.113762.1.4.1029.335](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1029.335/expansion/Latest)|
+|dx_kidney|esrd|[2.16.840.1.113762.1.4.1235.172](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1235.172/expansion/Latest)|
+|dx_kidney|ckd|[2.16.840.1.113762.1.4.1078.114](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1078.114/expansion/Latest)|
+|dx_kidney|dialysis|[2.16.840.1.113762.1.4.1078.342](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1078.342/expansion/Latest)|
+|dx_kidney|nephrotic_syndrome|[2.16.840.1.113883.3.464.1003.109.12.1018](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.464.1003.109.12.1018/expansion/Latest)|
+|**rx_diabetes**||
+|rx_diabetes|drugs|[2.16.840.1.113762.1.4.1190.58](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1190.58/expansion/Latest)|
+|**rx_htn**||
+|rx_htn|drugs|[2.16.840.1.113883.3.600.1476](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.600.1476/expansion/Latest)|
+|**rx_immunosuppressive**||
+|rx_immunosuppressive|drugs|[2.16.840.1.113762.1.4.1219.192](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1219.192/expansion/Latest)|
+|rx_immunosuppressive|systemic_therapy|[2.16.840.1.113883.3.666.5.803](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.666.5.803/expansion/Latest)|
+|rx_immunosuppressive|immune_modulators|[2.16.840.1.113762.1.4.1248.124](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1248.124/expansion/Latest)|
+|**rx_compromised**||
+|rx_compromised|therapies|[2.16.840.1.113762.1.4.1235.212](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1235.212/expansion/Latest)|
+|**rx_diuretics**||
+|rx_diuretics|thiazide|[2.16.840.1.113762.1.4.1078.8](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1078.8/expansion/Latest)|
+|rx_diuretics|loop|[2.16.840.1.113762.1.4.1078.898](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1078.898/expansion/Latest)|
+|rx_diuretics|potassium|[2.16.840.1.113762.1.4.1213.41](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1213.41/expansion/Latest)|
+|**lab_gfr**||
+|lab_gfr|eGFR|[2.16.840.1.113762.1.4.1078.397](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1078.397/expansion/Latest)|
+|**lab_creatinine**||
+|lab_creatinine|serum_cr|[2.16.840.1.113762.1.4.1146.2206](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1146.2206/expansion/Latest)|
+|lab_creatinine|urine_cr|[2.16.840.1.113762.1.4.1178.87](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1178.87/expansion/Latest)|
+|lab_creatinine|urine_alb_cr_ratio|[2.16.840.1.113883.3.6929.3.1007](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.6929.3.1007/expansion/Latest)|
+|lab_creatinine|urine_protein_cr_ratio|[2.16.840.1.113762.1.4.1222.790](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1222.790/expansion/Latest)|
+|lab_creatinine|blood_cr|[2.16.840.1.113762.1.4.1222.111](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1222.111/expansion/Latest)|
+|**lab_autoimmune**||
+|lab_autoimmune|serum_rf|[2.16.840.1.113762.1.4.1222.812](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1222.812/expansion/Latest)|
+|lab_autoimmune|blood_esr|[2.16.840.1.113762.1.4.1222.1609](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1222.1609/expansion/Latest)|
+|lab_autoimmune|crp|[2.16.840.1.113762.1.4.1146.1933](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1146.1933/expansion/Latest)|
+|lab_autoimmune|tsh|[2.16.840.1.113762.1.4.1146.2156](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1146.2156/expansion/Latest)|
+|lab_autoimmune|t3|[2.16.840.1.113762.1.4.1078.864](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1078.864/expansion/Latest)|
+|lab_autoimmune|t4|[2.16.840.1.113762.1.4.1078.865](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1078.865/expansion/Latest)|
+|**lab_lft**||
+|lab_lft|ggt|[2.16.840.1.113762.1.4.1222.806](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1222.806/expansion/Latest)|
+|lab_lft|pt_prothrombin_time|[2.16.840.1.113883.3.3616.200.110.102.5037](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.3616.200.110.102.5037/expansion/Latest)|
+|lab_lft|inr|[2.16.840.1.113883.3.117.1.7.1.213](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.117.1.7.1.213/expansion/Latest)|
+|**lab_diabetes**||
+|lab_diabetes|glucose_test|[2.16.840.1.113762.1.4.1045.134](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1045.134/expansion/Latest)|
+|**lab_panel_cbc**||
+|lab_panel_cbc|with_diff|[1.3.6.1.4.1.6997.4.1.2.271.13.38167.1.1.999.594](https://vsac.nlm.nih.gov/valueset/1.3.6.1.4.1.6997.4.1.2.271.13.38167.1.1.999.594/expansion/Latest)|
+|**lab_panel_cmp**||
+|lab_panel_cmp|comprehensive|[2.16.840.1.113762.1.4.1078.867](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1078.867/expansion/Latest)|
+|**lab_panel_lft**||
+|lab_panel_lft|hepatic_function|[2.16.840.1.113762.1.4.1078.867](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1078.867/expansion/Latest)|

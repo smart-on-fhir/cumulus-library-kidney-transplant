@@ -28,9 +28,9 @@ def vsac(oid) -> str:
 def make_markdown(aspect) -> List[str]:
     table = list()
     for variable in list(aspect):
-        table.append(f'|{variable.name}||')
+        table.append(f'|**{variable.name}**||')
         for valueset in list(variable.value):
-            table.append(f'|{variable.name}|{valueset.name}|{vsac(valueset.value)}')
+            table.append(f'|{variable.name}|{valueset.name}|{vsac(valueset.value)}|')
     return table
 
 
