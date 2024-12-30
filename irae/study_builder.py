@@ -3,7 +3,7 @@ from irae import common, counts
 from irae.fhir2sql import path_athena
 from irae.criteria import age_at_visit, gender, race, encounter_class, study_period
 from irae.variable import vsac_variables, custom_variables
-from irae import study_population, cohort
+from irae import study_population, cohorts
 
 def make_study() -> List[str]:
     criteria_sql = [
@@ -15,7 +15,7 @@ def make_study() -> List[str]:
 
     studypop_sql = study_population.make()
     variables_sql = vsac_variables.make() + custom_variables.make()
-    cohorts_sql = cohort.make()
+    cohorts_sql = cohorts.make()
     counts_sql = counts.make()
 
     manifest_list = criteria_sql + studypop_sql + variables_sql + cohorts_sql + counts_sql
