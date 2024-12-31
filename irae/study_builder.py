@@ -7,9 +7,9 @@ from irae import study_population, cohorts, casedef
 
 def make_study() -> List[str]:
     criteria_sql = [
-        study_period.include('2016-01-01', '2025-01-01', False),
-        utilization.include(2, 1000),
-        age_at_visit.include(0, 120),
+        study_period.include('2016-01-01', '2025-01-01', include_history=True),
+        utilization.include(enc_min=3, enc_max=1000, days_min=90),
+        age_at_visit.include(),
         encounter_class.include(),
         gender.include(female=True, male=True, other=True, unknown=False),
         race.include()]
@@ -34,7 +34,7 @@ def write_manifest(file_list: list) -> str:
         manifest.append(f"'{file}'")
     text = ',\n'.join(manifest)
     print(text)
-    return common.write_text(text, path_athena('MANIFEST.TXT'))
+    return common.write_text(text, path_athena('file_names.manifest.toml'))
 
 def command_shell() -> str:
     # bch-aws-login while on VPN

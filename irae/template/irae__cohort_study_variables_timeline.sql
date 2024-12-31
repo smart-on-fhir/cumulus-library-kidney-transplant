@@ -1,7 +1,8 @@
 create table irae__cohort_study_variables_timeline as
 with lookup as
 (
-    select distinct variable, subtype, encounter_ref from irae__cohort_study_variables
+    select  distinct variable, subtype, encounter_ref
+    from    irae__cohort_study_variables
 )
 select distinct
     lookup.variable,

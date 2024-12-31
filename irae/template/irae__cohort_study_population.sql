@@ -49,14 +49,41 @@ Utilization as
             subject_ref
     from    StudyPopulation
     group by subject_ref
+),
+Duration as
+(
+    select      min(enc_period_start_day)   as min_start_day,
+                max(enc_period_end_day)     as max_end_day,
+                subject_ref
+    from        StudyPopulation
+    group by    subject_ref
+),
+DateDiff as
+(
+    select      subject_ref,
+                Duration.min_start_day,
+                Duration.max_end_day,
+                date_diff('day',
+                        Duration.min_start_day,
+                        Duration.max_end_day) as cnt_days
+    from        Duration
 )
 select  Utilization.cnt_encounter,
+        DateDiff.min_start_day,
+        DateDiff.max_end_day,
+        DateDiff.cnt_days,
         StudyPopulation.*
 from    StudyPopulation,
         Utilization,
-        irae__include_cnt_encounter as Include
+        DateDiff,
+        irae__include_utilization as Include
 where   StudyPopulation.subject_ref = Utilization.subject_ref
-and     include.enc_min <= Utilization.cnt_encounter
-and     include.enc_max >= Utilization.cnt_encounter
+and     StudyPopulation.subject_ref = DateDiff.subject_ref
+and     Include.enc_min <= Utilization.cnt_encounter
+and     Include.enc_max >= Utilization.cnt_encounter
+and     Include.days_min <= DateDiff.cnt_days
+and     Include.days_max >= DateDiff.cnt_days
+
+
 
 
