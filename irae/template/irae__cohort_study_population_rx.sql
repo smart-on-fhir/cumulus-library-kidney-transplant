@@ -3,6 +3,7 @@ select distinct
     RX.status               as rx_status,
     RX.category_code        as rx_category_code,
     RX.category_system      as rx_category_system,
+    RX.category_display     as rx_category_display,
     RX.medication_code      as rx_code,
     RX.medication_display   as rx_display,
     RX.medication_system    as rx_system,

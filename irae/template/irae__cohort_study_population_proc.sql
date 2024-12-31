@@ -2,6 +2,7 @@ create table irae__cohort_study_population_proc as
 select distinct
     PROC.status                     as proc_status,
     PROC.code_code                  as proc_code,
+    PROC.code_display               as proc_display,
     PROC.code_system                as proc_system,
     PROC.performeddatetime_day      as proc_performed_day,
     PROC.performeddatetime_month    as proc_performed_month,
