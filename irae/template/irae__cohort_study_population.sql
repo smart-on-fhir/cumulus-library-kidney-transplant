@@ -1,13 +1,27 @@
 create table irae__cohort_study_population as
-with StudyPeriod as
+with StudyPeriodRange as
 (
     select distinct encounter_ref, subject_ref
-    from
-        core__encounter as E,
-        irae__include_study_period  as SP
-    where
-        (SP.include_history and E.period_start_day < SP.period_end) OR
-        (E.period_start_day between SP.period_start and SP.period_end)
+    from    core__encounter as E,
+            irae__include_study_period  as Include
+    where   (E.period_start_day between Include.period_start and Include.period_end)
+    and     (E.period_end_day between Include.period_start and Include.period_end)
+),
+StudyPeriodHistory as
+(
+    select distinct E.encounter_ref, E.subject_ref
+    from    StudyPeriodRange,
+            core__encounter as E,
+            irae__include_study_period  as Include
+    where   Include.include_history
+    and     E.period_start_day < Include.period_end
+    and     E.subject_ref = StudyPeriodRange.subject_ref
+),
+StudyPeriod as
+(
+    select encounter_ref, subject_ref from StudyPeriodRange
+    UNION ALL
+    select encounter_ref, subject_ref from StudyPeriodHistory
 ),
 StudyPopulation as
 (
@@ -83,7 +97,4 @@ and     Include.enc_min <= Utilization.cnt_encounter
 and     Include.enc_max >= Utilization.cnt_encounter
 and     Include.days_min <= DateDiff.cnt_days
 and     Include.days_max >= DateDiff.cnt_days
-
-
-
-
+;
