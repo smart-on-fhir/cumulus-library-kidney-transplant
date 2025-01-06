@@ -25,29 +25,14 @@ def is_list_type(obj, type) -> bool:
 # Cast input "as type", fail fast if not possible
 #
 ###############################################################################
-def as_list(obj) -> list:
-    if isinstance(obj, list):
-        return obj
-    return [obj]
-
 def as_range(obj) -> range:
-    print(f'guard_range : {obj}')
     if isinstance(obj, list):
         return range(obj[0], obj[1])
     if isinstance(obj, tuple):
         return range(obj[0], obj[1])
     if isinstance(obj, range):
         return obj
-
     Exception(f'as_range failed for {obj}')
-
-def as_coding_list(obj) -> List[Coding]:
-    obj = as_list(obj)
-
-    if is_list_type(obj, Coding):
-        return obj
-
-    return [as_coding(c) for c in list(obj)]
 
 def as_coding(obj) -> Coding:
     c = Coding()
@@ -57,11 +42,17 @@ def as_coding(obj) -> Coding:
     c.system = src.get('system')
     return c
 
-###############################################################################
-#
-# Collection safety
-#
-###############################################################################
+def as_coding_list(obj) -> List[Coding]:
+    obj = as_list(obj)
+    if is_list_type(obj, Coding):
+        return obj
+    return [as_coding(c) for c in list(obj)]
+
+def as_list(obj) -> list:
+    if isinstance(obj, list):
+        return obj
+    return [obj]
+
 def uniq(unsorted: Iterable) -> List:
     """
     :param unsorted: list or iterable type

@@ -20,16 +20,23 @@ def name_simple(table):
     simple = table
     for part in ['cohort_', 'count_', 'valueset_']:
         simple = simple.replace(prefix(part), '')
-    return simple.replace(f'{PREFIX}__', '')
+    return simple.replace(prefix(''), '')
 
-def name_cohort(table: str) -> str:
-    return f'{PREFIX}__cohort_{name_simple(table)}'
+def name_join(part: str, table: str) -> str:
+    return prefix('_'.join([part, name_simple(table)]))
+
+def name_cohort(table: str, suffix=None) -> str:
+    part = f'cohort_{suffix}' if suffix else 'cohort'
+    return name_join(part, table)
 
 def name_cube(table: str, suffix: str) -> str:
-    return f'{PREFIX}__count_{suffix}_{name_simple(table)}'
+    part = f'count_{suffix}' if suffix else 'count'
+    return name_join(part, table)
 
-def name_valueset(table: str, suffix: str) -> str:
-    return f'{PREFIX}__valueset_{suffix}_{name_simple(table)}'
+def name_valueset(table: str, suffix=None) -> str:
+    part = f'valueset_{suffix}' if suffix else 'valueset'
+    return name_join(part, table)
+
 
 ###############################################################################
 #
