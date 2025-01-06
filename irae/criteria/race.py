@@ -18,7 +18,11 @@ class Race(Enum):
         self.display = display
 
 def include(race_list=None) -> str:
+    """
+    :param race_list: List of CDC High Level race groups
+    :return: inclusion criteria for `study_population`
+    """
     if not race_list:
         race_list = list(Race)
-    codes = guard.as_coding_list(race_list)
+    codes = guard.as_list_coding(race_list)
     return fhir2sql.include(codes, 'race')

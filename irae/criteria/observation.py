@@ -1,8 +1,5 @@
-import os
 from enum import Enum
-from typing import List
-from fhirclient.models.coding import Coding
-from irae import resources, fhir2sql
+from irae import guard, fhir2sql
 
 class ObservationCategory(Enum):
 
@@ -22,8 +19,13 @@ class ObservationCategory(Enum):
         self.display = display
 
 
-def enum2codelist(category_list: List[ObservationCategory]) -> List[Coding]:
+def include(category_list=None) -> str:
+    """
+    Selected Encounter observations specified by "category_list" to compile the `study_population`
+    :param category_list: 1+ observation category types, either as ObservationCategory(Enum) or FHIR Coding.
+    :return: SQL inclusion criteria to select study population
+    """
     if not category_list:
-        category_list = fhir2sql.codesystem2codelist('CodeSystem-observation-category.json')
-
-    return [fhir2sql.as_coding(c) for c in category_list]
+        category_list = list(ObservationCategory)
+    codes = guard.as_list_coding(category_list)
+    return fhir2sql.include(codes, 'enc_class')

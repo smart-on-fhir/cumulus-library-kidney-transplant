@@ -1,14 +1,20 @@
 from typing import List
+from irae import fhir2sql
 from irae import resources
 
-TABLE = 'irae__cohort_study_population'
-
 def list_tables():
-    type_list = ['dx', 'rx', 'lab', 'doc', 'proc']
-    type_list = [f'{TABLE}_{t}' for t in type_list]
-    return [TABLE] + type_list
+    """
+    :return: list of tables in the `study_population`, one for each aspect such as Dx, Rx, Lab,
+    """
+    table = fhir2sql.name_join('cohort', 'study_population')
+    aspect_list = ['dx', 'rx', 'lab', 'doc', 'proc']
+    aspect_list = [f'{table}_{t}' for t in aspect_list]
+    return [table] + aspect_list
 
 def make() -> List[str]:
+    """
+    :return: list of `study_population` tables
+    """
     file_list = list()
     for table in list_tables():
         sql = resources.read_text(resources.path_template(f'{table}.sql'))

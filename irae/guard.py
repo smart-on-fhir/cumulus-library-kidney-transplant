@@ -42,23 +42,32 @@ def as_coding(obj) -> Coding:
     c.system = src.get('system')
     return c
 
-def as_coding_list(obj) -> List[Coding]:
+def as_list_coding(obj) -> List[Coding]:
     obj = as_list(obj)
     if is_list_type(obj, Coding):
         return obj
     return [as_coding(c) for c in list(obj)]
+
+def as_list_str(obj) -> List[str]:
+    obj = as_list(obj)
+    if is_list_type(obj, str):
+        return obj
+    return [str(c) for c in list(obj)]
 
 def as_list(obj) -> list:
     if isinstance(obj, list):
         return obj
     return [obj]
 
-def uniq(unsorted: Iterable) -> List:
+def uniq(unsorted: Iterable, sort=True) -> List:
     """
     :param unsorted: list or iterable type
     :return: sorted list of unique entries
     """
-    return sorted(list(set(unsorted)))
+    if sort:
+        return sorted(list(set(unsorted)))
+    else:
+        return list(set(unsorted))
 
 ###############################################################################
 #

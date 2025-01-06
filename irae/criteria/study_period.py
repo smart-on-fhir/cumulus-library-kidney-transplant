@@ -1,10 +1,16 @@
 from irae import fhir2sql
 
 def include(period_start='2016-01-01', period_end='2025-01-01', include_history=True):
+    """
+    :param period_start: patient encounters selected will be >= period_start
+    :param period_end: patient encounters selected will be <= period_end
+    :param include_history: if True, for patients matching all inclusion critera, select also all patient history even prior to period_start.
+    :return: inclusion criteria for `study_population.py`
+    """
     view = 'irae__include_study_period'
     cols = ['period_start', 'period_end', 'include_history']
     values = [f"date('{period_start}')",
               f"date('{period_end}')",
-              str(include_history)]
+              include_history]
 
-    return fhir2sql.values2view(view, cols, values)
+    return fhir2sql.criteria2view(view, cols, values)

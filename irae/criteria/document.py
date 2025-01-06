@@ -1,6 +1,7 @@
 from typing import List
+from pathlib import Path
 from fhirclient.models.coding import Coding
-from irae import fhir2sql
+from irae import guard, fhir2sql
 
 # https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.11.20.9.68/expansion/Latest
 
@@ -10,22 +11,74 @@ VALUESET_PRACTICE = 'valueset-c80-practice-codes.json'
 
 ###############################################################################
 #
+# Include
+#
+#   *DocType
+#   *Facility
+#   *Practice
+#
+###############################################################################
+
+def include_doc_type(codes=None) -> str:
+    """
+    :param codes: list of codes for "type"
+    :return: str file  inclusion criteria for `study_population`
+    """
+    if not codes:
+        codes = get_valueset_doctype()
+    codes = guard.as_list_coding(codes)
+    return fhir2sql.include(codes, 'doc_type')
+
+def include_doc_facility(codes=None) -> str:
+    """
+    :param codes: list of codes for "facility"
+    :return: SQL inclusion criteria for `study_population`
+    """
+    if not codes:
+        codes = get_valueset_facility()
+    codes = guard.as_list_coding(codes)
+    return fhir2sql.include(codes, 'doc_facility')
+
+def include_doc_practice(codes=None) -> str:
+    """
+    :param codes: list of codes for "practice"
+    :return: inclusion criteria for `study_population`
+    """
+    if not codes:
+        codes = get_valueset_practice()
+    codes = guard.as_list_coding(codes)
+    return fhir2sql.include(codes, 'doc_practice')
+
+
+###############################################################################
+#
 # Get Coding using the "key" code
 #
 #   *DocType
 #   *Facility
 #   *Practice
 #
-#
 ###############################################################################
 
 def get_coding_doctype(code: str) -> Coding:
+    """ lookup doctype by code
+    :param code: key for lookup
+    :return: Coding with {code, system, display}
+    """
     return get_coding(code, VALUESET_DOCTYPE)
 
 def get_coding_facility(code: str) -> Coding:
+    """ lookup facility by code
+    :param code: key for lookup
+    :return: Coding with {code, system, display}
+    """
     return get_coding(code, VALUESET_FACILITY)
 
 def get_coding_practice(code: str) -> Coding:
+    """ lookup practice by code
+    :param code: key for lookup
+    :return: Coding with {code, system, display}
+    """
     return get_coding(code, VALUESET_PRACTICE)
 
 def get_coding(code: str, valueset_json: str) -> Coding:
@@ -57,25 +110,3 @@ def get_valueset_facility() -> List[Coding]:
 
 def get_valueset_practice() -> List[Coding]:
     return fhir2sql.valueset2codelist(VALUESET_PRACTICE)
-
-###############################################################################
-#
-# Include
-#
-#   *DocType
-#   *Facility
-#   *Practice
-#
-###############################################################################
-
-def include_doc_type() -> str:
-    codes = get_valueset_doctype()
-    return fhir2sql.include(codes, 'doc_type')
-
-def include_doc_facility() -> str:
-    codes = get_valueset_facility()
-    return fhir2sql.include(codes, 'doc_facility')
-
-def include_doc_practice() -> str:
-    codes = get_valueset_practice()
-    return fhir2sql.include(codes, 'doc_practice')

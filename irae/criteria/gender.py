@@ -1,6 +1,4 @@
-from typing import List
 from enum import Enum
-from fhirclient.models.coding import Coding
 from irae import fhir2sql, guard
 
 class Gender(Enum):
@@ -23,20 +21,25 @@ class Gender(Enum):
         self.code = code
         self.display = code
 
-def sex2codelist(female=True, male=True, other=True, unknown=True) -> List[Coding]:
-    codelist = list()
+def include(female=True, male=True, other=True, unknown=True) -> str:
+    """
+    :param female: Patient.gender
+    :param male: Patient.gender
+    :param other: Patient.gender
+    :param unknown: Patient.gender
+    :return: SQL inclusion criteria to select study population
+    """
+    codes = list()
 
     if female:
-        codelist.append(Gender.female)
+        codes.append(Gender.female)
     if male:
-        codelist.append(Gender.male)
+        codes.append(Gender.male)
     if other:
-        codelist.append(Gender.other)
+        codes.append(Gender.other)
     if unknown:
-        codelist.append(Gender.unknown)
+        codes.append(Gender.unknown)
 
-    return [guard.as_coding(c) for c in codelist]
+    codes = [guard.as_coding(c) for c in codes]
 
-def include(female=True, male=True, other=True, unknown=True) -> str:
-    codes = sex2codelist(female, male, other, unknown)
     return fhir2sql.include(codes, 'gender')

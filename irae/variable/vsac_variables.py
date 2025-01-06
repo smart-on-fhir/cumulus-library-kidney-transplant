@@ -237,6 +237,10 @@ def make():
     return file_list
 
 def make_aspect(aspect) -> List[str]:
+    """
+    :param aspect: see `list_aspects()`, Dx, Rx, Lab, LabPanel, Proc
+    :return: Path to SQL File to create variable definition valuesets.
+    """
     api = vsac_api.UmlsApi()
 
     var_list = list()

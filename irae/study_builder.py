@@ -4,6 +4,11 @@ from irae import criteria, study_population, cohorts, casedef
 from irae.variable import vsac_variables, custom_variables
 
 def make_study() -> List[str]:
+    """
+    $cumulus-library build -s ./ -t irae
+
+    :return: list of SQL files to execute in Athena.
+    """
     criteria_sql = [
         criteria.study_period.include('2016-01-01', '2025-01-01', include_history=True),
         criteria.utilization.include(enc_min=3, enc_max=1000, days_min=90),

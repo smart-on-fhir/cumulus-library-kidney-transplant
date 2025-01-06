@@ -1,7 +1,12 @@
 from irae import fhir2sql
 
-def include(min_age=0, max_age=120) -> str:
-    view = f'{fhir2sql.PREFIX}__include_age_at_visit'
+def include(age_min=0, age_max=120) -> str:
+    """
+    :param age_min: min patient `age_at_visit` during `study_period`
+    :param age_max: max patient `age_at_visit` during `study_period`
+    :return: inclusion criteria for `study_population`
+    """
+    view = fhir2sql.name_join('include', 'age_at_visit')
     cols = ['age_min', 'age_max']
-    values = [str(min_age), str(max_age)]
-    return fhir2sql.values2view(view, cols, values)
+    values = [age_min, age_max]
+    return fhir2sql.criteria2view(view, cols, values)

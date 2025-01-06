@@ -1,5 +1,5 @@
 from enum import Enum
-from irae import fhir2sql, resources, guard
+from irae import fhir2sql, guard
 
 class EncounterClass(Enum):
     AMB = ('AMB', 'ambulatory')
@@ -26,7 +26,12 @@ class EncounterClass(Enum):
 
 
 def include(enc_class_list=None) -> str:
+    """
+    Selected encounters specified by "enc_class_list" to compile the `study_population`
+    :param enc_class_list: 1+ encounter class types, either as EncounterClass(Enum) or FHIR Coding.
+    :return: SQL inclusion criteria to select study population
+    """
     if not enc_class_list:
         enc_class_list = list(EncounterClass)
-    codes = guard.as_coding_list(enc_class_list)
+    codes = guard.as_list_coding(enc_class_list)
     return fhir2sql.include(codes, 'enc_class')

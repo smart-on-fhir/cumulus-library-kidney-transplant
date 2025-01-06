@@ -43,8 +43,7 @@ def name_valueset(table: str, suffix=None) -> str:
 # SQL Helper functions
 #
 ###############################################################################
-
-def escape(sql: str) -> str:
+def sql_escape(sql: str) -> str:
     """
     :param sql: SQL potentially containing special chars
     :return: special chars removed like tic(') and semi(;).
@@ -89,7 +88,7 @@ def valueset2codelist(valueset_json) -> List[Coding]:
     :return: list of codeable concepts (system, code, display) to include
     """
     if isinstance(valueset_json, str):
-        valueset_json = fileset.load_valueset(valueset_json)
+        valueset_json = resources.load_valueset(valueset_json)
 
     parsed = list()
 
@@ -133,14 +132,21 @@ def codelist2view(codelist: List[Coding], view_name) -> str:
     footer = ") AS t (system, code, display) ;"
     content = list()
     for concept in codelist:
-        safe_display = escape(concept.display)
+        safe_display = sql_escape(concept.display)
         content.append(f"('{concept.system}', '{concept.code}', '{safe_display}')")
     content = '\n,'.join(content)
     return header + '\n' + content + '\n' + footer
 
-def values2view(view_name, cols: list, values: list) -> str:
-    values = ','.join(values)
-    cols = ','.join(cols)
+def criteria2view(view_name, cols: list, values: list) -> str:
+    """
+    Single inline CVAS statement where col[1...n] = value[1...n]
+    :param view_name: create view name
+    :param cols: list of column names
+    :param values: values for the column names
+    :return:
+    """
+    cols = ','.join(guard.as_list_str(cols))
+    values = ','.join(guard.as_list_str(values))
     sql = [f"create or replace view {view_name} as ",
            f"select * from (values",
            f"({values})",
@@ -169,7 +175,7 @@ def define_valueset_list(valueset_json_list: List[str], view_name: str, include=
     """
     codelist = list()
     for filename in valueset_json_list:
-        codelist += valueset2codelist(fileset.path_valueset(filename))
+        codelist += valueset2codelist(resources.path_valueset(filename))
     return define(codelist, view_name, include)
 
 def include(codelist: List[Coding], view_name: str) -> str:
