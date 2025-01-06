@@ -9,7 +9,7 @@ with variable_cohorts as
     select distinct 'dx_htn'            as variable, subtype, code, display, system, encounter_ref, subject_ref from irae__cohort_dx_htn            UNION
     select distinct 'dx_infection'      as variable, subtype, code, display, system, encounter_ref, subject_ref from irae__cohort_dx_infection      UNION
     select distinct 'dx_kidney'         as variable, subtype, code, display, system, encounter_ref, subject_ref from irae__cohort_dx_kidney         UNION
-    select distinct 'rx_custom'         as variable, subtype, code, display, system, encounter_ref, subject_ref from irae__cohort_rx_custom         UNION
+    select distinct 'rx_transplant'         as variable, subtype, code, display, system, encounter_ref, subject_ref from irae__cohort_rx_transplant UNION
     select distinct 'rx_diabetes'       as variable, subtype, code, display, system, encounter_ref, subject_ref from irae__cohort_rx_diabetes       UNION
     select distinct 'rx_diuretics'      as variable, subtype, code, display, system, encounter_ref, subject_ref from irae__cohort_rx_diuretics      UNION
     select distinct 'rx_htn'            as variable, subtype, code, display, system, encounter_ref, subject_ref from irae__cohort_rx_htn            UNION

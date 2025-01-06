@@ -3,7 +3,7 @@ from typing import List
 from irae import fhir2sql, common
 
 VIEW = 'irae__cohort_casedef'
-VARIABLE = 'irae__cohort_rx_custom'
+VARIABLE = 'irae__cohort_rx_transplant'
 
 def make_union_view() -> str:
     view = f'{VIEW}_timeline.sql'

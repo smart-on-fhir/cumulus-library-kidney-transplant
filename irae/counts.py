@@ -16,10 +16,8 @@ YEAR = ['enc_period_start_year']
 def name_cohort(table: str) -> str:
     return f'{PREFIX}__cohort_{name_simple(table)}'
 
-def name_cube(table: str, suffix=None) -> str:
-    if suffix:
-        table = f'{table}_{suffix}'
-    return f'{PREFIX}__cube_{name_simple(table)}'
+def name_cube(table: str, suffix: str) -> str:
+    return f'{PREFIX}__count_{suffix}_{name_simple(table)}'
 
 def name_simple(table):
     if 'irae__cohort_' in table:
@@ -90,7 +88,7 @@ def make_variables_timeline_dx() -> List[str]:
 def make_variables_timeline_rx() -> List[str]:
     source = 'irae__cohort_study_variables_timeline'
     cols = ['variable',
-            'rx_custom',
+            'rx_transplant',
             'rx_diabetes',
             'rx_diuretics',
             'rx_immunosuppressive']

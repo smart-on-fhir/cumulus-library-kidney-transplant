@@ -27,7 +27,7 @@ def list_view_variables() -> List[str]:
 
 def list_view_valuesets_rx() -> List[str]:
     var_list = [f'rx_{drug}' for drug in RX_LIST]
-    var_list.append('rx_custom')
+    var_list.append('rx_transplant')
     return [f'irae__{var}' for var in var_list]
 
 def list_view_valuesets_lab() -> List[str]:
@@ -58,7 +58,7 @@ def make_rx() -> List[str]:
 
 def make_union():
     return [union_aspect('lab', LAB_LIST, f'lab_custom'),
-            union_aspect('rx', RX_LIST, f'rx_custom')]
+            union_aspect('rx', RX_LIST, f'rx_transplant')]
 
 def make() -> List[str]:
     return make_lab() + make_rx() + make_union()
