@@ -83,7 +83,7 @@ def make_variables_timeline_dx() -> List[str]:
             'dx_htn',
             'dx_infection',
             'dx_kidney']
-    return [cube_pat(source, cols, name_cube(source, 'dx_pat'))]
+    return [cube_pat(source, cols, name_cube(source, 'pat_dx'))]
 
 def make_variables_timeline_rx() -> List[str]:
     source = 'irae__cohort_study_variables_timeline'
@@ -92,7 +92,7 @@ def make_variables_timeline_rx() -> List[str]:
             'rx_diabetes',
             'rx_diuretics',
             'rx_immunosuppressive']
-    return [cube_enc(source, cols, name_cube(source, 'rx_pat'))]
+    return [cube_enc(source, cols, name_cube(source, 'pat_rx'))]
 
 def make_timeline() -> List[str]:
     return make_variables_timeline_dx() + make_variables_timeline_rx()

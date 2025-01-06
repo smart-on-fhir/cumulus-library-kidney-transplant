@@ -1,5 +1,5 @@
 from enum import Enum
-from irae import fhir2sql, common
+from irae import fhir2sql, common, guard
 
 class EncounterClass(Enum):
     AMB = ('AMB', 'ambulatory')
@@ -28,5 +28,5 @@ class EncounterClass(Enum):
 def include(enc_class_list=None) -> str:
     if not enc_class_list:
         enc_class_list = list(EncounterClass)
-    codes = common.as_coding_list(enc_class_list)
+    codes = guard.as_coding_list(enc_class_list)
     return fhir2sql.include(codes, 'enc_class')

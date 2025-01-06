@@ -5,7 +5,10 @@ from irae import fhir2sql, common
 VIEW = 'irae__cohort_casedef'
 VARIABLE = 'irae__cohort_rx_transplant'
 
-def make_union_view() -> str:
+def make_union_view() -> str:   # TDOO Refactor
+    """
+    :return:
+    """
     view = f'{VIEW}_timeline.sql'
     sql = common.read_text(fhir2sql.path_template(view))
     return common.write_text(sql, fhir2sql.path_athena(view))

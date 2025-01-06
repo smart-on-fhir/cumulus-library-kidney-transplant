@@ -1,5 +1,5 @@
 from enum import Enum
-from irae import common, fhir2sql
+from irae import guard, fhir2sql
 
 class Race(Enum):
     """
@@ -20,5 +20,5 @@ class Race(Enum):
 def include(race_list=None) -> str:
     if not race_list:
         race_list = list(Race)
-    codes = common.as_coding_list(race_list)
+    codes = guard.as_coding_list(race_list)
     return fhir2sql.include(codes, 'race')
