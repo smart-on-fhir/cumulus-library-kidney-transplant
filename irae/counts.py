@@ -4,12 +4,14 @@ from irae.fhir2sql import PREFIX, save_athena_sql
 from irae.variable import vsac_variables, custom_variables
 
 PAT = ['gender', 'race_display', 'ethnicity_display']
-ENC = ['age_at_visit', 'enc_class_code']
-DX = ['dx_category_code', 'dx_display'] + PAT + ENC
-RX = ['rx_category_code', 'rx_display'] + PAT + ENC
+ENC = ['gender', 'age_at_visit', 'enc_class_code']
+SUBTYPE = ['subtype']
+DX = ['dx_category_code'] + ENC
+RX = ['rx_category_code'] + ENC
+LAB = ['lab_observation_code'] + ENC
 MONTH = ['enc_period_start_month']
 YEAR = ['enc_period_start_year']
-LAB = ['lab_observation_code'] + ENC
+
 
 def name_cohort(table: str) -> str:
     return f'{PREFIX}__cohort_{name_simple(table)}'
@@ -33,7 +35,7 @@ def cube_enc(source='study_population', cols=None, cube_table=None) -> str:
     from_table = name_cohort(source)
 
     if not cube_table:
-        cube_table = name_cube(source)
+        cube_table = name_cube(source, 'enc')
 
     if not cols:
         cols = PAT + ENC + MONTH
@@ -45,7 +47,7 @@ def cube_pat(source='study_population', cols=None, cube_table=None) -> str:
     from_table = name_cohort(source)
 
     if not cube_table:
-        cube_table = name_cube(f'{source}_pat')
+        cube_table = name_cube(source, 'pat')
 
     if not cols:
         cols = PAT
@@ -65,35 +67,37 @@ def make_variables() -> List[str]:
     variable_list = vsac_variables.list_view_variables() + custom_variables.list_view_variables()
     for variable in variable_list:
         if '__dx' in variable:
-            file_list.append(cube_enc(variable, DX))
+            file_list.append(cube_enc(variable, SUBTYPE+DX))
         elif '__rx' in variable:
-            file_list.append(cube_enc(variable, RX))
+            file_list.append(cube_enc(variable, SUBTYPE+RX))
         elif '__lab' in variable:
-            file_list.append(cube_enc(variable, LAB))
+            file_list.append(cube_enc(variable, SUBTYPE+LAB))
     return file_list
 
-def make_timeline_dx() -> List[str]:
+def make_variables_timeline_dx() -> List[str]:
     source = 'irae__cohort_study_variables_timeline'
-    cols_dx = ['dx_autoimmune',
-               'dx_cancer',
-               'dx_compromised',
-               'dx_diabetes',
-               'dx_heart',
-               'dx_htn',
-               'dx_infection',
-               'dx_kidney']
-    return [cube_pat(source, cols_dx, name_cube(source, 'dx_pat'))]
+    cols = ['variable',
+            'dx_autoimmune',
+            'dx_cancer',
+            'dx_compromised',
+            'dx_diabetes',
+            'dx_heart',
+            'dx_htn',
+            'dx_infection',
+            'dx_kidney']
+    return [cube_pat(source, cols, name_cube(source, 'dx_pat'))]
 
-def make_timeline_rx() -> List[str]:
+def make_variables_timeline_rx() -> List[str]:
     source = 'irae__cohort_study_variables_timeline'
-    cols_dx = ['rx_custom',
-               'rx_diabetes',
-               'rx_diuretics',
-               'rx_immunosuppressive']
-    return [cube_enc(source, cols_dx, name_cube(source, 'rx_pat'))]
+    cols = ['variable',
+            'rx_custom',
+            'rx_diabetes',
+            'rx_diuretics',
+            'rx_immunosuppressive']
+    return [cube_enc(source, cols, name_cube(source, 'rx_pat'))]
 
 def make_timeline() -> List[str]:
-    return make_timeline_dx() + make_timeline_rx()
+    return make_variables_timeline_dx() + make_variables_timeline_rx()
 
 def make():
     return make_study_population() + make_variables() + make_timeline()

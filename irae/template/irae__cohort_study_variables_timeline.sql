@@ -6,6 +6,7 @@ with lookup as
 )
 select distinct
     lookup.variable,
+    lookup.subtype,
     if(lookup.variable='dx_autoimmune', lookup.subtype) as dx_autoimmune,
     if(lookup.variable='dx_cancer', lookup.subtype) as dx_cancer,
     if(lookup.variable='dx_compromised', lookup.subtype) as dx_compromised,
