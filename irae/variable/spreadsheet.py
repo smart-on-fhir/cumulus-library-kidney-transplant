@@ -1,6 +1,6 @@
 from typing import List
 from fhirclient.models.coding import Coding
-from irae import common
+from irae import resources
 from irae.variable.base import Vocab
 from irae.variable.base import BinaryClass, MultiClass
 
@@ -22,7 +22,7 @@ class SpreadsheetReader:
     def read_coding_list(self, delimiter: str = ',', quote_char: str = '"') -> List[Coding]:
         codes = list()
 
-        for columns in common.read_csv(self.filename, delimiter, quote_char):
+        for columns in resources.read_csv(self.filename, delimiter, quote_char):
             c = Coding()
             c.code = columns[0]
             c.display = columns[1]

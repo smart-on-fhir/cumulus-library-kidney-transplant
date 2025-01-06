@@ -1,18 +1,16 @@
 from typing import List
-from irae import common, counts
-from irae.fhir2sql import path_athena
-from irae.criteria import age_at_visit, gender, race, encounter_class, study_period, utilization
+from irae import resources, counts
+from irae import criteria, study_population, cohorts, casedef
 from irae.variable import vsac_variables, custom_variables
-from irae import study_population, cohorts, casedef
 
 def make_study() -> List[str]:
     criteria_sql = [
-        study_period.include('2016-01-01', '2025-01-01', include_history=True),
-        utilization.include(enc_min=3, enc_max=1000, days_min=90),
-        age_at_visit.include(),
-        encounter_class.include(),
-        gender.include(female=True, male=True, other=True, unknown=False),
-        race.include()]
+        criteria.study_period.include('2016-01-01', '2025-01-01', include_history=True),
+        criteria.utilization.include(enc_min=3, enc_max=1000, days_min=90),
+        criteria.age_at_visit.include(),
+        criteria.encounter_class.include(),
+        criteria.gender.include(female=True, male=True, other=True, unknown=False),
+        criteria.race.include()]
 
     studypop_sql = study_population.make()
     variables_sql = vsac_variables.make() + custom_variables.make()
@@ -34,7 +32,7 @@ def write_manifest(file_list: list) -> str:
         manifest.append(f"'{file}'")
     text = ',\n'.join(manifest)
     print(text)
-    return common.write_text(text, path_athena('file_names.manifest.toml'))
+    return resources.save_athena('file_names.manifest.toml', text)
 
 def command_shell() -> str:
     # bch-aws-login while on VPN

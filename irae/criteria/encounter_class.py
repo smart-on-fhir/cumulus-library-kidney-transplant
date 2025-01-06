@@ -1,5 +1,5 @@
 from enum import Enum
-from irae import fhir2sql, common, guard
+from irae import fhir2sql, resources, guard
 
 class EncounterClass(Enum):
     AMB = ('AMB', 'ambulatory')

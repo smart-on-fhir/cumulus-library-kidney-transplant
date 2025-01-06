@@ -22,15 +22,15 @@ def is_list_type(obj, type) -> bool:
 
 ###############################################################################
 #
-# Guard input types, fail fast
+# Cast input "as type", fail fast if not possible
 #
 ###############################################################################
-def guard_list(obj) -> list:
+def as_list(obj) -> list:
     if isinstance(obj, list):
         return obj
     return [obj]
 
-def guard_range(obj) -> range:
+def as_range(obj) -> range:
     print(f'guard_range : {obj}')
     if isinstance(obj, list):
         return range(obj[0], obj[1])
@@ -39,15 +39,10 @@ def guard_range(obj) -> range:
     if isinstance(obj, range):
         return obj
 
-    Exception(f'guard_range failed for {obj}')
-
-def guard_range_or_none(obj) -> range:
-    if not obj:
-        return None
-    return guard_range(obj)
+    Exception(f'as_range failed for {obj}')
 
 def as_coding_list(obj) -> List[Coding]:
-    obj = guard_list(obj)
+    obj = as_list(obj)
 
     if is_list_type(obj, Coding):
         return obj
@@ -69,8 +64,8 @@ def as_coding(obj) -> Coding:
 ###############################################################################
 def uniq(unsorted: Iterable) -> List:
     """
-    :param unsorted: list of header names
-    :return: sorted list of unique header names
+    :param unsorted: list or iterable type
+    :return: sorted list of unique entries
     """
     return sorted(list(set(unsorted)))
 

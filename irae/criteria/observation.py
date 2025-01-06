@@ -2,7 +2,7 @@ import os
 from enum import Enum
 from typing import List
 from fhirclient.models.coding import Coding
-from irae import common, fhir2sql
+from irae import resources, fhir2sql
 
 class ObservationCategory(Enum):
 

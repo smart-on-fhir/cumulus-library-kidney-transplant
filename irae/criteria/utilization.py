@@ -1,4 +1,4 @@
-from irae import fhir2sql, common
+from irae import fhir2sql, resources
 
 def include(enc_min=0, enc_max=1000, days_min=0, days_max=36500) -> str:
     view = 'irae__include_utilization'

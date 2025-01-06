@@ -1,64 +1,66 @@
-import os
-import json
-from enum import Enum
 from typing import List
 from fhirclient.models.coding import Coding
-from irae import common, guard
+from irae import guard, resources
+from irae.resources import save_athena_view
 
 PREFIX = 'irae'
 
 ###############################################################################
 #
-# Files: JSON/SQL
+# naming conventions
 #
 ###############################################################################
-def root(target=None) -> str:
-    if target:
-        return os.path.join(os.path.dirname(__file__), target)
+def prefix(table_obj: list | str) -> list | str:
+    if guard.is_list(table_obj):
+        return [f'{PREFIX}__{table}' for table in guard.uniq(table_obj)]
     else:
-        return os.path.dirname(__file__)
+        return f'{PREFIX}__{table_obj}'
 
-def exists(target: str) -> bool:
-    return os.path.exists(target)
+def name_simple(table):
+    simple = table
+    for part in ['cohort_', 'count_', 'valueset_']:
+        simple = simple.replace(prefix(part), '')
+    return simple.replace(f'{PREFIX}__', '')
 
-def make_subdir(subdir: str):
-    os.makedirs(path_valueset(subdir), exist_ok=True)
+def name_cohort(table: str) -> str:
+    return f'{PREFIX}__cohort_{name_simple(table)}'
 
-def path_template(file_sql) -> str:
-    return os.path.join(os.path.dirname(__file__), 'template', file_sql)
+def name_cube(table: str, suffix: str) -> str:
+    return f'{PREFIX}__count_{suffix}_{name_simple(table)}'
 
-def load_template(file_sql) -> str:
-    return common.read_text(path_template(file_sql))
-
-def path_valueset(valueset_json: str) -> str:
-    return os.path.join(os.path.dirname(__file__), 'valueset', valueset_json)
-
-def load_valueset(valueset_json) -> dict:
-    return common.read_json(path_valueset(valueset_json))
-
-def save_valueset(valueset_json, contents: dict) -> str:
-    return common.write_json(contents, path_valueset(valueset_json))
-
-def path_athena(file_sql: str) -> str:
-    return os.path.join(os.path.dirname(__file__), 'athena', file_sql)
-
-def save_athena(file_sql: str, contents: str) -> str:
-    return common.write_text(contents, path_athena(file_sql))
-
-def save_athena_sql(view_name: str, contents: str) -> str:
-    return common.write_text(contents, path_athena(f'{view_name}.sql'))
-
-def path_spreadsheet(table_ext: str) -> str:
-    return os.path.join(os.path.dirname(__file__), 'spreadsheet', table_ext)
+def name_valueset(table: str, suffix: str) -> str:
+    return f'{PREFIX}__valueset_{suffix}_{name_simple(table)}'
 
 ###############################################################################
 #
-# SQL naming conventions
+# SQL Helper functions
 #
 ###############################################################################
 
-def prefix(table_list: List[str]) -> List[str]:
-    return [f'irae__{table}' for table in guard.uniq(table_list)]
+def escape(sql: str) -> str:
+    """
+    :param sql: SQL potentially containing special chars
+    :return: special chars removed like tic(') and semi(;).
+    """
+    return sql.replace("'", "").replace(";", ".")
+
+def sql_iter(clauses_list, operator=',') -> str:
+    if not isinstance(clauses_list, list):
+        return sql_iter([clauses_list])
+    return f' {operator} \n'.join(clauses_list)
+
+def sql_and(clauses_list) -> str:
+    return sql_iter(clauses_list, 'and')
+
+def sql_or(clauses_list) -> str:
+    return sql_iter(clauses_list, 'or')
+
+def sql_list(clauses_list) -> str:
+    return sql_iter(clauses_list, ',')
+
+def sql_paren(statement: str) -> str:
+    return f'({statement})'
+
 
 ###############################################################################
 #
@@ -80,7 +82,7 @@ def valueset2codelist(valueset_json) -> List[Coding]:
     :return: list of codeable concepts (system, code, display) to include
     """
     if isinstance(valueset_json, str):
-        valueset_json = load_valueset(valueset_json)
+        valueset_json = fileset.load_valueset(valueset_json)
 
     parsed = list()
 
@@ -105,7 +107,7 @@ def codesystem2codelist(code_system_json) -> List[Coding]:
     :param code_system_json:
     :return: List Coding (similar to ValueSet)
     """
-    codesystem = load_valueset(code_system_json)
+    codesystem = resources.load_valueset(code_system_json)
     parsed = list()
     url = codesystem.get('url')
     if 'concept' in codesystem.keys():
@@ -113,14 +115,6 @@ def codesystem2codelist(code_system_json) -> List[Coding]:
             concept['system'] = url
             parsed.append(Coding(concept))
     return parsed
-
-def escape(sql: str) -> str:
-    """
-    :param sql: SQL potentially containing special chars
-    :return: special chars removed like tic(') and semi(;).
-    """
-    return sql.replace("'", "").replace(";", ".")
-
 
 def codelist2view(codelist: List[Coding], view_name) -> str:
     """
@@ -145,19 +139,19 @@ def values2view(view_name, cols: list, values: list) -> str:
            f"({values})",
            f") AS t ({cols}) ;"]
     sql = '\n'.join(sql)
-    return save_athena_sql(view_name, sql)
+    return save_athena_view(view_name, sql)
 
 def union_view_list(view_list: List[str], view_name: str) -> str:
     _dest = f"{PREFIX}__{view_name}"
     _header = f"create or replace view {PREFIX}__{view_name} as \n "
     _select = [f"select '{item}' as subtype, system, code, display from \n {item}" for item in view_list]
     _sql = _header + '\n UNION '.join(_select)
-    return save_athena_sql(_dest, _sql)
+    return save_athena_view(_dest, _sql)
 
 def define(codelist: List[Coding], view_name: str) -> str:
     _dest = f"{PREFIX}__{view_name}"
     _sql = codelist2view(codelist, _dest)
-    return save_athena_sql(_dest, _sql)
+    return save_athena_view(_dest, _sql)
 
 def define_valueset_list(valueset_json_list: List[str], view_name: str, include=True) -> str:
     """
@@ -168,7 +162,7 @@ def define_valueset_list(valueset_json_list: List[str], view_name: str, include=
     """
     codelist = list()
     for filename in valueset_json_list:
-        codelist += valueset2codelist(path_valueset(filename))
+        codelist += valueset2codelist(fileset.path_valueset(filename))
     return define(codelist, view_name, include)
 
 def include(codelist: List[Coding], view_name: str) -> str:

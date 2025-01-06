@@ -1,4 +1,5 @@
 from typing import List
+from irae import resources
 from irae import fhir2sql
 from irae.variable.spreadsheet import SpreadsheetReader, Vocab
 
@@ -44,7 +45,7 @@ def make_aspect(vocab: Vocab, aspect: str, aspect_entries: list, filetype='csv')
     delimiter = ',' if filetype == 'csv' else '\t'
     for entry in aspect_entries:
         print(f'custom_variables.py {aspect}_{entry}')
-        filename = fhir2sql.path_spreadsheet(f'{aspect}_{entry}.{filetype}')
+        filename = resources.path_spreadsheet(f'{aspect}_{entry}.{filetype}')
         reader = SpreadsheetReader(filename, entry, vocab)
         codes = reader.read_coding_list(delimiter)
         file_list.append(fhir2sql.define(codes, f'{aspect}_{entry}'))

@@ -1,6 +1,7 @@
 from typing import List
 from cumulus_library.builders.counts import CountsBuilder
-from irae.fhir2sql import PREFIX, save_athena_sql
+from irae.fhir2sql import PREFIX, name_cohort, name_cube
+from irae.resources import save_athena_view
 from irae.variable import vsac_variables, custom_variables
 
 PAT = ['gender', 'race_display', 'ethnicity_display']
@@ -12,23 +13,6 @@ LAB = ['lab_observation_code'] + ENC
 MONTH = ['enc_period_start_month']
 YEAR = ['enc_period_start_year']
 
-
-def name_cohort(table: str) -> str:
-    return f'{PREFIX}__cohort_{name_simple(table)}'
-
-def name_cube(table: str, suffix: str) -> str:
-    return f'{PREFIX}__count_{suffix}_{name_simple(table)}'
-
-def name_simple(table):
-    if 'irae__cohort_' in table:
-        _, simple = table.split('irae__cohort_')
-        return simple
-
-    if 'irae__' in table:
-        _, simple = table.split('irae__')
-        return simple
-    return table
-
 def cube_enc(source='study_population', cols=None, cube_table=None) -> str:
     from_table = name_cohort(source)
 
@@ -39,7 +23,7 @@ def cube_enc(source='study_population', cols=None, cube_table=None) -> str:
         cols = PAT + ENC + MONTH
 
     sql = CountsBuilder(PREFIX).count_encounter(cube_table, from_table, cols)
-    return save_athena_sql(cube_table, sql)
+    return save_athena_view(cube_table, sql)
 
 def cube_pat(source='study_population', cols=None, cube_table=None) -> str:
     from_table = name_cohort(source)
@@ -51,7 +35,7 @@ def cube_pat(source='study_population', cols=None, cube_table=None) -> str:
         cols = PAT
 
     sql = CountsBuilder(PREFIX).count_patient(cube_table, from_table, cols)
-    return save_athena_sql(cube_table, sql)
+    return save_athena_view(cube_table, sql)
 
 def make_study_population() -> List[str]:
     return [cube_pat(),

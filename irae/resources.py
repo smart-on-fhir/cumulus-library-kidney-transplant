@@ -1,10 +1,78 @@
 import os
-import datetime
 import csv
 import json
-from enum import Enum
 from typing import List, Dict, Any, Iterable, Generator
-from . import jsonifiers
+from irae import jsonifiers
+
+###############################################################################
+# Root
+###############################################################################
+def root(target=None) -> str:
+    if target:
+        return os.path.join(os.path.dirname(__file__), target)
+    else:
+        return os.path.dirname(__file__)
+
+def exists(target: str) -> bool:
+    return os.path.exists(target)
+
+    # def make_subdir(subdir: str):
+    #     os.makedirs(path_valueset(subdir), exist_ok=True)
+
+###############################################################################
+#
+# Valueset(s)
+#
+###############################################################################
+
+def path_valueset(valueset_json: str) -> str:
+    return os.path.join(os.path.dirname(__file__), 'valueset', valueset_json)
+
+def load_valueset(valueset_json) -> dict:
+    return read_json(path_valueset(valueset_json))
+
+def save_valueset(valueset_json, contents: dict) -> str:
+    return write_json(contents, path_valueset(valueset_json))
+
+
+###############################################################################
+#
+# Spreadsheets, uploaded by user
+#
+###############################################################################
+
+def path_spreadsheet(table_ext: str) -> str:
+    return os.path.join(os.path.dirname(__file__), 'spreadsheet', table_ext)
+
+
+###############################################################################
+#
+# Template(s)
+#
+###############################################################################
+
+def path_template(file_sql) -> str:
+    return os.path.join(os.path.dirname(__file__), 'template', file_sql)
+
+def load_template(file_sql) -> str:
+    return read_text(path_template(file_sql))
+
+
+###############################################################################
+#
+# Athena SQL File(s)
+#
+###############################################################################
+
+def path_athena(file_sql: str) -> str:
+    return os.path.join(os.path.dirname(__file__), 'athena', file_sql)
+
+def save_athena(file_sql: str, contents: str) -> str:
+    return write_text(contents, path_athena(file_sql))
+
+def save_athena_view(view_name: str, contents: str) -> str:
+    return write_text(contents, path_athena(f'{view_name}.sql'))
+
 
 ###############################################################################
 #

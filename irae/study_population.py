@@ -1,5 +1,5 @@
 from typing import List
-from irae import fhir2sql, common
+from irae import resources
 
 TABLE = 'irae__cohort_study_population'
 
@@ -11,6 +11,6 @@ def list_tables():
 def make() -> List[str]:
     file_list = list()
     for table in list_tables():
-        sql = common.read_text(fhir2sql.path_template(f'{table}.sql'))
-        file_list.append(fhir2sql.save_athena_sql(table, sql))
+        sql = resources.read_text(resources.path_template(f'{table}.sql'))
+        file_list.append(resources.save_athena_view(table, sql))
     return file_list
