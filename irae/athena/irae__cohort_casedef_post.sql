@@ -12,12 +12,12 @@
 --
 -- ########################################################################
 
-create table irae__cohort_casedef_$suffix as
+create table irae__cohort_casedef_post as
 with IndexDate as
 (
     select      min(enc_period_start_day) as enc_period_start_day,
                 subtype, subject_ref
-    from        $variable
+    from        irae__cohort_rx_transplant
     group by    subtype, subject_ref
 ),
 Cohort as
@@ -31,11 +31,11 @@ Cohort as
             CaseDef.subject_ref,
             CaseDef.encounter_ref,
             CaseDef.enc_period_start_day
-    from    $variable as CaseDef,
+    from    irae__cohort_rx_transplant as CaseDef,
             IndexDate
     where   CaseDef.subject_ref = IndexDate.subject_ref
     and     CaseDef.subtype     = IndexDate.subtype
-    and     CaseDef.enc_period_start_day $equality IndexDate.enc_period_start_day
+    and     CaseDef.enc_period_start_day > IndexDate.enc_period_start_day
 )
 select  distinct
         Cohort.subtype,
@@ -47,5 +47,5 @@ from    IndexDate,
         irae__cohort_study_variables_timeline as Timeline
 left join Cohort on Timeline.encounter_ref = cohort.encounter_ref
 where   Timeline.subject_ref           = IndexDate.subject_ref
-and     Timeline.enc_period_start_day  $equality IndexDate.enc_period_start_day
+and     Timeline.enc_period_start_day  > IndexDate.enc_period_start_day
 ;

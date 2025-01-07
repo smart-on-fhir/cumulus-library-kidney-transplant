@@ -1,0 +1,7 @@
+create table irae__cohort_lab_azathioprine_tpmt_gene as 
+select * from 
+ irae__cohort_study_population_lab , 
+irae__lab_azathioprine_tpmt_gene
+WHERE
+irae__cohort_study_population_lab.lab_observation_code = irae__lab_azathioprine_tpmt_gene.code and 
+irae__cohort_study_population_lab.lab_observation_system = irae__lab_azathioprine_tpmt_gene.system
