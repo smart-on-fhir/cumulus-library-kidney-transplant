@@ -1,4 +1,4 @@
-create table $study_prefix__cohort_study_population_rx as
+create table $prefix__cohort_study_population_rx as
 select distinct
     RX.status               as rx_status,
     RX.category_code        as rx_category_code,
@@ -10,7 +10,7 @@ select distinct
     RX.medicationrequest_ref as medicationrequest_ref,
     study_population.*
 from
-    $study_prefix__cohort_study_population as study_population,
+    $prefix__cohort_study_population as study_population,
     core__medicationrequest as RX
 where
     study_population.encounter_ref = RX.encounter_ref

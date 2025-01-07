@@ -1,4 +1,4 @@
-create table $study_prefix__cohort_study_population_doc as
+create table $prefix__cohort_study_population_doc as
 select distinct
     doc.docstatus       as doc_status,
     doc.type_code       as doc_type_code,
@@ -8,7 +8,7 @@ select distinct
     doc.documentreference_ref,
     study_population.*
 from
-    $study_prefix__cohort_study_population as study_population,
+    $prefix__cohort_study_population as study_population,
     core__documentreference as doc
 where
     study_population.encounter_ref = doc.encounter_ref

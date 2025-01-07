@@ -1,4 +1,4 @@
-create table $study_prefix__cohort_study_population_lab as
+create table $prefix__cohort_study_population_lab as
 select distinct
     lab.status                      as lab_status,
     observation_code                as lab_observation_code,
@@ -10,7 +10,7 @@ select distinct
     observation_ref,
     study_population.*
 from
-    $study_prefix__cohort_study_population as study_population,
+    $prefix__cohort_study_population as study_population,
     core__observation_lab as lab
 where
     study_population.encounter_ref = lab.encounter_ref

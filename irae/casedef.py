@@ -14,19 +14,17 @@ def make(variable=None) -> List[Path]:
 def get_view() -> str:
     return fhir2sql.name_join('cohort', 'casedef')
 
-def inline(variable: str, sql: str, suffix, equality) -> str:
-    return sql.replace('$variable', variable).replace('$suffix', suffix).replace('$equality', equality)
-
 def make_index_date(variable, suffix, equality) -> Path:
     view = f'{get_view()}_{suffix}.sql'
     template = f'{get_view()}_index.sql'
 
     sql = resources.load_template(template)
-    sql = inline(variable, sql, suffix, equality)
+    sql = resources.inline_template(sql, suffix, variable, equality)
 
     return resources.save_athena(view, sql)
 
 def make_timeline() -> Path:
     template = fhir2sql.name_join('cohort', 'casedef_timeline') + '.sql'
     sql = resources.load_template(template)
+    sql = resources.inline_template(sql)
     return resources.save_athena(template, sql)

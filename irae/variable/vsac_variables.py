@@ -232,13 +232,7 @@ def list_view_variables() -> List[str]:
 # Make
 #
 ###############################################################################
-def make() -> List[Path]:
-    file_list = list()
-    for aspect in list_aspects():
-        file_list += make_vsac_variables_for(aspect)
-    return file_list
-
-def make_vsac_variables_for(aspect) -> List[Path]:
+def make_vsac_variables_for(aspect: Enum) -> List[Path]:
     """
     :param aspect: see `list_aspects()`, Dx, Rx, Lab, LabPanel, Proc
     :return: Path to SQL File to create variable definition valuesets.
@@ -269,3 +263,13 @@ def make_vsac_variables_for(aspect) -> List[Path]:
             valueset_list.append(view_name)
         var_list.append(fhir2sql.union_view_list(valueset_list, variable.name))
     return var_list
+
+def make() -> List[Path]:
+    """
+    Make vsac variables with 1+ vsac valuesets for each variable.
+    :return: List SQL files to define each vsac_variable
+    """
+    file_list = list()
+    for aspect in list_aspects():
+        file_list += make_vsac_variables_for(aspect)
+    return file_list

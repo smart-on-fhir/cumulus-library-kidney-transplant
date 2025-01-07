@@ -17,11 +17,11 @@ def read_manifest() -> dict:
 
 def write_manifest(file_names: List[Path] | List[str]) -> Path:
     saved = read_manifest()
-
     saved['file_config']['file_names'] = path_relative(file_names)
 
     with open(str(path_manifest()), 'wb') as f:
         tomli_w.dump(saved, f)
+    print('saved ' + str(path_manifest()))
     return path_manifest()
 
 def path_relative(file_names: List[Path] | List[str]) -> List[str]:

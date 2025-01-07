@@ -1,9 +1,9 @@
-create table $study_prefix__cohort_study_population as
+create table $prefix__cohort_study_population as
 with StudyPeriodRange as
 (
     select distinct encounter_ref, subject_ref
     from    core__encounter as E,
-            $study_prefix__include_study_period  as Include
+            $prefix__include_study_period  as Include
     where   (E.period_start_day between Include.period_start and Include.period_end)
     and     (E.period_end_day between Include.period_start and Include.period_end)
 ),
@@ -12,7 +12,7 @@ StudyPeriodHistory as
     select distinct E.encounter_ref, E.subject_ref
     from    StudyPeriodRange,
             core__encounter as E,
-            $study_prefix__include_study_period  as Include
+            $prefix__include_study_period  as Include
     where   Include.include_history
     and     E.period_start_day < Include.period_end
     and     E.subject_ref = StudyPeriodRange.subject_ref
@@ -48,9 +48,9 @@ StudyPopulation as
     from
         core__encounter                 as E,
         StudyPeriod                     as SP,
-        $study_prefix__include_gender            as G,
-        $study_prefix__include_enc_class         as enc_class,
-        $study_prefix__include_age_at_visit      as age
+        $prefix__include_gender            as G,
+        $prefix__include_enc_class         as enc_class,
+        $prefix__include_age_at_visit      as age
     where
         (E.encounter_ref = SP.encounter_ref)  and
         (E.class_code = enc_class.code)       and
@@ -90,7 +90,7 @@ select  Utilization.cnt_encounter,
 from    StudyPopulation,
         Utilization,
         DateDiff,
-        $study_prefix__include_utilization as Include
+        $prefix__include_utilization as Include
 where   StudyPopulation.subject_ref = Utilization.subject_ref
 and     StudyPopulation.subject_ref = DateDiff.subject_ref
 and     Include.enc_min <= Utilization.cnt_encounter

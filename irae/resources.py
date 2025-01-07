@@ -3,8 +3,9 @@ import csv
 import json
 from pathlib import Path
 from typing import List, Dict, Any, Iterable, Generator
-from irae import jsonifiers
-from irae import manifest
+from irae import jsonifiers, guard
+
+PREFIX = 'irae'
 
 ###############################################################################
 # Root
@@ -82,13 +83,33 @@ def path_spreadsheet(filename: Path | str) -> Path:
 # Template(s)
 #
 ###############################################################################
+def name_template(table_file: list | str) -> list | str:
+    """
+    Strips `study_prefix` from the table str or list 
+    :param table_file: name of table to load (with .sql
+    :return: 
+    """
+    if guard.is_list_type(table_file, str):
+        return [name_template(t) for t in table_file]
+    else:
+        return table_file.replace(f'{PREFIX}__', '')
 
 def path_template(file_sql: Path | str) -> Path:
-    return Path(os.path.join(path_home(), 'template', file_sql))
+    template = name_template(file_sql)
+    return Path(os.path.join(path_home(), 'template', template))
 
 def load_template(file_sql: Path | str) -> str:
     return read_text(path_template(file_sql))
 
+def inline_template(sql: str, suffix=None, variable=None, equality=None) -> str:
+    sql = sql.replace('$prefix', PREFIX)
+    if suffix:
+        sql = sql.replace('$suffix', suffix)
+    if variable:
+        sql = sql.replace('$variable', variable)
+    if equality:
+        sql = sql.replace('$equality', equality)
+    return sql
 
 ###############################################################################
 #
@@ -118,8 +139,9 @@ def read_text(text_file: Path | str, encoding: str = 'UTF-8') -> str:
     :param encoding: provided file's encoding
     :return: file text contents
     """
-    with m_open(file=text_file, encoding=encoding) as t_file:
-        return t_file.read()
+    if file_exists(text_file):
+        with m_open(file=text_file, encoding=encoding) as t_file:
+            return t_file.read()
 
 
 def write_text(contents: str, file_path: Path | str, encoding: str = 'UTF-8') -> str:
@@ -151,8 +173,20 @@ def read_bytes(binary_file: str) -> bytes:
     :param binary_file: absolute path to file
     :return: bytes file contents
     """
-    with m_open(file=binary_file, mode='rb') as bin_file:
-        return bytes(bin_file.read())
+    if file_exists(binary_file):
+        with m_open(file=binary_file, mode='rb') as bin_file:
+            return bytes(bin_file.read())
+
+def file_exists(filename: Path | str) -> bool:
+    """
+    FAIL FAST if not exists `filename`
+    :param filename: check for existance
+    :return: BOOL True or raise exception (fail fast)
+    """
+    target = Path(filename)
+    if not target.exists():
+        raise Exception('file not found: ' + str(target))
+    return True
 
 def m_open(**kwargs):
     """
@@ -177,8 +211,9 @@ def read_json(json_file: Path | str, encoding: str = 'UTF-8') -> Dict[Any, Any]:
     :param encoding: provided file's encoding
     :return: json file contents
     """
-    with m_open(file=json_file, encoding=encoding) as j_file:
-        return json.load(j_file)
+    if file_exists(json_file):
+        with m_open(file=json_file, encoding=encoding) as j_file:
+            return json.load(j_file)
 
 def write_json(contents: Dict[Any, Any], json_file_path: Path | str, encoding: str = 'UTF-8') -> Path:
     """
@@ -222,10 +257,10 @@ def read_csv(file_csv: Path | str, delimiter: str = ',', quote_char: str = '"') 
     :param quote_char: the quote character used in the csv
     :return: an iterator of row values
     """
-    with m_open(file=file_csv) as csv_file:
-        for row in csv.reader(csv_file, delimiter=delimiter, quotechar=quote_char):
-            yield row
-
+    if file_exists(file_csv):
+        with m_open(file=file_csv) as csv_file:
+            for row in csv.reader(csv_file, delimiter=delimiter, quotechar=quote_char):
+                yield row
 
 def list_from_csv_column(file_csv: Path | str, column: str, delimiter: str = ',', quote_char: str = '"') -> List[str]:
     """

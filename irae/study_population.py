@@ -18,9 +18,8 @@ def make_study_population() -> List[Path]:
     """
     file_list = list()
     for table in list_tables():
-        sql_file = f'{table}.sql'
-        print(sql_file)
-        sql = resources.read_text(resources.path_template(sql_file))
+        sql = resources.load_template(f'{table}.sql')
+        sql = resources.inline_template(sql)
         file_list.append(resources.save_athena_view(table, sql))
     return file_list
 

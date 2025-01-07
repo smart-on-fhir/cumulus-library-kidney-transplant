@@ -1,4 +1,4 @@
-create table $study_prefix__cohort_study_population_proc as
+create table $prefix__cohort_study_population_proc as
 select distinct
     PROC.status                     as proc_status,
     PROC.code_code                  as proc_code,
@@ -10,7 +10,7 @@ select distinct
     PROC.procedure_ref,
     study_population.*
 from
-    $study_prefix__cohort_study_population as study_population,
+    $prefix__cohort_study_population as study_population,
     core__procedure as PROC
 where
     study_population.encounter_ref = PROC.encounter_ref

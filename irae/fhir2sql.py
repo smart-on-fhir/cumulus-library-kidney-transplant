@@ -29,13 +29,17 @@ def name_simple(table) -> str:
 def name_join(part: str, table: str) -> str:
     return name_prefix('_'.join([part, name_simple(table)]))
 
-def name_studypop(suffix=None) -> str:
-    table = name_suffix('study_population', suffix)
-    return name_join('cohort', table)
-
 def name_cohort(table: str, suffix=None) -> str:
     part = name_suffix('cohort', suffix)
     return name_join(part, table)
+
+def name_study_population(suffix=None) -> str:
+    table = name_suffix('study_population', suffix)
+    return name_join('cohort', table)
+
+def name_study_variables(suffix=None) -> str:
+    table = name_suffix('study_variables', suffix)
+    return name_join('cohort', table)
 
 def name_cube(table: str, suffix: str) -> str:
     part = f'count_{suffix}' if suffix else 'count'
@@ -129,7 +133,7 @@ def codelist2view(codelist: List[Coding], view_name) -> str:
 
 def criteria2view(view_name, cols: list, values: list) -> Path:
     """
-    Single inline CVAS statement where col[1...n] = value[1...n]
+    Single inline_template CVAS statement where col[1...n] = value[1...n]
     :param view_name: create view name
     :param cols: list of column names
     :param values: values for the column names

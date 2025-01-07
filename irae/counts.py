@@ -57,7 +57,7 @@ def make_variables() -> List[Path]:
     return file_list
 
 def make_variables_timeline_dx() -> List[Path]:
-    source = fhir2sql.name_studypop('timeline')
+    source = fhir2sql.name_study_population('timeline')
     cols = ['variable',
             'dx_autoimmune',
             'dx_cancer',
@@ -70,7 +70,7 @@ def make_variables_timeline_dx() -> List[Path]:
     return [cube_pat(source, cols, fhir2sql.name_cube(source, 'pat_dx'))]
 
 def make_variables_timeline_rx() -> List[Path]:
-    source = fhir2sql.name_studypop('timeline')
+    source = fhir2sql.name_study_population('timeline')
     cols = ['variable',
             'rx_transplant',
             'rx_diabetes',

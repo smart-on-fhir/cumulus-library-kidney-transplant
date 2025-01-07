@@ -29,8 +29,8 @@ def make_study() -> Path:
     vsac_markdown.make()
     print('README.md')
 
-    manifest_list = criteria_sql + studypop_sql + variables_sql + cohorts_sql + casedef_sql + counts_sql
-    return manifest.write_manifest(manifest_list)
+    return manifest.write_manifest(
+        criteria_sql + studypop_sql + variables_sql + cohorts_sql + casedef_sql + counts_sql)
 
 
 if __name__ == "__main__":
