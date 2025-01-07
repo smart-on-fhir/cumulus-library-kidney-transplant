@@ -1,10 +1,10 @@
 from typing import List
 from pathlib import Path
 from fhirclient.models.coding import Coding
-from irae import guard, resources
+from irae import guard, resources, manifest
 from irae.resources import save_athena_view
 
-PREFIX = 'irae'
+PREFIX = manifest.get_study_prefix()
 
 ###############################################################################
 #

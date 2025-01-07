@@ -18,7 +18,9 @@ def copy_tables() -> List[Path]:
     """
     file_list = list()
     for table in list_tables():
-        sql = resources.read_text(resources.path_template(f'{table}.sql'))
+        sql_file = f'{table}.sql'
+        print(sql_file)
+        sql = resources.read_text(resources.path_template(sql_file))
         file_list.append(resources.save_athena_view(table, sql))
     return file_list
 

@@ -6,7 +6,7 @@ from irae import counts
 from irae.variable import vsac_variables, vsac_markdown
 from irae.variable import custom_variables
 
-def make_study() -> List[Path]:
+def make_study() -> Path:
     """
     $cumulus-library build -s ./ -t irae
 
@@ -26,14 +26,12 @@ def make_study() -> List[Path]:
     casedef_sql = casedef.make()
     counts_sql = counts.make()
 
-    manifest_list = criteria_sql + studypop_sql + variables_sql + cohorts_sql + casedef_sql + counts_sql
+    vsac_markdown.make()
+    print('README.md')
 
-    manifest.write_manifest(manifest_list)
-    return manifest_list
+    manifest_list = criteria_sql + studypop_sql + variables_sql + cohorts_sql + casedef_sql + counts_sql
+    return manifest.write_manifest(manifest_list)
 
 
 if __name__ == "__main__":
     make_study()
-
-    content = vsac_markdown.make()
-    resources.path_home()

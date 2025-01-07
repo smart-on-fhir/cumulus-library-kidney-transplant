@@ -2,7 +2,6 @@ from typing import List
 from pathlib import Path
 from cumulus_library.builders.counts import CountsBuilder
 from irae import resources, fhir2sql
-# from irae.fhir2sql import PREFIX, name_cohort, name_cube
 from irae.variable import vsac_variables, custom_variables
 
 PAT = ['gender', 'race_display', 'ethnicity_display']

@@ -5,6 +5,7 @@ class TestManifest(unittest.TestCase):
 
     def test_read(self):
         keyval = manifest.read_manifest()
-        print(keyval)
+        print(keyval['file_config'])
+        print(keyval.values())
 
-        print(resources.path_parent('manifest.toml'))
+

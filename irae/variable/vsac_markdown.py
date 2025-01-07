@@ -1,4 +1,6 @@
 from typing import List
+from pathlib import Path
+from irae import resources
 from irae.variable import vsac_variables
 
 ###############################################################################
@@ -7,10 +9,22 @@ from irae.variable import vsac_variables
 #
 ###############################################################################
 def make() -> str:
-    markdown_list = list()
+    syntax_list = list()
     for aspect in vsac_variables.list_aspects():
-        markdown_list += make_markdown(aspect)
-    return header() + '\n'.join(markdown_list)
+        syntax_list += make_markdown(aspect)
+    markdown = header() + '\n'.join(syntax_list)
+    return resources.write_text(markdown, path_readme())
+
+def make_markdown(aspect) -> List[str]:
+    table = list()
+    for variable in list(aspect):
+        table.append(f'|**{variable.name}**||')
+        for valueset in list(variable.value):
+            table.append(f'|{variable.name}|{valueset.name}|{vsac(valueset.value)}|')
+    return table
+
+def path_readme() -> Path:
+    return resources.path_parent('README.md')
 
 def header() -> str:
     return columns() + '\n' + line() + '\n'
@@ -24,11 +38,3 @@ def line() -> str:
 def vsac(oid) -> str:
     url = f'https://vsac.nlm.nih.gov/valueset/{oid}/expansion/Latest'
     return f'[{oid}]({url})'
-
-def make_markdown(aspect) -> List[str]:
-    table = list()
-    for variable in list(aspect):
-        table.append(f'|**{variable.name}**||')
-        for valueset in list(variable.value):
-            table.append(f'|{variable.name}|{valueset.name}|{vsac(valueset.value)}|')
-    return table

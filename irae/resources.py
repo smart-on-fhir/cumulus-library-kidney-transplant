@@ -10,7 +10,7 @@ from irae import jsonifiers
 ###############################################################################
 def path_home(filename=None) -> Path:
     """
-    Get path to project home directory
+    Get path to python package home directory
     :param filename: optionally with `filename`
     :return: Path to project home directory, optionally with `filename`
     """
@@ -20,6 +20,11 @@ def path_home(filename=None) -> Path:
         return Path(os.path.dirname(__file__))
 
 def path_parent(filename=None) -> Path:
+    """
+    Get path to the "parent" folder where `README.MD` and `pyproject.toml` live
+    :param filename: optional name of file to get path for in parent folder
+    :return: Path to project parent directoy, otionally with `filename`
+    """
     parent = Path(os.path.abspath(os.path.join(path_home(), os.pardir)))
     if filename:
         return Path(os.path.join(parent, filename))
