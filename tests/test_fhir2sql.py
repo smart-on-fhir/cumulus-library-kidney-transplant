@@ -14,11 +14,11 @@ class TestFHIR2sql(unittest.TestCase):
 
     def test_prefix(self):
         expected = 'irae__cohort_casedef_timeline'
-        actual = fhir2sql.prefix('cohort_casedef_timeline')
+        actual = fhir2sql.name_prefix('cohort_casedef_timeline')
         self.assertEqual(expected, actual)
 
         expected = ['irae__cohort_casedef_timeline', 'irae__dx_diabetes']
-        actual = fhir2sql.prefix(['cohort_casedef_timeline', 'dx_diabetes'])
+        actual = fhir2sql.name_prefix(['cohort_casedef_timeline', 'dx_diabetes'])
         self.assertEqual(expected, actual)
 
     def test_name_join(self):

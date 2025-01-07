@@ -32,7 +32,3 @@ def make_markdown(aspect) -> List[str]:
         for valueset in list(variable.value):
             table.append(f'|{variable.name}|{valueset.name}|{vsac(valueset.value)}|')
     return table
-
-
-if __name__ == "__main__":
-    print(make())

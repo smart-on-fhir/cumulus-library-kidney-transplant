@@ -19,7 +19,7 @@ VALUESET_PRACTICE = 'valueset-c80-practice-codes.json'
 #
 ###############################################################################
 
-def include_doc_type(codes=None) -> str:
+def include_doc_type(codes=None) -> Path:
     """
     :param codes: list of codes for "type"
     :return: str file  inclusion criteria for `study_population`
@@ -29,7 +29,7 @@ def include_doc_type(codes=None) -> str:
     codes = guard.as_list_coding(codes)
     return fhir2sql.include(codes, 'doc_type')
 
-def include_doc_facility(codes=None) -> str:
+def include_doc_facility(codes=None) -> Path:
     """
     :param codes: list of codes for "facility"
     :return: SQL inclusion criteria for `study_population`
@@ -39,7 +39,7 @@ def include_doc_facility(codes=None) -> str:
     codes = guard.as_list_coding(codes)
     return fhir2sql.include(codes, 'doc_facility')
 
-def include_doc_practice(codes=None) -> str:
+def include_doc_practice(codes=None) -> Path:
     """
     :param codes: list of codes for "practice"
     :return: inclusion criteria for `study_population`

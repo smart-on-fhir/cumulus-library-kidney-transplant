@@ -1,4 +1,5 @@
 from enum import Enum
+from pathlib import Path
 from irae import guard, fhir2sql
 
 class ObservationCategory(Enum):
@@ -19,7 +20,7 @@ class ObservationCategory(Enum):
         self.display = display
 
 
-def include(category_list=None) -> str:
+def include(category_list=None) -> Path:
     """
     Selected Encounter observations specified by "category_list" to compile the `study_population`
     :param category_list: 1+ observation category types, either as ObservationCategory(Enum) or FHIR Coding.

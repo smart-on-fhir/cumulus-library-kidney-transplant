@@ -1,4 +1,5 @@
 from enum import Enum
+from pathlib import Path
 from irae import fhir2sql, guard
 
 class Gender(Enum):
@@ -21,7 +22,7 @@ class Gender(Enum):
         self.code = code
         self.display = code
 
-def include(female=True, male=True, other=True, unknown=True) -> str:
+def include(female=True, male=True, other=True, unknown=True) -> Path:
     """
     :param female: Patient.gender
     :param male: Patient.gender

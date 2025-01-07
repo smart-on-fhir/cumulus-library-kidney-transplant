@@ -1,6 +1,7 @@
 import os
-from typing import List
 from enum import Enum
+from typing import List
+from pathlib import Path
 from irae import resources
 from irae import fhir2sql
 from irae.variable import vsac_api
@@ -216,27 +217,27 @@ def list_view_valuesets() -> List[str]:
         for variable in list(aspect):
             for valueset in list(variable.value):
                 valueset_list.append(f"{variable.name}_{valueset.name}")
-    return fhir2sql.prefix(valueset_list)
+    return fhir2sql.name_prefix(valueset_list)
 
 def list_view_variables() -> List[str]:
     variable_list = list()
     for aspect in list_aspects():
         for variable in list(aspect):
             variable_list.append(variable.name)
-    return fhir2sql.prefix(variable_list)
+    return fhir2sql.name_prefix(variable_list)
 
 ###############################################################################
 #
 # Make
 #
 ###############################################################################
-def make():
+def make() -> List[Path]:
     file_list = list()
     for aspect in list_aspects():
         file_list += make_aspect(aspect)
     return file_list
 
-def make_aspect(aspect) -> List[str]:
+def make_aspect(aspect) -> List[Path]:
     """
     :param aspect: see `list_aspects()`, Dx, Rx, Lab, LabPanel, Proc
     :return: Path to SQL File to create variable definition valuesets.

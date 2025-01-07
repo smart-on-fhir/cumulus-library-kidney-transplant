@@ -1,6 +1,7 @@
+from pathlib import Path
 from irae import fhir2sql
 
-def include(period_start='2016-01-01', period_end='2025-01-01', include_history=True):
+def include(period_start='2016-01-01', period_end='2025-01-01', include_history=True) -> Path:
     """
     :param period_start: patient encounters selected will be >= period_start
     :param period_end: patient encounters selected will be <= period_end

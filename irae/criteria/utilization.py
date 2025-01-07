@@ -1,6 +1,7 @@
+from pathlib import Path
 from irae import fhir2sql
 
-def include(enc_min=0, enc_max=1000, days_min=0, days_max=36500) -> str:
+def include(enc_min=0, enc_max=1000, days_min=0, days_max=36500) -> Path:
     """
     :param enc_min: Min count of encounters during `study_period`
     :param enc_max: Max count of encounters during `study_period`

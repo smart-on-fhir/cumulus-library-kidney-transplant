@@ -1,4 +1,5 @@
 from typing import List
+from pathlib import Path
 from fhirclient.models.coding import Coding
 from irae import guard, resources
 from irae.resources import save_athena_view
@@ -10,23 +11,30 @@ PREFIX = 'irae'
 # naming conventions
 #
 ###############################################################################
-def prefix(table_obj: list | str) -> list | str:
-    if guard.is_list(table_obj):
-        return [f'{PREFIX}__{table}' for table in guard.uniq(table_obj)]
+def name_prefix(table: list | str) -> list | str:
+    if guard.is_list(table):
+        return [f'{PREFIX}__{table}' for table in guard.uniq(table)]
     else:
-        return f'{PREFIX}__{table_obj}'
+        return f'{PREFIX}__{table}'
 
-def name_simple(table):
+def name_suffix(name: str, suffix=None) -> str:
+    return f'{name}_{suffix}' if suffix else name
+
+def name_simple(table) -> str:
     simple = table
     for part in ['cohort_', 'count_', 'valueset_']:
-        simple = simple.replace(prefix(part), '')
-    return simple.replace(prefix(''), '')
+        simple = simple.replace(name_prefix(part), '')
+    return simple.replace(name_prefix(''), '')
 
 def name_join(part: str, table: str) -> str:
-    return prefix('_'.join([part, name_simple(table)]))
+    return name_prefix('_'.join([part, name_simple(table)]))
+
+def name_studypop(suffix=None) -> str:
+    table = name_suffix('study_population', suffix)
+    return name_join('cohort', table)
 
 def name_cohort(table: str, suffix=None) -> str:
-    part = f'cohort_{suffix}' if suffix else 'cohort'
+    part = name_suffix('cohort', suffix)
     return name_join(part, table)
 
 def name_cube(table: str, suffix: str) -> str:
@@ -36,7 +44,6 @@ def name_cube(table: str, suffix: str) -> str:
 def name_valueset(table: str, suffix=None) -> str:
     part = f'valueset_{suffix}' if suffix else 'valueset'
     return name_join(part, table)
-
 
 ###############################################################################
 #
@@ -74,7 +81,7 @@ def sql_paren(statement: str) -> str:
 #
 ###############################################################################
 
-def valueset2codelist(valueset_json) -> List[Coding]:
+def valueset2codelist(valueset_json: Path | str) -> List[Coding]:
     """
     Obtain a list of Coding "concepts" from a ValueSet.
     This method currently supports only "include" of "concept" defined fields.
@@ -89,9 +96,7 @@ def valueset2codelist(valueset_json) -> List[Coding]:
     """
     if isinstance(valueset_json, str):
         valueset_json = resources.load_valueset(valueset_json)
-
     parsed = list()
-
     if not valueset_json.get('compose'):
         print('warning, no valueset content. Extension?')
         return list()
@@ -106,21 +111,6 @@ def valueset2codelist(valueset_json) -> List[Coding]:
 def expansion2codelist(valueset_json: dict) -> List[Coding]:
     contains = valueset_json.get('expansion').get('contains')
     return [Coding(c) for c in contains]
-
-def codesystem2codelist(code_system_json) -> List[Coding]:
-    """
-    ValueSet is not always available, sometimes "CodeSystem" is the FHIR spec.
-    :param code_system_json:
-    :return: List Coding (similar to ValueSet)
-    """
-    codesystem = resources.load_valueset(code_system_json)
-    parsed = list()
-    url = codesystem.get('url')
-    if 'concept' in codesystem.keys():
-        for concept in codesystem['concept']:
-            concept['system'] = url
-            parsed.append(Coding(concept))
-    return parsed
 
 def codelist2view(codelist: List[Coding], view_name) -> str:
     """
@@ -137,7 +127,7 @@ def codelist2view(codelist: List[Coding], view_name) -> str:
     content = '\n,'.join(content)
     return header + '\n' + content + '\n' + footer
 
-def criteria2view(view_name, cols: list, values: list) -> str:
+def criteria2view(view_name, cols: list, values: list) -> Path:
     """
     Single inline CVAS statement where col[1...n] = value[1...n]
     :param view_name: create view name
@@ -154,19 +144,43 @@ def criteria2view(view_name, cols: list, values: list) -> str:
     sql = '\n'.join(sql)
     return save_athena_view(view_name, sql)
 
-def union_view_list(view_list: List[str], view_name: str) -> str:
-    _dest = f"{PREFIX}__{view_name}"
-    _header = f"create or replace view {PREFIX}__{view_name} as \n "
-    _select = [f"select '{item}' as subtype, system, code, display from \n {item}" for item in view_list]
-    _sql = _header + '\n UNION '.join(_select)
-    return save_athena_view(_dest, _sql)
+def union_view_list(view_list: List[str], view_name: str) -> Path:
+    dest = name_prefix(view_name)
+    cvas = f"create or replace view {PREFIX}__{view_name} as \n "
+    select = [f"select '{item}' as subtype, system, code, display from \n {item}" for item in view_list]
+    sql = cvas + '\n UNION '.join(select)
+    return save_athena_view(dest, sql)
 
-def define(codelist: List[Coding], view_name: str) -> str:
-    _dest = f"{PREFIX}__{view_name}"
-    _sql = codelist2view(codelist, _dest)
-    return save_athena_view(_dest, _sql)
+def define(codelist: List[Coding], view_name: str) -> Path:
+    dest = name_prefix(view_name)
+    sql = codelist2view(codelist, dest)
+    return Path(save_athena_view(dest, sql))
 
-def define_valueset_list(valueset_json_list: List[str], view_name: str, include=True) -> str:
+def include(codelist: List[Coding], view_name: str) -> Path:
+    """
+    NOTE: Inclusion criteria is currently supported, not exclusion.
+    :param codelist: List of codes to include in selection of `study_population`
+    :param view_name: criteria view name
+    :return: Path to SQL inclusion criteria file.
+    """
+    return define(codelist, f'include_{view_name}')
+
+def exclude(codelist: List[Coding], view_name: str) -> Path:
+    """
+    NOTE: Exclusion criteria is not yet implemented in `study_population`, and may never be.
+    :param codelist: List of codes to exclude from `study_population`
+    :param view_name: criteria view name
+    :return: Path to SQL exclusion criteria file.
+    """
+    return define(codelist, f'exclude_{view_name}')
+
+###############################################################################
+#
+# @deprecated
+#
+###############################################################################
+
+def define_valueset_list_deprecated(valueset_json_list: List[str], view_name: str) -> Path:
     """
     :param valueset_json_list: VSAC ValueSet JSON files
     :param view_name: create view as
@@ -176,10 +190,19 @@ def define_valueset_list(valueset_json_list: List[str], view_name: str, include=
     codelist = list()
     for filename in valueset_json_list:
         codelist += valueset2codelist(resources.path_valueset(filename))
-    return define(codelist, view_name, include)
+    return define(codelist, view_name)
 
-def include(codelist: List[Coding], view_name: str) -> str:
-    return define(codelist, f'include_{view_name}')
-
-def exclude(codelist: List[Coding], view_name: str) -> str:
-    return define(codelist, f'exclude_{view_name}')
+def codesystem2codelist_deprecated(code_system_json) -> List[Coding]:
+    """
+    ValueSet is not always available, sometimes "CodeSystem" is the FHIR spec.
+    :param code_system_json:
+    :return: List Coding (similar to ValueSet)
+    """
+    codesystem = resources.load_valueset(code_system_json)
+    parsed = list()
+    url = codesystem.get('url')
+    if 'concept' in codesystem.keys():
+        for concept in codesystem['concept']:
+            concept['system'] = url
+            parsed.append(Coding(concept))
+    return parsed

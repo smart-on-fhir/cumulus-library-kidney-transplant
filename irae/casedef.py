@@ -1,32 +1,32 @@
-from enum import Enum
+from pathlib import Path
 from typing import List
 from irae import fhir2sql, resources
 
-VIEW = 'irae__cohort_casedef'
-VARIABLE = 'irae__cohort_rx_transplant'
+def make(variable=None) -> List[Path]:
+    if not variable:
+        variable = fhir2sql.name_join('cohort', 'rx_transplant')
 
-def make_union_view() -> str:   # TDOO Refactor
-    """
-    :return:
-    """
-    template = f'{VIEW}_timeline.sql'
-    sql = resources.load_template(template)
-    return resources.save_athena(template, sql)
+    return [make_index_date(variable, 'index', '='),
+            make_index_date(variable, 'pre', '<'),
+            make_index_date(variable, 'post', '>'),
+            make_timeline()]
+
+def get_view() -> str:
+    return fhir2sql.name_join('cohort', 'casedef')
 
 def inline(variable: str, sql: str, suffix, equality) -> str:
     return sql.replace('$variable', variable).replace('$suffix', suffix).replace('$equality', equality)
 
-def make_index_date(variable, suffix, equality) -> str:
-    view = f'{VIEW}_{suffix}.sql'
-    template = f'{VIEW}_index.sql'
+def make_index_date(variable, suffix, equality) -> Path:
+    view = f'{get_view()}_{suffix}.sql'
+    template = f'{get_view()}_index.sql'
 
     sql = resources.load_template(template)
     sql = inline(variable, sql, suffix, equality)
 
     return resources.save_athena(view, sql)
 
-def make(variable=VARIABLE) -> List[str]:
-    return [make_index_date(variable, 'index', '='),
-            make_index_date(variable, 'pre', '<'),
-            make_index_date(variable, 'post', '>'),
-            make_union_view()]
+def make_timeline() -> Path:
+    template = fhir2sql.name_join('cohort', 'casedef_timeline') + '.sql'
+    sql = resources.load_template(template)
+    return resources.save_athena(template, sql)

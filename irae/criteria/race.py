@@ -1,9 +1,10 @@
 from enum import Enum
+from pathlib import Path
 from irae import guard, fhir2sql
 
 class Race(Enum):
     """
-    Race coding has 5 "root" levels, called the R5 shown below.
+    Race coding has 5 "path_home" levels, called the R5 shown below.
     http://hl7.org/fhir/r4/v3/Race/cs.html
     """
     asian = ('2028-9', 'Asian')
@@ -17,7 +18,7 @@ class Race(Enum):
         self.code = code
         self.display = display
 
-def include(race_list=None) -> str:
+def include(race_list=None) -> Path:
     """
     :param race_list: List of CDC High Level race groups
     :return: inclusion criteria for `study_population`

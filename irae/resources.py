@@ -1,23 +1,31 @@
 import os
 import csv
 import json
+from pathlib import Path
 from typing import List, Dict, Any, Iterable, Generator
 from irae import jsonifiers
 
 ###############################################################################
 # Root
 ###############################################################################
-def root(target=None) -> str:
-    if target:
-        return os.path.join(os.path.dirname(__file__), target)
+def path_home(filename=None) -> Path:
+    """
+    Get path to project home directory
+    :param filename: optionally with `filename`
+    :return: Path to project home directory, optionally with `filename`
+    """
+    if filename:
+        return Path(os.path.join(os.path.dirname(__file__), filename))
     else:
-        return os.path.dirname(__file__)
+        return Path(os.path.dirname(__file__))
 
-def exists(target: str) -> bool:
-    return os.path.exists(target)
+def path_parent(filename=None) -> Path:
+    parent = Path(os.path.abspath(os.path.join(path_home(), os.pardir)))
+    if filename:
+        return Path(os.path.join(parent, filename))
+    else:
+        return parent
 
-    # def make_subdir(subdir: str):
-    #     os.makedirs(path_valueset(subdir), exist_ok=True)
 
 ###############################################################################
 #
@@ -25,14 +33,28 @@ def exists(target: str) -> bool:
 #
 ###############################################################################
 
-def path_valueset(valueset_json: str) -> str:
-    return os.path.join(os.path.dirname(__file__), 'valueset', valueset_json)
+def path_valueset(filename: Path | str) -> Path:
+    """
+    :param filename: name of JSON file
+    :return: Path to JSON valueset
+    """
+    return Path(os.path.join(path_home(), 'valueset', filename))
 
-def load_valueset(valueset_json) -> dict:
-    return read_json(path_valueset(valueset_json))
+def load_valueset(filename: Path | str) -> dict:
+    """
+    :param filename: name of JSON file
+    :return: dict of valueset contents
+    """
+    return read_json(path_valueset(filename))
 
-def save_valueset(valueset_json, contents: dict) -> str:
-    return write_json(contents, path_valueset(valueset_json))
+def save_valueset(filename: Path | str, contents: dict) -> Path:
+    """
+    Save JSON to valueset folder.
+    :param filename: name of JSON file (destination)
+    :param contents: dict JSON
+    :return: Path to JSON filename
+    """
+    return Path(write_json(contents, path_valueset(filename)))
 
 
 ###############################################################################
@@ -41,8 +63,12 @@ def save_valueset(valueset_json, contents: dict) -> str:
 #
 ###############################################################################
 
-def path_spreadsheet(table_ext: str) -> str:
-    return os.path.join(os.path.dirname(__file__), 'spreadsheet', table_ext)
+def path_spreadsheet(filename: Path | str) -> Path:
+    """
+    :param filename: name of csv or tsv
+    :return: Path to filename
+    """
+    return Path(os.path.join(path_home(), 'spreadsheet', filename))
 
 
 ###############################################################################
@@ -51,10 +77,10 @@ def path_spreadsheet(table_ext: str) -> str:
 #
 ###############################################################################
 
-def path_template(file_sql) -> str:
-    return os.path.join(os.path.dirname(__file__), 'template', file_sql)
+def path_template(file_sql: Path | str) -> Path:
+    return Path(os.path.join(path_home(), 'template', file_sql))
 
-def load_template(file_sql) -> str:
+def load_template(file_sql: Path | str) -> str:
     return read_text(path_template(file_sql))
 
 
@@ -64,14 +90,14 @@ def load_template(file_sql) -> str:
 #
 ###############################################################################
 
-def path_athena(file_sql: str) -> str:
-    return os.path.join(os.path.dirname(__file__), 'athena', file_sql)
+def path_athena(file_sql: Path | str) -> Path:
+    return Path(os.path.join(os.path.dirname(__file__), 'athena', file_sql))
 
-def save_athena(file_sql: str, contents: str) -> str:
-    return write_text(contents, path_athena(file_sql))
+def save_athena(file_sql: Path | str, contents: str) -> Path:
+    return Path(write_text(contents, path_athena(file_sql)))
 
-def save_athena_view(view_name: str, contents: str) -> str:
-    return write_text(contents, path_athena(f'{view_name}.sql'))
+def save_athena_view(view_name: str, contents: str) -> Path:
+    return Path(write_text(contents, path_athena(f'{view_name}.sql')))
 
 
 ###############################################################################
@@ -79,7 +105,7 @@ def save_athena_view(view_name: str, contents: str) -> str:
 # Read/Write Text
 #
 ###############################################################################
-def read_text(text_file: str, encoding: str = 'UTF-8') -> str:
+def read_text(text_file: Path | str, encoding: str = 'UTF-8') -> str:
     """
     Read text from file
     :param text_file: absolute path to file
@@ -90,7 +116,7 @@ def read_text(text_file: str, encoding: str = 'UTF-8') -> str:
         return t_file.read()
 
 
-def write_text(contents: str, file_path: str, encoding: str = 'UTF-8') -> str:
+def write_text(contents: str, file_path: Path | str, encoding: str = 'UTF-8') -> str:
     """
     Write file contents
     :param contents: string contents
@@ -138,7 +164,7 @@ def m_open(**kwargs):
 # Read/Write JSON
 #
 ###############################################################################
-def read_json(json_file: str, encoding: str = 'UTF-8') -> Dict[Any, Any]:
+def read_json(json_file: Path | str, encoding: str = 'UTF-8') -> Dict[Any, Any]:
     """
     Read json from file
     :param json_file: absolute path to file
@@ -148,7 +174,7 @@ def read_json(json_file: str, encoding: str = 'UTF-8') -> Dict[Any, Any]:
     with m_open(file=json_file, encoding=encoding) as j_file:
         return json.load(j_file)
 
-def write_json(contents: Dict[Any, Any], json_file_path: str, encoding: str = 'UTF-8') -> str:
+def write_json(contents: Dict[Any, Any], json_file_path: Path | str, encoding: str = 'UTF-8') -> Path:
     """
     Write JSON to file
     :param contents: json (dict) contents
@@ -160,7 +186,7 @@ def write_json(contents: Dict[Any, Any], json_file_path: str, encoding: str = 'U
     os.makedirs(directory, exist_ok=True)
     with m_open(file=json_file_path, mode='w', encoding=encoding) as json_file_path:
         json.dump(contents, json_file_path, indent=4, cls=jsonifiers.CustomJsonEncoder)
-        return json_file_path.name
+        return Path(json_file_path.name)
 
 ###############################################################################
 #
@@ -168,7 +194,7 @@ def write_json(contents: Dict[Any, Any], json_file_path: str, encoding: str = 'U
 #
 ###############################################################################
 
-def write_csv(rows: Iterable[List[str]], file_csv: str, delimiter: str = ',', quote_char: str = '"'):
+def write_csv(rows: Iterable[List[str]], file_csv: Path | str, delimiter: str = ',', quote_char: str = '"'):
     """Write csv file.
     :param rows: The contents to write to file.
     :param file_csv: absolute path to the csv
@@ -182,7 +208,7 @@ def write_csv(rows: Iterable[List[str]], file_csv: str, delimiter: str = ',', qu
             writer.writerow(row)
 
 
-def read_csv(file_csv: str, delimiter: str = ',', quote_char: str = '"') -> Generator[List[str], None, None]:
+def read_csv(file_csv: Path | str, delimiter: str = ',', quote_char: str = '"') -> Generator[List[str], None, None]:
     """
     Parse csv file
     :param file_csv: absolute path to the csv
@@ -195,7 +221,7 @@ def read_csv(file_csv: str, delimiter: str = ',', quote_char: str = '"') -> Gene
             yield row
 
 
-def list_from_csv_column(file_csv: str, column: str, delimiter: str = ',', quote_char: str = '"') -> List[str]:
+def list_from_csv_column(file_csv: Path | str, column: str, delimiter: str = ',', quote_char: str = '"') -> List[str]:
     """
     Parses csv file and returns all values from the provided column
     :param file_csv: absolute path to the csv

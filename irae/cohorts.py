@@ -1,51 +1,44 @@
 from typing import List
-from irae import fhir2sql, resources
+from pathlib import Path
 from irae.variable import vsac_variables, custom_variables
-
-STUDY_POP = 'irae__cohort_study_population'
-
-def select_from(tables: list) -> str:
-    return f'select * from \n {fhir2sql.sql_list(tables)}'
+from irae import fhir2sql, resources
 
 def ctas(cohort: str, variable: str, where: list) -> str:
-    sql = [f'create table {name_cohort(variable)} as ',
-           select_from([cohort, variable]),
-           'WHERE', fhir2sql.sql_and(where)]
-
+    from_list = fhir2sql.sql_list([cohort, variable])
+    select_from = f'select * from \n {from_list}'
+    sql = [f'create table {fhir2sql.name_cohort(variable)} as ',
+           select_from, 'WHERE', fhir2sql.sql_and(where)]
     return '\n'.join(sql)
 
-def name_cohort(variable: str) -> str:
-    return variable.replace('irae__', 'irae__cohort_')
-
-def cohort_dx(variable: str) -> str:
-    source = f'{STUDY_POP}_dx'
+def cohort_dx(variable: str) -> Path:
+    source = fhir2sql.name_studypop('dx')
     where = [f'{source}.dx_code = {variable}.code',
              f'{source}.dx_system = {variable}.system']
     sql = ctas(source, variable, where)
-    return fhir2sql.save_athena_view(name_cohort(variable), sql)
+    return fhir2sql.save_athena_view(fhir2sql.name_cohort(variable), sql)
 
-def cohort_rx(variable: str) -> str:
-    source = f'{STUDY_POP}_rx'
+def cohort_rx(variable: str) -> Path:
+    source = fhir2sql.name_studypop('rx')
     where = [f'{source}.rx_code = {variable}.code',
              f'{source}.rx_system = {variable}.system']
     sql = ctas(source, variable, where)
-    return fhir2sql.save_athena_view(name_cohort(variable), sql)
+    return fhir2sql.save_athena_view(fhir2sql.name_cohort(variable), sql)
 
-def cohort_lab(variable: str) -> str:
-    source = f'{STUDY_POP}_lab'
+def cohort_lab(variable: str) -> Path:
+    source = fhir2sql.name_studypop('lab')
     where = [f'{source}.lab_observation_code = {variable}.code',
              f'{source}.lab_observation_system = {variable}.system']
     sql = ctas(source, variable, where)
-    return fhir2sql.save_athena_view(name_cohort(variable), sql)
+    return fhir2sql.save_athena_view(fhir2sql.name_cohort(variable), sql)
 
-def cohort_proc(variable: str) -> str:
-    source = f'{STUDY_POP}_proc'
+def cohort_proc(variable: str) -> Path:
+    source = fhir2sql.name_studypop('proc')
     where = [f'{source}.proc_code = {variable}.code',
              f'{source}.proc_system = {variable}.system']
     sql = ctas(source, variable, where)
-    return fhir2sql.save_athena_view(name_cohort(variable), sql)
+    return fhir2sql.save_athena_view(fhir2sql.name_cohort(variable), sql)
 
-def make_study_variable_timeline() -> List[str]:
+def make_study_variable_timeline() -> List[Path]:
     file_list = list()
     table_list = ['irae__cohort_study_variables',
                   'irae__cohort_study_variables_timeline']
@@ -57,7 +50,7 @@ def make_study_variable_timeline() -> List[str]:
 
     return file_list
 
-def make_study_variable_groups() -> List[str]:
+def make_study_variable_groups() -> List[Path]:
     group_list = list()
     variable_list = vsac_variables.list_view_variables() + custom_variables.list_view_variables()
     for variable in variable_list:
@@ -73,7 +66,7 @@ def make_study_variable_groups() -> List[str]:
             raise Exception(f'unknown variable type {variable}')
     return group_list + make_study_variable_timeline()
 
-def make() -> List[str]:
+def make() -> List[Path]:
     file_list = list()
     variable_list = vsac_variables.list_view_variables() + custom_variables.list_view_variables()
     for variable in variable_list:

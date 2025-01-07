@@ -1,4 +1,5 @@
 from typing import List
+from pathlib import Path
 from irae import resources
 from irae import fhir2sql
 from irae.variable.spreadsheet import SpreadsheetReader, Vocab
@@ -36,11 +37,11 @@ def list_view_valuesets_lab() -> List[str]:
     var_list.append('lab_custom')
     return [f'irae__{var}' for var in var_list]
 
-def union_aspect(aspect: str, aspect_entries: list, view_name: str) -> str:
+def union_aspect(aspect: str, aspect_entries: list, view_name: str) -> Path:
     targets = [f'irae__{aspect}_{entry}' for entry in aspect_entries]
     return fhir2sql.union_view_list(targets, view_name)
 
-def make_aspect(vocab: Vocab, aspect: str, aspect_entries: list, filetype='csv') -> List[str]:
+def make_aspect(vocab: Vocab, aspect: str, aspect_entries: list, filetype='csv') -> List[Path]:
     file_list = list()
     delimiter = ',' if filetype == 'csv' else '\t'
     for entry in aspect_entries:
@@ -51,15 +52,15 @@ def make_aspect(vocab: Vocab, aspect: str, aspect_entries: list, filetype='csv')
         file_list.append(fhir2sql.define(codes, f'{aspect}_{entry}'))
     return file_list
 
-def make_lab() -> List[str]:
+def make_lab() -> List[Path]:
     return make_aspect(Vocab.LOINC, 'lab', LAB_LIST, 'csv')
 
-def make_rx() -> List[str]:
+def make_rx() -> List[Path]:
     return make_aspect(Vocab.RXNORM, 'rx', RX_LIST, 'tsv')
 
 def make_union():
     return [union_aspect('lab', LAB_LIST, f'lab_custom'),
             union_aspect('rx', RX_LIST, f'rx_transplant')]
 
-def make() -> List[str]:
+def make() -> List[Path]:
     return make_lab() + make_rx() + make_union()

@@ -1,15 +1,16 @@
 from typing import List
+from pathlib import Path
 from fhirclient.models.coding import Coding
 from irae import resources
-from irae.variable.base import Vocab
-from irae.variable.base import BinaryClass, MultiClass
+from irae.vocab import Vocab
+from irae.variable.deprecated import BinaryClass, MultiClass
 
 class SpreadsheetReader:
     filename = None
     alias = None
     vocab: Vocab = None
 
-    def __init__(self, filename: str, alias: str, vocab=Vocab.ICD10CM):
+    def __init__(self, filename: Path | str, alias: str, vocab=Vocab.ICD10CM):
         """
         :param filename: researcher provided/uploaded spreadsheet
         :param alias: variable name like "suicidality"
@@ -36,7 +37,7 @@ class SpreadsheetReader:
     def read_multiclass(self):
         parsed = dict()
 
-        for columns in common.read_csv(self.filename, '\t'):
+        for columns in resources.read_csv(self.filename, '\t'):
             code = columns[0]
             display = columns[1]
             subtype = columns[2]

@@ -1,4 +1,5 @@
 from enum import Enum
+from pathlib import Path
 from irae import fhir2sql, guard
 
 class EncounterClass(Enum):
@@ -25,7 +26,7 @@ class EncounterClass(Enum):
         self.display = display
 
 
-def include(enc_class_list=None) -> str:
+def include(enc_class_list=None) -> Path:
     """
     Selected encounters specified by "enc_class_list" to compile the `study_population`
     :param enc_class_list: 1+ encounter class types, either as EncounterClass(Enum) or FHIR Coding.
