@@ -4,6 +4,7 @@ from typing import List
 from pathlib import Path
 from irae import resources
 from irae import fhir2sql
+from irae.fhir2sql import PREFIX
 from irae.variable import vsac_api
 
 ###############################################################################
@@ -234,26 +235,23 @@ def list_view_variables() -> List[str]:
 def make() -> List[Path]:
     file_list = list()
     for aspect in list_aspects():
-        file_list += make_aspect(aspect)
+        file_list += make_vsac_variables_for(aspect)
     return file_list
 
-def make_aspect(aspect) -> List[Path]:
+def make_vsac_variables_for(aspect) -> List[Path]:
     """
     :param aspect: see `list_aspects()`, Dx, Rx, Lab, LabPanel, Proc
     :return: Path to SQL File to create variable definition valuesets.
     """
     api = vsac_api.UmlsApi()
-
     var_list = list()
-
     for variable in list(aspect):
-        print(variable)
+        #   print(variable)
         valueset_list = list()
         for valueset in list(variable.value):
-            print(valueset)
-
-            json_file = resources.path_valueset(f"irae__{variable.name}/{valueset.name}.json")
-            view_name = f"irae__{variable.name}_{valueset.name}"
+            #   print(valueset)
+            json_file = resources.path_valueset(f"{PREFIX}__{variable.name}/{valueset.name}.json")
+            view_name = f"{PREFIX}__{variable.name}_{valueset.name}"
             view_file = resources.path_athena(f'{view_name}.sql')
 
             if not os.path.exists(json_file):

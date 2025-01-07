@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 from typing import List, Dict, Any, Iterable, Generator
 from irae import jsonifiers
+from irae import manifest
 
 ###############################################################################
 # Root

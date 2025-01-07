@@ -8,7 +8,7 @@ def include(period_start='2016-01-01', period_end='2025-01-01', include_history=
     :param include_history: if True, for patients matching all inclusion critera, select also all patient history even prior to period_start.
     :return: inclusion criteria for `study_population.py`
     """
-    view = 'irae__include_study_period'
+    view = fhir2sql.name_join('include', 'study_period')
     cols = ['period_start', 'period_end', 'include_history']
     values = [f"date('{period_start}')",
               f"date('{period_end}')",

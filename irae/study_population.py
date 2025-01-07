@@ -12,7 +12,7 @@ def list_tables() -> List[str]:
     aspect_list = [f'{table}_{t}' for t in aspect_list]
     return [table] + aspect_list
 
-def copy_tables() -> List[Path]:
+def make_study_population() -> List[Path]:
     """
     :return: list of SQL `study_population`
     """
@@ -25,4 +25,4 @@ def copy_tables() -> List[Path]:
     return file_list
 
 def make() -> List[Path]:
-    return copy_tables()
+    return make_study_population()

@@ -1,6 +1,6 @@
-# IRAE Immune Related Adverse Events 
+# VSAC ValueSets
 
-|Variable|Subtype|VSAC|
+|Study Variable|Subtype|VSAC|
 |:------:|:-----:|:---:|
 |**proc_surgery**||
 |proc_surgery|major|[2.16.840.1.113883.3.464.1003.198.12.1075](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.464.1003.198.12.1075/expansion/Latest)|

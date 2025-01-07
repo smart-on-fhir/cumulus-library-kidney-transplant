@@ -11,11 +11,11 @@ from irae.variable import vsac_variables
 def make() -> str:
     syntax_list = list()
     for aspect in vsac_variables.list_aspects():
-        syntax_list += make_markdown(aspect)
+        syntax_list += make_markdown_for(aspect)
     markdown = header() + '\n'.join(syntax_list)
     return resources.write_text(markdown, path_readme())
 
-def make_markdown(aspect) -> List[str]:
+def make_markdown_for(aspect) -> List[str]:
     table = list()
     for variable in list(aspect):
         table.append(f'|**{variable.name}**||')
@@ -27,10 +27,11 @@ def path_readme() -> Path:
     return resources.path_parent('README.md')
 
 def header() -> str:
-    return columns() + '\n' + line() + '\n'
+    H1 = '# VSAC ValueSets'
+    return H1 + '\n\n' + columns() + '\n' + line() + '\n'
 
 def columns() -> str:
-    return '|Variable|Subtype|VSAC|'
+    return '|Study Variable|Subtype|VSAC|'
 
 def line() -> str:
     return '|:------:|:-----:|:---:|'
