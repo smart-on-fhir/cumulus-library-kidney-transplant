@@ -113,6 +113,20 @@ def inline_template(sql: str, suffix=None, variable=None, equality=None) -> str:
 
 ###############################################################################
 #
+# prompt (Large Language Model)
+#
+###############################################################################
+def path_prompt(filename: Path | str) -> Path:
+    return Path(os.path.join(path_home(), 'prompt', filename))
+
+def save_prompt_json(filename: Path | str, contents: dict) -> Path:
+    return Path(write_json(contents, path_prompt(filename)))
+
+def save_prompt_text(filename: Path | str, text: str) -> Path:
+    return Path(write_text(text, path_prompt(filename)))
+
+###############################################################################
+#
 # Athena SQL File(s)
 #
 ###############################################################################
