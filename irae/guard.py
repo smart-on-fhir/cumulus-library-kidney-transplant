@@ -12,6 +12,9 @@ from fhirclient.models.coding import Coding
 def is_enum(obj) -> bool:
     return isinstance(obj, Enum)
 
+def is_dict(obj) -> bool:
+    return isinstance(obj, dict)
+
 def is_list(obj) -> bool:
     return isinstance(obj, list)
 
