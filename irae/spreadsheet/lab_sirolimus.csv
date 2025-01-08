@@ -1,0 +1,6 @@
+LOINC_NUM,COMPONENT,PROPERTY,TIME_ASPCT,SYSTEM,SCALE_TYP,METHOD_TYP,CLASS,VersionLastChanged,STATUS,CLASSTYPE,ORDER_OBS,EXTERNAL_COPYRIGHT_NOTICE,EXAMPLE_UNITS,LONG_COMMON_NAME,EXAMPLE_UCUM_UNITS,VersionFirstReleased,LHCForms,FormalName
+49737-0,Sirolimus,Mass,Pt,Dose,Qn,,DRUGDOSE,2.73,ACTIVE,1,Observation,,,"Sirolimus [Mass] of Dose",mg,2.22,false,Sirolimus:Mass:Pt:Dose:Qn:
+29247-4,Sirolimus,MCnc,Pt,Bld,Qn,,DRUG/TOX,2.73,ACTIVE,1,Both,,ug/L;ng/mL,"Sirolimus [Mass/volume] in Blood",ng/mL,2.03,false,Sirolimus:MCnc:Pt:Bld:Qn:
+80548-1,Sirolimus,MCnc,Pt,Bld.dot,Qn,,DRUG/TOX,2.61,ACTIVE,1,Both,,ug/L,"Sirolimus [Mass/volume] in DBS",ug/L,2.56,false,Sirolimus:MCnc:Pt:Bld.dot:Qn:
+72676-0,Sirolimus^trough,MCnc,Pt,Plas,Qn,,DRUG/TOX,2.42,ACTIVE,1,Both,,mg/L,"Sirolimus [Mass/volume] in Plasma --trough",mg/L,2.42,false,Sirolimus^trough:MCnc:Pt:Plas:Qn:
+96462-7,Sirolimus,SCnc,Pt,Bld,Qn,IA,DRUG/TOX,2.69,ACTIVE,1,Both,,nmol/L,"Sirolimus [Moles/volume] in Blood by Immunoassay",nmol/L,2.69,false,Sirolimus:SCnc:Pt:Bld:Qn:IA
