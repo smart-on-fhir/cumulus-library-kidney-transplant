@@ -1,6 +1,7 @@
 from typing import List
 from pathlib import Path
 from irae import resources
+from irae.variable.aspect import Aspect
 from irae.variable import vsac_variables
 
 ###############################################################################
@@ -10,17 +11,17 @@ from irae.variable import vsac_variables
 ###############################################################################
 def make() -> str:
     syntax_list = list()
-    for aspect in vsac_variables.list_aspects():
+    for aspect in vsac_variables.get_aspect_map().as_list():
         syntax_list += make_markdown_for(aspect)
     markdown = header() + '\n'.join(syntax_list)
     return resources.write_text(markdown, path_readme())
 
-def make_markdown_for(aspect) -> List[str]:
+def make_markdown_for(aspect: Aspect) -> List[str]:
     table = list()
-    for variable in list(aspect):
+    for variable in aspect.variable_list:
         table.append(f'|**{variable.name}**||')
-        for valueset in list(variable.value):
-            table.append(f'|{variable.name}|{valueset.name}|{vsac(valueset.value)}|')
+        for valueset in list(variable.valueset_list):
+            table.append(f'|{variable.name}|{valueset.name}|{vsac(valueset.oid)}|')
     return table
 
 def path_readme() -> Path:

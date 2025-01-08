@@ -2,7 +2,8 @@ from typing import List
 from pathlib import Path
 from irae import resources
 from irae import fhir2sql
-from irae.variable.spreadsheet import SpreadsheetReader, Vocab
+from irae.variable.aspect import AspectKey
+from irae.variable.spreadsheet import SpreadsheetReader, Delimiter, Vocab
 
 RX_LIST = ['atg',
            'azathioprine',
@@ -37,30 +38,29 @@ def list_view_valuesets_lab() -> List[str]:
     var_list.append('lab_custom')
     return [f'irae__{var}' for var in var_list]
 
-def union_aspect(aspect: str, aspect_entries: list, view_name: str) -> Path:
-    targets = [f'irae__{aspect}_{entry}' for entry in aspect_entries]
+def union_view_list(rx_or_lab: str, aspect_entries: list, view_name: str) -> Path:
+    targets = [f'irae__{rx_or_lab}_{entry}' for entry in aspect_entries]
     return fhir2sql.union_view_list(targets, view_name)
 
-def make_aspect(vocab: Vocab, aspect: str, aspect_entries: list, filetype='csv') -> List[Path]:
+def make_aspect(vocab: Vocab, aspect_key: AspectKey, aspect_entries: list, delimiter: Delimiter) -> List[Path]:
     file_list = list()
-    delimiter = ',' if filetype == 'csv' else '\t'
     for entry in aspect_entries:
-        print(f'custom_variables.py {aspect}_{entry}')
-        filename = resources.path_spreadsheet(f'{aspect}_{entry}.{filetype}')
-        reader = SpreadsheetReader(filename, entry, vocab)
-        codes = reader.read_coding_list(delimiter)
-        file_list.append(fhir2sql.define(codes, f'{aspect}_{entry}'))
+        print(f'custom_variables.py {aspect_key.name}_{entry}')
+        filename = resources.path_spreadsheet(f'{aspect_key.name}_{entry}.{delimiter.name}')
+        reader = SpreadsheetReader(filename, entry, vocab, delimiter)
+        codes = reader.read_coding_list()
+        file_list.append(fhir2sql.define(codes, f'{aspect_key.name}_{entry}'))
     return file_list
 
 def make_lab() -> List[Path]:
-    return make_aspect(Vocab.LOINC, 'lab', LAB_LIST, 'csv')
+    return make_aspect(Vocab.LOINC, AspectKey.lab, LAB_LIST, Delimiter.csv)
 
 def make_rx() -> List[Path]:
-    return make_aspect(Vocab.RXNORM, 'rx', RX_LIST, 'tsv')
+    return make_aspect(Vocab.RXNORM, AspectKey.rx, RX_LIST, Delimiter.tsv)
 
 def make_union():
-    return [union_aspect('lab', LAB_LIST, f'lab_custom'),
-            union_aspect('rx', RX_LIST, f'rx_transplant')]
+    return [union_view_list('lab', LAB_LIST, f'lab_custom'),
+            union_view_list('rx', RX_LIST, f'rx_transplant')]
 
 def make() -> List[Path]:
     return make_lab() + make_rx() + make_union()

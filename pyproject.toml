@@ -18,7 +18,7 @@ dependencies = [
     "sqlfluff >= 3, <4",
 ]
 # You can alter this to discuss your study specifics
-description = "kidney transplant irAE (immuno related adverse events) related to immunosuppressive Rx post transplant"
+description = "kidney transplant irAE (immuno related adverse events) related to immunosuppressive Medications post transplant"
 readme = "README.md"
 license = { text="Apache License 2.0" }
 classifiers = [

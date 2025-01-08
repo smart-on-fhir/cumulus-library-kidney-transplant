@@ -13,30 +13,30 @@ class Valueset:
 class Variable:
     def __init__(self, name: str, valuesets: List[Valueset] | Dict[str, str]):
         self.name = name.lower()
-        self.valuesets = list()
+        self.valueset_list = list()
         if valuesets:
             if guard.is_list_type(valuesets, Valueset):
-                self.valuesets = valuesets
+                self.valueset_list = valuesets
             elif guard.is_dict(valuesets):
-                self.valuesets = list()
+                self.valueset_list = list()
                 for vs_name in valuesets.keys():
                     vs_name = vs_name.lower()
-                    self.valuesets.append(Valueset(vs_name, valuesets.get(vs_name)))
+                    self.valueset_list.append(Valueset(vs_name, valuesets.get(vs_name)))
 
     def as_json(self) -> dict:
-        return {self.name: [vs.as_json() for vs in self.valuesets]}
+        return {self.name: [vs.as_json() for vs in self.valueset_list]}
 
 class AspectKey(Enum):
-    dx = 'diagnosis'
-    rx = 'medication'
-    lab = 'laboratory'
-    proc = 'procedure'
+    dx = 'diagnoses'
+    rx = 'medications'
+    lab = 'labs'
+    proc = 'procedures'
 
     def as_json(self):
         return {self.name: self.value}
 
 class Aspect:
-    variable_list = list()
+    variable_list = List[Variable]
     key = AspectKey
 
     def __init__(self, variable_list: List[Variable] | Dict[str, Dict[str, str]]):
@@ -63,27 +63,27 @@ class Aspect:
     def as_json(self) -> dict:
         return {self.key.name: [v.as_json() for v in self.variable_list]}
 
-class Dx(Aspect):
+class Diagnoses(Aspect):
     key = AspectKey.dx
 
-class Rx(Aspect):
+class Medications(Aspect):
     key = AspectKey.rx
 
-class Lab(Aspect):
+class Labs(Aspect):
     key = AspectKey.lab
 
-class Proc(Aspect):
+class Procedures(Aspect):
     key = AspectKey.proc
 
 class AspectMap:
-    def __init__(self, diagnosis: Dx | None, medication: Rx | None, lab: Lab | None, procedure: Proc | None):
-        self.diagnosis = diagnosis
-        self.medication = medication
-        self.lab = lab
-        self.procedure = procedure
+    def __init__(self, diagnoses: Diagnoses | None, medications: Medications | None, labs: Labs | None, procedures: Procedures | None):
+        self.diagnosis = diagnoses
+        self.medications = medications
+        self.labs = labs
+        self.procedures = procedures
 
     def as_list(self) -> List[Aspect]:
-        return [self.diagnosis, self.medication, self.lab, self.procedure]
+        return [self.diagnosis, self.medications, self.labs, self.procedures]
 
     def as_json(self) -> dict:
-        return self.diagnosis.as_json() | self.medication.as_json() | self.lab.as_json() | self.procedure.as_json()
+        return self.diagnosis.as_json() | self.medications.as_json() | self.labs.as_json() | self.procedures.as_json()

@@ -1,16 +1,23 @@
 from typing import List
+from enum import Enum
 from pathlib import Path
 from fhirclient.models.coding import Coding
 from irae import resources
 from irae.vocab import Vocab
 from irae.variable.deprecated import BinaryClass, MultiClass
 
+class Delimiter(Enum):
+    csv = ','
+    tsv = '\t'
+    pipe = '|'
+
 class SpreadsheetReader:
     filename = None
     alias = None
     vocab: Vocab = None
+    delimiter: Delimiter = None
 
-    def __init__(self, filename: Path | str, alias: str, vocab=Vocab.ICD10CM):
+    def __init__(self, filename: Path | str, alias: str, vocab: Vocab, delimiter: Delimiter):
         """
         :param filename: researcher provided/uploaded spreadsheet
         :param alias: variable name like "suicidality"
@@ -19,11 +26,12 @@ class SpreadsheetReader:
         self.filename = filename
         self.alias = alias
         self.vocab = vocab
+        self.delimiter = delimiter
 
-    def read_coding_list(self, delimiter: str = ',', quote_char: str = '"') -> List[Coding]:
+    def read_coding_list(self, quote_char: str = '"') -> List[Coding]:
         codes = list()
 
-        for columns in resources.read_csv(self.filename, delimiter, quote_char):
+        for columns in resources.read_csv(self.filename, self.delimiter.value, quote_char):
             c = Coding()
             c.code = columns[0]
             c.display = columns[1]
@@ -36,8 +44,7 @@ class SpreadsheetReader:
 
     def read_multiclass(self):
         parsed = dict()
-
-        for columns in resources.read_csv(self.filename, '\t'):
+        for columns in resources.read_csv(self.filename, self.delimiter.value):
             code = columns[0]
             display = columns[1]
             subtype = columns[2]

@@ -1,14 +1,14 @@
 from typing import List
 from irae.variable.aspect import Variable, Valueset
-from irae.variable.aspect import Aspect, AspectMap, Dx, Rx, Lab, Proc
+from irae.variable.aspect import Aspect, AspectMap, Diagnoses, Medications, Labs, Procedures
 
 ###############################################################################
 #
 # Proc Procedures
 #
 ###############################################################################
-def get_procedure() -> Proc:
-    return Proc([
+def get_procedures() -> Procedures:
+    return Procedures([
         Variable('Nephrectomy', {
             'sct': '2.16.840.1.113762.1.4.1248.200',
             'icd10pcs': '2.16.840.1.113762.1.4.1248.4'}),
@@ -22,7 +22,7 @@ def get_procedure() -> Proc:
 # Dx Diagnosis
 #
 ###############################################################################
-def get_diagnosis() -> Dx:
+def get_diagnoses() -> Diagnoses:
     vars = list()
     vars.append(Variable(
         'Transplant', {
@@ -83,31 +83,32 @@ def get_diagnosis() -> Dx:
             'td2_related_dx': '2.16.840.1.113762.1.4.1078.440',
             'diabetic_nephropathy': '2.16.840.1.113883.3.464.1003.109.12.1004',
             'diabetic_ckd': '2.16.840.1.113762.1.4.1078.124'}))
-    return Dx(vars)
+    return Diagnoses(vars)
 
 ###############################################################################
 #
 # Lab Laboratory Observations
 #
 ###############################################################################
-def get_lab() -> Lab:
+def get_labs() -> Labs:
+    # return get_lab_analytes()
     panels = get_lab_panels()
     analytes = get_lab_analytes()
-    return Lab(panels.variable_list + analytes.variable_list)
+    return Labs(panels.variable_list + analytes.variable_list)
 
-def get_lab_panels() -> Lab:
-    return Lab([
+def get_lab_panels() -> Labs:
+    return Labs([
         Variable('CBC', {'with_diff': '1.3.6.1.4.1.6997.4.1.2.271.13.38167.1.1.999.594'}),
         Variable('CMP', {'comprehensive': '2.16.840.1.113762.1.4.1078.867'}),
+        Variable('GFR', {'egfr': '2.16.840.1.113762.1.4.1078.397'}),
         Variable('LFT', {
             'function': '2.16.840.1.113762.1.4.1078.867',
             'ggt': '2.16.840.1.113762.1.4.1222.806',
-            'pt_prothrombin_time': '2.16.840.1.113883.3.3616.200.110.102.5037',
+            'pt': '2.16.840.1.113883.3.3616.200.110.102.5037',
             'inr': '2.16.840.1.113883.3.117.1.7.1.213'})])
 
-def get_lab_analytes() -> Lab:
-    return Lab([
-        Variable('GFR', {'EGFR': '2.16.840.1.113762.1.4.1078.397'}),
+def get_lab_analytes() -> Labs:
+    return Labs([
         Variable('Creatinine', {
             'serum_cr': '2.16.840.1.113762.1.4.1146.2206',
             'urine_cr': '2.16.840.1.113762.1.4.1178.87',
@@ -132,8 +133,8 @@ def get_lab_analytes() -> Lab:
 # Rx Medications
 #
 ###############################################################################
-def get_medication() -> Rx:
-    return Rx([
+def get_medications() -> Medications:
+    return Medications([
         Variable('Immunosuppressive', {
             'drugs': '2.16.840.1.113762.1.4.1219.192',
             'systemic_therapy': '2.16.840.1.113883.3.666.5.803',
@@ -162,7 +163,7 @@ def deprecated() -> List[Variable]:
 
 def get_aspect_map() -> AspectMap:
     return AspectMap(
-        diagnosis=get_diagnosis(),
-        medication=get_medication(),
-        lab=get_lab(),
-        procedure=get_procedure())
+        diagnoses=get_diagnoses(),
+        medications=get_medications(),
+        labs=get_labs(),
+        procedures=get_procedures())
