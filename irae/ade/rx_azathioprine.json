@@ -1,0 +1,44 @@
+{
+  "Common Side Effects": {
+    "Nausea": "Mild to moderate nausea, especially during the first few weeks of treatment.",
+    "Vomiting": "Occasional vomiting due to gastrointestinal irritation.",
+    "Diarrhea": "Frequent loose stools due to GI upset.",
+    "Fatigue": "Persistent tiredness or lack of energy.",
+    "Abdominal Pain": "Discomfort or cramping in the stomach area."
+  },
+  "Hematologic Side Effects": {
+    "Leukopenia": "Reduction in white blood cells, increasing the risk of infections.",
+    "Thrombocytopenia": "Low platelet count, which may cause easy bruising or bleeding.",
+    "Anemia": "Low red blood cell count, leading to fatigue and pallor.",
+    "Pancytopenia": "Reduction in all blood cell types in severe cases."
+  },
+  "Infections": {
+    "Increased Risk of Infections": "Due to immunosuppression, patients are more susceptible to bacterial, viral, and fungal infections.",
+    "Opportunistic Infections": "Infections like cytomegalovirus or Pneumocystis jirovecii pneumonia."
+  },
+  "Gastrointestinal Side Effects": {
+    "Pancreatitis": "Inflammation of the pancreas, presenting as severe upper abdominal pain.",
+    "Mouth Ulcers": "Painful sores or ulcers in the mouth.",
+    "Hepatotoxicity": "Liver dysfunction, presenting as jaundice, elevated liver enzymes, or hepatomegaly."
+  },
+  "Dermatologic Side Effects": {
+    "Rash": "Skin redness, irritation, or itchiness.",
+    "Alopecia": "Temporary thinning or loss of hair."
+  },
+  "Neurologic Side Effects": {
+    "Headache": "Mild to moderate headaches."
+  },
+  "Allergic and Hypersensitivity Reactions": {
+    "Hypersensitivity Syndrome": "A rare but serious reaction with fever, rash, and systemic symptoms.",
+    "Fever": "Unexplained fever as a sign of drug hypersensitivity."
+  },
+  "Long-Term Risks": {
+    "Malignancies": "Increased risk of cancers, particularly non-melanoma skin cancer and lymphomas.",
+    "Photosensitivity": "Increased sensitivity to sunlight, causing skin burns or irritation."
+  },
+  "Rare or Serious Side Effects": {
+    "Myelosuppression": "Severe suppression of bone marrow function.",
+    "Interstitial Lung Disease": "Lung inflammation or scarring, leading to breathing difficulties.",
+    "Severe Hepatotoxicity": "Rare cases of liver failure."
+  }
+}

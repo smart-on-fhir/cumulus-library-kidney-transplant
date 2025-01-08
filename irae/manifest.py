@@ -7,6 +7,9 @@ from irae import guard, resources
 def get_study_prefix() -> str:
     return str(read_manifest().get('study_prefix'))
 
+def get_file_config() -> List:
+    return read_manifest().get('file_config')
+
 def path_manifest() -> Path:
     return resources.path_home('manifest.toml')
 
