@@ -1,0 +1,18 @@
+{
+  "Common Side Effects": {
+    "Nausea": "Feeling of queasiness, especially at the start of treatment.",
+    "Diarrhea": "Frequent, loose stools, one of the most common gastrointestinal symptoms.",
+    "Vomiting": "Occasional expulsion of stomach contents.",
+    "Abdominal Pain": "Discomfort or cramping in the stomach area.",
+    "Fatigue": "Generalized tiredness or lack of energy.",
+    "Headache": "Mild to moderate headaches."
+  },
+  "Hematologic Side Effects": {
+    "Leukopenia": "Reduced white blood cell count, increasing susceptibility to infections.",
+    "Anemia": "Low red blood cell count, causing fatigue and pallor.",
+    "Thrombocytopenia": "Low platelet count, increasing the risk of bruising or bleeding.",
+    "Pancytopenia": "Reduction in all blood cell types in severe cases."
+  },
+  "Infections": {
+    "Increased Risk of Infections": "Due to immunosuppression, patients are prone to bacterial, viral, and fungal infections.",
+    "Opportunistic Infections": "Infections such

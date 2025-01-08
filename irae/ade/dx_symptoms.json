@@ -1,0 +1,15 @@
+{
+  "Rash": "Skin redness, itching, or peeling caused by immune-mediated dermatitis.",
+  "Diarrhea": "Frequent, loose stools due to immune-related colitis.",
+  "Fatigue": "Persistent exhaustion or lack of energy, often seen in multiple IRAEs.",
+  "Cough": "A dry or productive cough associated with immune-related pneumonitis.",
+  "Shortness of Breath": "Difficulty breathing or chest tightness, typically linked to pneumonitis.",
+  "Abdominal Pain": "Discomfort in the stomach or abdominal area, commonly due to colitis.",
+  "Fever": "Elevated body temperature as a general sign of immune activation.",
+  "Joint Pain": "Discomfort or inflammation in joints, often resembling arthritis.",
+  "Jaundice": "Yellowing of the skin or eyes caused by immune-mediated liver dysfunction (hepatitis).",
+  "Vision Changes": "Blurred vision, floaters, or sensitivity to light due to uveitis.",
+  "Headache": "Persistent or severe headaches, potentially linked to neurological IRAEs or endocrinopathies.",
+  "Weakness": "Muscle weakness or reduced strength, associated with neuropathy or myositis.",
+  "Palpitations": "Irregular or rapid heartbeats caused by myocarditis."
+}
