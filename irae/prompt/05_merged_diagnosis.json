@@ -1,22 +1,22 @@
 {
     "merged": {
-        "Arthritis": "Joint inflammation causing pain, swelling, and stiffness, often mimicking autoimmune arthritis such as rheumatoid arthritis.",
-        "Colitis": "Inflammation of the colon leading to diarrhea, abdominal pain, and sometimes bleeding, confirmed through endoscopy or histopathology.",
-        "Dermatitis": "Skin inflammation, including rash, pruritus, or vitiligo-like depigmentation, often requiring biopsy for confirmation.",
-        "Endocrinopathies": "Disorders of endocrine glands, including hypothyroidism, hyperthyroidism, adrenal insufficiency, and diabetes, often associated with abnormal hormone levels.",
-        "Hemolytic Anemia": "Destruction of red blood cells resulting in anemia, jaundice, and elevated bilirubin levels.",
-        "Hepatitis": "Inflammation of the liver characterized by elevated liver enzymes (AST/ALT) and symptoms like fatigue, jaundice, and abdominal discomfort.",
-        "Lymphocytic Hypophysitis": "Inflammation of the pituitary gland causing deficiencies in pituitary hormones, leading to symptoms such as fatigue, visual disturbances, and secondary hypothyroidism.",
-        "Myocarditis": "Inflammation of the heart muscle, presenting with chest pain, dyspnea, arrhythmias, or elevated cardiac biomarkers like troponin.",
-        "Nephritis": "Inflammation of the kidneys leading to renal dysfunction, manifesting as elevated creatinine levels, proteinuria, or hematuria.",
-        "Neurological Toxicities": "Neurological symptoms such as neuropathy, myopathy, or encephalitis, presenting with weakness, sensory loss, or altered mental status.",
-        "Pancreatitis": "Inflammation of the pancreas presenting with abdominal pain, nausea, vomiting, and elevated serum amylase or lipase levels.",
-        "Pneumonitis": "Inflammation of lung tissue, presenting with symptoms like cough, dyspnea, and hypoxia, often detected on imaging as ground-glass opacities or interstitial changes.",
-        "Thrombocytopenia": "Low platelet count leading to increased risk of bleeding and bruising, often identified on routine blood tests.",
-        "Uveitis": "Inflammation of the uveal tract of the eye, leading to eye redness, pain, blurred vision, and photophobia."
+        "Arthritis": "Caused by immune-mediated inflammation of synovial joints, mimicking autoimmune arthritis.",
+        "Colitis": "Results from immune-mediated inflammation of the gastrointestinal tract, primarily the colon, due to dysregulation of immune checkpoints.",
+        "Dermatitis": "Results from immune-mediated attack on skin cells, leading to inflammation and altered skin integrity.",
+        "Endocrinopathies": "Caused by immune attack on endocrine glands such as the thyroid, adrenal, or pancreas, disrupting hormonal balance.",
+        "Hemolytic Anemia": "Develops due to immune-mediated destruction of red blood cells, often involving autoantibodies.",
+        "Hepatitis": "Occurs when immune activation targets hepatocytes, leading to liver inflammation and dysfunction.",
+        "Lymphocytic Hypophysitis": "Triggered by immune infiltration and inflammation of the pituitary gland, disrupting hormonal regulation.",
+        "Myocarditis": "Triggered by immune infiltration and inflammation of cardiac myocytes, disrupting heart function.",
+        "Nephritis": "Develops due to immune-mediated damage to renal tissues, often affecting glomeruli or tubules.",
+        "Neurological Toxicities": "Arises from immune system targeting of neural tissue, affecting the central or peripheral nervous system.",
+        "Pancreatitis": "Occurs when immune activation targets pancreatic tissue, leading to inflammation and enzyme dysregulation.",
+        "Pneumonitis": "Caused by immune-mediated inflammation of lung tissue due to an overactive immune response targeting pulmonary cells.",
+        "Thrombocytopenia": "Caused by immune destruction of platelets or suppression of their production in the bone marrow.",
+        "Uveitis": "Results from immune-mediated inflammation of the uveal tract in the eye, impairing visual function."
     },
     "files": [
-        "02_problem_diagnosis_reason.json",
-        "02_problem_diagnosis_description.json"
+        "02_problem_diagnosis_description.json",
+        "02_problem_diagnosis_reason.json"
     ]
 }

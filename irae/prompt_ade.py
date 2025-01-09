@@ -1,7 +1,7 @@
 from typing import List
 from collections import OrderedDict
 from pathlib import Path
-from irae import filetool
+from irae import filetool, guard
 from irae.variable.custom_variables import RX_LIST
 
 ######################################################################
@@ -70,21 +70,20 @@ def file_empty(filename: Path | str) -> bool:
 def path_manifest() -> Path:
     return filetool.path_prompt('MANIFEST.txt')
 
-def manifest(file_list: List[Path]) -> Path:
+def save_manifest(file_list: List[Path]) -> Path:
     file_list = list(filter(None, file_list))
     if file_list:
-        text = '\n'.join([str(f) for f in file_list])
+        text = '\n'.join([str(f) for f in file_list]) + '\n'
         return filetool.save_prompt_text(path_manifest(), text)
 
 ######################################################################
 # Merge outputs
 ######################################################################
-
 def merge_json(manifest_subset: List[Path]) -> OrderedDict:
     merged = dict()
     for saved in manifest_subset:
         merged.update(filetool.load_prompt_json(saved))
-    return OrderedDict(sorted(merged.items()))
+    return guard.sort_dict(merged)
 
 def make_merge() -> List[Path]:
     file_list = list()
@@ -98,13 +97,16 @@ def make_merge() -> List[Path]:
 
     for target in target_list:
         file_json = f'05_merged{target}.json'
+
         match_list = file_glob(f'*{target}*.json')
-        match_list = list(set(match_list) - set(ignore_list))
+        match_list = guard.sort_list(set(match_list) - set(ignore_list))
+
         merged_dict = merge_json(match_list)
-        merged_files = [Path(match).name for match in match_list]
+        merged_files = guard.sort_list([Path(m).name for m in match_list])
+
         file_list.append(
             filetool.save_prompt_json(file_json,
-                                       {'merged': merged_dict, 'files': merged_files}))
+                                      {'merged': merged_dict, 'files': merged_files}))
     return file_list
 
 ######################################################################
@@ -193,4 +195,4 @@ def make() -> List[Path]:
 
 if __name__ == "__main__":
     file_list = make()
-    print(manifest(file_list))
+    print(save_manifest(file_list))
