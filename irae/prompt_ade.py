@@ -90,7 +90,7 @@ def make_merge() -> List[Path]:
     ignore_list = file_glob('05_merged*')
     target_list = ['_diagnosis',
                    '_finding',
-                   '_sign'
+                   '_sign',
                    '_symptom',
                    '_ade',
                    '_lab']
