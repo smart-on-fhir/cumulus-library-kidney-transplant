@@ -1,14 +1,14 @@
 from typing import List
 from collections import OrderedDict
 from pathlib import Path
-from irae import filetool, guard
+from irae import filetool, guard, jaccard
 from irae.variable.custom_variables import RX_LIST
 
 ######################################################################
 # Constants
 ######################################################################
 ADE = 'Adverse Drug Events'
-IRAE = 'Immunosuppresive Related Adverse Events'
+IRAE = 'Immune Related Adverse Events'
 RX_CLASS = ['immunosuppresive', 'corticosteroids', 'antibiotics', 'plasmapheresis']
 
 ######################################################################
@@ -110,6 +110,42 @@ def make_merge() -> List[Path]:
     return file_list
 
 ######################################################################
+# Similarity Scores
+######################################################################
+def make_jaccard() -> Path:
+    file_save = 'make_jaccard.json'
+    file_list = list()
+    for f in file_glob('*.json'):
+        if not f.name == Path(file_save):
+            file_list.append(f.name)
+
+    unsorted = dict()
+    for fileA in file_list:
+        setA = filetool.load_prompt_json(fileA)
+
+        if fileA not in unsorted.keys():
+            unsorted[fileA] = dict()
+
+        for fileB in file_list:
+            setB = filetool.load_prompt_json(fileB)
+
+            if fileB not in unsorted[fileA].keys():
+                unsorted[fileA][fileB] = dict()
+
+            unsorted[fileA][fileB] = jaccard.score(setA, setB)
+
+    # sort by descending highest Jaccard Score
+    descend = dict()
+    for fileA in file_list:
+        descend[fileA] = dict(sorted(unsorted[fileA].items(), key=lambda item: item[1], reverse=True))
+
+    return filetool.save_prompt_json(file_save, guard.sort_dict(descend))
+
+
+
+
+
+            ######################################################################
 # Make targets
 ######################################################################
 
@@ -195,4 +231,5 @@ def make() -> List[Path]:
 
 if __name__ == "__main__":
     file_list = make()
+    make_jaccard()
     print(save_manifest(file_list))
