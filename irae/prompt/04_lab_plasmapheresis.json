@@ -1,1 +1,15 @@
-{}
+{
+  "Complete Blood Count (CBC)": "Reduced hematocrit, hemoglobin, and platelet counts",
+  "Coagulation Profile (PT, aPTT)": "Prolonged PT and aPTT due to removal of coagulation factors",
+  "Fibrinogen": "Low fibrinogen levels due to depletion during plasmapheresis",
+  "Electrolytes (Sodium, Potassium, Calcium)": "Imbalances, such as hypocalcemia, due to citrate anticoagulant binding calcium",
+  "Total Protein": "Reduced total protein levels due to plasma removal",
+  "Albumin": "Decreased albumin levels due to plasma removal",
+  "Immunoglobulins (IgG, IgA, IgM)": "Lowered immunoglobulin levels due to their removal during the process",
+  "LDH (Lactate Dehydrogenase)": "Elevated levels due to red blood cell damage during the procedure",
+  "Haptoglobin": "Decreased levels due to hemolysis during plasmapheresis",
+  "Creatinine": "Potential slight increases due to hemoconcentration",
+  "Bilirubin": "Elevated levels due to hemolysis during the procedure",
+  "Calcium (Ionized Calcium)": "Decreased ionized calcium due to citrate chelation",
+  "Potassium": "Hypokalemia due to shifts during the procedure"
+}
