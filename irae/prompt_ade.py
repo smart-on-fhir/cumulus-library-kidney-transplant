@@ -95,7 +95,7 @@ def make_llm_drugs() -> List[Path]:
 
         if file_empty(file_syn_json):
             file_list.append(
-                resources.save_prompt_json(file_ade_json, GPT_ENTRY))
+                resources.save_prompt_json(file_syn_json, GPT_ENTRY))
 
     return file_list
 

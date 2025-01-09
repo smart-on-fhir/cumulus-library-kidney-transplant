@@ -1,0 +1,17 @@
+{
+  "Complete Blood Count (CBC)": "Leukopenia (low white blood cell count), lymphopenia (low lymphocyte count), thrombocytopenia (low platelet count), and anemia.",
+  "Liver Function Tests (ALT, AST, Bilirubin)": "Elevated liver enzymes and bilirubin, indicating potential hepatotoxicity or systemic inflammation.",
+  "Renal Function Tests (Creatinine, BUN)": "Elevated creatinine and blood urea nitrogen (BUN) levels, suggesting possible nephrotoxicity or reduced renal function.",
+  "C-Reactive Protein (CRP)": "Elevated levels due to cytokine release and systemic inflammation following infusion.",
+  "Prothrombin Time (PT) / INR": "Prolonged clotting times due to coagulopathy or disseminated intravascular coagulation (DIC).",
+  "D-dimer": "Elevated levels, potentially indicating activation of the coagulation cascade or thrombotic events.",
+  "Cytokine Levels (e.g., IL-6, TNF-α)": "Elevated levels due to cytokine release syndrome during or after infusion.",
+  "Serum Immunoglobulins (IgG, IgA, IgM)": "Decreased immunoglobulin levels due to depletion of B-cells and plasma cells.",
+  "Complement Levels (C3, C4)": "Decreased complement levels due to immune activation and consumption.",
+  "Direct Antiglobulin Test (DAT/Coombs Test)": "Positive result, potentially indicating immune-mediated hemolysis.",
+  "Peripheral Blood Smear": "Abnormal findings such as schistocytes (fragmented red blood cells) in cases of hemolysis or DIC.",
+  "Serum Ferritin": "Elevated levels due to systemic inflammation or macrophage activation syndrome.",
+  "Serum LDH": "Elevated levels, particularly in the context of hemolysis.",
+  "Serum Electrolytes (Potassium, Calcium, Magnesium)": "Abnormal levels, including hyperkalemia or hypocalcemia, related to hemolysis or infusion reactions.",
+  "Blood Culture": "Potential false-positive results due to transient bacteremia during central line placement or infusion."
+}

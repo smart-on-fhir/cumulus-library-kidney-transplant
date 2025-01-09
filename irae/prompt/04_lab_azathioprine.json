@@ -1,0 +1,16 @@
+{
+  "Complete Blood Count (CBC)": "Leukopenia (low white blood cell count), anemia (low red blood cell count), and thrombocytopenia (low platelet count) due to bone marrow suppression.",
+  "Liver Function Tests (ALT, AST, ALP, Bilirubin)": "Elevated liver enzymes and bilirubin levels, indicating hepatotoxicity.",
+  "Renal Function Tests (Creatinine, BUN)": "Elevated levels in cases of renal dysfunction, particularly if combined with other nephrotoxic agents.",
+  "Serum Amylase and Lipase": "Elevated levels indicating potential drug-induced pancreatitis.",
+  "Thiopurine Methyltransferase (TPMT) Activity": "Low or absent TPMT activity increases the risk of severe myelosuppression.",
+  "Mean Corpuscular Volume (MCV)": "Elevated MCV, often seen with chronic azathioprine use.",
+  "C-Reactive Protein (CRP)": "May decrease due to immunosuppressive effects, though variable based on the condition being treated.",
+  "Uric Acid": "Elevated levels due to increased cell turnover or reduced renal excretion.",
+  "Immunoglobulin Levels (IgG, IgA, IgM)": "Potentially reduced due to immunosuppressive effects.",
+  "Erythrocyte Sedimentation Rate (ESR)": "Variable changes; may decrease due to suppression of inflammation.",
+  "Peripheral Blood Smear": "Macrocytosis (large red blood cells) or cytopenias (low blood cell counts) may be observed.",
+  "Serum LDH": "Elevated levels, particularly in the context of hemolysis or cellular turnover.",
+  "Direct Antiglobulin Test (DAT/Coombs Test)": "Positive result in cases of drug-induced hemolytic anemia.",
+  "Thioguanine Nucleotide (TGN) Levels": "Elevated levels can indicate toxicity due to metabolism of azathioprine."
+}

@@ -1,0 +1,19 @@
+{
+  "Complete Blood Count (CBC)": "Leukopenia (low white blood cell count), anemia (low red blood cell count), and thrombocytopenia (low platelet count).",
+  "Liver Function Tests (ALT, AST, ALP, Bilirubin)": "Elevated liver enzymes and bilirubin, indicating hepatotoxicity.",
+  "Renal Function Tests (Creatinine, BUN)": "Elevated creatinine and blood urea nitrogen (BUN) levels, indicating nephrotoxicity.",
+  "Serum Electrolytes (Potassium, Magnesium, Sodium)": "Hyperkalemia (elevated potassium), hypomagnesemia (low magnesium), and hypernatremia (elevated sodium).",
+  "Lipid Profile (Cholesterol, Triglycerides)": "Elevated cholesterol and triglyceride levels, increasing cardiovascular risk.",
+  "Blood Glucose": "Hyperglycemia, particularly when combined with corticosteroids.",
+  "C-Reactive Protein (CRP)": "Reduced levels due to suppression of immune response.",
+  "Erythrocyte Sedimentation Rate (ESR)": "Decreased levels due to suppression of inflammation.",
+  "Trough Cyclosporine Levels": "Abnormal levels (either too high or too low), impacting efficacy or toxicity.",
+  "Urinalysis": "Proteinuria, hematuria, or casts indicating renal involvement.",
+  "Serum Uric Acid": "Elevated levels, potentially leading to gout.",
+  "Parathyroid Hormone (PTH)": "Elevated levels, associated with secondary hyperparathyroidism in chronic kidney disease.",
+  "Serum Calcium and Phosphate": "Abnormal levels indicating bone metabolism disturbances.",
+  "Blood Pressure": "Hypertension, frequently reported in patients on cyclosporine.",
+  "Immunoglobulin Levels (IgG, IgA, IgM)": "Reduced levels due to immunosuppression.",
+  "Serum LDH": "Elevated levels in cases of tissue damage or hemolysis.",
+  "Direct Antiglobulin Test (DAT/Coombs Test)": "Positive in cases of drug-induced hemolytic anemia."
+}
