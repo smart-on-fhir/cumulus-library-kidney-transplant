@@ -116,8 +116,11 @@ def inline_template(sql: str, suffix=None, variable=None, equality=None) -> str:
 # prompt (Large Language Model)
 #
 ###############################################################################
-def path_prompt(filename: Path | str) -> Path:
-    return Path(os.path.join(path_home(), 'prompt', filename))
+def path_prompt(filename: Path | str = None) -> Path:
+    if filename:
+        return Path(os.path.join(path_home(), 'prompt', filename))
+    else:
+        return Path(os.path.join(path_home(), 'prompt'))
 
 def load_prompt_text(filename: Path | str) -> str:
     return read_text(path_prompt(filename))

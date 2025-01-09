@@ -1,6 +1,7 @@
-from irae import resources
 from typing import List
+from collections import OrderedDict
 from pathlib import Path
+from irae import resources
 from irae.variable.custom_variables import RX_LIST
 
 ######################################################################
@@ -44,8 +45,12 @@ def prompt_problem(problem: str, explain: str) -> str:
 ######################################################################
 # File Helpers
 ######################################################################
-def file_path(filename: Path | str) -> Path:
+def file_path(filename: Path | str = None) -> Path:
     return resources.path_prompt(filename)
+
+def file_glob(expression: str) -> List[Path]:
+    iter = file_path().glob(expression)
+    return [Path(i) for i in iter]
 
 def file_exists(filename: Path | str) -> bool:
     return file_path(filename).exists()
@@ -58,8 +63,49 @@ def file_empty(filename: Path | str) -> bool:
     else:
         return file_path(filename).stat().st_size == 0
 
-def manifest(file_list: List[Path]) -> str:
-    return '\n'.join([str(f) for f in file_list])
+######################################################################
+# Manifest
+######################################################################
+
+def path_manifest() -> Path:
+    return resources.path_prompt('MANIFEST.txt')
+
+def manifest(file_list: List[Path]) -> Path:
+    file_list = list(filter(None, file_list))
+    if file_list:
+        text = '\n'.join([str(f) for f in file_list])
+        return resources.save_prompt_text(path_manifest(), text)
+
+######################################################################
+# Merge outputs
+######################################################################
+
+def merge_json(manifest_subset: List[Path]) -> OrderedDict:
+    merged = dict()
+    for saved in manifest_subset:
+        merged.update(resources.load_prompt_json(saved))
+    return OrderedDict(sorted(merged.items()))
+
+def make_merge() -> List[Path]:
+    file_list = list()
+    ignore_list = file_glob('05_merged*')
+    target_list = ['_diagnosis',
+                   '_finding',
+                   '_sign'
+                   '_symptom',
+                   '_ade',
+                   '_lab']
+
+    for target in target_list:
+        file_json = f'05_merged{target}.json'
+        match_list = file_glob(f'*{target}*.json')
+        match_list = list(set(match_list) - set(ignore_list))
+        merged_dict = merge_json(match_list)
+        merged_files = [Path(match).name for match in match_list]
+        file_list.append(
+            resources.save_prompt_json(file_json,
+                                       {'merged': merged_dict, 'files': merged_files}))
+    return file_list
 
 ######################################################################
 # Make targets
@@ -68,10 +114,12 @@ def manifest(file_list: List[Path]) -> str:
 def make_llm_persona() -> Path:
     # drugs = ', '.join(RX_CLASS + RX_LIST)
     # task = f'I will now prompt you to answer IRAE questions for the following drug list [{drugs}].\n'
-    who = f'You are a helpful assistant performing chart review of ADEs ({ADE}).\n'
-    task = f'Your task is to provide chart review criteria for IRAE ({IRAE}).\n\n'
-    next = f'I will now prompt you to suggest chart review criteria for immunosuppressive drugs.\n'
-    return resources.save_prompt_text('01_llm_persona.txt', who + task + next)
+    file_text = '01_llm_persona.txt'
+    if file_empty(file_text):
+        who = f'You are a helpful assistant performing chart review of ADEs ({ADE}).\n'
+        task = f'Your task is to provide chart review criteria for IRAE ({IRAE}).\n\n'
+        next = f'I will now prompt you to suggest chart review criteria for immunosuppressive drugs.\n'
+        return resources.save_prompt_text(file_text, who + task + next)
 
 def make_llm_drugs() -> List[Path]:
     file_list = list()
@@ -136,12 +184,11 @@ def make_llm_labs() -> List[Path]:
                 resources.save_prompt_json(file_json, GPT_ENTRY))
     return file_list
 
-
 ######################################################################
 # Make() command line
 ######################################################################
 def make() -> List[Path]:
-    return [make_llm_persona()] + make_llm_problems() + make_llm_drugs() + make_llm_labs()
+    return [make_llm_persona()] + make_llm_problems() + make_llm_drugs() + make_llm_labs() + make_merge()
 
 
 if __name__ == "__main__":
