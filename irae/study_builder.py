@@ -6,8 +6,8 @@ from irae import (
     criteria,
     study_population,
     cohorts,
-    casedef,
-    counts)
+    casedef)
+from irae.count import count
 from irae.criteria.race import Race
 from irae.criteria.encounter_class import EncounterClass
 from irae.variable import (
@@ -118,7 +118,7 @@ def make_study(study: StudyBuilderConfig) -> Path:
     variables_sql = vsac_variables.make() + custom_variables.make()
     cohorts_sql = cohorts.make()
     casedef_sql = casedef.make()
-    counts_sql = counts.make()
+    counts_sql = count.make()
 
     vsac_markdown.make()
     print('README.md')

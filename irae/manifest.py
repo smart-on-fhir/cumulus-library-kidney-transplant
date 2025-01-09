@@ -4,9 +4,6 @@ import tomllib
 import tomli_w
 from irae import guard, filetool
 
-def get_study_prefix() -> str:
-    return str(read_manifest().get('study_prefix'))
-
 def get_file_config() -> List:
     return read_manifest().get('file_config')
 
@@ -17,6 +14,11 @@ def read_manifest() -> dict:
     with open(path_manifest(), 'rb') as f:
         data = tomllib.load(f)
     return data
+
+# TODO refactor @singleton
+# from singleton_decorator import singleton
+def get_study_prefix() -> str:
+    return str(read_manifest().get('study_prefix'))
 
 def write_manifest(file_names: List[Path] | List[str]) -> Path:
     saved = read_manifest()

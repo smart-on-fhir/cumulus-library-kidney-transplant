@@ -48,7 +48,7 @@ file_names = [
     "athena/irae__dx_infection_hepatitis_b.sql",
     "athena/irae__dx_infection_hepatitis_c.sql",
     "athena/irae__dx_infection.sql",
-    "athena/irae__dx_heart_cardiomyopathy:.sql",
+    "athena/irae__dx_heart_cardiomyopathy.sql",
     "athena/irae__dx_heart_attack.sql",
     "athena/irae__dx_heart_failure.sql",
     "athena/irae__dx_heart_cohort.sql",

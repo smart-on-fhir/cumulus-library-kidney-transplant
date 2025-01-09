@@ -112,7 +112,10 @@ def valueset2codelist(valueset_json: Path | str) -> List[Coding]:
                 parsed.append(Coding(concept))
     return parsed
 
-def expansion2codelist(valueset_json: dict) -> List[Coding]:
+def expansion2codelist(valueset_json: dict | str) -> List[Coding]:
+    if isinstance(valueset_json, str):
+        valueset_json = filetool.load_valueset(valueset_json)
+
     contains = valueset_json.get('expansion').get('contains')
     return [Coding(c) for c in contains]
 

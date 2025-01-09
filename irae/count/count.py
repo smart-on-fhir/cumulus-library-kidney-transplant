@@ -1,17 +1,10 @@
+from enum import Enum
 from typing import List
 from pathlib import Path
 from cumulus_library.builders.counts import CountsBuilder
 from irae import filetool, fhir2sql
 from irae.variable import vsac_variables, custom_variables
-
-PAT = ['gender', 'race_display', 'ethnicity_display']
-ENC = ['gender', 'age_at_visit', 'enc_class_code']
-SUBTYPE = ['subtype']
-DX = ['dx_category_code'] + ENC
-RX = ['rx_category_code'] + ENC
-LAB = ['lab_observation_code'] + ENC
-MONTH = ['enc_period_start_month']
-YEAR = ['enc_period_start_year']
+from irae.count.columns import Columns
 
 def cube_enc(source='study_population', cols=None, cube_table=None) -> Path:
     from_table = fhir2sql.name_cohort(source)
@@ -20,7 +13,7 @@ def cube_enc(source='study_population', cols=None, cube_table=None) -> Path:
         cube_table = fhir2sql.name_cube(source, 'enc')
 
     if not cols:
-        cols = PAT + ENC + MONTH
+        cols = Columns.cohort.value
 
     sql = CountsBuilder(fhir2sql.PREFIX).count_encounter(cube_table, from_table, cols)
     return filetool.save_athena_view(cube_table, sql)
@@ -32,7 +25,7 @@ def cube_pat(source='study_population', cols=None, cube_table=None) -> Path:
         cube_table = fhir2sql.name_cube(source, 'pat')
 
     if not cols:
-        cols = PAT
+        cols = Columns.demographics.value
 
     sql = CountsBuilder(fhir2sql.PREFIX).count_patient(cube_table, from_table, cols)
     return filetool.save_athena_view(cube_table, sql)
@@ -40,20 +33,20 @@ def cube_pat(source='study_population', cols=None, cube_table=None) -> Path:
 def make_study_population() -> List[Path]:
     return [cube_pat(),
             cube_enc(),
-            cube_enc('study_population_dx', DX),
-            cube_enc('study_population_rx', RX),
-            cube_enc('study_population_lab', LAB)]
+            cube_enc('study_population_dx', Columns.diagnoses.value),
+            cube_enc('study_population_rx', Columns.medications.value),
+            cube_enc('study_population_lab', Columns.labs.value)]
 
 def make_variables() -> List[Path]:
     file_list = list()
     variable_list = vsac_variables.list_view_variables() + custom_variables.list_view_variables()
     for variable in variable_list:
         if '__dx' in variable:
-            file_list.append(cube_enc(variable, SUBTYPE+DX))
+            file_list.append(cube_enc(variable, Columns.subtype.value + Columns.diagnoses.value))
         elif '__rx' in variable:
-            file_list.append(cube_enc(variable, SUBTYPE+RX))
+            file_list.append(cube_enc(variable, Columns.subtype.value + Columns.medications.value))
         elif '__lab' in variable:
-            file_list.append(cube_enc(variable, SUBTYPE+LAB))
+            file_list.append(cube_enc(variable, Columns.subtype.value + Columns.labs.value))
     return file_list
 
 def make_variables_timeline_dx() -> List[Path]:
