@@ -1,7 +1,7 @@
 from typing import List
 from pathlib import Path
 from irae import fhir2sql
-from irae import resources
+from irae import filetool
 
 def list_tables() -> List[str]:
     """
@@ -18,9 +18,9 @@ def make_study_population() -> List[Path]:
     """
     file_list = list()
     for table in list_tables():
-        sql = resources.load_template(f'{table}.sql')
-        sql = resources.inline_template(sql)
-        file_list.append(resources.save_athena_view(table, sql))
+        sql = filetool.load_template(f'{table}.sql')
+        sql = filetool.inline_template(sql)
+        file_list.append(filetool.save_athena_view(table, sql))
     return file_list
 
 def make() -> List[Path]:

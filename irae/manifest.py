@@ -2,7 +2,7 @@ from typing import List
 from pathlib import Path
 import tomllib
 import tomli_w
-from irae import guard, resources
+from irae import guard, filetool
 
 def get_study_prefix() -> str:
     return str(read_manifest().get('study_prefix'))
@@ -11,7 +11,7 @@ def get_file_config() -> List:
     return read_manifest().get('file_config')
 
 def path_manifest() -> Path:
-    return resources.path_home('manifest.toml')
+    return filetool.path_home('manifest.toml')
 
 def read_manifest() -> dict:
     with open(path_manifest(), 'rb') as f:

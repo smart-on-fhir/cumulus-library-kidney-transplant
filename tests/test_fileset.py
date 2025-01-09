@@ -1,5 +1,5 @@
 import unittest
-from irae import resources
+from irae import filetool
 from irae import fhir2sql
 
 class TestFileset(unittest.TestCase):

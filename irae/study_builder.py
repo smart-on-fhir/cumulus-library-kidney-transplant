@@ -2,7 +2,7 @@ from typing import List
 from pathlib import Path
 from irae import (
     manifest,
-    resources,
+    filetool,
     criteria,
     study_population,
     cohorts,
@@ -22,10 +22,6 @@ from irae.variable import (
 ###############################################################################
 
 class StudyBuilderConfig:
-    # TODO: Rx {min, max} dates between FHIR MedicationRequest (order)
-    #   Mediation Era (stretch goal Rx Dose Era)
-    #   "how long a gap before you consider drug not continuous"
-
     period_start: str = '2016-01-01'
     period_end: str = '2025-02-01'
     include_history: bool = True
@@ -70,8 +66,8 @@ class StudyBuilderConfig:
     @staticmethod
     def read_config(from_path: str | Path = None):
         if not from_path:
-            from_path = resources.path_home('StudyBuilderConfig.json')
-        return resources.read_json(from_path)
+            from_path = filetool.path_home('StudyBuilderConfig.json')
+        return filetool.read_json(from_path)
 
     @staticmethod
     def make_config(from_path: str | Path = None):

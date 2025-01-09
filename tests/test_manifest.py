@@ -1,5 +1,5 @@
 import unittest
-from irae import manifest, resources
+from irae import manifest, filetool
 
 class TestManifest(unittest.TestCase):
 

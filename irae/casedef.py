@@ -1,6 +1,6 @@
 from pathlib import Path
 from typing import List
-from irae import fhir2sql, resources
+from irae import fhir2sql, filetool
 
 def make(variable=None) -> List[Path]:
     if not variable:
@@ -18,13 +18,13 @@ def make_index_date(variable, suffix, equality) -> Path:
     view = f'{get_view()}_{suffix}.sql'
     template = f'{get_view()}_index.sql'
 
-    sql = resources.load_template(template)
-    sql = resources.inline_template(sql, suffix, variable, equality)
+    sql = filetool.load_template(template)
+    sql = filetool.inline_template(sql, suffix, variable, equality)
 
-    return resources.save_athena(view, sql)
+    return filetool.save_athena(view, sql)
 
 def make_timeline() -> Path:
     template = fhir2sql.name_join('cohort', 'casedef_timeline') + '.sql'
-    sql = resources.load_template(template)
-    sql = resources.inline_template(sql)
-    return resources.save_athena(template, sql)
+    sql = filetool.load_template(template)
+    sql = filetool.inline_template(sql)
+    return filetool.save_athena(template, sql)

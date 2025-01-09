@@ -1,6 +1,6 @@
 from typing import List
 from pathlib import Path
-from irae import resources
+from irae import filetool
 from irae import fhir2sql
 from irae.variable.aspect import AspectKey
 from irae.variable.spreadsheet import SpreadsheetReader, Delimiter, Vocab
@@ -46,7 +46,7 @@ def make_aspect(vocab: Vocab, aspect_key: AspectKey, aspect_entries: list, delim
     file_list = list()
     for entry in aspect_entries:
         print(f'custom_variables.py {aspect_key.name}_{entry}')
-        filename = resources.path_spreadsheet(f'{aspect_key.name}_{entry}.{delimiter.name}')
+        filename = filetool.path_spreadsheet(f'{aspect_key.name}_{entry}.{delimiter.name}')
         reader = SpreadsheetReader(filename, entry, vocab, delimiter)
         codes = reader.read_coding_list()
         file_list.append(fhir2sql.define(codes, f'{aspect_key.name}_{entry}'))

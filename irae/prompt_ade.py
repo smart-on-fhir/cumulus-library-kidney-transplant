@@ -1,7 +1,7 @@
 from typing import List
 from collections import OrderedDict
 from pathlib import Path
-from irae import resources
+from irae import filetool
 from irae.variable.custom_variables import RX_LIST
 
 ######################################################################
@@ -46,7 +46,7 @@ def prompt_problem(problem: str, explain: str) -> str:
 # File Helpers
 ######################################################################
 def file_path(filename: Path | str = None) -> Path:
-    return resources.path_prompt(filename)
+    return filetool.path_prompt(filename)
 
 def file_glob(expression: str) -> List[Path]:
     iter = file_path().glob(expression)
@@ -59,7 +59,7 @@ def file_empty(filename: Path | str) -> bool:
     if not file_exists(filename):
         return True
     elif str(filename).endswith('json'):
-        return 0 == len(resources.load_prompt_json(filename).items())
+        return 0 == len(filetool.load_prompt_json(filename).items())
     else:
         return file_path(filename).stat().st_size == 0
 
@@ -68,13 +68,13 @@ def file_empty(filename: Path | str) -> bool:
 ######################################################################
 
 def path_manifest() -> Path:
-    return resources.path_prompt('MANIFEST.txt')
+    return filetool.path_prompt('MANIFEST.txt')
 
 def manifest(file_list: List[Path]) -> Path:
     file_list = list(filter(None, file_list))
     if file_list:
         text = '\n'.join([str(f) for f in file_list])
-        return resources.save_prompt_text(path_manifest(), text)
+        return filetool.save_prompt_text(path_manifest(), text)
 
 ######################################################################
 # Merge outputs
@@ -83,7 +83,7 @@ def manifest(file_list: List[Path]) -> Path:
 def merge_json(manifest_subset: List[Path]) -> OrderedDict:
     merged = dict()
     for saved in manifest_subset:
-        merged.update(resources.load_prompt_json(saved))
+        merged.update(filetool.load_prompt_json(saved))
     return OrderedDict(sorted(merged.items()))
 
 def make_merge() -> List[Path]:
@@ -103,7 +103,7 @@ def make_merge() -> List[Path]:
         merged_dict = merge_json(match_list)
         merged_files = [Path(match).name for match in match_list]
         file_list.append(
-            resources.save_prompt_json(file_json,
+            filetool.save_prompt_json(file_json,
                                        {'merged': merged_dict, 'files': merged_files}))
     return file_list
 
@@ -119,7 +119,7 @@ def make_llm_persona() -> Path:
         who = f'You are a helpful assistant performing chart review of ADEs ({ADE}).\n'
         task = f'Your task is to provide chart review criteria for IRAE ({IRAE}).\n\n'
         next = f'I will now prompt you to suggest chart review criteria for immunosuppressive drugs.\n'
-        return resources.save_prompt_text(file_text, who + task + next)
+        return filetool.save_prompt_text(file_text, who + task + next)
 
 def make_llm_drugs() -> List[Path]:
     file_list = list()
@@ -131,19 +131,19 @@ def make_llm_drugs() -> List[Path]:
 
         if file_empty(file_ade_text):
             file_list.append(
-                resources.save_prompt_text(file_ade_text, prompt_rx_ade(drug_name)))
+                filetool.save_prompt_text(file_ade_text, prompt_rx_ade(drug_name)))
 
         if file_empty(file_ade_json):
             file_list.append(
-                resources.save_prompt_json(file_ade_json, GPT_ENTRY))
+                filetool.save_prompt_json(file_ade_json, GPT_ENTRY))
 
         if file_empty(file_syn_text):
             file_list.append(
-                resources.save_prompt_text(file_syn_text, prompt_rx_synonyms(drug_name)))
+                filetool.save_prompt_text(file_syn_text, prompt_rx_synonyms(drug_name)))
 
         if file_empty(file_syn_json):
             file_list.append(
-                resources.save_prompt_json(file_syn_json, GPT_ENTRY))
+                filetool.save_prompt_json(file_syn_json, GPT_ENTRY))
 
     return file_list
 
@@ -156,12 +156,12 @@ def make_llm_problems() -> List[Path]:
 
             if file_empty(file_text):
                 file_list.append(
-                    resources.save_prompt_text(file_text, prompt_problem(problem, explain)))
+                    filetool.save_prompt_text(file_text, prompt_problem(problem, explain)))
 
             if file_empty(file_json):
                 gpt_manually = dict()
                 file_list.append(
-                    resources.save_prompt_json(file_json, gpt_manually))
+                    filetool.save_prompt_json(file_json, gpt_manually))
     return file_list
 
 def prompt_labs(reason: str) -> str:
@@ -177,11 +177,11 @@ def make_llm_labs() -> List[Path]:
 
         if file_empty(file_text):
             file_list.append(
-                resources.save_prompt_text(file_text, prompt_labs(reason)))
+                filetool.save_prompt_text(file_text, prompt_labs(reason)))
 
         if file_empty(file_json):
             file_list.append(
-                resources.save_prompt_json(file_json, GPT_ENTRY))
+                filetool.save_prompt_json(file_json, GPT_ENTRY))
     return file_list
 
 ######################################################################
