@@ -1,0 +1,22 @@
+{
+  "Nausea": "A common gastrointestinal side effect, especially at the beginning of treatment.",
+  "Vomiting": "Often linked to gastrointestinal irritation caused by the medication.",
+  "Diarrhea": "Digestive upset may occur as the body adjusts to the drug.",
+  "Abdominal Pain": "Cramping or discomfort in the stomach region due to gastrointestinal irritation.",
+  "Leukopenia": "Reduction in white blood cell count, increasing infection risk.",
+  "Thrombocytopenia": "Decreased platelet count, leading to a higher risk of bleeding or bruising.",
+  "Anemia": "Reduction in red blood cells, potentially causing fatigue and weakness.",
+  "Infections": "Higher susceptibility to bacterial, viral, or fungal infections due to immunosuppression.",
+  "Hepatotoxicity": "Elevated liver enzymes or liver dysfunction due to the drug's effects on the liver.",
+  "Pancreatitis": "Inflammation of the pancreas, presenting with severe abdominal pain, nausea, and vomiting.",
+  "Skin Rash": "Erythematous or maculopapular rash due to hypersensitivity.",
+  "Hair Loss (Alopecia)": "Hair thinning or loss as a mild but reversible side effect.",
+  "Myalgia": "Muscle aches or pain reported by some patients.",
+  "Arthralgia": "Joint pain, possibly linked to immune modulation.",
+  "Hypersensitivity Reactions": "Symptoms such as fever, rash, and malaise due to drug intolerance.",
+  "Mouth Ulcers": "Painful sores in the mouth, associated with mucosal irritation.",
+  "Fatigue": "A general feeling of tiredness or weakness.",
+  "Lymphoma": "Increased risk of malignancies such as lymphoma with long-term use due to immunosuppression.",
+  "Nausea and Malaise": "General discomfort, particularly during the initial treatment phase.",
+  "Pulmonary Toxicity": "Rare side effect, including interstitial lung disease or pneumonitis."
+}

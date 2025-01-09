@@ -1,0 +1,20 @@
+{
+  "Hypotension": "A drop in blood pressure during or after the procedure, often due to fluid shifts.",
+  "Hypocalcemia": "Low calcium levels caused by the use of citrate anticoagulant, leading to symptoms like muscle cramps or tingling.",
+  "Infections": "Increased risk due to removal of plasma proteins, including immunoglobulins, which can compromise immunity.",
+  "Bleeding": "Reduced clotting factors in plasma may increase the risk of bleeding or bruising.",
+  "Allergic Reactions": "Reactions to replacement fluids, such as albumin or plasma, causing rash, itching, or anaphylaxis.",
+  "Fatigue": "General tiredness or weakness after the procedure due to fluid and electrolyte imbalances.",
+  "Nausea": "Often transient, possibly caused by changes in blood pressure or citrate effects.",
+  "Dizziness": "Frequently reported due to blood pressure changes or hypovolemia during the procedure.",
+  "Thrombosis": "Risk of clot formation at the catheter insertion site or in the bloodstream.",
+  "Catheter-Related Complications": "Infections, bleeding, or clotting at the central venous catheter insertion site.",
+  "Electrolyte Imbalances": "Alterations in potassium, magnesium, or other electrolytes due to plasma removal or replacement fluids.",
+  "Hemolysis": "Damage to red blood cells during the procedure, leading to anemia or elevated bilirubin levels.",
+  "Volume Overload": "Excess fluid from replacement solutions causing edema or pulmonary congestion.",
+  "Volume Depletion": "Inadequate fluid replacement causing hypovolemia, leading to symptoms like dizziness or hypotension.",
+  "Hypoproteinemia": "Low protein levels due to the removal of plasma proteins, potentially leading to edema or weakness.",
+  "Metabolic Alkalosis": "Caused by citrate metabolism during anticoagulation, which may lead to altered blood pH.",
+  "Chills and Fever": "Occasionally occur due to mild immune responses or infections.",
+  "Air Embolism": "A rare but serious complication involving air entering the bloodstream through the catheter."
+}

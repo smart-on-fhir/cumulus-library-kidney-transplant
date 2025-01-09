@@ -1,5 +1,6 @@
 import datetime
 from enum import Enum
+from collections import OrderedDict
 from typing import List, Iterable
 from fhirclient.models.fhirdate import FHIRDate
 from fhirclient.models.coding import Coding
@@ -62,6 +63,12 @@ def as_list_str(obj) -> List[str]:
         return obj
     return [str(c) for c in list(obj)]
 
+def sort_list(unsorted: Iterable) -> list:
+    return sorted(list(set(list(unsorted))))
+
+def sort_dict(unsorted: dict) -> OrderedDict:
+    return OrderedDict(sorted(unsorted.items()))
+
 def uniq(unsorted: Iterable, sort=True) -> List:
     """
     :param unsorted: list or iterable type
@@ -71,6 +78,8 @@ def uniq(unsorted: Iterable, sort=True) -> List:
         return sorted(list(set(unsorted)))
     else:
         return list(set(unsorted))
+
+
 
 ###############################################################################
 #

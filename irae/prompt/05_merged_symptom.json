@@ -1,0 +1,27 @@
+{
+    "merged": {
+        "Abdominal Pain": "Results from immune-mediated damage to the gastrointestinal tract or pancreas.",
+        "Bleeding": "Results from impaired clotting ability due to thrombocytopenia or liver dysfunction.",
+        "Bruising": "Occurs due to reduced platelet count from immune-mediated thrombocytopenia.",
+        "Chest Pain": "Results from immune-related inflammation of the heart (myocarditis) or pericardium.",
+        "Confusion": "Caused by immune-mediated encephalitis or other central nervous system toxicities.",
+        "Cough": "Caused by immune-mediated inflammation of the lungs, often seen in pneumonitis.",
+        "Diarrhea": "Triggered by immune-related inflammation of the gastrointestinal tract, particularly in colitis.",
+        "Dry Mouth": "Results from salivary gland involvement or endocrine dysfunction.",
+        "Fatigue": "Caused by systemic inflammation, endocrine dysfunction, or organ-specific damage such as hepatitis or myocarditis.",
+        "Fever": "Triggered by systemic inflammation associated with immune activation.",
+        "Jaundice": "Occurs due to impaired liver function from immune-mediated hepatitis.",
+        "Joint Pain": "Caused by immune-mediated inflammation of the synovial joints, mimicking autoimmune arthritis.",
+        "Muscle Weakness": "Results from immune-mediated myopathy or neurological toxicities affecting motor neurons.",
+        "Nausea and Vomiting": "Triggered by immune-mediated gastrointestinal or pancreatic inflammation.",
+        "Palpitations": "Caused by inflammation or damage to the cardiac conduction system in myocarditis.",
+        "Shortness of Breath": "Results from reduced lung function due to pneumonitis or cardiac dysfunction like myocarditis.",
+        "Skin Rash": "Results from immune-mediated inflammation of the skin or hypersensitivity reactions.",
+        "Visual Disturbances": "Occurs due to inflammation of the uveal tract or optic nerve in uveitis or neurological toxicities.",
+        "Weight Loss": "Occurs due to chronic inflammation or reduced nutrient absorption in gastrointestinal IRAEs."
+    },
+    "files": [
+        "02_problem_symptom_description.json",
+        "02_problem_symptom_reason.json"
+    ]
+}

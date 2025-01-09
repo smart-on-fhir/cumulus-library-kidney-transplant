@@ -1,7 +1,7 @@
 from typing import List
 from pathlib import Path
 from irae.variable import vsac_variables, custom_variables
-from irae import fhir2sql, resources
+from irae import fhir2sql, filetool
 
 def ctas(cohort: str, variable: str, where: list) -> str:
     from_list = fhir2sql.sql_list([cohort, variable])
@@ -45,9 +45,9 @@ def make_study_variable_timeline() -> List[Path]:
 
     for table in table_list:
         file = f'{table}.sql'
-        text = resources.load_template(file)
-        text = resources.inline_template(text)
-        file_list.append(resources.save_athena(file, text))
+        text = filetool.load_template(file)
+        text = filetool.inline_template(text)
+        file_list.append(filetool.save_athena(file, text))
 
     return file_list
 

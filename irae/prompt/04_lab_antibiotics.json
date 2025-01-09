@@ -1,0 +1,17 @@
+{
+  "Complete Blood Count (CBC)": "Leukopenia (low white blood cell count), anemia, thrombocytopenia (low platelet count).",
+  "Liver Function Tests (ALT, AST, ALP, Bilirubin)": "Elevated liver enzymes or bilirubin indicating hepatotoxicity.",
+  "Renal Function Tests (Creatinine, BUN)": "Elevated levels indicating nephrotoxicity, particularly with aminoglycosides or vancomycin.",
+  "Electrolytes (Potassium, Sodium, Magnesium)": "Imbalances such as hypokalemia or hypomagnesemia, especially with amphotericin B or diuretics used concurrently.",
+  "Prothrombin Time (PT) / INR": "Prolonged clotting times, particularly with cephalosporins interfering with vitamin K metabolism.",
+  "Coagulation Tests (aPTT, D-dimer)": "Abnormal clotting parameters, occasionally seen with antibiotics affecting coagulation pathways.",
+  "Blood Glucose": "Hypoglycemia or hyperglycemia, reported with certain fluoroquinolones like gatifloxacin.",
+  "Urinalysis": "Proteinuria, hematuria, or crystals in the urine, indicating renal involvement.",
+  "Amylase and Lipase": "Elevated levels indicating possible pancreatitis (e.g., tetracyclines or sulfonamides).",
+  "C-Reactive Protein (CRP) / Erythrocyte Sedimentation Rate (ESR)": "Decreased inflammatory markers due to suppression of infection; may also be unaffected depending on context.",
+  "Creatine Kinase (CK)": "Elevated levels indicating myopathy or rhabdomyolysis, potentially caused by daptomycin or other agents.",
+  "Lactic Acid": "Elevated levels due to mitochondrial toxicity or impaired oxygen utilization.",
+  "Antinuclear Antibodies (ANA)": "Positive results linked to drug-induced lupus-like syndrome, particularly with minocycline or other antibiotics.",
+  "Blood Culture": "False negatives if antibiotics are administered before sample collection.",
+  "Urine Culture": "False negatives or altered results due to pre-sample antibiotic administration."
+}

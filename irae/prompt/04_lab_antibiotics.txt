@@ -1,0 +1,2 @@
+Which laboratory tests may report abnormal results due to "antibiotics" drug(s)?
+Respond with a JSON dictionary where each {key:value} is {TestName:AbnormalResult}.

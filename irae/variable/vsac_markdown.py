@@ -1,6 +1,6 @@
 from typing import List
 from pathlib import Path
-from irae import resources
+from irae import filetool
 from irae.variable.aspect import Aspect
 from irae.variable import vsac_variables
 
@@ -14,7 +14,7 @@ def make() -> str:
     for aspect in vsac_variables.get_aspect_map().as_list():
         syntax_list += make_markdown_for(aspect)
     markdown = header() + '\n'.join(syntax_list)
-    return resources.write_text(markdown, path_readme())
+    return filetool.write_text(markdown, path_readme())
 
 def make_markdown_for(aspect: Aspect) -> List[str]:
     table = list()
@@ -25,7 +25,7 @@ def make_markdown_for(aspect: Aspect) -> List[str]:
     return table
 
 def path_readme() -> Path:
-    return resources.path_parent('README.md')
+    return filetool.path_parent('README.md')
 
 def header() -> str:
     H1 = '# VSAC ValueSets'

@@ -2,7 +2,7 @@ from typing import List
 from enum import Enum
 from pathlib import Path
 from fhirclient.models.coding import Coding
-from irae import resources
+from irae import filetool
 from irae.vocab import Vocab
 from irae.variable.deprecated import BinaryClass, MultiClass
 
@@ -31,7 +31,7 @@ class SpreadsheetReader:
     def read_coding_list(self, quote_char: str = '"') -> List[Coding]:
         codes = list()
 
-        for columns in resources.read_csv(self.filename, self.delimiter.value, quote_char):
+        for columns in filetool.read_csv(self.filename, self.delimiter.value, quote_char):
             c = Coding()
             c.code = columns[0]
             c.display = columns[1]
@@ -44,7 +44,7 @@ class SpreadsheetReader:
 
     def read_multiclass(self):
         parsed = dict()
-        for columns in resources.read_csv(self.filename, self.delimiter.value):
+        for columns in filetool.read_csv(self.filename, self.delimiter.value):
             code = columns[0]
             display = columns[1]
             subtype = columns[2]

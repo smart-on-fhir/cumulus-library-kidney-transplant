@@ -1,8 +1,8 @@
 from typing import List
 from pathlib import Path
 from fhirclient.models.coding import Coding
-from irae import guard, resources, manifest
-from irae.resources import save_athena_view
+from irae import guard, filetool, manifest
+from irae.filetool import save_athena_view
 
 PREFIX = manifest.get_study_prefix()
 
@@ -99,7 +99,7 @@ def valueset2codelist(valueset_json: Path | str) -> List[Coding]:
     :return: list of codeable concepts (system, code, display) to include
     """
     if isinstance(valueset_json, str):
-        valueset_json = resources.load_valueset(valueset_json)
+        valueset_json = filetool.load_valueset(valueset_json)
     parsed = list()
     if not valueset_json.get('compose'):
         print('warning, no valueset content. Extension?')
@@ -193,7 +193,7 @@ def define_valueset_list_deprecated(valueset_json_list: List[str], view_name: st
     """
     codelist = list()
     for filename in valueset_json_list:
-        codelist += valueset2codelist(resources.path_valueset(filename))
+        codelist += valueset2codelist(filetool.path_valueset(filename))
     return define(codelist, view_name)
 
 def codesystem2codelist_deprecated(code_system_json) -> List[Coding]:
@@ -202,7 +202,7 @@ def codesystem2codelist_deprecated(code_system_json) -> List[Coding]:
     :param code_system_json:
     :return: List Coding (similar to ValueSet)
     """
-    codesystem = resources.load_valueset(code_system_json)
+    codesystem = filetool.load_valueset(code_system_json)
     parsed = list()
     url = codesystem.get('url')
     if 'concept' in codesystem.keys():

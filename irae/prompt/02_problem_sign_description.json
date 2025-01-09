@@ -1,0 +1,22 @@
+{
+  "Fever": "Elevated body temperature often indicative of systemic inflammation or infection.",
+  "Tachycardia": "Increased heart rate, commonly associated with myocarditis, fever, or endocrine disorders like adrenal insufficiency.",
+  "Hypotension": "Low blood pressure, potentially resulting from adrenal insufficiency or systemic inflammation.",
+  "Cyanosis": "Bluish discoloration of the skin or lips, indicative of hypoxia from pneumonitis or cardiac dysfunction.",
+  "Jaundice": "Yellowing of the skin and eyes, associated with liver dysfunction from hepatitis.",
+  "Rash": "Erythematous or maculopapular skin changes seen in immune-mediated dermatitis.",
+  "Wheezing": "A high-pitched whistling sound during breathing, often linked to airway inflammation or pneumonitis.",
+  "Abdominal Tenderness": "Pain or discomfort upon palpation of the abdomen, common in colitis or pancreatitis.",
+  "Weight Loss": "Unintentional reduction in body weight due to chronic inflammation or gastrointestinal involvement.",
+  "Proximal Muscle Weakness": "Reduced strength in the upper arms or thighs, often associated with myopathy or endocrine dysfunction.",
+  "Conjunctival Injection": "Redness of the conjunctiva, indicative of uveitis or ocular inflammation.",
+  "Bruising": "Unusual or excessive bruising, often a sign of thrombocytopenia or coagulation issues.",
+  "Pallor": "Pale skin, often associated with anemia, including hemolytic anemia.",
+  "Lymphadenopathy": "Swelling of lymph nodes, potentially linked to systemic immune activation.",
+  "Edema": "Swelling in the extremities, which may occur in severe renal dysfunction or cardiac involvement.",
+  "Hepatomegaly": "Enlargement of the liver, detectable on physical examination and linked to hepatitis.",
+  "Splenomegaly": "Enlargement of the spleen, which may occur in systemic immune activation or hemolytic processes.",
+  "Digital Clubbing": "Bulging of the fingertips, occasionally seen in chronic hypoxia or severe pulmonary involvement.",
+  "Decreased Reflexes": "Reduced deep tendon reflexes, often observed in neurological toxicities or peripheral neuropathy.",
+  "Dry Mucous Membranes": "Indicative of dehydration, often associated with diarrhea or endocrine dysfunction."
+}

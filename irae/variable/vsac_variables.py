@@ -2,7 +2,7 @@ import os
 from enum import Enum
 from typing import List
 from pathlib import Path
-from irae import resources
+from irae import filetool
 from irae import fhir2sql
 from irae.fhir2sql import PREFIX
 from irae.variable import vsac_api
@@ -49,22 +49,22 @@ def make_aspect(aspect: Aspect) -> List[Path]:
         valueset_list = list()
         for valueset in variable.valueset_list:
             print(f'*** {variable.name} -> {valueset.name}')
-            json_file = resources.path_valueset(f"{PREFIX}__{variable.name}/{valueset.name}.json")
+            json_file = filetool.path_valueset(f"{PREFIX}__{variable.name}/{valueset.name}.json")
             view_name = f"{PREFIX}__{variable.name}_{valueset.name}"
-            view_file = resources.path_athena(f'{view_name}.sql')
+            view_file = filetool.path_athena(f'{view_name}.sql')
 
             if not os.path.exists(json_file):
                 print(f'**** Downloading {variable.name} {valueset.as_json()}')
                 json_list = api.get_vsac_valuesets(url=None, oid=valueset.oid)
-                resources.save_valueset(json_file, json_list)
+                filetool.save_valueset(json_file, json_list)
 
             if not os.path.exists(view_file):
                 print(f'**** Writing {view_file}')
                 code_list = list()
-                for entry in resources.read_json(json_file):
+                for entry in filetool.read_json(json_file):
                     code_list += fhir2sql.expansion2codelist(entry)
                 sql = fhir2sql.codelist2view(code_list, view_name)
-                resources.save_athena_view(view_name, sql)
+                filetool.save_athena_view(view_name, sql)
 
             var_list.append(view_file)
             valueset_list.append(view_name)

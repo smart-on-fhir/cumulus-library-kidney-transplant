@@ -1,0 +1,16 @@
+{
+  "Pneumonitis": "Inflammation of lung tissue, presenting with symptoms like cough, dyspnea, and hypoxia, often detected on imaging as ground-glass opacities or interstitial changes.",
+  "Colitis": "Inflammation of the colon leading to diarrhea, abdominal pain, and sometimes bleeding, confirmed through endoscopy or histopathology.",
+  "Hepatitis": "Inflammation of the liver characterized by elevated liver enzymes (AST/ALT) and symptoms like fatigue, jaundice, and abdominal discomfort.",
+  "Endocrinopathies": "Disorders of endocrine glands, including hypothyroidism, hyperthyroidism, adrenal insufficiency, and diabetes, often associated with abnormal hormone levels.",
+  "Nephritis": "Inflammation of the kidneys leading to renal dysfunction, manifesting as elevated creatinine levels, proteinuria, or hematuria.",
+  "Myocarditis": "Inflammation of the heart muscle, presenting with chest pain, dyspnea, arrhythmias, or elevated cardiac biomarkers like troponin.",
+  "Dermatitis": "Skin inflammation, including rash, pruritus, or vitiligo-like depigmentation, often requiring biopsy for confirmation.",
+  "Neurological Toxicities": "Neurological symptoms such as neuropathy, myopathy, or encephalitis, presenting with weakness, sensory loss, or altered mental status.",
+  "Arthritis": "Joint inflammation causing pain, swelling, and stiffness, often mimicking autoimmune arthritis such as rheumatoid arthritis.",
+  "Pancreatitis": "Inflammation of the pancreas presenting with abdominal pain, nausea, vomiting, and elevated serum amylase or lipase levels.",
+  "Uveitis": "Inflammation of the uveal tract of the eye, leading to eye redness, pain, blurred vision, and photophobia.",
+  "Thrombocytopenia": "Low platelet count leading to increased risk of bleeding and bruising, often identified on routine blood tests.",
+  "Hemolytic Anemia": "Destruction of red blood cells resulting in anemia, jaundice, and elevated bilirubin levels.",
+  "Lymphocytic Hypophysitis": "Inflammation of the pituitary gland causing deficiencies in pituitary hormones, leading to symptoms such as fatigue, visual disturbances, and secondary hypothyroidism."
+}

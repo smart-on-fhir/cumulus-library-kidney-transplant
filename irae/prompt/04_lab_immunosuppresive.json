@@ -1,0 +1,21 @@
+{
+  "Complete Blood Count (CBC)": "Leukopenia (low white blood cell count), thrombocytopenia (low platelet count), anemia (low red blood cell count) due to bone marrow suppression.",
+  "Liver Function Tests (ALT, AST, ALP, Bilirubin)": "Elevated liver enzymes or bilirubin, indicating hepatotoxicity.",
+  "Renal Function Tests (Creatinine, BUN)": "Elevated creatinine and blood urea nitrogen (BUN), indicating nephrotoxicity.",
+  "Serum Electrolytes (Potassium, Magnesium, Sodium)": "Hyperkalemia (high potassium), hypomagnesemia (low magnesium), and hypernatremia (high sodium) depending on the drug.",
+  "C-Reactive Protein (CRP)": "Reduced levels due to suppression of immune and inflammatory responses.",
+  "Erythrocyte Sedimentation Rate (ESR)": "Decreased levels due to suppression of inflammation.",
+  "Trough Drug Levels": "Abnormal therapeutic drug levels (e.g., cyclosporine, tacrolimus, or sirolimus) affecting efficacy or toxicity.",
+  "Blood Glucose": "Hyperglycemia, potentially leading to steroid-induced diabetes or due to calcineurin inhibitors.",
+  "Lipid Profile (Cholesterol, Triglycerides)": "Elevated cholesterol and triglycerides, increasing cardiovascular risk.",
+  "Serum Immunoglobulins (IgG, IgA, IgM)": "Reduced levels due to suppression of B-cell function.",
+  "Urinalysis": "Proteinuria or hematuria, indicating renal involvement or dysfunction.",
+  "Bone Density (DEXA Scan)": "Decreased bone mineral density, indicating osteoporosis or osteopenia with prolonged corticosteroid use.",
+  "Serum Uric Acid": "Elevated levels, potentially leading to gout.",
+  "Direct Antiglobulin Test (DAT/Coombs Test)": "Positive in cases of drug-induced hemolytic anemia.",
+  "Serum LDH": "Elevated levels in cases of hemolysis or cellular damage.",
+  "CMV PCR (Cytomegalovirus Polymerase Chain Reaction)": "Elevated viral load, indicating reactivation or infection due to immunosuppression.",
+  "EBV PCR (Epstein-Barr Virus Polymerase Chain Reaction)": "Elevated levels, increasing the risk of post-transplant lymphoproliferative disorder (PTLD).",
+  "Parathyroid Hormone (PTH)": "Elevated levels in chronic kidney disease or bone metabolism disorders.",
+  "Serum Calcium and Phosphate": "Abnormal levels due to bone metabolism disturbances."
+}
