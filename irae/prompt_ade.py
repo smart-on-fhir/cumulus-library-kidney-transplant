@@ -113,7 +113,7 @@ def make_merge() -> List[Path]:
 # Similarity Scores
 ######################################################################
 def make_jaccard() -> Path:
-    file_save = 'make_jaccard.json'
+    file_save = '06_jaccard_scores.json'
     file_list = list()
     for f in file_glob('*.json'):
         if not f.name == Path(file_save):
@@ -122,12 +122,14 @@ def make_jaccard() -> Path:
     unsorted = dict()
     for fileA in file_list:
         setA = filetool.load_prompt_json(fileA)
+        setA = setA if 'merged' not in fileA else setA['merged']
 
         if fileA not in unsorted.keys():
             unsorted[fileA] = dict()
 
         for fileB in file_list:
             setB = filetool.load_prompt_json(fileB)
+            setB = setB if 'merged' not in fileB else setB['merged']
 
             if fileB not in unsorted[fileA].keys():
                 unsorted[fileA][fileB] = dict()
