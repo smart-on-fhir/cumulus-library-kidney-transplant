@@ -119,8 +119,14 @@ def inline_template(sql: str, suffix=None, variable=None, equality=None) -> str:
 def path_prompt(filename: Path | str) -> Path:
     return Path(os.path.join(path_home(), 'prompt', filename))
 
+def load_prompt_text(filename: Path | str) -> str:
+    return read_text(path_prompt(filename))
+
 def save_prompt_json(filename: Path | str, contents: dict) -> Path:
     return Path(write_json(contents, path_prompt(filename)))
+
+def load_prompt_json(filename: Path | str) -> dict:
+    return read_json(path_prompt(filename))
 
 def save_prompt_text(filename: Path | str, text: str) -> Path:
     return Path(write_text(text, path_prompt(filename)))

@@ -1,0 +1,2 @@
+What are the diagnoses associated with IRAE (Immunosuppresive Related Adverse Events)?
+Respond with a JSON dictionary where each {key:value} is {diagnosis:reason}.

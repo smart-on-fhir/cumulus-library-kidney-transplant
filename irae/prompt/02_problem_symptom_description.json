@@ -1,0 +1,21 @@
+{
+  "Cough": "A persistent, dry or productive cough often associated with pneumonitis or lung involvement.",
+  "Shortness of Breath": "Difficulty breathing, commonly linked to pneumonitis or cardiac complications such as myocarditis.",
+  "Diarrhea": "Frequent, loose, or watery stools, a hallmark symptom of colitis.",
+  "Abdominal Pain": "Cramping or severe pain in the abdomen, often related to colitis or pancreatitis.",
+  "Fatigue": "A common symptom across many IRAEs, including endocrine dysfunction, hepatitis, and myocarditis.",
+  "Jaundice": "Yellowing of the skin and eyes, indicative of liver dysfunction like hepatitis.",
+  "Skin Rash": "Red, itchy, or inflamed patches on the skin, often seen in dermatitis or hypersensitivity reactions.",
+  "Joint Pain": "Pain, swelling, or stiffness in the joints, associated with IRAE-induced arthritis.",
+  "Visual Disturbances": "Blurred vision, floaters, or light sensitivity, commonly linked to uveitis.",
+  "Chest Pain": "Pain or discomfort in the chest, often a sign of myocarditis or pericarditis.",
+  "Fever": "Elevated body temperature, which may indicate systemic inflammation or infection secondary to IRAEs.",
+  "Weight Loss": "Unintentional loss of body weight, associated with chronic inflammation or gastrointestinal involvement.",
+  "Muscle Weakness": "Reduced strength in the muscles, a symptom of myopathy or neurological toxicities.",
+  "Confusion": "Altered mental status, which may occur in encephalitis or other neurological toxicities.",
+  "Bruising": "Unusual or excessive bruising, often linked to thrombocytopenia.",
+  "Bleeding": "Prolonged or unexpected bleeding, a symptom of low platelet counts or clotting abnormalities.",
+  "Nausea and Vomiting": "Digestive distress, frequently seen with pancreatitis or hepatic involvement.",
+  "Dry Mouth": "A symptom of salivary gland involvement or endocrine dysfunction.",
+  "Palpitations": "Irregular or rapid heartbeats, indicative of cardiac involvement like myocarditis."
+}
