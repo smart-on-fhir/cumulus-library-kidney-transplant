@@ -10,32 +10,6 @@ from irae.schema import (
 
 PREFIX = manifest.get_study_prefix()
 
-class Cube:
-    table: str = None
-    cohort: str = None
-    col_list: List[str] = None
-    builder = CountsBuilder(manifest.get_study_prefix())
-
-    def __init__(self, view: str, cohort: str, col_list: List[str]):
-        """
-        :param view: name of the table in the CTAS statement (create `table` as )
-        :param cohort: source table to compile the cube counts
-        :param col_list: list of columns to include in the cube output
-        """
-        self.table = view
-        self.cohort = cohort
-        self.col_list = col_list
-
-    def count_encounter(self):
-        return filetool.save_athena_view(
-            view_name=self.table,
-            contents=self.builder.count_encounter(self.table, self.cohort, self.col_list))
-
-    def count_patient(self):
-        return filetool.save_athena_view(
-            view_name=self.table,
-            contents=self.builder.count_patient(self.table, self.cohort, self.col_list))
-
 
 class GraphType(Enum):
     """
