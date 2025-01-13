@@ -2,8 +2,7 @@ from enum import Enum
 from typing import List
 from irae import manifest
 from irae.guard import as_list_values
-
-PREFIX = manifest.get_study_prefix()
+from irae.study_prefix import PREFIX
 
 class Table(Enum):
     """

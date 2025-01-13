@@ -1,12 +1,13 @@
 from typing import List
 from irae import manifest, filetool
 from cumulus_library.builders.counts import CountsBuilder
+from irae.study_prefix import PREFIX
 
 class Cube:
     from_table: str = None
     create_table: str = None
     col_list: List[str] = None
-    builder = CountsBuilder(manifest.get_study_prefix())
+    builder = CountsBuilder(PREFIX)
 
     def __init__(self, create_table: str, from_table: str, col_list: List[str]):
         """

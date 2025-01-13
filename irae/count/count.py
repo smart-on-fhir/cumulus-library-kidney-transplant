@@ -2,6 +2,7 @@ from typing import List
 from pathlib import Path
 from cumulus_library.builders.counts import CountsBuilder
 from irae import filetool, fhir2sql
+from irae.study_prefix import PREFIX
 from irae.variable import vsac_variables, custom_variables
 from irae.schema import Columns
 
@@ -14,7 +15,7 @@ def cube_enc(from_table='study_population', cols=None, cube_table=None) -> Path:
     if not cols:
         cols = Columns.cohort.value
 
-    sql = CountsBuilder(fhir2sql.PREFIX).count_encounter(cube_table, from_table, cols)
+    sql = CountsBuilder(PREFIX).count_encounter(cube_table, from_table, cols)
     return filetool.save_athena_view(cube_table, sql)
 
 def cube_pat(source='study_population', cols=None, cube_table=None) -> Path:
@@ -26,7 +27,7 @@ def cube_pat(source='study_population', cols=None, cube_table=None) -> Path:
     if not cols:
         cols = Columns.demographics.value
 
-    sql = CountsBuilder(fhir2sql.PREFIX).count_patient(cube_table, from_table, cols)
+    sql = CountsBuilder(PREFIX).count_patient(cube_table, from_table, cols)
     return filetool.save_athena_view(cube_table, sql)
 
 def make_study_population() -> List[Path]:

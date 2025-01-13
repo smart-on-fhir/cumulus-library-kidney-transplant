@@ -1,15 +1,13 @@
 from typing import List
 from enum import Enum
 from irae import manifest
+from irae.study_prefix import PREFIX
 from irae.schema import (
     Table,
     Demographic,
     Encounter,
     CountDistinct
 )
-
-PREFIX = manifest.get_study_prefix()
-
 
 class GraphType(Enum):
     """
