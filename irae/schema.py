@@ -1,6 +1,7 @@
 from enum import Enum
 from typing import List
-from irae import manifest, guard
+from irae import manifest
+from irae.guard import as_list_values
 
 PREFIX = manifest.get_study_prefix()
 
@@ -34,19 +35,21 @@ class Encounter(Enum):
     # enc_service_type = 'enc_service_type'
 
 class Document(Enum):
-    doc_type = 'doc_type'
+    type_display = 'doc_type_display'
 
 class Diagnosis(Enum):
     category = 'dx_category_code'
-
-class Subtype(Enum):
-    subtype = 'subtype'
+    code_display = 'dx_display'
 
 class Medication(Enum):
     category = 'rx_category_code'
+    code_display = 'rx_display'
 
 class ObservationLab(Enum):
     code = 'lab_observation_code'
+
+class Subtype(Enum):
+    subtype = 'subtype'
 
 class Cohort(Enum):
     """
@@ -61,6 +64,10 @@ class Cohort(Enum):
 # Stratify duration
 ###############################################################################
 class Duration(Enum):
+    """
+    enc_period_start_day is not included as that could trigger HIPAA considerations
+    also, counts would be so small anyway that it wouldn't be useful in nearly all cases.
+    """
     week = ['enc_period_start_week']
     month = ['enc_period_start_month']
     year = ['enc_period_start_year']
@@ -80,17 +87,11 @@ class CountDistinct(Enum):
 ###############################################################################
 # Helper
 ###############################################################################
-def enum_names(enum_list: List[Enum]) -> List[str]:
-    return [entry.name for entry in enum_list]
-
-def enum_values(enum_list: List[Enum]) -> List[str]:
-    return [entry.value for entry in enum_list]
-
 class Columns(Enum):
-    cohort = enum_values(list(Cohort))
-    subtype = enum_values(list(Subtype))
-    demographics = enum_values(list(Demographic))
-    diagnoses = enum_values(list(Diagnosis))
-    medications = enum_values(list(Medication))
-    documents = enum_values(list(Document))
-    labs = enum_values(list(ObservationLab))
+    cohort = as_list_values(list(Cohort))
+    subtype = as_list_values(list(Subtype))
+    demographics = as_list_values(list(Demographic))
+    diagnoses = as_list_values(list(Diagnosis))
+    medications = as_list_values(list(Medication))
+    documents = as_list_values(list(Document))
+    labs = as_list_values(list(ObservationLab))

@@ -63,6 +63,12 @@ def as_list_str(obj) -> List[str]:
         return obj
     return [str(c) for c in list(obj)]
 
+def as_list_names(enum_list: List[Enum]) -> List[str]:
+    return list(set([entry.name for entry in enum_list]))
+
+def as_list_values(enum_list: List[Enum]) -> List[str]:
+    return list(set([entry.value for entry in enum_list]))
+
 ###############################################################################
 #
 # Sort / Filter
@@ -95,16 +101,6 @@ def sort_list(unsorted: Iterable) -> list:
 
 def sort_dict(unsorted: dict) -> OrderedDict:
     return OrderedDict(sorted(unsorted.items()))
-
-def uniq(unsorted: Iterable, sort=True) -> List:
-    """
-    :param unsorted: list or iterable type
-    :return: sorted list of unique entries
-    """
-    if sort:
-        return sorted(list(set(unsorted)))
-    else:
-        return list(set(unsorted))
 
 ###############################################################################
 #

@@ -13,7 +13,7 @@ PREFIX = manifest.get_study_prefix()
 ###############################################################################
 def name_prefix(table: list | str) -> list | str:
     if guard.is_list(table):
-        return [f'{PREFIX}__{table}' for table in guard.uniq(table)]
+        return [f'{PREFIX}__{table}' for table in list(set(table))]
     else:
         return f'{PREFIX}__{table}'
 

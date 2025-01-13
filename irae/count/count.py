@@ -1,16 +1,15 @@
-from enum import Enum
 from typing import List
 from pathlib import Path
 from cumulus_library.builders.counts import CountsBuilder
 from irae import filetool, fhir2sql
 from irae.variable import vsac_variables, custom_variables
-from irae.count.columns import Columns
+from irae.schema import Columns
 
-def cube_enc(source='study_population', cols=None, cube_table=None) -> Path:
-    from_table = fhir2sql.name_cohort(source)
+def cube_enc(from_table='study_population', cols=None, cube_table=None) -> Path:
+    from_table = fhir2sql.name_cohort(from_table)
 
     if not cube_table:
-        cube_table = fhir2sql.name_cube(source, 'enc')
+        cube_table = fhir2sql.name_cube(from_table, 'enc')
 
     if not cols:
         cols = Columns.cohort.value
@@ -35,7 +34,9 @@ def make_study_population() -> List[Path]:
             cube_enc(),
             cube_enc('study_population_dx', Columns.diagnoses.value),
             cube_enc('study_population_rx', Columns.medications.value),
-            cube_enc('study_population_lab', Columns.labs.value)]
+            cube_enc('study_population_lab', Columns.labs.value),
+            cube_enc('study_population_doc', Columns.documents.value),
+            cube_enc('study_population_proc', Columns.documents.value)]
 
 def make_variables() -> List[Path]:
     file_list = list()
