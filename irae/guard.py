@@ -64,10 +64,10 @@ def as_list_str(obj) -> List[str]:
     return [str(c) for c in list(obj)]
 
 def as_list_names(enum_list: List[Enum]) -> List[str]:
-    return list(set([entry.name for entry in enum_list]))
+    return sorted(list(set([entry.name for entry in enum_list])))
 
 def as_list_values(enum_list: List[Enum]) -> List[str]:
-    return list(set([entry.value for entry in enum_list]))
+    return sorted(list(set([entry.value for entry in enum_list])))
 
 ###############################################################################
 #

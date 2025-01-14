@@ -44,6 +44,9 @@ class Medication(Enum):
     category = 'rx_category_code'
     code_display = 'rx_display'
 
+class Procedure(Enum):
+    code_display = 'proc_display'
+
 class ObservationLab(Enum):
     code = 'lab_observation_code'
 
@@ -93,4 +96,5 @@ class Columns(Enum):
     diagnoses = as_list_values(list(Diagnosis))
     medications = as_list_values(list(Medication))
     documents = as_list_values(list(Document))
+    procedures = as_list_values(list(Procedure))
     labs = as_list_values(list(ObservationLab))

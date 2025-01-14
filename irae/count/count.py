@@ -37,7 +37,7 @@ def make_study_population() -> List[Path]:
             cube_enc('study_population_rx', Columns.medications.value),
             cube_enc('study_population_lab', Columns.labs.value),
             cube_enc('study_population_doc', Columns.documents.value),
-            cube_enc('study_population_proc', Columns.documents.value)]
+            cube_enc('study_population_proc', Columns.procedures.value)]
 
 def make_variables() -> List[Path]:
     file_list = list()
@@ -67,7 +67,7 @@ def make_variables_timeline_dx() -> List[Path]:
 def make_variables_timeline_rx() -> List[Path]:
     source = fhir2sql.name_study_population('timeline')
     cols = ['variable',
-            'rx_transplant',
+            'rx_custom',
             'rx_diabetes',
             'rx_diuretics',
             'rx_immunosuppressive']
