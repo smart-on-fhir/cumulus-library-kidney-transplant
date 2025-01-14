@@ -1,4 +1,4 @@
-CREATE TABLE irae__count_pat_rx_study_population_timeline AS (
+CREATE TABLE irae__count_pat_rx_study_variables_timeline AS (
     WITH
     filtered_table AS (
         SELECT
@@ -11,7 +11,7 @@ CREATE TABLE irae__count_pat_rx_study_population_timeline AS (
             s."rx_diuretics",
             s."rx_immunosuppressive"
             --noqa: enable=RF03, AL02
-        FROM irae__cohort_study_population_timeline AS s
+        FROM irae__cohort_study_variables_timeline AS s
         WHERE s.status = 'finished'
     ),
     

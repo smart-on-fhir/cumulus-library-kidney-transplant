@@ -1,4 +1,4 @@
-CREATE TABLE irae__count_pat_dx_study_population_timeline AS (
+CREATE TABLE irae__count_pat_dx_study_variables_timeline AS (
     WITH
     filtered_table AS (
         SELECT
@@ -14,7 +14,7 @@ CREATE TABLE irae__count_pat_dx_study_population_timeline AS (
             s."dx_infection",
             s."dx_kidney"
             --noqa: enable=RF03, AL02
-        FROM irae__cohort_study_population_timeline AS s
+        FROM irae__cohort_study_variables_timeline AS s
     ),
     
     null_replacement AS (
