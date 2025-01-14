@@ -26,21 +26,6 @@ class EncounterClass(Enum):
         self.code = code
         self.display = display
 
-    @staticmethod
-    def lookup(enc_class_list: List[str]) -> List:
-        """
-        TODO: refactor DRY
-        Get EncounterClass by "code" list in `enc_class_list`
-        :param enc_class_list: list of str "codes" to return into EncounterClass types.
-        :return: List[EncounterClass] entries for the "codes" in `enc_class_list`
-        """
-        enc_class_list = [code.upper() for code in enc_class_list]
-        results = list()
-        for standard in list(EncounterClass):
-            if standard.name in enc_class_list:
-                results.append(standard)
-        return results
-
 def include(enc_class_list: List[EncounterClass] | List[str] = None) -> Path:
     """
     Selected encounters specified by "enc_class_list" to compile the `study_population`
@@ -49,8 +34,9 @@ def include(enc_class_list: List[EncounterClass] | List[str] = None) -> Path:
     """
     if not enc_class_list:
         enc_class_list = list(EncounterClass)
-    if not guard.is_list_type(enc_class_list, EncounterClass):
-        enc_class_list = EncounterClass.lookup(enc_class_list)
 
-    codes = guard.as_list_coding(enc_class_list)
+    if guard.is_list_type(enc_class_list, EncounterClass):
+        enc_class_list = guard.as_list_coding(enc_class_list)
+
+    codes = guard.filter_list_coding(list(EncounterClass), enc_class_list)
     return fhir2sql.include(codes, 'enc_class')

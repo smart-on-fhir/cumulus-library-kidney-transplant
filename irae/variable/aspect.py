@@ -52,6 +52,9 @@ class Aspect:
         self._guard_var_key()
 
     def _guard_var_key(self):
+        """
+        Guard Variable Key name to ensure using the AspectKey prefix
+        """
         guard_list = list()
         for var in self.variable_list:
             var.name = var.name.lower()

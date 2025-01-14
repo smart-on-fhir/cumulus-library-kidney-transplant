@@ -4,7 +4,7 @@ from typing import List
 from pathlib import Path
 from irae import filetool
 from irae import fhir2sql
-from irae.fhir2sql import PREFIX
+from irae.study_prefix import PREFIX
 from irae.variable import vsac_api
 from irae.variable.aspect import Aspect, AspectMap, AspectKey
 from irae.variable.vsac_variables_defined import get_aspect_map

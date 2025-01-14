@@ -37,7 +37,7 @@
 |dx_infection|hepatitis_b|[2.16.840.1.113883.3.464.1003.110.12.1025](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.464.1003.110.12.1025/expansion/Latest)|
 |dx_infection|hepatitis_c|[2.16.840.1.113762.1.4.1222.30](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1222.30/expansion/Latest)|
 |**dx_heart**||
-|dx_heart|cardiomyopathy:|[2.16.840.1.113762.1.4.1222.579](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1222.579/expansion/Latest)|
+|dx_heart|cardiomyopathy|[2.16.840.1.113762.1.4.1222.579](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1222.579/expansion/Latest)|
 |dx_heart|attack|[2.16.840.1.113883.3.666.5.3011](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.666.5.3011/expansion/Latest)|
 |dx_heart|failure|[2.16.840.1.113762.1.4.1222.1543](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1222.1543/expansion/Latest)|
 |dx_heart|cohort|[2.16.840.1.113762.1.4.1182.308](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1182.308/expansion/Latest)|

@@ -1,0 +1,18 @@
+create or replace view irae__rx_atg as select * from (values
+('http://www.nlm.nih.gov/research/umls/rxnorm', 'code', 'display')
+,('http://www.nlm.nih.gov/research/umls/rxnorm', '1011', 'lymphocyte immune globulin, anti-thymocyte globulin')
+,('http://www.nlm.nih.gov/research/umls/rxnorm', '107047', 'anti-thymocyte globulin (rabbit) 25 MG Injection')
+,('http://www.nlm.nih.gov/research/umls/rxnorm', '107047', 'lymphocyte immune globulin, anti-thymocyte globulin, rabbit 25 MG Injection')
+,('http://www.nlm.nih.gov/research/umls/rxnorm', '197906', '5 ML lymphocyte immune globulin, anti-thymocyte globulin, equine 50 MG/ML Injection')
+,('http://www.nlm.nih.gov/research/umls/rxnorm', '206289', '5 ML lymphocyte immune globulin, anti-thymocyte globulin, equine 50 MG/ML Injection [ATGAM]')
+,('http://www.nlm.nih.gov/research/umls/rxnorm', '2282514', 'lymphocyte immune globulin, anti-thymocyte globulin, equine 50 MG/ML')
+,('http://www.nlm.nih.gov/research/umls/rxnorm', '2282515', 'lymphocyte immune globulin, anti-thymocyte globulin Injectable Product')
+,('http://www.nlm.nih.gov/research/umls/rxnorm', '2282516', 'lymphocyte immune globulin, anti-thymocyte globulin Injection')
+,('http://www.nlm.nih.gov/research/umls/rxnorm', '2282518', 'lymphocyte immune globulin, anti-thymocyte globulin, equine 50 MG/ML [ATGAM]')
+,('http://www.nlm.nih.gov/research/umls/rxnorm', '2282519', 'lymphocyte immune globulin, anti-thymocyte globulin Injection [ATGAM]')
+,('http://www.nlm.nih.gov/research/umls/rxnorm', '2282528', 'lymphocyte immune globulin, anti-thymocyte globulin Injection [Thymoglobulin]')
+,('http://www.nlm.nih.gov/research/umls/rxnorm', '2645851', 'lymphocyte immune globulin, anti-thymocyte globulin, equine Injection')
+,('http://www.nlm.nih.gov/research/umls/rxnorm', '2656074', 'lymphocyte immune globulin, anti-thymocyte globulin, equine Injection [ATGAM]')
+,('http://www.nlm.nih.gov/research/umls/rxnorm', '2659841', 'lymphocyte immune globulin, anti-thymocyte globulin, equine Injectable Product')
+,('http://www.nlm.nih.gov/research/umls/rxnorm', '91601', 'lymphocyte immune globulin, anti-thymocyte globulin, equine')
+) AS t (system, code, display) ;

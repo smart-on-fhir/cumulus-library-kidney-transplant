@@ -51,7 +51,7 @@ def make_study_variable_timeline() -> List[Path]:
 
     return file_list
 
-def make_study_variable_groups() -> List[Path]:
+def make_study_variables() -> List[Path]:
     group_list = list()
     variable_list = vsac_variables.list_view_variables() + custom_variables.list_view_variables()
     for variable in variable_list:

@@ -32,7 +32,7 @@ def prompt_json(key: str, value: str):
     return f'Respond with a JSON dictionary where each {{key:value}} is {{{key}:{value}}}.'
 
 def prompt_rx_synonyms(drug_name: str) -> str:
-    question = f'What are all generic, brand, and ingredient names for "{drug_name}" ? \n'
+    question = f'What are all generic, brand, ingredient, abbreviations, and synonym drug names for "{drug_name}" ? \n'
     respond = prompt_json('ingredient', 'drug name')
     return question + respond
 
@@ -143,11 +143,7 @@ def make_jaccard() -> Path:
 
     return filetool.save_prompt_json(file_save, guard.sort_dict(descend))
 
-
-
-
-
-            ######################################################################
+######################################################################
 # Make targets
 ######################################################################
 

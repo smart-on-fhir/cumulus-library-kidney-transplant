@@ -63,23 +63,44 @@ def as_list_str(obj) -> List[str]:
         return obj
     return [str(c) for c in list(obj)]
 
+def as_list_names(enum_list: List[Enum]) -> List[str]:
+    return sorted(list(set([entry.name for entry in enum_list])))
+
+def as_list_values(enum_list: List[Enum]) -> List[str]:
+    return sorted(list(set([entry.value for entry in enum_list])))
+
+###############################################################################
+#
+# Sort / Filter
+#
+###############################################################################
+def filter_list_coding(standard_list: List[Coding] | List, code_list: List[Coding] | List[str]) -> List[Coding]:
+    """
+    :param standard_list: Standard list of codes from a ValueSet
+    :param code_list: List of codes to filter
+    :return: List Coding in `standard_list` filtered by `code_list`
+    """
+    # guard inputs
+    standard_list = as_list_coding(standard_list)
+    if is_list_type(code_list, Coding):
+        code_list = [code.code for code in code_list]
+    results = list()
+    for standard in standard_list:
+        if standard.code in code_list:
+            results.append(standard)
+    return results
+
+def exclude_list(input_list: list, exclude_list: list) -> list:
+    """
+    exclude items in `exclude_list` from `input_list`:
+    """
+    return [item for item in input_list if item not in exclude_list]
+
 def sort_list(unsorted: Iterable) -> list:
     return sorted(list(set(list(unsorted))))
 
 def sort_dict(unsorted: dict) -> OrderedDict:
     return OrderedDict(sorted(unsorted.items()))
-
-def uniq(unsorted: Iterable, sort=True) -> List:
-    """
-    :param unsorted: list or iterable type
-    :return: sorted list of unique entries
-    """
-    if sort:
-        return sorted(list(set(unsorted)))
-    else:
-        return list(set(unsorted))
-
-
 
 ###############################################################################
 #

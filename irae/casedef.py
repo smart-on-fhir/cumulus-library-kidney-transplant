@@ -4,7 +4,7 @@ from irae import fhir2sql, filetool
 
 def make(variable=None) -> List[Path]:
     if not variable:
-        variable = fhir2sql.name_join('cohort', 'rx_transplant')
+        variable = fhir2sql.name_join('cohort', 'rx_custom')
 
     return [make_index_date(variable, 'index', '='),
             make_index_date(variable, 'pre', '<'),

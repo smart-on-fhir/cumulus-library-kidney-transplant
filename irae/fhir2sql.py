@@ -1,10 +1,9 @@
 from typing import List
 from pathlib import Path
 from fhirclient.models.coding import Coding
-from irae import guard, filetool, manifest
+from irae import guard, filetool
+from irae.study_prefix import PREFIX
 from irae.filetool import save_athena_view
-
-PREFIX = manifest.get_study_prefix()
 
 ###############################################################################
 #
@@ -13,7 +12,7 @@ PREFIX = manifest.get_study_prefix()
 ###############################################################################
 def name_prefix(table: list | str) -> list | str:
     if guard.is_list(table):
-        return [f'{PREFIX}__{table}' for table in guard.uniq(table)]
+        return [f'{PREFIX}__{table}' for table in list(set(table))]
     else:
         return f'{PREFIX}__{table}'
 
@@ -112,7 +111,10 @@ def valueset2codelist(valueset_json: Path | str) -> List[Coding]:
                 parsed.append(Coding(concept))
     return parsed
 
-def expansion2codelist(valueset_json: dict) -> List[Coding]:
+def expansion2codelist(valueset_json: dict | str) -> List[Coding]:
+    if isinstance(valueset_json, str):
+        valueset_json = filetool.load_valueset(valueset_json)
+
     contains = valueset_json.get('expansion').get('contains')
     return [Coding(c) for c in contains]
 
