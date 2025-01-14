@@ -74,7 +74,10 @@ def make_variables_timeline_rx() -> List[Path]:
     return [cube_enc(source, cols, fhir2sql.name_cube(source, 'pat_rx'))]
 
 def make_timeline() -> List[Path]:
+    """
+    :return: NOTE: this could take 20+ minutes to build!
+    """
     return make_variables_timeline_dx() + make_variables_timeline_rx()
 
 def make() -> List[Path]:
-    return make_study_population() + make_variables() + make_timeline()
+    return make_study_population() + make_variables()
