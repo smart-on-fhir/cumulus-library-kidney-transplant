@@ -55,33 +55,5 @@ def make_variables() -> List[Path]:
             file_list.append(cube_enc(variable, Columns.cohort_subtype.value + Columns.documents.value))
     return file_list
 
-def make_variables_timeline_dx() -> List[Path]:
-    source = fhir2sql.name_cohort('study_variables_timeline')
-    cols = ['variable',
-            'dx_autoimmune',
-            'dx_cancer',
-            'dx_compromised',
-            'dx_diabetes',
-            'dx_heart',
-            'dx_htn',
-            'dx_infection',
-            'dx_kidney']
-    return [cube_pat(source, cols, fhir2sql.name_cube(source, 'pat_dx'))]
-
-def make_variables_timeline_rx() -> List[Path]:
-    source = fhir2sql.name_cohort('study_variables_timeline')
-    cols = ['variable',
-            'rx_custom',
-            'rx_diabetes',
-            'rx_diuretics',
-            'rx_immunosuppressive']
-    return [cube_enc(source, cols, fhir2sql.name_cube(source, 'pat_rx'))]
-
-def make_timeline() -> List[Path]:
-    """
-    :return: NOTE: this could take 20+ minutes to build!
-    """
-    return make_variables_timeline_dx() + make_variables_timeline_rx()
-
 def make() -> List[Path]:
     return make_study_population() + make_variables()

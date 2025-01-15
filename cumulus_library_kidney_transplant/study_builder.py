@@ -7,7 +7,7 @@ from cumulus_library_kidney_transplant import (
     study_population,
     cohorts,
     casedef)
-from cumulus_library_kidney_transplant.count import count
+from cumulus_library_kidney_transplant.count import cube, cube_custom
 from cumulus_library_kidney_transplant.criteria.race import Race
 from cumulus_library_kidney_transplant.criteria.encounter_class import EncounterClass
 from cumulus_library_kidney_transplant.variable import (
@@ -118,7 +118,7 @@ def make_study(study: StudyBuilderConfig) -> Path:
     variables_sql = vsac_variables.make() + custom_variables.make()
     cohorts_sql = cohorts.make()
     casedef_sql = casedef.make()
-    counts_sql = count.make()
+    counts_sql = cube.make() + cube_custom.make()
 
     vsac_markdown.make()
     print('README.md')
