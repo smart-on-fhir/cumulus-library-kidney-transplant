@@ -9,9 +9,6 @@ from cumulus_library_kidney_transplant.variable.aspect import Aspect, AspectMap,
 ###############################################################################
 def get_procedures() -> Procedures:
     return Procedures([
-        Variable('Nephrectomy', {
-            'sct': '2.16.840.1.113762.1.4.1248.200',
-            'icd10pcs': '2.16.840.1.113762.1.4.1248.4'}),
         Variable('Dialysis', {
             'services': '2.16.840.1.113883.3.464.1003.109.12.1013'}),
         Variable('Surgery', {
@@ -47,6 +44,7 @@ def get_diagnoses() -> Diagnoses:
             'lupus': '2.16.840.1.113883.3.464.1003.117.12.1010'}))
     vars.append(Variable(
         'Cancer', {
+            'any': '2.16.840.1.113883.3.526.3.1010',
             'malignant_melanoma_sct': '2.16.840.1.113883.3.1434.1038',
             'malignant_melanoma_icd10': '2.16.840.1.113883.3.464.1003.108.11.1018'}))
     vars.append(Variable(
@@ -159,6 +157,9 @@ def deprecated() -> List[Variable]:
         Variable('ADE', {
             'common_reactant': '2.16.840.1.113762.1.4.1010.1',
             'common_allergy_intolerance': '2.16.840.1.113762.1.4.1186.8'}),
+        Variable('Nephrectomy', {
+            'sct': '2.16.840.1.113762.1.4.1248.200',
+            'icd10pcs': '2.16.840.1.113762.1.4.1248.4'}),
     ]
 
 def get_aspect_map() -> AspectMap:
