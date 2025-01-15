@@ -21,11 +21,28 @@ def get_study_prefix() -> str:
 def write_manifest(file_names: List[Path] | List[str]) -> Path:
     saved = read_manifest()
     saved['file_config']['file_names'] = path_relative(file_names)
+    saved['export_config']['count_list'] = list_tables(file_names, '_count_')
 
     with open(str(path_manifest()), 'wb') as f:
         tomli_w.dump(saved, f)
     print('saved ' + str(path_manifest()))
     return path_manifest()
+
+def list_tables(file_names: List[Path] | List[str], search_term: str = None) -> List[str]:
+    """
+    "athena/irae__include_study_period.sql",
+    :param file_names:
+    :return:
+    """
+    table_names = list()
+    for table in path_relative(file_names):
+        table = table.replace('athena/', '').replace('.sql', '')
+        if search_term:
+            if search_term in table:
+                table_names.append(table)
+        else:
+            table_names.append(table)
+    return table_names
 
 def path_relative(file_names: List[Path] | List[str]) -> List[str]:
     split_token = 'cumulus_library_kidney_transplant/'
