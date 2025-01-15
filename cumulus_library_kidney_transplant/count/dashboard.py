@@ -1,8 +1,7 @@
 from typing import List
 from enum import Enum
-from irae import manifest
-from irae.study_prefix import PREFIX
-from irae.schema import (
+from cumulus_library_kidney_transplant.study_prefix import PREFIX
+from cumulus_library_kidney_transplant.schema import (
     Table,
     Demographic,
     Encounter,

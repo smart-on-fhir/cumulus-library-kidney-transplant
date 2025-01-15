@@ -1,8 +1,8 @@
 from enum import Enum
 from typing import List
-from irae import manifest
-from irae.guard import as_list_values
-from irae.study_prefix import PREFIX
+from cumulus_library_kidney_transplant import manifest
+from cumulus_library_kidney_transplant.guard import as_list_values
+from cumulus_library_kidney_transplant.study_prefix import PREFIX
 
 class Table(Enum):
     """

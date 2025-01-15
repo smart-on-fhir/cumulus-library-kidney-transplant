@@ -1,7 +1,7 @@
 from typing import List
-from irae import manifest, filetool
+from cumulus_library_kidney_transplant import manifest, filetool
 from cumulus_library.builders.counts import CountsBuilder
-from irae.study_prefix import PREFIX
+from cumulus_library_kidney_transplant.study_prefix import PREFIX
 
 class Cube:
     from_table: str = None

@@ -1,9 +1,9 @@
 from typing import List
 from pathlib import Path
-from irae import filetool
-from irae import fhir2sql
-from irae.variable.aspect import AspectKey
-from irae.variable.spreadsheet import SpreadsheetReader, Delimiter, Vocab
+from cumulus_library_kidney_transplant import filetool
+from cumulus_library_kidney_transplant import fhir2sql
+from cumulus_library_kidney_transplant.variable.aspect import AspectKey
+from cumulus_library_kidney_transplant.variable.spreadsheet import SpreadsheetReader, Delimiter, Vocab
 
 VAR_LIST = ['rx_custom', 'lab_custom']
 

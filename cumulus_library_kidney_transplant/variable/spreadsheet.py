@@ -2,9 +2,9 @@ from typing import List
 from enum import Enum
 from pathlib import Path
 from fhirclient.models.coding import Coding
-from irae import filetool
-from irae.vocab import Vocab
-from irae.variable.deprecated import BinaryClass, MultiClass
+from cumulus_library_kidney_transplant import filetool
+from cumulus_library_kidney_transplant.vocab import Vocab
+from cumulus_library_kidney_transplant.variable.deprecated import BinaryClass, MultiClass
 
 class Delimiter(Enum):
     csv = ','

@@ -1,6 +1,6 @@
 from typing import List
-from irae.variable.aspect import Variable, Valueset
-from irae.variable.aspect import Aspect, AspectMap, Diagnoses, Medications, Labs, Procedures
+from cumulus_library_kidney_transplant.variable.aspect import Variable, Valueset
+from cumulus_library_kidney_transplant.variable.aspect import Aspect, AspectMap, Diagnoses, Medications, Labs, Procedures
 
 ###############################################################################
 #
