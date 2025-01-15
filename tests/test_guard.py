@@ -1,7 +1,7 @@
 import unittest
-from irae import guard
-from irae.criteria import encounter_type
-from irae.criteria.race import Race
+from cumulus_library_kidney_transplant import guard
+from cumulus_library_kidney_transplant.criteria import encounter_type
+from cumulus_library_kidney_transplant.criteria.race import Race
 
 class TestGuard(unittest.TestCase):
 

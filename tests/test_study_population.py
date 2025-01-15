@@ -1,5 +1,5 @@
 import unittest
-from irae import study_population
+from cumulus_library_kidney_transplant import study_population
 
 class TestStudyPopulation(unittest.TestCase):
 

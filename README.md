@@ -6,6 +6,11 @@
 |dx_transplant|kidney|[2.16.840.1.113762.1.4.1078.16](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1078.16/expansion/Latest)|
 |dx_transplant|solid_organ|[2.16.840.1.113762.1.4.1032.205](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1032.205/expansion/Latest)|
 |dx_transplant|recipient|[2.16.840.1.113762.1.4.1111.27](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1111.27/expansion/Latest)|
+|**dx_cancer**||
+|dx_cancer|skin|[2.16.840.1.113883.3.526.3.1010](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.526.3.1010/expansion/Latest)|
+|dx_cancer|sarcoma|[2.16.840.1.113883.3.526.3.1010](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.526.3.1010/expansion/Latest)|
+|dx_cancer|squamous|[2.16.840.1.113883.3.526.3.1010](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.526.3.1010/expansion/Latest)|
+|dx_cancer|melanoma|[2.16.840.1.113883.3.526.3.1010](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.526.3.1010/expansion/Latest)|
 |**dx_kidney**||
 |dx_kidney|condition|[2.16.840.1.113883.17.4077.3.2028](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.17.4077.3.2028/expansion/Latest)|
 |dx_kidney|renal_disease|[2.16.840.1.113762.1.4.1029.335](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1029.335/expansion/Latest)|
@@ -20,10 +25,6 @@
 |dx_autoimmune|arthritis_ra|[2.16.840.1.113762.1.4.1222.651](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1222.651/expansion/Latest)|
 |dx_autoimmune|arthritis_disorders|[2.16.840.1.113762.1.4.1222.81](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1222.81/expansion/Latest)|
 |dx_autoimmune|lupus|[2.16.840.1.113883.3.464.1003.117.12.1010](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.464.1003.117.12.1010/expansion/Latest)|
-|**dx_cancer**||
-|dx_cancer|any|[2.16.840.1.113883.3.526.3.1010](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.526.3.1010/expansion/Latest)|
-|dx_cancer|malignant_melanoma_sct|[2.16.840.1.113883.3.1434.1038](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.1434.1038/expansion/Latest)|
-|dx_cancer|malignant_melanoma_icd10|[2.16.840.1.113883.3.464.1003.108.11.1018](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.464.1003.108.11.1018/expansion/Latest)|
 |**dx_compromised**||
 |dx_compromised|immunocompromised|[2.16.840.1.113883.3.666.5.1940](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.666.5.1940/expansion/Latest)|
 |dx_compromised|immunocompromising|[2.16.840.1.113762.1.4.1235.212](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1235.212/expansion/Latest)|
@@ -59,11 +60,9 @@
 |rx_immunosuppressive|systemic_therapy|[2.16.840.1.113883.3.666.5.803](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.666.5.803/expansion/Latest)|
 |rx_immunosuppressive|immune_modulators|[2.16.840.1.113762.1.4.1248.124](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1248.124/expansion/Latest)|
 |rx_immunosuppressive|coricosteroids_systemic|[2.16.840.1.113883.3.3616.200.110.102.2061](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.3616.200.110.102.2061/expansion/Latest)|
-|**rx_names**||
-|rx_names|ingredient|[2.16.840.1.113762.1.4.1010.7](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1010.7/expansion/Latest)|
-|rx_names|brand|[2.16.840.1.113883.3.88.12.80.16](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.88.12.80.16/expansion/Latest)|
-|rx_names|prescribable_generic|[2.16.840.1.113883.3.88.12.80.17](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.88.12.80.17/expansion/Latest)|
-|rx_names|prescribable|[2.16.840.1.113762.1.4.1237.18](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1237.18/expansion/Latest)|
+|**rx_antibiotics**||
+|rx_antibiotics|any|[2.16.840.1.113762.1.4.1078.849](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1078.849/expansion/Latest)|
+|rx_antibiotics|systemic|[2.16.840.1.113762.1.4.1133.6](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1133.6/expansion/Latest)|
 |**rx_immunocompromised**||
 |rx_immunocompromised|therapies|[2.16.840.1.113762.1.4.1235.212](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1235.212/expansion/Latest)|
 |**rx_diabetes**||

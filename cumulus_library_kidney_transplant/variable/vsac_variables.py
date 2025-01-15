@@ -13,7 +13,6 @@ from cumulus_library_kidney_transplant.variable.vsac_variables_defined import ge
 # LIST of
 #
 ###############################################################################
-
 def list_view_valuesets() -> List[str]:
     valueset_list = list()
     for aspect in get_aspect_map().as_list():
@@ -28,6 +27,19 @@ def list_view_variables() -> List[str]:
         for variable in aspect.variable_list:
             variable_list.append(variable.name)
     return fhir2sql.name_prefix(variable_list)
+
+###############################################################################
+#
+# Cancer specific subsets.
+#
+###############################################################################
+def make_cancer_subsets():
+    valueset_json = 'irae__dx_cancer/any.json'
+    filetool.save_valueset('irae__dx_cancer/skin.json', fhir2sql.filter_expansion(valueset_json, ['skin']))
+    filetool.save_valueset('irae__dx_cancer/melanoma.json', fhir2sql.filter_expansion(valueset_json, ['melanoma']))
+    filetool.save_valueset('irae__dx_cancer/sarcoma.json', fhir2sql.filter_expansion(valueset_json, ['sarcoma']))
+    filetool.save_valueset('irae__dx_cancer/squamous.json', fhir2sql.filter_expansion(valueset_json, ['squamous']))
+
 
 ###############################################################################
 #

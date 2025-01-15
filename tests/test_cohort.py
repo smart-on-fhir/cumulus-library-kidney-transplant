@@ -1,5 +1,5 @@
 import unittest
-from irae import cohorts
+from cumulus_library_kidney_transplant import cohorts
 
 class TestCohort(unittest.TestCase):
 

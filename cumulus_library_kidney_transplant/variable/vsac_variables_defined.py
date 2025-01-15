@@ -20,12 +20,19 @@ def get_procedures() -> Procedures:
 #
 ###############################################################################
 def get_diagnoses() -> Diagnoses:
+    cancer_any = '2.16.840.1.113883.3.526.3.1010'
     vars = list()
     vars.append(Variable(
         'Transplant', {
             'kidney': '2.16.840.1.113762.1.4.1078.16',
             'solid_organ': '2.16.840.1.113762.1.4.1032.205',
             'recipient': '2.16.840.1.113762.1.4.1111.27'}))
+    vars.append(Variable(
+        'Cancer', {
+            'skin': cancer_any,
+            'sarcoma': cancer_any,
+            'squamous': cancer_any,
+            'melanoma': cancer_any}))
     vars.append(Variable(
         'Kidney', {
             'condition': '2.16.840.1.113883.17.4077.3.2028',
@@ -42,11 +49,6 @@ def get_diagnoses() -> Diagnoses:
             'arthritis_ra': '2.16.840.1.113762.1.4.1222.651',
             'arthritis_disorders': '2.16.840.1.113762.1.4.1222.81',
             'lupus': '2.16.840.1.113883.3.464.1003.117.12.1010'}))
-    vars.append(Variable(
-        'Cancer', {
-            'any': '2.16.840.1.113883.3.526.3.1010',
-            'malignant_melanoma_sct': '2.16.840.1.113883.3.1434.1038',
-            'malignant_melanoma_icd10': '2.16.840.1.113883.3.464.1003.108.11.1018'}))
     vars.append(Variable(
         'Compromised', {
             'immunocompromised': '2.16.840.1.113883.3.666.5.1940',
@@ -169,6 +171,10 @@ def deprecated() -> List[Variable]:
         Variable('Nephrectomy', {
             'sct': '2.16.840.1.113762.1.4.1248.200',
             'icd10pcs': '2.16.840.1.113762.1.4.1248.4'}),
+        'Cancer', {
+            # 'any': '2.16.840.1.113883.3.526.3.1010'
+            'malignant_melanoma_sct': '2.16.840.1.113883.3.1434.1038',
+            'malignant_melanoma_icd10': '2.16.840.1.113883.3.464.1003.108.11.1018'}
     ]
 
 def get_aspect_map() -> AspectMap:

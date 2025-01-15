@@ -1,5 +1,5 @@
 import unittest
-from irae.count import dashboard
+from cumulus_library_kidney_transplant.count import dashboard
 
 class TestDashboard(unittest.TestCase):
 

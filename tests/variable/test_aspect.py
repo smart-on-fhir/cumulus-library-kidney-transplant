@@ -1,8 +1,8 @@
 import unittest
-from irae.variable.aspect import Aspect, AspectMap, AspectKey
-from irae.variable.aspect import Procedures, Variable, Valueset
-from irae.variable.vsac_variables_defined import Diagnoses, Medications, Labs, Procedures
-from irae.variable.vsac_variables_defined import get_aspect_map
+from cumulus_library_kidney_transplant.variable.aspect import Aspect, AspectMap, AspectKey
+from cumulus_library_kidney_transplant.variable.aspect import Procedures, Variable, Valueset
+from cumulus_library_kidney_transplant.variable.vsac_variables_defined import Diagnoses, Medications, Labs, Procedures
+from cumulus_library_kidney_transplant.variable.vsac_variables_defined import get_aspect_map
 
 class TestAspect(unittest.TestCase):
 
