@@ -21,6 +21,7 @@
 |dx_autoimmune|arthritis_disorders|[2.16.840.1.113762.1.4.1222.81](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1222.81/expansion/Latest)|
 |dx_autoimmune|lupus|[2.16.840.1.113883.3.464.1003.117.12.1010](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.464.1003.117.12.1010/expansion/Latest)|
 |**dx_cancer**||
+|dx_cancer|any|[2.16.840.1.113883.3.526.3.1010](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.526.3.1010/expansion/Latest)|
 |dx_cancer|malignant_melanoma_sct|[2.16.840.1.113883.3.1434.1038](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.1434.1038/expansion/Latest)|
 |dx_cancer|malignant_melanoma_icd10|[2.16.840.1.113883.3.464.1003.108.11.1018](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.464.1003.108.11.1018/expansion/Latest)|
 |**dx_compromised**||
@@ -53,10 +54,16 @@
 |dx_diabetes|diabetic_nephropathy|[2.16.840.1.113883.3.464.1003.109.12.1004](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.464.1003.109.12.1004/expansion/Latest)|
 |dx_diabetes|diabetic_ckd|[2.16.840.1.113762.1.4.1078.124](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1078.124/expansion/Latest)|
 |**rx_immunosuppressive**||
+|rx_immunosuppressive|everolimus|[2.16.840.1.113762.1.4.1260.499](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1260.499/expansion/Latest)|
 |rx_immunosuppressive|drugs|[2.16.840.1.113762.1.4.1219.192](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1219.192/expansion/Latest)|
 |rx_immunosuppressive|systemic_therapy|[2.16.840.1.113883.3.666.5.803](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.666.5.803/expansion/Latest)|
 |rx_immunosuppressive|immune_modulators|[2.16.840.1.113762.1.4.1248.124](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1248.124/expansion/Latest)|
 |rx_immunosuppressive|coricosteroids_systemic|[2.16.840.1.113883.3.3616.200.110.102.2061](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.3616.200.110.102.2061/expansion/Latest)|
+|**rx_names**||
+|rx_names|ingredient|[2.16.840.1.113762.1.4.1010.7](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1010.7/expansion/Latest)|
+|rx_names|brand|[2.16.840.1.113883.3.88.12.80.16](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.88.12.80.16/expansion/Latest)|
+|rx_names|prescribable_generic|[2.16.840.1.113883.3.88.12.80.17](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.88.12.80.17/expansion/Latest)|
+|rx_names|prescribable|[2.16.840.1.113762.1.4.1237.18](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1237.18/expansion/Latest)|
 |**rx_immunocompromised**||
 |rx_immunocompromised|therapies|[2.16.840.1.113762.1.4.1235.212](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1235.212/expansion/Latest)|
 |**rx_diabetes**||
@@ -94,9 +101,6 @@
 |**lab_diabetes**||
 |lab_diabetes|screening|[2.16.840.1.113762.1.4.1221.122](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1221.122/expansion/Latest)|
 |lab_diabetes|glucose_test|[2.16.840.1.113762.1.4.1045.134](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1045.134/expansion/Latest)|
-|**proc_nephrectomy**||
-|proc_nephrectomy|sct|[2.16.840.1.113762.1.4.1248.200](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1248.200/expansion/Latest)|
-|proc_nephrectomy|icd10pcs|[2.16.840.1.113762.1.4.1248.4](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1248.4/expansion/Latest)|
 |**proc_dialysis**||
 |proc_dialysis|services|[2.16.840.1.113883.3.464.1003.109.12.1013](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.464.1003.109.12.1013/expansion/Latest)|
 |**proc_surgery**||

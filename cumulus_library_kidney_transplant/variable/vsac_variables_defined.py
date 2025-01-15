@@ -133,12 +133,16 @@ def get_lab_analytes() -> Labs:
 ###############################################################################
 def get_medications() -> Medications:
     return Medications([
-        Variable('Immunosuppressive', {
+        Variable('immunosuppressive', {
+            'everolimus': '2.16.840.1.113762.1.4.1260.499',
             'drugs': '2.16.840.1.113762.1.4.1219.192',
             'systemic_therapy': '2.16.840.1.113883.3.666.5.803',
             'immune_modulators': '2.16.840.1.113762.1.4.1248.124',
             'coricosteroids_systemic': '2.16.840.1.113883.3.3616.200.110.102.2061'}),
-        Variable('immunoCompromised', {'therapies': '2.16.840.1.113762.1.4.1235.212'}),
+        Variable('antibiotics', {
+            'any': '2.16.840.1.113762.1.4.1078.849',
+            'systemic': '2.16.840.1.113762.1.4.1133.6'}),
+        Variable('immunocompromised', {'therapies': '2.16.840.1.113762.1.4.1235.212'}),
         Variable('diabetes', {'drugs': '2.16.840.1.113762.1.4.1190.58'}),
         Variable('HTN', {'drugs': '2.16.840.1.113883.3.600.1476'}),
         Variable('Diuretics', {
@@ -154,6 +158,11 @@ def get_medications() -> Medications:
 def deprecated() -> List[Variable]:
     return [
         Variable('SurgeryOther', {'surgical_cohort': '2.16.840.1.113762.1.4.1182.127'}),
+        Variable('drug_names', {
+            'ingredient': '2.16.840.1.113762.1.4.1010.7',
+            'brand': '2.16.840.1.113883.3.88.12.80.16',
+            'prescribable_generic': '2.16.840.1.113883.3.88.12.80.17',
+            'prescribable': '2.16.840.1.113762.1.4.1237.18'}),
         Variable('ADE', {
             'common_reactant': '2.16.840.1.113762.1.4.1010.1',
             'common_allergy_intolerance': '2.16.840.1.113762.1.4.1186.8'}),
