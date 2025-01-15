@@ -5,6 +5,9 @@ CREATE TABLE irae__count_enc_study_population_rx AS (
             s.subject_ref,
             s.encounter_ref,
             --noqa: disable=RF03, AL02
+            s."age_at_visit",
+            s."enc_class_code",
+            s."gender",
             s."rx_category_code",
             s."rx_display"
             --noqa: enable=RF03, AL02
@@ -16,6 +19,18 @@ CREATE TABLE irae__count_enc_study_population_rx AS (
         SELECT
             subject_ref,
             encounter_ref,
+            coalesce(
+                cast(age_at_visit AS varchar),
+                'cumulus__none'
+            ) AS age_at_visit,
+            coalesce(
+                cast(enc_class_code AS varchar),
+                'cumulus__none'
+            ) AS enc_class_code,
+            coalesce(
+                cast(gender AS varchar),
+                'cumulus__none'
+            ) AS gender,
             coalesce(
                 cast(rx_category_code AS varchar),
                 'cumulus__none'
@@ -29,16 +44,25 @@ CREATE TABLE irae__count_enc_study_population_rx AS (
     secondary_powerset AS (
         SELECT
             count(DISTINCT encounter_ref) AS cnt_encounter_ref,
+            "age_at_visit",
+            "enc_class_code",
+            "gender",
             "rx_category_code",
             "rx_display",
             concat_ws(
                 '-',
+                COALESCE("age_at_visit",''),
+                COALESCE("enc_class_code",''),
+                COALESCE("gender",''),
                 COALESCE("rx_category_code",''),
                 COALESCE("rx_display",'')
             ) AS id
         FROM null_replacement
         GROUP BY
             cube(
+            "age_at_visit",
+            "enc_class_code",
+            "gender",
             "rx_category_code",
             "rx_display"
             )
@@ -47,16 +71,25 @@ CREATE TABLE irae__count_enc_study_population_rx AS (
     powerset AS (
         SELECT
             count(DISTINCT subject_ref) AS cnt_subject_ref,
+            "age_at_visit",
+            "enc_class_code",
+            "gender",
             "rx_category_code",
             "rx_display",
             concat_ws(
                 '-',
+                COALESCE("age_at_visit",''),
+                COALESCE("enc_class_code",''),
+                COALESCE("gender",''),
                 COALESCE("rx_category_code",''),
                 COALESCE("rx_display",'')
             ) AS id
         FROM null_replacement
         GROUP BY
             cube(
+            "age_at_visit",
+            "enc_class_code",
+            "gender",
             "rx_category_code",
             "rx_display"
             )
@@ -64,6 +97,9 @@ CREATE TABLE irae__count_enc_study_population_rx AS (
 
     SELECT
         s.cnt_encounter_ref AS cnt,
+        p."age_at_visit",
+        p."enc_class_code",
+        p."gender",
         p."rx_category_code",
         p."rx_display"
     FROM powerset AS p

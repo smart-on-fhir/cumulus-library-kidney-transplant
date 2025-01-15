@@ -50,17 +50,21 @@ class Procedure(Enum):
 class ObservationLab(Enum):
     code = 'lab_observation_code'
 
-class Subtype(Enum):
-    subtype = 'subtype'
-
 class Cohort(Enum):
     """
     Default stratifiers for Study Cohorts
     """
     gender = Demographic.gender.value
+    age_at_visit = Encounter.age_at_visit.value
+    enc_class = Encounter.enc_class.value
+
+class CohortSubtype(Enum):
+    gender = Demographic.gender.value
     race = Demographic.race.value
     age_at_visit = Encounter.age_at_visit.value
     enc_class = Encounter.enc_class.value
+    subtype = 'subtype'
+
 
 ###############################################################################
 # Stratify duration
@@ -91,7 +95,8 @@ class CountDistinct(Enum):
 ###############################################################################
 class Columns(Enum):
     cohort = as_list_values(list(Cohort))
-    subtype = as_list_values(list(Subtype))
+    cohort_subtype = as_list_values(list(CohortSubtype))
+    encounter = as_list_values(list(Encounter))
     demographics = as_list_values(list(Demographic))
     diagnoses = as_list_values(list(Diagnosis))
     medications = as_list_values(list(Medication))

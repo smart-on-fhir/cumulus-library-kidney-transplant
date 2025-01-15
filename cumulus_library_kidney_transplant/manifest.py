@@ -15,8 +15,6 @@ def read_manifest() -> dict:
         data = tomllib.load(f)
     return data
 
-# TODO refactor @singleton
-# from singleton_decorator import singleton
 def get_study_prefix() -> str:
     return str(read_manifest().get('study_prefix'))
 
@@ -30,10 +28,10 @@ def write_manifest(file_names: List[Path] | List[str]) -> Path:
     return path_manifest()
 
 def path_relative(file_names: List[Path] | List[str]) -> List[str]:
-    prefix = get_study_prefix() + '/'
+    split_token = 'cumulus_library_kidney_transplant/'
     simpler = list()
     for filename in guard.as_list_str(file_names):
-        if prefix in filename:
-            _, filename = filename.split(prefix)
+        if split_token in filename:
+            _, filename = filename.split(split_token)
         simpler.append(filename)
     return simpler
