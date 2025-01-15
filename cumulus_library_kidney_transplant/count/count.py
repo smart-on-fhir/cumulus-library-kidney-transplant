@@ -1,10 +1,10 @@
 from typing import List
 from pathlib import Path
 from cumulus_library.builders.counts import CountsBuilder
-from irae import filetool, fhir2sql
-from irae.study_prefix import PREFIX
-from irae.variable import vsac_variables, custom_variables
-from irae.schema import Columns
+from cumulus_library_kidney_transplant import filetool, fhir2sql
+from cumulus_library_kidney_transplant.study_prefix import PREFIX
+from cumulus_library_kidney_transplant.variable import vsac_variables, custom_variables
+from cumulus_library_kidney_transplant.schema import Columns
 
 def cube_enc(from_table='study_population', cols=None, cube_table=None) -> Path:
     from_table = fhir2sql.name_cohort(from_table)

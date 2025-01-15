@@ -1,7 +1,7 @@
 from typing import List
 from pathlib import Path
-from irae import fhir2sql
-from irae import filetool
+from cumulus_library_kidney_transplant import fhir2sql
+from cumulus_library_kidney_transplant import filetool
 
 def list_tables() -> List[str]:
     """

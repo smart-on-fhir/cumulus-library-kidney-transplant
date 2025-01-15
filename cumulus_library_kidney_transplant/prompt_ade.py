@@ -1,8 +1,8 @@
 from typing import List
 from collections import OrderedDict
 from pathlib import Path
-from irae import filetool, guard, jaccard
-from irae.variable.custom_variables import RX_LIST
+from cumulus_library_kidney_transplant import filetool, guard, jaccard
+from cumulus_library_kidney_transplant.variable.custom_variables import RX_LIST
 
 ######################################################################
 # Constants

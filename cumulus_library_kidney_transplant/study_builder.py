@@ -1,16 +1,16 @@
 from typing import List
 from pathlib import Path
-from irae import (
+from cumulus_library_kidney_transplant import (
     manifest,
     filetool,
     criteria,
     study_population,
     cohorts,
     casedef)
-from irae.count import count
-from irae.criteria.race import Race
-from irae.criteria.encounter_class import EncounterClass
-from irae.variable import (
+from cumulus_library_kidney_transplant.count import count
+from cumulus_library_kidney_transplant.criteria.race import Race
+from cumulus_library_kidney_transplant.criteria.encounter_class import EncounterClass
+from cumulus_library_kidney_transplant.variable import (
     vsac_variables,
     vsac_markdown,
     custom_variables)
