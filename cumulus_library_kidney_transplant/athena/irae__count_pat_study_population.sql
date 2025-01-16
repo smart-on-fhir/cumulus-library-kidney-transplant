@@ -4,11 +4,11 @@ CREATE TABLE irae__count_pat_study_population AS (
         SELECT
             s.subject_ref,
             --noqa: disable=RF03, AL02
-            s."gender",
             s."enc_class_code",
-            s."race_display",
             s."age_at_visit",
-            s."ethnicity_display"
+            s."race_display",
+            s."ethnicity_display",
+            s."gender"
             --noqa: enable=RF03, AL02
         FROM irae__cohort_study_population AS s
     ),
@@ -17,62 +17,62 @@ CREATE TABLE irae__count_pat_study_population AS (
         SELECT
             subject_ref,
             coalesce(
-                cast(gender AS varchar),
-                'cumulus__none'
-            ) AS gender,
-            coalesce(
                 cast(enc_class_code AS varchar),
                 'cumulus__none'
             ) AS enc_class_code,
-            coalesce(
-                cast(race_display AS varchar),
-                'cumulus__none'
-            ) AS race_display,
             coalesce(
                 cast(age_at_visit AS varchar),
                 'cumulus__none'
             ) AS age_at_visit,
             coalesce(
+                cast(race_display AS varchar),
+                'cumulus__none'
+            ) AS race_display,
+            coalesce(
                 cast(ethnicity_display AS varchar),
                 'cumulus__none'
-            ) AS ethnicity_display
+            ) AS ethnicity_display,
+            coalesce(
+                cast(gender AS varchar),
+                'cumulus__none'
+            ) AS gender
         FROM filtered_table
     ),
 
     powerset AS (
         SELECT
             count(DISTINCT subject_ref) AS cnt_subject_ref,
-            "gender",
             "enc_class_code",
-            "race_display",
             "age_at_visit",
+            "race_display",
             "ethnicity_display",
+            "gender",
             concat_ws(
                 '-',
-                COALESCE("gender",''),
                 COALESCE("enc_class_code",''),
-                COALESCE("race_display",''),
                 COALESCE("age_at_visit",''),
-                COALESCE("ethnicity_display",'')
+                COALESCE("race_display",''),
+                COALESCE("ethnicity_display",''),
+                COALESCE("gender",'')
             ) AS id
         FROM null_replacement
         GROUP BY
             cube(
-            "gender",
             "enc_class_code",
-            "race_display",
             "age_at_visit",
-            "ethnicity_display"
+            "race_display",
+            "ethnicity_display",
+            "gender"
             )
     )
 
     SELECT
         p.cnt_subject_ref AS cnt,
-        p."gender",
         p."enc_class_code",
-        p."race_display",
         p."age_at_visit",
-        p."ethnicity_display"
+        p."race_display",
+        p."ethnicity_display",
+        p."gender"
     FROM powerset AS p
     WHERE 
         cnt_subject_ref >= 10

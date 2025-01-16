@@ -44,15 +44,15 @@ def make_variables() -> List[Path]:
     variable_list = vsac_variables.list_view_variables() + custom_variables.list_view_variables()
     for variable in variable_list:
         if '__dx' in variable:
-            file_list.append(cube_enc(variable, Columns.cohort_valueset.value + Columns.diagnoses.value))
+            file_list.append(cube_enc(variable, Columns.valueset.value + Columns.diagnoses.value))
         elif '__rx' in variable:
-            file_list.append(cube_enc(variable, Columns.cohort_valueset.value + Columns.medications.value))
+            file_list.append(cube_enc(variable, Columns.valueset.value + Columns.medications.value))
         elif '__lab' in variable:
-            file_list.append(cube_enc(variable, Columns.cohort_valueset.value + Columns.labs.value))
+            file_list.append(cube_enc(variable, Columns.valueset.value + Columns.labs.value))
         elif '__proc' in variable:
-            file_list.append(cube_enc(variable, Columns.cohort_valueset.value + Columns.procedures.value))
+            file_list.append(cube_enc(variable, Columns.valueset.value + Columns.procedures.value))
         elif '__doc' in variable:
-            file_list.append(cube_enc(variable, Columns.cohort_valueset.value + Columns.documents.value))
+            file_list.append(cube_enc(variable, Columns.valueset.value + Columns.documents.value))
     return file_list
 
 def make() -> List[Path]:

@@ -8,7 +8,7 @@ CREATE TABLE irae__count_pat_study_variables AS (
             s."enc_class_code",
             s."gender",
             s."race_display",
-            s."subtype",
+            s."valueset",
             s."variable"
             --noqa: enable=RF03, AL02
         FROM irae__cohort_study_variables AS s
@@ -34,9 +34,9 @@ CREATE TABLE irae__count_pat_study_variables AS (
                 'cumulus__none'
             ) AS race_display,
             coalesce(
-                cast(subtype AS varchar),
+                cast(valueset AS varchar),
                 'cumulus__none'
-            ) AS subtype,
+            ) AS valueset,
             coalesce(
                 cast(variable AS varchar),
                 'cumulus__none'
@@ -51,7 +51,7 @@ CREATE TABLE irae__count_pat_study_variables AS (
             "enc_class_code",
             "gender",
             "race_display",
-            "subtype",
+            "valueset",
             "variable",
             concat_ws(
                 '-',
@@ -59,7 +59,7 @@ CREATE TABLE irae__count_pat_study_variables AS (
                 COALESCE("enc_class_code",''),
                 COALESCE("gender",''),
                 COALESCE("race_display",''),
-                COALESCE("subtype",''),
+                COALESCE("valueset",''),
                 COALESCE("variable",'')
             ) AS id
         FROM null_replacement
@@ -69,7 +69,7 @@ CREATE TABLE irae__count_pat_study_variables AS (
             "enc_class_code",
             "gender",
             "race_display",
-            "subtype",
+            "valueset",
             "variable"
             )
     )
@@ -80,7 +80,7 @@ CREATE TABLE irae__count_pat_study_variables AS (
         p."enc_class_code",
         p."gender",
         p."race_display",
-        p."subtype",
+        p."valueset",
         p."variable"
     FROM powerset AS p
     WHERE 

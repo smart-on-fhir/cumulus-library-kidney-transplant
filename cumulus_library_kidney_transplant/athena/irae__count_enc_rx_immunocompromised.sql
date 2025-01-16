@@ -9,7 +9,7 @@ CREATE TABLE irae__count_enc_rx_immunocompromised AS (
             s."enc_class_code",
             s."gender",
             s."race_display",
-            s."subtype",
+            s."valueset",
             s."rx_category_code",
             s."rx_display"
             --noqa: enable=RF03, AL02
@@ -38,9 +38,9 @@ CREATE TABLE irae__count_enc_rx_immunocompromised AS (
                 'cumulus__none'
             ) AS race_display,
             coalesce(
-                cast(subtype AS varchar),
+                cast(valueset AS varchar),
                 'cumulus__none'
-            ) AS subtype,
+            ) AS valueset,
             coalesce(
                 cast(rx_category_code AS varchar),
                 'cumulus__none'
@@ -58,7 +58,7 @@ CREATE TABLE irae__count_enc_rx_immunocompromised AS (
             "enc_class_code",
             "gender",
             "race_display",
-            "subtype",
+            "valueset",
             "rx_category_code",
             "rx_display",
             concat_ws(
@@ -67,7 +67,7 @@ CREATE TABLE irae__count_enc_rx_immunocompromised AS (
                 COALESCE("enc_class_code",''),
                 COALESCE("gender",''),
                 COALESCE("race_display",''),
-                COALESCE("subtype",''),
+                COALESCE("valueset",''),
                 COALESCE("rx_category_code",''),
                 COALESCE("rx_display",'')
             ) AS id
@@ -78,7 +78,7 @@ CREATE TABLE irae__count_enc_rx_immunocompromised AS (
             "enc_class_code",
             "gender",
             "race_display",
-            "subtype",
+            "valueset",
             "rx_category_code",
             "rx_display"
             )
@@ -91,7 +91,7 @@ CREATE TABLE irae__count_enc_rx_immunocompromised AS (
             "enc_class_code",
             "gender",
             "race_display",
-            "subtype",
+            "valueset",
             "rx_category_code",
             "rx_display",
             concat_ws(
@@ -100,7 +100,7 @@ CREATE TABLE irae__count_enc_rx_immunocompromised AS (
                 COALESCE("enc_class_code",''),
                 COALESCE("gender",''),
                 COALESCE("race_display",''),
-                COALESCE("subtype",''),
+                COALESCE("valueset",''),
                 COALESCE("rx_category_code",''),
                 COALESCE("rx_display",'')
             ) AS id
@@ -111,7 +111,7 @@ CREATE TABLE irae__count_enc_rx_immunocompromised AS (
             "enc_class_code",
             "gender",
             "race_display",
-            "subtype",
+            "valueset",
             "rx_category_code",
             "rx_display"
             )
@@ -123,7 +123,7 @@ CREATE TABLE irae__count_enc_rx_immunocompromised AS (
         p."enc_class_code",
         p."gender",
         p."race_display",
-        p."subtype",
+        p."valueset",
         p."rx_category_code",
         p."rx_display"
     FROM powerset AS p

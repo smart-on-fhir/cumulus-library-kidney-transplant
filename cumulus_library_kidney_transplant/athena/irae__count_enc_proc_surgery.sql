@@ -9,7 +9,7 @@ CREATE TABLE irae__count_enc_proc_surgery AS (
             s."enc_class_code",
             s."gender",
             s."race_display",
-            s."subtype",
+            s."valueset",
             s."proc_display"
             --noqa: enable=RF03, AL02
         FROM irae__cohort_proc_surgery AS s
@@ -37,9 +37,9 @@ CREATE TABLE irae__count_enc_proc_surgery AS (
                 'cumulus__none'
             ) AS race_display,
             coalesce(
-                cast(subtype AS varchar),
+                cast(valueset AS varchar),
                 'cumulus__none'
-            ) AS subtype,
+            ) AS valueset,
             coalesce(
                 cast(proc_display AS varchar),
                 'cumulus__none'
@@ -53,7 +53,7 @@ CREATE TABLE irae__count_enc_proc_surgery AS (
             "enc_class_code",
             "gender",
             "race_display",
-            "subtype",
+            "valueset",
             "proc_display",
             concat_ws(
                 '-',
@@ -61,7 +61,7 @@ CREATE TABLE irae__count_enc_proc_surgery AS (
                 COALESCE("enc_class_code",''),
                 COALESCE("gender",''),
                 COALESCE("race_display",''),
-                COALESCE("subtype",''),
+                COALESCE("valueset",''),
                 COALESCE("proc_display",'')
             ) AS id
         FROM null_replacement
@@ -71,7 +71,7 @@ CREATE TABLE irae__count_enc_proc_surgery AS (
             "enc_class_code",
             "gender",
             "race_display",
-            "subtype",
+            "valueset",
             "proc_display"
             )
     ),
@@ -83,7 +83,7 @@ CREATE TABLE irae__count_enc_proc_surgery AS (
             "enc_class_code",
             "gender",
             "race_display",
-            "subtype",
+            "valueset",
             "proc_display",
             concat_ws(
                 '-',
@@ -91,7 +91,7 @@ CREATE TABLE irae__count_enc_proc_surgery AS (
                 COALESCE("enc_class_code",''),
                 COALESCE("gender",''),
                 COALESCE("race_display",''),
-                COALESCE("subtype",''),
+                COALESCE("valueset",''),
                 COALESCE("proc_display",'')
             ) AS id
         FROM null_replacement
@@ -101,7 +101,7 @@ CREATE TABLE irae__count_enc_proc_surgery AS (
             "enc_class_code",
             "gender",
             "race_display",
-            "subtype",
+            "valueset",
             "proc_display"
             )
     )
@@ -112,7 +112,7 @@ CREATE TABLE irae__count_enc_proc_surgery AS (
         p."enc_class_code",
         p."gender",
         p."race_display",
-        p."subtype",
+        p."valueset",
         p."proc_display"
     FROM powerset AS p
     JOIN secondary_powerset AS s on s.id = p.id

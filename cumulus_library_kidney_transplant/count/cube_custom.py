@@ -41,7 +41,7 @@ def make_lab() -> List[Path]:
 
 def make_variables() -> List[Path]:
     source = fhir2sql.name_cohort('study_variables')
-    cols = Columns.cohort_subtype.value + ['variable']
+    cols = Columns.valueset.value + ['variable']
     return [cube.cube_pat(source, cols, fhir2sql.name_cube(source, 'pat')),
             cube.cube_enc(source, cols, fhir2sql.name_cube(source, 'enc'))]
 

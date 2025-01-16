@@ -9,7 +9,7 @@ CREATE TABLE irae__count_enc_lab_custom AS (
             s."enc_class_code",
             s."gender",
             s."race_display",
-            s."subtype",
+            s."valueset",
             s."lab_observation_code"
             --noqa: enable=RF03, AL02
         FROM irae__cohort_lab_custom AS s
@@ -37,9 +37,9 @@ CREATE TABLE irae__count_enc_lab_custom AS (
                 'cumulus__none'
             ) AS race_display,
             coalesce(
-                cast(subtype AS varchar),
+                cast(valueset AS varchar),
                 'cumulus__none'
-            ) AS subtype,
+            ) AS valueset,
             coalesce(
                 cast(lab_observation_code AS varchar),
                 'cumulus__none'
@@ -53,7 +53,7 @@ CREATE TABLE irae__count_enc_lab_custom AS (
             "enc_class_code",
             "gender",
             "race_display",
-            "subtype",
+            "valueset",
             "lab_observation_code",
             concat_ws(
                 '-',
@@ -61,7 +61,7 @@ CREATE TABLE irae__count_enc_lab_custom AS (
                 COALESCE("enc_class_code",''),
                 COALESCE("gender",''),
                 COALESCE("race_display",''),
-                COALESCE("subtype",''),
+                COALESCE("valueset",''),
                 COALESCE("lab_observation_code",'')
             ) AS id
         FROM null_replacement
@@ -71,7 +71,7 @@ CREATE TABLE irae__count_enc_lab_custom AS (
             "enc_class_code",
             "gender",
             "race_display",
-            "subtype",
+            "valueset",
             "lab_observation_code"
             )
     ),
@@ -83,7 +83,7 @@ CREATE TABLE irae__count_enc_lab_custom AS (
             "enc_class_code",
             "gender",
             "race_display",
-            "subtype",
+            "valueset",
             "lab_observation_code",
             concat_ws(
                 '-',
@@ -91,7 +91,7 @@ CREATE TABLE irae__count_enc_lab_custom AS (
                 COALESCE("enc_class_code",''),
                 COALESCE("gender",''),
                 COALESCE("race_display",''),
-                COALESCE("subtype",''),
+                COALESCE("valueset",''),
                 COALESCE("lab_observation_code",'')
             ) AS id
         FROM null_replacement
@@ -101,7 +101,7 @@ CREATE TABLE irae__count_enc_lab_custom AS (
             "enc_class_code",
             "gender",
             "race_display",
-            "subtype",
+            "valueset",
             "lab_observation_code"
             )
     )
@@ -112,7 +112,7 @@ CREATE TABLE irae__count_enc_lab_custom AS (
         p."enc_class_code",
         p."gender",
         p."race_display",
-        p."subtype",
+        p."valueset",
         p."lab_observation_code"
     FROM powerset AS p
     JOIN secondary_powerset AS s on s.id = p.id
