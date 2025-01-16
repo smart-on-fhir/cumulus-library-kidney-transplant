@@ -4,19 +4,16 @@ from cumulus_library_kidney_transplant import fhir2sql
 from cumulus_library_kidney_transplant.schema import Columns
 from cumulus_library_kidney_transplant.count import cube
 
-def make_dx() -> List[Path]:
+def make_comorbidity_diabetes() -> List[Path]:
     source = fhir2sql.name_cohort('study_variables_timeline')
-    cols = ['enc_period_start_year',
-            'variable',
-            'dx_autoimmune',
-            'dx_cancer',
-            'dx_compromised',
-            'dx_diabetes',
-            'dx_heart',
-            'dx_htn',
-            'dx_infection',
-            'dx_kidney']
-    return [cube.cube_enc(source, cols, fhir2sql.name_cube(source, 'pat_dx'))]
+    cols = Columns.cohort.value
+    cols += ['dx_diabetes',
+             'dx_kidney',
+             'dx_heart',
+             'dx_heart',
+             'dx_htn']
+
+    return [cube.cube_enc(source, cols, fhir2sql.name_cube(source, 'comorbidity_diabetes'))]
 
 def make_rx() -> List[Path]:
     source = fhir2sql.name_cohort('study_variables_timeline')

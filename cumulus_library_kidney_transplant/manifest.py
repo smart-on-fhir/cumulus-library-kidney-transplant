@@ -36,6 +36,10 @@ def list_tables(file_names: List[Path] | List[str], search_term: str = None) -> 
     """
     table_names = list()
     for table in path_relative(file_names):
+        if 'cumulus_library_kidney_transplant/' in table:
+            print(table)
+            _, table = table.split('cumulus_library_kidney_transplant/')
+
         table = table.replace('athena/', '').replace('.sql', '')
         if search_term:
             if search_term in table:
@@ -45,7 +49,7 @@ def list_tables(file_names: List[Path] | List[str], search_term: str = None) -> 
     return table_names
 
 def path_relative(file_names: List[Path] | List[str]) -> List[str]:
-    split_token = 'cumulus_library_kidney_transplant/'
+    split_token = 'cumulus-library-kidney-transplant/'
     simpler = list()
     for filename in guard.as_list_str(file_names):
         if split_token in filename:

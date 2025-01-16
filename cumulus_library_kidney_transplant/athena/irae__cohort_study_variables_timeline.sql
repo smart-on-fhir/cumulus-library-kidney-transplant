@@ -22,10 +22,10 @@ select distinct
     if(lookup.variable='lab_gfr', lookup.valueset) as lab_gfr,
     if(lookup.variable='lab_lft', lookup.valueset) as lab_lft,
 
-    if(lookup.variable='rx_custom', lookup.subtype) as rx_custom,
-    if(lookup.variable='rx_diabetes', lookup.subtype) as rx_diabetes,
-    if(lookup.variable='rx_diuretics', lookup.subtype) as rx_diuretics,
-    if(lookup.variable='rx_immunosuppressive', lookup.subtype) as rx_immunosuppressive,
+    if(lookup.variable='rx_custom', lookup.valueset) as rx_custom,
+    if(lookup.variable='rx_diabetes', lookup.valueset) as rx_diabetes,
+    if(lookup.variable='rx_diuretics', lookup.valueset) as rx_diuretics,
+    if(lookup.variable='rx_immunosuppressive', lookup.valueset) as rx_immunosuppressive,
 
     SP.status,
     SP.age_at_visit,

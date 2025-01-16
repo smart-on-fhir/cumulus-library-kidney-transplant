@@ -13,20 +13,22 @@ def cube_enc(from_table='study_population', cols=None, cube_table=None) -> Path:
         cube_table = fhir2sql.name_cube(from_table, 'enc')
 
     if not cols:
-        cols = list(set(Columns.cohort.value + Columns.demographics.value))
+        cols = Columns.cohort.value + Columns.demographics.value
 
+    cols = list(set(cols))
     sql = CountsBuilder(PREFIX).count_encounter(cube_table, from_table, cols)
     return filetool.save_athena_view(cube_table, sql)
 
-def cube_pat(source='study_population', cols=None, cube_table=None) -> Path:
-    from_table = fhir2sql.name_cohort(source)
+def cube_pat(from_table='study_population', cols=None, cube_table=None) -> Path:
+    from_table = fhir2sql.name_cohort(from_table)
 
     if not cube_table:
-        cube_table = fhir2sql.name_cube(source, 'pat')
+        cube_table = fhir2sql.name_cube(from_table, 'pat')
 
     if not cols:
-        cols = list(set(Columns.cohort.value + Columns.demographics.value))
+        cols = Columns.cohort.value + Columns.demographics.value
 
+    cols = list(set(cols))
     sql = CountsBuilder(PREFIX).count_patient(cube_table, from_table, cols)
     return filetool.save_athena_view(cube_table, sql)
 

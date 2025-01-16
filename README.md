@@ -1,6 +1,6 @@
 # VSAC ValueSets
 
-|Study Variable|Subtype|VSAC|
+|Study Variable|ValueSet|VSAC|
 |:------:|:-----:|:---:|
 |**dx_transplant**||
 |dx_transplant|kidney|[2.16.840.1.113762.1.4.1078.16](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1078.16/expansion/Latest)|
@@ -51,7 +51,7 @@
 |dx_diabetes|disorder|[2.16.840.1.113762.1.4.1219.35](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1219.35/expansion/Latest)|
 |dx_diabetes|preexisting|[2.16.840.1.113883.3.464.1003.198.12.1075](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.464.1003.198.12.1075/expansion/Latest)|
 |dx_diabetes|complications|[2.16.840.1.113762.1.4.1222.1537](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1222.1537/expansion/Latest)|
-|dx_diabetes|td2_related_dx|[2.16.840.1.113762.1.4.1078.440](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1078.440/expansion/Latest)|
+|dx_diabetes|t2d_related_dx|[2.16.840.1.113762.1.4.1078.440](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1078.440/expansion/Latest)|
 |dx_diabetes|diabetic_nephropathy|[2.16.840.1.113883.3.464.1003.109.12.1004](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.464.1003.109.12.1004/expansion/Latest)|
 |dx_diabetes|diabetic_ckd|[2.16.840.1.113762.1.4.1078.124](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1078.124/expansion/Latest)|
 |**rx_immunosuppressive**||

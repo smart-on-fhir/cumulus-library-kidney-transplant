@@ -16,14 +16,14 @@ with variable_cohorts as
     select distinct 'rx_immunosuppressive' as variable, valueset, code, display, system, encounter_ref, subject_ref from irae__cohort_rx_immunosuppressive UNION
     select distinct 'lab_autoimmune'    as variable, valueset, code, display, system, encounter_ref, subject_ref from irae__cohort_lab_autoimmune    UNION
     select distinct 'lab_custom'        as variable, valueset, code, display, system, encounter_ref, subject_ref from irae__cohort_lab_custom        UNION
-    select distinct 'lab_creatinine'    as variable, subtype, code, display, system, encounter_ref, subject_ref from irae__cohort_lab_creatinine    UNION
-    select distinct 'lab_diabetes'      as variable, subtype, code, display, system, encounter_ref, subject_ref from irae__cohort_lab_diabetes      UNION
-    select distinct 'lab_gfr'           as variable, subtype, code, display, system, encounter_ref, subject_ref from irae__cohort_lab_gfr           UNION
-    select distinct 'lab_lft'           as variable, subtype, code, display, system, encounter_ref, subject_ref from irae__cohort_lab_lft
+    select distinct 'lab_creatinine'    as variable, valueset, code, display, system, encounter_ref, subject_ref from irae__cohort_lab_creatinine    UNION
+    select distinct 'lab_diabetes'      as variable, valueset, code, display, system, encounter_ref, subject_ref from irae__cohort_lab_diabetes      UNION
+    select distinct 'lab_gfr'           as variable, valueset, code, display, system, encounter_ref, subject_ref from irae__cohort_lab_gfr           UNION
+    select distinct 'lab_lft'           as variable, valueset, code, display, system, encounter_ref, subject_ref from irae__cohort_lab_lft
 )
 select distinct
     variable_cohorts.variable,
-    variable_cohorts.subtype,
+    variable_cohorts.valueset,
     variable_cohorts.code,
     variable_cohorts.display,
     variable_cohorts.system,

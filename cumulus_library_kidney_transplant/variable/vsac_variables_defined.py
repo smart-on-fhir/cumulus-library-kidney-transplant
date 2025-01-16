@@ -1,6 +1,6 @@
 from typing import List
-from cumulus_library_kidney_transplant.variable.aspect import Variable, Valueset
-from cumulus_library_kidney_transplant.variable.aspect import Aspect, AspectMap, Diagnoses, Medications, Labs, Procedures
+from cumulus_library_kidney_transplant.variable.aspect import Variable, Valueset, Aspect, AspectMap
+from cumulus_library_kidney_transplant.variable.aspect import Diagnoses, Medications, Labs, Procedures, Documents
 
 ###############################################################################
 #
@@ -13,6 +13,16 @@ def get_procedures() -> Procedures:
             'services': '2.16.840.1.113883.3.464.1003.109.12.1013'}),
         Variable('Surgery', {
             'other_major': '2.16.840.1.113883.3.464.1003.198.12.1075'})])
+
+###############################################################################
+#
+# Doc Document
+#
+###############################################################################
+def get_documents() -> Documents:
+    return Documents([
+        Variable('biopsy', {
+            'kidney_biopsy_report': '2.16.840.1.113762.1.4.1222.864'})])
 
 ###############################################################################
 #
@@ -182,4 +192,5 @@ def get_aspect_map() -> AspectMap:
         diagnoses=get_diagnoses(),
         medications=get_medications(),
         labs=get_labs(),
-        procedures=get_procedures())
+        procedures=get_procedures(),
+        documents=get_documents())

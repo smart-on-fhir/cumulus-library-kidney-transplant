@@ -4,10 +4,10 @@ CREATE TABLE irae__count_pat_study_population_lab AS (
         SELECT
             s.subject_ref,
             --noqa: disable=RF03, AL02
-            s."age_at_visit",
+            s."lab_observation_code",
             s."enc_class_code",
             s."gender",
-            s."lab_observation_code"
+            s."age_at_visit"
             --noqa: enable=RF03, AL02
         FROM irae__cohort_study_population_lab AS s
     ),
@@ -16,9 +16,9 @@ CREATE TABLE irae__count_pat_study_population_lab AS (
         SELECT
             subject_ref,
             coalesce(
-                cast(age_at_visit AS varchar),
+                cast(lab_observation_code AS varchar),
                 'cumulus__none'
-            ) AS age_at_visit,
+            ) AS lab_observation_code,
             coalesce(
                 cast(enc_class_code AS varchar),
                 'cumulus__none'
@@ -28,42 +28,42 @@ CREATE TABLE irae__count_pat_study_population_lab AS (
                 'cumulus__none'
             ) AS gender,
             coalesce(
-                cast(lab_observation_code AS varchar),
+                cast(age_at_visit AS varchar),
                 'cumulus__none'
-            ) AS lab_observation_code
+            ) AS age_at_visit
         FROM filtered_table
     ),
 
     powerset AS (
         SELECT
             count(DISTINCT subject_ref) AS cnt_subject_ref,
-            "age_at_visit",
+            "lab_observation_code",
             "enc_class_code",
             "gender",
-            "lab_observation_code",
+            "age_at_visit",
             concat_ws(
                 '-',
-                COALESCE("age_at_visit",''),
+                COALESCE("lab_observation_code",''),
                 COALESCE("enc_class_code",''),
                 COALESCE("gender",''),
-                COALESCE("lab_observation_code",'')
+                COALESCE("age_at_visit",'')
             ) AS id
         FROM null_replacement
         GROUP BY
             cube(
-            "age_at_visit",
+            "lab_observation_code",
             "enc_class_code",
             "gender",
-            "lab_observation_code"
+            "age_at_visit"
             )
     )
 
     SELECT
         p.cnt_subject_ref AS cnt,
-        p."age_at_visit",
+        p."lab_observation_code",
         p."enc_class_code",
         p."gender",
-        p."lab_observation_code"
+        p."age_at_visit"
     FROM powerset AS p
     WHERE 
         cnt_subject_ref >= 10
