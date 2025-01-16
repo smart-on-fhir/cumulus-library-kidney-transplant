@@ -15,7 +15,7 @@ def cube_enc(from_table='study_population', cols=None, cube_table=None) -> Path:
     if not cols:
         cols = Columns.cohort.value + Columns.demographics.value
 
-    cols = list(set(cols))
+    cols = sorted(list(set(cols)))
     sql = CountsBuilder(PREFIX).count_encounter(cube_table, from_table, cols)
     return filetool.save_athena_view(cube_table, sql)
 
@@ -28,7 +28,7 @@ def cube_pat(from_table='study_population', cols=None, cube_table=None) -> Path:
     if not cols:
         cols = Columns.cohort.value + Columns.demographics.value
 
-    cols = list(set(cols))
+    cols = sorted(list(set(cols)))
     sql = CountsBuilder(PREFIX).count_patient(cube_table, from_table, cols)
     return filetool.save_athena_view(cube_table, sql)
 

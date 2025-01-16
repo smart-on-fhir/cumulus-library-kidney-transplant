@@ -106,6 +106,7 @@ def inline_template(sql: str, suffix=None, variable=None, equality=None) -> str:
     if suffix:
         sql = sql.replace('$suffix', suffix)
     if variable:
+        sql = sql.replace('$variable_list', variable)
         sql = sql.replace('$variable', variable)
     if equality:
         sql = sql.replace('$equality', equality)

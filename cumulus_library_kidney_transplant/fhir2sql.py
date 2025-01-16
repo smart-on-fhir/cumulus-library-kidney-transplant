@@ -41,7 +41,7 @@ def name_study_variables(suffix=None) -> str:
     table = name_suffix('study_variables', suffix)
     return name_join('cohort', table)
 
-def name_cube(table: str, suffix: str) -> str:
+def name_cube(table: str, suffix: str = None) -> str:
     part = f'count_{suffix}' if suffix else 'count'
     return name_join(part, table)
 
@@ -206,33 +206,22 @@ def exclude(codelist: List[Coding], view_name: str) -> Path:
 
 ###############################################################################
 #
-# @deprecated
+# naming conventions
 #
 ###############################################################################
 
-def define_valueset_list_deprecated(valueset_json_list: List[str], view_name: str) -> Path:
-    """
-    :param valueset_json_list: VSAC ValueSet JSON files
-    :param view_name: create view as
-    :param include=True (Default)
-    :return: outfile path
-    """
-    codelist = list()
-    for filename in valueset_json_list:
-        codelist += valueset2codelist(filetool.path_valueset(filename))
-    return define(codelist, view_name)
+def select_union_study_variables(variable_list: List[str]) -> str:
+    sql = list()
+    for variable in variable_list:
+        variable = name_simple(variable)
+        select = f"\tselect distinct '{variable}'\t as variable, valueset, code, display, system, encounter_ref, subject_ref "
+        from_table = f" from {PREFIX}__cohort_{variable}"
+        sql.append(select + from_table)
+    return ' UNION\n'.join(sql)
 
-def codesystem2codelist_deprecated(code_system_json) -> List[Coding]:
-    """
-    ValueSet is not always available, sometimes "CodeSystem" is the FHIR spec.
-    :param code_system_json:
-    :return: List Coding (similar to ValueSet)
-    """
-    codesystem = filetool.load_valueset(code_system_json)
-    parsed = list()
-    url = codesystem.get('url')
-    if 'concept' in codesystem.keys():
-        for concept in codesystem['concept']:
-            concept['system'] = url
-            parsed.append(Coding(concept))
-    return parsed
+def select_lookup_study_variables(variable_list: List[str]) -> str:
+    sql = list()
+    for variable in variable_list:
+        variable = name_simple(variable)
+        sql.append(f"\tIF(lookup.variable='{variable}', lookup.valueset) AS {variable}")
+    return ',\n'.join(sql)
