@@ -8,7 +8,7 @@ def get_file_config() -> List:
     return read_manifest().get('file_config')
 
 def path_manifest() -> Path:
-    return filetool.path_home('manifest.toml')
+    return filetool.path_home('../manifest.toml')
 
 def read_manifest() -> dict:
     with open(path_manifest(), 'rb') as f:
