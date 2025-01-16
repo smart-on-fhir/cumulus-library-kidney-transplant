@@ -104,3 +104,9 @@
 |proc_dialysis|services|[2.16.840.1.113883.3.464.1003.109.12.1013](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.464.1003.109.12.1013/expansion/Latest)|
 |**proc_surgery**||
 |proc_surgery|other_major|[2.16.840.1.113883.3.464.1003.198.12.1075](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.464.1003.198.12.1075/expansion/Latest)|
+|**doc_biopsy**||
+|doc_biopsy|kidney|[2.16.840.1.113762.1.4.1222.864](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1222.864/expansion/Latest)|
+|doc_biopsy|skin|[2.16.840.1.113762.1.4.1222.867](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1222.867/expansion/Latest)|
+|doc_biopsy|lung|[2.16.840.1.113883.3.1434.1011](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.1434.1011/expansion/Latest)|
+|doc_biopsy|bone|[2.16.840.1.113762.1.4.1222.870](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1222.870/expansion/Latest)|
+|doc_biopsy|muscle|[2.16.840.1.113762.1.4.1222.868](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1222.868/expansion/Latest)|

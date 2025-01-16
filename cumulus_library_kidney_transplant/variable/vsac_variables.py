@@ -48,7 +48,7 @@ def make_cancer_subsets():
 ###############################################################################
 def make_aspect(aspect: Aspect) -> List[Path]:
     """
-    :param aspect: see `list_aspects()`, Dx, Rx, Lab, LabPanel, Proc
+    :param aspect: see `list_aspects()`, Dx, Rx, Lab, LabPanel, Proc, Doc
     :return: Path to SQL File to create variable definition valuesets.
     """
     api = vsac_api.UmlsApi()
