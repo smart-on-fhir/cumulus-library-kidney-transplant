@@ -32,7 +32,7 @@ def header() -> str:
     return H1 + '\n\n' + columns() + '\n' + line() + '\n'
 
 def columns() -> str:
-    return '|Study Variable|Subtype|VSAC|'
+    return '|Study Variable|ValueSet|VSAC|'
 
 def line() -> str:
     return '|:------:|:-----:|:---:|'

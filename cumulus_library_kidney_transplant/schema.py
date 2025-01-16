@@ -58,12 +58,12 @@ class Cohort(Enum):
     age_at_visit = Encounter.age_at_visit.value
     enc_class = Encounter.enc_class.value
 
-class CohortSubtype(Enum):
+class CohortValueset(Enum):
     gender = Demographic.gender.value
     race = Demographic.race.value
     age_at_visit = Encounter.age_at_visit.value
     enc_class = Encounter.enc_class.value
-    subtype = 'subtype'
+    valueset = 'valueset'
 
 
 ###############################################################################
@@ -95,7 +95,7 @@ class CountDistinct(Enum):
 ###############################################################################
 class Columns(Enum):
     cohort = as_list_values(list(Cohort))
-    cohort_subtype = as_list_values(list(CohortSubtype))
+    cohort_valueset = as_list_values(list(Cohortvalueset))
     encounter = as_list_values(list(Encounter))
     demographics = as_list_values(list(Demographic))
     diagnoses = as_list_values(list(Diagnosis))
