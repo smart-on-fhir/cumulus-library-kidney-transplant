@@ -42,10 +42,10 @@ select  distinct
         Cohort.code,
         Cohort.display,
         Cohort.system,
-        Timeline.*
+        variables_wide.*
 from    IndexDate,
-        $prefix__cohort_study_variables_timeline as Timeline
-left join Cohort on Timeline.encounter_ref = cohort.encounter_ref
-where   Timeline.subject_ref           = IndexDate.subject_ref
-and     Timeline.enc_period_start_day  $equality IndexDate.enc_period_start_day
+        $prefix__cohort_study_variables_wide as variables_wide
+left join Cohort on variables_wide.encounter_ref = cohort.encounter_ref
+where   variables_wide.subject_ref           = IndexDate.subject_ref
+and     variables_wide.enc_period_start_day  $equality IndexDate.enc_period_start_day
 ;
