@@ -5,13 +5,13 @@ CREATE TABLE irae__count_enc_dx_diabetes AS (
             s.subject_ref,
             s.encounter_ref,
             --noqa: disable=RF03, AL02
-            s."race_display",
-            s."dx_display",
-            s."gender",
-            s."valueset",
             s."age_at_visit",
+            s."dx_category_code",
+            s."dx_display",
             s."enc_class_code",
-            s."dx_category_code"
+            s."gender",
+            s."race_display",
+            s."valueset"
             --noqa: enable=RF03, AL02
         FROM irae__cohort_dx_diabetes AS s
         WHERE s.status = 'finished'
@@ -22,110 +22,110 @@ CREATE TABLE irae__count_enc_dx_diabetes AS (
             subject_ref,
             encounter_ref,
             coalesce(
-                cast(race_display AS varchar),
+                cast(age_at_visit AS varchar),
                 'cumulus__none'
-            ) AS race_display,
+            ) AS age_at_visit,
+            coalesce(
+                cast(dx_category_code AS varchar),
+                'cumulus__none'
+            ) AS dx_category_code,
             coalesce(
                 cast(dx_display AS varchar),
                 'cumulus__none'
             ) AS dx_display,
             coalesce(
-                cast(gender AS varchar),
-                'cumulus__none'
-            ) AS gender,
-            coalesce(
-                cast(valueset AS varchar),
-                'cumulus__none'
-            ) AS valueset,
-            coalesce(
-                cast(age_at_visit AS varchar),
-                'cumulus__none'
-            ) AS age_at_visit,
-            coalesce(
                 cast(enc_class_code AS varchar),
                 'cumulus__none'
             ) AS enc_class_code,
             coalesce(
-                cast(dx_category_code AS varchar),
+                cast(gender AS varchar),
                 'cumulus__none'
-            ) AS dx_category_code
+            ) AS gender,
+            coalesce(
+                cast(race_display AS varchar),
+                'cumulus__none'
+            ) AS race_display,
+            coalesce(
+                cast(valueset AS varchar),
+                'cumulus__none'
+            ) AS valueset
         FROM filtered_table
     ),
     secondary_powerset AS (
         SELECT
             count(DISTINCT encounter_ref) AS cnt_encounter_ref,
-            "race_display",
-            "dx_display",
-            "gender",
-            "valueset",
             "age_at_visit",
-            "enc_class_code",
             "dx_category_code",
+            "dx_display",
+            "enc_class_code",
+            "gender",
+            "race_display",
+            "valueset",
             concat_ws(
                 '-',
-                COALESCE("race_display",''),
-                COALESCE("dx_display",''),
-                COALESCE("gender",''),
-                COALESCE("valueset",''),
                 COALESCE("age_at_visit",''),
+                COALESCE("dx_category_code",''),
+                COALESCE("dx_display",''),
                 COALESCE("enc_class_code",''),
-                COALESCE("dx_category_code",'')
+                COALESCE("gender",''),
+                COALESCE("race_display",''),
+                COALESCE("valueset",'')
             ) AS id
         FROM null_replacement
         GROUP BY
             cube(
-            "race_display",
-            "dx_display",
-            "gender",
-            "valueset",
             "age_at_visit",
+            "dx_category_code",
+            "dx_display",
             "enc_class_code",
-            "dx_category_code"
+            "gender",
+            "race_display",
+            "valueset"
             )
     ),
 
     powerset AS (
         SELECT
             count(DISTINCT subject_ref) AS cnt_subject_ref,
-            "race_display",
-            "dx_display",
-            "gender",
-            "valueset",
             "age_at_visit",
-            "enc_class_code",
             "dx_category_code",
+            "dx_display",
+            "enc_class_code",
+            "gender",
+            "race_display",
+            "valueset",
             concat_ws(
                 '-',
-                COALESCE("race_display",''),
-                COALESCE("dx_display",''),
-                COALESCE("gender",''),
-                COALESCE("valueset",''),
                 COALESCE("age_at_visit",''),
+                COALESCE("dx_category_code",''),
+                COALESCE("dx_display",''),
                 COALESCE("enc_class_code",''),
-                COALESCE("dx_category_code",'')
+                COALESCE("gender",''),
+                COALESCE("race_display",''),
+                COALESCE("valueset",'')
             ) AS id
         FROM null_replacement
         GROUP BY
             cube(
-            "race_display",
-            "dx_display",
-            "gender",
-            "valueset",
             "age_at_visit",
+            "dx_category_code",
+            "dx_display",
             "enc_class_code",
-            "dx_category_code"
+            "gender",
+            "race_display",
+            "valueset"
             )
     )
 
     SELECT
         s.cnt_encounter_ref AS cnt,
-        p."race_display",
-        p."dx_display",
-        p."gender",
-        p."valueset",
         p."age_at_visit",
+        p."dx_category_code",
+        p."dx_display",
         p."enc_class_code",
-        p."dx_category_code"
+        p."gender",
+        p."race_display",
+        p."valueset"
     FROM powerset AS p
     JOIN secondary_powerset AS s on s.id = p.id
     WHERE 
