@@ -80,7 +80,7 @@ def make_aspect(aspect: Aspect) -> List[Path]:
             var_list.append(view_file)
             valueset_list.append(view_name)
         var_list.append(fhir2sql.union_view_list(valueset_list, variable.name))
-    return var_list
+    return sorted(list(set(var_list)))
 
 def make() -> List[Path]:
     """

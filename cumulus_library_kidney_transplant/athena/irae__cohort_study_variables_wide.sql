@@ -5,6 +5,7 @@ with lookup as
     from    irae__cohort_study_variables
 )
 select distinct
+    lookup.variable,
     	IF(lookup.variable='doc_biopsy', lookup.valueset) AS doc_biopsy,
 	IF(lookup.variable='dx_autoimmune', lookup.valueset) AS dx_autoimmune,
 	IF(lookup.variable='dx_cancer', lookup.valueset) AS dx_cancer,

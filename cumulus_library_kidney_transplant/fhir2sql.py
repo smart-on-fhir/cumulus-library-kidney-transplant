@@ -64,7 +64,7 @@ def sql_escape(sql: str) -> str:
 def sql_iter(clauses_list, operator=',') -> str:
     if not isinstance(clauses_list, list):
         return sql_iter([clauses_list])
-    return f' {operator} \n'.join(clauses_list)
+    return f' {operator} \n'.join(sorted(list(set(clauses_list))))
 
 def sql_and(clauses_list) -> str:
     return sql_iter(clauses_list, 'and')

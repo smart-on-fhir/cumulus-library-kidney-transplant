@@ -33,12 +33,12 @@ def list_view_variables() -> List[str]:
 def list_view_valuesets_rx() -> List[str]:
     valuesets = [f'rx_{drug}' for drug in RX_LIST]
     valuesets.append('rx_custom')
-    return fhir2sql.name_prefix(valuesets)
+    return sorted(list(set(fhir2sql.name_prefix(valuesets))))
 
 def list_view_valuesets_lab() -> List[str]:
     valuesets = [f'lab_{lab}' for lab in LAB_LIST]
     valuesets.append('lab_custom')
-    return fhir2sql.name_prefix(valuesets)
+    return sorted(list(set(fhir2sql.name_prefix(valuesets))))
 
 def union_view_list(rx_or_lab: str, aspect_entries: list, view_name: str) -> Path:
     targets = [f'{rx_or_lab}_{entry}' for entry in aspect_entries]
@@ -53,7 +53,7 @@ def make_aspect(vocab: Vocab, aspect_key: AspectKey, aspect_entries: list, delim
         reader = SpreadsheetReader(filename, entry, vocab, delimiter)
         codes = reader.read_coding_list()
         file_list.append(fhir2sql.define(codes, f'{aspect_key.name}_{entry}'))
-    return file_list
+    return sorted(list(set(file_list)))
 
 def make_lab() -> List[Path]:
     return make_aspect(Vocab.LOINC, AspectKey.lab, LAB_LIST, Delimiter.csv)
