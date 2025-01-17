@@ -35,11 +35,11 @@ def columns() -> str:
     return '|Study Variable|ValueSet|VSAC|'
 
 def line() -> str:
-    return '|:------:|:-----:|:---:|'
+    return '|:-------|:------|:-----|'
 
 def vsac(oid) -> str:
     if isinstance(oid, list):
-        return '\n'.join([vsac(item) for item in oid])
+        return ', '.join([vsac(item) for item in oid])
 
     url = f'https://vsac.nlm.nih.gov/valueset/{oid}/expansion/Latest'
     return f'[{oid}]({url})'
