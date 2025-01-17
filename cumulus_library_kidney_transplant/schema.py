@@ -49,6 +49,7 @@ class Procedure(Enum):
 
 class ObservationLab(Enum):
     code = 'lab_observation_code'
+    interpretation = 'lab_interpretation_display'
 
 class Cohort(Enum):
     """

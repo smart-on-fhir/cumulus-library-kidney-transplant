@@ -3,7 +3,7 @@ from typing import List, Dict
 from cumulus_library_kidney_transplant import guard
 
 class Valueset:
-    def __init__(self, name: str, oid: str | None):
+    def __init__(self, name: str, oid: List[str] | str | None):
         self.name = name
         self.oid = oid
 
@@ -11,7 +11,7 @@ class Valueset:
         return {self.name: self.oid}
 
 class Variable:
-    def __init__(self, name: str, valuesets: List[Valueset] | Dict[str, str]):
+    def __init__(self, name: str, valuesets: List[Valueset] | Dict[str, str] | Dict[str, list]):
         self.name = name.lower()
         self.valueset_list = list()
         if valuesets:

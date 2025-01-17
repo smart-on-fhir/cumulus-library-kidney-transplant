@@ -7,7 +7,5 @@ create or replace view irae__dx_autoimmune as
  irae__dx_autoimmune_crohns
  UNION select 'dx_autoimmune_arthritis_ra' as valueset, system, code, display from 
  irae__dx_autoimmune_arthritis_ra
- UNION select 'dx_autoimmune_arthritis_disorders' as valueset, system, code, display from 
- irae__dx_autoimmune_arthritis_disorders
  UNION select 'dx_autoimmune_lupus' as valueset, system, code, display from 
  irae__dx_autoimmune_lupus

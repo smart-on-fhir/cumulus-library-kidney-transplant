@@ -66,8 +66,15 @@ def make_aspect(aspect: Aspect) -> List[Path]:
 
             if not os.path.exists(json_file):
                 print(f'**** Downloading {variable.name} {valueset.as_json()}')
-                json_list = api.get_vsac_valuesets(url=None, oid=valueset.oid)
-                filetool.save_valueset(json_file, json_list)
+                if isinstance(valueset.oid, list):
+                    json_list = list()
+                    for oid in valueset.oid:
+                        print(oid)
+                        json_list += api.get_vsac_valuesets(url=None, oid=oid)
+                    filetool.save_valueset(json_file, json_list)
+                else:
+                    json_list = api.get_vsac_valuesets(url=None, oid=valueset.oid)
+                    filetool.save_valueset(json_file, json_list)
 
             if not os.path.exists(view_file):
                 print(f'**** Writing {view_file}')
@@ -80,7 +87,7 @@ def make_aspect(aspect: Aspect) -> List[Path]:
             var_list.append(view_file)
             valueset_list.append(view_name)
         var_list.append(fhir2sql.union_view_list(valueset_list, variable.name))
-    return sorted(list(set(var_list)))
+    return var_list
 
 def make() -> List[Path]:
     """

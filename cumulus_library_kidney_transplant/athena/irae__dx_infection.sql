@@ -3,10 +3,8 @@ create or replace view irae__dx_infection as
  irae__dx_infection_bacterial
  UNION select 'dx_infection_pna' as valueset, system, code, display from 
  irae__dx_infection_pna
- UNION select 'dx_infection_cmv_icd10' as valueset, system, code, display from 
- irae__dx_infection_cmv_icd10
- UNION select 'dx_infection_cmv_sct' as valueset, system, code, display from 
- irae__dx_infection_cmv_sct
+ UNION select 'dx_infection_cmv' as valueset, system, code, display from 
+ irae__dx_infection_cmv
  UNION select 'dx_infection_rsv' as valueset, system, code, display from 
  irae__dx_infection_rsv
  UNION select 'dx_infection_influenza' as valueset, system, code, display from 

@@ -7,6 +7,7 @@ CREATE TABLE irae__count_pat_study_population_lab AS (
             s."age_at_visit",
             s."enc_class_code",
             s."gender",
+            s."lab_interpretation_display",
             s."lab_observation_code"
             --noqa: enable=RF03, AL02
         FROM irae__cohort_study_population_lab AS s
@@ -28,6 +29,10 @@ CREATE TABLE irae__count_pat_study_population_lab AS (
                 'cumulus__none'
             ) AS gender,
             coalesce(
+                cast(lab_interpretation_display AS varchar),
+                'cumulus__none'
+            ) AS lab_interpretation_display,
+            coalesce(
                 cast(lab_observation_code AS varchar),
                 'cumulus__none'
             ) AS lab_observation_code
@@ -40,12 +45,14 @@ CREATE TABLE irae__count_pat_study_population_lab AS (
             "age_at_visit",
             "enc_class_code",
             "gender",
+            "lab_interpretation_display",
             "lab_observation_code",
             concat_ws(
                 '-',
                 COALESCE("age_at_visit",''),
                 COALESCE("enc_class_code",''),
                 COALESCE("gender",''),
+                COALESCE("lab_interpretation_display",''),
                 COALESCE("lab_observation_code",'')
             ) AS id
         FROM null_replacement
@@ -54,6 +61,7 @@ CREATE TABLE irae__count_pat_study_population_lab AS (
             "age_at_visit",
             "enc_class_code",
             "gender",
+            "lab_interpretation_display",
             "lab_observation_code"
             )
     )
@@ -63,6 +71,7 @@ CREATE TABLE irae__count_pat_study_population_lab AS (
         p."age_at_visit",
         p."enc_class_code",
         p."gender",
+        p."lab_interpretation_display",
         p."lab_observation_code"
     FROM powerset AS p
     WHERE 
