@@ -3,7 +3,7 @@ from typing import List, Dict
 from cumulus_library_kidney_transplant import guard
 
 class Valueset:
-    def __init__(self, name: str, oid: str | None):
+    def __init__(self, name: str, oid: List[str] | str | None):
         self.name = name
         self.oid = oid
 
@@ -11,7 +11,7 @@ class Valueset:
         return {self.name: self.oid}
 
 class Variable:
-    def __init__(self, name: str, valuesets: List[Valueset] | Dict[str, str]):
+    def __init__(self, name: str, valuesets: List[Valueset] | Dict[str, str] | Dict[str, list]):
         self.name = name.lower()
         self.valueset_list = list()
         if valuesets:
@@ -31,6 +31,7 @@ class AspectKey(Enum):
     rx = 'medications'
     lab = 'labs'
     proc = 'procedures'
+    doc = 'document'
 
     def as_json(self):
         return {self.name: self.value}
@@ -78,15 +79,28 @@ class Labs(Aspect):
 class Procedures(Aspect):
     key = AspectKey.proc
 
+class Documents(Aspect):
+    key = AspectKey.doc
+
 class AspectMap:
-    def __init__(self, diagnoses: Diagnoses | None, medications: Medications | None, labs: Labs | None, procedures: Procedures | None):
+    def __init__(self,
+                 diagnoses: Diagnoses | None,
+                 medications: Medications | None,
+                 labs: Labs | None,
+                 procedures: Procedures | None,
+                 documents: Documents | None):
         self.diagnosis = diagnoses
         self.medications = medications
         self.labs = labs
         self.procedures = procedures
+        self.documents = documents
 
     def as_list(self) -> List[Aspect]:
-        return [self.diagnosis, self.medications, self.labs, self.procedures]
+        return [self.diagnosis, self.medications, self.labs, self.procedures, self.documents]
 
     def as_json(self) -> dict:
-        return self.diagnosis.as_json() | self.medications.as_json() | self.labs.as_json() | self.procedures.as_json()
+        return self.diagnosis.as_json() | \
+               self.medications.as_json() | \
+               self.labs.as_json() | \
+               self.procedures.as_json() | \
+               self.documents.as_json()

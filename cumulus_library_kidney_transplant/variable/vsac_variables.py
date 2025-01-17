@@ -13,7 +13,6 @@ from cumulus_library_kidney_transplant.variable.vsac_variables_defined import ge
 # LIST of
 #
 ###############################################################################
-
 def list_view_valuesets() -> List[str]:
     valueset_list = list()
     for aspect in get_aspect_map().as_list():
@@ -31,12 +30,25 @@ def list_view_variables() -> List[str]:
 
 ###############################################################################
 #
+# Cancer specific subsets.
+#
+###############################################################################
+def make_cancer_subsets():
+    valueset_json = 'irae__dx_cancer/any.json'
+    filetool.save_valueset('irae__dx_cancer/skin.json', fhir2sql.filter_expansion(valueset_json, ['skin']))
+    filetool.save_valueset('irae__dx_cancer/melanoma.json', fhir2sql.filter_expansion(valueset_json, ['melanoma']))
+    filetool.save_valueset('irae__dx_cancer/sarcoma.json', fhir2sql.filter_expansion(valueset_json, ['sarcoma']))
+    filetool.save_valueset('irae__dx_cancer/squamous.json', fhir2sql.filter_expansion(valueset_json, ['squamous']))
+
+
+###############################################################################
+#
 # Make
 #
 ###############################################################################
 def make_aspect(aspect: Aspect) -> List[Path]:
     """
-    :param aspect: see `list_aspects()`, Dx, Rx, Lab, LabPanel, Proc
+    :param aspect: see `list_aspects()`, Dx, Rx, Lab, LabPanel, Proc, Doc
     :return: Path to SQL File to create variable definition valuesets.
     """
     api = vsac_api.UmlsApi()
@@ -54,8 +66,15 @@ def make_aspect(aspect: Aspect) -> List[Path]:
 
             if not os.path.exists(json_file):
                 print(f'**** Downloading {variable.name} {valueset.as_json()}')
-                json_list = api.get_vsac_valuesets(url=None, oid=valueset.oid)
-                filetool.save_valueset(json_file, json_list)
+                if isinstance(valueset.oid, list):
+                    json_list = list()
+                    for oid in valueset.oid:
+                        print(oid)
+                        json_list += api.get_vsac_valuesets(url=None, oid=oid)
+                    filetool.save_valueset(json_file, json_list)
+                else:
+                    json_list = api.get_vsac_valuesets(url=None, oid=valueset.oid)
+                    filetool.save_valueset(json_file, json_list)
 
             if not os.path.exists(view_file):
                 print(f'**** Writing {view_file}')

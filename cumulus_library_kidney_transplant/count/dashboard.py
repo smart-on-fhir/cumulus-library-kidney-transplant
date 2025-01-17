@@ -1,5 +1,6 @@
 from typing import List
 from enum import Enum
+from cumulus_library_kidney_transplant import filetool
 from cumulus_library_kidney_transplant.study_prefix import PREFIX
 from cumulus_library_kidney_transplant.schema import (
     Table,
@@ -64,17 +65,17 @@ class Graph:
                'y_axis': str(self.y_axis)}
         return out
 
-def graph_list(prefix=PREFIX) -> List[Graph]:
+def list_graph_defaults(prefix=PREFIX) -> List[Graph]:
     """
     Default list of Dashboard graphs for a study
     :param prefix: alias for the study, such as "suicide_icd10"
     :return: List of supported dashboard.Graph
     """
     return [
-        graph_population_cnt_patient_by_gender_race(prefix),
-        graph_population_cnt_encounter_by_gender_age(prefix),
-        graph_cohort_casedef_cnt_patient_by_gender_race(prefix),
-        graph_cohort_casedef_cnt_encounter_by_age_gender(prefix)
+        graph_population_cnt_patient_by_gender_race(),
+        graph_population_cnt_encounter_by_gender_age(),
+        graph_cohort_casedef_cnt_patient_by_gender_race(),
+        graph_cohort_casedef_cnt_encounter_by_age_gender()
     ]
 
 def graph_population_cnt_patient_by_gender_race(table=None) -> Graph:
@@ -149,3 +150,10 @@ def graph_cohort_casedef_cnt_encounter_by_age_gender(table=None) -> Graph:
     graph.stratifier = Demographic.gender
 
     return graph
+
+
+if __name__ == "__main__":
+    graph_list = list_graph_defaults(PREFIX)
+    as_json = [g.as_json() for g in graph_list]
+    filetool.write_json(as_json, filetool.path_home('dashboard.json'))
+

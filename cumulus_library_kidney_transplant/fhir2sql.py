@@ -1,3 +1,4 @@
+import copy
 from typing import List
 from pathlib import Path
 from fhirclient.models.coding import Coding
@@ -40,7 +41,7 @@ def name_study_variables(suffix=None) -> str:
     table = name_suffix('study_variables', suffix)
     return name_join('cohort', table)
 
-def name_cube(table: str, suffix: str) -> str:
+def name_cube(table: str, suffix: str = None) -> str:
     part = f'count_{suffix}' if suffix else 'count'
     return name_join(part, table)
 
@@ -63,7 +64,7 @@ def sql_escape(sql: str) -> str:
 def sql_iter(clauses_list, operator=',') -> str:
     if not isinstance(clauses_list, list):
         return sql_iter([clauses_list])
-    return f' {operator} \n'.join(clauses_list)
+    return f' {operator} \n'.join(sorted(list(set(clauses_list))))
 
 def sql_and(clauses_list) -> str:
     return sql_iter(clauses_list, 'and')
@@ -84,7 +85,7 @@ def sql_paren(statement: str) -> str:
 #
 ###############################################################################
 
-def valueset2codelist(valueset_json: Path | str) -> List[Coding]:
+def valueset2codelist(valueset_json: Path | str | dict) -> List[Coding]:
     """
     Obtain a list of Coding "concepts" from a ValueSet.
     This method currently supports only "include" of "concept" defined fields.
@@ -97,8 +98,9 @@ def valueset2codelist(valueset_json: Path | str) -> List[Coding]:
     :param valueset_json: ValueSet file, expecially those provided by NLM/ONC/VSAC
     :return: list of codeable concepts (system, code, display) to include
     """
-    if isinstance(valueset_json, str):
+    if not isinstance(valueset_json, dict):
         valueset_json = filetool.load_valueset(valueset_json)
+
     parsed = list()
     if not valueset_json.get('compose'):
         print('warning, no valueset content. Extension?')
@@ -117,6 +119,28 @@ def expansion2codelist(valueset_json: dict | str) -> List[Coding]:
 
     contains = valueset_json.get('expansion').get('contains')
     return [Coding(c) for c in contains]
+
+def filter_expansion(valueset_json: Path | str, search_terms: list) -> List[dict]:
+    """
+    :param valueset_json: source ValueSet that potentially contains thousands of codes
+    :param search_terms: terms to match on either Coding CODE or DISPLAY
+    :return: List[dict] where length is 1 because codes are merged into a single ValueSet entry.
+    List[dict must be presevered as that is expected everywhere per VSAC API
+    """
+    valueset_list = filetool.load_valueset(valueset_json)
+
+    matches = list()
+    for valueset in valueset_list:
+        for code in expansion2codelist(valueset):
+            search_string = f'{code.code.lower()} {code.display.lower()}'
+            for term in search_terms:
+                if term.lower() in search_string:
+                    matches.append(code.as_json())
+
+    filtered = copy.deepcopy(valueset_list[0])
+    filtered['expansion']['contains'] = matches
+    return [filtered]
+
 
 def codelist2view(codelist: List[Coding], view_name) -> str:
     """
@@ -153,7 +177,7 @@ def criteria2view(view_name, cols: list, values: list) -> Path:
 def union_view_list(view_list: List[str], view_name: str) -> Path:
     dest = name_prefix(view_name)
     cvas = f"create or replace view {PREFIX}__{view_name} as \n "
-    select = [f"select '{name_simple(view)}' as subtype, system, code, display from \n {view}" for view in view_list]
+    select = [f"select '{name_simple(view)}' as valueset, system, code, display from \n {view}" for view in view_list]
     sql = cvas + '\n UNION '.join(select)
     return save_athena_view(dest, sql)
 
@@ -182,33 +206,22 @@ def exclude(codelist: List[Coding], view_name: str) -> Path:
 
 ###############################################################################
 #
-# @deprecated
+# naming conventions
 #
 ###############################################################################
 
-def define_valueset_list_deprecated(valueset_json_list: List[str], view_name: str) -> Path:
-    """
-    :param valueset_json_list: VSAC ValueSet JSON files
-    :param view_name: create view as
-    :param include=True (Default)
-    :return: outfile path
-    """
-    codelist = list()
-    for filename in valueset_json_list:
-        codelist += valueset2codelist(filetool.path_valueset(filename))
-    return define(codelist, view_name)
+def select_union_study_variables(variable_list: List[str]) -> str:
+    sql = list()
+    for variable in variable_list:
+        variable = name_simple(variable)
+        select = f"\tselect distinct '{variable}'\t as variable, valueset, code, display, system, encounter_ref, subject_ref "
+        from_table = f" from {PREFIX}__cohort_{variable}"
+        sql.append(select + from_table)
+    return ' UNION\n'.join(sql)
 
-def codesystem2codelist_deprecated(code_system_json) -> List[Coding]:
-    """
-    ValueSet is not always available, sometimes "CodeSystem" is the FHIR spec.
-    :param code_system_json:
-    :return: List Coding (similar to ValueSet)
-    """
-    codesystem = filetool.load_valueset(code_system_json)
-    parsed = list()
-    url = codesystem.get('url')
-    if 'concept' in codesystem.keys():
-        for concept in codesystem['concept']:
-            concept['system'] = url
-            parsed.append(Coding(concept))
-    return parsed
+def select_lookup_study_variables(variable_list: List[str]) -> str:
+    sql = list()
+    for variable in variable_list:
+        variable = name_simple(variable)
+        sql.append(f"\tIF(lookup.variable='{variable}', lookup.valueset) AS {variable}")
+    return ',\n'.join(sql)

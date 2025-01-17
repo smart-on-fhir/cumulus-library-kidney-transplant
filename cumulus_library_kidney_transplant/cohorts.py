@@ -3,6 +3,15 @@ from pathlib import Path
 from cumulus_library_kidney_transplant.variable import vsac_variables, custom_variables
 from cumulus_library_kidney_transplant import fhir2sql, filetool
 
+###############################################################################
+# VSAC and custom variables list
+###############################################################################
+def list_variables() -> List[str]:
+    return list(sorted(vsac_variables.list_view_variables()) + list(sorted(custom_variables.list_view_variables())))
+
+###############################################################################
+# COHORTS : create table as select from where
+###############################################################################
 def ctas(cohort: str, variable: str, where: list) -> str:
     from_list = fhir2sql.sql_list([cohort, variable])
     select_from = f'select * from \n {from_list}'
@@ -38,23 +47,19 @@ def cohort_proc(variable: str) -> Path:
     sql = ctas(source, variable, where)
     return fhir2sql.save_athena_view(fhir2sql.name_cohort(variable), sql)
 
-def make_study_variable_timeline() -> List[Path]:
-    file_list = list()
-    table_list = [fhir2sql.name_study_variables(),
-                  fhir2sql.name_study_variables('timeline')]
+def cohort_doc(variable: str) -> Path:
+    source = fhir2sql.name_study_population('doc')
+    where = [f'{source}.doc_type_code = {variable}.code',
+             f'{source}.doc_type_system = {variable}.system']
+    sql = ctas(source, variable, where)
+    return fhir2sql.save_athena_view(fhir2sql.name_cohort(variable), sql)
 
-    for table in table_list:
-        file = f'{table}.sql'
-        text = filetool.load_template(file)
-        text = filetool.inline_template(text)
-        file_list.append(filetool.save_athena(file, text))
-
-    return file_list
-
-def make_study_variables() -> List[Path]:
+###############################################################################
+# EACH Select Variable, make a cohort for each by itself.
+###############################################################################
+def make_each_study_variable() -> List[Path]:
     group_list = list()
-    variable_list = vsac_variables.list_view_variables() + custom_variables.list_view_variables()
-    for variable in variable_list:
+    for variable in list_variables():
         if '__dx' in variable:
             group_list.append(cohort_dx(variable))
         elif '__rx' in variable:
@@ -63,24 +68,41 @@ def make_study_variables() -> List[Path]:
             group_list.append(cohort_lab(variable))
         elif '__proc' in variable:
             group_list.append(cohort_proc(variable))
+        elif '__doc' in variable:
+            group_list.append(cohort_doc(variable))
         else:
             raise Exception(f'unknown variable type {variable}')
-    return group_list + make_study_variable_timeline()
+    return group_list
+
+###############################################################################
+# Select Variables UNION and WIDE representation
+###############################################################################
+def make_study_variables_union() -> Path:
+    select = fhir2sql.select_union_study_variables(list_variables())
+    file = fhir2sql.name_study_variables() + '.sql'
+    text = filetool.load_template(file)
+    text = filetool.inline_template(text, suffix=None, variable=select)
+    return filetool.save_athena(file, text)
+
+def make_study_variables_wide() -> Path:
+    select = fhir2sql.select_lookup_study_variables(list_variables())
+    file = fhir2sql.name_study_variables('wide') + '.sql'
+    text = filetool.load_template(file)
+    text = filetool.inline_template(text, suffix=None, variable=select)
+    return filetool.save_athena(file, text)
+
+###############################################################################
+# COmorbidity from UNION of study variables
+###############################################################################
+def make_comorbidity() -> Path:
+    file = fhir2sql.name_study_variables('comorbidity') + '.sql'
+    text = filetool.load_template(file)
+    text = filetool.inline_template(text)
+    return filetool.save_athena(file, text)
 
 def make() -> List[Path]:
-    file_list = list()
-    variable_list = vsac_variables.list_view_variables() + custom_variables.list_view_variables()
+    variables_each = make_each_study_variable()
+    variables_union_wide = [make_study_variables_union(), make_study_variables_wide()]
+    variables_comorbidity = [make_comorbidity()]
 
-    for variable in variable_list:
-        if 'dx_' in variable:
-            file_list.append(cohort_dx(variable))
-        elif 'rx_' in variable:
-            file_list.append(cohort_rx(variable))
-        elif 'lab_' in variable:
-            file_list.append(cohort_lab(variable))
-        elif 'proc_' in variable:
-            file_list.append(cohort_proc(variable))
-        else:
-            raise Exception(f'unknown variable type {variable}')
-
-    return file_list + make_study_variable_timeline()
+    return variables_each + variables_union_wide + variables_comorbidity

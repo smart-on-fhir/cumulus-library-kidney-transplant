@@ -16,14 +16,14 @@ create table irae__cohort_casedef_index as
 with IndexDate as
 (
     select      min(enc_period_start_day) as enc_period_start_day,
-                subtype, subject_ref
+                valueset, subject_ref
     from        irae__cohort_rx_custom
-    group by    subtype, subject_ref
+    group by    valueset, subject_ref
 ),
 Cohort as
 (
     select distinct
-            CaseDef.subtype,
+            CaseDef.valueset,
             CaseDef.code,
             CaseDef.display,
             CaseDef.system,
@@ -34,18 +34,18 @@ Cohort as
     from    irae__cohort_rx_custom as CaseDef,
             IndexDate
     where   CaseDef.subject_ref = IndexDate.subject_ref
-    and     CaseDef.subtype     = IndexDate.subtype
+    and     CaseDef.valueset     = IndexDate.valueset
     and     CaseDef.enc_period_start_day = IndexDate.enc_period_start_day
 )
 select  distinct
-        Cohort.subtype,
+        Cohort.valueset,
         Cohort.code,
         Cohort.display,
         Cohort.system,
-        Timeline.*
+        variables_wide.*
 from    IndexDate,
-        irae__cohort_study_variables_timeline as Timeline
-left join Cohort on Timeline.encounter_ref = cohort.encounter_ref
-where   Timeline.subject_ref           = IndexDate.subject_ref
-and     Timeline.enc_period_start_day  = IndexDate.enc_period_start_day
+        irae__cohort_study_variables_wide as variables_wide
+left join Cohort on variables_wide.encounter_ref = cohort.encounter_ref
+where   variables_wide.subject_ref           = IndexDate.subject_ref
+and     variables_wide.enc_period_start_day  = IndexDate.enc_period_start_day
 ;

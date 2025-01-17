@@ -1,5 +1,5 @@
 import unittest
-from irae import fhir2sql
+from cumulus_library_kidney_transplant import fhir2sql
 
 class TestFHIR2sql(unittest.TestCase):
 

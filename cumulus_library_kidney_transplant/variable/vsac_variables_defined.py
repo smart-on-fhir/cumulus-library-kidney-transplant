@@ -1,6 +1,6 @@
 from typing import List
-from cumulus_library_kidney_transplant.variable.aspect import Variable, Valueset
-from cumulus_library_kidney_transplant.variable.aspect import Aspect, AspectMap, Diagnoses, Medications, Labs, Procedures
+from cumulus_library_kidney_transplant.variable.aspect import Variable, Valueset, Aspect, AspectMap
+from cumulus_library_kidney_transplant.variable.aspect import Diagnoses, Medications, Labs, Procedures, Documents
 
 ###############################################################################
 #
@@ -9,9 +9,6 @@ from cumulus_library_kidney_transplant.variable.aspect import Aspect, AspectMap,
 ###############################################################################
 def get_procedures() -> Procedures:
     return Procedures([
-        Variable('Nephrectomy', {
-            'sct': '2.16.840.1.113762.1.4.1248.200',
-            'icd10pcs': '2.16.840.1.113762.1.4.1248.4'}),
         Variable('Dialysis', {
             'services': '2.16.840.1.113883.3.464.1003.109.12.1013'}),
         Variable('Surgery', {
@@ -19,16 +16,39 @@ def get_procedures() -> Procedures:
 
 ###############################################################################
 #
+# Doc Document
+#
+###############################################################################
+def get_documents() -> Documents:
+    return Documents([
+        Variable('biopsy', {
+            'kidney': '2.16.840.1.113762.1.4.1222.864',
+            'skin': '2.16.840.1.113762.1.4.1222.867',
+            'lung': '2.16.840.1.113883.3.1434.1011',
+            'bone': '2.16.840.1.113762.1.4.1222.870',
+            'muscle': '2.16.840.1.113762.1.4.1222.868',
+        })])
+
+###############################################################################
+#
 # Dx Diagnosis
 #
 ###############################################################################
 def get_diagnoses() -> Diagnoses:
+    cancer_any = '2.16.840.1.113883.3.526.3.1010'
     vars = list()
     vars.append(Variable(
         'Transplant', {
             'kidney': '2.16.840.1.113762.1.4.1078.16',
             'solid_organ': '2.16.840.1.113762.1.4.1032.205',
             'recipient': '2.16.840.1.113762.1.4.1111.27'}))
+    vars.append(Variable(
+        'Cancer', {
+            'skin': cancer_any,
+            'melanoma': cancer_any,
+            'melanoma_malignant': ['2.16.840.1.113883.3.1434.1038', '2.16.840.1.113883.3.464.1003.108.11.1018'],
+            'sarcoma': cancer_any,
+            'squamous': cancer_any}))
     vars.append(Variable(
         'Kidney', {
             'condition': '2.16.840.1.113883.17.4077.3.2028',
@@ -42,23 +62,16 @@ def get_diagnoses() -> Diagnoses:
             'inflammatory': '2.16.840.1.113883.3.3157.1834',
             'ibd': '2.16.840.1.113762.1.4.1078.879',
             'crohns': '2.16.840.1.113762.1.4.1034.576',
-            'arthritis_ra': '2.16.840.1.113762.1.4.1222.651',
-            'arthritis_disorders': '2.16.840.1.113762.1.4.1222.81',
+            'arthritis_ra': ['2.16.840.1.113762.1.4.1222.651', '2.16.840.1.113762.1.4.1222.81'],
             'lupus': '2.16.840.1.113883.3.464.1003.117.12.1010'}))
     vars.append(Variable(
-        'Cancer', {
-            'malignant_melanoma_sct': '2.16.840.1.113883.3.1434.1038',
-            'malignant_melanoma_icd10': '2.16.840.1.113883.3.464.1003.108.11.1018'}))
-    vars.append(Variable(
-        'Compromised', {
-            'immunocompromised': '2.16.840.1.113883.3.666.5.1940',
-            'immunocompromising': '2.16.840.1.113762.1.4.1235.212'}))
+        'immunocompromised', {
+            'any': ['2.16.840.1.113883.3.666.5.1940', '2.16.840.1.113762.1.4.1235.212']}))
     vars.append(Variable(
         'Infection', {
             'bacterial': '2.16.840.1.113762.1.4.1200.288',
             'pna': '2.16.840.1.113762.1.4.1078.738',
-            'cmv_icd10': '2.16.840.1.113762.1.4.1146.2234',
-            'cmv_sct': '2.16.840.1.113762.1.4.1146.2233',
+            'cmv': ['2.16.840.1.113762.1.4.1146.2234', '2.16.840.1.113762.1.4.1146.2233'],
             'rsv': '2.16.840.1.113762.1.4.1078.754',
             'influenza': '2.16.840.1.113762.1.4.1078.747',
             'shingles': '2.16.840.1.113762.1.4.1222.1478',
@@ -80,7 +93,7 @@ def get_diagnoses() -> Diagnoses:
             'disorder': '2.16.840.1.113762.1.4.1219.35',
             'preexisting': '2.16.840.1.113883.3.464.1003.198.12.1075',
             'complications': '2.16.840.1.113762.1.4.1222.1537',
-            'td2_related_dx': '2.16.840.1.113762.1.4.1078.440',
+            't2d_related_dx': '2.16.840.1.113762.1.4.1078.440',
             'diabetic_nephropathy': '2.16.840.1.113883.3.464.1003.109.12.1004',
             'diabetic_ckd': '2.16.840.1.113762.1.4.1078.124'}))
     return Diagnoses(vars)
@@ -135,12 +148,16 @@ def get_lab_analytes() -> Labs:
 ###############################################################################
 def get_medications() -> Medications:
     return Medications([
-        Variable('Immunosuppressive', {
+        Variable('immunosuppressive', {
+            'everolimus': '2.16.840.1.113762.1.4.1260.499',
             'drugs': '2.16.840.1.113762.1.4.1219.192',
             'systemic_therapy': '2.16.840.1.113883.3.666.5.803',
             'immune_modulators': '2.16.840.1.113762.1.4.1248.124',
             'coricosteroids_systemic': '2.16.840.1.113883.3.3616.200.110.102.2061'}),
-        Variable('immunoCompromised', {'therapies': '2.16.840.1.113762.1.4.1235.212'}),
+        Variable('antibiotics', {
+            'any': '2.16.840.1.113762.1.4.1078.849',
+            'systemic': '2.16.840.1.113762.1.4.1133.6'}),
+        Variable('immunocompromised', {'therapies': '2.16.840.1.113762.1.4.1235.212'}),
         Variable('diabetes', {'drugs': '2.16.840.1.113762.1.4.1190.58'}),
         Variable('HTN', {'drugs': '2.16.840.1.113883.3.600.1476'}),
         Variable('Diuretics', {
@@ -156,9 +173,27 @@ def get_medications() -> Medications:
 def deprecated() -> List[Variable]:
     return [
         Variable('SurgeryOther', {'surgical_cohort': '2.16.840.1.113762.1.4.1182.127'}),
+        Variable('drug_names', {
+            'ingredient': '2.16.840.1.113762.1.4.1010.7',
+            'brand': '2.16.840.1.113883.3.88.12.80.16',
+            'prescribable_generic': '2.16.840.1.113883.3.88.12.80.17',
+            'prescribable': '2.16.840.1.113762.1.4.1237.18'}),
         Variable('ADE', {
             'common_reactant': '2.16.840.1.113762.1.4.1010.1',
             'common_allergy_intolerance': '2.16.840.1.113762.1.4.1186.8'}),
+        Variable('Nephrectomy', {
+            'sct': '2.16.840.1.113762.1.4.1248.200',
+            'icd10pcs': '2.16.840.1.113762.1.4.1248.4'}),
+        Variable('ObservationInterpretation', {
+            'any': '2.16.840.1.113883.1.11.78',
+            'abnormal': ['2.16.840.1.113762.1.4.1146.295', '2.16.840.1.113762.1.4.1181.56'],
+            'low': '2.16.840.1.113762.1.4.1146.2019',
+            'high': '2.16.840.1.113762.1.4.1146.2018'
+        }),
+        'Cancer', {
+            # 'any': '2.16.840.1.113883.3.526.3.1010'
+            'malignant_melanoma_sct': '2.16.840.1.113883.3.1434.1038',
+            'malignant_melanoma_icd10': '2.16.840.1.113883.3.464.1003.108.11.1018'}
     ]
 
 def get_aspect_map() -> AspectMap:
@@ -166,4 +201,5 @@ def get_aspect_map() -> AspectMap:
         diagnoses=get_diagnoses(),
         medications=get_medications(),
         labs=get_labs(),
-        procedures=get_procedures())
+        procedures=get_procedures(),
+        documents=get_documents())

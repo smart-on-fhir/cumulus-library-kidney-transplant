@@ -1,4 +1,4 @@
-create or replace view irae__dx_diabetes_td2_related_dx as select * from (values
+create or replace view irae__dx_diabetes_t2d_related_dx as select * from (values
 ('http://snomed.info/sct', '1003380001', '6q16 microdeletion syndrome (disorder)')
 ,('http://snomed.info/sct', '10091002', 'High output heart failure (disorder)')
 ,('http://snomed.info/sct', '101281000119107', 'Congestive heart failure due to cardiomyopathy (disorder)')

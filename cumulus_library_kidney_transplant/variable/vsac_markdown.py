@@ -32,11 +32,14 @@ def header() -> str:
     return H1 + '\n\n' + columns() + '\n' + line() + '\n'
 
 def columns() -> str:
-    return '|Study Variable|Subtype|VSAC|'
+    return '|Study Variable|ValueSet|VSAC|'
 
 def line() -> str:
-    return '|:------:|:-----:|:---:|'
+    return '|:-------|:------|:-----|'
 
 def vsac(oid) -> str:
+    if isinstance(oid, list):
+        return ', '.join([vsac(item) for item in oid])
+
     url = f'https://vsac.nlm.nih.gov/valueset/{oid}/expansion/Latest'
     return f'[{oid}]({url})'

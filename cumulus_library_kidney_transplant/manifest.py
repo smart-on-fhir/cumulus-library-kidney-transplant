@@ -8,32 +8,51 @@ def get_file_config() -> List:
     return read_manifest().get('file_config')
 
 def path_manifest() -> Path:
-    return filetool.path_home('manifest.toml')
+    return filetool.path_home('../manifest.toml')
 
 def read_manifest() -> dict:
     with open(path_manifest(), 'rb') as f:
         data = tomllib.load(f)
     return data
 
-# TODO refactor @singleton
-# from singleton_decorator import singleton
 def get_study_prefix() -> str:
     return str(read_manifest().get('study_prefix'))
 
 def write_manifest(file_names: List[Path] | List[str]) -> Path:
     saved = read_manifest()
     saved['file_config']['file_names'] = path_relative(file_names)
+    saved['export_config']['count_list'] = list_tables(file_names, '_count_')
 
     with open(str(path_manifest()), 'wb') as f:
         tomli_w.dump(saved, f)
     print('saved ' + str(path_manifest()))
     return path_manifest()
 
+def list_tables(file_names: List[Path] | List[str], search_term: str = None) -> List[str]:
+    """
+    "athena/irae__include_study_period.sql",
+    :param file_names:
+    :return:
+    """
+    table_names = list()
+    for table in path_relative(file_names):
+        if 'cumulus_library_kidney_transplant/' in table:
+            print(table)
+            _, table = table.split('cumulus_library_kidney_transplant/')
+
+        table = table.replace('athena/', '').replace('.sql', '')
+        if search_term:
+            if search_term in table:
+                table_names.append(table)
+        else:
+            table_names.append(table)
+    return table_names
+
 def path_relative(file_names: List[Path] | List[str]) -> List[str]:
-    prefix = get_study_prefix() + '/'
+    split_token = 'cumulus-library-kidney-transplant/'
     simpler = list()
     for filename in guard.as_list_str(file_names):
-        if prefix in filename:
-            _, filename = filename.split(prefix)
+        if split_token in filename:
+            _, filename = filename.split(split_token)
         simpler.append(filename)
     return simpler

@@ -1,8 +1,8 @@
 import unittest
-from irae.variable.aspect import Aspect, AspectMap, AspectKey
-from irae.variable.aspect import Procedures, Variable, Valueset
-from irae.variable.vsac_variables_defined import Diagnoses, Medications, Labs, Procedures
-from irae.variable.vsac_variables_defined import get_aspect_map
+from cumulus_library_kidney_transplant.variable.aspect import Aspect, AspectMap, AspectKey
+from cumulus_library_kidney_transplant.variable.aspect import Procedures, Variable, Valueset
+from cumulus_library_kidney_transplant.variable.vsac_variables_defined import Diagnoses, Medications, Labs, Procedures
+from cumulus_library_kidney_transplant.variable.vsac_variables_defined import get_aspect_map
 
 class TestAspect(unittest.TestCase):
 
@@ -31,13 +31,21 @@ class TestAspect(unittest.TestCase):
         aspect_map = get_aspect_map()
         aspect_json = aspect_map.as_json()
 
-        self.assertEqual(4, len(aspect_json.keys()))
+        self.assertEqual(5, len(aspect_json.keys()))
         self.assertTrue(AspectKey.dx.name in aspect_json.keys())
         self.assertTrue(AspectKey.rx.name in aspect_json.keys())
         self.assertTrue(AspectKey.lab.name in aspect_json.keys())
         self.assertTrue(AspectKey.proc.name in aspect_json.keys())
+        self.assertTrue(AspectKey.doc.name in aspect_json.keys())
 
         self.assertTrue(len(aspect_map.diagnosis.variable_list) > 1)
         self.assertTrue(len(aspect_map.medications.variable_list) > 1)
         self.assertTrue(len(aspect_map.labs.variable_list) > 1)
         self.assertTrue(len(aspect_map.procedures.variable_list) > 1)
+
+    def test_aspect_map_every_value_not_null(self):
+        for aspect in get_aspect_map().as_list():
+            for variable in aspect.variable_list:
+                for valueset in variable.valueset_list:
+                    print(f'{aspect.key}_{variable.name}_{valueset.name}')
+                    self.assertTrue(valueset.oid is not None)
