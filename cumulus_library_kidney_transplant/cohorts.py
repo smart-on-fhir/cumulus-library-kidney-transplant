@@ -81,18 +81,18 @@ def make_study_variables_union() -> Path:
     select = fhir2sql.select_union_study_variables(list_variables())
     file = fhir2sql.name_study_variables() + '.sql'
     text = filetool.load_template(file)
-    text = filetool.inline_template(text, suffix=None, variable=select)
+    text = filetool.inline_template(sql=text, variable=select)
     return filetool.save_athena(file, text)
 
 def make_study_variables_wide() -> Path:
     select = fhir2sql.select_lookup_study_variables(list_variables())
     file = fhir2sql.name_study_variables('wide') + '.sql'
     text = filetool.load_template(file)
-    text = filetool.inline_template(text, suffix=None, variable=select)
+    text = filetool.inline_template(sql=text, variable=select)
     return filetool.save_athena(file, text)
 
 ###############################################################################
-# COmorbidity from UNION of study variables
+# Comorbidity from UNION of study variables
 ###############################################################################
 def make_comorbidity() -> Path:
     file = fhir2sql.name_study_variables('comorbidity') + '.sql'

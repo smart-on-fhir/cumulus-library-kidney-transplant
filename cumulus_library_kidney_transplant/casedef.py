@@ -19,7 +19,9 @@ def make_index_date(variable, suffix, equality) -> Path:
     template = f'{get_view()}_index.sql'
 
     sql = filetool.load_template(template)
-    sql = filetool.inline_template(sql, suffix, variable, equality)
+    sql = filetool.inline_template(sql, variable)
+    sql = sql.replace('$suffix', suffix)
+    sql = sql.replace('$equality', equality)
 
     return filetool.save_athena(view, sql)
 

@@ -1,16 +1,8 @@
 from enum import Enum
 from typing import List
 from cumulus_library_kidney_transplant import manifest
-from cumulus_library_kidney_transplant.guard import as_list_values
+from cumulus_library_kidney_transplant.guard import as_enum_values
 from cumulus_library_kidney_transplant.study_prefix import PREFIX
-
-class Table(Enum):
-    """
-    Template tables for cohorts derived from study population
-    """
-    study_population = 'study_population'
-    cohort = 'cohort'
-    casedef = 'casedef'
 
 ###############################################################################
 # Columnn/Attributes
@@ -95,12 +87,12 @@ class CountDistinct(Enum):
 # Helper
 ###############################################################################
 class Columns(Enum):
-    cohort = as_list_values(list(Cohort))
-    valueset = as_list_values(list(Valueset))
-    encounter = as_list_values(list(Encounter))
-    demographics = as_list_values(list(Demographic))
-    diagnoses = as_list_values(list(Diagnosis))
-    medications = as_list_values(list(Medication))
-    documents = as_list_values(list(Document))
-    procedures = as_list_values(list(Procedure))
-    labs = as_list_values(list(ObservationLab))
+    cohort = as_enum_values(Cohort)
+    valueset = as_enum_values(Valueset)
+    encounter = as_enum_values(Encounter)
+    demographics = as_enum_values(Demographic)
+    diagnoses = as_enum_values(Diagnosis)
+    medications = as_enum_values(Medication)
+    documents = as_enum_values(Document)
+    procedures = as_enum_values(Procedure)
+    labs = as_enum_values(ObservationLab)

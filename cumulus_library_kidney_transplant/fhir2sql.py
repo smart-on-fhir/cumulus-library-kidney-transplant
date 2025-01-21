@@ -159,7 +159,7 @@ def codelist2view(codelist: List[Coding], view_name) -> str:
 
 def criteria2view(view_name, cols: list, values: list) -> Path:
     """
-    Single inline_template CVAS statement where col[1...n] = value[1...n]
+    Single inline_template_casedef CVAS statement where col[1...n] = value[1...n]
     :param view_name: create view name
     :param cols: list of column names
     :param values: values for the column names

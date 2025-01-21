@@ -1,7 +1,7 @@
 from typing import List
 from pathlib import Path
 from cumulus_library_kidney_transplant import fhir2sql
-from cumulus_library_kidney_transplant.schema import Columns
+from cumulus_library_kidney_transplant.count.columns import Columns
 from cumulus_library_kidney_transplant.count import cube
 
 # def make_comorbidity_kidney() -> List[Path]:

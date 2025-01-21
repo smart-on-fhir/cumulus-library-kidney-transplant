@@ -4,7 +4,7 @@ from cumulus_library.builders.counts import CountsBuilder
 from cumulus_library_kidney_transplant import filetool, fhir2sql
 from cumulus_library_kidney_transplant.study_prefix import PREFIX
 from cumulus_library_kidney_transplant.variable import vsac_variables, custom_variables
-from cumulus_library_kidney_transplant.schema import Columns
+from cumulus_library_kidney_transplant.count.columns import Columns
 
 def cube_enc(from_table='study_population', cols=None, cube_table=None) -> Path:
     from_table = fhir2sql.name_cohort(from_table)
@@ -46,14 +46,19 @@ def make_variables() -> List[Path]:
     variable_list = vsac_variables.list_view_variables() + custom_variables.list_view_variables()
     for variable in variable_list:
         if '__dx' in variable:
+            file_list.append(cube_pat(variable, Columns.valueset.value + Columns.diagnoses.value))
             file_list.append(cube_enc(variable, Columns.valueset.value + Columns.diagnoses.value))
         elif '__rx' in variable:
+            file_list.append(cube_pat(variable, Columns.valueset.value + Columns.medications.value))
             file_list.append(cube_enc(variable, Columns.valueset.value + Columns.medications.value))
         elif '__lab' in variable:
+            file_list.append(cube_pat(variable, Columns.valueset.value + Columns.labs.value))
             file_list.append(cube_enc(variable, Columns.valueset.value + Columns.labs.value))
         elif '__proc' in variable:
+            file_list.append(cube_pat(variable, Columns.valueset.value + Columns.procedures.value))
             file_list.append(cube_enc(variable, Columns.valueset.value + Columns.procedures.value))
         elif '__doc' in variable:
+            file_list.append(cube_pat(variable, Columns.valueset.value + Columns.documents.value))
             file_list.append(cube_enc(variable, Columns.valueset.value + Columns.documents.value))
     return file_list
 
