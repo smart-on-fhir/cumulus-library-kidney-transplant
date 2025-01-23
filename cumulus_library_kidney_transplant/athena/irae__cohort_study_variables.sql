@@ -21,6 +21,7 @@ with variable_cohorts as
 	select distinct 'proc_dialysis'	 as variable, valueset, code, display, system, encounter_ref, subject_ref  from irae__cohort_proc_dialysis UNION
 	select distinct 'proc_surgery'	 as variable, valueset, code, display, system, encounter_ref, subject_ref  from irae__cohort_proc_surgery UNION
 	select distinct 'rx_antibiotics'	 as variable, valueset, code, display, system, encounter_ref, subject_ref  from irae__cohort_rx_antibiotics UNION
+	select distinct 'rx_cancer'	 as variable, valueset, code, display, system, encounter_ref, subject_ref  from irae__cohort_rx_cancer UNION
 	select distinct 'rx_diabetes'	 as variable, valueset, code, display, system, encounter_ref, subject_ref  from irae__cohort_rx_diabetes UNION
 	select distinct 'rx_diuretics'	 as variable, valueset, code, display, system, encounter_ref, subject_ref  from irae__cohort_rx_diuretics UNION
 	select distinct 'rx_htn'	 as variable, valueset, code, display, system, encounter_ref, subject_ref  from irae__cohort_rx_htn UNION

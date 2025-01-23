@@ -26,6 +26,7 @@ select distinct
 	IF(lookup.variable='proc_dialysis', lookup.valueset) AS proc_dialysis,
 	IF(lookup.variable='proc_surgery', lookup.valueset) AS proc_surgery,
 	IF(lookup.variable='rx_antibiotics', lookup.valueset) AS rx_antibiotics,
+	IF(lookup.variable='rx_cancer', lookup.valueset) AS rx_cancer,
 	IF(lookup.variable='rx_diabetes', lookup.valueset) AS rx_diabetes,
 	IF(lookup.variable='rx_diuretics', lookup.valueset) AS rx_diuretics,
 	IF(lookup.variable='rx_htn', lookup.valueset) AS rx_htn,
