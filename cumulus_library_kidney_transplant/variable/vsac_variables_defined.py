@@ -154,6 +154,11 @@ def get_medications() -> Medications:
             'systemic_therapy': '2.16.840.1.113883.3.666.5.803',
             'immune_modulators': '2.16.840.1.113762.1.4.1248.124',
             'coricosteroids_systemic': '2.16.840.1.113883.3.3616.200.110.102.2061'}),
+        Variable('cancer', {
+            'chemo_advanced': '2.16.840.1.113883.3.7643.2.1046',
+            'checkpoint': '2.16.840.1.113762.1.4.1133.6',
+            'keytruda': '2.16.840.1.113762.1.4.1260.496',
+            'ade_neutropenia': '2.16.840.1.113883.3.526.3.1538'}),
         Variable('antibiotics', {
             'any': '2.16.840.1.113762.1.4.1078.849',
             'systemic': '2.16.840.1.113762.1.4.1133.6'}),
@@ -184,6 +189,9 @@ def deprecated() -> List[Variable]:
         Variable('Nephrectomy', {
             'sct': '2.16.840.1.113762.1.4.1248.200',
             'icd10pcs': '2.16.840.1.113762.1.4.1248.4'}),
+        Variable('cancer', {
+            'systemic': '2.16.840.1.113762.1.4.1260.101',
+            'any': '2.16.840.1.113762.1.4.1260.230'}),
         Variable('ObservationInterpretation', {
             'any': '2.16.840.1.113883.1.11.78',
             'abnormal': ['2.16.840.1.113762.1.4.1146.295', '2.16.840.1.113762.1.4.1181.56'],
@@ -193,8 +201,7 @@ def deprecated() -> List[Variable]:
         'Cancer', {
             # 'any': '2.16.840.1.113883.3.526.3.1010'
             'malignant_melanoma_sct': '2.16.840.1.113883.3.1434.1038',
-            'malignant_melanoma_icd10': '2.16.840.1.113883.3.464.1003.108.11.1018'}
-    ]
+            'malignant_melanoma_icd10': '2.16.840.1.113883.3.464.1003.108.11.1018'}]
 
 def get_aspect_map() -> AspectMap:
     return AspectMap(

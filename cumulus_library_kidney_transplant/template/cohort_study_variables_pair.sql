@@ -1,4 +1,4 @@
-create table $prefix__cohort_study_variables_comorbidity as
+create table $prefix__cohort_study_variables_pair as
 select distinct
     SV1.variable as variable1,
     SV1.valueset as valueset1,

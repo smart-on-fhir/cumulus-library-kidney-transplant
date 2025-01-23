@@ -129,5 +129,4 @@ def make_study(study: StudyBuilderConfig) -> Path:
 
 if __name__ == "__main__":
     study = StudyBuilderConfig.make_config()
-
     make_study(study)

@@ -58,6 +58,11 @@
 |rx_immunosuppressive|systemic_therapy|[2.16.840.1.113883.3.666.5.803](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.666.5.803/expansion/Latest)|
 |rx_immunosuppressive|immune_modulators|[2.16.840.1.113762.1.4.1248.124](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1248.124/expansion/Latest)|
 |rx_immunosuppressive|coricosteroids_systemic|[2.16.840.1.113883.3.3616.200.110.102.2061](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.3616.200.110.102.2061/expansion/Latest)|
+|**rx_cancer**||
+|rx_cancer|chemo_advanced|[2.16.840.1.113883.3.7643.2.1046](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.7643.2.1046/expansion/Latest)|
+|rx_cancer|checkpoint|[2.16.840.1.113762.1.4.1133.6](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1133.6/expansion/Latest)|
+|rx_cancer|keytruda|[2.16.840.1.113762.1.4.1260.496](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1260.496/expansion/Latest)|
+|rx_cancer|ade_neutropenia|[2.16.840.1.113883.3.526.3.1538](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.526.3.1538/expansion/Latest)|
 |**rx_antibiotics**||
 |rx_antibiotics|any|[2.16.840.1.113762.1.4.1078.849](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1078.849/expansion/Latest)|
 |rx_antibiotics|systemic|[2.16.840.1.113762.1.4.1133.6](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1133.6/expansion/Latest)|

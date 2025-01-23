@@ -2,28 +2,63 @@
 
 create table irae__rx_cohort_sample as
 select distinct
-    RX.subtype,
-    MR.category_code as rx_category,
+    RX.valueset,
+    MR.category_code        as rx_category,
     MR.medication_code,
     MR.medication_system,
     MR.medication_display,
-    E.class_code as encounter_class_code,
-    E.class_display as encounter_class_display,
-    DR.type_code as doc_type_code,
-    DR.type_system as doc_type_system,
-    DR.type_display as doc_type_display,
-    DR.id as documentreference_id,
+    E.class_code            as encounter_class_code,
+    E.class_display         as encounter_class_display,
     DR.documentreference_ref,
-    E.id as encounter_id,
+    DR.type_code            as doc_type_code,
+    DR.type_system          as doc_type_system,
+    DR.type_display         as doc_type_display,
+    DR.id                   as documentreference_id,
+    E.id                    as encounter_id,
     E.encounter_ref,
     P.subject_ref,
-    P.id as subject_id
+    P.id                    as subject_id
  from
      core__medicationrequest as MR,
      core__documentreference as DR,
      core__encounter         as E,
      core__patient           as P,
-     irae__rx RX
+     irae__rx_custom         as RX
+where
+     MR.encounter_ref = DR.encounter_ref    AND
+     MR.encounter_ref = E.encounter_ref     AND
+     E.subject_ref = P.subject_ref          AND
+     MR.medication_code = RX.code           AND
+     MR.medication_system = RX.system
+order by
+    P.subject_ref,
+    E.encounter_ref,
+    DR.documentreference_ref;
+
+create table irae__rx_cohort_sample as
+select distinct
+    RX.valueset,
+    MR.category_code        as rx_category,
+    MR.medication_code,
+    MR.medication_system,
+    MR.medication_display,
+    E.class_code            as encounter_class_code,
+    E.class_display         as encounter_class_display,
+    DR.type_code            as doc_type_code,
+    DR.type_system          as doc_type_system,
+    DR.type_display         as doc_type_display,
+    DR.id                   as documentreference_id,
+    DR.documentreference_ref,
+    E.id                    as encounter_id,
+    E.encounter_ref,
+    P.subject_ref,
+    P.id                    as subject_id
+ from
+     core__medicationrequest as MR,
+     core__documentreference as DR,
+     core__encounter         as E,
+     core__patient           as P,
+     irae__rx_custom         as RX
 where 
      MR.encounter_ref = DR.encounter_ref    AND
      MR.encounter_ref = E.encounter_ref     AND

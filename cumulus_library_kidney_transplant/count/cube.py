@@ -47,20 +47,21 @@ def make_variables() -> List[Path]:
     for variable in variable_list:
         if '__dx' in variable:
             file_list.append(cube_pat(variable, Columns.valueset.value + Columns.diagnoses.value))
-            file_list.append(cube_enc(variable, Columns.valueset.value + Columns.diagnoses.value))
         elif '__rx' in variable:
             file_list.append(cube_pat(variable, Columns.valueset.value + Columns.medications.value))
-            file_list.append(cube_enc(variable, Columns.valueset.value + Columns.medications.value))
         elif '__lab' in variable:
             file_list.append(cube_pat(variable, Columns.valueset.value + Columns.labs.value))
-            file_list.append(cube_enc(variable, Columns.valueset.value + Columns.labs.value))
         elif '__proc' in variable:
             file_list.append(cube_pat(variable, Columns.valueset.value + Columns.procedures.value))
-            file_list.append(cube_enc(variable, Columns.valueset.value + Columns.procedures.value))
         elif '__doc' in variable:
             file_list.append(cube_pat(variable, Columns.valueset.value + Columns.documents.value))
-            file_list.append(cube_enc(variable, Columns.valueset.value + Columns.documents.value))
     return file_list
 
+def make_casedef_timeline() -> List[Path]:
+    from_table = fhir2sql.name_cohort('casedef_timeline')
+    cols = ['soe', 'variable', 'valueset', 'enc_period_start_month']
+    return [cube_pat(from_table, cols),
+            cube_enc(from_table, cols)]
+
 def make() -> List[Path]:
-    return make_study_population() + make_variables()
+    return make_study_population() + make_variables() + make_casedef_timeline()
