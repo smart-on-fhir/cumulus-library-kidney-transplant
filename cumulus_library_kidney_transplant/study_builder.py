@@ -11,6 +11,7 @@ from cumulus_library_kidney_transplant.count import cube, cube_custom
 from cumulus_library_kidney_transplant.criteria.race import Race
 from cumulus_library_kidney_transplant.criteria.encounter_class import EncounterClass
 from cumulus_library_kidney_transplant.variable import (
+    aspect,
     vsac_variables,
     vsac_markdown,
     custom_variables)
@@ -28,8 +29,8 @@ class StudyBuilderConfig:
     enc_class_list: List[EncounterClass] | List[str] = None
     enc_min: int = 3
     enc_max: int = 1000
-    days_min: int = 90
-    days_max: int = 36500
+    enc_days_min: int = 90
+    enc_days_max: int = 36500
     age_min: int = 0
     age_max: int = 120
     gender_female: bool = True
@@ -37,6 +38,7 @@ class StudyBuilderConfig:
     gender_other: bool = True
     gender_unknown: bool = True
     race_list: List[Race] | List[str] = None
+    aspect_map: aspect.AspectMap | dict = None
 
     def __init__(self, form: dict = None):
         """
@@ -50,8 +52,8 @@ class StudyBuilderConfig:
         self.enc_class_list = form.get('enc_class_list', None)
         self.enc_min = int(form.get('enc_min', 3))
         self.enc_max = int(form.get('enc_max', 1000))
-        self.days_min = int(form.get('days_min', 90))
-        self.days_max = int(form.get('days_max', 365000))
+        self.enc_days_min = int(form.get('days_min', 90))
+        self.enc_days_max = int(form.get('days_max', 365000))
         self.age_min = int(form.get('age_min', 0))
         self.age_max = int(form.get('age_max', 120))
         self.gender_female = bool(form.get('gender_female', True))
@@ -59,6 +61,7 @@ class StudyBuilderConfig:
         self.gender_other = bool(form.get('gender_other', True))
         self.gender_unknown = bool(form.get('gender_unknown', True))
         self.race_list = form.get('race_list', None)
+        self.aspect_map = form.get('aspect_map', None)
 
     def as_json(self) -> dict:
         return self.__dict__
@@ -72,7 +75,6 @@ class StudyBuilderConfig:
     @staticmethod
     def make_config(from_path: str | Path = None):
         return StudyBuilderConfig(StudyBuilderConfig.read_config(from_path))
-
 
 ###############################################################################
 #
@@ -95,8 +97,8 @@ def make_study(study: StudyBuilderConfig) -> Path:
         criteria.utilization.include(
             enc_min=study.enc_min,
             enc_max=study.enc_max,
-            days_min=study.days_min,
-            days_max=study.days_max
+            days_min=study.enc_days_min,
+            days_max=study.enc_days_max
         ),
         criteria.age_at_visit.include(
             age_min=study.age_min,
