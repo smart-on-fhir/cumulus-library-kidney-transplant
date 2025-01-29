@@ -15,14 +15,25 @@ RX_LIST = ['atg',
            'sirolimus',
            'tacrolimus']
 
-LAB_LIST = ['azathioprine',
-            'azathioprine_tpmt_gene',
-            'cyclosporin',
-            'cytomegalovirus',
-            'hemoglobin_a1c',
-            'mycophenolate',
-            'sirolimus',
-            'tacrolimus']
+LAB_DRUG_LIST = ['azathioprine', 'azathioprine_tpmt_gene',
+                 'cyclosporin',
+                 'cytomegalovirus',
+                 'mycophenolate',
+                 'sirolimus',
+                 'tacrolimus']
+
+LAB_DIABETES_LIST = ['hemoglobin_a1c',
+                     'insulin',
+                     'c_peptide',
+                     'albumin_urine',
+                     'ketone_urine',
+                     'gad',     # glutamic acid decarboxylase
+                     'glucose',
+                     'triglyceride',
+                     'hdl',
+                     'ldl']
+
+LAB_LIST = LAB_DRUG_LIST + LAB_DIABETES_LIST
 
 def list_view_valuesets() -> List[str]:
     return list_view_valuesets_rx() + list_view_valuesets_lab()
