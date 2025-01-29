@@ -9,6 +9,7 @@ from cumulus_library_kidney_transplant.variable.aspect import Diagnoses, Medicat
 ###############################################################################
 def get_procedures() -> Procedures:
     return Procedures([
+        Variable('Encounter', {'type': '2.16.840.1.113762.1.4.1267.23'}),
         Variable('Dialysis', {
             'services': '2.16.840.1.113883.3.464.1003.109.12.1013'}),
         Variable('Surgery', {
@@ -162,7 +163,6 @@ def get_medications() -> Medications:
         Variable('antibiotics', {
             'any': '2.16.840.1.113762.1.4.1078.849',
             'systemic': '2.16.840.1.113762.1.4.1133.6'}),
-        Variable('immunocompromised', {'therapies': '2.16.840.1.113762.1.4.1235.212'}),
         Variable('diabetes', {'drugs': '2.16.840.1.113762.1.4.1190.58'}),
         Variable('HTN', {'drugs': '2.16.840.1.113883.3.600.1476'}),
         Variable('Diuretics', {
@@ -177,6 +177,7 @@ def get_medications() -> Medications:
 ###############################################################################
 def deprecated() -> List[Variable]:
     return [
+        Variable('immunocompromised', {'therapies': '2.16.840.1.113762.1.4.1235.212'}),
         Variable('SurgeryOther', {'surgical_cohort': '2.16.840.1.113762.1.4.1182.127'}),
         Variable('drug_names', {
             'ingredient': '2.16.840.1.113762.1.4.1010.7',
@@ -198,10 +199,9 @@ def deprecated() -> List[Variable]:
             'low': '2.16.840.1.113762.1.4.1146.2019',
             'high': '2.16.840.1.113762.1.4.1146.2018'
         }),
-        'Cancer', {
-            # 'any': '2.16.840.1.113883.3.526.3.1010'
+        Variable('Cancer', {
             'malignant_melanoma_sct': '2.16.840.1.113883.3.1434.1038',
-            'malignant_melanoma_icd10': '2.16.840.1.113883.3.464.1003.108.11.1018'}]
+            'malignant_melanoma_icd10': '2.16.840.1.113883.3.464.1003.108.11.1018'})]
 
 def get_aspect_map() -> AspectMap:
     return AspectMap(
