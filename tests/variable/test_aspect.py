@@ -1,10 +1,16 @@
 import unittest
+
+from cumulus_library_kidney_transplant import filetool
 from cumulus_library_kidney_transplant.variable.aspect import Aspect, AspectMap, AspectKey
 from cumulus_library_kidney_transplant.variable.aspect import Procedures, Variable, Valueset
 from cumulus_library_kidney_transplant.variable.vsac_variables_defined import Diagnoses, Medications, Labs, Procedures
 from cumulus_library_kidney_transplant.variable.vsac_variables_defined import get_aspect_map
 
 class TestAspect(unittest.TestCase):
+
+    def ignore_test_write_json(self):
+        filetool.write_json(contents=get_aspect_map().as_json(),
+                            json_file_path=filetool.path_home('StudyVariables.json'))
 
     def get_proc_variable_list(self):
         return Procedures([
