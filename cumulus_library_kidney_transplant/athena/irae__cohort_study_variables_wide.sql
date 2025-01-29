@@ -30,7 +30,6 @@ select distinct
 	IF(lookup.variable='rx_diabetes', lookup.valueset) AS rx_diabetes,
 	IF(lookup.variable='rx_diuretics', lookup.valueset) AS rx_diuretics,
 	IF(lookup.variable='rx_htn', lookup.valueset) AS rx_htn,
-	IF(lookup.variable='rx_immunocompromised', lookup.valueset) AS rx_immunocompromised,
 	IF(lookup.variable='rx_immunosuppressive', lookup.valueset) AS rx_immunosuppressive,
 	IF(lookup.variable='lab_custom', lookup.valueset) AS lab_custom,
 	IF(lookup.variable='rx_custom', lookup.valueset) AS rx_custom,

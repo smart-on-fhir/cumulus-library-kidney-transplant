@@ -50,8 +50,10 @@
 |dx_diabetes|preexisting|[2.16.840.1.113883.3.464.1003.198.12.1075](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.464.1003.198.12.1075/expansion/Latest)|
 |dx_diabetes|complications|[2.16.840.1.113762.1.4.1222.1537](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1222.1537/expansion/Latest)|
 |dx_diabetes|t2d_related_dx|[2.16.840.1.113762.1.4.1078.440](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1078.440/expansion/Latest)|
-|dx_diabetes|diabetic_nephropathy|[2.16.840.1.113883.3.464.1003.109.12.1004](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.464.1003.109.12.1004/expansion/Latest)|
-|dx_diabetes|diabetic_ckd|[2.16.840.1.113762.1.4.1078.124](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1078.124/expansion/Latest)|
+|dx_diabetes|nafld|[2.16.840.1.113762.1.4.1222.770](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1222.770/expansion/Latest)|
+|dx_diabetes|retinopathy|[2.16.840.1.113883.3.526.3.327](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.526.3.327/expansion/Latest)|
+|dx_diabetes|nephropathy|[2.16.840.1.113883.3.464.1003.109.12.1004](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.464.1003.109.12.1004/expansion/Latest)|
+|dx_diabetes|ckd|[2.16.840.1.113762.1.4.1078.124](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1078.124/expansion/Latest)|
 |**rx_immunosuppressive**||
 |rx_immunosuppressive|everolimus|[2.16.840.1.113762.1.4.1260.499](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1260.499/expansion/Latest)|
 |rx_immunosuppressive|drugs|[2.16.840.1.113762.1.4.1219.192](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1219.192/expansion/Latest)|
@@ -66,8 +68,6 @@
 |**rx_antibiotics**||
 |rx_antibiotics|any|[2.16.840.1.113762.1.4.1078.849](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1078.849/expansion/Latest)|
 |rx_antibiotics|systemic|[2.16.840.1.113762.1.4.1133.6](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1133.6/expansion/Latest)|
-|**rx_immunocompromised**||
-|rx_immunocompromised|therapies|[2.16.840.1.113762.1.4.1235.212](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1235.212/expansion/Latest)|
 |**rx_diabetes**||
 |rx_diabetes|drugs|[2.16.840.1.113762.1.4.1190.58](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1190.58/expansion/Latest)|
 |**rx_htn**||

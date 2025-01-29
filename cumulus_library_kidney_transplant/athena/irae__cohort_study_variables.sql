@@ -25,7 +25,6 @@ with variable_cohorts as
 	select distinct 'rx_diabetes'	 as variable, valueset, code, display, system, encounter_ref, subject_ref  from irae__cohort_rx_diabetes UNION
 	select distinct 'rx_diuretics'	 as variable, valueset, code, display, system, encounter_ref, subject_ref  from irae__cohort_rx_diuretics UNION
 	select distinct 'rx_htn'	 as variable, valueset, code, display, system, encounter_ref, subject_ref  from irae__cohort_rx_htn UNION
-	select distinct 'rx_immunocompromised'	 as variable, valueset, code, display, system, encounter_ref, subject_ref  from irae__cohort_rx_immunocompromised UNION
 	select distinct 'rx_immunosuppressive'	 as variable, valueset, code, display, system, encounter_ref, subject_ref  from irae__cohort_rx_immunosuppressive UNION
 	select distinct 'lab_custom'	 as variable, valueset, code, display, system, encounter_ref, subject_ref  from irae__cohort_lab_custom UNION
 	select distinct 'rx_custom'	 as variable, valueset, code, display, system, encounter_ref, subject_ref  from irae__cohort_rx_custom
