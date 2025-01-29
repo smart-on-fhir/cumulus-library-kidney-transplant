@@ -9,7 +9,6 @@ from cumulus_library_kidney_transplant.variable.aspect import Diagnoses, Medicat
 ###############################################################################
 def get_procedures() -> Procedures:
     return Procedures([
-        Variable('Encounter', {'type': '2.16.840.1.113762.1.4.1267.23'}),
         Variable('Dialysis', {
             'services': '2.16.840.1.113883.3.464.1003.109.12.1013'}),
         Variable('Surgery', {
@@ -181,6 +180,7 @@ def deprecated() -> List[Variable]:
     return [
         Variable('immunocompromised', {'therapies': '2.16.840.1.113762.1.4.1235.212'}),
         Variable('SurgeryOther', {'surgical_cohort': '2.16.840.1.113762.1.4.1182.127'}),
+        Variable('Encounter', {'type': '2.16.840.1.113762.1.4.1267.23'}),
         Variable('drug_names', {
             'ingredient': '2.16.840.1.113762.1.4.1010.7',
             'brand': '2.16.840.1.113883.3.88.12.80.16',
