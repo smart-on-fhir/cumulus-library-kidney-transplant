@@ -46,10 +46,13 @@
 |dx_htn|any|[2.16.840.1.113762.1.4.1251.12](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1251.12/expansion/Latest)|
 |dx_htn|hypertensive_ckd|[2.16.840.1.113883.3.464.1003.109.12.1017](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.464.1003.109.12.1017/expansion/Latest)|
 |**dx_diabetes**||
-|dx_diabetes|disorder|[2.16.840.1.113762.1.4.1219.35](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1219.35/expansion/Latest)|
-|dx_diabetes|preexisting|[2.16.840.1.113883.3.464.1003.198.12.1075](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.464.1003.198.12.1075/expansion/Latest)|
-|dx_diabetes|complications|[2.16.840.1.113762.1.4.1222.1537](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1222.1537/expansion/Latest)|
+|dx_diabetes|pre|[2.16.840.1.113762.1.4.1078.450](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1078.450/expansion/Latest)|
+|dx_diabetes|t1d|[2.16.840.1.113762.1.4.1078.215](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1078.215/expansion/Latest)|
+|dx_diabetes|t2d|[2.16.840.1.113762.1.4.1160.29](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1160.29/expansion/Latest)|
 |dx_diabetes|t2d_related_dx|[2.16.840.1.113762.1.4.1078.440](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1078.440/expansion/Latest)|
+|dx_diabetes|disorder|[2.16.840.1.113762.1.4.1219.35](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1219.35/expansion/Latest)|
+|dx_diabetes|preexisting|[2.16.840.1.113762.1.4.1029.275](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1029.275/expansion/Latest)|
+|dx_diabetes|complications|[2.16.840.1.113762.1.4.1222.1537](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1222.1537/expansion/Latest)|
 |dx_diabetes|nafld|[2.16.840.1.113762.1.4.1222.770](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1222.770/expansion/Latest)|
 |dx_diabetes|retinopathy|[2.16.840.1.113883.3.526.3.327](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.526.3.327/expansion/Latest)|
 |dx_diabetes|nephropathy|[2.16.840.1.113883.3.464.1003.109.12.1004](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.464.1003.109.12.1004/expansion/Latest)|
