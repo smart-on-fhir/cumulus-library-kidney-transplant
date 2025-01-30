@@ -1,0 +1,64 @@
+LOINC_NUM,COMPONENT,PROPERTY,TIME_ASPCT,SYSTEM,SCALE_TYP,METHOD_TYP,CLASS,VersionLastChanged,STATUS,CLASSTYPE,ORDER_OBS,EXTERNAL_COPYRIGHT_NOTICE,EXAMPLE_UNITS,LONG_COMMON_NAME,EXAMPLE_UCUM_UNITS,VersionFirstReleased,LHCForms,FormalName
+78361-3,"Fatty acid & triglyceride panel",-,24H,Stool,Qn,,PANEL.CHEM,2.58,ACTIVE,1,Order,,,"Fatty acid and triglyceride panel - 24 hour Stool",,2.54,true,"Fatty acid & triglyceride panel:-:24H:Stool:Qn:"
+70259-7,"Triglyceride.pericard fld/Triglyceride.serum",RelRto,Pt,"Pericard fld+Ser/Plas",Qn,,CHEM,2.44,ACTIVE,1,Both,,Ratio,"Triglyceride in pericardial fluid/Triglyceride in serum",{ratio},2.40,false,"Triglyceride.pericard fld/Triglyceride.serum:RelRto:Pt:Pericard fld+Ser/Plas:Qn:"
+70269-6,"Triglyceride.plr fld/Triglyceride.serum",RelRto,Pt,"Ser/Plas+Plr fld",Qn,,CHEM,2.44,ACTIVE,1,Both,,Ratio,"Triglyceride in pleural fluid/Triglyceride in serum",{ratio},2.40,false,"Triglyceride.plr fld/Triglyceride.serum:RelRto:Pt:Ser/Plas+Plr fld:Qn:"
+70260-5,"Triglyceride.periton fld/Triglyceride.serum",RelRto,Pt,"Periton fld+Ser/Plas",Qn,,CHEM,2.44,ACTIVE,1,Both,,Ratio,"Triglyceride in peritoneal fluid/Triglyceride in serum",{ratio},2.40,false,"Triglyceride.periton fld/Triglyceride.serum:RelRto:Pt:Periton fld+Ser/Plas:Qn:"
+35361-5,"Triglyceride.in lipoprotein (little a)",PrThr,Pt,Ser/Plas,Ord,,CHEM,2.56,ACTIVE,1,Both,,,"Triglyceride in Lipoprotein a [Presence] in Serum or Plasma",,2.13,false,"Triglyceride.in lipoprotein (little a):PrThr:Pt:Ser/Plas:Ord:"
+35360-7,"Triglyceride.in lipoprotein (little a)",MCnc,Pt,Ser/Plas,Qn,,CHEM,2.34,ACTIVE,1,Both,,mg/dL,"Triglyceride in Lipoprotein a [Mass/volume] in Serum or Plasma",mg/dL,2.13,false,"Triglyceride.in lipoprotein (little a):MCnc:Pt:Ser/Plas:Qn:"
+59572-8,Triglyceride,SCnc,Pt,Urine,Qn,,CHEM,2.70,ACTIVE,1,Both,,mmol/L,"Triglyceride [Moles/volume] in Urine",mmol/L,2.32,false,Triglyceride:SCnc:Pt:Urine:Qn:
+30570-6,Triglyceride,Prctl,Pt,Ser/Plas,SemiQn,,CHEM,2.75,ACTIVE,1,Both,,%,"Triglyceride [Percentile]",%,2.04,false,Triglyceride:Prctl:Pt:Ser/Plas:SemiQn:
+95808-2,"Cholesterol & triglyceride & chylomicrons panel",-,Pt,Urine,-,,PANEL.CHEM,2.69,ACTIVE,1,Order,,,"Cholesterol and triglyceride and chylomicrons panel - Urine",,2.69,true,"Cholesterol & triglyceride & chylomicrons panel:-:Pt:Urine:-:"
+14450-1,Triglyceride,MCnc,Pt,Urine,Qn,,CHEM,2.73,ACTIVE,1,Both,,mg/dL,"Triglyceride [Mass/volume] in Urine",mg/dL,1.0k,false,Triglyceride:MCnc:Pt:Urine:Qn:
+59571-0,Triglyceride,SRat,24H,Urine,Qn,,CHEM,2.70,ACTIVE,1,Both,,mmol/D,"Triglyceride [Moles/time] in 24 hour Urine",mmol/(24.h),2.32,false,Triglyceride:SRat:24H:Urine:Qn:
+3043-7,Triglyceride,MCnc,Pt,Bld,Qn,,CHEM,2.73,ACTIVE,1,Both,,mg/dL,"Triglyceride [Mass/volume] in Blood",mg/dL,1.0,false,Triglyceride:MCnc:Pt:Bld:Qn:
+3049-4,Triglyceride,MCnc,Pt,Plas,Qn,,CHEM,2.36,DEPRECATED,1,,,,"Deprecated Triglyceride [Mass/volume] in Serum or Plasma",,1.0,false,Triglyceride:MCnc:Pt:Plas:Qn:
+70218-3,Triglyceride,SCnc,Pt,Bld,Qn,,CHEM,2.73,ACTIVE,1,Both,,mmol/L,"Triglyceride [Moles/volume] in Blood",mmol/L,2.40,false,Triglyceride:SCnc:Pt:Bld:Qn:
+14445-1,Triglyceride,MCnc,Pt,"Amnio fld",Qn,,CHEM,2.42,ACTIVE,1,Both,,mg/dL,"Triglyceride [Mass/volume] in Amniotic fluid",mg/dL,1.0k,false,"Triglyceride:MCnc:Pt:Amnio fld:Qn:"
+69947-0,Triglyceride,SCnc,Pt,"Pericard fld",Qn,,CHEM,2.70,ACTIVE,1,Both,,mmol/L,"Triglyceride [Moles/volume] in Pericardial fluid",mmol/L,2.40,false,"Triglyceride:SCnc:Pt:Pericard fld:Qn:"
+39801-6,Triglyceride,SCnc,Pt,"Plr fld",Qn,,CHEM,2.70,ACTIVE,1,Both,,mmol/L,"Triglyceride [Moles/volume] in Pleural fluid",mmol/L,2.15,false,"Triglyceride:SCnc:Pt:Plr fld:Qn:"
+22731-4,Triglyceride,SCnc,Pt,XXX,Qn,,CHEM,2.73,ACTIVE,1,Both,,mmol/L,"Triglyceride [Moles/volume] in Specimen",mmol/L,1.0n,false,Triglyceride:SCnc:Pt:XXX:Qn:
+14447-7,Triglyceride,MCnc,Pt,"Periton fld",Qn,,CHEM,2.73,ACTIVE,1,Both,,mg/dL,"Triglyceride [Mass/volume] in Peritoneal fluid",mg/dL,1.0k,false,"Triglyceride:MCnc:Pt:Periton fld:Qn:"
+9619-8,Triglyceride,MCnc,Pt,"Plr fld",Qn,,CHEM,2.73,ACTIVE,1,Both,,mg/dL,"Triglyceride [Mass/volume] in Pleural fluid",mg/dL,1.0i,false,"Triglyceride:MCnc:Pt:Plr fld:Qn:"
+14448-5,Triglyceride,MCnc,Pt,Semen,Qn,,CHEM,2.42,ACTIVE,1,Both,,mg/dL,"Triglyceride [Mass/volume] in Semen",mg/dL,1.0k,false,Triglyceride:MCnc:Pt:Semen:Qn:
+77360-6,Triglyceride,MCnt,24H,Stool,Qn,,CHEM,2.52,ACTIVE,1,Both,,g/kg,"Triglyceride [Mass/mass] in 24 hour Stool",g/kg,2.52,false,Triglyceride:MCnt:24H:Stool:Qn:
+96598-8,Triglyceride,MCnc,Pt,Bld.dot,Qn,,CHEM,2.69,ACTIVE,1,Both,,mg/dl,"Triglyceride [Mass/volume] in DBS",mg/dL,2.69,false,Triglyceride:MCnc:Pt:Bld.dot:Qn:
+14446-9,Triglyceride,MCnc,Pt,CSF,Qn,,CHEM,2.42,ACTIVE,1,Both,,mg/dL,"Triglyceride [Mass/volume] in Cerebral spinal fluid",mg/dL,1.0k,false,Triglyceride:MCnc:Pt:CSF:Qn:
+28554-4,Triglyceride,PrThr,Pt,Ser/Plas,Ord,,CHEM,2.56,ACTIVE,1,Both,,,"Triglyceride [Presence] in Serum or Plasma",,2.00,false,Triglyceride:PrThr:Pt:Ser/Plas:Ord:
+66769-1,Triglyceride,SCnc,Pt,"Periton fld",Qn,,CHEM,2.70,ACTIVE,1,Both,,mmol/L,"Triglyceride [Moles/volume] in Peritoneal fluid",mmol/L,2.38,false,"Triglyceride:SCnc:Pt:Periton fld:Qn:"
+12228-3,Triglyceride,MCnc,Pt,"Body fld",Qn,,CHEM,2.73,ACTIVE,1,Both,,mg/dL,"Triglyceride [Mass/volume] in Body fluid",mg/dL,1.0j-a,false,"Triglyceride:MCnc:Pt:Body fld:Qn:"
+59036-4,Triglyceride,MCnc,Pt,"Dial fld prt",Qn,,CHEM,2.70,ACTIVE,1,Both,,mg/dL,"Triglyceride [Mass/volume] in Peritoneal dialysis fluid",mg/dL,2.32,false,"Triglyceride:MCnc:Pt:Dial fld prt:Qn:"
+77361-4,Triglyceride,MRat,24H,Stool,Qn,,CHEM,2.56,ACTIVE,1,Both,,"g/24 H","Triglyceride [Mass/time] in 24 hour Stool",g/(24.h),2.52,false,Triglyceride:MRat:24H:Stool:Qn:
+35217-9,Triglyceride,MSCnc,Pt,Ser/Plas,Qn,,CHEM,2.42,DISCOURAGED,1,Both,,,"Triglyceride [Mass or Moles/volume] in Serum or Plasma",,2.11,false,Triglyceride:MSCnc:Pt:Ser/Plas:Qn:
+29766-3,Triglyceride,SCnc,Pt,"Body fld",Qn,,CHEM,2.73,ACTIVE,1,Both,,mmol/L,"Triglyceride [Moles/volume] in Body fluid",mmol/L,2.03,false,"Triglyceride:SCnc:Pt:Body fld:Qn:"
+14927-8,Triglyceride,SCnc,Pt,Ser/Plas,Qn,,CHEM,2.73,ACTIVE,1,Both,,mmol/L,"Triglyceride [Moles/volume] in Serum or Plasma",mmol/L,1.0k,false,Triglyceride:SCnc:Pt:Ser/Plas:Qn:
+12950-2,Triglyceride,MCnc,Pt,"Body fld",Qn,,CHEM,2.36,DEPRECATED,1,,,,"Deprecated Triglyceride [Mass/volume] in Body fluid",,1.0j-a,false,"Triglyceride:MCnc:Pt:Body fld:Qn:"
+13899-0,Triglyceride,MCnc,Pt,"Body fld",Qn,,CHEM,2.70,DEPRECATED,1,,,mg/dL,"Deprecated Triglyceride [Mass/volume] in fluid",mg/dL,1.0k,false,"Triglyceride:MCnc:Pt:Body fld:Qn:"
+51605-4,Triglyceride,SCnc,Pt,"Synv fld",Qn,,CHEM,2.70,ACTIVE,1,Both,,mmol/L,"Triglyceride [Moles/volume] in Synovial fluid",mmol/L,2.24,false,"Triglyceride:SCnc:Pt:Synv fld:Qn:"
+2571-8,Triglyceride,MCnc,Pt,Ser/Plas,Qn,,CHEM,2.73,ACTIVE,1,Both,,mg/dL,"Triglyceride [Mass/volume] in Serum or Plasma",mg/dL,1.0,false,Triglyceride:MCnc:Pt:Ser/Plas:Qn:
+14449-3,Triglyceride,MCnc,Pt,"Synv fld",Qn,,CHEM,2.73,ACTIVE,1,Both,,mg/dL,"Triglyceride [Mass/volume] in Synovial fluid",mg/dL,1.0k,false,"Triglyceride:MCnc:Pt:Synv fld:Qn:"
+12951-0,Triglyceride,MCnc,Pt,Ser/Plas,Qn,Calculated,CHEM,2.73,ACTIVE,1,Observation,,mg/dL,"Triglyceride [Mass/volume] in Serum or Plasma by calculation",mg/dL,1.0j-a,false,Triglyceride:MCnc:Pt:Ser/Plas:Qn:Calculated
+94865-3,"Triglyceride^^corrected for glycerol",MCnc,Pt,Ser,Qn,,CHEM,2.68,ACTIVE,1,Both,,mg/dl,"Triglyceride [Mass/volume] corrected for glycerol in Serum",mg/dL,2.68,false,"Triglyceride^^corrected for glycerol:MCnc:Pt:Ser:Qn:"
+17081-1,"Triglyceride^post CFst",MCnc,Pt,Ser,Qn,,CHAL,2.36,DEPRECATED,1,,,mg/dL,"Deprecated Triglyceride [Mass/volume] in Serum or Plasma --post CFst",mg/dL,1.0l,false,"Triglyceride^post CFst:MCnc:Pt:Ser:Qn:"
+94859-6,"Glycerol & Glycerol-corrected triglyceride panel",-,Pt,Ser/Plas,-,,PANEL.CHEM,2.68,ACTIVE,1,Order,,,"Glycerol and glycerol-corrected triglyceride panel - Serum or Plasma",,2.68,true,"Glycerol & Glycerol-corrected triglyceride panel:-:Pt:Ser/Plas:-:"
+3044-5,"Triglyceride+ester.in HDL",MCnc,Pt,Ser/Plas,Qn,,CHEM,2.73,ACTIVE,1,Both,,mg/dL,"Triglyceride+ester in HDL [Mass/volume] in Serum or Plasma",mg/dL,1.0,false,"Triglyceride+ester.in HDL:MCnc:Pt:Ser/Plas:Qn:"
+3045-2,"Triglyceride+ester.in IDL",MCnc,Pt,Ser/Plas,Qn,,CHEM,2.73,ACTIVE,1,Both,,mg/dL,"Triglyceride+ester in IDL [Mass/volume] in Serum or Plasma",mg/dL,1.0,false,"Triglyceride+ester.in IDL:MCnc:Pt:Ser/Plas:Qn:"
+3046-0,"Triglyceride+ester.in LDL",MCnc,Pt,Ser/Plas,Qn,,CHEM,2.73,ACTIVE,1,Both,,mg/dL,"Triglyceride+ester in LDL [Mass/volume] in Serum or Plasma",mg/dL,1.0,false,"Triglyceride+ester.in LDL:MCnc:Pt:Ser/Plas:Qn:"
+3047-8,"Triglyceride+ester.in VLDL",MCnc,Pt,Ser/Plas,Qn,,CHEM,2.73,ACTIVE,1,Both,,mg/dL,"Triglyceride+ester in VLDL [Mass/volume] in Serum or Plasma",mg/dL,1.0,false,"Triglyceride+ester.in VLDL:MCnc:Pt:Ser/Plas:Qn:"
+2096-6,Cholesterol/Triglyceride,MRto,Pt,Ser/Plas,Qn,,CHEM,2.73,ACTIVE,1,Observation,,,"Cholesterol/Triglyceride [Mass Ratio] in Serum or Plasma",,1.0,false,Cholesterol/Triglyceride:MRto:Pt:Ser/Plas:Qn:
+47210-0,"Triglyceride^post CFst",SCnc,Pt,Ser/Plas,Qn,,CHEM,2.70,ACTIVE,1,Both,,mmol/L,"Triglyceride [Moles/volume] in Serum or Plasma --fasting",mmol/L,2.19,false,"Triglyceride^post CFst:SCnc:Pt:Ser/Plas:Qn:"
+44718-5,Lipoprotein.pre-beta/Triglyceride,MRto,Pt,Ser/Plas,Qn,,CHEM,2.42,ACTIVE,1,Observation,,,"Lipoprotein.pre-beta/Triglyceride [Mass Ratio] in Serum or Plasma",,2.17,false,Lipoprotein.pre-beta/Triglyceride:MRto:Pt:Ser/Plas:Qn:
+94872-9,"Cholesterol & triglyceride panel",-,Pt,"Body fld",Qn,,PANEL.CHEM,2.68,ACTIVE,1,Order,,,"Cholesterol and triglyceride panel - Body fluid",,2.68,true,"Cholesterol & triglyceride panel:-:Pt:Body fld:Qn:"
+34695-7,"Cholesterol.in VLDL/Triglyceride",Ratio,Pt,Ser/Plas,Qn,,CHEM,2.73,ACTIVE,1,Observation,,,"Cholesterol in VLDL/Triglyceride [Ratio] in Serum or Plasma",,2.11,false,"Cholesterol.in VLDL/Triglyceride:Ratio:Pt:Ser/Plas:Qn:"
+3048-6,"Triglyceride^post CFst",MCnc,Pt,Ser/Plas,Qn,,CHAL,2.73,ACTIVE,1,Both,,mg/dL,"Triglyceride [Mass/volume] in Serum or Plasma --fasting",mg/dL,1.0,false,"Triglyceride^post CFst:MCnc:Pt:Ser/Plas:Qn:"
+30524-3,"Triglyceride^post 12H CFst",SCnc,Pt,Ser/Plas,Qn,,CHAL,2.34,ACTIVE,1,Both,,mmol/L,"Triglyceride [Moles/volume] in Serum or Plasma --12 hours fasting",mmol/L,2.04,false,"Triglyceride^post 12H CFst:SCnc:Pt:Ser/Plas:Qn:"
+44733-4,"Triglyceride/Cholesterol.in HDL",MRto,Pt,Ser/Plas,Qn,,CHEM,2.42,ACTIVE,1,Observation,,,"Triglyceride/Cholesterol in HDL [Mass Ratio] in Serum or Plasma",,2.17,false,"Triglyceride/Cholesterol.in HDL:MRto:Pt:Ser/Plas:Qn:"
+55607-6,"Triglyceride/Cholesterol.in HDL",SRto,Pt,Ser/Plas,Qn,,CHEM,2.73,ACTIVE,1,Both,,,"Triglyceride/Cholesterol in HDL [Molar ratio] in Serum or Plasma",,2.27,false,"Triglyceride/Cholesterol.in HDL:SRto:Pt:Ser/Plas:Qn:"
+1644-4,"Triglyceride^post 12H CFst",MCnc,Pt,Ser/Plas,Qn,,CHAL,2.73,ACTIVE,1,Both,,mg/dL,"Triglyceride [Mass/volume] in Serum or Plasma --12 hours fasting",mg/dL,1.0,false,"Triglyceride^post 12H CFst:MCnc:Pt:Ser/Plas:Qn:"
+53526-0,"Triglyceride.in VLDL",SCnc,Pt,Ser/Plas,Qn,,CHEM,2.40,ACTIVE,1,Both,,mmol/L,"Triglyceride in VLDL [Moles/volume] in Serum or Plasma",mmol/L,2.26,false,"Triglyceride.in VLDL:SCnc:Pt:Ser/Plas:Qn:"
+81903-7,"Medium chain triglyceride intake",MRat,24H,^Patient,Qn,Measured,NUTRITION&DIETETICS,2.56,ACTIVE,2,Observation,,"g/24 H","Medium chain triglyceride intake 24 hour Measured",g/(24.h),2.56,false,"Medium chain triglyceride intake:MRat:24H:^Patient:Qn:Measured"
+35363-1,"Triglyceride.in chylomicrons",MCnc,Pt,Ser/Plas,Qn,,CHEM,2.73,ACTIVE,1,Both,,mg/dL,"Triglyceride in Chylomicrons [Mass/volume] in Serum or Plasma",mg/dL,2.13,false,"Triglyceride.in chylomicrons:MCnc:Pt:Ser/Plas:Qn:"
+53528-6,"Triglyceride.in HDL 3",SCnc,Pt,Ser/Plas,Qn,,CHEM,2.40,ACTIVE,1,Both,,mmol/L,"Triglyceride in HDL 3 [Moles/volume] in Serum or Plasma",mmol/L,2.26,false,"Triglyceride.in HDL 3:SCnc:Pt:Ser/Plas:Qn:"
+35362-3,"Triglyceride.in chylomicrons",PrThr,Pt,Ser/Plas,Ord,,CHEM,2.56,ACTIVE,1,Both,,,"Triglyceride in Chylomicrons [Presence] in Serum or Plasma",,2.13,false,"Triglyceride.in chylomicrons:PrThr:Pt:Ser/Plas:Ord:"
+53527-8,"Triglyceride.in HDL 2",SCnc,Pt,Ser/Plas,Qn,,CHEM,2.40,ACTIVE,1,Both,,mmol/L,"Triglyceride in HDL 2 [Moles/volume] in Serum or Plasma",mmol/L,2.26,false,"Triglyceride.in HDL 2:SCnc:Pt:Ser/Plas:Qn:"
+81902-9,"Medium chain triglyceride intake",MRat,24H,^Patient,Qn,Estimated,NUTRITION&DIETETICS,2.56,ACTIVE,2,Observation,,"g/24 H","Medium chain triglyceride intake 24 hour Estimated",g/(24.h),2.56,false,"Medium chain triglyceride intake:MRat:24H:^Patient:Qn:Estimated"
+101952-0,"MTTP gene targeted mutation analysis",Find,Pt,Bld/Tiss,Doc,Molgen,MOLPATH.MUT,2.75,ACTIVE,1,Both,,,"MTTP gene targeted mutation analysis in Blood or Tissue by Molecular genetics method",,2.75,false,"MTTP gene targeted mutation analysis:Find:Pt:Bld/Tiss:Doc:Molgen"

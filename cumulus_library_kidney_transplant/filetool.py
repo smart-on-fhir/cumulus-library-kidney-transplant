@@ -101,16 +101,13 @@ def path_template(file_sql: Path | str) -> Path:
 def load_template(file_sql: Path | str) -> str:
     return read_text(path_template(file_sql))
 
-def inline_template(sql: str, suffix=None, variable=None, equality=None) -> str:
+def inline_template(sql: str, variable: str = None) -> str:
     sql = sql.replace('$prefix', PREFIX)
-    if suffix:
-        sql = sql.replace('$suffix', suffix)
     if variable:
         sql = sql.replace('$variable_list', variable)
         sql = sql.replace('$variable', variable)
-    if equality:
-        sql = sql.replace('$equality', equality)
     return sql
+
 
 ###############################################################################
 #

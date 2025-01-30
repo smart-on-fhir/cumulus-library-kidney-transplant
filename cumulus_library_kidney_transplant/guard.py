@@ -63,11 +63,15 @@ def as_list_str(obj) -> List[str]:
         return obj
     return [str(c) for c in list(obj)]
 
-def as_list_names(enum_list: List[Enum]) -> List[str]:
+def as_enum_names(enum_list: List[Enum] | Enum | object) -> List[str]:
+    if is_enum(enum_list):
+        return as_enum_names(list(enum_list))
     return sorted(list(set([entry.name for entry in enum_list])))
 
-def as_list_values(enum_list: List[Enum]) -> List[str]:
-    return sorted(list(set([entry.value for entry in enum_list])))
+def as_enum_values(enum_list: List[Enum] | Enum | object) -> List[str]:
+    if is_enum(enum_list):
+        return as_enum_values(list(enum_list))
+    return sorted(list(set([entry.value for entry in list(enum_list)])))
 
 ###############################################################################
 #

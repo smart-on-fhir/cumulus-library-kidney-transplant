@@ -2,12 +2,19 @@ from typing import List
 from enum import Enum
 from cumulus_library_kidney_transplant import filetool
 from cumulus_library_kidney_transplant.study_prefix import PREFIX
-from cumulus_library_kidney_transplant.schema import (
-    Table,
+from cumulus_library_kidney_transplant.count.columns import (
     Demographic,
     Encounter,
     CountDistinct
 )
+
+class Table(Enum):
+    """
+    Template tables for cohorts derived from study population
+    """
+    study_population = 'study_population'
+    cohort = 'cohort'
+    casedef = 'casedef'
 
 class GraphType(Enum):
     """

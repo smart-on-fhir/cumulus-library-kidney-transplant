@@ -1,0 +1,20 @@
+LOINC_NUM,COMPONENT,PROPERTY,TIME_ASPCT,SYSTEM,SCALE_TYP,METHOD_TYP,CLASS,VersionLastChanged,STATUS,CLASSTYPE,ORDER_OBS,EXTERNAL_COPYRIGHT_NOTICE,EXAMPLE_UNITS,LONG_COMMON_NAME,EXAMPLE_UCUM_UNITS,VersionFirstReleased,LHCForms,FormalName
+31184-5,"Methyl amyl ketone",MCnc,Pt,Urine,Qn,,DRUG/TOX,2.73,ACTIVE,1,Both,,ug/mL,"Methyl amyl ketone [Mass/volume] in Urine",ug/mL,2.07,false,"Methyl amyl ketone:MCnc:Pt:Urine:Qn:"
+31165-4,"Methyl butyl ketone",MCnc,Pt,Urine,Qn,,DRUG/TOX,2.73,ACTIVE,1,Both,,ug/mL,"Methyl butyl ketone [Mass/volume] in Urine",ug/mL,2.07,false,"Methyl butyl ketone:MCnc:Pt:Urine:Qn:"
+31166-2,"Methyl isoamyl ketone",MCnc,Pt,Urine,Qn,,DRUG/TOX,2.73,ACTIVE,1,Both,,ug/mL,"Methyl isoamyl ketone [Mass/volume] in Urine",ug/mL,2.07,false,"Methyl isoamyl ketone:MCnc:Pt:Urine:Qn:"
+31167-0,"Methyl propyl ketone",MCnc,Pt,Urine,Qn,,DRUG/TOX,2.73,ACTIVE,1,Both,,ug/mL,"Methyl propyl ketone [Mass/volume] in Urine",ug/mL,2.07,false,"Methyl propyl ketone:MCnc:Pt:Urine:Qn:"
+17269-2,"Methyl isobutyl ketone",MCnc,Pt,Urine,Qn,,DRUG/TOX,2.73,ACTIVE,1,Both,,ug/mL,"Methyl isobutyl ketone [Mass/volume] in Urine",ug/mL,1.0l,false,"Methyl isobutyl ketone:MCnc:Pt:Urine:Qn:"
+13009-6,"Methyl ethyl ketone",MCnc,Pt,Urine,Qn,,DRUG/TOX,2.73,ACTIVE,1,Both,,ug/mL,"Methyl ethyl ketone [Mass/volume] in Urine",ug/mL,1.0j-a,false,"Methyl ethyl ketone:MCnc:Pt:Urine:Qn:"
+49779-2,Ketones,MCnc,Pt,Urine,Qn,,UA,2.73,ACTIVE,1,Both,,mg/dL,"Ketones [Mass/volume] in Urine",mg/dL,2.22,false,Ketones:MCnc:Pt:Urine:Qn:
+5797-6,Ketones,MCnc,Pt,Urine,SemiQn,"Test strip",UA,2.75,ACTIVE,1,Both,,mg/dL,"Ketones [Mass/volume] in Urine by Test strip",mg/dL,1.0,false,"Ketones:MCnc:Pt:Urine:SemiQn:Test strip"
+21236-5,Cyclohexanone,MCnc,Pt,Urine,Qn,,DRUG/TOX,2.73,ACTIVE,1,Both,,mg/L,"Cyclohexanone [Mass/volume] in Urine",mg/L,1.0m,false,Cyclohexanone:MCnc:Pt:Urine:Qn:
+50557-8,Ketones,MCnc,Pt,Urine,SemiQn,"Test strip.automated",UA,2.75,ACTIVE,1,Observation,,mg/dL,"Ketones [Mass/volume] in Urine by Automated test strip",mg/dL,2.22,false,"Ketones:MCnc:Pt:Urine:SemiQn:Test strip.automated"
+12448-7,"Ketones^post CFst",MCnc,Pt,Urine,SemiQn,"Test strip",CHAL,2.75,ACTIVE,1,Both,,mg/dL,"Ketones [Mass/volume] in Urine by Test strip --fasting",mg/dL,1.0j-a,false,"Ketones^post CFst:MCnc:Pt:Urine:SemiQn:Test strip"
+12451-1,"Ketones^3H post XXX challenge",MCnc,Pt,Urine,SemiQn,"Test strip",CHAL,2.75,ACTIVE,1,Observation,,mg/dL,"Ketones [Mass/volume] in Urine by Test strip --3 hours post XXX challenge",mg/dL,1.0j-a,false,"Ketones^3H post XXX challenge:MCnc:Pt:Urine:SemiQn:Test strip"
+12450-3,"Ketones^2H post XXX challenge",MCnc,Pt,Urine,SemiQn,"Test strip",CHAL,2.75,ACTIVE,1,Observation,,mg/dL,"Ketones [Mass/volume] in Urine by Test strip --2 hours post XXX challenge",mg/dL,1.0j-a,false,"Ketones^2H post XXX challenge:MCnc:Pt:Urine:SemiQn:Test strip"
+21245-6,Diisobutylketone,MCnc,Pt,Urine,Qn,,DRUG/TOX,2.73,ACTIVE,1,Both,,ug/mL,"Diisobutylketone [Mass/volume] in Urine",ug/mL,1.0m,false,Diisobutylketone:MCnc:Pt:Urine:Qn:
+12449-5,"Ketones^1H post XXX challenge",MCnc,Pt,Urine,SemiQn,"Test strip",CHAL,2.75,ACTIVE,1,Observation,,mg/dL,"Ketones [Mass/volume] in Urine by Test strip --1 hour post XXX challenge",mg/dL,1.0j-a,false,"Ketones^1H post XXX challenge:MCnc:Pt:Urine:SemiQn:Test strip"
+25706-3,"Ketones^2H post dose glucose",MCnc,Pt,Urine,SemiQn,"Test strip",CHAL,2.75,ACTIVE,1,Observation,,mg/dL,"Ketones [Mass/volume] in Urine by Test strip --2 hours post dose glucose",mg/dL,2.00,false,"Ketones^2H post dose glucose:MCnc:Pt:Urine:SemiQn:Test strip"
+25707-1,"Ketones^4H post dose glucose",MCnc,Pt,Urine,SemiQn,"Test strip",CHAL,2.75,ACTIVE,1,Observation,,mg/dL,"Ketones [Mass/volume] in Urine by Test strip --4 hours post dose glucose",mg/dL,2.00,false,"Ketones^4H post dose glucose:MCnc:Pt:Urine:SemiQn:Test strip"
+5570-7,Acetone,MCnc,Pt,Urine,Qn,,DRUG/TOX,2.73,ACTIVE,1,Both,,mg/dL,"Acetone [Mass/volume] in Urine",mg/dL,1.0,false,Acetone:MCnc:Pt:Urine:Qn:
+35665-9,Acetone,MCnc,XXX,Urine,Qn,,DRUG/TOX,2.52,ACTIVE,1,Both,,mg/dL,"Acetone [Mass/volume] in Urine collected for unspecified duration",mg/dL,2.13,false,Acetone:MCnc:XXX:Urine:Qn:
