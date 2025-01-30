@@ -10,7 +10,7 @@ def cube_enc(from_table='study_population', cols=None, cube_table=None) -> Path:
     from_table = fhir2sql.name_cohort(from_table)
 
     if not cube_table:
-        cube_table = fhir2sql.name_cube(from_table, 'enc')
+        cube_table = fhir2sql.name_cube(from_table, 'encounter')
 
     if not cols:
         cols = Columns.cohort.value + Columns.demographics.value
@@ -23,7 +23,7 @@ def cube_pat(from_table='study_population', cols=None, cube_table=None) -> Path:
     from_table = fhir2sql.name_cohort(from_table)
 
     if not cube_table:
-        cube_table = fhir2sql.name_cube(from_table, 'pat')
+        cube_table = fhir2sql.name_cube(from_table, 'patient')
 
     if not cols:
         cols = Columns.cohort.value + Columns.demographics.value
