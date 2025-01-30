@@ -17,8 +17,8 @@ def make_pair() -> List[Path]:
 def make_variables() -> List[Path]:
     source = fhir2sql.name_cohort('study_variables')
     cols = Columns.valueset.value + ['variable']
-    return [cube.cube_pat(source, cols, fhir2sql.name_cube(source, 'pat')),
-            cube.cube_enc(source, cols, fhir2sql.name_cube(source, 'enc'))]
+    return [cube.cube_pat(source, cols),
+            cube.cube_enc(source, cols)]
 
 def make() -> List[Path]:
     return make_variables()
