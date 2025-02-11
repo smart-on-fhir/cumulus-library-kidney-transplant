@@ -161,7 +161,7 @@ def get_medications() -> Medications:
             'coricosteroids_systemic': '2.16.840.1.113883.3.3616.200.110.102.2061'}),
         Variable('cancer', {
             'chemo_advanced': '2.16.840.1.113883.3.7643.2.1046',
-            'checkpoint': '2.16.840.1.113762.1.4.1133.6',
+            'checkpoint': '2.16.840.1.113883.3.1444.5.231',
             'keytruda': '2.16.840.1.113762.1.4.1260.496',
             'ade_neutropenia': '2.16.840.1.113883.3.526.3.1538'}),
         Variable('antibiotics', {
