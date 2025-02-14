@@ -67,9 +67,9 @@ class Duration(Enum):
     enc_period_start_day is not included as that could trigger HIPAA considerations
     also, counts would be so small anyway that it wouldn't be useful in nearly all cases.
     """
-    week = ['enc_period_start_week']
-    month = ['enc_period_start_month']
-    year = ['enc_period_start_year']
+    week = 'enc_period_start_week'
+    month = 'enc_period_start_month'
+    year = 'enc_period_start_year'
 
 ###############################################################################
 # Count distinct column
@@ -96,3 +96,6 @@ class Columns(Enum):
     documents = as_enum_values(Document)
     procedures = as_enum_values(Procedure)
     labs = as_enum_values(ObservationLab)
+    week = [Duration.week.value]
+    month = [Duration.month.value]
+    year = [Duration.year.value]

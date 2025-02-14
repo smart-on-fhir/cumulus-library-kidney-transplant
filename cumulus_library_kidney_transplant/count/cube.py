@@ -4,7 +4,7 @@ from cumulus_library.builders.counts import CountsBuilder
 from cumulus_library_kidney_transplant import filetool, fhir2sql
 from cumulus_library_kidney_transplant.study_prefix import PREFIX
 from cumulus_library_kidney_transplant.variable import vsac_variables, custom_variables
-from cumulus_library_kidney_transplant.count.columns import Columns
+from cumulus_library_kidney_transplant.count.columns import Columns, Duration
 
 def cube_enc(from_table='study_population', cols=None, cube_table=None) -> Path:
     from_table = fhir2sql.name_cohort(from_table)
@@ -32,8 +32,36 @@ def cube_pat(from_table='study_population', cols=None, cube_table=None) -> Path:
     sql = CountsBuilder(PREFIX).count_patient(cube_table, from_table, cols)
     return filetool.save_athena_view(cube_table, sql)
 
+def cube_doc(from_table='study_population', cols=None, cube_table=None) -> Path:
+    from_table = fhir2sql.name_cohort(from_table)
+
+    if not cube_table:
+        cube_table = fhir2sql.name_cube(from_table, 'document')
+
+    if not cols:
+        cols = Columns.cohort.value + Columns.demographics.value
+
+    cols = sorted(list(set(cols)))
+    sql = CountsBuilder(PREFIX).count_documentreference(cube_table, from_table, cols)
+    return filetool.save_athena_view(cube_table, sql)
+
+
+def make_study_population_duration(duration: Duration | str) -> Path:
+    """
+    :param duration: week, month, or year
+    :return: path to SQL counts file
+    """
+    if isinstance(duration, Duration):
+        duration = duration.value
+
+    return cube_enc(from_table='study_population',
+                    cols=(Columns.cohort.value + Columns.month.value),
+                    cube_table=fhir2sql.name_cube(f'encounter_study_population_{duration}'))
+
+
 def make_study_population() -> List[Path]:
-    return [cube_pat(),
+    return [
+            cube_pat(),
             cube_enc(),
             cube_pat('study_population_dx', Columns.cohort.value + Columns.diagnoses.value),
             cube_pat('study_population_rx', Columns.cohort.value + Columns.medications.value),
