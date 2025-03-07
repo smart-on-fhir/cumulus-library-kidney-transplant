@@ -3,7 +3,7 @@
 |Study Variable|ValueSet|VSAC|
 |:-------|:------|:-----|
 |**dx_transplant**||
-|dx_transplant|kidney|[2.16.840.1.113762.1.4.1078.16](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1078.16/expansion/Latest)|
+|dx_transplant|kidney|[2.16.840.1.113762.1.4.1078.16](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1078.16/expansion/Latest), [2.16.840.1.113883.3.464.1003.109.12.1012](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.464.1003.109.12.1012/expansion/Latest)|
 |dx_transplant|solid_organ|[2.16.840.1.113762.1.4.1032.205](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1032.205/expansion/Latest)|
 |dx_transplant|recipient|[2.16.840.1.113762.1.4.1111.27](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1111.27/expansion/Latest)|
 |**dx_cancer**||
@@ -65,7 +65,7 @@
 |rx_immunosuppressive|coricosteroids_systemic|[2.16.840.1.113883.3.3616.200.110.102.2061](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.3616.200.110.102.2061/expansion/Latest)|
 |**rx_cancer**||
 |rx_cancer|chemo_advanced|[2.16.840.1.113883.3.7643.2.1046](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.7643.2.1046/expansion/Latest)|
-|rx_cancer|checkpoint|[2.16.840.1.113762.1.4.1133.6](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1133.6/expansion/Latest)|
+|rx_cancer|checkpoint|[2.16.840.1.113883.3.1444.5.231](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.1444.5.231/expansion/Latest)|
 |rx_cancer|keytruda|[2.16.840.1.113762.1.4.1260.496](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1260.496/expansion/Latest)|
 |rx_cancer|ade_neutropenia|[2.16.840.1.113883.3.526.3.1538](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.526.3.1538/expansion/Latest)|
 |**rx_antibiotics**||
@@ -84,7 +84,7 @@
 |**lab_cmp**||
 |lab_cmp|comprehensive|[2.16.840.1.113762.1.4.1078.867](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1078.867/expansion/Latest)|
 |**lab_gfr**||
-|lab_gfr|egfr|[2.16.840.1.113762.1.4.1078.397](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1078.397/expansion/Latest)|
+|lab_gfr|egfr|[2.16.840.1.113883.3.6929.3.1000](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.6929.3.1000/expansion/Latest), [2.16.840.1.113762.1.4.1222.179](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1222.179/expansion/Latest), [2.16.840.1.113762.1.4.1078.397](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1078.397/expansion/Latest), [2.16.840.1.113762.1.4.1235.81](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1235.81/expansion/Latest)|
 |**lab_lft**||
 |lab_lft|function|[2.16.840.1.113762.1.4.1078.867](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1078.867/expansion/Latest)|
 |lab_lft|ggt|[2.16.840.1.113762.1.4.1222.806](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1222.806/expansion/Latest)|
