@@ -64,10 +64,15 @@ def make_study_population() -> List[Path]:
             cube_pat(),
             cube_enc(),
             cube_pat('study_population_dx', Columns.cohort.value + Columns.diagnoses.value),
+            cube_enc('study_population_dx', Columns.cohort.value + Columns.diagnoses.value),
             cube_pat('study_population_rx', Columns.cohort.value + Columns.medications.value),
+            cube_enc('study_population_rx', Columns.cohort.value + Columns.medications.value),
             cube_pat('study_population_lab', Columns.cohort.value + Columns.labs.value),
+            cube_enc('study_population_lab', Columns.cohort.value + Columns.labs.value),
             cube_pat('study_population_doc', Columns.cohort.value + Columns.documents.value),
-            cube_pat('study_population_proc', Columns.cohort.value + Columns.procedures.value)]
+            cube_enc('study_population_doc', Columns.cohort.value + Columns.documents.value),
+            cube_pat('study_population_proc', Columns.cohort.value + Columns.procedures.value),
+            cube_enc('study_population_proc', Columns.cohort.value + Columns.procedures.value)]
 
 def make_variables() -> List[Path]:
     file_list = list()
