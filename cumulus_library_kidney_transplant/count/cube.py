@@ -106,7 +106,7 @@ def make_casedef_timeline() -> List[Path]:
     return [cube_pat(from_table, cols),
             cube_enc(from_table, cols)]
 
-def make_variables() -> List[Path]:
+def make_vsac_variables() -> List[Path]:
     """
     CUBE each study variable cohort by unique FHIR Patient.
     See `columns.py` for columns included in the CUBE group by expression.
@@ -186,4 +186,4 @@ def make() -> List[Path]:
 
     :return: List of SQL files for each CUBE output
     """
-    return make_study_population() + make_variables() + make_casedef_timeline()
+    return make_study_population() + make_vsac_variables() + make_casedef_timeline()
