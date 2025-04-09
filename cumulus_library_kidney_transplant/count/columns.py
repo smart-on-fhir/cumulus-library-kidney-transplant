@@ -43,6 +43,14 @@ class ObservationLab(Enum):
     code = 'lab_observation_code'
     interpretation = 'lab_interpretation_display'
 
+class DiagnosticReport(Enum):
+    code = 'diag_code'
+    code_system = 'diag_code_system'
+    code_display = 'diag_code_display'
+    category = 'diag_category_code'
+    category_system = 'diag_category_system'
+    category_display = 'diag_category_display'
+
 class Cohort(Enum):
     """
     Default stratifiers for Study Cohorts
@@ -55,7 +63,7 @@ class Valueset(Enum):
     gender = Demographic.gender.value
     race = Demographic.race.value
     age_at_visit = Encounter.age_at_visit.value
-    enc_class = Encounter.enc_class.value
+    # enc_class = Encounter.enc_class.value
     valueset = 'valueset'
 
 
