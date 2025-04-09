@@ -34,6 +34,13 @@ cyclosporin = [
     'Cequa',
 ]
 
+evorolimus = ['evorolimus',
+              'zortress',
+              'afinitor',
+              'votubia',
+              'RAD001',
+              'SDZ-RAD']
+
 mycophenolate = [
     'mycophenolate',
     'MMF',
@@ -65,6 +72,7 @@ DRUG_LIST = [
     atg,
     belatacept,
     cyclosporin,
+    evorolimus,
     mycophenolate,
     sirolimus,
     tacrolimus
@@ -79,7 +87,8 @@ class_moa = [
     'Macrolide',
     'systemic corticosteroid'
     'DMARD',
-    'CTLA-4'
+    'CTLA-4',
+    'rapamycin',
     'mTOR Inhibitor']
 
 ###############################################################################

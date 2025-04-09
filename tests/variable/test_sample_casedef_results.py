@@ -18,4 +18,4 @@ class TestSampleCasedefResults(unittest.TestCase):
 
         # output = [cube.cube_enc(from_table, cols, create_enc),
         #           cube.cube_pat(from_table, cols, create_pat)]
-        print(output)
+        # print(output)
