@@ -163,4 +163,3 @@ if __name__ == "__main__":
     graph_list = list_graph_defaults(PREFIX)
     as_json = [g.as_json() for g in graph_list]
     filetool.write_json(as_json, filetool.path_home('dashboard.json'))
-
