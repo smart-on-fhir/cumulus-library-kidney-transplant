@@ -5,41 +5,34 @@ from cumulus_library_kidney_transplant import filetool
 from cumulus_library_kidney_transplant import fhir2sql
 from cumulus_library_kidney_transplant.study_prefix import PREFIX
 from cumulus_library_kidney_transplant.variable import vsac_api
-from cumulus_library_kidney_transplant.variable.aspect import Aspect, AspectMap, AspectKey
+from cumulus_library_kidney_transplant.variable.aspect import Aspect, AspectMap, AspectKey      # TODO: refactor
 from cumulus_library_kidney_transplant.variable.vsac_variables_defined import get_aspect_map
 
 ###############################################################################
 #
-# LIST of
+# VSAC Variables and Valuesets
 #
 ###############################################################################
-def list_view_valuesets() -> List[str]:
-    valueset_list = list()
-    for aspect in get_aspect_map().as_list():
-        for variable in aspect.variable_list:
-            for valueset in variable.valueset_list:
-                valueset_list.append(f"{variable.name}_{valueset.name}")
-    return fhir2sql.name_prefix(valueset_list)
-
 def list_view_variables() -> List[str]:
+    """
+    :return: list $variable SQL Tablename
+    """
     variable_list = list()
     for aspect in get_aspect_map().as_list():
         for variable in aspect.variable_list:
             variable_list.append(variable.name)
     return fhir2sql.name_prefix(variable_list)
 
-###############################################################################
-#
-# Cancer specific subsets.
-#
-###############################################################################
-def make_cancer_subsets():
-    valueset_json = 'irae__dx_cancer/any.json'
-    filetool.save_valueset('irae__dx_cancer/skin.json', fhir2sql.filter_expansion(valueset_json, ['skin']))
-    filetool.save_valueset('irae__dx_cancer/melanoma.json', fhir2sql.filter_expansion(valueset_json, ['melanoma']))
-    filetool.save_valueset('irae__dx_cancer/sarcoma.json', fhir2sql.filter_expansion(valueset_json, ['sarcoma']))
-    filetool.save_valueset('irae__dx_cancer/squamous.json', fhir2sql.filter_expansion(valueset_json, ['squamous']))
-
+def list_view_valuesets() -> List[str]:
+    """
+    :return: list $variable_$valueset SQL Tablename
+    """
+    valueset_list = list()
+    for aspect in get_aspect_map().as_list():
+        for variable in aspect.variable_list:
+            for valueset in variable.valueset_list:
+                valueset_list.append(f"{variable.name}_{valueset.name}")
+    return fhir2sql.name_prefix(valueset_list)
 
 ###############################################################################
 #
@@ -48,6 +41,12 @@ def make_cancer_subsets():
 ###############################################################################
 def make_aspect(aspect: Aspect) -> List[Path]:
     """
+    Download and store JSON and generate SQL for each VSAC ValueSet.
+    Each Valueset is cached in valueset to enable faster build caching.
+
+    `vsac_api.py` connect to NLM hosted server (requires UMLS ApiKey) .
+    `fhir2sql.py` converts FHIR json into SQL tables for each valueset.
+
     :param aspect: see `list_aspects()`, Dx, Rx, Lab, LabPanel, Proc, Doc
     :return: Path to SQL File to create variable definition valuesets.
     """
@@ -91,8 +90,20 @@ def make_aspect(aspect: Aspect) -> List[Path]:
 
 def make() -> List[Path]:
     """
-    Make vsac variables with 1+ vsac valuesets for each variable.
-    :return: List SQL files to define each vsac_variable
+    VSAC ValueSet Authority Center is an NLM hosted site of human-expert curated Valuesets.
+    Valuesets also known as codesets. Whenever possible, we use VSAC curated valuesets that have been human reviewed.
+
+     `vsac_variables_defined`
+        .get_labs()
+        .get_medications()
+        .get_diagnoses()
+        .get_documents()
+        .get_procedures()}
+
+    Each $variable contains 1+ named valuesets, resulting in tables like "rx_immunosuppressive"
+    Each $valueset has a prefix and a name like "dx_transplant", "rx_everolimus".
+
+    :return: List SQL files to define each vsac_variable.
     """
     file_list = list()
     for aspect in get_aspect_map().as_list():
