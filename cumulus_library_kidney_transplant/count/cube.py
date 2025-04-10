@@ -4,9 +4,18 @@ from cumulus_library.builders.counts import CountsBuilder
 from cumulus_library_kidney_transplant import filetool, fhir2sql
 from cumulus_library_kidney_transplant.study_prefix import PREFIX
 from cumulus_library_kidney_transplant.variable import vsac_variables, custom_variables
-from cumulus_library_kidney_transplant.count.columns import Columns
+from cumulus_library_kidney_transplant.count.columns import Columns, Duration
 
 def cube_enc(from_table='study_population', cols=None, cube_table=None) -> Path:
+    """
+    CUBE counts contain unique numbers of
+        * FHIR Encounter --> "select distinct(core__encounter.encounter_ref)"
+
+    :param from_table: line-level cohort to derive counts from
+    :param cols: columsn to include in the CUBE group by expression
+    :param cube_table: output CUBE table
+    :return: Path to CUBE table
+    """
     from_table = fhir2sql.name_cohort(from_table)
 
     if not cube_table:
@@ -20,6 +29,15 @@ def cube_enc(from_table='study_population', cols=None, cube_table=None) -> Path:
     return filetool.save_athena_view(cube_table, sql)
 
 def cube_pat(from_table='study_population', cols=None, cube_table=None) -> Path:
+    """
+    CUBE counts contain unique numbers of
+        * FHIR Patient --> "select distinct(core__patient.subject_ref)"
+
+    :param from_table: line-level cohort to derive counts from
+    :param cols: columsn to include in the CUBE group by expression
+    :param cube_table: output CUBE table
+    :return: Path to CUBE table
+    """
     from_table = fhir2sql.name_cohort(from_table)
 
     if not cube_table:
@@ -32,16 +50,73 @@ def cube_pat(from_table='study_population', cols=None, cube_table=None) -> Path:
     sql = CountsBuilder(PREFIX).count_patient(cube_table, from_table, cols)
     return filetool.save_athena_view(cube_table, sql)
 
-def make_study_population() -> List[Path]:
-    return [cube_pat(),
-            cube_enc(),
-            cube_pat('study_population_dx', Columns.cohort.value + Columns.diagnoses.value),
-            cube_pat('study_population_rx', Columns.cohort.value + Columns.medications.value),
-            cube_pat('study_population_lab', Columns.cohort.value + Columns.labs.value),
-            cube_pat('study_population_doc', Columns.cohort.value + Columns.documents.value),
-            cube_pat('study_population_proc', Columns.cohort.value + Columns.procedures.value)]
+def cube_doc(from_table='study_population', cols=None, cube_table=None) -> Path:
+    """
+    CUBE counts contain unique numbers of
+        * FHIR DocumentReference --> "select distinct(core__documentreference.documentreference_ref)"
 
-def make_variables() -> List[Path]:
+    :param from_table: line-level cohort to derive counts from
+    :param cols: columsn to include in the CUBE group by expression
+    :param cube_table: output CUBE table
+    :return: Path to CUBE table
+    """
+    from_table = fhir2sql.name_cohort(from_table)
+
+    if not cube_table:
+        cube_table = fhir2sql.name_cube(from_table, 'document')
+
+    if not cols:
+        cols = Columns.cohort.value + Columns.demographics.value
+
+    cols = sorted(list(set(cols)))
+    sql = CountsBuilder(PREFIX).count_documentreference(cube_table, from_table, cols)
+    return filetool.save_athena_view(cube_table, sql)
+
+
+def make_study_population_duration(duration: Duration | str) -> Path:
+    """
+    CUBE study population by a time duration
+    :param duration: week, month, or year
+    :return: path to SQL counts file
+    """
+    if isinstance(duration, Duration):
+        duration = duration.value
+
+    return cube_enc(from_table='study_population',
+                    cols=(Columns.cohort.value + Columns.month.value),
+                    cube_table=fhir2sql.name_cube(f'encounter_study_population_{duration}'))
+
+
+def make_casedef_timeline() -> List[Path]:
+    """
+    CUBE count casedef_timeline using columns
+        * soe sequence of events
+        * variable
+        * valueset
+        * FHIR Encounter (calculated month)
+
+    CUBE counts contain unique numbers of
+        * FHIR Patient
+        * FHIR Encounter
+
+    :return: Path to CUBE table for the casedef_timeline
+    """
+    from_table = fhir2sql.name_cohort('casedef_timeline')
+    cols = ['soe', 'variable', 'valueset', 'enc_period_start_month']
+    return [cube_pat(from_table, cols),
+            cube_enc(from_table, cols)]
+
+def make_vsac_variables() -> List[Path]:
+    """
+    CUBE each study variable cohort by unique FHIR Patient.
+    See `columns.py` for columns included in the CUBE group by expression.
+
+    Variables includes both
+    * `vsac_variables.py`
+    * `custom_variables.py`
+
+    :return: List of study variable CUBE tables
+    """
     file_list = list()
     variable_list = vsac_variables.list_view_variables() + custom_variables.list_view_variables()
     for variable in variable_list:
@@ -57,11 +132,58 @@ def make_variables() -> List[Path]:
             file_list.append(cube_pat(variable, Columns.valueset.value + Columns.documents.value))
     return file_list
 
-def make_casedef_timeline() -> List[Path]:
-    from_table = fhir2sql.name_cohort('casedef_timeline')
-    cols = ['soe', 'variable', 'valueset', 'enc_period_start_month']
-    return [cube_pat(from_table, cols),
-            cube_enc(from_table, cols)]
+def make_study_population() -> List[Path]:
+    """
+    CUBE each study population cohort by unique
+    * FHIR Patient
+    * FHIR Encounter
+
+    :return: List of SQL files in athena
+        * irae__cohort_study_population
+        * irae__cohort_study_population_dx
+        * irae__cohort_study_population_rx
+        * irae__cohort_study_population_lab
+        * irae__cohort_study_population_proc
+        * irae__cohort_study_population_doc
+    """
+    return [
+            cube_pat(),
+            cube_enc(),
+            cube_pat('study_population_dx', Columns.cohort.value + Columns.diagnoses.value),
+            cube_enc('study_population_dx', Columns.cohort.value + Columns.diagnoses.value),
+            cube_pat('study_population_rx', Columns.cohort.value + Columns.medications.value),
+            cube_enc('study_population_rx', Columns.cohort.value + Columns.medications.value),
+            cube_pat('study_population_lab', Columns.cohort.value + Columns.labs.value),
+            cube_enc('study_population_lab', Columns.cohort.value + Columns.labs.value),
+            cube_pat('study_population_doc', Columns.cohort.value + Columns.documents.value),
+            cube_enc('study_population_doc', Columns.cohort.value + Columns.documents.value),
+            cube_pat('study_population_proc', Columns.cohort.value + Columns.procedures.value),
+            cube_enc('study_population_proc', Columns.cohort.value + Columns.procedures.value)]
 
 def make() -> List[Path]:
-    return make_study_population() + make_variables() + make_casedef_timeline()
+    """
+    Make CUBE "powerset" tables using Athena (Trino Cube function)
+    https://trino.io/docs/current/sql/select.html#cube
+
+    CUBE counts contain unique numbers of
+        * FHIR Patient
+        * FHIR Encounter
+
+    CUBE tables are generated with the format
+        * irae__count_[patient|encounter]_$cohort
+
+    CUBE tables are created from COHORTS
+        * cohort_study_population
+        * cohort_study_population_dx
+        * cohort_study_population_rx
+        * cohort_study_population_lab
+        * cohort_study_population_proc
+        * cohort_study_population_doc
+        * cohort_casedef_timeline
+
+    CUBE data are generate for each
+        * cohort_$variable
+
+    :return: List of SQL files for each CUBE output
+    """
+    return make_study_population() + make_vsac_variables() + make_casedef_timeline()

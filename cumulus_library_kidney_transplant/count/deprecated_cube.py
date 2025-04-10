@@ -12,7 +12,7 @@ class Cube:
     def __init__(self, create_table: str, from_table: str, col_list: List[str]):
         """
         The purpose of this class is to use `filetool.py` to write files for the study builder and
-        provide basic information for `dashboard.py` to create a template. Use has been deprecated and may be ignored.
+        provide basic information for `deprecated_dashboard.py` to create a template. Use has been deprecated and may be ignored.
 
         :param create_table: name of the table in the CTAS statement (create `table` as )
         :param from_table: source table to compile the cube counts

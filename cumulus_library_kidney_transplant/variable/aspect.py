@@ -32,6 +32,7 @@ class AspectKey(Enum):
     lab = 'labs'
     proc = 'procedures'
     doc = 'document'
+    diag = 'diagnostic_report'
 
     def as_json(self):
         return {self.name: self.value}

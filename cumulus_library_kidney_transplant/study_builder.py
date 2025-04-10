@@ -23,6 +23,34 @@ from cumulus_library_kidney_transplant.variable import (
 ###############################################################################
 
 class StudyBuilderConfig:
+    """
+    IRAE inclusion criteria builder config.
+    inclusion/exclusion criteria specifies which patient encounters to build.
+
+    Attributes:
+        period_start (str): First FHIR Encounter.actualPeriod, in YYYY-MM-DD format.
+        period_end (str): Latest FHIR Encounter.actualPeriod, in YYYY-MM-DD format.
+        include_history (bool): Include patient history before period_start if other criteria is met.
+        enc_class_list (list): FHIR Encounter.cass
+        enc_min (int): Minimum number of FHIR encounters per patient.
+        enc_max (int): Maximum number of FHIR encounters per patient.
+        enc_days_min (int): Minimum days from first to latest FHIR encounter.
+        enc_days_max (int): Maximum days from first to latest FHIR encounter.
+        age_min (int): Minimum FHIR patient calculated age_at_visit.
+        age_max (int): Maximum FHIR patient calculated age_at_visit.
+        gender_female (bool): Include FHIR patient.gender=female.
+        gender_male (bool): Include FHIR patient.gender=male.
+        gender_other (bool): Include FHIR patient.gender=other.
+        gender_unknown (bool): Include FHIR patient.gender=unknown.
+        race_list (List[Race] | List[str]): Include FHIR patient.race
+        aspect_map (aspect.AspectMap | dict): build AspectKey {
+                        vsac_variables_defined methods:
+                        "labs" : .get_labs()
+                        "medications", .get_medications()
+                        "diagnoses", .get_diagnoses()
+                        "document", .get_documents()
+                        "procedure" .get_procedures()}
+    """
     period_start: str = '2016-01-01'
     period_end: str = '2025-02-01'
     include_history: bool = True
@@ -42,12 +70,12 @@ class StudyBuilderConfig:
 
     def __init__(self, form: dict = None):
         """
-        :param form: TODO refactor should use a parser class not DIY methods
+        :param form: optionally override default study builder configuration.
         """
         if not form:
             form = dict()
         self.period_start = form.get('period_start', '2016-01-01')
-        self.period_end = form.get('period_end', '2025-02-01')
+        self.period_end = form.get('period_end', '2025-01-01')
         self.include_history = bool(form.get('include_history', True))
         self.enc_class_list = form.get('enc_class_list', None)
         self.enc_min = int(form.get('enc_min', 3))
@@ -67,13 +95,21 @@ class StudyBuilderConfig:
         return self.__dict__
 
     @staticmethod
-    def read_config(from_path: str | Path = None):
+    def read_config(from_path: str | Path = None) -> dict:
+        """
+        :param from_path:  StudyBuilderConfig.json default
+        :return: dict JSON of StudyBuilderConfig
+        """
         if not from_path:
             from_path = filetool.path_home('StudyBuilderConfig.json')
         return filetool.read_json(from_path)
 
     @staticmethod
     def make_config(from_path: str | Path = None):
+        """
+        :param from_path: StudyBuilderConfig.json default
+        :return: StudyBuilderConfig parsed object
+        """
         return StudyBuilderConfig(StudyBuilderConfig.read_config(from_path))
 
 ###############################################################################
@@ -84,35 +120,47 @@ class StudyBuilderConfig:
 
 def make_study(study: StudyBuilderConfig) -> Path:
     """
+    Command line invocation of the study builder is done using Cumulus Library:
+    https://docs.smarthealthit.org/cumulus/library/
+
     $cumulus-library build -s ./ -t irae
 
     :return: list of SQL files to execute in Athena.
     """
     criteria_sql = [
+        # Study Period
         criteria.study_period.include(
             period_start=study.period_start,
             period_end=study.period_end,
             include_history=study.include_history
         ),
+        # FHIR Encounter Health Care Utilization Criteria
         criteria.utilization.include(
             enc_min=study.enc_min,
             enc_max=study.enc_max,
             days_min=study.enc_days_min,
             days_max=study.enc_days_max
         ),
+        # Age at visit criteria, default ANY
+        # Calculated from FHIR Patient.birthDate (age_at_visit)
+        # https://www.hl7.org/fhir/patient-definitions.html#Patient.birthDate
         criteria.age_at_visit.include(
             age_min=study.age_min,
             age_max=study.age_max
         ),
+        # FHIR Encounter.cass criteria, default ANY.
+        # https://terminology.hl7.org/6.2.0/ValueSet-v3-ActEncounterCode.html
         criteria.encounter_class.include(
             enc_class_list=study.enc_class_list
         ),
+        # FHIR Patient.gender, default ANY
         criteria.gender.include(
             female=study.gender_female,
             male=study.gender_male,
             other=study.gender_other,
             unknown=study.gender_unknown
         ),
+        # FHIR Patient.race, default ANY
         criteria.race.include(
             race_list=study.race_list)]
 

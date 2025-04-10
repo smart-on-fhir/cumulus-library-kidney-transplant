@@ -7,7 +7,6 @@ CREATE TABLE irae__count_patient_dx_htn AS (
             s."age_at_visit",
             s."dx_category_code",
             s."dx_display",
-            s."enc_class_code",
             s."gender",
             s."race_display",
             s."valueset"
@@ -31,10 +30,6 @@ CREATE TABLE irae__count_patient_dx_htn AS (
                 'cumulus__none'
             ) AS dx_display,
             coalesce(
-                cast(enc_class_code AS varchar),
-                'cumulus__none'
-            ) AS enc_class_code,
-            coalesce(
                 cast(gender AS varchar),
                 'cumulus__none'
             ) AS gender,
@@ -55,7 +50,6 @@ CREATE TABLE irae__count_patient_dx_htn AS (
             "age_at_visit",
             "dx_category_code",
             "dx_display",
-            "enc_class_code",
             "gender",
             "race_display",
             "valueset",
@@ -64,7 +58,6 @@ CREATE TABLE irae__count_patient_dx_htn AS (
                 COALESCE("age_at_visit",''),
                 COALESCE("dx_category_code",''),
                 COALESCE("dx_display",''),
-                COALESCE("enc_class_code",''),
                 COALESCE("gender",''),
                 COALESCE("race_display",''),
                 COALESCE("valueset",'')
@@ -75,7 +68,6 @@ CREATE TABLE irae__count_patient_dx_htn AS (
             "age_at_visit",
             "dx_category_code",
             "dx_display",
-            "enc_class_code",
             "gender",
             "race_display",
             "valueset"
@@ -87,7 +79,6 @@ CREATE TABLE irae__count_patient_dx_htn AS (
         p."age_at_visit",
         p."dx_category_code",
         p."dx_display",
-        p."enc_class_code",
         p."gender",
         p."race_display",
         p."valueset"

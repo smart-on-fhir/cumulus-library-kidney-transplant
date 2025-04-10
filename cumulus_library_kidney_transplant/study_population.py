@@ -5,15 +5,36 @@ from cumulus_library_kidney_transplant import filetool
 
 def list_tables() -> List[str]:
     """
-    :return: list of tables in the `study_population`, one for each aspect such as Dx, Rx, Lab,
+    :return: list of tables in the `study_population`, one for each AspectKey
     """
     table = fhir2sql.name_join('cohort', 'study_population')
-    aspect_list = ['dx', 'rx', 'lab', 'doc', 'proc']
+    aspect_list = ['dx', 'rx', 'lab', 'doc', 'proc', 'diag']
     aspect_list = [f'{table}_{t}' for t in aspect_list]
     return [table] + aspect_list
 
 def make_study_population() -> List[Path]:
     """
+    Study Population is built from "template/" dir.
+    Study Population matches inclusion/exlusion criteria from `StudyBuilderConfig`.
+    Study Population contains all Patient encounters matching criteria and all FHIR resources below.
+
+    Study Builder then builds each `AspectKey`:
+        dx = 'diagnoses'
+        rx = 'medications'
+        lab = 'labs'
+        proc = 'procedures'
+        doc = 'document'
+        diag = 'diagnostic_report'
+
+    Produces:
+    * cohort_study_population.sql       Patient Encounters matching criteria
+    * cohort_study_population_dx.sql    -> FHIR Condition
+    * cohort_study_population_rx.sql    -> FHIR MedicationRequest
+    * cohort_study_population_lab.sql   -> FHIR Observation.category=lab
+    * cohort_study_population_doc.sql   -> FHIR DocumentReference
+    * cohort_study_population_proc.sql  -> FHIR Procedure
+    * cohort_study_population_diag.sql  -> FHIR DiagnosticReport
+
     :return: list of SQL `study_population`
     """
     file_list = list()
