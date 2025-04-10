@@ -117,7 +117,6 @@ class StudyBuilderConfig:
 # Make
 #
 ###############################################################################
-
 def make_study(study: StudyBuilderConfig) -> Path:
     """
     Command line invocation of the study builder is done using Cumulus Library:
