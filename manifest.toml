@@ -308,4 +308,7 @@ count_list = [
     "irae__count_encounter_study_variables",
 ]
 flat_list = []
-meta_list = []
+meta_list = [
+    "meta_date",
+    "meta_version"
+]

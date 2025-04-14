@@ -21,6 +21,15 @@ def make_meta_date() -> List[Path]:
     sql = filetool.inline_template(sql)
     return [filetool.save_athena_view(table, sql)]
 
+def make_meta_version() -> List[Path]:
+    """
+    :return:
+    """
+    table = fhir2sql.name_prefix('meta_version')
+    sql = filetool.load_template(f'meta_version.sql')
+    sql = filetool.inline_template(sql)
+    return [filetool.save_athena_view(table, sql)]
+
 def make_study_population() -> List[Path]:
     """
     Study Population is built from "template/" dir.
@@ -54,4 +63,4 @@ def make_study_population() -> List[Path]:
     return file_list
 
 def make() -> List[Path]:
-    return make_study_population() + make_meta_date()
+    return make_study_population() + make_meta_date() + make_meta_version()
