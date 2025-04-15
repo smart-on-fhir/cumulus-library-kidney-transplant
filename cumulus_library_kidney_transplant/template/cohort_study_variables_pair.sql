@@ -9,7 +9,7 @@ select distinct
     SV1.race_display as race_display1,
     SV2.race_display as race_display2,
     SV1.age_at_visit as age_at_visit1,
-    SV2.age_at_visit as ],
+    SV2.age_at_visit as age_at_visit2,
     SV1.encounter_ref as encounter_ref1,
     SV2.encounter_ref as encounter_ref2,
     SV1.enc_period_start_day    as enc_period_start_day1,
