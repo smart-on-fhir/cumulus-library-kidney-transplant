@@ -12,6 +12,7 @@ def list_tables() -> List[str]:
     aspect_list = [f'{table}_{t}' for t in aspect_list]
     return [table] + aspect_list
 
+# MHG: The following two functions don't actually create files
 def make_meta_date() -> List[Path]:
     """
     :return:
