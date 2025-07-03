@@ -53,9 +53,9 @@ StudyPopulation as
         $prefix__include_age_at_visit      as age
     where
         (E.encounter_ref = SP.encounter_ref)  and
-        (E.class_code = enc_class.code)       and
         (E.gender = G.code)                   and
-        (E.age_at_visit between age.age_min and age.age_max)
+        (E.age_at_visit between age.age_min and age.age_max) and
+        (E.class_code is null OR E.class_code = enc_class.code)     -- https://github.com/smart-on-fhir/cumulus-library-kidney-transplant/issues/28
 ),
 Utilization as
 (
