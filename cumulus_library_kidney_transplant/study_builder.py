@@ -166,7 +166,7 @@ def make_study(study: StudyBuilderConfig) -> Path:
     studypop_sql = study_population.make()
     variables_sql = vsac_variables.make() + custom_variables.make()
     cohorts_sql = cohorts.make()
-    casedef_sql = casedef.make()
+    casedef_sql = casedef.make('irae__cohort_dx_transplant')
     counts_sql = cube.make() + cube_custom.make()
 
     vsac_markdown.make()

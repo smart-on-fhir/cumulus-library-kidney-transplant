@@ -66,5 +66,5 @@ CREATE TABLE irae__count_patient_casedef_timeline AS (
         p."variable"
     FROM powerset AS p
     WHERE 
-        cnt_subject_ref >= 10
+        p.cnt_subject_ref >= 10
 );
