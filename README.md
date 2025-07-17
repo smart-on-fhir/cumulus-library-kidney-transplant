@@ -4,8 +4,6 @@
 |:-------|:------|:-----|
 |**dx_transplant**||
 |dx_transplant|kidney|[2.16.840.1.113762.1.4.1078.16](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1078.16/expansion/Latest), [2.16.840.1.113883.3.464.1003.109.11.1063](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.464.1003.109.11.1063/expansion/Latest), [2.16.840.1.113883.3.464.1003.109.12.1012](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.464.1003.109.12.1012/expansion/Latest)|
-|dx_transplant|solid_organ|[2.16.840.1.113762.1.4.1032.205](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1032.205/expansion/Latest)|
-|dx_transplant|recipient|[2.16.840.1.113762.1.4.1111.27](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1111.27/expansion/Latest)|
 |**dx_cancer**||
 |dx_cancer|skin|[2.16.840.1.113883.3.526.3.1010](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.526.3.1010/expansion/Latest)|
 |dx_cancer|melanoma|[2.16.840.1.113883.3.526.3.1010](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.526.3.1010/expansion/Latest)|
