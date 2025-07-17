@@ -66,5 +66,5 @@ CREATE TABLE irae__count_patient_study_population_doc AS (
         p."gender"
     FROM powerset AS p
     WHERE 
-        cnt_subject_ref >= 10
+        p.cnt_subject_ref >= 10
 );
