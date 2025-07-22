@@ -1,15 +1,3 @@
---     enc_class_code
---     enc_class_display,
---     enc_start_date,
---     enc_end_date,
---     gender,
---     race_display,
---     age_at_visit,
---     doc_date,
---     doc_author_date,
---     doc_type_display,
---     doc_type_code,
-
 create or replace view irae__gpt4_donor_vars as
 select  distinct
         encounter_ref,
@@ -31,45 +19,31 @@ select  distinct
         donor_hla_mismatch
 from irae__gpt4_fhir;
 
-create or replace view irae__gpt4_donor_date as
-WITH date_counts AS (
-    SELECT
-        subject_ref,
-        donor_date,
-        COUNT(*) AS cnt
-    from    irae__gpt4_donor_vars
-    where   donor_date is not null
-    and     donor_date > date('2000-01-01')
-    GROUP BY subject_ref, donor_date
-),
-ranked_dates AS (
-    SELECT  cnt, subject_ref, donor_date,
-        ROW_NUMBER() OVER (
-            PARTITION BY subject_ref
-            ORDER BY cnt DESC, donor_date ASC  -- break ties consistently
-        ) AS rn
-    FROM date_counts
-)
-SELECT      cnt, subject_ref,
-            donor_date as donor_date_min
-FROM        ranked_dates
-WHERE       rn = 1
-ORDER BY    subject_ref;
-
-
 create or replace view irae__gpt4_donor as
-       select   var.*,
-                idx.donor_date_min,
-                date_trunc('month', idx.donor_date_min) as donor_date_min_month,
-                date_trunc('year', idx.donor_date_min) as donor_date_min_year
-       from     irae__gpt4_donor_vars   as  var,
-                irae__gpt4_donor_date   as  idx
-       where    var.subject_ref = idx.subject_ref;
-
--- create or replace irae__gpt4_donor as
---        select   irae__gpt4_donor_vars.*,
---                 idx.donor_date,
---                 date_trunc('month', idx.donor_date) as donor_date_month
---        from     irae__gpt4_donor_vars   as  var,
---                 irae__gpt4_donor_date   as  idx
---        where    var.subject_ref = idx.subject_ref;
+       select   distinct
+                var.encounter_ref,
+                var.documentreference_ref,
+                var.subject_ref,
+                var.gender,
+                var.race_display,
+                var.age_at_visit,
+                var.enc_start_date,
+                var.doc_date,
+                var.donor_date_mentioned,
+                var.doc_type_display,
+                coalesce(join_type.donor_type_best, 'NotMentioned') as donor_type_best,
+                var.donor_type,
+                var.donor_type_mentioned,
+                var.donor_date,
+                coalesce(join_relate.donor_relationship_best, 'NotMentioned') as donor_relationship_best,
+                var.donor_relationship,
+                var.donor_relationship_mentioned,
+                var.donor_hla_quality,
+                var.donor_hla_mismatch,
+                join_date.donor_date_best,
+                date_trunc('month', join_date.donor_date_best) as donor_date_best_month,
+                date_trunc('year', join_date.donor_date_best) as donor_date_best_year
+       from     irae__gpt4_donor_vars   as  var
+           left join irae__gpt4_donor_date as join_date on var.subject_ref = join_date.subject_ref
+           left join irae__gpt4_donor_type as join_type  on var.subject_ref = join_type.subject_ref
+           left join irae__gpt4_donor_relationship as join_relate on var.subject_ref = join_relate.subject_ref;

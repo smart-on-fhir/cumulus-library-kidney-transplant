@@ -71,10 +71,10 @@ if __name__ == "__main__":
     targets = [
 
         cube_patient(source_table='irae__gpt4_donor',
-                     table_cols=['donor_type',
-                                 'donor_relationship',
+                     table_cols=['donor_type_best',
+                                 'donor_relationship_best',
                                  'doc_type_display',
-                                 'donor_date_min_year',
+                                 'donor_date_best_year',
                                  'donor_hla_quality',
                                  'age_at_visit', 'gender', 'race_display'],
                      table_name=fhir2sql.name_cube('patient_llm_donor')),

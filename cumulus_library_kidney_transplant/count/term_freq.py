@@ -1,35 +1,41 @@
-def rank_date(from_table = 'irae__gpt4_donor_vars', date_col = 'donor_date', group_ref = 'subject_ref', date_order = 'ASC'):
+def by_document(from_table:str, column:str, where=None, asc_desc:str = 'ASC'):
+    return rank_value(from_table, column, where, 'documentreference_ref', asc_desc)
+
+def by_encounter(from_table:str, column:str, where=None, asc_desc:str = 'ASC'):
+    return rank_value(from_table, column, where, 'encounter_ref', asc_desc)
+
+def by_subject(from_table:str, column:str, where=None, asc_desc:str = 'ASC'):
+    return rank_value(from_table, column, where, 'subject_ref', asc_desc)
+
+def rank_value(from_table:str, column:str, where=None, group_ref:str ='subject_ref', asc_desc:str = 'ASC'):
+
+    where_basic = f" {column} is NOT null and {column} != 'NotMentioned' and {column} != 'NA'"
+    if  where:
+        where = where_basic + where
+    else:
+        where = where_basic
 
     sql = [f"WITH value_counts as (",
-           f"select {group_ref}, {date_col}, count(*) as cnt",
-           f"from {from_table}",
-           f"where {date_col} is not null and {date_col} > date('2000-01-01')",
-           f"group by {group_ref}, {date_col}", "),"
+           f"\tselect {group_ref}, {column}, count(*) as cnt",
+           f"\tfrom {from_table}",
+           f"\twhere {where}",
+           f"\tgroup by {group_ref}, {column}", "),",
            f"ranked_tf as (",
-           f"select {group_ref}, {date_col}, cnt,",
-           f"row_number() over ( partition by {group_ref} order by cnt DESC, {date_col} {date_order}) as rn",
-           "from value_counts )",
-           f"SELECT {group_ref}, {date_col} as {date_col}_min from ranked_tf",
-           f"where rn =1 order by {group_ref}"]
-    return ' \n'.join(sql)
-
-def rank_value(from_table = 'irae__gpt4_donor_vars', column ='donor_type', group_ref ='subject_ref', date_order ='ASC'):
-
-    sql = [f"WITH value_counts as (",
-           f"select {group_ref}, {column}, count(*) as cnt",
-           f"from {from_table}",
-           f"where {column} is not null",
-           f"group by {group_ref}, {column}", "),"
-           f"ranked_tf as (",
-           f"select {group_ref}, {column}, cnt,",
-           f"row_number() over ( partition by {group_ref} order by cnt DESC, {column} {date_order}) as rn",
-           "from value_counts )",
-           f"SELECT {group_ref}, {column} as {column}_min from ranked_tf",
+           f"\tselect {group_ref}, {column}, cnt,",
+           f"\trow_number() over ( partition by {group_ref} order by cnt DESC, {column} {asc_desc}) as rn",
+           "\tfrom value_counts )",
+           f"SELECT {group_ref}, {column} as {column}_best, cnt from ranked_tf",
            f"where rn =1 order by {group_ref}"]
     return ' \n'.join(sql)
 
 
 if __name__ == "__main__":
-    sql = rank_value(from_table='irae__gpt4_donor_vars', column='donor_type')
-    print(sql)
+    targets = [
+        by_subject(from_table='irae__gpt4_parsed', column='donor_date'),
+        by_subject(from_table='irae__gpt4_parsed', column='donor_type'),
+        by_subject(from_table='irae__gpt4_parsed', column='donor_relationship'),
+    ]
+    print(targets[2])
+
+
 
