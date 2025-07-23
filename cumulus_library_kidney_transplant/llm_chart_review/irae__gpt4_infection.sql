@@ -44,18 +44,28 @@ with union_note as
     select distinct documentreference_ref,
             fungal_present as confidence, 'fungal' as present_type
     from    irae__gpt4_fhir    where fungal_present!='NoneOfTheAbove'
+),
+any_infection as
+(
+       select distinct documentreference_ref, confidence, 'infection' as present_type
+       from union_note
+       UNION
+       select distinct documentreference_ref, confidence, present_type
+       from union_note
 )
 select  distinct
-        union_note.confidence,
-        union_note.present_type,
-        union_note.documentreference_ref
-from    union_note;
+        any_infection.confidence,
+        any_infection.present_type,
+        any_infection.documentreference_ref
+from    any_infection;
 
 create or replace view irae__gpt4_infection as
 select  distinct
         vars.*,
-        present.confidence,
-        present.present_type
+        coalesce(present.confidence,    'NoneOfTheAbove') as confidence,
+        coalesce(present.present_type,  'NoneOfTheAbove') as present_type,
+        case    when present.present_type is not null
+                then True else False end as present_type_any
 from    irae__gpt4_infection_vars as vars
 left join   irae__gpt4_infection_present as present
      on     vars.documentreference_ref = present.documentreference_ref;
