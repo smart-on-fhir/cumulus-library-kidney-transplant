@@ -34,11 +34,17 @@ group by variable
 order by cnt_patients desc;
 
 
-select  count(*) as cnt, donor_date
-from    irae__gpt4_donor
-where   subject_ref =
-'Patient/806dda1fd7979681eeee1e88d703b69e47c10370663584e380919b9f4e6088b4'
-and     donor_date is not null
-and     donor_date > date('2000-01-01')
-group by donor_date
-order by cnt desc
+with only_year as
+(
+    select  distinct fhir_ref from irae__gpt4_term_freq_first
+    where   col = 'donor_date'
+    and     fhir_ref like 'Patient/%'
+    and     date(val) < date('1980-01-01')
+)
+select tf.*
+from
+    only_year,
+    irae__gpt4_term_freq_all as tf
+where   only_year.fhir_ref = tf.fhir_ref
+and     tf.col = 'donor_date'
+order by tf.fhir_ref, tf.cnt desc

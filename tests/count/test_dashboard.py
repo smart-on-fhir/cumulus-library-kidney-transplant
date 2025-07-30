@@ -7,6 +7,3 @@ class TestDashboard(unittest.TestCase):
         for graph in deprecated_dashboard.list_graph_defaults():
             print(graph.as_json())
 
-
-if __name__ == '__main__':
-    unittest.main()

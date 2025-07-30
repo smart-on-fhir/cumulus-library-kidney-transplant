@@ -1,14 +1,13 @@
 import unittest
 
+import numpy as np
+import pandas as pd
+from itertools import chain, combinations
+
 def powerset(iterable):
     s = list(iterable)
     n = len(s)
     return [[s[j] for j in range(n) if (i & (1 << j))] for i in range(2**n)]
-
-
-import numpy as np
-import pandas as pd
-from itertools import chain, combinations
 
 
 def powerset_matrix(iterable):

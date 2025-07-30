@@ -1,7 +1,9 @@
 create or replace view irae__gpt4_parsed as
+with parsed as
+(
 select distinct
-    concat('Patient/', split_part(filename, '.', 1))            as subject_ref,
     concat('DocumentReference/', split_part(filename, '.', 2))  as documentreference_ref,
+    concat('Patient/', split_part(filename, '.', 1))            as subject_ref,
 
     coalesce(donor_type_mentioned, False)           as donor_type_mentioned,
     case    when    donor_type = ''
@@ -125,7 +127,17 @@ select distinct
             then    'NoneOfTheAbove'
             else    cancer_present
             end as  cancer_present,
-
-    "filename",
-    error_found
-from    irae__gpt4_raw;
+    "filename"
+from    irae__gpt4_raw
+where   error_found is NULL
+)
+select  distinct
+        E.encounter_ref,
+        parsed.*
+from    parsed,
+        core__documentreference as DOC,
+        core__encounter         as E
+where   DOC.documentreference_ref = parsed.documentreference_ref
+and     DOC.encounter_ref = E.encounter_ref
+order by parsed.subject_ref, E.encounter_ref, parsed.documentreference_ref
+;
