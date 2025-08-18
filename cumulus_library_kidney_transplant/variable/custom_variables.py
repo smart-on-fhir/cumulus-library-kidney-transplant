@@ -8,15 +8,23 @@ from cumulus_library_kidney_transplant.variable.spreadsheet import SpreadsheetRe
 # List of aggregated Rx and Lab custom variables.
 VAR_LIST = ['rx_custom', 'lab_custom']
 
-# List of Rx Immunosuppressive medications
-RX_LIST = ['atg',
-           'azathioprine',
+# # List of Rx Immunosuppressive medications
+# RX_LIST = ['atg',
+#            'azathioprine',
+#            'belatacept',
+#            'cyclosporin',
+#            'evorolimus',
+#            'mycophenolate',
+#            'sirolimus',
+#            'tacrolimus']
+
+RX_LIST = ['azathioprine', 'mycophenolate',
+           'cyclosporin', 'tacrolimus',
+           'everolimus', 'sirolimus',
+           'prednisone', 'prednisolone', 'methylprednisolone',
+           'alemtuzumab','atg','basiliximab','rituximab',
            'belatacept',
-           'cyclosporin',
-           'evorolimus',
-           'mycophenolate',
-           'sirolimus',
-           'tacrolimus']
+           'cytogam','ivig','ig']
 
 # List of Lab Drug Levels, important for finding measures of Patient Compliance.
 # Example, https://pubmed.ncbi.nlm.nih.gov/15021850/

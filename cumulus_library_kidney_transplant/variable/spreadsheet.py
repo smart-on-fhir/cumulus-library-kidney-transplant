@@ -36,7 +36,9 @@ class SpreadsheetReader:
             c.code = columns[0]
             c.display = columns[1]
             c.system = self.vocab
-            codes.append(c)
+
+            if c.code and c.code != 'code':
+                codes.append(c)
         return codes
 
     def read_binaryclass(self):
