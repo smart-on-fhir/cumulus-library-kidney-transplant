@@ -169,7 +169,6 @@ def get_lab_analytes() -> Labs:
 def get_medications() -> Medications:
     return Medications([
         Variable('immunosuppressive', {
-            'everolimus': '2.16.840.1.113762.1.4.1260.499',
             'drugs': '2.16.840.1.113762.1.4.1219.192',
             'systemic_therapy': '2.16.840.1.113883.3.666.5.803',
             'immune_modulators': '2.16.840.1.113762.1.4.1248.124',
