@@ -54,11 +54,9 @@ def get_diagnoses() -> Diagnoses:
             'recipient': '2.16.840.1.113762.1.4.1111.27'}))
     vars.append(Variable(
         'Cancer', {
-            'skin': cancer_any,
-            'melanoma': cancer_any,
+            # 'any' : cancer_any,
             'melanoma_malignant': ['2.16.840.1.113883.3.1434.1038', '2.16.840.1.113883.3.464.1003.108.11.1018'],
-            'sarcoma': cancer_any,
-            'squamous': cancer_any}))
+            }))
     vars.append(Variable(
         'Kidney', {
             'condition': '2.16.840.1.113883.17.4077.3.2028',

@@ -7,11 +7,8 @@
 |dx_transplant|solid_organ|[2.16.840.1.113762.1.4.1032.205](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1032.205/expansion/Latest)|
 |dx_transplant|recipient|[2.16.840.1.113762.1.4.1111.27](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1111.27/expansion/Latest)|
 |**dx_cancer**||
-|dx_cancer|skin|[2.16.840.1.113883.3.526.3.1010](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.526.3.1010/expansion/Latest)|
-|dx_cancer|melanoma|[2.16.840.1.113883.3.526.3.1010](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.526.3.1010/expansion/Latest)|
+|dx_cancer|any|[2.16.840.1.113883.3.526.3.1010](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.526.3.1010/expansion/Latest)|
 |dx_cancer|melanoma_malignant|[2.16.840.1.113883.3.1434.1038](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.1434.1038/expansion/Latest), [2.16.840.1.113883.3.464.1003.108.11.1018](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.464.1003.108.11.1018/expansion/Latest)|
-|dx_cancer|sarcoma|[2.16.840.1.113883.3.526.3.1010](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.526.3.1010/expansion/Latest)|
-|dx_cancer|squamous|[2.16.840.1.113883.3.526.3.1010](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.526.3.1010/expansion/Latest)|
 |**dx_kidney**||
 |dx_kidney|condition|[2.16.840.1.113883.17.4077.3.2028](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.17.4077.3.2028/expansion/Latest)|
 |dx_kidney|renal_disease|[2.16.840.1.113762.1.4.1029.335](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1029.335/expansion/Latest)|

@@ -133,7 +133,7 @@ def filter_expansion(valueset_json: Path | str, search_terms: list) -> List[dict
     for valueset in valueset_list:
         for code in expansion2codelist(valueset):
             search_string = f'{code.code.lower()} {code.display.lower()}'
-            for term in search_terms:
+            for term in guard.as_list_str(search_terms):
                 if term.lower() in search_string:
                     matches.append(code.as_json())
 
