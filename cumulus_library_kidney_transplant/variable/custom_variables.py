@@ -8,16 +8,6 @@ from cumulus_library_kidney_transplant.variable.spreadsheet import SpreadsheetRe
 # List of aggregated Rx and Lab custom variables.
 VAR_LIST = ['rx_custom', 'lab_custom']
 
-# # List of Rx Immunosuppressive medications
-# RX_LIST = ['atg',
-#            'azathioprine',
-#            'belatacept',
-#            'cyclosporin',
-#            'evorolimus',
-#            'mycophenolate',
-#            'sirolimus',
-#            'tacrolimus']
-
 RX_LIST = ['azathioprine', 'mycophenolate',
            'cyclosporin', 'tacrolimus',
            'everolimus', 'sirolimus',
@@ -53,14 +43,9 @@ LAB_VIRUS_LIST = ['cytomegalovirus']
 
 LAB_LIST = LAB_DRUG_LIST + LAB_METABOLIC_LIST + LAB_VIRUS_LIST
 
-DX_TRANSPLANT_LIST = ['transplant_complication',
-                      'transplant_donor',
-                      'transplant_status']
-
 def deprecated_list_view_valuesets() -> List[str]:
     return list_view_valuesets_rx() + \
-           list_view_valuesets_lab() + \
-           list_view_valuesets_dx()
+           list_view_valuesets_lab()
 
 def list_view_variables() -> List[str]:
     return fhir2sql.name_prefix(VAR_LIST)
@@ -79,14 +64,6 @@ def list_view_valuesets_lab() -> List[str]:
     """
     valuesets = [f'lab_{lab}' for lab in LAB_LIST]
     valuesets.append('lab_custom')
-    return sorted(list(set(fhir2sql.name_prefix(valuesets))))
-
-def list_view_valuesets_dx() -> List[str]:
-    """
-    :return: List of SQL files for each dx in `DX_TRANSPLANT_LIST`
-    """
-    valuesets = [f'dx_{dx}' for dx in DX_TRANSPLANT_LIST]
-    valuesets.append('lab_dx_transplant')
     return sorted(list(set(fhir2sql.name_prefix(valuesets))))
 
 def union_view_list(rx_or_lab: str, variable_list: list, view_name: str) -> Path:
@@ -138,12 +115,6 @@ def make_rx() -> List[Path]:
     """
     return make_aspect(Vocab.RXNORM, AspectKey.rx, RX_LIST, Delimiter.tsv)
 
-def make_dx() -> List[Path]:
-    """
-    :return: Lab Variables {system=Vocab.ICD10CM}
-    """
-    return make_aspect(Vocab.ICD10CM, AspectKey.dx, DX_TRANSPLANT_LIST, Delimiter.csv)
-
 def make() -> List[Path]:
     """
     Custom variables are used when VSAC ValueSets are not sufficient for the study needs.
@@ -166,4 +137,4 @@ def make() -> List[Path]:
 
     :return: List of athena SQL files for each custom variable
     """
-    return make_dx() + make_lab() + make_rx() + make_union()
+    return make_lab() + make_rx() + make_union()
