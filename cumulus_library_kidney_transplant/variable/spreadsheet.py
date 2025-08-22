@@ -32,10 +32,14 @@ class SpreadsheetReader:
         codes = list()
 
         for columns in filetool.read_csv(self.filename, self.delimiter.value, quote_char):
-            c = Coding()
-            c.code = columns[0]
-            c.display = columns[1]
-            c.system = self.vocab
+            try:
+                c = Coding()
+                c.code = columns[0]
+                c.display = columns[1]
+                c.system = self.vocab
+            except Exception as e:
+                print('failed to read columns : {}'.format(columns))
+                raise e
 
             if c.code and c.code != 'code':
                 codes.append(c)
