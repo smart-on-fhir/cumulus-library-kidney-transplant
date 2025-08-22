@@ -217,7 +217,7 @@ def csv2view(file_csv:Path|str, view_name) -> Path:
 def union_view_list(view_list: List[str], view_name: str) -> Path:
     dest = name_prefix(view_name)
     cvas = f"create or replace view {PREFIX}__{view_name} as \n "
-    select = [f"select '{name_simple(view)}' as valueset, system, code, display from \n {view}" for view in view_list]
+    select = [f"select '{name_simple(view)}' as valueset, system, code, display from \n {view}" for view in sorted(view_list)]
     sql = cvas + '\n UNION '.join(select)
     return save_athena_view(dest, sql)
 
