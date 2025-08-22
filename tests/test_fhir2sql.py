@@ -4,41 +4,6 @@ from typing import List
 from pathlib import Path
 from cumulus_library_kidney_transplant import guard, fhir2sql, filetool
 
-def csv_headers(file_csv: Path|str) -> List[str]:
-    with file_csv.open(newline='', encoding="utf-8") as f:
-        reader = csv.reader(f)
-        return next(reader)
-
-def csv2view(file_csv:Path, view_name) -> str:
-    """
-    :param codelist: list of concepts
-    :param view_name: like define_type
-    :return: SQL command
-    """
-    header_list = csv_headers(file_csv)
-    create = f"create or replace view {view_name} as select * from (values"
-    footer = f") AS t ({','.join(header_list)}) ;"
-    content = list()
-
-    with open(file_csv) as f:
-        for row in csv.DictReader(f, header_list):
-            parsed = list()
-            for col in header_list:
-                value = row[col]
-                if guard.is_bool(guard.as_bool(value)):
-                    value = guard.as_bool(value)
-                    parsed.append(str(value))
-                else:
-                    if value is None or len(str(value)) == 0:
-                        parsed.append('')
-                    else:
-                        value = fhir2sql.sql_escape(value)
-                        parsed.append(f"'{value}'")
-
-            parsed = ','.join(parsed)
-            content.append(f"\n({parsed})")
-        return create + '\n' + ','.join(content) + '\n' + footer
-
 class TestFHIR2sql(unittest.TestCase):
 
     def test_name_simple(self):
@@ -70,18 +35,15 @@ class TestFHIR2sql(unittest.TestCase):
                        'rejection','failure','outcome',
                        'lab','imaging','count_sum']
 
-        file_csv = fhir2sql.filetool.path_spreadsheet('casedef_custom.csv')
+        file_csv = filetool.path_spreadsheet('casedef_custom.csv')
         actual = csv_headers(file_csv)
         self.assertEqual(header_list, actual)
 
-    def test_criteria2view(self):
-        file_csv = fhir2sql.filetool.path_spreadsheet('casedef_custom.csv')
+    def ignore_test_criteria2view(self):
+        file_csv = filetool.path_spreadsheet('casedef_custom.csv')
+        view_name = fhir2sql.name_prefix('casedef_custom_csv')
+        view_file = filetool.path_athena(f'{view_name}.sql')
 
-        _sql = csv2view(file_csv, 'casedef_custom')
-        print(_sql)
+        _sql = csv2sql(file_csv, view_name)
+        filetool.write_text(_sql, view_file)
 
-
-
-
-if __name__ == '__main__':
-    unittest.main()

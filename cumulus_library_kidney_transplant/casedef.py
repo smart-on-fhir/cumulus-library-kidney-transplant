@@ -4,26 +4,66 @@ from cumulus_library_kidney_transplant import fhir2sql, filetool
 
 ########################################################################################################
 # CASE DEFINITION
-#
-# A special variable "case definition" defines who is "positive" for the disease of interest.
-# For this IRAE kidney transplant study, the "case definition" are patients who receive immunosuppressive
-# drugs following a kidney transplant.
-#
-# Note that all participating sites (except BCH) are loading (via cumulus-etl) only patients who have
-# recieved a kidney transplant. We then refine the selection to include only patients on immunosuppresive
-# drugs.
-#
-# TODO: importantly, BCH Athena includes patients with and without transplant.
-# Note that in BCH data case_definition currently means the patient has a FHIR MedicationRequest for one of
-# `rx_custom` medications. Be aware that BCH data 'case definition' includes patients without a kideny transplant.
-# For example, patient may have had a heart transplant, or other reason for immunosuppresive medication.
-#
 ##########################################################################################################
 def name_casedef() -> str:
     """
     :return: Tablename of casedef like irae__cohort_casedef
     """
     return fhir2sql.name_join('cohort', 'casedef')
+
+def make_casedef_custom_csv() -> Path:
+    file_csv = filetool.path_spreadsheet('casedef_custom.csv')
+    view_name_csv = fhir2sql.name_prefix('casedef_custom_csv')
+    return fhir2sql.csv2view(file_csv, view_name_csv)
+
+def make_casedef_custom() -> Path:
+    file_sql = filetool.load_template('casedef.sql')
+    view_name = fhir2sql.name_prefix('casedef')
+    return fhir2sql.save_athena_view(view_name, file_sql)
+
+########################################################################################################
+# Select cohorts matching casedef
+##########################################################################################################
+
+def list_cohorts() -> List[str]:
+    """
+    :return: list of tables in the `casedef`, one for each AspectKey
+    """
+    table = name_casedef()
+    cohort_list = fhir2sql.list_table_aspect(table)
+    return cohort_list + [table]
+
+def make_cohorts() -> List[Path]:
+    """
+    Study Builder then builds each `AspectKey`:
+        dx = 'diagnoses'
+        rx = 'medications'
+        lab = 'labs'
+        proc = 'procedures'
+        doc = 'document'
+        diag = 'diagnostic_report'
+
+    Produces:
+    * cohort_casedef.sql       Patient Encounters matching criteria
+    * cohort_casedef_dx.sql    -> FHIR Condition
+    * cohort_casedef_rx.sql    -> FHIR MedicationRequest
+    * cohort_casedef_lab.sql   -> FHIR Observation.category=lab
+    * cohort_casedef_doc.sql   -> FHIR DocumentReference
+    * cohort_casedef_proc.sql  -> FHIR Procedure
+    * cohort_casedef_diag.sql  -> FHIR DiagnosticReport
+
+    :return: list of SQL `casedef`
+    """
+    file_list = list()
+    for table in list_cohorts():
+        sql = filetool.load_template(f'{table}.sql')
+        sql = filetool.inline_template(sql)
+        file_list.append(filetool.save_athena_view(table, sql))
+    return file_list
+
+########################################################################################################
+# Index first encounter matching case definition
+##########################################################################################################
 
 def make_index_date(variable, suffix, equality) -> Path:
     """
@@ -48,6 +88,10 @@ def make_index_date(variable, suffix, equality) -> Path:
     sql = sql.replace('$equality', equality)
     return filetool.save_athena(view, sql)
 
+########################################################################################################
+# Timeline (pre/index/post) view with `cohort_study_variables_wide`
+##########################################################################################################
+
 def make_timeline() -> Path:
     """
     Return a timeline of the case definition with respect to all study variables.
@@ -59,6 +103,9 @@ def make_timeline() -> Path:
     sql = filetool.inline_template(sql)
     return filetool.save_athena(template, sql)
 
+########################################################################################################
+# Samples for Chart Review and QA
+##########################################################################################################
 def make_samples(size: int = None, suffix: str = 'post') -> Path:
     """
     This method is for sampling Documents for LLM/ChartReview.
@@ -94,15 +141,18 @@ def make(variable=None) -> List[Path]:
     :return: List of SQL table cohorts selected before and after the case definition +timeline +samples
     """
     if not variable:
-        variable = fhir2sql.name_join('cohort', 'rx_custom')
+        variable = fhir2sql.name_join('cohort', 'casedef')
 
-    return [make_index_date(variable, 'index', '='),
-            make_index_date(variable, 'pre', '<'),
-            make_index_date(variable, 'post', '>'),
-            make_timeline(),
-            make_samples(None, 'pre'),
-            make_samples(100, 'pre'),
-            make_samples(1000, 'pre'),
-            make_samples(None, 'post'),
-            make_samples(100, 'post'),
-            make_samples(1000, 'post')]
+    return ([make_casedef_custom_csv(),
+             make_casedef_custom()] +
+                make_cohorts() + [
+                    make_index_date(variable, 'index', '='),
+                    make_index_date(variable, 'pre', '<'),
+                    make_index_date(variable, 'post', '>'),
+                    make_timeline(),
+                    make_samples(None, 'pre'),
+                    make_samples(100, 'pre'),
+                    make_samples(1000, 'pre'),
+                    make_samples(None, 'post'),
+                    make_samples(100, 'post'),
+                    make_samples(1000, 'post')])

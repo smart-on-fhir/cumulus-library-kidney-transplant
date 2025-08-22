@@ -8,9 +8,7 @@ def list_tables() -> List[str]:
     :return: list of tables in the `study_population`, one for each AspectKey
     """
     table = fhir2sql.name_join('cohort', 'study_population')
-    aspect_list = ['dx', 'rx', 'lab', 'doc', 'proc', 'diag']
-    aspect_list = [f'{table}_{t}' for t in aspect_list]
-    return [table] + aspect_list
+    return [table] + fhir2sql.list_table_aspect(table)
 
 # MHG: The following two functions don't actually create files
 def make_meta_date() -> List[Path]:

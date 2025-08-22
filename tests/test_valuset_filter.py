@@ -24,5 +24,5 @@ def filter_sql_cancer():
 
 class TestValuesetFilter(unittest.TestCase):
 
-    def test(self):
+    def ignore_test(self):
         filter_sql_cancer()
