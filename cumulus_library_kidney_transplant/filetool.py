@@ -99,7 +99,7 @@ def path_template(file_sql: Path | str) -> Path:
     return Path(os.path.join(path_home(), 'template', template))
 
 def load_template(file_sql: Path | str) -> str:
-    return read_text(path_template(file_sql))
+    return inline_template(read_text(path_template(file_sql)))
 
 def inline_template(sql: str, variable: str = None) -> str:
     sql = sql.replace('$prefix', PREFIX)
