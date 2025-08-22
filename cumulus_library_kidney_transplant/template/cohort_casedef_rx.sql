@@ -1,4 +1,4 @@
-create table irae__cohort_casedef_rx as
+create table $prefix__cohort_casedef_rx as
 select  distinct
         enc_period_start_day,
         age_at_visit,
@@ -7,8 +7,8 @@ select  distinct
         subject_ref,
         encounter_ref,
         casedef.*
-from    irae__casedef           as casedef,
-        irae__cohort_study_population_rx as studypop
+from    $prefix__casedef           as casedef,
+        $prefix__cohort_study_population_rx as studypop
 where   casedef.system  = rx_system
 and     casedef.code    = rx_code
 ;

@@ -1,4 +1,4 @@
-create or replace view irae__casedef as
+create or replace view $prefix__casedef as
 select distinct
     system,
     replace(code, '@', '')  as code,
@@ -11,4 +11,4 @@ select distinct
     outcome     = 'true'    as outcome,
     lab         = 'true'    as lab,
     imaging     = 'true'    as imaging
-from irae__casedef_custom_csv;
+from $prefix__casedef_custom_csv;

@@ -1,10 +1,10 @@
---    drop table if exists irae__sample_dx_transplant;
+--    drop table if exists $prefix__sample_dx_transplant;
 
-create table irae__sample_dx_transplant_kidney as
+create table $prefix__sample_dx_transplant_kidney as
 with dx_transplant_kidney as
 (
     select distinct valueset, subject_ref, min(enc_period_start_day) as min_start_day
-    from irae__cohort_dx_transplant
+    from $prefix__cohort_dx_transplant
     where valueset = 'dx_transplant_kidney'
     group by valueset, subject_ref
 ),
@@ -47,7 +47,7 @@ select * from unordered order by
 --            #################################################
 --            Only on documents with a diagnosis
 --            #################################################
---            create table irae__sample_dx_transplant as
+--            create table $prefix__sample_dx_transplant as
 --            with unordered as
 --            (
 --                select distinct
@@ -77,7 +77,7 @@ select * from unordered order by
 --                    P.subject_ref,
 --                    P.id                    as subject_id
 --                 from
---                    irae__cohort_dx_transplant as DX,
+--                    $prefix__cohort_dx_transplant as DX,
 --                    core__documentreference as DR,
 --                    core__encounter         as E,
 --                    core__patient           as P

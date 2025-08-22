@@ -1,6 +1,6 @@
---    drop table if exists irae__rx_cohort_sample;
+--    drop table if exists $prefix__rx_cohort_sample;
 
-create table irae__rx_cohort_sample as
+create table $prefix__rx_cohort_sample as
 select distinct
     RX.valueset,
     MR.category_code        as rx_category,
@@ -23,7 +23,7 @@ select distinct
      core__documentreference as DR,
      core__encounter         as E,
      core__patient           as P,
-     irae__rx_custom         as RX
+     $prefix__rx_custom         as RX
 where
      MR.encounter_ref = DR.encounter_ref    AND
      MR.encounter_ref = E.encounter_ref     AND
@@ -35,7 +35,7 @@ order by
     E.encounter_ref,
     DR.documentreference_ref;
 
-create table irae__rx_cohort_sample as
+create table $prefix__rx_cohort_sample as
 select distinct
     RX.valueset,
     MR.category_code        as rx_category,
@@ -58,7 +58,7 @@ select distinct
      core__documentreference as DR,
      core__encounter         as E,
      core__patient           as P,
-     irae__rx_custom         as RX
+     $prefix__rx_custom         as RX
 where 
      MR.encounter_ref = DR.encounter_ref    AND
      MR.encounter_ref = E.encounter_ref     AND
@@ -70,13 +70,13 @@ order by
     E.encounter_ref,
     DR.documentreference_ref;
 
-create table irae__rx_cohort_sample_100 as
+create table $prefix__rx_cohort_sample_100 as
 select distinct
     subject_ref,
     documentreference_ref,
     subtype
 from
-    irae__rx_cohort_sample
+    $prefix__rx_cohort_sample
 where
     doc_type_display is not null and
     doc_type_display != 'unknown'
@@ -85,13 +85,13 @@ order by
     documentreference_ref
 limit 100;
 
-create table irae__rx_cohort_sample_1000 as
+create table $prefix__rx_cohort_sample_1000 as
 select distinct
     subject_id,
     documentreference_id,
     subtype
 from
-    irae__rx_cohort_sample
+    $prefix__rx_cohort_sample
 order by
     documentreference_id
 limit 1000;
@@ -99,7 +99,7 @@ limit 1000;
 
 select count(distinct documentreference_ref) as cnt,
  subtype, rx_category, encounter_class_code, doc_type_display
- from   irae__rx_cohort_sample
+ from   $prefix__rx_cohort_sample
  where
  doc_type_display is not null and
  doc_type_display != 'unknown'
@@ -110,7 +110,7 @@ select count(distinct documentreference_ref) as cnt,
 
  select count(distinct documentreference_ref) as cnt,
  subtype, encounter_class_code, doc_type_display
- from   irae__rx_cohort_sample
+ from   $prefix__rx_cohort_sample
  where
  doc_type_display is not null and
  doc_type_display != 'unknown'
