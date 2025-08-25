@@ -20,7 +20,7 @@ StudyPeriodHistory as
 StudyPeriod as
 (
     select encounter_ref, subject_ref from StudyPeriodRange
-    UNION ALL
+    UNION
     select encounter_ref, subject_ref from StudyPeriodHistory
 ),
 StudyPopulation as

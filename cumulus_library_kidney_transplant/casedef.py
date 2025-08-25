@@ -24,42 +24,10 @@ def make_casedef_custom() -> Path:
 ########################################################################################################
 # Select cohorts matching casedef
 ##########################################################################################################
-
-def list_cohorts() -> List[str]:
-    """
-    :return: list of tables in the `casedef`, one for each AspectKey
-    """
+def make_cohort() -> Path:
     table = name_casedef()
-    cohort_list = fhir2sql.list_table_aspect(table)
-    return cohort_list + [table]
-
-def make_cohorts() -> List[Path]:
-    """
-    Study Builder then builds each `AspectKey`:
-        dx = 'diagnoses'
-        rx = 'medications'
-        lab = 'labs'
-        proc = 'procedures'
-        doc = 'document'
-        diag = 'diagnostic_report'
-
-    Produces:
-    * cohort_casedef.sql       Patient Encounters matching criteria
-    * cohort_casedef_dx.sql    -> FHIR Condition
-    * cohort_casedef_rx.sql    -> FHIR MedicationRequest
-    * cohort_casedef_lab.sql   -> FHIR Observation.category=lab
-    * cohort_casedef_doc.sql   -> FHIR DocumentReference
-    * cohort_casedef_proc.sql  -> FHIR Procedure
-    * cohort_casedef_diag.sql  -> FHIR DiagnosticReport
-
-    :return: list of SQL `casedef`
-    """
-    file_list = list()
-    for table in list_cohorts():
-        sql = filetool.load_template(f'{table}.sql')
-        sql = filetool.inline_template(sql)
-        file_list.append(filetool.save_athena_view(table, sql))
-    return file_list
+    sql = filetool.load_template(f'{table}.sql')
+    return filetool.save_athena_view(table, sql)
 
 ########################################################################################################
 # Index first encounter matching case definition
@@ -143,16 +111,19 @@ def make(variable=None) -> List[Path]:
     if not variable:
         variable = fhir2sql.name_join('cohort', 'casedef')
 
-    return ([make_casedef_custom_csv(),
-             make_casedef_custom()] +
-                make_cohorts() + [
-                    make_index_date(variable, 'index', '='),
-                    make_index_date(variable, 'pre', '<'),
-                    make_index_date(variable, 'post', '>'),
-                    make_timeline(),
-                    make_samples(None, 'pre'),
-                    make_samples(100, 'pre'),
-                    make_samples(1000, 'pre'),
-                    make_samples(None, 'post'),
-                    make_samples(100, 'post'),
-                    make_samples(1000, 'post')])
+    return [make_casedef_custom_csv(),
+            make_casedef_custom(),
+            make_cohort(),
+            make_index_date(variable, 'index', '='),
+            make_index_date(variable, 'pre', '<'),
+            make_index_date(variable, 'post', '>'),
+            make_timeline(),
+            make_samples(None, 'index'),
+            make_samples(10, 'index'),
+            make_samples(100, 'index'),
+            make_samples(None, 'pre'),
+            make_samples(10, 'pre'),
+            make_samples(100, 'pre'),
+            make_samples(None, 'post'),
+            make_samples(10, 'post'),
+            make_samples(100, 'post')]
