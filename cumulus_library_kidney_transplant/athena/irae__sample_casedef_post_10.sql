@@ -1,9 +1,9 @@
-create table irae__sample_casedef_post_1000 as
+create table irae__sample_casedef_post_10 as
 WITH
 patient_list as (
     select  distinct subject_ref 
-    from    case_documented_encounter
-    limit 1000 
+    from    irae__sample_casedef_post
+    limit 10 
 )
 select      distinct doc.* 
 from        irae__sample_casedef_post as doc,

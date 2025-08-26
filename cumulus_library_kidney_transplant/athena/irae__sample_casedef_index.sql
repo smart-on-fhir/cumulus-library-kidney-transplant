@@ -1,4 +1,4 @@
-CREATE table irae__sample_casedef_post as
+CREATE table irae__sample_casedef_index as
 SELECT  distinct
         doc.subject_ref,
         doc.encounter_ref,
@@ -9,7 +9,7 @@ SELECT  distinct
         doc.doc_author_day,
         doc.enc_period_start_day
 FROM    irae__cohort_casedef_include as include,
-        irae__cohort_casedef_post as casedef,
+        irae__cohort_casedef_index as casedef,
         irae__cohort_study_population_doc as doc
 WHERE   casedef.subject = include.subject
 AND     casedef.encounter_ref = doc.encounter_ref
