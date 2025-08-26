@@ -118,7 +118,4 @@ if __name__ == "__main__":
                                  'gender',
                                  'race_display'],
                      table_name=fhir2sql.name_cube('patient_llm_rejection')),
-
-        #
     ]
-    print(targets)
