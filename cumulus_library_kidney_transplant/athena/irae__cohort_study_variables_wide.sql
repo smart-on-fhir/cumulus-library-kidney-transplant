@@ -25,7 +25,6 @@ select distinct
 	IF(lookup.variable='lab_lft', lookup.valueset) AS lab_lft,
 	IF(lookup.variable='proc_dialysis', lookup.valueset) AS proc_dialysis,
 	IF(lookup.variable='proc_nephrectomy', lookup.valueset) AS proc_nephrectomy,
-	IF(lookup.variable='proc_surgery', lookup.valueset) AS proc_surgery,
 	IF(lookup.variable='proc_transplant', lookup.valueset) AS proc_transplant,
 	IF(lookup.variable='rx_antibiotics', lookup.valueset) AS rx_antibiotics,
 	IF(lookup.variable='rx_cancer', lookup.valueset) AS rx_cancer,
