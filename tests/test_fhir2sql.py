@@ -1,7 +1,4 @@
 import unittest
-import csv
-from typing import List
-from pathlib import Path
 from cumulus_library_kidney_transplant import guard, fhir2sql, filetool
 
 class TestFHIR2sql(unittest.TestCase):
@@ -36,14 +33,13 @@ class TestFHIR2sql(unittest.TestCase):
                        'lab','imaging','count_sum']
 
         file_csv = filetool.path_spreadsheet('casedef_custom.csv')
-        actual = csv_headers(file_csv)
+        actual = fhir2sql.csv_headers(file_csv)
         self.assertEqual(header_list, actual)
 
-    def ignore_test_criteria2view(self):
+    def ignore_test_csv2view(self):
         file_csv = filetool.path_spreadsheet('casedef_custom.csv')
         view_name = fhir2sql.name_prefix('casedef_custom_csv')
         view_file = filetool.path_athena(f'{view_name}.sql')
 
-        _sql = csv2sql(file_csv, view_name)
-        filetool.write_text(_sql, view_file)
+        fhir2sql.csv2view(file_csv, view_name)
 
