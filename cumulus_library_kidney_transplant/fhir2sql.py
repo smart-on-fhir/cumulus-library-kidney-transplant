@@ -218,7 +218,7 @@ def union_view_list(view_list: List[str], view_name: str) -> Path:
     dest = name_prefix(view_name)
     cvas = f"create or replace view {PREFIX}__{view_name} as \n "
     select = [f"select '{name_simple(view)}' as valueset, system, code, display from \n {view}" for view in sorted(view_list)]
-    sql = cvas + '\n UNION ALL'.join(select)
+    sql = cvas + '\n UNION ALL\n'.join(select)
     return save_athena_view(dest, sql)
 
 def define(codelist: List[Coding], view_name: str) -> Path:
