@@ -75,5 +75,5 @@ CREATE TABLE irae__count_patient_doc_biopsy AS (
         p."valueset"
     FROM powerset AS p
     WHERE 
-        cnt_subject_ref >= 10
+        p.cnt_subject_ref >= 10
 );
