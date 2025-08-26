@@ -1,4 +1,4 @@
-create or replace view $prefix__casedef as
+create or replace view irae__casedef as
 with cast_type_safe as
 (
     select distinct
@@ -13,7 +13,7 @@ with cast_type_safe as
         outcome     = 'true'    as outcome,
         lab         = 'true'    as lab,
         imaging     = 'true'    as imaging
-    from $prefix__casedef_custom_csv
+    from irae__casedef_custom_csv
 ),
 include_rule as
 (

@@ -24,8 +24,11 @@ def make_casedef_custom() -> Path:
 ########################################################################################################
 # Select cohorts matching casedef
 ##########################################################################################################
-def make_cohort() -> Path:
-    table = name_casedef()
+def make_cohort(include_exclude: str = None) -> Path:
+    if include_exclude is None:
+        table = name_casedef()
+    else:
+        table = f"{name_casedef()}_{include_exclude}"
     sql = filetool.load_template(f'{table}.sql')
     return filetool.save_athena_view(table, sql)
 
@@ -117,6 +120,8 @@ def make(variable=None) -> List[Path]:
             make_index_date(variable, 'index', '='),
             make_index_date(variable, 'pre', '<'),
             make_index_date(variable, 'post', '>'),
+            make_cohort('exclude'),
+            make_cohort('include'),
             make_timeline(),
             make_samples(None, 'index'),
             make_samples(10, 'index'),
