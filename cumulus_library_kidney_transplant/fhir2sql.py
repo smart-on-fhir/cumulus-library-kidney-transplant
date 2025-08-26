@@ -1,9 +1,11 @@
 import copy
+import csv
 from typing import List
 from pathlib import Path
 from fhirclient.models.coding import Coding
 from cumulus_library_kidney_transplant import guard, filetool
 from cumulus_library_kidney_transplant.study_prefix import PREFIX
+from cumulus_library_kidney_transplant.variable.aspect import AspectKey
 from cumulus_library_kidney_transplant.filetool import save_athena_view
 
 ###############################################################################
@@ -48,6 +50,11 @@ def name_cube(table: str, suffix: str = None) -> str:
 def name_valueset(table: str, suffix=None) -> str:
     part = f'valueset_{suffix}' if suffix else 'valueset'
     return name_join(part, table)
+
+def list_table_aspect(table:str, aspect_list=None) -> List[str]:
+    if aspect_list is None:
+        aspect_list = AspectKey.list_keys()
+    return [f'{table}_{aspect}' for aspect in aspect_list]
 
 ###############################################################################
 #
@@ -133,7 +140,7 @@ def filter_expansion(valueset_json: Path | str, search_terms: list) -> List[dict
     for valueset in valueset_list:
         for code in expansion2codelist(valueset):
             search_string = f'{code.code.lower()} {code.display.lower()}'
-            for term in search_terms:
+            for term in guard.as_list_str(search_terms):
                 if term.lower() in search_string:
                     matches.append(code.as_json())
 
@@ -174,11 +181,44 @@ def criteria2view(view_name, cols: list, values: list) -> Path:
     sql = '\n'.join(sql)
     return save_athena_view(view_name, sql)
 
+def csv_headers(file_csv: Path|str) -> List[str]:
+    with file_csv.open(newline='', encoding="utf-8") as f:
+        reader = csv.reader(f)
+        return next(reader)
+
+def csv2view(file_csv:Path|str, view_name) -> Path:
+    """
+    :param file_csv: path to CSV file, especially `casedef_custom.csv`
+    :param view_name:  target view name like casedef_custom_csv
+    :return: Path to SQL file
+    """
+    header_list = csv_headers(file_csv)
+    create = f"create or replace view {view_name} as select * from (values"
+    footer = f") AS t ({','.join(header_list)}) ;"
+    content = list()
+
+    with open(file_csv) as f:
+        for row in csv.DictReader(f, header_list):
+            parsed = list()
+            for col in header_list:
+                value = row[col]
+                if value not in header_list:
+                    if value is None or len(str(value)) == 0:
+                        parsed.append("''")
+                    else:
+                        value = sql_escape(value)
+                        parsed.append(f"'{value}'")
+            if len(parsed) > 0:
+                parsed = ','.join(parsed)
+                content.append(f"\n({parsed})")
+        _sql = create + '\n' + ','.join(content) + '\n' + footer
+        return save_athena_view(view_name, _sql)
+
 def union_view_list(view_list: List[str], view_name: str) -> Path:
     dest = name_prefix(view_name)
     cvas = f"create or replace view {PREFIX}__{view_name} as \n "
-    select = [f"select '{name_simple(view)}' as valueset, system, code, display from \n {view}" for view in view_list]
-    sql = cvas + '\n UNION '.join(select)
+    select = [f"select '{name_simple(view)}' as valueset, system, code, display from \n {view}" for view in sorted(view_list)]
+    sql = cvas + '\n UNION ALL\n'.join(select)
     return save_athena_view(dest, sql)
 
 def define(codelist: List[Coding], view_name: str) -> Path:
@@ -217,7 +257,7 @@ def select_union_study_variables(variable_list: List[str]) -> str:
         select = f"\tselect distinct '{variable}'\t as variable, valueset, code, display, system, encounter_ref, subject_ref "
         from_table = f" from {PREFIX}__cohort_{variable}"
         sql.append(select + from_table)
-    return ' UNION\n'.join(sql)
+    return ' UNION ALL\n'.join(sql)
 
 def select_lookup_study_variables(variable_list: List[str]) -> str:
     sql = list()

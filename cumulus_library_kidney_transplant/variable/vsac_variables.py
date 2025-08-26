@@ -8,6 +8,18 @@ from cumulus_library_kidney_transplant.variable import vsac_api
 from cumulus_library_kidney_transplant.variable.aspect import Aspect, AspectMap, AspectKey      # TODO: refactor
 from cumulus_library_kidney_transplant.variable.vsac_variables_defined import get_aspect_map
 
+# Cancer valueset are currently a special corner case
+DX_CANCER_LIST = ['carcinoma',
+                  'squamous',
+                  'basal',
+                  'melanoma',
+                  'skin',
+                  'lymph',
+                  'leukemia',
+                  'kidney',
+                  'malignant',
+                  'neoplasm']
+
 ###############################################################################
 #
 # VSAC Variables and Valuesets

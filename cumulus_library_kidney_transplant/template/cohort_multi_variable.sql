@@ -31,9 +31,9 @@ select  distinct
         dx.condition_ref,
         dx.encounter_ref,
         dx.subject_ref
-from    irae__cohort_dx_$variable    as dx,
-        irae__cohort_lab_$variable   as lab,
-        irae__cohort_rx_$variable    as rx
+from    $prefix__cohort_dx_$variable    as dx,
+        $prefix__cohort_lab_$variable   as lab,
+        $prefix__cohort_rx_$variable    as rx
 where   dx.encounter_ref = lab.encounter_ref
 and     dx.encounter_ref = rx.encounter_ref
 

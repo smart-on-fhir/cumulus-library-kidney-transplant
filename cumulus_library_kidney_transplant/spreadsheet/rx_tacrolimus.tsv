@@ -1,121 +1,107 @@
-code	display
-108513	Prograf 1 MG Oral Capsule
-108513	tacrolimus 1 MG Oral Capsule [Prograf]
-108514	Prograf 5 MG Oral Capsule
-108514	tacrolimus 5 MG Oral Capsule [Prograf]
-108515	1 ML tacrolimus 5 MG/ML Injection [Prograf]
-108515	Prograf 5 MG in 1 ML Injection
-108515	Prograf 5 MG per 1 ML Injection
-1163655	tacrolimus Injectable Product
-1164202	tacrolimus Oral Product
-1164203	tacrolimus Pill
-1164204	tacrolimus Topical Product
-1180662	Prograf Injectable Product
-1180663	Prograf Oral Product
-1180664	Prograf Pill
-1431970	tacrolimus Extended Release Oral Capsule
-1431971	24 HR tacrolimus 0.5 MG Extended Release Oral Capsule
-1431971	tacrolimus 0.5 MG (as anhydrous tacrolimus) 24 HR Extended Release Oral Capsule
-1431971	tacrolimus 0.5 MG 24HR Extended Release Oral Capsule
-1431973	tacrolimus 0.5 MG [Astagraf]
-1431974	tacrolimus Extended Release Oral Capsule [Astagraf]
-1431977	24 HR tacrolimus 0.5 MG Extended Release Oral Capsule [Astagraf]
-1431980	24 HR tacrolimus 1 MG Extended Release Oral Capsule
-1431980	tacrolimus 1 MG (as anhydrous tacrolimus) 24 HR Extended Release Oral Capsule
-1431980	tacrolimus 1 MG 24HR Extended Release Oral Capsule
-1431981	tacrolimus 1 MG [Astagraf]
-1431982	24 HR tacrolimus 1 MG Extended Release Oral Capsule [Astagraf]
-1431982	Astagraf XL 1 MG (as anhydrous tacrolimus) 24 HR Extended Release Oral Capsule
-1431985	24 HR tacrolimus 5 MG Extended Release Oral Capsule
-1431985	tacrolimus 5 MG (as anhydrous tacrolimus) 24 HR Extended Release Oral Capsule
-1431985	tacrolimus 5 MG 24HR Extended Release Oral Capsule
-1431986	tacrolimus 5 MG [Astagraf]
-1431987	24 HR tacrolimus 5 MG Extended Release Oral Capsule [Astagraf]
-1431987	Astagraf XL 5 MG (as anhydrous tacrolimus) 24 HR Extended Release Oral Capsule
-1664432	tacrolimus 4 MG
-1664433	tacrolimus Extended Release Oral Tablet
-1664434	24 HR tacrolimus 4 MG Extended Release Oral Tablet
-1664434	tacrolimus 4 MG (as anhydrous tacrolimus) 24HR Extended Release Tablet
-1664434	tacrolimus 4 MG 24HR Extended Release Tablet
-1664435	Envarsus
-1664436	tacrolimus 4 MG [Envarsus]
-1664437	tacrolimus Extended Release Oral Tablet [Envarsus]
-1664438	Envarsus Oral Product
-1664439	Envarsus Pill
-1664440	24 HR Envarsus 4 MG Extended Release Oral Tablet
-1664440	24 HR tacrolimus 4 MG Extended Release Oral Tablet [Envarsus]
-1664440	Envarsus XR 4 MG 24HR Extended Release Oral Tablet
-1664455	tacrolimus 0.75 MG
-1664456	24 HR tacrolimus 0.75 MG Extended Release Oral Tablet
-1664456	tacrolimus 0.75 MG (as anhydrous tacrolimus) 24 HR Extended Release Oral Tablet
-1664456	tacrolimus 0.75 MG 24HR Extended Release Oral Tablet
-1664457	tacrolimus 0.75 MG [Envarsus]
-1664458	24 HR Envarsus 0.75 MG Extended Release Oral Tablet
-1664458	24 HR tacrolimus 0.75 MG Extended Release Oral Tablet [Envarsus]
-1664458	Envarsus XR 0.75 MG 24HR Extended Release Oral Tablet
-1664461	24 HR tacrolimus 1 MG Extended Release Oral Tablet
-1664461	tacrolimus 1 MG (as anhydrous tacrolimus) 24 HR Extended Release Oral Tablet
-1664461	tacrolimus 1 MG 24HR Extended Release Oral Tablet
-1664462	tacrolimus 1 MG [Envarsus]
-1664463	24 HR Envarsus 1 MG Extended Release Oral Tablet
-1664463	24 HR tacrolimus 1 MG Extended Release Oral Tablet [Envarsus]
-1664463	Envarsus XR 1 MG 24HR Extended Release Oral Tablet
-1738334	tacrolimus Injection
-1738336	tacrolimus Injection [Prograf]
-196463	Prograf
-198377	tacrolimus 1 MG (as anhydrous tacrolimus) Oral Capsule
-198377	tacrolimus 1 MG Oral Capsule
-198378	tacrolimus 5 MG (as anhydrous tacrolimus) Oral Capsule
-198378	tacrolimus 5 MG Oral Capsule
-198379	1 ML tacrolimus 5 MG/ML Injection
-198379	tacrolimus 5 MG in 1 ML Injection
-198379	tacrolimus 5 MG per 1 ML Injection
-2052503	tacrolimus 0.2 MG
-2052603	tacrolimus Granule Product
-2052604	tacrolimus Granules for Oral Suspension
-2052605	tacrolimus 0.2 MG Granules for Oral Suspension
-2052606	tacrolimus 0.2 MG [Prograf]
-2052607	tacrolimus Granules for Oral Suspension [Prograf]
+284521	Protopic 0.03 % Topical Ointment
+1431978	Tacrolimus 0.5 MG Extended Release Oral Capsule
+1431988	Tacrolimus 5 MG Extended Release Oral Capsule
+1431981	Tacrolimus 1 MG [Astagraf]
+1431985	Tacrolimus 5 MG 24HR Extended Release Oral Capsule
+1431971	Tacrolimus 0.5 MG 24HR Extended Release Oral Capsule
+331550	Tacrolimus 0.0003 MG/MG
+1664459	Tacrolimus 0.75 MG Extended Release Oral Tablet
+1664464	Tacrolimus 1 MG Extended Release Oral Tablet
+1664465	Envarsus 1 MG Extended Release Oral Tablet
+1235241	Tacrolimus 0.5 MG Oral Capsule [Hecoria]
+484288	Tacrolimus monohydrate
+1164202	Tacrolimus Oral Product
+313189	Tacrolimus 0.03 % Topical Ointment
+2052605	Tacrolimus 0.2 MG Granules for Oral Suspension
 2052608	Prograf Granule Product
+574378	Tacrolimus 0.5 MG [Prograf]
+235991	anhydrous Tacrolimus
+1431982	24 HR Tacrolimus 1 MG Extended Release Oral Capsule [Astagraf]
+1431977	24 HR Tacrolimus 0.5 MG Extended Release Oral Capsule [Astagraf]
+1431973	Tacrolimus 0.5 MG [Astagraf]
+1431980	Tacrolimus 1 MG 24HR Extended Release Oral Capsule
+2665161	BX Rating Tacrolimus 0.5 MG Oral Capsule
+330404	Tacrolimus 0.5 MG
+331549	Tacrolimus 0.001 MG/MG
+1664433	Tacrolimus Extended Release Oral Tablet
+1664436	Tacrolimus 4 MG [Envarsus]
+1664442	Envarsus 4 MG Extended Release Oral Tablet
+1163655	Tacrolimus Injectable Product
+1235243	Tacrolimus 1 MG Oral Capsule [Hecoria]
+1235244	Tacrolimus 5 MG [Hecoria]
+427807	Tacrolimus 5 MG Oral Tablet
+427808	Tacrolimus 1 MG Oral Tablet
+1180663	Prograf Oral Product
+2052503	Tacrolimus 0.2 MG
+2052604	Tacrolimus Granules for Oral Suspension
+2052606	Tacrolimus 0.2 MG [Prograf]
 2052609	Prograf 0.2 MG Granules for Oral Suspension
-2052609	tacrolimus 0.2 MG Granules for Oral Suspension [Prograf]
-2052703	tacrolimus 1 MG Granules for Oral Suspension
-2052704	Prograf 1 MG Granules for Oral Suspension
-2052704	tacrolimus 1 MG Granules for Oral Suspension [Prograf]
-235991	anhydrous tacrolimus
+2052703	Tacrolimus 1 MG Granules for Oral Suspension
+564559	Tacrolimus 5 MG/ML [Prograf]
+198378	Tacrolimus 5 MG Oral Capsule
+42316	Tacrolimus
+1664456	Tacrolimus 0.75 MG 24HR Extended Release Oral Tablet
+1664461	Tacrolimus 1 MG 24HR Extended Release Oral Tablet
+284520	Protopic 0.1 % Topical Ointment
+284848	Protopic
+451875	Tacrolimus Oral Tablet
+1431989	Tacrolimus 5 MG Extended Release Oral Capsule [Astagraf]
+1431979	Tacrolimus 0.5 MG Extended Release Oral Capsule [Astagraf]
+1431987	24 HR Tacrolimus 5 MG Extended Release Oral Capsule [Astagraf]
+1431984	Tacrolimus 1 MG Extended Release Oral Capsule [Astagraf]
+1431986	Tacrolimus 5 MG [Astagraf]
+1431970	Tacrolimus Extended Release Oral Capsule
+1738334	Tacrolimus Injection
+1664435	Envarsus
+1664439	Envarsus Pill
+1664441	Tacrolimus 4 MG Extended Release Oral Tablet
+1664455	Tacrolimus 0.75 MG
+1664457	Tacrolimus 0.75 MG [Envarsus]
+1664463	24 HR Envarsus 1 MG Extended Release Oral Tablet
+1180664	Prograf Pill
+2052603	Tacrolimus Granule Product
+2052607	Tacrolimus Granules for Oral Suspension [Prograf]
+564557	Tacrolimus 1 MG [Prograf]
+564558	Tacrolimus 5 MG [Prograf]
+366273	Tacrolimus Oral Capsule [Prograf]
+198377	Tacrolimus 1 MG Oral Capsule
+1664434	Tacrolimus 4 MG 24HR Extended Release Tablet
+1738339	Prograf 5 MG/ML Injection
+314266	Tacrolimus 0.1 % Topical Ointment
+1164204	Tacrolimus Topical Product
+1431974	Tacrolimus Extended Release Oral Capsule [Astagraf]
+1431983	Tacrolimus 1 MG Extended Release Oral Capsule
+2665162	BX Rating Tacrolimus 1 MG Oral Capsule
+2665163	BX Rating Tacrolimus 5 MG Oral Capsule
+1664432	Tacrolimus 4 MG
+1664437	Tacrolimus Extended Release Oral Tablet [Envarsus]
+1664438	Envarsus Oral Product
+1664440	24 HR Envarsus 4 MG Extended Release Oral Tablet
+1664460	Envarsus 0.75 MG Extended Release Oral Tablet
+1664462	Tacrolimus 1 MG [Envarsus]
+317510	Tacrolimus 5 MG/ML
+379082	Tacrolimus Topical Ointment
+196463	Prograf
+1164203	Tacrolimus Pill
+1235237	Tacrolimus 0.5 MG [Hecoria]
+1235238	Tacrolimus Oral Capsule [Hecoria]
+1235242	Tacrolimus 1 MG [Hecoria]
+1235245	Tacrolimus 5 MG Oral Capsule [Hecoria]
+108513	Prograf 1 MG Oral Capsule
+108514	Prograf 5 MG Oral Capsule
+108515	Prograf 5 MG in 1 ML Injection
+1180662	Prograf Injectable Product
+1182458	Protopic Topical Product
 261134	Prograf 0.5 MG Oral Capsule
-261134	tacrolimus 0.5 MG Oral Capsule [Prograf]
-2665161	BX Rating tacrolimus 0.5 MG Oral Capsule
-2665161	tacrolimus 0.5 MG Oral Capsule, BX Rating
-2665162	BX Rating tacrolimus 1 MG Oral Capsule
-2665162	tacrolimus 1 MG Oral Capsule, BX Rating
-2665163	BX Rating tacrolimus 5 MG Oral Capsule
-2665163	tacrolimus 5 MG Oral Capsule, BX Rating
-284520	tacrolimus 0.001 MG/MG Topical Ointment [Protopic]
-284521	tacrolimus 0.0003 MG/MG Topical Ointment [Protopic]
-313189	tacrolimus (as tacrolimus monohydrate) 0.0003 MG/MG Topical Ointment
-313189	tacrolimus 0.0003 MG/MG Topical Ointment
-313189	tacrolimus 0.03 % Topical Ointment
-313190	tacrolimus 0.5 MG (as anhydrous tacrolimus) Oral Capsule
-313190	tacrolimus 0.5 MG Oral Capsule
-314266	tacrolimus (as tacrolimus monohydrate) 0.001 MG/MG Topical Ointment
-314266	tacrolimus 0.001 MG/MG Topical Ointment
-314266	tacrolimus 0.1 % Topical Ointment
-316758	tacrolimus 1 MG
-316759	tacrolimus 5 MG
-317510	tacrolimus 5 MG/ML
-330404	tacrolimus 0.5 MG
-331549	tacrolimus 0.001 MG/MG
-331550	tacrolimus 0.0003 MG/MG
-366273	tacrolimus Oral Capsule [Prograf]
-367339	tacrolimus Topical Ointment [Protopic]
-374015	tacrolimus Oral Capsule
-379082	tacrolimus Topical Ointment
-42316	tacrolimus
-484288	tacrolimus monohydrate
-564557	tacrolimus 1 MG [Prograf]
-564558	tacrolimus 5 MG [Prograf]
-564559	tacrolimus 5 MG/ML [Prograf]
-574378	tacrolimus 0.5 MG [Prograf]
-574948	tacrolimus 0.001 MG/MG [Protopic]
-574949	tacrolimus 0.0003 MG/MG [Protopic]
+313190	Tacrolimus 0.5 MG Oral Capsule
+2052704	Prograf 1 MG Granules for Oral Suspension
+574948	Tacrolimus 0.001 MG/MG [Protopic]
+574949	Tacrolimus 0.0003 MG/MG [Protopic]
+367339	Tacrolimus Topical Ointment [Protopic]
+374015	Tacrolimus Oral Capsule
+198379	1 ML Tacrolimus 5 MG/ML Injection
+1664458	24 HR Envarsus 0.75 MG Extended Release Oral Tablet
+1738336	Tacrolimus Injection [Prograf]
+1738338	Tacrolimus 5 MG/ML Injection
+316758	Tacrolimus 1 MG
+316759	Tacrolimus 5 MG

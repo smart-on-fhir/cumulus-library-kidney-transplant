@@ -17,7 +17,7 @@ with IndexDate as
 (
     select      min(enc_period_start_day) as enc_period_start_day,
                 valueset, subject_ref
-    from        irae__cohort_rx_custom
+    from        irae__cohort_casedef
     group by    valueset, subject_ref
 ),
 Cohort as
@@ -31,7 +31,7 @@ Cohort as
             CaseDef.subject_ref,
             CaseDef.encounter_ref,
             CaseDef.enc_period_start_day
-    from    irae__cohort_rx_custom as CaseDef,
+    from    irae__cohort_casedef as CaseDef,
             IndexDate
     where   CaseDef.subject_ref = IndexDate.subject_ref
     and     CaseDef.valueset     = IndexDate.valueset

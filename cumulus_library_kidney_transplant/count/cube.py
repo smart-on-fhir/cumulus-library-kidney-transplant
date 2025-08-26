@@ -90,7 +90,7 @@ def make_study_population_duration(duration: Duration | str) -> Path:
 def make_casedef_timeline() -> List[Path]:
     """
     CUBE count casedef_timeline using columns
-        * soe sequence of events
+        * period (sequence of events) pre/index/after the case definition index date
         * variable
         * valueset
         * FHIR Encounter (calculated month)
@@ -102,7 +102,7 @@ def make_casedef_timeline() -> List[Path]:
     :return: Path to CUBE table for the casedef_timeline
     """
     from_table = fhir2sql.name_cohort('casedef_timeline')
-    cols = ['soe', 'variable', 'valueset', 'enc_period_start_month']
+    cols = ['period', 'variable', 'valueset', 'enc_period_start_month']
     return [cube_pat(from_table, cols),
             cube_enc(from_table, cols)]
 

@@ -5,7 +5,7 @@ from cumulus_library_kidney_transplant.count import cube
 
 class TestSampleCasedefResults(unittest.TestCase):
 
-    def test_cube(self):
+    def deprecate_test_cube(self):
         from_table = 'irae__cohort_casedef_post_1000_results'
         create_enc = 'irae__count_encounter_casedef_post_1000_results'
         create_pat = 'irae__count_patient_casedef_post_1000_results'

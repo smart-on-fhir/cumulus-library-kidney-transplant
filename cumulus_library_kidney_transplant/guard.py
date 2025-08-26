@@ -2,8 +2,10 @@ import datetime
 from enum import Enum
 from collections import OrderedDict
 from typing import List, Iterable
+import numbers
 from fhirclient.models.fhirdate import FHIRDate
 from fhirclient.models.coding import Coding
+from pandas.core.dtypes.inference import is_bool
 
 ###############################################################################
 #
@@ -18,6 +20,9 @@ def is_dict(obj) -> bool:
 
 def is_list(obj) -> bool:
     return isinstance(obj, list)
+
+def is_number(obj, try_cast=False) -> bool:
+    return isinstance(obj, numbers.Number)
 
 def is_list_type(obj, type) -> bool:
     if isinstance(obj, list) and all(isinstance(item, type) for item in obj):
@@ -62,6 +67,29 @@ def as_list_str(obj) -> List[str]:
     if is_list_type(obj, str):
         return obj
     return [str(c) for c in list(obj)]
+
+def as_bool(obj) -> bool | None:
+    if is_bool(obj):
+        return obj
+    if isinstance(obj, str):
+        if obj.strip().lower() in ['true', 'yes']:
+            return True
+        if obj.strip().lower() in ['false', 'no']:
+            return False
+    return None
+
+def as_number(obj) -> int | float | None:
+    if is_number(obj):
+        return obj
+    if isinstance(obj, str):
+        try:
+            return int(obj)
+        except ValueError:
+            try:
+                return float(obj)
+            except ValueError:
+                pass
+    return None
 
 def as_enum_names(enum_list: List[Enum] | Enum | object) -> List[str]:
     if is_enum(enum_list):

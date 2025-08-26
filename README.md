@@ -5,13 +5,10 @@
 |**dx_transplant**||
 |dx_transplant|kidney|[2.16.840.1.113762.1.4.1078.16](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1078.16/expansion/Latest), [2.16.840.1.113883.3.464.1003.109.11.1063](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.464.1003.109.11.1063/expansion/Latest), [2.16.840.1.113883.3.464.1003.109.12.1012](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.464.1003.109.12.1012/expansion/Latest)|
 |dx_transplant|solid_organ|[2.16.840.1.113762.1.4.1032.205](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1032.205/expansion/Latest)|
+|dx_transplant|stem_cell|[2.16.840.1.113762.1.4.1032.221](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1032.221/expansion/Latest), [2.16.840.1.113762.1.4.1264.34](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1264.34/expansion/Latest)|
 |dx_transplant|recipient|[2.16.840.1.113762.1.4.1111.27](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1111.27/expansion/Latest)|
 |**dx_cancer**||
-|dx_cancer|skin|[2.16.840.1.113883.3.526.3.1010](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.526.3.1010/expansion/Latest)|
-|dx_cancer|melanoma|[2.16.840.1.113883.3.526.3.1010](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.526.3.1010/expansion/Latest)|
 |dx_cancer|melanoma_malignant|[2.16.840.1.113883.3.1434.1038](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.1434.1038/expansion/Latest), [2.16.840.1.113883.3.464.1003.108.11.1018](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.464.1003.108.11.1018/expansion/Latest)|
-|dx_cancer|sarcoma|[2.16.840.1.113883.3.526.3.1010](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.526.3.1010/expansion/Latest)|
-|dx_cancer|squamous|[2.16.840.1.113883.3.526.3.1010](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.526.3.1010/expansion/Latest)|
 |**dx_kidney**||
 |dx_kidney|condition|[2.16.840.1.113883.17.4077.3.2028](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.17.4077.3.2028/expansion/Latest)|
 |dx_kidney|renal_disease|[2.16.840.1.113762.1.4.1029.335](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1029.335/expansion/Latest)|
@@ -60,7 +57,6 @@
 |dx_diabetes|nephropathy|[2.16.840.1.113883.3.464.1003.109.12.1004](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.464.1003.109.12.1004/expansion/Latest)|
 |dx_diabetes|ckd|[2.16.840.1.113762.1.4.1078.124](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1078.124/expansion/Latest)|
 |**rx_immunosuppressive**||
-|rx_immunosuppressive|everolimus|[2.16.840.1.113762.1.4.1260.499](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1260.499/expansion/Latest)|
 |rx_immunosuppressive|drugs|[2.16.840.1.113762.1.4.1219.192](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1219.192/expansion/Latest)|
 |rx_immunosuppressive|systemic_therapy|[2.16.840.1.113883.3.666.5.803](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.666.5.803/expansion/Latest)|
 |rx_immunosuppressive|immune_modulators|[2.16.840.1.113762.1.4.1248.124](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1248.124/expansion/Latest)|
@@ -111,15 +107,15 @@
 |lab_diabetes|glucose_test|[2.16.840.1.113762.1.4.1045.134](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1045.134/expansion/Latest)|
 |**proc_transplant**||
 |proc_transplant|kidney|[2.16.840.1.113762.1.4.1078.16](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1078.16/expansion/Latest), [2.16.840.1.113883.3.464.1003.109.12.1012](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.464.1003.109.12.1012/expansion/Latest)|
+|proc_transplant|other_major|[2.16.840.1.113883.3.464.1003.198.12.1075](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.464.1003.198.12.1075/expansion/Latest)|
 |proc_transplant|solid_organ|[2.16.840.1.113762.1.4.1032.205](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1032.205/expansion/Latest)|
+|proc_transplant|stem_cell|[2.16.840.1.113762.1.4.1032.250](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1032.250/expansion/Latest)|
 |proc_transplant|recipient|[2.16.840.1.113762.1.4.1111.27](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1111.27/expansion/Latest)|
 |**proc_dialysis**||
 |proc_dialysis|services|[2.16.840.1.113883.3.464.1003.109.12.1013](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.464.1003.109.12.1013/expansion/Latest)|
 |**proc_nephrectomy**||
 |proc_nephrectomy|sct|[2.16.840.1.113762.1.4.1248.200](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1248.200/expansion/Latest)|
 |proc_nephrectomy|icd10pcs|[2.16.840.1.113762.1.4.1248.4](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1248.4/expansion/Latest)|
-|**proc_surgery**||
-|proc_surgery|other_major|[2.16.840.1.113883.3.464.1003.198.12.1075](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113883.3.464.1003.198.12.1075/expansion/Latest)|
 |**doc_biopsy**||
 |doc_biopsy|kidney|[2.16.840.1.113762.1.4.1222.864](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1222.864/expansion/Latest)|
 |doc_biopsy|skin|[2.16.840.1.113762.1.4.1222.867](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1222.867/expansion/Latest)|

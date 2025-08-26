@@ -5,7 +5,7 @@ CREATE TABLE irae__count_patient_casedef_timeline AS (
             s.subject_ref,
             --noqa: disable=RF03, AL02
             s."enc_period_start_month",
-            s."soe",
+            s."period",
             s."valueset",
             s."variable"
             --noqa: enable=RF03, AL02
@@ -20,9 +20,9 @@ CREATE TABLE irae__count_patient_casedef_timeline AS (
                 'cumulus__none'
             ) AS enc_period_start_month,
             coalesce(
-                cast(soe AS varchar),
+                cast(period AS varchar),
                 'cumulus__none'
-            ) AS soe,
+            ) AS period,
             coalesce(
                 cast(valueset AS varchar),
                 'cumulus__none'
@@ -38,13 +38,13 @@ CREATE TABLE irae__count_patient_casedef_timeline AS (
         SELECT
             count(DISTINCT subject_ref) AS cnt_subject_ref,
             "enc_period_start_month",
-            "soe",
+            "period",
             "valueset",
             "variable",
             concat_ws(
                 '-',
                 COALESCE("enc_period_start_month",''),
-                COALESCE("soe",''),
+                COALESCE("period",''),
                 COALESCE("valueset",''),
                 COALESCE("variable",'')
             ) AS id
@@ -52,7 +52,7 @@ CREATE TABLE irae__count_patient_casedef_timeline AS (
         GROUP BY
             cube(
             "enc_period_start_month",
-            "soe",
+            "period",
             "valueset",
             "variable"
             )
@@ -61,10 +61,10 @@ CREATE TABLE irae__count_patient_casedef_timeline AS (
     SELECT
         p.cnt_subject_ref AS cnt,
         p."enc_period_start_month",
-        p."soe",
+        p."period",
         p."valueset",
         p."variable"
     FROM powerset AS p
     WHERE 
-        cnt_subject_ref >= 10
+        p.cnt_subject_ref >= 10
 );

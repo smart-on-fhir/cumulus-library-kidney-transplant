@@ -58,6 +58,7 @@ CREATE TABLE irae__count_encounter_study_population AS (
                 COALESCE("race_display",'')
             ) AS id
         FROM null_replacement
+        WHERE encounter_ref IS NOT NULL
         GROUP BY
             cube(
             "age_at_visit",
@@ -105,5 +106,6 @@ CREATE TABLE irae__count_encounter_study_population AS (
     FROM powerset AS p
     JOIN secondary_powerset AS s on s.id = p.id
     WHERE 
-        cnt_subject_ref >= 10
+        p.cnt_subject_ref >= 10
+        AND s.cnt_encounter_ref >= 10
 );

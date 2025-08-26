@@ -1,4 +1,4 @@
-create table irae__cohort_casedef_post_1000_results as
+create table $prefix__cohort_casedef_post_1000_results as
 WITH merged as
 (
     select distinct filename, ade, occurred from mike__irea_output_results_long_list_v2

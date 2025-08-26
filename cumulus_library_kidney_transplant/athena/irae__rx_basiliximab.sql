@@ -1,0 +1,16 @@
+create or replace view irae__rx_basiliximab as select * from (values
+('http://www.nlm.nih.gov/research/umls/rxnorm', '1159396', 'Basiliximab Injectable Product')
+,('http://www.nlm.nih.gov/research/umls/rxnorm', '1182652', 'Simulect Injectable Product')
+,('http://www.nlm.nih.gov/research/umls/rxnorm', '1656641', 'Basiliximab 10 MG')
+,('http://www.nlm.nih.gov/research/umls/rxnorm', '1656642', 'Basiliximab Injection')
+,('http://www.nlm.nih.gov/research/umls/rxnorm', '1656643', 'Basiliximab 10 MG Injection')
+,('http://www.nlm.nih.gov/research/umls/rxnorm', '1656644', 'Basiliximab 10 MG [Simulect]')
+,('http://www.nlm.nih.gov/research/umls/rxnorm', '1656645', 'Basiliximab Injection [Simulect]')
+,('http://www.nlm.nih.gov/research/umls/rxnorm', '1656646', 'Simulect 10 MG Injection')
+,('http://www.nlm.nih.gov/research/umls/rxnorm', '1656647', 'Basiliximab 20 MG')
+,('http://www.nlm.nih.gov/research/umls/rxnorm', '1656648', 'Basiliximab 20 MG Injection')
+,('http://www.nlm.nih.gov/research/umls/rxnorm', '1656649', 'Basiliximab 20 MG [Simulect]')
+,('http://www.nlm.nih.gov/research/umls/rxnorm', '1656650', 'Simulect 20 MG Injection')
+,('http://www.nlm.nih.gov/research/umls/rxnorm', '196102', 'Basiliximab')
+,('http://www.nlm.nih.gov/research/umls/rxnorm', '219912', 'Simulect')
+) AS t (system, code, display) ;

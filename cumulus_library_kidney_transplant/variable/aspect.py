@@ -37,6 +37,10 @@ class AspectKey(Enum):
     def as_json(self):
         return {self.name: self.value}
 
+    @staticmethod
+    def list_keys() -> list[str]:
+        return [key.name for key in AspectKey]
+
 class Aspect:
     variable_list = List[Variable]
     key = AspectKey
