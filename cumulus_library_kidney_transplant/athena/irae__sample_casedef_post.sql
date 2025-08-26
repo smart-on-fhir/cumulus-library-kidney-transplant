@@ -11,7 +11,7 @@ SELECT  distinct
 FROM    irae__cohort_casedef_include as include,
         irae__cohort_casedef_post as casedef,
         irae__cohort_study_population_doc as doc
-WHERE   casedef.subject = include.subject
+WHERE   casedef.subject_ref = include.subject_ref
 AND     casedef.encounter_ref = doc.encounter_ref
 ORDER BY
     subject_ref,

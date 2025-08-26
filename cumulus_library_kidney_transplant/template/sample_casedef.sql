@@ -11,7 +11,7 @@ SELECT  distinct
 FROM    $prefix__cohort_casedef_include as include,
         $prefix__cohort_casedef_$suffix as casedef,
         $prefix__cohort_study_population_doc as doc
-WHERE   casedef.subject = include.subject
+WHERE   casedef.subject_ref = include.subject_ref
 AND     casedef.encounter_ref = doc.encounter_ref
 ORDER BY
     subject_ref,
