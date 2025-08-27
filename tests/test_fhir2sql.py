@@ -37,9 +37,11 @@ class TestFHIR2sql(unittest.TestCase):
         self.assertEqual(header_list, actual)
 
     def ignore_test_csv2view(self):
+        """
+        This test is for developers iterating on custom case definitions.
+        """
         file_csv = filetool.path_spreadsheet('casedef_custom.csv')
         view_name = fhir2sql.name_prefix('casedef_custom_csv')
-        view_file = filetool.path_athena(f'{view_name}.sql')
 
         fhir2sql.csv2view(file_csv, view_name)
 
