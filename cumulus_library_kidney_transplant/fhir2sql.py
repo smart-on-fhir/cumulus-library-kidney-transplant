@@ -31,6 +31,10 @@ def name_simple(table) -> str:
 def name_join(part: str, table: str) -> str:
     return name_prefix('_'.join([part, name_simple(table)]))
 
+def name_sample(table: str, suffix=None) -> str:
+    part = name_suffix('sample', suffix)
+    return name_join(part, table)
+
 def name_cohort(table: str, suffix=None) -> str:
     part = name_suffix('cohort', suffix)
     return name_join(part, table)

@@ -1,23 +1,36 @@
 CREATE table $prefix__sample_casedef_$suffix as
-SELECT  distinct
-        doc.subject_ref,
-        doc.encounter_ref,
-        doc.documentreference_ref,
-        doc.doc_type_code,
-        doc.doc_type_display,
-        doc.doc_type_system,
-        doc.doc_author_day,
-        doc.enc_period_start_day,
-        etl.group_name
-FROM    etl__completion_encounters      as etl,
-        $prefix__cohort_casedef_include as include,
-        $prefix__cohort_casedef_$suffix as casedef,
-        $prefix__cohort_study_population_doc as doc
-WHERE   casedef.subject_ref = include.subject_ref
-AND     casedef.encounter_ref = doc.encounter_ref
-AND     casedef.encounter_ref = concat('Encounter/', etl.encounter_id)
-ORDER BY
-    subject_ref,
-    enc_period_start_day,
-    doc_author_day
-;
+with unordered as (
+    SELECT  distinct
+            doc.subject_ref,
+            doc.encounter_ref,
+            doc.documentreference_ref,
+            doc.doc_author_day, 
+            doc.enc_period_start_day,
+            etl.group_name
+    FROM    etl__completion_encounters      as etl,
+            irae__cohort_casedef_include    as include,
+            irae__cohort_casedef_index      as casedef,
+            irae__cohort_study_population_doc as doc
+    WHERE   casedef.subject_ref = include.subject_ref
+    AND     casedef.encounter_ref = doc.encounter_ref
+    AND     casedef.encounter_ref = concat('Encounter/', etl.encounter_id)
+), 
+ordered as (
+    SELECT  distinct
+            unordered.*,
+            ROW_NUMBER() OVER (
+                PARTITION   BY  subject_ref
+                ORDER       BY  doc_author_day        NULLS LAST, 
+                                enc_period_start_day  NULLS LAST, 
+                                documentreference_ref
+            )   AS doc_ordinal
+    FROM    unordered
+)
+SELECT  ordered.*,
+        doc.doc_type_code, 
+        doc.doc_type_display, 
+        doc.doc_type_system
+from    ordered, 
+        irae__cohort_study_population_doc as doc 
+where   ordered.documentreference_ref = doc.documentreference_ref           
+ORDER BY ordered.subject_ref, doc_ordinal
