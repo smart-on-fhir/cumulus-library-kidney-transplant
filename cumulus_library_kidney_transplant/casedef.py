@@ -88,7 +88,7 @@ def make_samples(size: int = None, suffix: str = 'post') -> Path:
     :param suffix: "pre" or "post", samples from before or after first record of case definition variale.
     :return: Path to SQL file with case definition samples.
     """
-    table = fhir2sql.name_join('sample', 'casedef')
+    table = fhir2sql.name_sample('casedef')
     if size:
         template = f"{table}_size.sql"
         target = f"{table}_{suffix}_{size}.sql"
