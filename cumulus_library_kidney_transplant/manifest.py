@@ -10,13 +10,24 @@ def get_file_config() -> List:
 def path_manifest() -> Path:
     return filetool.path_home('../manifest.toml')
 
-def read_manifest() -> dict:
-    with open(path_manifest(), 'rb') as f:
+def read_manifest(file_path: str | Path = None) -> dict:
+    if not file_path:
+        file_path = path_manifest()
+    with open(file_path, 'rb') as f:
         data = tomllib.load(f)
     return data
 
-def get_study_prefix() -> str:
-    return str(read_manifest().get('study_prefix'))
+def backup_manifest(file_path: str | Path = None) -> Path | None:
+    if not file_path:
+        file_path = path_manifest()
+    n = 1
+    while True:
+        backup_path = file_path.with_name(f"{file_path.name}.bak.{n}")
+        if not backup_path.exists():
+            with open(file_path, "rb") as src, open(backup_path, "wb") as dst:
+                dst.write(src.read())
+            return backup_path
+        n += 1
 
 def write_manifest(file_names: List[Path] | List[str]) -> Path:
     saved = read_manifest()
@@ -30,16 +41,15 @@ def write_manifest(file_names: List[Path] | List[str]) -> Path:
 
 def list_tables(file_names: List[Path] | List[str], search_term: str = None) -> List[str]:
     """
-    "athena/irae__include_study_period.sql",
-    :param file_names:
-    :return:
+    :param file_names: SQL valuesets, cohorts, samples, etc
+    :param search_term: SQL counts only, typically "_count_"
+    :return: List of SQL table names
     """
     table_names = list()
     for table in path_relative(file_names):
         if 'cumulus_library_kidney_transplant/' in table:
             print(table)
             _, table = table.split('cumulus_library_kidney_transplant/')
-
         table = table.replace('athena/', '').replace('.sql', '')
         if search_term:
             if search_term in table:
@@ -56,3 +66,6 @@ def path_relative(file_names: List[Path] | List[str]) -> List[str]:
             _, filename = filename.split(split_token)
         simpler.append(filename)
     return simpler
+
+def get_study_prefix() -> str:
+    return str(read_manifest().get('study_prefix'))
