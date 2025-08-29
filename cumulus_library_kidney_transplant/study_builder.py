@@ -7,7 +7,7 @@ from cumulus_library_kidney_transplant import (
     study_population,
     cohorts,
     casedef)
-from cumulus_library_kidney_transplant.count import cube, cube_custom
+from cumulus_library_kidney_transplant.count import cube
 from cumulus_library_kidney_transplant.criteria.race import Race
 from cumulus_library_kidney_transplant.criteria.encounter_class import EncounterClass
 from cumulus_library_kidney_transplant.variable import (
@@ -117,7 +117,7 @@ class StudyBuilderConfig:
 # Make
 #
 ###############################################################################
-def make_study(study: StudyBuilderConfig) -> Path:
+def make_study_sql(study: StudyBuilderConfig = None) -> List[Path]:
     """
     Command line invocation of the study builder is done using Cumulus Library:
     https://docs.smarthealthit.org/cumulus/library/
@@ -126,6 +126,10 @@ def make_study(study: StudyBuilderConfig) -> Path:
 
     :return: list of SQL files to execute in Athena.
     """
+    if study is None:
+        print('loading default path for study builder configuration')
+        study = StudyBuilderConfig.make_config()
+
     criteria_sql = [
         # Study Period
         criteria.study_period.include(
@@ -163,19 +167,19 @@ def make_study(study: StudyBuilderConfig) -> Path:
         criteria.race.include(
             race_list=study.race_list)]
 
-    studypop_sql = study_population.make()
-    variables_sql = vsac_variables.make() + custom_variables.make()
-    cohorts_sql = cohorts.make()
-    casedef_sql = casedef.make()
-    counts_sql = cube.make() + cube_custom.make()
+    return (criteria_sql +
+            study_population.make() +
+            vsac_variables.make() +
+            custom_variables.make() +
+            cohorts.make() +
+            casedef.make() +
+            cube.make())
 
+
+def make_study(study: StudyBuilderConfig= None) -> Path:
+    sql_files = make_study_sql(study)
     vsac_markdown.make()
-    print('README.md')
-
-    return manifest.write_manifest(
-        criteria_sql + studypop_sql + variables_sql + cohorts_sql + casedef_sql + counts_sql)
-
+    return manifest.write_manifest(sql_files)
 
 if __name__ == "__main__":
-    study = StudyBuilderConfig.make_config()
-    make_study(study)
+    make_study()

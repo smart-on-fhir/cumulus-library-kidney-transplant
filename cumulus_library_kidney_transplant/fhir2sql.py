@@ -15,7 +15,7 @@ from cumulus_library_kidney_transplant.filetool import save_athena_view
 ###############################################################################
 def name_prefix(table: list | str) -> list | str:
     if guard.is_list(table):
-        return [f'{PREFIX}__{table}' for table in list(set(table))]
+        return [f'{PREFIX}__{table}' for table in guard.as_list_unique(table)]
     else:
         return f'{PREFIX}__{table}'
 
@@ -30,6 +30,10 @@ def name_simple(table) -> str:
 
 def name_join(part: str, table: str) -> str:
     return name_prefix('_'.join([part, name_simple(table)]))
+
+def name_sample(table: str, suffix=None) -> str:
+    part = name_suffix('sample', suffix)
+    return name_join(part, table)
 
 def name_cohort(table: str, suffix=None) -> str:
     part = name_suffix('cohort', suffix)

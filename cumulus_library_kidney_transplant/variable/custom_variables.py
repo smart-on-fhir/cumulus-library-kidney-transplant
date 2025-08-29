@@ -21,7 +21,6 @@ RX_LIST = ['azathioprine', 'mycophenolate',
 LAB_DRUG_LIST = ['azathioprine',
                  'azathioprine_tpmt_gene',
                  'cyclosporin',
-                 'cytomegalovirus',
                  'mycophenolate',
                  'sirolimus',
                  'tacrolimus']

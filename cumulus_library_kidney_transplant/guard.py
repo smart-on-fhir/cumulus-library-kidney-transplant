@@ -1,7 +1,7 @@
 import datetime
 from enum import Enum
 from collections import OrderedDict
-from typing import List, Iterable
+from typing import List, Iterable, Any
 import numbers
 from fhirclient.models.fhirdate import FHIRDate
 from fhirclient.models.coding import Coding
@@ -24,8 +24,8 @@ def is_list(obj) -> bool:
 def is_number(obj, try_cast=False) -> bool:
     return isinstance(obj, numbers.Number)
 
-def is_list_type(obj, type) -> bool:
-    if isinstance(obj, list) and all(isinstance(item, type) for item in obj):
+def is_list_type(obj, type_of) -> bool:
+    if isinstance(obj, list) and all(isinstance(item, type_of) for item in obj):
         return True
     return False
 
@@ -41,7 +41,7 @@ def as_range(obj) -> range:
         return range(obj[0], obj[1])
     if isinstance(obj, range):
         return obj
-    Exception(f'as_range failed for {obj}')
+    raise Exception(f'as_range failed for {obj}')
 
 def as_coding(obj) -> Coding:
     c = Coding()
@@ -55,6 +55,14 @@ def as_list(obj) -> list:
     if isinstance(obj, list):
         return obj
     return [obj]
+
+def as_list_unique(items: List[Any]) -> List[Any]:
+    seen = set()
+    for item in items:
+        if item in seen:
+            raise ValueError(f"Duplicate item found: {item}")
+        seen.add(item)
+    return items
 
 def as_list_coding(obj) -> List[Coding]:
     obj = as_list(obj)
