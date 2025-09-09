@@ -265,6 +265,7 @@ file_names = [
     "cumulus_library_kidney_transplant/athena/irae__count_patient_lab_custom.sql",
     "cumulus_library_kidney_transplant/athena/irae__count_patient_casedef_timeline.sql",
     "cumulus_library_kidney_transplant/athena/irae__count_encounter_casedef_timeline.sql",
+    "cumulus_library_kidney_transplant/builder_irae_highlights.py",
 ]
 
 [export_config]

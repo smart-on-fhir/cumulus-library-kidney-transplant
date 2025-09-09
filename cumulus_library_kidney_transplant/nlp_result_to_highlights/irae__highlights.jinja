@@ -1,0 +1,144 @@
+
+{%- macro union_all_delineate(loop) -%}
+{%- if not loop.last -%}
+UNION ALL
+{%- endif -%}
+{%- endmacro -%}
+
+{%- set mention_display_lookup = {
+    'donor_transplant_date_mention' : "Transplant Date",
+    'donor_type_mention' : "Donor Type",
+    'donor_relationship_mention' : "Donor Relationship",
+    'donor_hla_match_quality_mention' : "Hla Match Quality",
+    'donor_hla_mismatch_count_mention' : "Hla Mismatch Count",
+    'rx_therapeutic_status_mention' : "Rx Therapeutic",
+    'rx_compliance_mention' : "Rx Compliance",
+    'dsa_mention' : "DSA",
+    'infection_mention' : "Infection",
+    'viral_infection_mention' : "Viral",
+    'bacterial_infection_mention' : "Bacterial",
+    'fungal_infection_mention' : "Fungal",
+    'graft_rejection_mention' : "Graft Rejection",
+    'graft_failure_mention' : "Graft Failure",
+    'ptld_mention' : "PTLD",
+    'cancer_mention' : "Cancer",
+    'deceased_mention':  "Deceased"
+} -%}
+CREATE TABLE irae__highlights AS
+{%- if table_names %}
+{%- for table_name in table_names %}
+    {%- for mention_key in ['donor_transplant_date_mention','donor_type_mention','donor_relationship_mention','donor_hla_match_quality_mention','donor_hla_mismatch_count_mention','rx_therapeutic_status_mention','rx_compliance_mention','dsa_mention','infection_mention','viral_infection_mention','bacterial_infection_mention','fungal_infection_mention','graft_rejection_mention','graft_failure_mention','ptld_mention','cancer_mention','deceased_mention'] %}
+    -- Simple rows, just have a mention value 
+    SELECT
+        src.note_ref,
+        src.subject_ref,
+        '{{ table_name }}' AS origin,
+        '{{ mention_display_lookup[mention_key] }}' AS label,
+        CONCAT(CAST(span[1] AS VARCHAR), ':', CAST(span[2] AS VARCHAR)) AS span,
+        
+        -- Handle sublabel_name and sublabel_value per {{mention_key}}
+        {%- if mention_key == 'donor_transplant_date_mention' %}
+            '{{ mention_display_lookup[mention_key] }}' AS sublabel_name,
+            CAST(src.result.{{mention_key}}.donor_transplant_date AS VARCHAR) AS sublabel_value,
+            CAST(NULL AS BOOLEAN) AS is_history
+        {%- elif mention_key == 'donor_type_mention' %}
+            '{{ mention_display_lookup[mention_key] }}' AS sublabel_name,
+            CAST(src.result.{{mention_key}}.donor_type AS VARCHAR) AS sublabel_value,
+            CAST(NULL AS BOOLEAN) AS is_history
+        {%- elif mention_key == 'donor_relationship_mention' %}
+            '{{ mention_display_lookup[mention_key] }}' AS sublabel_name,
+            CAST(src.result.{{mention_key}}.donor_relationship AS VARCHAR) AS sublabel_value,
+            CAST(NULL AS BOOLEAN) AS is_history
+        {%- elif mention_key == 'donor_hla_match_quality_mention' %}
+            '{{ mention_display_lookup[mention_key] }}' AS sublabel_name,
+            CAST(src.result.{{mention_key}}.donor_hla_match_quality AS VARCHAR) AS sublabel_value,
+            CAST(NULL AS BOOLEAN) AS is_history
+        {%- elif mention_key == 'donor_hla_mismatch_count_mention' %}
+            '{{ mention_display_lookup[mention_key] }}' AS sublabel_name,
+            CAST(src.result.{{mention_key}}.donor_hla_mismatch_count AS VARCHAR) AS sublabel_value,
+            CAST(NULL AS BOOLEAN) AS is_history
+        {%- elif mention_key == 'rx_therapeutic_status_mention' %}
+            '{{ mention_display_lookup[mention_key] }}' AS sublabel_name,
+            CAST(src.result.{{mention_key}}.rx_therapeutic_status AS VARCHAR) AS sublabel_value,
+            CAST(NULL AS BOOLEAN) AS is_history
+        {%- elif mention_key == 'rx_compliance_mention' %}
+            '{{ mention_display_lookup[mention_key] }}' AS sublabel_name,
+            CAST(src.result.{{mention_key}}.rx_compliance AS VARCHAR) AS sublabel_value,
+            CAST(NULL AS BOOLEAN) AS is_history
+        {%- elif mention_key == 'dsa_mention' %}
+            '{{ mention_display_lookup[mention_key] }}' AS sublabel_name,
+            CAST(src.result.{{mention_key}}.dsa AS VARCHAR) AS sublabel_value,
+            src.result.{{mention_key}}.{{ mention_key.replace('mention', 'history') }} AS is_history
+        {%- elif mention_key == 'infection_mention' %}
+            '{{ mention_display_lookup[mention_key] }}' AS sublabel_name,
+            CAST(src.result.{{mention_key}}.infection AS VARCHAR) AS sublabel_value,
+            src.result.{{mention_key}}.{{ mention_key.replace('mention', 'history') }} AS is_history
+        {%- elif mention_key == 'viral_infection_mention' %}
+            '{{ mention_display_lookup[mention_key] }}' AS sublabel_name,
+            CAST(src.result.{{mention_key}}.viral_infection AS VARCHAR) AS sublabel_value,
+            src.result.{{mention_key}}.{{ mention_key.replace('mention', 'history') }} AS is_history
+        {%- elif mention_key == 'bacterial_infection_mention' %}
+            '{{ mention_display_lookup[mention_key] }}' AS sublabel_name,
+            CAST(src.result.{{mention_key}}.bacterial_infection AS VARCHAR) AS sublabel_value,
+            src.result.{{mention_key}}.{{ mention_key.replace('mention', 'history') }} AS is_history
+        {%- elif mention_key == 'fungal_infection_mention' %}
+            '{{ mention_display_lookup[mention_key] }}' AS sublabel_name,
+            CAST(src.result.{{mention_key}}.fungal_infection AS VARCHAR) AS sublabel_value,
+            src.result.{{mention_key}}.{{ mention_key.replace('mention', 'history') }} AS is_history
+        {%- elif mention_key == 'graft_rejection_mention' %}
+            '{{ mention_display_lookup[mention_key] }}' AS sublabel_name,
+            CAST(src.result.{{mention_key}}.graft_rejection AS VARCHAR) AS sublabel_value,
+            src.result.{{mention_key}}.{{ mention_key.replace('mention', 'history') }} AS is_history
+        {%- elif mention_key == 'graft_failure_mention' %}
+            '{{ mention_display_lookup[mention_key] }}' AS sublabel_name,
+            CAST(src.result.{{mention_key}}.graft_failure AS VARCHAR) AS sublabel_value,
+            src.result.{{mention_key}}.{{ mention_key.replace('mention', 'history') }} AS is_history
+        {%- elif mention_key == 'ptld_mention' %}
+            '{{ mention_display_lookup[mention_key] }}' AS sublabel_name,
+            CAST(src.result.{{mention_key}}.ptld AS VARCHAR) AS sublabel_value,
+            src.result.{{mention_key}}.{{ mention_key.replace('mention', 'history') }} AS is_history
+        {%- elif mention_key == 'cancer_mention' %}
+            '{{ mention_display_lookup[mention_key] }}' AS sublabel_name,
+            CAST(src.result.{{mention_key}}.cancer AS VARCHAR) AS sublabel_value,
+            src.result.{{mention_key}}.{{ mention_key.replace('mention', 'history') }} AS is_history
+        {%- elif mention_key == 'deceased_mention' %}
+            '{{ mention_display_lookup[mention_key] }}' AS sublabel_name,
+            CAST(src.result.{{mention_key}}.deceased AS VARCHAR) AS sublabel_value,
+            CAST(NULL AS BOOLEAN) AS is_history
+        {%- else %}
+            CAST(NULL AS VARCHAR) AS sublabel_name,
+            CAST(NULL AS VARCHAR) AS sublabel_value,
+            CAST(NULL AS BOOLEAN) AS is_history
+        {%- endif %}
+    FROM 
+        {{ table_name }} AS src, 
+        -- For each mention key - maybe we want this to be a static list of all the variables in the UI? 
+        UNNEST(src.result.{{mention_key}}.spans) AS t3(span)
+    {{ union_all_delineate(loop) }}
+    {%- endfor %}
+
+    -- Additional SELECT for deceased_mention: deceased_date
+    UNION ALL 
+    SELECT
+        src.note_ref,
+        src.subject_ref,
+        '{{ table_name }}' AS origin,
+        'deceased_mention' AS label,
+        CONCAT(CAST(span[1] AS VARCHAR), ':', CAST(span[2] AS VARCHAR)) AS span,
+        'Deceased Datetime' AS sublabel_name,
+        src.result.deceased_mention.deceased_date AS sublabel_value,
+        CAST(NULL AS BOOLEAN) AS is_history
+    FROM 
+        {{ table_name }} AS src,
+        UNNEST(src.result.deceased_mention.spans) AS t4(span)
+{{ union_all_delineate(loop) }}
+{%- endfor %}
+{%- else %}
+SELECT
+    'x' AS note_ref,
+    'x' AS subject_ref,
+    'x' AS label,
+    'x' AS span,
+    'x' AS origin
+WHERE 1=0 -- empty table
+{%- endif %}
