@@ -7,7 +7,7 @@ from cumulus_library import base_utils, databases
 from cumulus_library.template_sql import sql_utils
 
 
-class IraNlpHighlightsBuilder(cumulus_library.BaseTableBuilder):
+class IraeNlpHighlightsBuilder(cumulus_library.BaseTableBuilder):
     display_text = "Transforming IRAE NLP results into a table of highlights..."
 
     @staticmethod
