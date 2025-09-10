@@ -114,7 +114,7 @@ CREATE TABLE irae__highlights AS
     {%- elif mention_key == 'rx_compliance_mention' %}
     WHERE
         src.result.{{mention_key}}.rx_compliance != 'None of the above' 
-        {%- elif mention_key == 'dsa_mention' %}
+    {%- elif mention_key == 'dsa_mention' %}
     WHERE 
         src.result.{{mention_key}}.{{ mention_key.replace('mention', 'history') }}
         AND src.result.{{mention_key}}.dsa != 'None of the above' 
@@ -172,6 +172,9 @@ CREATE TABLE irae__highlights AS
     FROM 
         {{ table_name }} AS src,
         UNNEST(src.result.deceased_mention.spans) AS t4(span)
+    WHERE 
+        src.result.{{mention_key}}.deceased IS NOT NULL
+        AND src.result.{{mention_key}}.deceased 
 {{ union_all_delineate(loop) }}
 {%- endfor %}
 {%- else %}
