@@ -181,8 +181,10 @@ CREATE TABLE irae__highlights AS
 SELECT
     'x' AS note_ref,
     'x' AS subject_ref,
+    'x' AS origin,
     'x' AS label,
     'x' AS span,
-    'x' AS origin
+    'x' AS sublabel_name,
+    'x' AS sublabel_value
 WHERE 1=0 -- empty table
 {%- endif %}
