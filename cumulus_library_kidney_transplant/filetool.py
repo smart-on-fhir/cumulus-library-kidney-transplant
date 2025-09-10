@@ -33,7 +33,6 @@ def path_parent(filename=None) -> Path:
     else:
         return parent
 
-
 ###############################################################################
 #
 # Valueset(s)
@@ -100,6 +99,14 @@ def path_template(file_sql: Path | str) -> Path:
 
 def load_template(file_sql: Path | str) -> str:
     return inline_template(read_text(path_template(file_sql)))
+
+def copy_template(file_sql: str) -> Path:
+    """
+    :param file_sql: name of SQL file to copy from "template" to "athena" with the $prefix replaced.
+    :return: Manifest Path to athena/$prefix__$file_sql
+    """
+    sql = inline_template(read_text(path_template(file_sql)))
+    return save_athena(f"{PREFIX}__{file_sql}", sql)
 
 def inline_template(sql: str, variable: str = None) -> str:
     sql = sql.replace('$prefix', PREFIX)
