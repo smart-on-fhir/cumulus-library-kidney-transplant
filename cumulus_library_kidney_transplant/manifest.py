@@ -31,8 +31,11 @@ def backup_manifest(file_path: str | Path = None) -> Path | None:
 
 def write_manifest(file_names: List[Path] | List[str]) -> Path:
     saved = read_manifest()
-    saved['file_config']['file_names'] = path_relative(file_names)
-    saved['export_config']['count_list'] = list_tables(file_names, '_count_')
+    # NOTE: Adding the IRAE highlights builder manually before writing the final manifest
+    file_names_copy = [*file_names]
+    file_names_copy.append('cumulus_library_kidney_transplant/nlp_result_to_highlights/builder_irae_highlights.py')
+    saved['file_config']['file_names'] = path_relative(file_names_copy)
+    saved['export_config']['count_list'] = list_tables(file_names_copy, '_count_')
 
     with open(str(path_manifest()), 'wb') as f:
         tomli_w.dump(saved, f)
