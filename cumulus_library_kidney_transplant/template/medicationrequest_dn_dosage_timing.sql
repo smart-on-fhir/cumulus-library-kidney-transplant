@@ -1,4 +1,4 @@
-CREATE TABLE $prefix__medicationrequest_dosage_timing as
+CREATE TABLE $prefix__medicationrequest_dn_dosage_timing as
 select  distinct
         date(from_iso8601_timestamp(DI.timing.repeat.boundsperiod."start")) as timing_start_date,
         date(from_iso8601_timestamp(DI.timing.repeat.boundsperiod."end"))   as timing_end_date,

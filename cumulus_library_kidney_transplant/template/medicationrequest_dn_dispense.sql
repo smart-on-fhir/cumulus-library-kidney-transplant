@@ -1,4 +1,4 @@
-CREATE TABLE $prefix__medicationrequest_dispense  as
+CREATE TABLE $prefix__medicationrequest_dn_dispense  as
 -- https://github.com/smart-on-fhir/cumulus/issues/66
 with workaround as
 (

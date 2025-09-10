@@ -1,4 +1,4 @@
-CREATE TABLE $prefix__medicationrequest_dosage_quantity as
+CREATE TABLE $prefix__medicationrequest_dn_dosage_quantity as
 with workaround as
 (
     SELECT  distinct
