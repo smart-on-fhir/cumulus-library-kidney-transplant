@@ -4,7 +4,6 @@ select  distinct
         RC."display"    as route_display,
         RC."system"     as route_system,
         DI.route,
-        DI.method,
         id, concat('MedicationRequest', id) as medicationrequest_ref
 FROM    $prefix__cohort_study_population_rx as SP,
         medicationRequest as mr,
