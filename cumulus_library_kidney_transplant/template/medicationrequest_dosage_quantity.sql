@@ -1,4 +1,4 @@
-create or replace view irae__medicationrequest_dosage_quantity as
+CREATE TABLE $prefix__medicationrequest_dosage_quantity as
 with workaround as
 (
     SELECT  distinct
@@ -6,13 +6,13 @@ with workaround as
             json_extract(CAST(DAR AS json), '$.ratequantity') AS rateQuantity,
             MR.id,
             SP.medicationrequest_ref
-    FROM    irae__cohort_study_population_rx as SP,
+    FROM    $prefix__cohort_study_population_rx as SP,
             medicationRequest as mr,
             UNNEST(dosageInstruction)   AS t(DI),
             UNNEST(DI.doseAndRate)      AS t(DAR)
     WHERE   SP.medicationrequest_ref = concat('MedicationRequest/', MR.id)
 ),
-proper_schema as
+guard_schema as
 (
     SELECT  TRY_CAST(doseQuantity AS ROW(code varchar, system varchar, unit varchar, value double)) as doseQuantity,
             TRY_CAST(rateQuantity AS ROW(code varchar, system varchar, unit varchar, value double)) as rateQuantity,
@@ -31,5 +31,5 @@ select  distinct
         rateQuantity."value"    as rate_value,
         rateQuantity
         id, medicationrequest_ref
-from    proper_schema
+from    guard_schema; 
 

@@ -1,4 +1,4 @@
-create or replace view irae__medicationrequest_dispense  as
+CREATE TABLE $prefix__medicationrequest_dispense  as
 -- https://github.com/smart-on-fhir/cumulus/issues/66
 with workaround as
 (
@@ -10,7 +10,7 @@ with workaround as
             MR.id,
             SP.medicationrequest_ref
   from      medicationRequest as MR,
-            irae__cohort_study_population_rx as SP
+            $prefix__cohort_study_population_rx as SP
   where     SP.medicationrequest_ref = concat('MedicationRequest/', MR.id)
 )
 select  distinct
