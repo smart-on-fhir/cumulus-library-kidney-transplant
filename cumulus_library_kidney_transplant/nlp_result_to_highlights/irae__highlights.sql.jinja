@@ -173,8 +173,8 @@ CREATE TABLE irae__highlights AS
         {{ table_name }} AS src,
         UNNEST(src.result.deceased_mention.spans) AS t4(span)
     WHERE 
-        src.result.{{mention_key}}.deceased IS NOT NULL
-        AND src.result.{{mention_key}}.deceased 
+        src.result.deceased_mention.deceased IS NOT NULL
+        AND src.result.deceased_mention.deceased 
 {{ union_all_delineate(loop) }}
 {%- endfor %}
 {%- else %}
