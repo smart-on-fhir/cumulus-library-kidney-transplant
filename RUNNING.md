@@ -389,8 +389,3 @@ Once this is done, go to your project page in Label Studio and you should see a 
 
 Give them access to Label Studio and have them annotate the charts!
 
-
-NOTES: 
-DO WE NEED A VERSION OF THIS FOR THIS STUDY? 
-- There are [separate instructions](https://docs.smarthealthit.org/cumulus/etl/studies/covid-symptom.html)
-  for running the ETL and this COVID study's NLP
