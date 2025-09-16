@@ -78,6 +78,8 @@ cumulus-etl nlp \
   <input folder with ndjson files from step 3 above> \
   <your typical ETL PHI folder> \
   <your typical ETL OUTPUT folder> \
+  --athena-database <relevant_cumulus_library_database> \
+  --athena-workgroup <relevant_cumulus_library_workgroup> \
   --select-by-athena-table irae__sample_casedef_post_10
 ```
 
