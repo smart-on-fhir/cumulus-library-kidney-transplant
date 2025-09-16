@@ -48,7 +48,7 @@ to define our patient cohort of interest.
 
 *TBD: Help needed from ANDY*
 
-## 3. Prepare your data
+## 3. Prepare Your Data
 
 This study operates on DocumentReference resources
 (it runs NLP on the referenced clinical notes).
@@ -56,7 +56,11 @@ So we need to gather the original documents
 
 Gather some DocumentReference ndjson from your EHR.
 You can either re-export the documents of interest,
-or use ndjson from a previous export.
+or use ndjson from a previous export. Ideally these notes
+are pre-inlined with clinical note content, as this will 
+save time/hassle re-downloading the notes everytime we run 
+NLP. If you're gathering notes using our `smart-fetch` tool 
+the notes should be [inlined automatically when exporting](https://docs.smarthealthit.org/cumulus/fetch/hydration.html#inlining-clinical-notes).
 
 Place the ndjson in a folder, and take note of the path 
 to this input for later steps.
