@@ -82,7 +82,7 @@ The rest of this guide will be about setting up a chart review for human compari
 Importantly: re-run your [Cumulus AWS Glue crawler](https://docs.smarthealthit.org/cumulus/etl/setup/#create-tables-with-glue) 
 at this point in order to pick up this new NLP table and its schema.
 
-## 5. Generate Highlights Highlighted Notes to Label Studio
+## 5. Generate NLP Highlights
 
 Returning to the `cumulus-library` tool, we will use the `--builder` argument to run 
 one specific part of the kidney-study, `builder_irae_highlights`, to generated the `irae_highlights` 
