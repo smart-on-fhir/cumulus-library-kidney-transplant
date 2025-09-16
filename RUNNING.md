@@ -382,8 +382,10 @@ cumulus-etl upload-notes ... \
   <label studio url> \
   <your typical ETL PHI folder> \
   --philter=disable \
+  --athena-database <relevant_cumulus_library_database> \
+  --athena-workgroup <relevant_cumulus_library_workgroup> \
   --select-by-anon-csv docrefs.csv \
-  --label-by-athena-table cumulus_cerner_db.irae__highlights
+  --label-by-athena-table irae__highlights
 ```
 
 A few noteworthy comments on this command configuration: 
