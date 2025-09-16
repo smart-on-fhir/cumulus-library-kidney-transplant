@@ -58,7 +58,8 @@ Gather some DocumentReference ndjson from your EHR.
 You can either re-export the documents of interest,
 or use ndjson from a previous export.
 
-Place the ndjson in a folder using filenames like `*.DocumentReference.*.ndjson`.
+Place the ndjson in a folder, and take note of the path 
+to this input for later steps.
 
 ## 4. Run NLP 
 
