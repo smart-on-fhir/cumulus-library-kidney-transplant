@@ -7,9 +7,9 @@ This guide will help you reproduce the kidney study from scratch from:
 - Uploading notes for chart-review, pre-labelled based on LLM annotations.
 
 Note that these instructions only use the `irae__sample_casedef_post_10` sample of 10 patients 
-created by the kidney study. For full-cohort runs of these experiments,
-make sure to reference the `irae__sample_casedef_post` instead. But proceed with caution, 
-as the NLP costs will scale with the number of document references processed. 
+created by the kidney study, looking at documentreferences and encounters after their 
+kidney transplant. For full-cohort runs of these experiments, reference `irae__sample_casedef_post`.
+But proceed with caution, as  NLP costs scale with the number of documents processed. 
 
 
 ## Prerequisites
@@ -44,9 +44,21 @@ You should now have all the interesting results sitting in Athena, with the exce
 `irae__highlights`. We will build this once we have run NLP, but to do so we needed to build our study
 to define our patient cohort of interest.
 
-## 2. Determine which DocumentReferences to Use 
+## 2. Determine Which DocumentReferences to Use 
 
-*TBD: Help needed from ANDY*
+For our initial experiments, we will look at all the document references 
+identified by our case definition for our 10 patient post-op sample. For a 
+count of the number of patients, notes, and encounters we have across kidney 
+study sample tables, run the following: 
+```sql
+-- 10 patients in our case definition
+select 
+       count(distinct subject_ref)   as cnt_pat, 
+       count(distinct encounter_ref) as cnt_enc,
+       count(distinct documentreference_ref) as cnt_doc
+from irae__sample_casedef_post_10
+```
+
 
 ## 3. Prepare Your Data
 
@@ -384,13 +396,10 @@ cumulus-etl upload-notes ... \
   --philter=disable \
   --athena-database <relevant_cumulus_library_database> \
   --athena-workgroup <relevant_cumulus_library_workgroup> \
-  --select-by-anon-csv docrefs.csv \
   --label-by-athena-table irae__highlights
 ```
 
 A few noteworthy comments on this command configuration: 
-- Note that selection criteria for notes other than a list of 
-  docrefs may require different `--select-by-X` arguments. 
 - `--philter=disable \` is included assuming that your chart-reviewers are 
   cleared to be reviewing PHI-rich notes. If you want to remove PHI before the 
   chart-review process, you should drop this argument. 
