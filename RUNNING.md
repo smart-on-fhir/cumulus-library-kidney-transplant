@@ -361,10 +361,6 @@ Once created, you will be looking at an empty project page.
 Take note of the new URL, you'll need to know the Label Studio project ID later
 (the number after `/projects/` in the URL).
 
-Also note that as pydantic models for this are directly related to the complex label studio 
-interface above. As versions of the models in use are updated, make sure to update the Label Studio
-interface as needed.
-
 ## 7. Upload Highlighted Notes to Label Studio
 
 - Review the Cumulus ETL [upload-notes docs](https://docs.smarthealthit.org/cumulus/etl/chart-review.html)
