@@ -4,7 +4,6 @@ from cumulus_library.builders.counts import CountsBuilder
 from cumulus_library_kidney_transplant import filetool, fhir2sql
 from cumulus_library_kidney_transplant.variable import vsac_variables, custom_variables
 from cumulus_library_kidney_transplant.count.columns import Columns, Duration
-from cumulus_library_kidney_transplant.study_prefix import PREFIX
 from cumulus_library_kidney_transplant import manifest
 
 def get_counts_builder() -> CountsBuilder:
