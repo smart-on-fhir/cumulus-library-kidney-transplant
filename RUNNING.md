@@ -390,7 +390,7 @@ you will also need to pass the usual ETL `--fhir-url` flag and its related authe
 
 Once this is done, go to your project page in Label Studio and you should see a lot of charts.
 
-## 8. Have subject-matter experts review the uploaded charts
+## 8. Have Subject-Matter Experts Review the Uploaded Charts
 
 Give them access to Label Studio and have them annotate the charts!
 
