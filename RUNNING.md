@@ -19,7 +19,11 @@ as the NLP costs will scale with the number of document references processed.
     for setting that up.
 - Familiarity with [creating new cumulus library studies](https://docs.smarthealthit.org/cumulus/library/creating-studies.html#creating-library-studies)
 - Familiarity with [running NLP workflows using cumulus etl](https://docs.smarthealthit.org/cumulus/etl/nlp/example.html)
-- Install this repo with `pip install cumulus-library-kidney-transplant`
+- [Clone this repo locally](git@github.com:smart-on-fhir/cumulus-library-kidney-transplant.git); 
+  we will use this later with the --study-dir argument to reference this study when building, since
+  it isn't yet available to install with pip.
+  - NOTE: When this library is published, users will be able to 
+    install with `pip install cumulus-library-kidney-transplant` instead.  
 
 
 ## 1. Run the ETL & Library study
@@ -32,8 +36,8 @@ cumulus-library build \
   --database <relevant_cumulus_library_database> \
   --workgroup <relevant_cumulus_library_workgroup> \
   --profile <relevant_cumulus_library_profile> \
-  -t irae \
-  -s <relvant_study_dir> \
+  --study-dir <path/to/kidney-study-dir> \
+  -t irae 
 ```
 
 You should now have all the interesting results sitting in Athena, with the exception of one table: 
@@ -89,8 +93,8 @@ cumulus-library build \
   --database <relevant_cumulus_library_database> \
   --workgroup <relevant_cumulus_library_workgroup> \
   --profile <relevant_cumulus_library_profile> \
+  --study-dir <path/to/kidney-study-dir> \
   -t irae \
-  -s <relvant_study_dir> \
   --builder builder_irae_highlights
 ```
 
