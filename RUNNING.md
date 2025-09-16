@@ -79,8 +79,8 @@ cumulus-etl nlp --task irae__nlp_gpt4o \
 And with that, the natural language processing of notes is finished.
 The rest of this guide will be about setting up a chart review for human comparison with NLP.
 
-You should probably re-run your Cumulus AWS Glue crawler at this point, 
-to pick up this new NLP table and its schema.
+Importantly: re-run your [Cumulus AWS Glue crawler](https://docs.smarthealthit.org/cumulus/etl/setup/#create-tables-with-glue) 
+at this point in order to pick up this new NLP table and its schema.
 
 ## 5. Generate Highlights Highlighted Notes to Label Studio
 
