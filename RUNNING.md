@@ -371,7 +371,6 @@ cumulus-etl upload-notes ... \
   <label studio url> \
   <your typical ETL PHI folder> \
   --philter=disable \
-  --no-nlp \
   --select-by-anon-csv docrefs.csv \
   --label-by-athena-table cumulus_cerner_db.irae__highlights
 ```
