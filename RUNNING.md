@@ -384,13 +384,16 @@ cumulus-etl upload-notes ... \
   --label-by-athena-table cumulus_cerner_db.irae__highlights
 ```
 
-Note that selection criteria for notes other than a list of 
-docrefs may require different `--select-by-X` arguments. 
-
-Remember to pass any other required parameters like `--ls-project` and `--ls-token`
-(from the linked docs above).
-If your DocumentReferences hold links to EHR resources (rather than inlined data),
-you will also need to pass the usual ETL `--fhir-url` flag and its related authentication flags.
+A few noteworthy comments on this command configuration: 
+- Note that selection criteria for notes other than a list of 
+  docrefs may require different `--select-by-X` arguments. 
+- `--philter=disable \` is included assuming that your chart-reviewers are 
+  cleared to be reviewing PHI-rich notes. If you want to remove PHI before the 
+  chart-review process, you should drop this argument. 
+- Remember to pass any other required parameters like `--ls-project` and `--ls-token` 
+  (from the linked docs above).
+- If your DocumentReferences hold links to EHR resources (rather than inlined data),
+  you will also need to pass the usual ETL `--fhir-url` flag and its related authentication flags.
 
 Once this is done, go to your project page in Label Studio and you should see a lot of charts.
 
