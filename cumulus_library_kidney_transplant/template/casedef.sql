@@ -15,7 +15,7 @@ with cast_type_safe as
         imaging     = 'true'    as imaging
     from $prefix__casedef_custom_csv
 ),
-include_rule as
+include_first_visit as
 (
     select  distinct
             cast_type_safe.*,
@@ -26,7 +26,7 @@ include_rule as
     or      transplant
     or      imaging
 ),
-exclude_rule as
+exclude_first_visit as
 (
     select  distinct
             cast_type_safe.*,
@@ -36,7 +36,7 @@ exclude_rule as
     or      failure
     or      outcome
 )
-select * from include_rule
+select * from include_first_visit
 UNION
-select * from exclude_rule
+select * from exclude_first_visit
 ;
