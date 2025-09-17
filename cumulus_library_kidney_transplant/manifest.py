@@ -2,9 +2,27 @@ from typing import List
 from pathlib import Path
 import tomllib
 import tomli_w
+from cumulus_library.study_manifest import StudyManifest
 from cumulus_library_kidney_transplant import guard, filetool
 
+###############################################################################
+#
+# StudyManifest by cumulus-library is the futureproof answer for manifest.toml
+# Expect deprecation of custom manifest.toml in future IRAE study releases.
+#
+###############################################################################
+def get_study_manifest() -> StudyManifest:
+    return StudyManifest(filetool.path_parent())
+
+###############################################################################
+#
+# IRAE Custom "study builder" methods for manifest.toml
+#
+###############################################################################
 def get_file_config() -> List:
+    """
+    :return: section for SQL targets
+    """
     return read_manifest().get('file_config')
 
 def path_manifest() -> Path:
@@ -72,3 +90,4 @@ def path_relative(file_names: List[Path] | List[str]) -> List[str]:
 
 def get_study_prefix() -> str:
     return str(read_manifest().get('study_prefix'))
+

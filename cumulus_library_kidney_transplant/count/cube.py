@@ -2,9 +2,12 @@ from typing import List
 from pathlib import Path
 from cumulus_library.builders.counts import CountsBuilder
 from cumulus_library_kidney_transplant import filetool, fhir2sql
-from cumulus_library_kidney_transplant.study_prefix import PREFIX
 from cumulus_library_kidney_transplant.variable import vsac_variables, custom_variables
 from cumulus_library_kidney_transplant.count.columns import Columns, Duration
+from cumulus_library_kidney_transplant import manifest
+
+def get_counts_builder() -> CountsBuilder:
+    return CountsBuilder(study_prefix=None, manifest=manifest.get_study_manifest())
 
 def cube_enc(from_table='study_population', cols=None, cube_table=None) -> Path:
     """
@@ -25,7 +28,7 @@ def cube_enc(from_table='study_population', cols=None, cube_table=None) -> Path:
         cols = Columns.cohort.value + Columns.demographics.value
 
     cols = sorted(list(set(cols)))
-    sql = CountsBuilder(PREFIX).count_encounter(cube_table, from_table, cols)
+    sql = get_counts_builder().count_encounter(cube_table, from_table, cols)
     return filetool.save_athena_view(cube_table, sql)
 
 def cube_pat(from_table='study_population', cols=None, cube_table=None) -> Path:
@@ -47,7 +50,7 @@ def cube_pat(from_table='study_population', cols=None, cube_table=None) -> Path:
         cols = Columns.cohort.value + Columns.demographics.value
 
     cols = sorted(list(set(cols)))
-    sql = CountsBuilder(PREFIX).count_patient(cube_table, from_table, cols)
+    sql = get_counts_builder().count_patient(cube_table, from_table, cols)
     return filetool.save_athena_view(cube_table, sql)
 
 def cube_doc_issue_53(from_table='study_population', cols=None, cube_table=None) -> Path:
@@ -72,7 +75,7 @@ def cube_doc_issue_53(from_table='study_population', cols=None, cube_table=None)
         cols = Columns.cohort.value + Columns.demographics.value
 
     cols = sorted(list(set(cols)))
-    sql = CountsBuilder(PREFIX).count_documentreference(cube_table, from_table, cols)
+    sql = get_counts_builder().count_documentreference(cube_table, from_table, cols)
     return filetool.save_athena_view(cube_table, sql)
 
 def make_study_population() -> List[Path]:
