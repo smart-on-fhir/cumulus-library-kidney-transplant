@@ -9,11 +9,11 @@ with unordered as (
             etl.group_name
     FROM    etl__completion_encounters      as etl,
             irae__cohort_casedef_include    as include,
-            irae__cohort_casedef_index      as casedef,
+            irae__cohort_casedef_$period    as casedef_period,
             irae__cohort_study_population_doc as doc
-    WHERE   casedef.subject_ref = include.subject_ref
-    AND     casedef.encounter_ref = doc.encounter_ref
-    AND     casedef.encounter_ref = concat('Encounter/', etl.encounter_id)
+    WHERE   casedef_period.subject_ref = include.subject_ref
+    AND     casedef_period.encounter_ref = doc.encounter_ref
+    AND     casedef_period.encounter_ref = concat('Encounter/', etl.encounter_id)
 ), 
 ordered as (
     SELECT  distinct
