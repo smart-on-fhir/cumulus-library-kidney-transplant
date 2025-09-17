@@ -135,7 +135,7 @@ def make() -> List[Path]:
     For example, patients who had a transplant *outcome* before a kidney transplant diagnosis or surgery.
 
     8. "Include" (flag) patients matching the case definition for whome exclusion criteria was found.
-    The include cohort is the set of patients MINUS the exlude patients from previous step.
+    The include cohort is the set of patients MINUS the exclude patients from previous step.
 
     9. "Timeline" is a simple unified view of pre/index/post tables with a column designating "period".
 
