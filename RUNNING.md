@@ -1,0 +1,416 @@
+# Running the IRAE Kidney Transplant study
+
+This guide will help you reproduce the kidney study from scratch from:
+- Generating the original kidney study tables in athena, to;
+- Running the NLP task and generating LLMs IRAE annotations, to;
+- Populating a highlights table in athena based on those annotations, to finally;
+- Uploading notes for chart-review, pre-labelled based on LLM annotations.
+
+Note that these instructions only use the `irae__sample_casedef_post_10` sample of 10 patients 
+created by the kidney study, looking at documentreferences and encounters after their 
+kidney transplant. For full-cohort runs of these experiments, reference `irae__sample_casedef_post`.
+But proceed with caution, as  NLP costs scale with the number of documents processed. 
+
+
+## Prerequisites
+
+- An existing Cumulus stack, with an already-built `core` study.
+  - See the general [Cumulus documentation](https://docs.smarthealthit.org/cumulus/)
+    for setting that up.
+- Familiarity with [creating new cumulus library studies](https://docs.smarthealthit.org/cumulus/library/creating-studies.html#creating-library-studies)
+- Familiarity with [running NLP workflows using cumulus etl](https://docs.smarthealthit.org/cumulus/etl/nlp/example.html)
+- [Clone this repo locally](git@github.com:smart-on-fhir/cumulus-library-kidney-transplant.git); 
+  we will use this later with the --study-dir argument to reference this study when building, since
+  it isn't yet available to install with pip.
+  - NOTE: When this library is published, users will be able to 
+    install with `pip install cumulus-library-kidney-transplant` instead.  
+
+
+## 1. Run the ETL & Library study
+
+First we want to build our cohort of interest with this kidney 
+study and [cumulus-library](https://docs.smarthealthit.org/cumulus/library/) 
+like so: 
+```sh
+cumulus-library build \
+  --database <relevant_cumulus_library_database> \
+  --workgroup <relevant_cumulus_library_workgroup> \
+  --profile <relevant_cumulus_library_profile> \
+  --study-dir <path/to/kidney-study-dir> \
+  -t irae 
+```
+
+You should now have all the interesting results sitting in Athena, with the exception of one table: 
+`irae__highlights`. We will build this once we have run NLP, but to do so we needed to build our study
+to define our patient cohort of interest.
+
+## 2. Determine Which DocumentReferences to Use 
+
+For our initial experiments, we will look at all the document references 
+identified by our case definition for our 10 patient post-op sample. For a 
+count of the number of patients, notes, and encounters we have across kidney 
+study sample tables, run the following: 
+```sql
+-- 10 patients in our case definition
+select 
+       count(distinct subject_ref)   as cnt_pat, 
+       count(distinct encounter_ref) as cnt_enc,
+       count(distinct documentreference_ref) as cnt_doc
+from irae__sample_casedef_post_10
+```
+
+
+## 3. Prepare Your Data
+
+This study operates on DocumentReference resources
+(it runs NLP on the referenced clinical notes).
+So we need to gather the original documents 
+
+Gather some DocumentReference ndjson from your EHR.
+You can either re-export the documents of interest,
+or use ndjson from a previous export. Ideally these notes
+are pre-inlined with clinical note content, as this will 
+save time/hassle re-downloading the notes everytime we run 
+NLP. If you're gathering notes using our `smart-fetch` tool 
+the notes should be [inlined automatically when exporting](https://docs.smarthealthit.org/cumulus/fetch/hydration.html#inlining-clinical-notes).
+
+Place the ndjson in a folder, and take note of the path 
+to this input for later steps.
+
+## 4. Run NLP 
+
+Using the `cumulus-etl` tool, we will now run the IRAE specific NLP task. Instructions exist 
+for an Azure deployed `gpt4o` instance, but support for several on-prem and cloud-based models
+is available. Refer to the [example-nlp setup docs](https://docs.smarthealthit.org/cumulus/etl/nlp/example.html#model-setup) 
+as needed, and update the `gpt4o` specific arguments below accordingly. 
+
+```sh
+cumulus-etl nlp \
+  --task irae__nlp_gpt4o \
+  <input folder with ndjson files from step 3 above> \
+  <your typical ETL PHI folder> \
+  <your typical ETL OUTPUT folder> \
+  --athena-database <relevant_cumulus_library_database> \
+  --athena-workgroup <relevant_cumulus_library_workgroup> \
+  --select-by-athena-table irae__sample_casedef_post_10
+```
+
+And with that, the natural language processing of notes is finished.
+The rest of this guide will be about setting up a chart review for human comparison with NLP.
+
+Importantly: re-run your [Cumulus AWS Glue crawler](https://docs.smarthealthit.org/cumulus/etl/setup/#create-tables-with-glue) 
+at this point in order to pick up this new NLP table and its schema.
+
+## 5. Generate NLP Highlights
+
+Returning to the `cumulus-library`, we want to rebuild the study now that we have LLM response
+tables in order to generate the `irae__highlights` table. We could do this by re-running the whole 
+study, or we could target a table-builder in particular using the `--builder` argument. Since 
+we don't need to rebuild the whole study, we will do the latter to save time, targetting the 
+`builder_irae_highlights`. 
+
+```sh
+cumulus-library build \
+  --database <relevant_cumulus_library_database> \
+  --workgroup <relevant_cumulus_library_workgroup> \
+  --profile <relevant_cumulus_library_profile> \
+  --study-dir <path/to/kidney-study-dir> \
+  -t irae \
+  --builder builder_irae_highlights
+```
+
+The resulting table, `irae__highlights`, formats LLM annotations to be digestible in
+uploading notes to a label studio project. 
+
+
+## 6. Configure Label Studio
+
+- Install Label Studio according to [their docs](https://labelstud.io/guide/install.html).
+- Create a new project, named however you like.
+  - Skip the Data Import tab.
+  - On the Label Setup tab, click "Custom template" on the bottom left and enter this config:
+```
+<View
+    style="display: flex; align-items: flex-start; gap: 1em; max-height: 100vh; overflow-y: hidden;">
+    <!-- Left panel: labels + filter -->
+    <View
+        style="width: 350px; padding: 0.5em; background: #f7f7f7; border-radius: 4px; max-height: 80vh; overflow-y: auto;">
+
+        <Labels name="label" toName="text" showInline="false">
+            <Label value="Transplant Date" hotkey="W" background="#008B8B" />
+            <Label value="Donor Type" hotkey="L" background="#00FFFF" />
+            <Label value="Donor Relationship" hotkey="S" background="#00FFFF" />
+            <Label value="Hla Match Quality" hotkey="Q" background="#00FFFF" />
+            <Label value="Hla Mismatch Count" hotkey="M" background="#00FFFF" />
+            <Label value="Rx Therapeutic" hotkey="E" background="#90ee90" />
+            <Label value="Rx Compliance" hotkey="U" background="#20b2aa" />
+            <Label value="DSA" hotkey="A" background="#9370db" />
+            <Label value="Infection" hotkey="I" background="#DC143C" />
+            <Label value="Viral" hotkey="V" background="#DC143C" />
+            <Label value="Bacterial" hotkey="B" background="#DC143C" />
+            <Label value="Fungal" hotkey="G" background="#DC143C" />
+            <Label value="Graft Rejection" hotkey="R" background="#FF00FF" />
+            <Label value="Graft Failure" hotkey="F" background="#00008B" />
+            <Label value="PTLD" hotkey="P" background="#FF8C00" />
+            <Label value="Cancer" hotkey="C" background="#FF8C00" />
+            <Label value="Deceased" hotkey="D" background="#00008B" />
+            <Label value="FlagReview" hotkey="?" />
+        </Labels>
+
+
+        <View visibleWhen="region-selected" whenLabelValue="Transplant Date">
+            <Header value="Transplant Date" />
+            <TextArea name="Transplant Date" toName="text" perRegion="true"
+                placeholder="Enter Transplate Date additional info" />
+        </View>
+
+        <View visibleWhen="region-selected" whenLabelValue="Donor Type">
+            <Header value="Donor Type" />
+            <Choices name="Donor Type" toName="text" choice="single-radio"
+                visibleWhen="region-selected" whenLabelValue="Donor Type" perRegion="true">
+                <Choice value="Donor was alive at time of renal transplant" />
+                <Choice value="Donor was deceased at time of renal transplant" />
+                <Choice value="Donor was not mentioned as living or deceased" />
+            </Choices>
+        </View>
+
+        <View visibleWhen="region-selected" whenLabelValue="Donor Relationship">
+            <Header value="Donor Relationship" />
+            <Choices name="Donor Relationship" toName="text" choice="single-radio"
+                visibleWhen="region-selected" whenLabelValue="Donor Relationship" perRegion="true">
+                <Choice value="Donor was related to the renal transplant recipient" />
+                <Choice value="Donor was unrelated to the renal transplant recipient" />
+                <Choice value="Donor relationship status was not mentioned" />
+            </Choices>
+        </View>
+
+        <View visibleWhen="region-selected" whenLabelValue="Hla Match Quality">
+            <Header value="Hla Match Quality" />
+            <Choices name="Hla Match Quality" toName="text" choice="single-radio"
+                visibleWhen="region-selected" whenLabelValue="Hla Match Quality" perRegion="true">
+                <Choice value="Well matched (0-1 mismatches)" />
+                <Choice value="Moderately matched (2-4 mismatches)" />
+                <Choice value="Poorly matched (5-6 mismatches)" />
+                <Choice value="HLA match quality not mentioned" />
+            </Choices>
+        </View>
+
+        <View visibleWhen="region-selected" whenLabelValue="Hla Mismatch Count">
+            <Header value="Hla Mismatch Count" />
+            <Choices name="Hla Mismatch Count" toName="text" choice="single-radio"
+                visibleWhen="region-selected" whenLabelValue="Hla Mismatch Count" perRegion="true">
+                <Choice value="0" />
+                <Choice value="1" />
+                <Choice value="2" />
+                <Choice value="3" />
+                <Choice value="4" />
+                <Choice value="5" />
+                <Choice value="6" />
+                <Choice value="HLA mismatch count not mentioned" />
+            </Choices>
+        </View>
+
+        <View visibleWhen="region-selected" whenLabelValue="Rx Therapeutic">
+            <Header value="Rx Therapeutic" />
+            <Choices name="Rx Therapeutic" toName="text" choice="single-radio"
+                visibleWhen="region-selected" whenLabelValue="Rx Therapeutic" perRegion="true">
+                <Choice
+                    value="Immunosuppression levels are documented as therapeutic, adequate, or within target range." />
+                <Choice
+                    value="Immunosuppression levels are documented as subtherapeutic, insufficient, or below target range." />
+                <Choice
+                    value="Immunosuppression levels are documented as supratherapeutic, above therapeutic level, or above target range." />
+                <Choice value="None of the above" />
+            </Choices>
+        </View>
+
+        <View visibleWhen="region-selected" whenLabelValue="Rx Compliance">
+            <Header value="Rx Compliance" />
+            <Choices name="Rx Compliance" toName="text" choice="single-radio"
+                visibleWhen="region-selected" whenLabelValue="Rx Compliance" perRegion="true">
+                <Choice
+                    value="Patient is documented as compliant with immunosuppressive medications." />
+                <Choice
+                    value="Patient is documented as only partially compliant with immunosuppressive medications." />
+                <Choice
+                    value="Patient is documented as noncompliant with immunosuppressive medications." />
+                <Choice value="None of the above" />
+            </Choices>
+        </View>
+
+        <View visibleWhen="region-selected" whenLabelValue="DSA">
+            <Header value="DSA" />
+            <Choices name="DSA" toName="text" choice="single-radio" visibleWhen="region-selected"
+                whenLabelValue="DSA" perRegion="true">
+                <Choice
+                    value="DSA diagnostic test positive, DSA diagnosis 'confirmed' or 'positive', or increase in immunosuppression due to DSA" />
+                <Choice value="DSA Treatment prescribed or DSA treatment administered" />
+                <Choice
+                    value="DSA suspected, DSA likely, DSA cannot be ruled out, DSA test result pending or DSA is a differential diagnosis" />
+                <Choice value="None of the above" />
+            </Choices>
+        </View>
+
+        <View visibleWhen="region-selected" whenLabelValue="Infection">
+            <Header value="Infection" />
+            <Choices name="Infection" toName="text" choice="single-radio"
+                visibleWhen="region-selected" whenLabelValue="Infection" perRegion="true">
+                <Choice
+                    value="Infection confirmed by laboratory test or imaging, infection diagnosis was 'confirmed' or 'positive', or reduced immunosuppression due to infection" />
+                <Choice
+                    value="Infection is suspected, likely, cannot be ruled out, infection is a differential diagnosis or infectious test result is pending" />
+                <Choice value="None of the above" />
+            </Choices>
+        </View>
+
+        <View visibleWhen="region-selected" whenLabelValue="Viral">
+            <Header value="Viral" />
+            <Choices name="Viral" toName="text" choice="single-radio" visibleWhen="region-selected"
+                whenLabelValue="Viral" perRegion="true">
+                <Choice
+                    value="Viral infection confirmed by laboratory test or imaging, viral infection diagnosis was 'confirmed' or 'positive', or reduced immunosuppression due to viral infection" />
+                <Choice
+                    value="Viral infection is suspected, likely, cannot be ruled out, viral infection is a differential diagnosis or viral test result is pending" />
+                <Choice value="None of the above" />
+            </Choices>
+        </View>
+
+        <View visibleWhen="region-selected" whenLabelValue="Bacterial">
+            <Header value="Bacterial" />
+            <Choices name="Bacterial" toName="text" choice="single-radio"
+                visibleWhen="region-selected" whenLabelValue="Bacterial" perRegion="true">
+                <Choice
+                    value="Bacterial infection confirmed by laboratory test or imaging, bacterial infection diagnosis was 'confirmed' or 'positive', or reduced immunosuppression due to bacterial infection" />
+                <Choice
+                    value="Bacterial infection is suspected, likely, cannot be ruled out, bacterial infection is a differential diagnosis or bacterial test result is pending" />
+                <Choice value="None of the above" />
+            </Choices>
+        </View>
+
+        <View visibleWhen="region-selected" whenLabelValue="Fungal">
+            <Header value="Fungal" />
+            <Choices name="Fungal" toName="text" choice="single-radio" visibleWhen="region-selected"
+                whenLabelValue="Fungal" perRegion="true">
+                <Choice
+                    value="Fungal infection confirmed by laboratory test or imaging, fungal infection diagnosis was 'confirmed' or 'positive', or reduced immunosuppression due to fungal infection" />
+                <Choice
+                    value="Fungal infection is suspected, likely, cannot be ruled out, fungal infection is a differential diagnosis or fungal test result is pending" />
+                <Choice value="None of the above" />
+            </Choices>
+        </View>
+
+        <View visibleWhen="region-selected" whenLabelValue="Graft Rejection">
+            <Header value="Graft Rejection" />
+            <Choices name="Graft Rejection" toName="text" choice="single-radio"
+                visibleWhen="region-selected" whenLabelValue="Graft Rejection" perRegion="true">
+                <Choice
+                    value="Biopsy proven kidney graft rejection or pathology proven kidney graft rejection" />
+                <Choice value="Kidney graft rejection was 'diagnosed', 'confirmed' or 'positive'" />
+                <Choice value="Treatment prescribed/administered for kidney rejection (AMR or TCMR)" />
+                <Choice
+                    value="Kidney graft rejection presumed, suspected, likely, cannot be ruled out, or biopsy result pending" />
+                <Choice value="None of the above" />
+            </Choices>
+        </View>
+
+        <View visibleWhen="region-selected" whenLabelValue="Graft Failure">
+            <Header value="Graft Failure" />
+            <Choices name="Graft Failure" toName="text" choice="single-radio"
+                visibleWhen="region-selected" whenLabelValue="Graft Failure" perRegion="true">
+                <Choice value="Kidney graft has failed or kidney graft loss" />
+                <Choice
+                    value="Kidney graft failure presumed, suspected, likely, or cannot be ruled out" />
+                <Choice value="None of the above" />
+            </Choices>
+        </View>
+
+        <View visibleWhen="region-selected" whenLabelValue="PTLD">
+            <Header value="PTLD" />
+            <Choices name="PTLD" toName="text" choice="single-radio" visibleWhen="region-selected"
+                whenLabelValue="PTLD" perRegion="true">
+                <Choice value="Biopsy proven or pathology proven PTLD" />
+                <Choice
+                    value="PTLD was 'diagnosed', 'confirmed' or 'positive' or viral positive lymphoma" />
+                <Choice
+                    value="Treatment prescribed/administered for PTLD or stopped immunosuppression due to PTLD" />
+                <Choice
+                    value="PTLD presumed, suspected, likely, cannot be ruled out, or PTLD biopsy result pending" />
+                <Choice value="None of the above" />
+            </Choices>
+        </View>
+
+        <View visibleWhen="region-selected" whenLabelValue="Cancer">
+            <Header value="Cancer" />
+            <Choices name="Cancer" toName="text" choice="single-radio" visibleWhen="region-selected"
+                whenLabelValue="Cancer" perRegion="true">
+                <Choice value="Biopsy proven or pathology proven cancer" />
+                <Choice value="Cancer was 'diagnosed', 'confirmed' or 'positive'" />
+                <Choice value="Treatment prescribed/administered for cancer" />
+                <Choice
+                    value="Cancer is presumed, suspected, likely, cannot be ruled out, or biopsy of any lesion" />
+                <Choice value="None of the above" />
+            </Choices>
+        </View>
+
+        <View visibleWhen="region-selected" whenLabelValue="Deceased">
+            <Header value="Deceased" />
+            <Choices name="Deceased" toName="text" choice="single-radio"
+                visibleWhen="region-selected" whenLabelValue="Deceased" perRegion="true">
+                <Choice value="True" />
+                <Choice value="False" />
+            </Choices>
+        </View>
+
+        <View visibleWhen="region-selected" whenLabelValue="Deceased">
+            <Header value="Deceased Datetime" />
+            <TextArea name="Deceased Datetime" toName="text" perRegion="true"
+                placeholder="Enter Deceased Datetime additional info" />
+        </View>
+
+    </View>
+
+    <!-- Right panel: text to annotate -->
+    <View style="flex: 1; max-height: 80vh; overflow-y: auto;">
+        <Text
+            name="text"
+            value="$text"
+            granularity="word"
+        />
+    </View>
+</View>
+```
+
+Once created, you will be looking at an empty project page.
+Take note of the new URL, you'll need to know the Label Studio project ID later
+(the number after `/projects/` in the URL).
+
+## 7. Upload Highlighted Notes to Label Studio
+
+- Review the Cumulus ETL [upload-notes docs](https://docs.smarthealthit.org/cumulus/etl/chart-review.html)
+- You'll want to run `upload-notes` with the following options:
+```shell
+cumulus-etl upload-notes ... \
+  <input folder with ndjson files from step K above> \
+  <label studio url> \
+  <your typical ETL PHI folder> \
+  --philter=disable \
+  --athena-database <relevant_cumulus_library_database> \
+  --athena-workgroup <relevant_cumulus_library_workgroup> \
+  --label-by-athena-table irae__highlights
+```
+
+A few noteworthy comments on this command configuration: 
+- `--philter=disable \` is included assuming that your chart-reviewers are 
+  cleared to be reviewing PHI-rich notes. If you want to remove PHI before the 
+  chart-review process, you should drop this argument. 
+- Remember to pass any other required parameters like `--ls-project` and `--ls-token` 
+  (from the linked docs above).
+- If your DocumentReferences hold links to EHR resources (rather than inlined data),
+  you will also need to pass the usual ETL `--fhir-url` flag and its related authentication flags.
+
+Once this is done, go to your project page in Label Studio and you should see a lot of charts.
+
+## 8. Have Subject-Matter Experts Review the Uploaded Charts
+
+Give them access to Label Studio and have them annotate the charts!
+
