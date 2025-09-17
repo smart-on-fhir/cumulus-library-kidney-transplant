@@ -12,12 +12,12 @@
 --
 -- ########################################################################
 
-create table $prefix__cohort_casedef_$suffix as
+create table $prefix__cohort_casedef_$period as
 with IndexDate as
 (
     select      min(enc_period_start_day) as enc_period_start_day,
                 valueset, subject_ref
-    from        $variable
+    from        $prefix__cohort_casedef
     group by    valueset, subject_ref
 ),
 Cohort as
@@ -31,7 +31,7 @@ Cohort as
             CaseDef.subject_ref,
             CaseDef.encounter_ref,
             CaseDef.enc_period_start_day
-    from    $variable as CaseDef,
+    from    $prefix__cohort_casedef as CaseDef,
             IndexDate
     where   CaseDef.subject_ref = IndexDate.subject_ref
     and     CaseDef.valueset     = IndexDate.valueset

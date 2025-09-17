@@ -1,4 +1,4 @@
-CREATE table $prefix__sample_casedef_$suffix as
+CREATE table $prefix__sample_casedef_$period as
 with unordered as (
     SELECT  distinct
             doc.subject_ref,
