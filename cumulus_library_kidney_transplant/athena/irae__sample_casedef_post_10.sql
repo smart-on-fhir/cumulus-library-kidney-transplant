@@ -3,6 +3,7 @@ WITH
 patient_list as (
     select  distinct subject_ref 
     from    irae__sample_casedef_post
+    order by subject_ref
     limit 10 
 )
 select      distinct doc.* 

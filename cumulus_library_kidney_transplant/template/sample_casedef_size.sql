@@ -3,6 +3,7 @@ WITH
 patient_list as (
     select  distinct subject_ref 
     from    $prefix__sample_casedef_$period
+    order by subject_ref
     limit $size 
 )
 select      distinct doc.* 
