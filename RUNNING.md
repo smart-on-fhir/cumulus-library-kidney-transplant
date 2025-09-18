@@ -32,8 +32,7 @@ First we want to build our cohort of interest with this kidney
 study and [cumulus-library](https://docs.smarthealthit.org/cumulus/library/) 
 like so: 
 ```sh
-docker compose run --rm \
-  cumulus-library build \
+cumulus-library build \
   --database <relevant_cumulus_library_database> \
   --workgroup <relevant_cumulus_library_workgroup> \
   --profile <relevant_cumulus_library_profile> \
@@ -124,8 +123,7 @@ we don't need to rebuild the whole study, we will do the latter to save time, ta
 `builder_irae_highlights`. 
 
 ```sh
-docker compose run --rm \
-  cumulus-library build \
+cumulus-library build \
   --database <relevant_cumulus_library_database> \
   --workgroup <relevant_cumulus_library_workgroup> \
   --profile <relevant_cumulus_library_profile> \
