@@ -77,16 +77,24 @@ the notes should be [inlined automatically when exporting](https://docs.smarthea
 Place the ndjson in a folder, and take note of the path 
 to this input for later steps.
 
+
 ## 4. Run NLP 
 
-Using the `cumulus-etl` tool, we will now run the IRAE specific NLP task. Instructions exist 
-for an Azure deployed `gpt4o` instance, but support for several on-prem and cloud-based models
-is available. Refer to the [example-nlp setup docs](https://docs.smarthealthit.org/cumulus/etl/nlp/example.html#model-setup) 
-as needed, and update the `gpt4o` specific arguments below accordingly. 
+Using the `cumulus-etl` tool, we will now run the IRAE specific NLP task. These instructions  
+are for an [on-prem](https://docs.smarthealthit.org/cumulus/etl/nlp/example.html#local-on-prem-options) `gpt-oss-120b` instance, 
+but support for other cloud-based models is available in the [example-nlp setup docs](https://docs.smarthealthit.org/cumulus/etl/nlp/example.html#model-setup).
+Note that using other models will require updating the `gpt-oss-120b` specific arguments below. 
 
+First you want to set up the GPT-OSS instance to run locally:
 ```sh
-cumulus-etl nlp \
-  --task irae__nlp_gpt4o \
+docker compose up --wait gpt-oss-120b
+```
+
+Once the LLM instance is up and running via docker, you can run the `cumulus-etl nlp` task:
+```sh
+docker compose run --rm -it\
+  cumulus-etl nlp \
+  --task irae__nlp_gpt_oss_120b \
   <input folder with ndjson files from step 3 above> \
   <your typical ETL PHI folder> \
   <your typical ETL OUTPUT folder> \
@@ -94,6 +102,11 @@ cumulus-etl nlp \
   --athena-workgroup <relevant_cumulus_library_workgroup> \
   --select-by-athena-table irae__sample_casedef_post_10
 ```
+
+Note: by running with `-it` we can trigger an interactive run of docker compose, which 
+allows us to take advantage of the `cumulus-etl nlp`'s support for verifying the number of notes 
+that will be processed with NLP before starting a run. This can be useful in ensuring that you 
+don't spend a lot of money/time running NLP on an unintentionally large selection of notes.
 
 And with that, the natural language processing of notes is finished.
 The rest of this guide will be about setting up a chart review for human comparison with NLP.
@@ -389,7 +402,8 @@ Take note of the new URL, you'll need to know the Label Studio project ID later
 - Review the Cumulus ETL [upload-notes docs](https://docs.smarthealthit.org/cumulus/etl/chart-review.html)
 - You'll want to run `upload-notes` with the following options:
 ```shell
-cumulus-etl upload-notes ... \
+docker compose run --rm \
+  cumulus-etl upload-notes ... \
   <input folder with ndjson files from step K above> \
   <label studio url> \
   <your typical ETL PHI folder> \
