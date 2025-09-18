@@ -1,7 +1,8 @@
 create table $prefix__cohort_study_population as
 with StudyPeriodRange as
 (
-    select distinct encounter_ref, subject_ref
+    select  distinct
+            encounter_ref, subject_ref
     from    core__encounter as E,
             $prefix__include_study_period  as Include
     where   (E.period_start_day between Include.period_start and Include.period_end)
@@ -9,7 +10,8 @@ with StudyPeriodRange as
 ),
 StudyPeriodHistory as
 (
-    select distinct E.encounter_ref, E.subject_ref
+    select  distinct
+            E.encounter_ref, E.subject_ref
     from    StudyPeriodRange,
             core__encounter as E,
             $prefix__include_study_period  as Include
@@ -20,7 +22,7 @@ StudyPeriodHistory as
 StudyPeriod as
 (
     select encounter_ref, subject_ref from StudyPeriodRange
-    UNION
+    UNION ALL
     select encounter_ref, subject_ref from StudyPeriodHistory
 ),
 StudyPopulation as
