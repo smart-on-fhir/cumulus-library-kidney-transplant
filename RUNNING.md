@@ -82,7 +82,7 @@ to this input for later steps.
 ## 4. Run NLP 
 
 Using the `cumulus-etl` tool, we will now run the IRAE specific NLP task. These instructions  
-are for a [on-prem](https://docs.smarthealthit.org/cumulus/etl/nlp/example.html#local-on-prem-options) `gpt-oss-120b` instance, 
+are for an [on-prem](https://docs.smarthealthit.org/cumulus/etl/nlp/example.html#local-on-prem-options) `gpt-oss-120b` instance, 
 but support for other cloud-based models is available in the [example-nlp setup docs](https://docs.smarthealthit.org/cumulus/etl/nlp/example.html#model-setup).
 Note that using other models will require updating the `gpt-oss-120b` specific arguments below. 
 
