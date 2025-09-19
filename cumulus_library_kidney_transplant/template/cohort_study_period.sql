@@ -1,6 +1,6 @@
 CREATE TABLE irae__cohort_study_period as
 WITH
-StudyPeriodRange as
+Range as
 (
     select  distinct
             E.subject_ref,
@@ -12,7 +12,7 @@ StudyPeriodRange as
     where   (E.period_start_day between Include.period_start and Include.period_end)
     and     (E.period_end_day   between Include.period_start and Include.period_end)
 ),
-StudyPeriodHistory as
+History as
 (
     SELECT  DISTINCT
             E.subject_ref,
@@ -25,24 +25,24 @@ StudyPeriodHistory as
      AND    e.period_start_day < Include.period_start
     WHERE   EXISTS  (
             SELECT  1
-            FROM    StudyPeriodRange
-            WHERE   StudyPeriodRange.subject_ref = E.subject_ref)
+            FROM    Range
+            WHERE   Range.subject_ref = E.subject_ref)
 ),
-StudyPeriodUnion as
+Merged as
 (
-    select  *  from StudyPeriodRange
+    select  *  from Range
     UNION ALL
-    select  *  from StudyPeriodHistory
+    select  *  from History
 ),
-StudyPeriodDistinct as
+Uniq as
 (
     SELECT  distinct
             subject_ref,
             period_start_day,
             period_end_day
-    from    StudyPeriodUnion
+    from    Merged
 ),
-StudyPeriodOrdinal as (
+Ordinal as (
     SELECT  distinct
             subject_ref,
             period_start_day,
@@ -52,23 +52,17 @@ StudyPeriodOrdinal as (
                 ORDER       BY  period_start_day    NULLS LAST,
                                 period_end_day      NULLS LAST
             )   AS period_ordinal
-    FROM    StudyPeriodDistinct
-),
-StudyPeriod as (
-    select  distinct
-            O.subject_ref,
-            O.period_ordinal,
-            O.period_start_day,
-            O.period_end_day,
-            U.encounter_ref
-    from    StudyPeriodUnion    as U,
-            StudyPeriodOrdinal  as O
-    where   U.subject_ref       = O.subject_ref
-    and     U.period_start_day  = O.period_start_day
-    and     U.period_end_day    = O.period_end_day
+    FROM    Uniq
 )
-select      *
-from        StudyPeriod
-order by    subject_ref,
-            period_ordinal,
-            encounter_ref;
+select  distinct
+        Ordinal.subject_ref,
+        Ordinal.period_ordinal,
+        Ordinal.period_start_day,
+        Ordinal.period_end_day,
+        Merged.encounter_ref
+from    Merged,
+        Ordinal
+where   Merged.subject_ref       = Ordinal.subject_ref
+and     Merged.period_start_day  = Ordinal.period_start_day
+and     Merged.period_end_day    = Ordinal.period_end_day
+;

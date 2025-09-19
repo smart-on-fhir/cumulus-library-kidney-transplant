@@ -70,7 +70,7 @@ def make_index_date(cohort_table, period, equality) -> Path:
     return filetool.save_athena(view, sql)
 
 ########################################################################################################
-# Timeline (pre/index/post) view with `cohort_study_variables_wide`
+# Timeline (pre/index/post) view with `cohort_casedef`
 ##########################################################################################################
 
 def make_timeline() -> Path:

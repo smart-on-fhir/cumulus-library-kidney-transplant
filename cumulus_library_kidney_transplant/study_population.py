@@ -29,6 +29,9 @@ def make_meta_version() -> List[Path]:
     sql = filetool.inline_template(sql)
     return [filetool.save_athena_view(table, sql)]
 
+def make_study_period() -> List[Path]:
+    return [filetool.copy_template('cohort_study_period.sql')]
+
 def make_study_population() -> List[Path]:
     """
     Study Population is built from "template/" dir.
@@ -62,4 +65,4 @@ def make_study_population() -> List[Path]:
     return file_list
 
 def make() -> List[Path]:
-    return make_study_population() + make_meta_date() + make_meta_version()
+    return make_study_period() + make_study_population() + make_meta_date() + make_meta_version()

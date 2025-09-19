@@ -8,6 +8,7 @@ file_names = [
     "cumulus_library_kidney_transplant/athena/irae__include_enc_class.sql",
     "cumulus_library_kidney_transplant/athena/irae__include_gender.sql",
     "cumulus_library_kidney_transplant/athena/irae__include_race.sql",
+    "cumulus_library_kidney_transplant/athena/irae__cohort_study_period.sql",
     "cumulus_library_kidney_transplant/athena/irae__cohort_study_population.sql",
     "cumulus_library_kidney_transplant/athena/irae__cohort_study_population_dx.sql",
     "cumulus_library_kidney_transplant/athena/irae__cohort_study_population_rx.sql",
