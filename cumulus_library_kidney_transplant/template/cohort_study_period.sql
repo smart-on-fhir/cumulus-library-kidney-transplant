@@ -1,4 +1,4 @@
-CREATE TABLE irae__cohort_study_period as
+CREATE TABLE $prefix__cohort_study_period as
 WITH
 Range as
 (
@@ -8,7 +8,7 @@ Range as
             E.period_end_day,
             E.encounter_ref
     from    core__encounter             as E,
-            irae__include_study_period  as Include
+            $prefix__include_study_period  as Include
     where   (E.period_start_day between Include.period_start and Include.period_end)
     and     (E.period_end_day   between Include.period_start and Include.period_end)
 ),
@@ -20,7 +20,7 @@ History as
             E.period_end_day,
             E.encounter_ref
     FROM    core__encounter             as E
-    JOIN    irae__include_study_period  as Include
+    JOIN    $prefix__include_study_period  as Include
       ON    Include.include_history
      AND    e.period_start_day < Include.period_start
     WHERE   EXISTS  (

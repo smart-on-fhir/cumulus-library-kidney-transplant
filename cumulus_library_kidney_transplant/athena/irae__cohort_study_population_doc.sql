@@ -5,6 +5,7 @@ select distinct
     doc.type_display    as doc_type_display,
     doc.type_system     as doc_type_system,
     doc.author_day      as doc_author_day,
+    doc."date"          as doc_date,
     doc.documentreference_ref,
     study_population.*
 from

@@ -61,10 +61,9 @@ def make_index_date(cohort_table, period, equality) -> Path:
     :param equality: date comparison "=", "<", ">"
     :return: Path to SQL table containing cohort matching case definition
     """
+    template = 'cohort_casedef_period.sql'
     view = f'{name_casedef()}_{period}.sql'
-    template = f'{name_casedef()}_index.sql'
     sql = filetool.load_template(template)
-    sql = filetool.inline_template(sql, cohort_table)
     sql = sql.replace('$period', period)
     sql = sql.replace('$equality', equality)
     return filetool.save_athena(view, sql)
@@ -151,11 +150,11 @@ def make() -> List[Path]:
     return [make_casedef_custom_csv(),
             make_casedef_custom(),
             make_cohort(),
+            make_cohort('exclude'),
+            make_cohort('include'),
             make_index_date(cohort_table, 'index', '='),
             make_index_date(cohort_table, 'pre', '<'),
             make_index_date(cohort_table, 'post', '>'),
-            make_cohort('exclude'),
-            make_cohort('include'),
             make_timeline(),
             make_samples(None, 'index'),
             make_samples(10, 'index'),
