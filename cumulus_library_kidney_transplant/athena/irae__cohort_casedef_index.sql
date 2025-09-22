@@ -13,17 +13,18 @@
 -- ########################################################################
 
 create table irae__cohort_casedef_index as
-with CaseDef as
+WITH
+IndexDate as
 (
     select      min(enc_period_start_day) as index_date,
                 subject_ref
     from        irae__cohort_casedef_include
     group by    subject_ref
 )
-select  CaseDef.index_date,
+select  IndexDate.index_date,
         SP.*
 from    irae__cohort_study_population as SP,
-        CaseDef
-where   SP.subject_ref = CaseDef.subject_ref
-and     SP.enc_period_start_day = CaseDef.index_date
+        IndexDate
+where   SP.subject_ref = IndexDate.subject_ref
+and     SP.enc_period_start_day = IndexDate.index_date
 ;

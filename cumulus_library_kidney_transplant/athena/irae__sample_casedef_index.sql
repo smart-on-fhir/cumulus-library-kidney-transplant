@@ -1,5 +1,6 @@
 CREATE table irae__sample_casedef_index as
-with documented_encounters as (
+WITH
+EncounterDoc as (
     SELECT  distinct
             ETL.group_name,
             CaseDef.subject_ref,
@@ -16,21 +17,20 @@ with documented_encounters as (
     FROM    etl__completion_encounters          as ETL,
             irae__cohort_casedef_index        as CaseDef,
             irae__cohort_study_population_doc   as Doc
-    WHERE   CaseDef.subject_ref     = CaseDef.subject_ref
-    AND     CaseDef.encounter_ref   = doc.encounter_ref
+    WHERE   CaseDef.encounter_ref   = doc.encounter_ref
     AND     CaseDef.encounter_ref   = concat('Encounter/', etl.encounter_id)
     ORDER BY CaseDef.subject_ref
 ), 
 ordered as (
     SELECT  distinct
-            documented_encounters.*,
+            EncounterDoc.*,
             ROW_NUMBER() OVER (
                 PARTITION   BY  subject_ref
                 ORDER       BY  enc_period_start_day,
                                 sort_by_date,
                                 documentreference_ref
             )   AS doc_ordinal
-    FROM    documented_encounters
+    FROM    EncounterDoc
 )
 SELECT  ordered.*,
         doc.doc_type_code, 
