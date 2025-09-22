@@ -1,5 +1,6 @@
 CREATE table $prefix__sample_casedef_$period as
-with documented_encounters as (
+WITH
+EncounterDoc as (
     SELECT  distinct
             ETL.group_name,
             CaseDef.subject_ref,
@@ -14,29 +15,28 @@ with documented_encounters as (
             when (Doc.doc_date          is NOT null)    then Doc.doc_date
             else Doc.enc_period_start_day               end as sort_by_date
     FROM    etl__completion_encounters          as ETL,
-            irae__cohort_casedef_$period        as CaseDef,
-            irae__cohort_study_population_doc   as Doc
-    WHERE   CaseDef.subject_ref     = CaseDef.subject_ref
-    AND     CaseDef.encounter_ref   = doc.encounter_ref
+            $prefix__cohort_casedef_$period        as CaseDef,
+            $prefix__cohort_study_population_doc   as Doc
+    WHERE   CaseDef.encounter_ref   = doc.encounter_ref
     AND     CaseDef.encounter_ref   = concat('Encounter/', etl.encounter_id)
     ORDER BY CaseDef.subject_ref
 ), 
 ordered as (
     SELECT  distinct
-            documented_encounters.*,
+            EncounterDoc.*,
             ROW_NUMBER() OVER (
                 PARTITION   BY  subject_ref
                 ORDER       BY  enc_period_start_day,
                                 sort_by_date,
                                 documentreference_ref
             )   AS doc_ordinal
-    FROM    documented_encounters
+    FROM    EncounterDoc
 )
 SELECT  ordered.*,
         doc.doc_type_code, 
         doc.doc_type_display, 
         doc.doc_type_system
 from    ordered, 
-        irae__cohort_study_population_doc as doc 
+        $prefix__cohort_study_population_doc as doc
 where   ordered.documentreference_ref = doc.documentreference_ref           
 ;
