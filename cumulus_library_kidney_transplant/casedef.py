@@ -121,20 +121,20 @@ def make() -> List[Path]:
 
     3. Create cohort of patients matching case definition
 
-    4. CTAS "Index": first encounter matching the case definition.
-    This is the "index date" (medical research term not SQL index).
-
-    5. CTAS "Pre" encounters before index date for patients matching the case definition.
-    This is the patient longitudinal history.
-
-    6. CTAS "Post" encounters after index date for patients matching the case definition.
-    This is the patient treatment and outcome cohort.
-
-    7. "Exclude" (flag) patients matching the case definition for whome exclusion criteria was found.
+    4. "Exclude" (flag) patients matching the case definition for whome exclusion criteria was found.
     For example, patients who had a transplant *outcome* before a kidney transplant diagnosis or surgery.
 
-    8. "Include" (flag) patients matching the case definition for whome exclusion criteria was found.
+    5. "Include" (flag) patients matching the case definition for whome exclusion criteria was found.
     The include cohort is the set of patients MINUS the exclude patients from previous step.
+
+    6. CTAS "Index": first encounter matching the case definition.
+    This is the "index date" (medical research term not SQL index).
+
+    7. CTAS "Pre" encounters before index date for patients matching the case definition.
+    This is the patient longitudinal history.
+
+    8. CTAS "Post" encounters after index date for patients matching the case definition.
+    This is the patient treatment and outcome cohort.
 
     9. "Timeline" is a simple unified view of pre/index/post tables with a column designating "period".
 
