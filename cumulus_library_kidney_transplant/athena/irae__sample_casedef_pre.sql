@@ -37,6 +37,6 @@ SELECT  ordered.*,
         doc.doc_type_display, 
         doc.doc_type_system
 from    ordered, 
-        irae__cohort_study_population_doc as doc 
+        irae__cohort_study_population_doc as doc
 where   ordered.documentreference_ref = doc.documentreference_ref           
 ;
