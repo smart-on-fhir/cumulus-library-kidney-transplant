@@ -9,6 +9,14 @@ from cumulus_library_kidney_transplant import manifest
 def get_counts_builder() -> CountsBuilder:
     return CountsBuilder(study_prefix=None, manifest=manifest.get_study_manifest())
 
+def name_cohort(from_table=None) -> str:
+    if 'sample' in from_table:
+        return from_table
+    if 'cohort' in from_table:
+        return from_table
+    else:
+        return fhir2sql.name_cohort(from_table)
+
 def cube_enc(from_table='study_population', cols=None, cube_table=None) -> Path:
     """
     CUBE counts contain unique numbers of
@@ -19,7 +27,7 @@ def cube_enc(from_table='study_population', cols=None, cube_table=None) -> Path:
     :param cube_table: output CUBE table
     :return: Path to CUBE table
     """
-    from_table = fhir2sql.name_cohort(from_table)
+    from_table = name_cohort(from_table)
 
     if not cube_table:
         cube_table = fhir2sql.name_cube(from_table, 'encounter')
@@ -41,7 +49,7 @@ def cube_pat(from_table='study_population', cols=None, cube_table=None) -> Path:
     :param cube_table: output CUBE table
     :return: Path to CUBE table
     """
-    from_table = fhir2sql.name_cohort(from_table)
+    from_table = name_cohort(from_table)
 
     if not cube_table:
         cube_table = fhir2sql.name_cube(from_table, 'patient')
@@ -53,7 +61,7 @@ def cube_pat(from_table='study_population', cols=None, cube_table=None) -> Path:
     sql = get_counts_builder().count_patient(cube_table, from_table, cols)
     return filetool.save_athena_view(cube_table, sql)
 
-def cube_doc_issue_53(from_table='study_population', cols=None, cube_table=None) -> Path:
+def cube_doc(from_table='study_population', cols=None, cube_table=None) -> Path:
     """
     CUBE counts contain unique numbers of
         * FHIR DocumentReference --> "select distinct(core__documentreference.documentreference_ref)"
@@ -66,7 +74,7 @@ def cube_doc_issue_53(from_table='study_population', cols=None, cube_table=None)
     :param cube_table: output CUBE table
     :return: Path to CUBE table
     """
-    from_table = fhir2sql.name_cohort(from_table)
+    from_table = name_cohort(from_table)
 
     if not cube_table:
         cube_table = fhir2sql.name_cube(from_table, 'document')
@@ -75,7 +83,7 @@ def cube_doc_issue_53(from_table='study_population', cols=None, cube_table=None)
         cols = Columns.cohort.value + Columns.demographics.value
 
     cols = sorted(list(set(cols)))
-    sql = get_counts_builder().count_documentreference(cube_table, from_table, cols)
+    sql = get_counts_builder().count_documentreference(cube_table, from_table, cols, skip_status_filter=True)
     return filetool.save_athena_view(cube_table, sql)
 
 def make_study_population() -> List[Path]:
@@ -102,8 +110,7 @@ def make_study_population() -> List[Path]:
             cube_pat('study_population_lab', Columns.cohort.value + Columns.labs.value),
             cube_enc('study_population_lab', Columns.cohort.value + Columns.labs.value),
             cube_pat('study_population_doc', Columns.cohort.value + Columns.documents.value),
-            cube_enc('study_population_doc', Columns.cohort.value + Columns.documents.value),
-            # cube_doc('study_population_doc', Columns.cohort.value + Columns.documents.value),
+            cube_doc('study_population_doc', Columns.cohort.value + Columns.documents.value),
             cube_pat('study_population_proc', Columns.cohort.value + Columns.procedures.value),
             cube_enc('study_population_proc', Columns.cohort.value + Columns.procedures.value)]
 
@@ -165,11 +172,11 @@ def make_casedef_timeline() -> List[Path]:
     :return: Path to CUBE table for the casedef_timeline
     """
     from_table = fhir2sql.name_cohort('casedef_timeline')
-    cols = ['period', 'variable', 'valueset', 'enc_period_start_month']
+    cols = ['casedef_period', 'age_at_visit', 'gender', 'enc_period_start_year']
     return [cube_pat(from_table, cols),
             cube_enc(from_table, cols)]
 
-def make_casedef_samples_issue_53() -> List[Path]:
+def make_casedef_samples() -> List[Path]:
     """
     CUBE count casedef_timeline using columns
         * period (sequence of events) pre/index/after the case definition index date
@@ -189,10 +196,13 @@ def make_casedef_samples_issue_53() -> List[Path]:
     cols = ['doc_type_code', 'doc_type_display', 'doc_type_system', 'group_name']
     file_list = list()
     for period in ['pre', 'index', 'post']:
-        for size in ['10', '100']:
-            from_table = fhir2sql.name_sample(f'casedef_{period}_{size}')
+        for size in [None, '10', '100']:
+            if size:
+                from_table = fhir2sql.name_sample(f'casedef_{period}_{size}')
+            else:
+                from_table = fhir2sql.name_sample(f'casedef_{period}')
             file_list.append(cube_pat(from_table, cols))
-            file_list.append(cube_enc(from_table, cols))
+            file_list.append(cube_doc(from_table, cols))
     return file_list
 
 def make() -> List[Path]:
@@ -221,4 +231,7 @@ def make() -> List[Path]:
 
     :return: List of SQL files for each CUBE output
     """
-    return make_study_population() + make_variables() + make_casedef_timeline()
+    return (make_study_population() +
+            make_variables() +
+            make_casedef_timeline() +
+            make_casedef_samples())
