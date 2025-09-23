@@ -66,9 +66,6 @@ def cube_doc(from_table='study_population', cols=None, cube_table=None) -> Path:
     CUBE counts contain unique numbers of
         * FHIR DocumentReference --> "select distinct(core__documentreference.documentreference_ref)"
 
-    Note that this function is not currently working due to CountsBuilder of the document references.
-    https://github.com/smart-on-fhir/cumulus-library-kidney-transplant/issues/53
-
     :param from_table: line-level cohort to derive counts from
     :param cols: columns to include in the CUBE group by expression
     :param cube_table: output CUBE table
