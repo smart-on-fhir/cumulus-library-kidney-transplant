@@ -199,10 +199,11 @@ def make_casedef_samples() -> List[Path]:
         for size in [None, '10', '100']:
             if size:
                 from_table = fhir2sql.name_sample(f'casedef_{period}_{size}')
+                file_list.append(cube_doc(from_table, cols))
             else:
                 from_table = fhir2sql.name_sample(f'casedef_{period}')
-            file_list.append(cube_pat(from_table, cols))
-            file_list.append(cube_doc(from_table, cols))
+                file_list.append(cube_pat(from_table, cols))
+                file_list.append(cube_doc(from_table, cols))
     return file_list
 
 def make() -> List[Path]:
