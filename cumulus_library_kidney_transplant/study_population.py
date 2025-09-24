@@ -17,7 +17,6 @@ def make_meta_date() -> List[Path]:
     """
     table = fhir2sql.name_prefix('meta_date')
     sql = filetool.load_template(f'meta_date.sql')
-    sql = filetool.inline_template(sql)
     return [filetool.save_athena_view(table, sql)]
 
 def make_meta_version() -> List[Path]:
@@ -26,7 +25,6 @@ def make_meta_version() -> List[Path]:
     """
     table = fhir2sql.name_prefix('meta_version')
     sql = filetool.load_template(f'meta_version.sql')
-    sql = filetool.inline_template(sql)
     return [filetool.save_athena_view(table, sql)]
 
 def make_study_period() -> List[Path]:
