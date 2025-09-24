@@ -342,6 +342,6 @@ count_list = [
 ]
 flat_list = []
 meta_list = [
-    "meta_date",
-    "meta_version",
+    "irae__meta_date",
+    "irae__meta_version",
 ]
