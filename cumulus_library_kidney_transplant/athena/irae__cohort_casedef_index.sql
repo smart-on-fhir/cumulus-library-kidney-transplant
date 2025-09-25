@@ -13,39 +13,18 @@
 -- ########################################################################
 
 create table irae__cohort_casedef_index as
-with IndexDate as
+WITH
+IndexDate as
 (
-    select      min(enc_period_start_day) as enc_period_start_day,
-                valueset, subject_ref
-    from        irae__cohort_casedef
-    group by    valueset, subject_ref
-),
-Cohort as
-(
-    select distinct
-            CaseDef.valueset,
-            CaseDef.code,
-            CaseDef.display,
-            CaseDef.system,
-            CaseDef.age_at_visit,
-            CaseDef.subject_ref,
-            CaseDef.encounter_ref,
-            CaseDef.enc_period_start_day
-    from    irae__cohort_casedef as CaseDef,
-            IndexDate
-    where   CaseDef.subject_ref = IndexDate.subject_ref
-    and     CaseDef.valueset     = IndexDate.valueset
-    and     CaseDef.enc_period_start_day = IndexDate.enc_period_start_day
+    select      min(enc_period_start_day) as index_date,
+                subject_ref
+    from        irae__cohort_casedef_include
+    group by    subject_ref
 )
-select  distinct
-        Cohort.valueset,
-        Cohort.code,
-        Cohort.display,
-        Cohort.system,
-        variables_wide.*
-from    IndexDate,
-        irae__cohort_study_variables_wide as variables_wide
-left join Cohort on variables_wide.encounter_ref = cohort.encounter_ref
-where   variables_wide.subject_ref           = IndexDate.subject_ref
-and     variables_wide.enc_period_start_day  = IndexDate.enc_period_start_day
+select  IndexDate.index_date,
+        SP.*
+from    irae__cohort_study_population as SP,
+        IndexDate
+where   SP.subject_ref = IndexDate.subject_ref
+and     SP.enc_period_start_day = IndexDate.index_date
 ;

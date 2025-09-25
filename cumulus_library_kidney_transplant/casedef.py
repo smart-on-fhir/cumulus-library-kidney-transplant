@@ -46,31 +46,30 @@ def make_cohort(include_exclude: str = None) -> Path:
 # Index first encounter matching case definition
 ##########################################################################################################
 
-def make_index_date(variable, suffix, equality) -> Path:
+def make_index_date(cohort_table, period, equality) -> Path:
     """
     Index date refers when the case definition criteria was first met.
     This means the first Encounter where $variable was recorded for each patient.
 
     `template/cohort_casedef_index.sql`
 
-    :param variable: case definition variable table
-    :param suffix:
+    :param cohort_table: case definition variable table
+    :param period:
         "pre"= select cohort BEFORE case definition first encounter;
         "index" = select cohort DURING case definition first encounter;
         "post"= select cohort AFTER case definition first encounter
     :param equality: date comparison "=", "<", ">"
     :return: Path to SQL table containing cohort matching case definition
     """
-    view = f'{name_casedef()}_{suffix}.sql'
-    template = f'{name_casedef()}_index.sql'
+    template = 'cohort_casedef_period.sql'
+    view = f'{name_casedef()}_{period}.sql'
     sql = filetool.load_template(template)
-    sql = filetool.inline_template(sql, variable)
-    sql = sql.replace('$suffix', suffix)
+    sql = sql.replace('$period', period)
     sql = sql.replace('$equality', equality)
     return filetool.save_athena(view, sql)
 
 ########################################################################################################
-# Timeline (pre/index/post) view with `cohort_study_variables_wide`
+# Timeline (pre/index/post) view with `cohort_casedef`
 ##########################################################################################################
 
 def make_timeline() -> Path:
@@ -87,7 +86,7 @@ def make_timeline() -> Path:
 ########################################################################################################
 # Samples for Chart Review and QA
 ##########################################################################################################
-def make_samples(size: int = None, suffix: str = 'post') -> Path:
+def make_samples(size: int = None, period: str = 'post') -> Path:
     """
     This method is for sampling Documents for LLM/ChartReview.
     This is not used to generate CUBE data.
@@ -95,21 +94,21 @@ def make_samples(size: int = None, suffix: str = 'post') -> Path:
     See `template/sample_casedef*`
 
     :param size: number of FHIR DocumentReference samples to select from casedef
-    :param suffix: "pre" or "post", samples from before or after first record of case definition variale.
+    :param period: "pre", "index", or "post", samples from before, during, or after first casedef encounter.
     :return: Path to SQL file with case definition samples.
     """
     table = fhir2sql.name_sample('casedef')
     if size:
         template = f"{table}_size.sql"
-        target = f"{table}_{suffix}_{size}.sql"
+        target = f"{table}_{period}_{size}.sql"
     else:
         template = f"{table}.sql"
-        target = f"{table}_{suffix}.sql"
+        target = f"{table}_{period}.sql"
 
     sql = filetool.load_template(template)
     sql = filetool.inline_template(sql)
     sql = sql.replace('$size', str(size))
-    sql = sql.replace('$suffix', suffix)
+    sql = sql.replace('$period', period)
     return filetool.save_athena(target, sql)
 
 
@@ -122,20 +121,20 @@ def make() -> List[Path]:
 
     3. Create cohort of patients matching case definition
 
-    4. CTAS "Index": first encounter matching the case definition.
-    This is the "index date" (medical research term not SQL index).
-
-    5. CTAS "Pre" encounters before index date for patients matching the case definition.
-    This is the patient longitudinal history.
-
-    6. CTAS "Post" encounters after index date for patients matching the case definition.
-    This is the patient treatment and outcome cohort.
-
-    7. "Exclude" (flag) patients matching the case definition for whome exclusion criteria was found.
+    4. "Exclude" (flag) patients matching the case definition for whome exclusion criteria was found.
     For example, patients who had a transplant *outcome* before a kidney transplant diagnosis or surgery.
 
-    8. "Include" (flag) patients matching the case definition for whome exclusion criteria was found.
+    5. "Include" (flag) patients matching the case definition for whome exclusion criteria was found.
     The include cohort is the set of patients MINUS the exclude patients from previous step.
+
+    6. CTAS "Index": first encounter matching the case definition.
+    This is the "index date" (medical research term not SQL index).
+
+    7. CTAS "Pre" encounters before index date for patients matching the case definition.
+    This is the patient longitudinal history.
+
+    8. CTAS "Post" encounters after index date for patients matching the case definition.
+    This is the patient treatment and outcome cohort.
 
     9. "Timeline" is a simple unified view of pre/index/post tables with a column designating "period".
 
@@ -151,11 +150,11 @@ def make() -> List[Path]:
     return [make_casedef_custom_csv(),
             make_casedef_custom(),
             make_cohort(),
+            make_cohort('exclude'),
+            make_cohort('include'),
             make_index_date(cohort_table, 'index', '='),
             make_index_date(cohort_table, 'pre', '<'),
             make_index_date(cohort_table, 'post', '>'),
-            make_cohort('exclude'),
-            make_cohort('include'),
             make_timeline(),
             make_samples(None, 'index'),
             make_samples(10, 'index'),

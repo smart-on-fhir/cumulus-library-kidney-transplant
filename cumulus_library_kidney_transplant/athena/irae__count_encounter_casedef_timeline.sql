@@ -5,10 +5,10 @@ CREATE TABLE irae__count_encounter_casedef_timeline AS (
             s.subject_ref,
             s.encounter_ref,
             --noqa: disable=RF03, AL02
-            s."enc_period_start_month",
-            s."period",
-            s."valueset",
-            s."variable"
+            s."age_at_visit",
+            s."casedef_period",
+            s."enc_period_start_year",
+            s."gender"
             --noqa: enable=RF03, AL02
         FROM irae__cohort_casedef_timeline AS s
         WHERE s.status = 'finished'
@@ -19,78 +19,78 @@ CREATE TABLE irae__count_encounter_casedef_timeline AS (
             subject_ref,
             encounter_ref,
             coalesce(
-                cast(enc_period_start_month AS varchar),
+                cast(age_at_visit AS varchar),
                 'cumulus__none'
-            ) AS enc_period_start_month,
+            ) AS age_at_visit,
             coalesce(
-                cast(period AS varchar),
+                cast(casedef_period AS varchar),
                 'cumulus__none'
-            ) AS period,
+            ) AS casedef_period,
             coalesce(
-                cast(valueset AS varchar),
+                cast(enc_period_start_year AS varchar),
                 'cumulus__none'
-            ) AS valueset,
+            ) AS enc_period_start_year,
             coalesce(
-                cast(variable AS varchar),
+                cast(gender AS varchar),
                 'cumulus__none'
-            ) AS variable
+            ) AS gender
         FROM filtered_table
     ),
     secondary_powerset AS (
         SELECT
             count(DISTINCT encounter_ref) AS cnt_encounter_ref,
-            "enc_period_start_month",
-            "period",
-            "valueset",
-            "variable",
+            "age_at_visit",
+            "casedef_period",
+            "enc_period_start_year",
+            "gender",
             concat_ws(
                 '-',
-                COALESCE("enc_period_start_month",''),
-                COALESCE("period",''),
-                COALESCE("valueset",''),
-                COALESCE("variable",'')
+                COALESCE("age_at_visit",''),
+                COALESCE("casedef_period",''),
+                COALESCE("enc_period_start_year",''),
+                COALESCE("gender",'')
             ) AS id
         FROM null_replacement
         WHERE encounter_ref IS NOT NULL
         GROUP BY
             cube(
-            "enc_period_start_month",
-            "period",
-            "valueset",
-            "variable"
+            "age_at_visit",
+            "casedef_period",
+            "enc_period_start_year",
+            "gender"
             )
     ),
 
     powerset AS (
         SELECT
             count(DISTINCT subject_ref) AS cnt_subject_ref,
-            "enc_period_start_month",
-            "period",
-            "valueset",
-            "variable",
+            "age_at_visit",
+            "casedef_period",
+            "enc_period_start_year",
+            "gender",
             concat_ws(
                 '-',
-                COALESCE("enc_period_start_month",''),
-                COALESCE("period",''),
-                COALESCE("valueset",''),
-                COALESCE("variable",'')
+                COALESCE("age_at_visit",''),
+                COALESCE("casedef_period",''),
+                COALESCE("enc_period_start_year",''),
+                COALESCE("gender",'')
             ) AS id
         FROM null_replacement
         GROUP BY
             cube(
-            "enc_period_start_month",
-            "period",
-            "valueset",
-            "variable"
+            "age_at_visit",
+            "casedef_period",
+            "enc_period_start_year",
+            "gender"
             )
     )
 
     SELECT
         s.cnt_encounter_ref AS cnt,
-        p."enc_period_start_month",
-        p."period",
-        p."valueset",
-        p."variable"
+        p."age_at_visit",
+        p."casedef_period",
+        p."enc_period_start_year",
+        p."gender"
     FROM powerset AS p
     JOIN secondary_powerset AS s on s.id = p.id
     WHERE 

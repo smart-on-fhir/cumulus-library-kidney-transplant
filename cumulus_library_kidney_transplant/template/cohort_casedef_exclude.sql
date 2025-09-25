@@ -1,49 +1,54 @@
 create TABLE $prefix__cohort_casedef_exclude as WITH
-other_dx_transplant as (
+dx_transplant as (
     select  distinct
-            valueset as exclude,
-            system,
-            code,
-            display,
+            valueset, system, code, display,
             subject_ref
     from    $prefix__cohort_dx_transplant
-    where   CODE not in (select distinct CODE from $prefix__casedef)
-    and     CODE != 'Z94.9' -- https://github.com/smart-on-fhir/cumulus-library-kidney-transplant/issues/39
+    where   (code, system) not in (select distinct code, system from $prefix__casedef)
+    and     CODE not in ('Z94.9', 'V42.9') -- https://github.com/smart-on-fhir/cumulus-library-kidney-transplant/issues/39
 ),
-other_proc_transplant as (
+proc_transplant as (
     select  distinct
-            valueset as exclude,
-            system,
-            code,
-            display,
+            valueset, system, code, display,
             subject_ref
     from    $prefix__cohort_proc_transplant
-    where  CODE not in (select distinct CODE from $prefix__casedef)
+    where  (code, system) not in (select distinct code, system from $prefix__casedef)
 ),
-index_date as (
-    select  distinct
-            'index_date' as exclude,
-            idx.system,
-            idx.code,
-            idx.display,
+first_visit as
+(
+    select  min(enc_period_start_day) as index_date,
             subject_ref
-    from    $prefix__casedef as casedef,
-            $prefix__cohort_casedef_index as idx
-    where   NOT casedef.include
-    and     casedef.system  = idx.system
-    and     casedef.code    = idx.code
+    from    $prefix__cohort_casedef
+    where   include
+    group by subject_ref
 ),
-exclude_reasons as (
-    select * from other_dx_transplant
+complication as
+(
+    select  min(enc_period_start_day) as index_date,
+            subject_ref, valueset, code, display, system
+    from    $prefix__cohort_casedef
+    where   NOT include
+    group by subject_ref, valueset, code, display, system
+),
+first_visit_complication as
+(
+    select  distinct
+            valueset, system, code, display,
+            complication.subject_ref
+    from    first_visit, complication
+    where   first_visit.subject_ref = complication.subject_ref
+    and     first_visit.index_date > complication.index_date
+),
+exclusion_list as (
+    select * from dx_transplant
     UNION ALL
-    select * from other_proc_transplant
+    select * from proc_transplant
     UNION ALL
-    select * from index_date
+    select * from first_visit_complication
 )
 select  distinct
-        exclude_reasons.exclude,
-        $prefix__cohort_casedef.*
-from    exclude_reasons,
-        $prefix__cohort_casedef
-where   exclude_reasons.subject_ref = $prefix__cohort_casedef.subject_ref
+        exclusion_list.*
+from    exclusion_list,
+        $prefix__cohort_casedef as casedef
+where   exclusion_list.subject_ref = casedef.subject_ref
 ;

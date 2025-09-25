@@ -2,6 +2,7 @@ create table    irae__cohort_casedef as
 select  distinct
         'casedef_dx'    as valueset,
         condition_ref   as resource_ref,
+        enc_period_ordinal,
         enc_period_start_day,
         age_at_visit,
         subject_ref,
@@ -16,6 +17,7 @@ UNION ALL
 select  distinct
         'casedef_proc'  as valueset,
         procedure_ref   as resource_ref,
+        enc_period_ordinal,
         enc_period_start_day,
         age_at_visit,
         subject_ref,
@@ -30,6 +32,7 @@ UNION ALL
 select  distinct
         'casedef_lab'   as valueset,
         observation_ref as resource_ref,
+        enc_period_ordinal,
         enc_period_start_day,
         age_at_visit,
         subject_ref,
@@ -44,6 +47,7 @@ UNION ALL
 select  distinct
         'casedef_rx'            as valueset,
         medicationrequest_ref   as resource_ref,
+        enc_period_ordinal,
         enc_period_start_day,
         age_at_visit,
         subject_ref,
@@ -58,6 +62,7 @@ UNION ALL
 select  distinct
         'casedef_diag'  as valueset,
         result_ref      as resource_ref,
+        enc_period_ordinal,
         enc_period_start_day,
         age_at_visit,
         subject_ref,
@@ -72,6 +77,7 @@ UNION ALL
 select  distinct
         'casedef_doc'           as valueset,
         documentreference_ref   as resource_ref,
+        enc_period_ordinal,
         enc_period_start_day,
         age_at_visit,
         subject_ref,
