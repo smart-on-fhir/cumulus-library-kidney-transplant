@@ -1,42 +1,48 @@
 CREATE table irae__sample_casedef_index as
 WITH
-EncounterDoc as (
+encounter_doc as (
     SELECT  distinct
-            ETL.group_name,
-            CaseDef.subject_ref,
-            CaseDef.encounter_ref,
-            Doc.documentreference_ref,
-            Doc.enc_period_ordinal,
-            Doc.enc_period_start_day,
-            Doc.doc_author_day,
-            Doc.doc_date,
+            etl.group_name,
+            casedef.subject_ref,
+            casedef.encounter_ref,
+            doc.documentreference_ref,
+            doc.enc_period_ordinal,
+            doc.enc_period_start_day,
+            doc.doc_author_day,
+            doc.doc_date,
             case
-            when (Doc.doc_author_day    is NOT null)    then Doc.doc_author_day
-            when (Doc.doc_date          is NOT null)    then Doc.doc_date
-            else Doc.enc_period_start_day               end as sort_by_date
-    FROM    etl__completion_encounters          as ETL,
-            irae__cohort_casedef_index        as CaseDef,
-            irae__cohort_study_population_doc   as Doc
-    WHERE   CaseDef.encounter_ref   = doc.encounter_ref
-    AND     CaseDef.encounter_ref   = concat('Encounter/', etl.encounter_id)
-    ORDER BY CaseDef.subject_ref
+            when (doc.doc_author_day    is NOT null)    then doc.doc_author_day
+            when (doc.doc_date          is NOT null)    then doc.doc_date
+            else doc.enc_period_start_day               end as sort_by_date
+    FROM
+            etl__completion_encounters              as etl,
+            irae__cohort_casedef_index         as casedef,
+            irae__cohort_study_population_doc    as doc
+    WHERE
+            casedef.encounter_ref   = doc.encounter_ref
+    AND     casedef.encounter_ref   = concat('Encounter/', etl.encounter_id)
+    ORDER BY
+            casedef.subject_ref
 ), 
 ordered as (
     SELECT  distinct
-            EncounterDoc.*,
+            encounter_doc.*,
             ROW_NUMBER() OVER (
                 PARTITION   BY  subject_ref
                 ORDER       BY  enc_period_start_day,
                                 sort_by_date,
                                 documentreference_ref
             )   AS doc_ordinal
-    FROM    EncounterDoc
+    FROM    encounter_doc
 )
-SELECT  ordered.*,
+SELECT
+        ordered.*,
         doc.doc_type_code, 
         doc.doc_type_display, 
         doc.doc_type_system
-from    ordered, 
+FROM
+        ordered,
         irae__cohort_study_population_doc as doc
-where   ordered.documentreference_ref = doc.documentreference_ref           
+WHERE
+        ordered.documentreference_ref = doc.documentreference_ref
 ;

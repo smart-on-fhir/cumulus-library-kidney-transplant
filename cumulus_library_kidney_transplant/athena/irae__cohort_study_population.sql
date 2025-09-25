@@ -1,7 +1,6 @@
 create table irae__cohort_study_population as
 WITH
-StudyPopulation as
-(
+study_population as (
     select  distinct
             E.status,
             E.age_at_visit,
@@ -31,38 +30,39 @@ StudyPopulation as
             (E.gender = G.code)                   and
             (E.age_at_visit between age.age_min and age.age_max)
 ),
-Utilization as
-(
+utilization as (
     select  count(distinct enc_period_ordinal) as cnt_period,
             subject_ref
-    from    StudyPopulation
+    from    study_population
     group by subject_ref
 ),
-Duration as
-(
+duration as (
     select  min(enc_period_start_day)   as min_start_day,
             max(enc_period_end_day)     as max_end_day,
             subject_ref
-    from    StudyPopulation
+    from    study_population
     group by subject_ref
 ),
-DateDiff as
-(
-    select  subject_ref,
-            Duration.min_start_day,
-            Duration.max_end_day,
+duration_days as (
+    select
+            subject_ref,
+            duration.min_start_day,
+            duration.max_end_day,
             date_diff('day',
-            Duration.min_start_day,
-            Duration.max_end_day) as cnt_days
-    from    Duration
+            duration.min_start_day,
+            duration.max_end_day) as cnt_days
+    from    duration
 )
-select  StudyPopulation.*
-from    StudyPopulation,
-        Utilization,
-        DateDiff,
-        irae__include_utilization as Include
-where   StudyPopulation.subject_ref = Utilization.subject_ref
-and     StudyPopulation.subject_ref = DateDiff.subject_ref
-and     Utilization.cnt_period      between Include.enc_min  and Include.enc_max
-and     DateDiff.cnt_days           between Include.days_min and Include.days_max
+select
+        study_population.*
+from
+        study_population,
+        utilization,
+        duration_days,
+        irae__include_utilization as include
+where
+        study_population.subject_ref = utilization.subject_ref
+and     study_population.subject_ref = duration_days.subject_ref
+and     utilization.cnt_period  between include.enc_min  and include.enc_max
+and     duration_days.cnt_days  between include.days_min and include.days_max
 ;

@@ -1,20 +1,20 @@
 create TABLE irae__cohort_casedef_exclude as WITH
-TransplantDx as (
+dx_transplant as (
     select  distinct
             valueset, system, code, display,
             subject_ref
     from    irae__cohort_dx_transplant
-    where   CODE not in (select distinct CODE from irae__casedef)
+    where   (code, system) not in (select distinct code, system from irae__casedef)
     and     CODE not in ('Z94.9', 'V42.9') -- https://github.com/smart-on-fhir/cumulus-library-kidney-transplant/issues/39
 ),
-TransplantProc as (
+proc_transplant as (
     select  distinct
             valueset, system, code, display,
             subject_ref
     from    irae__cohort_proc_transplant
-    where  CODE not in (select distinct CODE from irae__casedef)
+    where  (code, system) not in (select distinct code, system from irae__casedef)
 ),
-IndexDate as
+first_visit as
 (
     select  min(enc_period_start_day) as index_date,
             subject_ref
@@ -22,7 +22,7 @@ IndexDate as
     where   include
     group by subject_ref
 ),
-Complication as
+complication as
 (
     select  min(enc_period_start_day) as index_date,
             subject_ref, valueset, code, display, system
@@ -30,25 +30,25 @@ Complication as
     where   NOT include
     group by subject_ref, valueset, code, display, system
 ),
-IndexDateComplication as
+first_visit_complication as
 (
     select  distinct
             valueset, system, code, display,
-            Complication.subject_ref
-    from    IndexDate, Complication
-    where   IndexDate.subject_ref = Complication.subject_ref
-    and     IndexDate.index_date > Complication.index_date
+            complication.subject_ref
+    from    first_visit, complication
+    where   first_visit.subject_ref = complication.subject_ref
+    and     first_visit.index_date > complication.index_date
 ),
-ExcludeReasons as (
-    select * from TransplantDx
+exclusion_list as (
+    select * from dx_transplant
     UNION ALL
-    select * from TransplantProc
+    select * from proc_transplant
     UNION ALL
-    select * from IndexDateComplication
+    select * from first_visit_complication
 )
 select  distinct
-        ExcludeReasons.*
-from    ExcludeReasons,
-        irae__cohort_casedef as CaseDef
-where   ExcludeReasons.subject_ref = CaseDef.subject_ref
+        exclusion_list.*
+from    exclusion_list,
+        irae__cohort_casedef as casedef
+where   exclusion_list.subject_ref = casedef.subject_ref
 ;

@@ -22,8 +22,7 @@
 --    ##############################################
 
 create table irae__cohort_study_population_diag as
-with study_diag as 
-(
+with study_diag as  (
  select distinct
     	diag.status                     as diag_status,
     	diag.category_code              as diag_category_code,
@@ -52,5 +51,7 @@ select distinct
         obs.valuequantity_system        as obs_valuequantity_system,
         obs.valuequantity_code          as obs_valuequantity_code,
         obs.valuestring                 as obs_valuestring
-from    study_diag left join core__observation as obs 
-on      study_diag.result_ref = obs.observation_ref 
+from    study_diag
+left join
+        core__observation as obs
+    on  study_diag.result_ref = obs.observation_ref
