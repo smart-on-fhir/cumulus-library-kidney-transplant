@@ -1,6 +1,11 @@
-from enum import Enum
 import json
 import unittest
+from enum import Enum
+import pandas as pd
+import numpy as np
+from math import ceil
+from scipy.stats import norm
+
 
 # scale invariant
 # NUM_SAMPLES chosen to make it easy to pick INTEGER
@@ -16,7 +21,7 @@ class KappaEnum(Enum):
     perfect = range(100, 101)
 
 def agree_no(k:float) -> bool:
-    return int(k*100) in KappaEnum.no.value
+    return int(k*100) in KappaEnum.no.value or (k <= 0)
 
 def agree_slight(k:float) -> bool:
     return int(k*100) in KappaEnum.slight.value
@@ -58,7 +63,7 @@ def confusion_matrix(f1_score=0.95, prevalence=0.5, n=NUM_SAMPLES) -> dict:
             'precision': confusion_matrix_max_precision(f1_score, prevalence, n),
             'recall': confusion_matrix_max_recall(f1_score, prevalence, n)}
 
-def confusion_matrix_balanced(f1_score=0.95, prevalence=0.5, n=NUM_SAMPLES):
+def confusion_matrix_balanced(f1_score=0.95, prevalence=0.5, n=NUM_SAMPLES) -> dict:
     """
     Balanced: Precision = Recall = F1
     """
@@ -73,7 +78,7 @@ def confusion_matrix_balanced(f1_score=0.95, prevalence=0.5, n=NUM_SAMPLES):
     return {"TP": tp, "FP": fp, "FN": fn, "TN": tn}
 
 
-def confusion_matrix_max_precision(f1_score=0.95, prevalence=0.5, n=NUM_SAMPLES):
+def confusion_matrix_max_precision(f1_score=0.95, prevalence=0.5, n=NUM_SAMPLES) -> dict:
     """
     Max precision: Precision = 1.0, solve Recall from F1
     """
@@ -123,8 +128,7 @@ def calc_confusion_matrix(a:int, b:int, c:int, d:int) -> dict:
         c (int): False Negatives (FN)
         d (int): True Negatives (TN)
 
-    Returns:
-        dict: dictionary of metrics
+    :return dict of calculated Cohen's Kappa, F1, PPV, Recall, and Precision
     """
     # Totals
     n = a + b + c + d
@@ -155,12 +159,51 @@ def calc_confusion_matrix(a:int, b:int, c:int, d:int) -> dict:
           if (precision + recall) > 0 else 0.0)
 
     return {
-        "kappa": kappa,
+        "kappa_k": kappa,
+        "kappa_enum": str(agree_interpret(kappa)),
         "f1": f1,
         "precision": precision,
         "ppv": precision,  # synonym
         "recall": recall
     }
+
+def json_to_csv(filename_json:str):
+    with open(filename_json, "r") as f:
+        content = json.load(f)
+    df = pd.json_normalize(content)
+    df.columns = df.columns.str.replace(r"\.", "_", regex=True)
+    return df.to_csv(f'{filename_json}.csv', index=False)
+
+#####################################################################################################################
+"""
+Minimal sample size calculators using numpy/scipy.
+"""
+#####################################################################################################################
+
+def n_single_prevalence(p: float, margin_error: float, alpha: float = 0.05, fpc_N: int | None = None, deff: float = 1.0) -> float:
+    z = norm.ppf(1 - alpha/2.0)
+    n = (z**2) * p * (1 - p) / (margin_error**2)
+    n *= deff
+    if fpc_N is not None:
+        n = (n * fpc_N) / (n + fpc_N - 1)
+    return n
+
+def n_two_proportions(p1: float, p2: float, alpha: float = 0.05, power: float = 0.80, ratio: float = 1.0, deff: float = 1.0) -> tuple[float, float]:
+    z_alpha = norm.ppf(1 - alpha/2.0)
+    z_beta  = norm.ppf(power)
+    k = ratio
+    p_bar = (p1 + k*p2) / (1 + k)
+    q_bar = 1 - p_bar
+    se0 = np.sqrt((1 + 1/k) * p_bar * q_bar)
+    se1 = np.sqrt(p1*(1-p1) + (p2*(1-p2))/k)
+    delta = abs(p1 - p2)
+    n1 = ((z_alpha*se0 + z_beta*se1) / delta) ** 2
+    n1 *= deff
+    n2 = k * n1
+    return n1, n2
+
+def ceil_int(x: float) -> int:
+    return ceil(x)
 
 
 class TestSampleSize(unittest.TestCase):
@@ -183,7 +226,8 @@ class TestSampleSize(unittest.TestCase):
             self.assertIsNotNone(k_agree)
 
     def test_agree_kappa_ranges(self):
-        self.assertEqual(KappaEnum.no, agree_interpret(k=0))
+        self.assertEqual(KappaEnum.no, agree_interpret(k=0/100))
+        self.assertEqual(KappaEnum.no, agree_interpret(k=1/100))
         self.assertEqual(KappaEnum.no, agree_interpret(k=9/100))
 
         self.assertEqual(KappaEnum.slight, agree_interpret(k=10 / 100))
@@ -203,24 +247,27 @@ class TestSampleSize(unittest.TestCase):
 
         self.assertEqual(KappaEnum.perfect, agree_interpret(k=100 / 100))
 
-    def ignore_test(self):
+    def test_near_perfect(self):
         output = list()
         for f1_score in [0.80, 0.85, 0.9, 0.95]:
             for prevalence in [0.01, 0.05, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]:
 
-                matrix = confusion_matrix_balanced(f1_score, prevalence=prevalence, n=NUM_SAMPLES)
+                balanced = confusion_matrix_balanced(f1_score, prevalence=prevalence, n=NUM_SAMPLES)
+                max_precision  = confusion_matrix_max_precision(f1_score, prevalence=prevalence, n=NUM_SAMPLES)
+                max_recall = confusion_matrix_max_recall(f1_score, prevalence=prevalence, n=NUM_SAMPLES)
+
                 output.append({
-                    "threshold": {
-                        "f1": f1_score,
-                        "prevalence": prevalence
-                    },
-                    "confusion_matrix": confusion_matrix(f1_score, prevalence),
-                    'calc': calc_confusion_matrix_dict(matrix)
+                    'f1':f1_score,
+                    'prevalence':prevalence,
+                    'balanced': {'matrix': balanced, 'calc': calc_confusion_matrix_dict(balanced)},
+                    'precision': {'matrix': max_precision, 'calc': calc_confusion_matrix_dict(max_precision)},
+                    'recall': {'matrix': max_recall, 'calc': calc_confusion_matrix_dict(max_recall)},
                 })
         print(output)
         with open('sample_size.json', 'w') as f:
             json.dump(output, f, indent=4)
 
+        json_to_csv('sample_size.json')
 
 if __name__ == '__main__':
     unittest.main()
