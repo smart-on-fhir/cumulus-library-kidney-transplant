@@ -8,25 +8,49 @@ from cumulus_library_kidney_transplant.spreadsheet.document import (
     study_keywords
 )
 
+##############################################################################
+# LOINC 2.8.1 files
+#
+#   AccessoryFiles/DocumentOntology/DocumentOntology.csv
+#   LoincTable/Loinc.csv
+#
+#   For simplicity, these CSV files have been processed into "valueset",
+#   code, display, system='http://loinc.org'
+#
+##############################################################################
 ONTOLOGY_CSV = filetool.path_spreadsheet('document/DocumentOntology.csv')
+ONTOLOGY_VALUESET_CSV = filetool.path_spreadsheet('document/DocumentOntology_valueset.csv')
+
 LOINC_CSV = filetool.path_spreadsheet('document/Loinc.csv')
 LOINC_VALUESET_CSV = filetool.path_spreadsheet('document/Loinc_valueset.csv')
 
-def unique(part_type_name:str) -> list:
-    df = pd.read_csv(ONTOLOGY_CSV)
-    mask = df["PartTypeName"] == part_type_name
-    return df.loc[mask, "PartName"].unique()
-
+##############################################################################
+#
+# DocumentOntology.csv helpers for curation
+#
+##############################################################################
 def term_frequency(part_type_name:str):
+    """
+    Get frequency for each LOINC Part, for example, each
+        Document.SubjectMatterDomain
+    :param part_type_name: Document.SubjectMatterDomain, etc
+    :return: counts
+    """
     df = pd.read_csv(ONTOLOGY_CSV)
     mask = df["PartTypeName"] == part_type_name
     return df.loc[mask, "PartName"].value_counts()
 
 def print_tf(part_type_name:str)-> None:
+    """
+    Print frequency of each LOINC Part
+    """
     for part_name, tf in term_frequency(part_type_name).items():
         print(f"'{part_name}',", '\t#', tf)
 
 def loinc2valueset():
+    """
+    Save LOINC_CSV as {code,display,system}
+    """
     entries = list()
     for row in pd.read_csv(LOINC_CSV).itertuples(index=False):
         entries.append({'system': 'http://loinc.org',
@@ -37,6 +61,9 @@ def loinc2valueset():
     valueset_csv.to_csv(LOINC_VALUESET_CSV, index=False)
 
 def ontology2valueset():
+    """
+    Save ONTOLOGY_CSV as {code,display,system}
+    """
     ont = pd.read_csv(ONTOLOGY_CSV)
     loinc = pd.read_csv(LOINC_VALUESET_CSV)
 
@@ -52,19 +79,26 @@ def ontology2valueset():
     print(len(loinc_keys - ont_keys), ' difference loinc')
     print(len(ont_keys - loinc_keys), ' difference ont')
 
-    output_csv = filetool.path_spreadsheet('document/DocumentOntology_valueset.csv')
-
     filtered = loinc[loinc["code"].isin(ont_keys)].copy()
-    filtered.to_csv(filetool.path_spreadsheet(output_csv), index=False)
+    filtered.to_csv(filetool.path_spreadsheet(ONTOLOGY_VALUESET_CSV), index=False)
+    fhir2sql.csv2view(ONTOLOGY_VALUESET_CSV, 'irae__doc_ontology')
 
-    fhir2sql.csv2view(output_csv, 'irae__doc_ontology')
+def include_loinc_part(loinc_part_type:str = None) -> None:
+    """
+    Create inclusion CSV/SQL files based on INCLUDE criteria
 
-def process_loinc_part(loinc_part_type:str = None) -> None:
+    See INCLUDE criteria for:
+    * `role.py`
+    * `kind.py`
+    * `subject_matter_domain.py`
+    * `type_of_service.py`
+    :param loinc_part_type: Document.SubjectMatterDomain, etc
+    """
     if loinc_part_type is None:
-        process_loinc_part('Document.Kind')
-        process_loinc_part('Document.TypeOfService')
-        process_loinc_part('Document.SubjectMatterDomain')
-        process_loinc_part('Document.Role')
+        include_loinc_part('Document.Kind')
+        include_loinc_part('Document.TypeOfService')
+        include_loinc_part('Document.SubjectMatterDomain')
+        include_loinc_part('Document.Role')
 
     ontology_df = pd.read_csv(ONTOLOGY_CSV)
     loinc_df = pd.read_csv(LOINC_VALUESET_CSV)
@@ -112,10 +146,11 @@ def process_loinc_part(loinc_part_type:str = None) -> None:
     df_filtered.to_csv(filetool.path_spreadsheet(output_csv), index=False)
     fhir2sql.csv2view(filetool.path_spreadsheet(output_csv), view_name)
 
+def main():
+    loinc2valueset()
+    ontology2valueset()
+    include_loinc_part()
 
 if __name__ == "__main__":
-    #loinc2valueset()
-    #ontology2valueset()
-    #process_all()
     pass
 
