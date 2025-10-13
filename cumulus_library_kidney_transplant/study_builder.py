@@ -5,6 +5,7 @@ from cumulus_library_kidney_transplant import (
     filetool,
     criteria,
     study_population,
+    doc_ontology,
     drug_eras,
     cohorts,
     casedef)
@@ -170,7 +171,7 @@ def make_study_sql(study: StudyBuilderConfig = None) -> List[Path]:
 
     return (criteria_sql +
             study_population.make() +
-            drug_eras.make() +
+            doc_ontology.make() +
             vsac_variables.make() +
             custom_variables.make() +
             cohorts.make() +
