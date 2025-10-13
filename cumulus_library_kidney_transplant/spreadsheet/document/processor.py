@@ -35,15 +35,37 @@ def loinc2valueset():
     entries = sorted(entries, key=lambda x: x['code'])
     valueset_csv = pd.DataFrame.from_records(entries)
     valueset_csv.to_csv(LOINC_VALUESET_CSV, index=False)
-    # fhir2sql.csv2view(filetool.path_spreadsheet('document/Loinc_valueset.csv'),'loinc_valueset')
 
-def process_all():
-    process_loinc_part('Document.Kind')
-    process_loinc_part('Document.TypeOfService')
-    process_loinc_part('Document.SubjectMatterDomain')
-    process_loinc_part('Document.Role')
+def ontology2valueset():
+    ont = pd.read_csv(ONTOLOGY_CSV)
+    loinc = pd.read_csv(LOINC_VALUESET_CSV)
 
-def process_loinc_part(loinc_part_type:str) -> None:
+    ont["LoincNumber"] = ont["LoincNumber"].str.strip()
+    loinc["code"] = loinc["code"].str.strip()
+
+    ont_keys = set(ont["LoincNumber"].dropna().unique())
+    loinc_keys = set(loinc["code"].dropna().unique())
+
+    print(len(ont_keys), ' ont_keys')
+    print(len(loinc_keys), ' loinc_keys')
+    print(len(ont_keys & loinc_keys), ' intersection')
+    print(len(loinc_keys - ont_keys), ' difference loinc')
+    print(len(ont_keys - loinc_keys), ' difference ont')
+
+    output_csv = filetool.path_spreadsheet('document/DocumentOntology_valueset.csv')
+
+    filtered = loinc[loinc["code"].isin(ont_keys)].copy()
+    filtered.to_csv(filetool.path_spreadsheet(output_csv), index=False)
+
+    fhir2sql.csv2view(output_csv, 'irae__doc_ontology')
+
+def process_loinc_part(loinc_part_type:str = None) -> None:
+    if loinc_part_type is None:
+        process_loinc_part('Document.Kind')
+        process_loinc_part('Document.TypeOfService')
+        process_loinc_part('Document.SubjectMatterDomain')
+        process_loinc_part('Document.Role')
+
     ontology_df = pd.read_csv(ONTOLOGY_CSV)
     loinc_df = pd.read_csv(LOINC_VALUESET_CSV)
     loinc_df = loinc_df.drop_duplicates(subset="code", keep="first")
@@ -92,6 +114,9 @@ def process_loinc_part(loinc_part_type:str) -> None:
 
 
 if __name__ == "__main__":
-    loinc2valueset()
-    process_all()
+    #loinc2valueset()
+    #ontology2valueset()
+    #process_all()
+
+    csv_as_sql()
 
