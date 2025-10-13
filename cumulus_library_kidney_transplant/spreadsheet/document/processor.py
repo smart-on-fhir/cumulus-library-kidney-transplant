@@ -1,4 +1,3 @@
-import unittest
 import pandas as pd
 from cumulus_library_kidney_transplant import filetool, fhir2sql
 from cumulus_library_kidney_transplant.spreadsheet.document import (
@@ -9,22 +8,17 @@ from cumulus_library_kidney_transplant.spreadsheet.document import (
     study_keywords
 )
 
-def read_ontology_csv() -> pd.DataFrame:
-    return pd.read_csv(filetool.path_spreadsheet('document/DocumentOntology.csv'))
-
-def read_loinc_csv() -> pd.DataFrame:
-    return pd.read_csv(filetool.path_spreadsheet('document/Loinc.csv'))
-
-def read_loinc_valueset_csv() -> pd.DataFrame:
-    return pd.read_csv(filetool.path_spreadsheet('document/Loinc_valueset.csv'))
+ONTOLOGY_CSV = filetool.path_spreadsheet('document/DocumentOntology.csv')
+LOINC_CSV = filetool.path_spreadsheet('document/Loinc.csv')
+LOINC_VALUESET_CSV = filetool.path_spreadsheet('document/Loinc_valueset.csv')
 
 def unique(part_type_name:str) -> list:
-    df = read_ontology_csv()
+    df = pd.read_csv(ONTOLOGY_CSV)
     mask = df["PartTypeName"] == part_type_name
     return df.loc[mask, "PartName"].unique()
 
 def term_frequency(part_type_name:str):
-    df = read_ontology_csv()
+    df = pd.read_csv(ONTOLOGY_CSV)
     mask = df["PartTypeName"] == part_type_name
     return df.loc[mask, "PartName"].value_counts()
 
@@ -34,13 +28,13 @@ def print_tf(part_type_name:str)-> None:
 
 def loinc2valueset():
     entries = list()
-    for row in read_loinc_csv().itertuples(index=False):
+    for row in pd.read_csv(LOINC_CSV).itertuples(index=False):
         entries.append({'system': 'http://loinc.org',
                         'code': row.LOINC_NUM,
                         'display': row.LONG_COMMON_NAME})
     entries = sorted(entries, key=lambda x: x['code'])
     valueset_csv = pd.DataFrame.from_records(entries)
-    valueset_csv.to_csv(filetool.path_spreadsheet('document/Loinc_valueset.csv'), index=False)
+    valueset_csv.to_csv(LOINC_VALUESET_CSV, index=False)
     # fhir2sql.csv2view(filetool.path_spreadsheet('document/Loinc_valueset.csv'),'loinc_valueset')
 
 def process_all():
@@ -50,8 +44,8 @@ def process_all():
     process_loinc_part('Document.Role')
 
 def process_loinc_part(loinc_part_type:str) -> None:
-    ontology_df = read_ontology_csv()
-    loinc_df = read_loinc_valueset_csv()
+    ontology_df = pd.read_csv(ONTOLOGY_CSV)
+    loinc_df = pd.read_csv(LOINC_VALUESET_CSV)
     loinc_df = loinc_df.drop_duplicates(subset="code", keep="first")
     lookup = loinc_df.set_index("code")["display"].to_dict()
     matches = dict()
@@ -90,7 +84,7 @@ def process_loinc_part(loinc_part_type:str) -> None:
 
     output = sorted(output, key=lambda x: x['code'])
     output_csv = f"document/doc_{loinc_part_alias}.csv"
-    view_name = f"irae__doc_{loinc_part_alias}"
+    view_name = f"irae__doc_ontology_{loinc_part_alias}"
 
     df_filtered = pd.DataFrame(output, columns=['system', 'code', 'display', 'keyword'])
     df_filtered.to_csv(filetool.path_spreadsheet(output_csv), index=False)

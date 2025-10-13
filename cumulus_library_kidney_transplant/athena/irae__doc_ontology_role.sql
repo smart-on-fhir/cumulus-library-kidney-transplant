@@ -1,4 +1,4 @@
-create or replace view irae__doc_role as select * from (values
+create or replace view irae__doc_ontology_role as select * from (values
 
 ('http://loinc.org','100441-5','Attending Outpatient Progress note',''),
 ('http://loinc.org','100457-1','Consultant Outpatient Progress note',''),

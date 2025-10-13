@@ -1,4 +1,4 @@
-create or replace view irae__doc_typeofservice as select * from (values
+create or replace view irae__doc_ontology_typeofservice as select * from (values
 
 ('http://loinc.org','100438-1','Adolescent medicine Outpatient Progress note',''),
 ('http://loinc.org','100439-9','Allergy and Immunology Outpatient Progress note',''),
