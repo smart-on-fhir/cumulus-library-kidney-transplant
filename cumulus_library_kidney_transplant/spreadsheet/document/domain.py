@@ -19,7 +19,7 @@ INCLUDE = {
 # 'Gynecology', 	# 37
 # 'Nutrition and dietetics', 	# 37
 # 'Orthopaedic surgery', 	# 37
-'Allergy', 	# 37
+# 'Allergy', 	# 37
 'Vascular surgery', 	# 37
 # 'Plastic surgery', 	# 36
 # 'Pain medicine', 	# 36
