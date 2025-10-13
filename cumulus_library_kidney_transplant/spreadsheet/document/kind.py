@@ -1,3 +1,13 @@
+##############################################################################
+#
+# Document.Role
+#
+# INCLUDE
+#   Reports (especially biopsy reports)
+#   Orders (especially medications and laboratory tests)
+#
+##############################################################################
+
 INCLUDE = {
 # 'Note', 	# 3279
 # 'Flowsheet', 	# 72

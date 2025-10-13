@@ -1,3 +1,16 @@
+##############################################################################
+#
+# Document.TypeOfService
+#
+# INCLUDE contains types to help select for
+#   progress types
+#   consultations
+#   procedures
+#   History & Physical
+#   Medications
+#   Death records
+#
+##############################################################################
 INCLUDE = {
 'Progress', 	# 388
 'Consultation', 	# 257

@@ -1,3 +1,18 @@
+##############################################################################
+#
+# Document.SubjectMatterDomain
+#
+# INCLUDE contains clinical specialties selected for relevance to :
+#   transplants / surgery
+#   pharmacology
+#   kidney / urology
+#   cancer / oncology / dermatology (skin cancers)
+#   pathology / laboratory / biopsy
+#   infectious disease(s)
+#   dialysis (return to) --> graft failure
+#   dying / pastoral visits --> death
+#
+##############################################################################
 INCLUDE = {
 # 'Mental health', 	# 87
 # 'Cardiovascular disease', 	# 77
@@ -87,7 +102,7 @@ INCLUDE = {
 # 'Nuclear medicine', 	# 13
 # 'Neurology w special qualifications in child neuro', 	# 13
 # 'Research', 	# 13
-# 'Medical aid in dying', 	# 13
+# 'Medical aid in dying', 	# 13 TODO ??
 # 'Pediatric pulmonology', 	# 13
 'Clinical pathology', 	# 12
 # 'Orthotics prosthetics', 	# 12

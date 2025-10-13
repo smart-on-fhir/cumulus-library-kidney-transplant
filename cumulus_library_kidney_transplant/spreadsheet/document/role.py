@@ -1,3 +1,16 @@
+##############################################################################
+#
+# Document.Role
+#
+# INCLUDE contains select clinical roles especially
+#   physician (+attending, +resident)
+#   pharmacist
+#
+#   immunosuppression compliance -->
+#   social worker
+#   case manager
+#   community health worker
+##############################################################################
 INCLUDE = {
 # '{Role}', 	# 311
 # 'Nurse', 	# 207

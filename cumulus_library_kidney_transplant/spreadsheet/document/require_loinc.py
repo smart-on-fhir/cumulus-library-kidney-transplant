@@ -1,8 +1,8 @@
 import pandas as pd
 from cumulus_library_kidney_transplant import filetool, fhir2sql
 from cumulus_library_kidney_transplant.spreadsheet.document import (
-    service,
-    domain,
+    type_of_service,
+    subject_matter_domain,
     kind,
     role,
     study_keywords
@@ -81,10 +81,10 @@ def process_loinc_part(loinc_part_type:str = None) -> None:
                 if name in kind.INCLUDE:
                     display = lookup[code]
             elif row.PartTypeName == 'Document.TypeOfService':
-                if name in service.INCLUDE:
+                if name in type_of_service.INCLUDE:
                     display = lookup[code]
             elif row.PartTypeName == 'Document.SubjectMatterDomain':
-                if name in domain.INCLUDE:
+                if name in subject_matter_domain.INCLUDE:
                     display = lookup[code]
             elif row.PartTypeName == 'Document.Role':
                 if name in role.INCLUDE:
@@ -117,6 +117,5 @@ if __name__ == "__main__":
     #loinc2valueset()
     #ontology2valueset()
     #process_all()
-
-    csv_as_sql()
+    pass
 

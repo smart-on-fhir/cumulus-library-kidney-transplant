@@ -1,3 +1,9 @@
+##############################################################################
+#
+# INCLUDE contains keywords likely to match Kidney Study specific content
+#
+##############################################################################
+
 INCLUDE = {
     'MSICU', 'MS-ICU',
     'HLA', 'leukocyte', 'antigen',
