@@ -6,7 +6,6 @@ from cumulus_library_kidney_transplant import (
     criteria,
     study_population,
     doc_ontology,
-    drug_eras,
     cohorts,
     casedef)
 from cumulus_library_kidney_transplant.count import cube

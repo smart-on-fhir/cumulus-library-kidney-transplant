@@ -1,4 +1,4 @@
-create or replace view irae__doc_ontology_kind as select * from (values
+create or replace view $prefix__doc_ontology_kind as select * from (values
 ('http://loinc.org','101133-7','Organ AndOr tissue donation consent Document','tissue'),
 ('http://loinc.org','101792-0','Scanned laboratory result',''),
 ('http://loinc.org','101881-1','Implant card',''),

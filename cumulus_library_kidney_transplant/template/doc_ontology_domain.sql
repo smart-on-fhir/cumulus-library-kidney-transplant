@@ -1,4 +1,4 @@
-create or replace view irae__doc_ontology_domain as select * from (values
+create or replace view $prefix__doc_ontology_domain as select * from (values
 ('http://loinc.org','100439-9','Allergy and Immunology Outpatient Progress note',''),
 ('http://loinc.org','100444-9','Blood banking and transfusion medicine Outpatient Progress note',''),
 ('http://loinc.org','100445-6','Bone Marrow Transplant Outpatient Progress note','transplant'),
