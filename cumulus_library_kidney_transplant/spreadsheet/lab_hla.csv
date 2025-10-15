@@ -1,0 +1,628 @@
+system,code,display
+http://loinc.org,102092-4,HLA-ABDR typing panel - Blood or Tissue
+http://loinc.org,102093-2,HLA-ABDR typing panel - Blood or Tissue from Donor
+http://loinc.org,102096-5,HLA-DQA1 SSO panel - Blood or Tissue by NAA with probe detection
+http://loinc.org,103683-9,Cells.CD3+HLA DR+/Lymphocytes in Bronchoalveolar lavage
+http://loinc.org,104224-1,HLA-DPB1+DPA1 Typing panel - Blood or Tissue from Donor
+http://loinc.org,104225-8,HLA-DPB1+DPA1 Typing panel - Blood or Tissue
+http://loinc.org,104288-6,HLA-B gene.g.31431780T>G [Presence] in Blood or Tissue by Molecular genetics method
+http://loinc.org,104549-1,CD3+ CD14+ CD19+CD20+ CD45+CD56+CD123+HLA-DR [#/volume] in Blood by Flow cytometry (FC)
+http://loinc.org,104550-9,CD3+CD11c+CD14+CD19+CD20+CD45+CD56+HLA-DR+ [#/volume] in Blood by Flow cytometry (FC)
+http://loinc.org,10842-3,Deprecated HLA-DQ1 [Presence]
+http://loinc.org,10843-1,Deprecated HLA-DQ2 [Presence]
+http://loinc.org,10844-9,Deprecated HLA-DQ3 [Presence]
+http://loinc.org,10845-6,Deprecated HLA-DQ4 [Presence]
+http://loinc.org,12285-3,HLA-DP [Type]
+http://loinc.org,13298-5,HLA-A [Type]
+http://loinc.org,13299-3,HLA-B [Type]
+http://loinc.org,13300-9,HLA-A+B [Type]
+http://loinc.org,13301-7,HLA-A+B+Bw [Type]
+http://loinc.org,13302-5,HLA-C [Type]
+http://loinc.org,13303-3,HLA-A+B+C (class I) [Type]
+http://loinc.org,13304-1,HLA-DR [Type]
+http://loinc.org,13305-8,HLA-DQ [Type]
+http://loinc.org,13306-6,HLA-DR beta [Type]
+http://loinc.org,13307-4,HLA-DQ alpha [Type]
+http://loinc.org,13337-1,CD8+HLA-DR+ cells/cells in Blood
+http://loinc.org,13343-9,CD4+HLA-DR+ cells/cells in Blood
+http://loinc.org,13492-4,Deprecated CD4+HLA-DR+ cells/100 cells in Blood
+http://loinc.org,13910-5,Deprecated HLA-B22 [Presence]
+http://loinc.org,13911-3,HLA-B27 related Ag [Presence]
+http://loinc.org,13912-1,Deprecated HLA-B42 [Presence]
+http://loinc.org,16107-5,CD8+HLA-DR+ cells [#/volume] in Blood
+http://loinc.org,18394-7,HLA-A24(9) [Presence]
+http://loinc.org,18408-5,CD3+HLA-DR+ cells/cells in Blood
+http://loinc.org,18413-5,HLA-DR16 [Presence]
+http://loinc.org,18724-5,HLA studies (set)
+http://loinc.org,21341-3,HLA-DR locus [Type]
+http://loinc.org,21342-1,HLA-DR locus 2 [Type]
+http://loinc.org,21343-9,HLA-DR+DQ [Type]
+http://loinc.org,22756-1,HLA-DR [Units/volume] in Cerebral spinal fluid
+http://loinc.org,26028-1,HLA-B27 [Presence] by Flow cytometry (FC)
+http://loinc.org,26043-0,HLA-B27 [Presence] by NAA with probe detection
+http://loinc.org,26568-6,CD3+HLA-DR+ cells [#/volume] in Blood
+http://loinc.org,26983-7,CD4+HLA-DR+ cells [#/volume] in Blood
+http://loinc.org,27878-8,CD14+HLA-DR+ cells/cells in Blood
+http://loinc.org,27879-6,CD33+HLA-DR+ cells/cells in Blood
+http://loinc.org,31113-4,HLA-DR+ cells/cells in Blood
+http://loinc.org,32621-5,HLA-DR [Presence]
+http://loinc.org,32751-0,HLA-DR+ cells/cells in Specimen
+http://loinc.org,33592-7,CD10+HLA-DR+ cells [#/volume] in Blood
+http://loinc.org,33617-2,HLA-DR+ cells [#/volume] in Blood
+http://loinc.org,34143-8,HLA-DQ locus 2 [Type]
+http://loinc.org,34144-6,Deprecated HLA-DR w locus 2 [Type]
+http://loinc.org,34960-5,HLA Ab [Identifier] in Serum or Plasma
+http://loinc.org,35471-2,HLA Ab [Presence]
+http://loinc.org,38231-7,CD11b+HLA-DR+ cells/cells in Blood
+http://loinc.org,38546-8,HLA-B locus [Type]
+http://loinc.org,38547-6,Deprecated HLA-C locus [Type]
+http://loinc.org,38548-4,HLA-A locus [Type]
+http://loinc.org,38549-2,Deprecated HLA-Bw locus [Type]
+http://loinc.org,40734-6,HLA Ab [Units/volume] in Serum
+http://loinc.org,41283-3,HLA-DQ8 [Presence]
+http://loinc.org,41618-0,HLA Ab [Presence] in Serum by Flow cytometry (FC)
+http://loinc.org,42323-6,HLA-DR Ag [Type] in Tissue
+http://loinc.org,42358-2,HLA-B*57:01 [Presence] in Specimen
+http://loinc.org,42663-5,HLA-Cw locus [Type]
+http://loinc.org,42664-3,HLA-Cw [Type]
+http://loinc.org,42675-9,HLA Ag [Interpretation]
+http://loinc.org,43290-6,HLA-DRB1 [Presence]
+http://loinc.org,43291-4,HLA-DQB1 [Presence]
+http://loinc.org,43379-7,HLA-DRB3 [Presence]
+http://loinc.org,43689-9,HLA-DQ2 and HLA-DQ8 [Interpretation]
+http://loinc.org,43957-0,CD3+HLA-DR+ cells [#/volume] in Bone marrow
+http://loinc.org,43958-8,CD3+HLA-DR+ cells [#/volume] in Cerebral spinal fluid
+http://loinc.org,43959-6,CD3+HLA-DR+ cells [#/volume] in Body fluid
+http://loinc.org,43960-4,CD3+HLA-DR+ cells [#/volume] in Tissue
+http://loinc.org,43961-2,CD3+HLA-DR+ cells [#/volume] in Specimen
+http://loinc.org,43968-7,CD3+HLA-DR+ cells/cells in Cerebral spinal fluid
+http://loinc.org,44534-6,HLA Ab [Presence] in Serum
+http://loinc.org,44724-3,HLA-A29 [Presence]
+http://loinc.org,44725-0,HLA-B1 [Presence]
+http://loinc.org,44726-8,HLA-B51 [Presence]
+http://loinc.org,44727-6,HLA-DP2 [Presence]
+http://loinc.org,44728-4,HLA-DQA1 [Presence]
+http://loinc.org,45023-9,HLA typing for celiac disease panel - Blood or Tissue
+http://loinc.org,45024-7,HLA typing for narcolepsy panel - Blood
+http://loinc.org,45025-4,HLA-A SBT [Type] by High resolution
+http://loinc.org,45026-2,HLA-A2 SBT [Type] by High resolution
+http://loinc.org,45027-0,HLA-A2 panel - Blood
+http://loinc.org,45028-8,HLA-B SBT [Type] by High resolution
+http://loinc.org,45029-6,HLA-DQB1 SBT [Type] by High resolution
+http://loinc.org,45030-4,HLA-DRB1 SBT [Type] by High resolution
+http://loinc.org,45031-2,HLA-C SBT [Type] by High resolution
+http://loinc.org,45153-4,HLA Ab in Serum
+http://loinc.org,46236-6,HLA-B*51 [Type] in Leukocytes
+http://loinc.org,4673-0,Deprecated HLA-B27 [Presence] in Blood from donor
+http://loinc.org,4675-5,Deprecated HLA-B35 [Presence] in Blood from donor
+http://loinc.org,4676-3,Deprecated HLA-B35 [Presence] in Blood
+http://loinc.org,4692-0,HLA Ag [Units/mass] in Tissue
+http://loinc.org,4693-8,HLA Ag absent [Identifier]
+http://loinc.org,4694-6,HLA Ag present [Identifier]
+http://loinc.org,4695-3,HLA-A19 [Presence] in Donor
+http://loinc.org,4696-1,HLA-A19 [Presence]
+http://loinc.org,4697-9,HLA-A33(19) [Presence] in Donor
+http://loinc.org,4698-7,HLA-A33(19) [Presence]
+http://loinc.org,4699-5,HLA-A34(10) [Presence] in Donor
+http://loinc.org,46993-2,HLA Ab panel - Serum
+http://loinc.org,46994-0,HLA-A+B+C (class I) Ab in Serum
+http://loinc.org,46995-7,HLA-DP+DQ+DR (class II) Ab in Serum
+http://loinc.org,46996-5,HLA Ab positive cells [#] in Serum
+http://loinc.org,46997-3,HLA Ab cells tested [#] in Serum
+http://loinc.org,4700-1,HLA-A34(10) [Presence]
+http://loinc.org,4701-9,HLA-A36 [Presence] in Donor
+http://loinc.org,4702-7,HLA-A36 [Presence]
+http://loinc.org,4703-5,HLA-A43 [Presence] in Donor
+http://loinc.org,4704-3,HLA-A43 [Presence]
+http://loinc.org,4705-0,HLA-A66(10) [Presence] in Donor
+http://loinc.org,4706-8,HLA-A66(10) [Presence]
+http://loinc.org,4707-6,HLA-A68(28) [Presence] in Donor
+http://loinc.org,4708-4,HLA-A68(28) [Presence]
+http://loinc.org,4709-2,HLA-A69(28) [Presence] in Donor
+http://loinc.org,4710-0,HLA-A69(28) [Presence]
+http://loinc.org,4711-8,HLA-A74(19) [Presence] in Donor
+http://loinc.org,4712-6,HLA-A74(19) [Presence]
+http://loinc.org,4713-4,HLA-A10 [Presence] in Donor
+http://loinc.org,4714-2,HLA-A10 [Presence]
+http://loinc.org,4715-9,HLA-A11 [Presence] in Donor
+http://loinc.org,4716-7,HLA-A11 [Presence]
+http://loinc.org,4717-5,HLA-A1 [Presence] in Donor
+http://loinc.org,4718-3,HLA-A1 [Presence]
+http://loinc.org,4719-1,HLA-A23(9) [Presence] in Donor
+http://loinc.org,4720-9,HLA-A23(9) [Presence]
+http://loinc.org,4721-7,HLA-A24(9) [Presence] in Donor
+http://loinc.org,4722-5,HLA-A25(10) [Presence] in Donor
+http://loinc.org,4723-3,HLA-A25(10) [Presence]
+http://loinc.org,4724-1,HLA-A26(10) [Presence] in Donor
+http://loinc.org,4725-8,HLA-A26(10) [Presence]
+http://loinc.org,4726-6,HLA-A28 [Presence] in Donor
+http://loinc.org,4727-4,HLA-A28 [Presence]
+http://loinc.org,4728-2,HLA-A29(19) [Presence] in Donor
+http://loinc.org,4729-0,HLA-A29(19) [Presence]
+http://loinc.org,4730-8,HLA-A2 [Presence] in Donor
+http://loinc.org,4731-6,HLA-A2 [Presence]
+http://loinc.org,4732-4,HLA-A30(19) [Presence] in Donor
+http://loinc.org,4733-2,HLA-A30(19) [Presence]
+http://loinc.org,4734-0,HLA-A31(19) [Presence] in Donor
+http://loinc.org,4735-7,HLA-A31(19) [Presence]
+http://loinc.org,4736-5,HLA-A32(19) [Presence] in Donor
+http://loinc.org,4737-3,HLA-A32(19) [Presence]
+http://loinc.org,4738-1,HLA-A3 [Presence] in Donor
+http://loinc.org,4739-9,HLA-A3 [Presence]
+http://loinc.org,4740-7,HLA-A9 [Presence] in Donor
+http://loinc.org,4741-5,HLA-A9 [Presence]
+http://loinc.org,4742-3,HLA-B22 [Presence] in Donor
+http://loinc.org,4743-1,HLA-B22 [Presence]
+http://loinc.org,4744-9,HLA-B41 [Presence] in Donor
+http://loinc.org,4745-6,HLA-B41 [Presence]
+http://loinc.org,4746-4,HLA-B42 [Presence] in Donor
+http://loinc.org,4747-2,HLA-B42 [Presence]
+http://loinc.org,4748-0,HLA-B46 [Presence] in Donor
+http://loinc.org,4749-8,HLA-B46 [Presence]
+http://loinc.org,4750-6,HLA-B47 [Presence] in Donor
+http://loinc.org,4751-4,HLA-B47 [Presence]
+http://loinc.org,4752-2,HLA-B48 [Presence] in Donor
+http://loinc.org,4753-0,HLA-B48 [Presence]
+http://loinc.org,4754-8,HLA-B w4 [Presence] in Donor
+http://loinc.org,4755-5,HLA-B w4 [Presence]
+http://loinc.org,4756-3,HLA-B50(21) [Presence] in Donor
+http://loinc.org,4757-1,HLA-B50(21) [Presence]
+http://loinc.org,4758-9,HLA-B52(5) [Presence] in Donor
+http://loinc.org,4759-7,HLA-B52(5) [Presence]
+http://loinc.org,4760-5,HLA-B53 [Presence] in Donor
+http://loinc.org,4761-3,HLA-B53 [Presence]
+http://loinc.org,4762-1,HLA-B54(22) [Presence] in Donor
+http://loinc.org,4763-9,HLA-B54(22) [Presence]
+http://loinc.org,4764-7,HLA-B55(22) [Presence] in Donor
+http://loinc.org,4765-4,HLA-B55(22) [Presence]
+http://loinc.org,4766-2,HLA-B56(22) [Presence] in Donor
+http://loinc.org,4767-0,HLA-B56(22) [Presence]
+http://loinc.org,4768-8,HLA-B57(17) [Presence] in Donor
+http://loinc.org,4769-6,HLA-B57(17) [Presence]
+http://loinc.org,4770-4,HLA-B58(17) [Presence] in Donor
+http://loinc.org,4771-2,HLA-B58(17) [Presence]
+http://loinc.org,4772-0,HLA-B59 [Presence] in Donor
+http://loinc.org,4773-8,HLA-B59 [Presence]
+http://loinc.org,4774-6,HLA-B60(40) [Presence] in Donor
+http://loinc.org,4775-3,HLA-B60(40) [Presence]
+http://loinc.org,4776-1,HLA-B61(40) [Presence] in Donor
+http://loinc.org,4777-9,HLA-B61(40) [Presence]
+http://loinc.org,4778-7,HLA-B62(15) [Presence] in Donor
+http://loinc.org,4779-5,HLA-B62(15) [Presence]
+http://loinc.org,4780-3,HLA-B63(15) [Presence] in Donor
+http://loinc.org,4781-1,HLA-B63(15) [Presence]
+http://loinc.org,4782-9,HLA-B64(14) [Presence] in Donor
+http://loinc.org,4783-7,HLA-B64(14) [Presence]
+http://loinc.org,4784-5,HLA-B65(14) [Presence] in Donor
+http://loinc.org,4785-2,HLA-B65(14) [Presence]
+http://loinc.org,4786-0,HLA-B67 [Presence] in Donor
+http://loinc.org,4787-8,HLA-B67 [Presence]
+http://loinc.org,4788-6,HLA-B w6 [Presence] in Donor
+http://loinc.org,4789-4,HLA-B w6 [Presence]
+http://loinc.org,4790-2,HLA-B70 [Presence] in Donor
+http://loinc.org,4791-0,HLA-B70 [Presence]
+http://loinc.org,4792-8,HLA-B71(70) [Presence] in Donor
+http://loinc.org,4793-6,HLA-B71(70) [Presence]
+http://loinc.org,4794-4,HLA-B72(70) [Presence] in Donor
+http://loinc.org,4795-1,HLA-B72(70) [Presence]
+http://loinc.org,4796-9,HLA-B73 [Presence] in Donor
+http://loinc.org,4797-7,HLA-B73 [Presence]
+http://loinc.org,4798-5,HLA-B75(15) [Presence] in Donor
+http://loinc.org,4799-3,HLA-B75(15) [Presence]
+http://loinc.org,4800-9,HLA-B76(15) [Presence] in Donor
+http://loinc.org,4801-7,HLA-B76(15) [Presence]
+http://loinc.org,4802-5,HLA-B77(15) [Presence] in Donor
+http://loinc.org,4803-3,HLA-B77(15) [Presence]
+http://loinc.org,4804-1,HLA-B12 [Presence] in Donor
+http://loinc.org,4805-8,HLA-B12 [Presence]
+http://loinc.org,4806-6,HLA-B13 [Presence] in Donor
+http://loinc.org,4807-4,HLA-B13 [Presence]
+http://loinc.org,4808-2,HLA-B14 [Presence] in Donor
+http://loinc.org,4809-0,HLA-B14 [Presence]
+http://loinc.org,4810-8,HLA-B15 [Presence] in Donor
+http://loinc.org,4811-6,HLA-B15 [Presence]
+http://loinc.org,4812-4,HLA-B16 [Presence] in Donor
+http://loinc.org,4813-2,HLA-B16 [Presence]
+http://loinc.org,4814-0,HLA-B17 [Presence] in Donor
+http://loinc.org,4815-7,HLA-B17 [Presence]
+http://loinc.org,4816-5,HLA-B18 [Presence] in Donor
+http://loinc.org,4817-3,HLA-B18 [Presence]
+http://loinc.org,4818-1,HLA-B21 [Presence] in Donor
+http://loinc.org,4819-9,HLA-B21 [Presence]
+http://loinc.org,4820-7,HLA-B27 [Presence] in Donor
+http://loinc.org,4821-5,HLA-B27 [Presence]
+http://loinc.org,4822-3,HLA-B35 [Presence] in Donor
+http://loinc.org,4823-1,HLA-B35 [Presence]
+http://loinc.org,4824-9,HLA-B37 [Presence] in Donor
+http://loinc.org,4825-6,HLA-B37 [Presence]
+http://loinc.org,4826-4,HLA-B38(16) [Presence] in Donor
+http://loinc.org,4827-2,HLA-B38(16) [Presence]
+http://loinc.org,4828-0,HLA-B39(16) [Presence] in Donor
+http://loinc.org,4829-8,HLA-B39(16) [Presence]
+http://loinc.org,4830-6,HLA-B40 [Presence] in Donor
+http://loinc.org,4831-4,HLA-B40 [Presence]
+http://loinc.org,4832-2,HLA-B44(12) [Presence] in Donor
+http://loinc.org,4833-0,HLA-B44(12) [Presence]
+http://loinc.org,4834-8,HLA-B45(12) [Presence] in Donor
+http://loinc.org,4835-5,HLA-B45(12) [Presence]
+http://loinc.org,4836-3,HLA-B49(21) [Presence] in Donor
+http://loinc.org,4837-1,HLA-B49(21) [Presence]
+http://loinc.org,4838-9,HLA-B51(5) [Presence] in Donor
+http://loinc.org,4839-7,HLA-B51(5) [Presence]
+http://loinc.org,4840-5,HLA-B5 [Presence] in Donor
+http://loinc.org,4841-3,HLA-B5 [Presence]
+http://loinc.org,4842-1,HLA-B7 [Presence] in Donor
+http://loinc.org,4843-9,HLA-B7 [Presence]
+http://loinc.org,4844-7,HLA-B8 [Presence] in Donor
+http://loinc.org,4845-4,HLA-B8 [Presence]
+http://loinc.org,4846-2,HLA-Cw10(w3) [Presence] in Donor
+http://loinc.org,4847-0,HLA-Cw10(w3) [Presence]
+http://loinc.org,4848-8,HLA-Cw11 [Presence] in Donor
+http://loinc.org,4849-6,HLA-Cw11 [Presence]
+http://loinc.org,4850-4,HLA-Cw1 [Presence] in Donor
+http://loinc.org,48501-1,HLA Ab [Presence] in Serum by Immunoassay
+http://loinc.org,4851-2,HLA-Cw1 [Presence]
+http://loinc.org,4852-0,HLA-Cw2 [Presence] in Donor
+http://loinc.org,4853-8,HLA-Cw2 [Presence]
+http://loinc.org,4854-6,HLA-Cw3 [Presence] in Donor
+http://loinc.org,4855-3,HLA-Cw3 [Presence]
+http://loinc.org,4856-1,HLA-Cw4 [Presence] in Donor
+http://loinc.org,4857-9,HLA-Cw4 [Presence]
+http://loinc.org,4858-7,HLA-Cw5 [Presence] in Donor
+http://loinc.org,4859-5,HLA-Cw5 [Presence]
+http://loinc.org,4860-3,HLA-Cw6 [Presence] in Donor
+http://loinc.org,4861-1,HLA-Cw6 [Presence]
+http://loinc.org,4862-9,HLA-Cw7 [Presence] in Donor
+http://loinc.org,4863-7,HLA-Cw7 [Presence]
+http://loinc.org,4864-5,HLA-Cw8 [Presence] in Donor
+http://loinc.org,4865-2,HLA-Cw8 [Presence]
+http://loinc.org,4866-0,HLA-Cw9(w3) [Presence] in Donor
+http://loinc.org,4867-8,HLA-Cw9(w3) [Presence]
+http://loinc.org,4868-6,HLA-Dw10 [Presence] in Donor
+http://loinc.org,4869-4,HLA-Dw10 [Presence]
+http://loinc.org,4870-2,HLA-Dw11(w7) [Presence] in Donor
+http://loinc.org,4871-0,HLA-Dw11(w7) [Presence]
+http://loinc.org,4872-8,HLA-Dw12 [Presence] in Donor
+http://loinc.org,4873-6,HLA-Dw12 [Presence]
+http://loinc.org,4874-4,HLA-Dw13 [Presence] in Donor
+http://loinc.org,4875-1,HLA-Dw13 [Presence]
+http://loinc.org,4876-9,HLA-Dw14 [Presence] in Donor
+http://loinc.org,4877-7,HLA-Dw14 [Presence]
+http://loinc.org,4878-5,HLA-Dw15 [Presence] in Donor
+http://loinc.org,4879-3,HLA-Dw15 [Presence]
+http://loinc.org,4880-1,HLA-Dw16 [Presence] in Donor
+http://loinc.org,4881-9,HLA-Dw16 [Presence]
+http://loinc.org,4882-7,HLA-Dw17(w7) [Presence] in Donor
+http://loinc.org,4883-5,HLA-Dw17(w7) [Presence]
+http://loinc.org,4884-3,HLA-Dw18(w6) [Presence] in Donor
+http://loinc.org,4885-0,HLA-Dw18(w6) [Presence]
+http://loinc.org,4886-8,HLA-Dw19(w6) [Presence] in Donor
+http://loinc.org,4887-6,HLA-Dw19(w6) [Presence]
+http://loinc.org,4888-4,HLA-Dw1 [Presence] in Donor
+http://loinc.org,4889-2,HLA-Dw1 [Presence]
+http://loinc.org,4890-0,HLA-Dw20 [Presence] in Donor
+http://loinc.org,4891-8,HLA-Dw20 [Presence]
+http://loinc.org,4892-6,HLA-Dw21 [Presence] in Donor
+http://loinc.org,4893-4,HLA-Dw21 [Presence]
+http://loinc.org,4894-2,HLA-Dw22 [Presence] in Donor
+http://loinc.org,4895-9,HLA-Dw22 [Presence]
+http://loinc.org,4896-7,HLA-Dw23 [Presence] in Donor
+http://loinc.org,4897-5,HLA-Dw23 [Presence]
+http://loinc.org,4898-3,HLA-Dw24 [Presence] in Donor
+http://loinc.org,4899-1,HLA-Dw24 [Presence]
+http://loinc.org,4900-7,HLA-Dw25 [Presence] in Donor
+http://loinc.org,4901-5,HLA-Dw25 [Presence]
+http://loinc.org,4902-3,HLA-Dw26 [Presence] in Donor
+http://loinc.org,4903-1,HLA-Dw26 [Presence]
+http://loinc.org,4904-9,HLA-Dw2 [Presence] in Donor
+http://loinc.org,4905-6,HLA-Dw2 [Presence]
+http://loinc.org,4906-4,HLA-Dw3 [Presence] in Donor
+http://loinc.org,4907-2,HLA-Dw3 [Presence]
+http://loinc.org,4908-0,HLA-Dw4 [Presence] in Donor
+http://loinc.org,4909-8,HLA-Dw4 [Presence]
+http://loinc.org,4910-6,HLA-Dw5 [Presence] in Donor
+http://loinc.org,4911-4,HLA-Dw5 [Presence]
+http://loinc.org,4912-2,HLA-Dw6 [Presence] in Donor
+http://loinc.org,4913-0,HLA-Dw6 [Presence]
+http://loinc.org,4914-8,HLA-Dw7 [Presence] in Donor
+http://loinc.org,4915-5,HLA-Dw7 [Presence]
+http://loinc.org,4916-3,HLA-Dw8 [Presence] in Donor
+http://loinc.org,4917-1,HLA-Dw8 [Presence]
+http://loinc.org,4918-9,HLA-Dw9 [Presence] in Donor
+http://loinc.org,4919-7,HLA-Dw9 [Presence]
+http://loinc.org,4920-5,HLA-DPw1 [Presence] in Donor
+http://loinc.org,4921-3,HLA-DPw1 [Presence]
+http://loinc.org,4922-1,HLA-DPw2 [Presence] in Donor
+http://loinc.org,4923-9,HLA-DPw2 [Presence]
+http://loinc.org,4924-7,HLA-DPw3 [Presence] in Donor
+http://loinc.org,4925-4,HLA-DPw3 [Presence]
+http://loinc.org,4926-2,HLA-DPw4 [Presence] in Donor
+http://loinc.org,4927-0,HLA-DPw4 [Presence]
+http://loinc.org,4928-8,HLA-DPw5 [Presence] in Donor
+http://loinc.org,4929-6,HLA-DPw5 [Presence]
+http://loinc.org,4930-4,HLA-DPw6 [Presence] in Donor
+http://loinc.org,4931-2,HLA-DPw6 [Presence]
+http://loinc.org,4932-0,HLA-DQ1 [Presence] in Donor
+http://loinc.org,4933-8,HLA-DQ1 [Presence]
+http://loinc.org,4934-6,HLA-DQ2 [Presence] in Donor
+http://loinc.org,4935-3,HLA-DQ2 [Presence]
+http://loinc.org,4936-1,HLA-DQ3 [Presence] in Donor
+http://loinc.org,4937-9,HLA-DQ3 [Presence]
+http://loinc.org,4938-7,HLA-DQ4 [Presence] in Donor
+http://loinc.org,4939-5,HLA-DQ4 [Presence]
+http://loinc.org,4940-3,HLA-DQ5(1) [Presence] in Donor
+http://loinc.org,4941-1,HLA-DQ5(1) [Presence]
+http://loinc.org,4942-9,HLA-DQ6(1) [Presence] in Donor
+http://loinc.org,4943-7,HLA-DQ6(1) [Presence]
+http://loinc.org,4944-5,HLA-DQ7(3) [Presence] in Donor
+http://loinc.org,4945-2,HLA-DQ7(3) [Presence]
+http://loinc.org,4946-0,HLA-DQ8(3) [Presence] in Donor
+http://loinc.org,4947-8,HLA-DQ8(3) [Presence]
+http://loinc.org,4948-6,HLA-DQ9(3) [Presence] in Donor
+http://loinc.org,4949-4,HLA-DQ9(3) [Presence]
+http://loinc.org,4950-2,HLA-DR10 [Presence] in Donor
+http://loinc.org,4951-0,HLA-DR10 [Presence]
+http://loinc.org,4952-8,HLA-DR11(5) [Presence] in Donor
+http://loinc.org,4953-6,HLA-DR11(5) [Presence]
+http://loinc.org,4954-4,HLA-DR12(5) [Presence] in Donor
+http://loinc.org,4955-1,HLA-DR12(5) [Presence]
+http://loinc.org,49555-6,HLA-A+B+C (class I) Ag [Presence] in Tissue by Immune stain
+http://loinc.org,4956-9,HLA-DR13(6) [Presence] in Donor
+http://loinc.org,4957-7,HLA-DR13(6) [Presence]
+http://loinc.org,4958-5,HLA-DR14(6) [Presence] in Donor
+http://loinc.org,4959-3,HLA-DR14(6) [Presence]
+http://loinc.org,4960-1,HLA-DR15(2) [Presence] in Donor
+http://loinc.org,4961-9,HLA-DR15(2) [Presence]
+http://loinc.org,4962-7,HLA-DR16(2) [Presence] in Donor
+http://loinc.org,4963-5,HLA-DR16(2) [Presence]
+http://loinc.org,4964-3,HLA-DR17(3) [Presence] in Donor
+http://loinc.org,4965-0,HLA-DR17(3) [Presence]
+http://loinc.org,4966-8,HLA-DR18(3) [Presence] in Donor
+http://loinc.org,4967-6,HLA-DR18(3) [Presence]
+http://loinc.org,4968-4,HLA-DR52 [Presence] in Donor
+http://loinc.org,4969-2,HLA-DR52 [Presence]
+http://loinc.org,4970-0,HLA-DR53 [Presence] in Donor
+http://loinc.org,4971-8,HLA-DR53 [Presence]
+http://loinc.org,4972-6,HLA-DR6 [Presence] in Donor
+http://loinc.org,4973-4,HLA-DR6 [Presence]
+http://loinc.org,4974-2,HLA-DR8 [Presence] in Donor
+http://loinc.org,4975-9,HLA-DR8 [Presence]
+http://loinc.org,4976-7,HLA-DR1 [Presence] in Donor
+http://loinc.org,4977-5,HLA-DR1 [Presence]
+http://loinc.org,4978-3,HLA-DR2 [Presence] in Donor
+http://loinc.org,4979-1,HLA-DR2 [Presence]
+http://loinc.org,4980-9,HLA-DR3 [Presence] in Donor
+http://loinc.org,4981-7,HLA-DR3 [Presence]
+http://loinc.org,4982-5,HLA-DR4 [Presence] in Donor
+http://loinc.org,4983-3,HLA-DR4 [Presence]
+http://loinc.org,4984-1,HLA-DR5 [Presence] in Donor
+http://loinc.org,4985-8,HLA-DR5 [Presence]
+http://loinc.org,4986-6,HLA-DR7 [Presence] in Donor
+http://loinc.org,4987-4,HLA-DR7 [Presence]
+http://loinc.org,4988-2,HLA-DR9 [Presence] in Donor
+http://loinc.org,4989-0,HLA-DR9 [Presence]
+http://loinc.org,50019-9,HLA-DP+DQ+DR (class II) [Type]
+http://loinc.org,50956-2,HLA-B*57:01 [Presence]
+http://loinc.org,50968-7,HLA Ab [Type] in Serum
+http://loinc.org,51241-8,CD13+CD33+HLA-DR+ cells/cells in Tissue
+http://loinc.org,51242-6,CD13+CD33+HLA-DR+ cells/cells in Cerebral spinal fluid
+http://loinc.org,51243-4,CD13+CD33+HLA-DR+ cells/cells in Bone marrow
+http://loinc.org,51244-2,CD13+CD33+HLA-DR+ cells/cells in Body fluid
+http://loinc.org,51245-9,CD13+CD33+HLA-DR+ cells/cells in Blood
+http://loinc.org,51370-5,CD8+HLA-DR+ cells/cells in Tissue
+http://loinc.org,51371-3,CD8+HLA-DR+ cells/cells in Cerebral spinal fluid
+http://loinc.org,51372-1,CD8+HLA-DR+ cells/cells in Bone marrow
+http://loinc.org,51373-9,CD8+HLA-DR+ cells/cells in Body fluid
+http://loinc.org,51378-8,HLA-DR+ cells/cells in Tissue
+http://loinc.org,51379-6,HLA-DR+ cells/cells in Cerebral spinal fluid
+http://loinc.org,51380-4,HLA-DR+ cells/cells in Bone marrow
+http://loinc.org,51381-2,HLA-DR+ cells/cells in Body fluid
+http://loinc.org,51650-0,HLA-B [Interpretation] by NAA with probe detection
+http://loinc.org,51937-1,HLA-A+B+Bw+DR [Type]
+http://loinc.org,51938-9,HLA-A+B+Bw+DR [Type] in Donor
+http://loinc.org,53586-4,HLA-B6 [Presence]
+http://loinc.org,53737-3,HLA-DQA1*01:02 [Presence]
+http://loinc.org,53738-1,HLA-DQB1*2 [Presence]
+http://loinc.org,53739-9,HLA-DQB1*9 [Presence]
+http://loinc.org,53740-7,HLA-DRB1*17 [Presence]
+http://loinc.org,53741-5,HLA-DRB1*7 [Presence]
+http://loinc.org,53758-9,HLA-DRB1 SBT [Type] in Specimen by High resolution
+http://loinc.org,53767-0,HLA-A+B+C SBT [Interpretation] by High resolution
+http://loinc.org,53937-9,HLA-B w4+w6 [Type] in Leukocytes
+http://loinc.org,53938-7,HLA-DQB1 [Type]
+http://loinc.org,55431-1,HLA-B27 cells [#/volume] in Blood
+http://loinc.org,5557-4,HLA-DR [Units/volume] in Leukocytes
+http://loinc.org,56889-9,CD13+HLA-DR+ cells/cells in Tissue
+http://loinc.org,56890-7,CD13+HLA-DR+ cells/cells in Aspirate
+http://loinc.org,56891-5,CD13+HLA-DR+ cells/cells in Specimen
+http://loinc.org,56892-3,CD13+HLA-DR+ cells/cells in Blood
+http://loinc.org,56893-1,CD13+HLA-DR+ cells/cells in Body fluid
+http://loinc.org,56894-9,CD13+HLA-DR+ cells/cells in Cerebral spinal fluid
+http://loinc.org,56895-6,CD13+HLA-DR+ cells/cells in Bone marrow
+http://loinc.org,57090-3,HLA-DQA1*05:01 [Presence]
+http://loinc.org,57091-1,HLA-DQB1*02:01 [Presence]
+http://loinc.org,57290-9,HLA-A [Type] by High resolution
+http://loinc.org,57291-7,HLA-B [Type] by High resolution
+http://loinc.org,57292-5,Deprecated HLA-B57*01 [Presence]
+http://loinc.org,57293-3,HLA-DRB1 [Type] by High resolution
+http://loinc.org,57294-1,HLA-DRB3 [Type] by High resolution
+http://loinc.org,57295-8,HLA-DRB4 [Type] by High resolution
+http://loinc.org,57296-6,HLA-DRB5 [Type] by High resolution
+http://loinc.org,57297-4,HLA-Cw [Type] by High resolution
+http://loinc.org,57298-2,HLA-DRB1 [Type]
+http://loinc.org,57299-0,HLA-DQB1 [Type] by High resolution
+http://loinc.org,57740-3,CD3+HLA-DR+ cells/cells in Body fluid
+http://loinc.org,57979-7,HLA-B*15:02 [Presence]
+http://loinc.org,57980-5,Deprecated HLA-B51 [Presence]
+http://loinc.org,58039-9,HLA-B SBT [Type] in Bone marrow by High resolution
+http://loinc.org,58928-3,HLA-DQA1*03:01 [Presence]
+http://loinc.org,58929-1,HLA-DQB1*03:02 [Presence]
+http://loinc.org,59017-4,HLA-DPB1 [Type] by High resolution
+http://loinc.org,59018-2,HLA-DPA1 [Type] by High resolution
+http://loinc.org,59019-0,HLA-DQA1 [Type] by High resolution
+http://loinc.org,59020-8,HLA-DRB5 [Type]
+http://loinc.org,59021-6,HLA-DRB4 [Type]
+http://loinc.org,59022-4,HLA-DRB3 [Type]
+http://loinc.org,59029-9,HLA-DRB1*15:01 [Presence]
+http://loinc.org,59586-8,HLA IgG Ab [Presence] in Serum by Immunofluorescence
+http://loinc.org,60536-0,HLA-DQ beta [Type]
+http://loinc.org,62874-3,Deprecated PhenX measure - assay for human leukocyte antigen (HLA) genotyping
+http://loinc.org,62875-0,PhenX - assay for human leukocyte antigen (HLA) genotyping protocol 160601
+http://loinc.org,63558-1,HLA-DQB1*06:02 [Presence]
+http://loinc.org,6802-3,Deprecated HLA-DR10 [Presence]
+http://loinc.org,6803-1,HLA-DR15 [Presence]
+http://loinc.org,6804-9,Deprecated HLA-DR52 [Presence]
+http://loinc.org,6805-6,Deprecated HLA-DR53 [Presence]
+http://loinc.org,6806-4,Deprecated HLA-DR6 [Presence]
+http://loinc.org,6807-2,Deprecated HLA-DR8 [Presence]
+http://loinc.org,69866-2,Process variables for assays - human leukocyte antigen - HLA PhenX
+http://loinc.org,72321-3,HLA-DP+DQ+DR (class II) IgG Ab [Presence] in Serum by Immunoassay
+http://loinc.org,72322-1,HLA-A+B+C (class I) IgG Ab [Presence] in Serum or Plasma by Immunoassay
+http://loinc.org,72323-9,HLA-DP+DQ+DR (class II) IgG Ab [Presence] in Serum by Flow cytometry (FC)
+http://loinc.org,72328-8,HLA-A+B+C (class I) IgG Ab [Presence] in Serum by Flow cytometry (FC)
+http://loinc.org,72905-3,Neutrophil Ab and HLA Ab screen panel - Serum or Plasma
+http://loinc.org,73810-4,CD3-CD16+CD56+HLA-DR+ (activated Natural Killer) cells/Cells.CD3-CD16+CD56+ in Blood by Flow cytometry (FC)
+http://loinc.org,77636-9,HLA-C [Type] by High resolution typing
+http://loinc.org,77637-7,HLA-A and B and C (class I) IgG panel [Identifier] - Serum or Plasma by Immunoassay
+http://loinc.org,77638-5,HLA-DP and DQ and DR (class II) IgG panel [Identifier] - Serum or Plasma by Immunoassay
+http://loinc.org,77639-3,HLA class I and II IgG panel - Serum or Plasma by Immunoassay
+http://loinc.org,77640-1,HLA class I and II IgG Ab in Serum or Plasma by Immunoassay [interpretation] Narrative
+http://loinc.org,77641-9,HLA-A IgG Ab [Identifier] in Serum or Plasma by Immunoassay
+http://loinc.org,77642-7,HLA-B IgG Ab [Identifier] in Serum or Plasma by Immunoassay
+http://loinc.org,77643-5,HLA-C IgG Ab [Identifier] in Serum or Plasma by Immunoassay
+http://loinc.org,77644-3,HLA-DP IgG Ab [Identifier] in Serum or Plasma by Immunoassay
+http://loinc.org,77645-0,HLA-DQ IgG Ab [Identifier] in Serum or Plasma by Immunoassay
+http://loinc.org,77646-8,HLA-DR IgG Ab [Identifier] in Serum or Plasma by Immunoassay
+http://loinc.org,78013-0,HLA-A and B and DRB and DQB1 panel [Type] - Blood or Tissue by Low resolution
+http://loinc.org,78014-8,HLA-A [Type] by Low resolution
+http://loinc.org,78015-5,HLA-B [Type] by Low resolution
+http://loinc.org,78016-3,HLA-DRB [Type] by Low resolution
+http://loinc.org,78017-1,HLA-DQB1 [Type] by Low resolution
+http://loinc.org,79711-8,HLA-B*58:01 [Presence] in Blood or Tissue
+http://loinc.org,79712-6,HLA-A*31:01 [Presence] in Blood or Tissue
+http://loinc.org,80711-5,CD38+HLA-DR+ cells/CD3+CD4+ (T4 helper) cells in Blood
+http://loinc.org,80712-3,CD38+HLA-DR+ cells/CD3+CD8+ (T8 suppressor cells) cells in Blood
+http://loinc.org,80716-4,T-cell activated (CD38+HLA-DR+) subsets panel - Blood
+http://loinc.org,89325-5,CD3+CD8+CD28+HLA DR+ cells [#/volume] in Blood
+http://loinc.org,89326-3,CD3+CD4+CD28+HLA DR+ cells [#/volume] in Blood
+http://loinc.org,89332-1,CD28+HLA DR+ cells/CD3+CD8+ (T8 suppressor cells) cells in Blood
+http://loinc.org,89333-9,CD28+HLA DR+ cells/CD3+CD4+ (T4 helper) cells in Blood
+http://loinc.org,93350-7,Monocytes.HLA-DR/Monocytes in Blood by Flow cytometry (FC)
+http://loinc.org,93351-5,HLA-DR Ag [Entitic number] on Monocyte by Flow cytometry (FC)
+http://loinc.org,93354-9,Neutrophil CD64 and Monocyte HLA DR panel - Blood by Flow cytometry (FC)
+http://loinc.org,9419-3,HLA-DQ6 [Presence]
+http://loinc.org,94428-0,HLA class I and II IgG panel - Serum or Plasma by Flow cytometry (FC)
+http://loinc.org,94429-8,HLA-DP and DQ and DR (class II) IgG low risk [Identifier] in Serum or Plasma by Flow cytometry (FC)
+http://loinc.org,94430-6,HLA-A and B and C (class I) IgG low risk [Identifier] in Serum or Plasma by Flow cytometry (FC)
+http://loinc.org,94432-2,HLA-DP and DQ and DR (class II) IgG Ab [Identifier] in Serum or Plasma by Flow cytometry (FC)
+http://loinc.org,94433-0,HLA-DP and DQ and DR (class II) IgG with prozone effect [Identifier] in Serum or Plasma by Flow cytometry (FC)
+http://loinc.org,94434-8,HLA-DPB1 IgG Ab [Identifier] in Serum or Plasma by Flow cytometry (FC)
+http://loinc.org,94435-5,HLA-DPA1 IgG Ab [Identifier] in Serum or Plasma by Flow cytometry (FC)
+http://loinc.org,94436-3,HLA-DQB1 IgG Ab [Identifier] in Serum or Plasma by Flow cytometry (FC)
+http://loinc.org,94437-1,HLA-DQA1 IgG Ab [Identifier] in Serum or Plasma by Flow cytometry (FC)
+http://loinc.org,94438-9,HLA-DRB3 and HLA-DRB4 and HLA DRB5 IgG Ab [Identifier] in Serum or Plasma by Flow cytometry (FC)
+http://loinc.org,94439-7,HLA-DRB1 IgG Ab [Identifier] in Serum or Plasma by Flow cytometry (FC)
+http://loinc.org,94440-5,HLA-DP and DQ and DR (class II) IgG panel - Serum or Plasma by Flow cytometry (FC)
+http://loinc.org,94441-3,HLA-A and B and C (class I) IgG Ab [Identifier] in Serum or Plasma by Flow cytometry (FC)
+http://loinc.org,94442-1,HLA-A and B and C (class I) IgG with prozone effect [Identifier] in Serum or Plasma by Flow cytometry (FC)
+http://loinc.org,94443-9,HLA-C IgG Ab [Identifier] in Serum or Plasma by Flow cytometry (FC)
+http://loinc.org,94444-7,HLA-B IgG Ab [Identifier] in Serum or Plasma by Flow cytometry (FC)
+http://loinc.org,94445-4,HLA-A IgG Ab [Identifier] in Serum or Plasma by Flow cytometry (FC)
+http://loinc.org,94446-2,HLA-A and B and C (class I) IgG panel - Serum or Plasma by Flow cytometry (FC)
+http://loinc.org,94447-0,HLA-DP and DQ and DR (class II) IgG high risk [Identifier] in Serum or Plasma by Flow cytometry (FC)
+http://loinc.org,94448-8,HLA-DP and DQ and DR (class II) IgG intermediate risk [Identifier] in Serum or Plasma by Flow cytometry (FC)
+http://loinc.org,94449-6,HLA-A and B and C (class I) IgG high risk [Identifier] in Serum or Plasma by Flow cytometry (FC)
+http://loinc.org,94450-4,HLA-A and B and C (class I) IgG intermediate risk [Identifier] in Serum or Plasma by Flow cytometry (FC)
+http://loinc.org,94492-6,HLA-DQA1 and HLA-DQB1 typing panel - Blood or Tissue by Molecular genetics method
+http://loinc.org,94493-4,Celiac disease IgA and HLA typing and serology panel - Blood or Tissue
+http://loinc.org,94495-9,HLA-DQA1 [Type]
+http://loinc.org,95185-5,HLA-A1 CMV specific CD8 cells [#/volume] in Blood by Flow cytometry (FC)
+http://loinc.org,95187-1,CD107a+b expressing HLA-B35 CMV specific CD8 cells [#/volume] in Blood by Flow cytometry (FC)
+http://loinc.org,95188-9,CD107a+b expressing HLA-B8 CMV specific CD8 cells [#/volume] in Blood by Flow cytometry (FC)
+http://loinc.org,95189-7,CD107a+b expressing HLA-B7 CMV specific CD8 cells [#/volume] in Blood by Flow cytometry (FC)
+http://loinc.org,95190-5,CD107a+b expressing HLA-A2 CMV specific CD8 cells [#/volume] in Blood by Flow cytometry (FC)
+http://loinc.org,95191-3,CD107a+b expressing HLA-A1 CMV specific CD8 cells [#/volume] in Blood by Flow cytometry (FC)
+http://loinc.org,95193-9,Interferon-gamma producing HLA-B35 CMV specific CD8 cells [#/volume] in Blood by Flow cytometry (FC)
+http://loinc.org,95194-7,Interferon-gamma producing HLA-B8 CMV specific CD8 cells [#/volume] in Blood by Flow cytometry (FC)
+http://loinc.org,95195-4,Interferon-gamma producing HLA-B7 CMV specific CD8 cells [#/volume] in Blood by Flow cytometry (FC)
+http://loinc.org,95196-2,Interferon-gamma producing HLA-A2 CMV specific CD8 cells [#/volume] in Blood by Flow cytometry (FC)
+http://loinc.org,95197-0,Interferon-gamma producing HLA-A1 CMV specific CD8 cells [#/volume] in Blood by Flow cytometry (FC)
+http://loinc.org,95199-6,HLA-B35 CMV specific CD8 cells [#/volume] in Blood by Flow cytometry (FC)
+http://loinc.org,95200-2,HLA-B8 CMV specific CD8 cells [#/volume] in Blood by Flow cytometry (FC)
+http://loinc.org,95201-0,HLA-B7 CMV specific CD8 cells [#/volume] in Blood by Flow cytometry (FC)
+http://loinc.org,95202-8,HLA-A2 CMV specific CD8 cells [#/volume] in Blood by Flow cytometry (FC)
+http://loinc.org,95269-7,HLA-A+B+C (class I) Ab [Presence] in Serum or Plasma by Immunoassay
+http://loinc.org,95270-5,Platelet and HLA glycoprotein antibody panel - Blood
+http://loinc.org,96061-7,HLA donor match status [Type]
+http://loinc.org,96613-5,HLA-A [Type] in Donor by High resolution
+http://loinc.org,96614-3,HLA-A and B and C (class I) typing panel - Blood or Tissue from Donor by High resolution
+http://loinc.org,96615-0,HLA-A and B and C (class I) typing panel - Blood or Tissue by High resolution
+http://loinc.org,96616-8,HLA-A unresolved alleles [Type] in Donor by High resolution
+http://loinc.org,96617-6,HLA-A unresolved alleles [Type] by High resolution
+http://loinc.org,96618-4,HLA-B [Type] in Donor by High resolution
+http://loinc.org,96619-2,HLA-B unresolved alleles [Type] in Donor by High resolution
+http://loinc.org,96620-0,HLA-B unresolved alleles [Type] by High resolution
+http://loinc.org,96621-8,HLA-C [Type] in Donor by High resolution
+http://loinc.org,96622-6,HLA-C unresolved alleles [Type] in Donor by High resolution
+http://loinc.org,96623-4,HLA-C unresolved alleles [Type] by High resolution
+http://loinc.org,96624-2,Donor HLA typing comment [Interpretation] Narrative
+http://loinc.org,96625-9,HLA typing comment [Interpretation] Narrative
+http://loinc.org,96626-7,HLA-A [Type] in Donor by Low resolution
+http://loinc.org,96627-5,HLA-A [Type] in Donor
+http://loinc.org,96628-3,HLA-A and B and C (class I) typing panel - Blood or Tissue from Donor by Low resolution
+http://loinc.org,96629-1,HLA-A and B and C (class I) typing panel - Blood or Tissue by Low resolution
+http://loinc.org,96630-9,HLA-B [Type] in Donor by Low resolution
+http://loinc.org,96631-7,HLA-B [Type] in Donor
+http://loinc.org,96632-5,HLA-Bw [Type] in Donor
+http://loinc.org,96633-3,HLA-Bw [Type]
+http://loinc.org,96634-1,HLA-C [Type] in Donor by Low resolution
+http://loinc.org,96635-8,HLA-C [Type] in Donor
+http://loinc.org,96636-6,HLA-C [Type] by Low resolution
+http://loinc.org,96637-4,HLA-DP and DQ and DR (class II) typing panel - Blood or Tissue by High resolution
+http://loinc.org,96638-2,HLA-DP and DQ and DR (class II) typing panel - Blood or Tissue from Donor by Low resolution
+http://loinc.org,96639-0,HLA-DP and DQ and DR (class II) typing panel - Blood or Tissue from Donor by High resolution
+http://loinc.org,96640-8,HLA-DP and DQ and DR (class II) typing panel - Blood or Tissue by Low resolution
+http://loinc.org,96641-6,HLA-DPA1 [Type] in Donor by High resolution
+http://loinc.org,96642-4,HLA-DPA1 [Type] in Donor by Low resolution
+http://loinc.org,96643-2,HLA-DPA1 [Type] by Low resolution
+http://loinc.org,96644-0,HLA-DPA1 unresolved alleles [Type] in Donor by High resolution
+http://loinc.org,96645-7,HLA-DPA1 unresolved alleles [Type] by High resolution
+http://loinc.org,96646-5,HLA-DPB1 [Type] in Donor by High resolution
+http://loinc.org,96647-3,HLA-DPB1 [Type] in Donor by Low resolution
+http://loinc.org,96648-1,HLA-DPB1 [Type] by Low resolution
+http://loinc.org,96649-9,HLA-DPB1 T-cell epitope match [Type] in Donor+Patient by High resolution
+http://loinc.org,96650-7,HLA-DPB1 unresolved alleles [Type] in Donor by High resolution
+http://loinc.org,96651-5,HLA-DPB1 unresolved alleles [Type] by High resolution
+http://loinc.org,96652-3,HLA-DQA1 [Type] in Donor by High resolution
+http://loinc.org,96653-1,HLA-DQA1 [Type] in Donor by Low resolution
+http://loinc.org,96654-9,HLA-DQA1 [Type] by Low resolution
+http://loinc.org,96655-6,HLA-DQA1 unresolved alleles [Type] in Donor by High resolution
+http://loinc.org,96656-4,HLA-DQA1 unresolved alleles [Type] by High resolution
+http://loinc.org,96657-2,HLA-DQB1 [Type] in Donor by High resolution
+http://loinc.org,96658-0,HLA-DQB1 [Type] in Donor by Low resolution
+http://loinc.org,96659-8,HLA-DQB1 [Type] in Donor
+http://loinc.org,96660-6,HLA-DQB1 unresolved alleles [Type] in Donor by High resolution
+http://loinc.org,96661-4,HLA-DQB1 unresolved alleles [Type] by High resolution
+http://loinc.org,96662-2,HLA-DRB1 [Type] in Donor by High resolution
+http://loinc.org,96663-0,HLA-DRB1 [Type] in Donor by Low resolution
+http://loinc.org,96664-8,HLA-DRB1 [Type] by Low resolution
+http://loinc.org,96665-5,HLA-DRB1 [Type] in Donor
+http://loinc.org,96666-3,HLA-DRB1 unresolved alleles [Type] in Donor by High resolution
+http://loinc.org,96667-1,HLA-DRB1 unresolved alleles [Type] by High resolution
+http://loinc.org,96668-9,HLA-DRB3 and HLA-DRB4 and HLA DRB5 [Type] in Donor by High resolution
+http://loinc.org,96669-7,HLA-DRB3 and HLA-DRB4 and HLA DRB5 [Type] in Donor by Low resolution
+http://loinc.org,96670-5,HLA-DRB3 and HLA-DRB4 and HLA DRB5 [Type] in Donor
+http://loinc.org,96671-3,HLA-DRB3 and HLA-DRB4 and HLA DRB5 [Type] by High resolution
+http://loinc.org,96672-1,HLA-DRB3 and HLA-DRB4 and HLA DRB5 [Type] by Low resolution
+http://loinc.org,96673-9,HLA-DRB3 and HLA-DRB4 and HLA DRB5 [Type]
+http://loinc.org,96674-7,HLA-DRB3 and HLA-DRB4 and HLA DRB5 unresolved alleles [Type] in Donor by High resolution
+http://loinc.org,96675-4,HLA-DRB3 and HLA-DRB4 and HLA DRB5 unresolved alleles [Type] by High resolution
+http://loinc.org,97997-1,"HPA and HLA Ab [Interpretation] in Serum, Plasma or Blood Narrative"
+http://loinc.org,97999-7,HLA-DP and DQ and DR (class II) IgG donor specific [Identifier] in Serum or Plasma
+http://loinc.org,98000-3,HLA-A and B and C (class I) and HLA-DP and DQ and DR (class II) [Type] by High resolution
+http://loinc.org,98001-1,HLA-DP and DQ and DR (class II) [Type] by Low resolution
+http://loinc.org,98002-9,HLA-A and B and C (class I) [Type] by Low resolution
+http://loinc.org,98003-7,HLA-A and B and C (class I) IgG donor specific [Identifier] in Serum or Plasma
+http://loinc.org,98004-5,HLA-A and B and C (class I) and HLA-DP and DQ and DR (class II) [Type]
+http://loinc.org,98005-2,HLA-A and B and C (class I) and HLA-DP and DQ and DR (class II) [Type] by Low resolution
+http://loinc.org,98006-0,HLA-A and B and C (class I) and HLA-DP and DQ and DR (class II) Ab [Identifier] in Serum or Plasma
