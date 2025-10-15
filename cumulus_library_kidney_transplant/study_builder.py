@@ -52,8 +52,8 @@ class StudyBuilderConfig:
                         "document", .get_documents()
                         "procedure" .get_procedures()}
     """
-    period_start: str = '2016-01-01'
-    period_end: str = '2025-02-01'
+    period_start: str = '2008-01-01'
+    period_end: str = '2026-02-01'
     include_history: bool = True
     enc_class_list: List[EncounterClass] | List[str] = None
     enc_min: int = 3
@@ -75,8 +75,8 @@ class StudyBuilderConfig:
         """
         if not form:
             form = dict()
-        self.period_start = form.get('period_start', '2016-01-01')
-        self.period_end = form.get('period_end', '2025-01-01')
+        self.period_start = form.get('period_start', '2008-01-01')
+        self.period_end = form.get('period_end', '2026-01-01')
         self.include_history = bool(form.get('include_history', True))
         self.enc_class_list = form.get('enc_class_list', None)
         self.enc_min = int(form.get('enc_min', 3))
@@ -102,7 +102,7 @@ class StudyBuilderConfig:
         :return: dict JSON of StudyBuilderConfig
         """
         if not from_path:
-            from_path = filetool.path_home('StudyBuilderConfig.json')
+            from_path = filetool.path_home('foo_StudyBuilderConfig.json')
         return filetool.read_json(from_path)
 
     @staticmethod
