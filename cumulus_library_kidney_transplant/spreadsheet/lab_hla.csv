@@ -33,7 +33,6 @@ http://loinc.org,16107-5,CD8+HLA-DR+ cells [#/volume] in Blood
 http://loinc.org,18394-7,HLA-A24(9) [Presence]
 http://loinc.org,18408-5,CD3+HLA-DR+ cells/cells in Blood
 http://loinc.org,18413-5,HLA-DR16 [Presence]
-http://loinc.org,18724-5,HLA studies (set)
 http://loinc.org,21341-3,HLA-DR locus [Type]
 http://loinc.org,21342-1,HLA-DR locus 2 [Type]
 http://loinc.org,21343-9,HLA-DR+DQ [Type]
@@ -466,8 +465,6 @@ http://loinc.org,59022-4,HLA-DRB3 [Type]
 http://loinc.org,59029-9,HLA-DRB1*15:01 [Presence]
 http://loinc.org,59586-8,HLA IgG Ab [Presence] in Serum by Immunofluorescence
 http://loinc.org,60536-0,HLA-DQ beta [Type]
-http://loinc.org,62874-3,Deprecated PhenX measure - assay for human leukocyte antigen (HLA) genotyping
-http://loinc.org,62875-0,PhenX - assay for human leukocyte antigen (HLA) genotyping protocol 160601
 http://loinc.org,63558-1,HLA-DQB1*06:02 [Presence]
 http://loinc.org,6802-3,Deprecated HLA-DR10 [Presence]
 http://loinc.org,6803-1,HLA-DR15 [Presence]
@@ -475,7 +472,6 @@ http://loinc.org,6804-9,Deprecated HLA-DR52 [Presence]
 http://loinc.org,6805-6,Deprecated HLA-DR53 [Presence]
 http://loinc.org,6806-4,Deprecated HLA-DR6 [Presence]
 http://loinc.org,6807-2,Deprecated HLA-DR8 [Presence]
-http://loinc.org,69866-2,Process variables for assays - human leukocyte antigen - HLA PhenX
 http://loinc.org,72321-3,HLA-DP+DQ+DR (class II) IgG Ab [Presence] in Serum by Immunoassay
 http://loinc.org,72322-1,HLA-A+B+C (class I) IgG Ab [Presence] in Serum or Plasma by Immunoassay
 http://loinc.org,72323-9,HLA-DP+DQ+DR (class II) IgG Ab [Presence] in Serum by Flow cytometry (FC)
