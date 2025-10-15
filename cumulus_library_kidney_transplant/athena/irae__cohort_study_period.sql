@@ -13,6 +13,8 @@ range as (
             (E.period_start_day between include.period_start and include.period_end)
             and
             (E.period_end_day   between include.period_start and include.period_end)
+            and
+            (E.period_start_date < CURRENT_DATE)
 ),
 history as (
     SELECT  DISTINCT
