@@ -1,5 +1,7 @@
+from pathlib import Path
 import pandas as pd
 from cumulus_library_kidney_transplant import filetool, fhir2sql
+from cumulus_library_kidney_transplant import loinc_names
 from cumulus_library_kidney_transplant.spreadsheet.document import (
     type_of_service,
     subject_matter_domain,
@@ -21,14 +23,6 @@ from cumulus_library_kidney_transplant.spreadsheet.document import (
 ONTOLOGY_CSV = filetool.path_spreadsheet('document/DocumentOntology.csv')
 ONTOLOGY_VALUESET_CSV = filetool.path_spreadsheet('document/DocumentOntology_valueset.csv')
 
-LOINC_CSV = filetool.path_spreadsheet('document/Loinc.csv')
-LOINC_VALUESET_CSV = filetool.path_spreadsheet('document/Loinc_valueset.csv')
-
-##############################################################################
-#
-# DocumentOntology.csv helpers for curation
-#
-##############################################################################
 def term_frequency(part_type_name:str):
     """
     Get frequency for each LOINC Part, for example, each
@@ -47,39 +41,19 @@ def print_tf(part_type_name:str)-> None:
     for part_name, tf in term_frequency(part_type_name).items():
         print(f"'{part_name}',", '\t#', tf)
 
-def loinc2valueset():
-    """
-    Save LOINC_CSV as {code,display,system}
-    """
-    entries = list()
-    for row in pd.read_csv(LOINC_CSV).itertuples(index=False):
-        entries.append({'system': 'http://loinc.org',
-                        'code': row.LOINC_NUM,
-                        'display': row.LONG_COMMON_NAME})
-    entries = sorted(entries, key=lambda x: x['code'])
-    valueset_csv = pd.DataFrame.from_records(entries)
-    valueset_csv.to_csv(LOINC_VALUESET_CSV, index=False)
-
 def ontology2valueset():
     """
     Save ONTOLOGY_CSV as {code,display,system}
     """
     ont = pd.read_csv(ONTOLOGY_CSV)
-    loinc = pd.read_csv(LOINC_VALUESET_CSV)
+    loinc = pd.read_csv(loinc_names.LOINC_VALUESET_CSV)
 
-    ont["LoincNumber"] = ont["LoincNumber"].str.strip()
-    loinc["code"] = loinc["code"].str.strip()
+    ont['LoincNumber'] = ont['LoincNumber'].str.strip()
+    loinc['code'] = loinc['code'].str.strip()
 
-    ont_keys = set(ont["LoincNumber"].dropna().unique())
-    loinc_keys = set(loinc["code"].dropna().unique())
+    ont_keys = set(ont['LoincNumber'].dropna().unique())
 
-    print(len(ont_keys), ' ont_keys')
-    print(len(loinc_keys), ' loinc_keys')
-    print(len(ont_keys & loinc_keys), ' intersection')
-    print(len(loinc_keys - ont_keys), ' difference loinc')
-    print(len(ont_keys - loinc_keys), ' difference ont')
-
-    filtered = loinc[loinc["code"].isin(ont_keys)].copy()
+    filtered = loinc[loinc['code'].isin(ont_keys)].copy()
     filtered.to_csv(filetool.path_spreadsheet(ONTOLOGY_VALUESET_CSV), index=False)
     fhir2sql.csv2view(ONTOLOGY_VALUESET_CSV, 'irae__doc_ontology')
 
@@ -101,7 +75,7 @@ def include_loinc_part(loinc_part_type:str = None) -> None:
         include_loinc_part('Document.Role')
 
     ontology_df = pd.read_csv(ONTOLOGY_CSV)
-    loinc_df = pd.read_csv(LOINC_VALUESET_CSV)
+    loinc_df = pd.read_csv(loinc_names.LOINC_VALUESET_CSV)
     loinc_df = loinc_df.drop_duplicates(subset="code", keep="first")
     lookup = loinc_df.set_index("code")["display"].to_dict()
     matches = dict()
@@ -147,10 +121,11 @@ def include_loinc_part(loinc_part_type:str = None) -> None:
     fhir2sql.csv2view(filetool.path_spreadsheet(output_csv), view_name)
 
 def main():
-    loinc2valueset()
     ontology2valueset()
     include_loinc_part()
 
 if __name__ == "__main__":
+    # main()
+    print('Are you sure you want to recompile document type selections for this study?')
+    print('If YES, run main() above and then review the output SQL selections in athena')
     pass
-

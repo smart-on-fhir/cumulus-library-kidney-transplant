@@ -5,7 +5,7 @@ from cumulus_library_kidney_transplant import (
     filetool,
     criteria,
     study_population,
-    doc_ontology,
+    loinc_doc,
     cohorts,
     casedef)
 from cumulus_library_kidney_transplant.count import cube
