@@ -1,6 +1,6 @@
 {
-    "period_start": "2016-01-01",
-    "period_end": "2025-02-01",
+    "period_start": "2008-01-01",
+    "period_end": "2026-02-01",
     "include_history": true,
     "enc_class_list": null,
     "enc_min": 3,
