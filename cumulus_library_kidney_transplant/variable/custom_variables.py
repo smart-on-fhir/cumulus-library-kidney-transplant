@@ -10,22 +10,14 @@ def make_union() -> List[Path]:
     """
     :return: Variable aggregations for SQL query convenience.
     """
-    return [union_view_custom('lab', list_variables_lab(), f'lab_custom'),
-            union_view_custom('rx', list_variables_rx(), f'rx_custom')]
+    lab_list = fhir2sql.name_prefix(list_variables_lab())
+    rx_list = fhir2sql.name_prefix(list_variables_rx())
+
+    return [fhir2sql.union_view_list(lab_list, 'lab_custom'),
+            fhir2sql.union_view_list(rx_list, 'rx_custom')]
 
 def list_view_custom() -> List[str]:
     return fhir2sql.name_prefix(CUSTOM_LIST)
-
-def union_view_custom(rx_or_lab: str, variable_list: list, view_name: str) -> Path:
-    """
-    :param rx_or_lab: "rx" or "lab" target
-    :param variable_list: list of variables to aggregate
-    :param view_name: Path to SQL table of variables aggregated.
-    :return:
-    """
-    targets = [f'{rx_or_lab}_{entry}' for entry in variable_list]
-    targets = fhir2sql.name_prefix(targets)
-    return fhir2sql.union_view_list(targets, view_name)
 
 def list_variables_lab() -> List[str]:
     return list_variables('lab_*.csv')
