@@ -1,6 +1,5 @@
 create or replace view irae__casedef as
-with cast_type_safe as
-(
+with cast_type_safe as (
     select distinct
         system,
         replace(code, '@', '')  as code,
@@ -15,8 +14,7 @@ with cast_type_safe as
         imaging     = 'true'    as imaging
     from irae__casedef_custom_csv
 ),
-include_first_visit as
-(
+include_first_visit as (
     select  distinct
             cast_type_safe.*,
             True as include
@@ -26,8 +24,7 @@ include_first_visit as
     or      transplant
     or      imaging
 ),
-exclude_first_visit as
-(
+exclude_first_visit as (
     select  distinct
             cast_type_safe.*,
             False as include
