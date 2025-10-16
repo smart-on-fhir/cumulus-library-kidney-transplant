@@ -1,39 +1,35 @@
 create or replace view irae__lab_gfr_custom as select * from (values
-('http://loinc.org', 'LOINC_NUM', 'COMPONENT')
-,('http://loinc.org', '66615-6', 'Estimated or measured glomerular filtration rate less than 50 percent')
-,('http://loinc.org', '69406-7', 'Adult GFR method')
-,('http://loinc.org', '69407-5', 'Pediatric GFR method')
-,('http://loinc.org', '81604-1', 'Views for glomerular filtration rate^W radionuclide IV')
-,('http://loinc.org', '76633-7', 'Glomerular filtration rate')
-,('http://loinc.org', '103542-7', 'Tubular reabsorption of phosphorus/Glomerular filtration rate')
-,('http://loinc.org', '87430-5', 'Cystatin C & Glomerular filtration rate by Cystatin C-based formula panel')
-,('http://loinc.org', '50383-9', 'Glomerular filtration rate.predicted')
-,('http://loinc.org', '96591-3', 'Glomerular filtration rate')
-,('http://loinc.org', '33914-3', 'Glomerular filtration rate')
-,('http://loinc.org', '97952-6', 'Glomerular filtration rate/Body surface area')
-,('http://loinc.org', '96592-1', 'Glomerular filtration rate')
-,('http://loinc.org', '69405-9', 'Glomerular filtration rate')
-,('http://loinc.org', '50384-7', 'Glomerular filtration rate')
-,('http://loinc.org', '50210-4', 'Glomerular filtration rate')
-,('http://loinc.org', '62238-1', 'Glomerular filtration rate')
-,('http://loinc.org', '78006-4', 'Glomerular filtration rate')
-,('http://loinc.org', '88293-6', 'Glomerular filtration rate')
-,('http://loinc.org', '48643-1', 'Glomerular filtration rate')
-,('http://loinc.org', '50044-7', 'Glomerular filtration rate')
-,('http://loinc.org', '70969-1', 'Glomerular filtration rate')
-,('http://loinc.org', '94677-2', 'Glomerular filtration rate')
-,('http://loinc.org', '102097-3', 'Glomerular filtration rate')
-,('http://loinc.org', '88294-4', 'Glomerular filtration rate')
-,('http://loinc.org', '48642-3', 'Glomerular filtration rate')
-,('http://loinc.org', '98979-8', 'Glomerular filtration rate')
-,('http://loinc.org', '77147-7', 'Glomerular filtration rate')
-,('http://loinc.org', '98980-6', 'Glomerular filtration rate')
-,('http://loinc.org', '90994-5', 'Iothalamate clearance')
-,('http://loinc.org', '45064-3', 'Basic metabolic panel & Glomerular filtration rate.predicted')
-,('http://loinc.org', '96083-1', 'HEDIS Measurement Year 2020 Value Set - Estimated Glomerular Filtration Rate Lab Test')
-,('http://loinc.org', '45065-0', 'Comprehensive metabolic panel & Glomerular filtration rate.predicted')
-,('http://loinc.org', '90993-7', 'Iothalamate clearance panel')
-,('http://loinc.org', '50261-7', 'Renal function panel & Glomerular filtration rate.predicted')
-,('http://loinc.org', '45066-8', 'Creatinine & Glomerular filtration rate.predicted panel')
-,('http://loinc.org', '90995-2', 'Iothalamate clearance/Body surface area')
-) AS t (system, code, display) ;
+
+('http://loinc.org','102097-3','GFR, Blood'),
+('http://loinc.org','103542-7','Tubular reabsorption of phosphorus/Glomerular filtration rate, Urine+Blood'),
+('http://loinc.org','33914-3','GFR, Blood'),
+('http://loinc.org','45064-3','Basic Metabolic Panel and Glomerular Filtration Rate.predicted, Blood'),
+('http://loinc.org','45065-0','Comprehensive Metabolic Panel and Glomerular Filtration Rate.predicted, Blood'),
+('http://loinc.org','45066-8','Creatinine and Glomerular filtration rate.predicted panel, Blood'),
+('http://loinc.org','48642-3','GFR, Blood'),
+('http://loinc.org','48643-1','GFR, Blood'),
+('http://loinc.org','50044-7','GFR, Blood'),
+('http://loinc.org','50210-4','GFR, Blood'),
+('http://loinc.org','50261-7','Renal Function Panel and Glomerular Filtration Rate.predicted, Blood'),
+('http://loinc.org','50383-9','GFR.predicted, Blood'),
+('http://loinc.org','50384-7','GFR, Blood'),
+('http://loinc.org','62238-1','GFR, Blood'),
+('http://loinc.org','69405-9','GFR, Blood'),
+('http://loinc.org','70969-1','GFR, Blood'),
+('http://loinc.org','76633-7','GFR, Blood'),
+('http://loinc.org','77147-7','GFR, Blood'),
+('http://loinc.org','78006-4','GFR, Urine+Blood'),
+('http://loinc.org','87430-5','Cystatin C and Glomerular Filtration Rate by Cystatin C-based Formula Panel, Blood'),
+('http://loinc.org','88293-6','GFR, Blood'),
+('http://loinc.org','88294-4','GFR, Blood'),
+('http://loinc.org','90993-7','Iothalamate clearance panel, Urine+Blood'),
+('http://loinc.org','90994-5','Iothalamate clearance, Urine+Blood'),
+('http://loinc.org','90995-2','Iothalamate/Body Surface Area, Urine+Blood'),
+('http://loinc.org','94677-2','GFR, Blood'),
+('http://loinc.org','96083-1','HEDIS MY 2020 Value Set - Estimated Glomerular Filtration Rate Lab Test'),
+('http://loinc.org','96591-3','GFR, Dried blood spot'),
+('http://loinc.org','96592-1','GFR, Dried blood spot'),
+('http://loinc.org','97952-6','GFR/Body Surface Area, Blood'),
+('http://loinc.org','98979-8','GFR, Blood'),
+('http://loinc.org','98980-6','GFR, Blood')
+) AS t (system,code,display) ;

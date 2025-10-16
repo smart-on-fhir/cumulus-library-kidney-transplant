@@ -1,91 +1,90 @@
 create or replace view irae__lab_ldl as select * from (values
-('http://loinc.org', 'LOINC_NUM', 'COMPONENT')
-,('http://loinc.org', '53805-8', 'LDL apheresis procedure')
-,('http://loinc.org', '92717-8', 'Lipoprotein.beta.subparticle.large-a')
-,('http://loinc.org', '92716-0', 'Lipoprotein.beta.subparticle.large-b')
-,('http://loinc.org', '53806-6', 'LDL apheresis procedure')
-,('http://loinc.org', '96735-6', 'Lipoprotein.beta.subparticle.medium')
-,('http://loinc.org', '55440-2', 'Cholesterol.in LDL')
-,('http://loinc.org', '57698-3', 'Lipid panel with direct LDL')
-,('http://loinc.org', '92715-2', 'Lipoprotein.beta.subparticle.very small-a')
-,('http://loinc.org', '92714-5', 'Lipoprotein.beta.subparticle.very small-b')
-,('http://loinc.org', '92713-7', 'Lipoprotein.beta.subparticle.very small-c')
-,('http://loinc.org', '3046-0', 'Triglyceride+ester.in LDL')
-,('http://loinc.org', '43727-7', 'Lipoprotein.beta.subparticle.small')
-,('http://loinc.org', '92712-9', 'Lipoprotein.beta.subparticle.very small-d')
-,('http://loinc.org', '105516-9', 'LDL from lipid profile')
-,('http://loinc.org', '14155-6', 'Cholesterol.in LDL')
-,('http://loinc.org', '54434-6', 'Lipoprotein.beta.subparticle')
-,('http://loinc.org', '14815-5', 'Lipoprotein.beta')
-,('http://loinc.org', '14814-8', 'Lipoprotein.beta')
-,('http://loinc.org', '2089-1', 'Cholesterol.in LDL')
-,('http://loinc.org', '53133-5', 'Cholesterol.in LDL')
-,('http://loinc.org', '22748-8', 'Cholesterol.in LDL')
-,('http://loinc.org', '91105-7', 'Cholesterol.in LDL 1')
-,('http://loinc.org', '91112-3', 'Cholesterol.in LDL 1')
-,('http://loinc.org', '91106-5', 'Cholesterol.in LDL 2')
-,('http://loinc.org', '91113-1', 'Cholesterol.in LDL 2')
-,('http://loinc.org', '91107-3', 'Cholesterol.in LDL 3')
-,('http://loinc.org', '91114-9', 'Cholesterol.in LDL 3')
-,('http://loinc.org', '91108-1', 'Cholesterol.in LDL 4')
-,('http://loinc.org', '91115-6', 'Cholesterol.in LDL 4')
-,('http://loinc.org', '91109-9', 'Cholesterol.in LDL 5')
-,('http://loinc.org', '91116-4', 'Cholesterol.in LDL 5')
-,('http://loinc.org', '91110-7', 'Cholesterol.in LDL 6')
-,('http://loinc.org', '91117-2', 'Cholesterol.in LDL 6')
-,('http://loinc.org', '91111-5', 'Cholesterol.in LDL 7')
-,('http://loinc.org', '91118-0', 'Cholesterol.in LDL 7')
-,('http://loinc.org', '48635-7', 'Cholesterol.in LDL pattern A')
-,('http://loinc.org', '35505-7', 'Lipoprotein.beta.subparticle')
-,('http://loinc.org', '56036-7', 'Apolipoprotein B/Cholesterol.in LDL')
-,('http://loinc.org', '12773-8', 'Cholesterol.in LDL')
-,('http://loinc.org', '96597-0', 'Cholesterol.in LDL')
-,('http://loinc.org', '13457-7', 'Cholesterol.in LDL')
-,('http://loinc.org', '18262-6', 'Cholesterol.in LDL')
-,('http://loinc.org', '49132-4', 'Cholesterol.in LDL')
-,('http://loinc.org', '18261-8', 'Cholesterol.in LDL')
-,('http://loinc.org', '39469-2', 'Cholesterol.in LDL')
-,('http://loinc.org', '69419-0', 'Cholesterol.in LDL')
-,('http://loinc.org', '47213-4', 'Cholesterol.in LDL real size pattern')
-,('http://loinc.org', '13459-3', 'Cholesterol.in LDL/Cholesterol.total')
-,('http://loinc.org', '100732-7', 'Cholesterol.in lipoprotein (little a) & Cholesterol.in LDL panel')
-,('http://loinc.org', '16615-7', 'Cholesterol.total/Cholesterol.in LDL')
-,('http://loinc.org', '43394-6', 'Cholesterol.in LDL.acetylated')
-,('http://loinc.org', '16616-5', 'Cholesterol.in HDL/Cholesterol.in LDL')
-,('http://loinc.org', '96259-7', 'Cholesterol.in LDL')
-,('http://loinc.org', '96258-9', 'Cholesterol.in LDL')
-,('http://loinc.org', '48637-3', 'Cholesterol.in LDL pattern BI')
-,('http://loinc.org', '48636-5', 'Cholesterol.in LDL pattern BII')
-,('http://loinc.org', '44711-0', 'Cholesterol.in LDL/Apolipoprotein B')
-,('http://loinc.org', '11054-4', 'Cholesterol.in LDL/Cholesterol.in HDL')
-,('http://loinc.org', '44915-7', 'Cholesterol.in LDL/Cholesterol.in HDL')
-,('http://loinc.org', '47215-9', 'Lipoprotein.beta.subparticle.medium')
-,('http://loinc.org', '90364-1', 'Cholesterol.in LDL.small dense')
-,('http://loinc.org', '96959-2', 'Cholesterol.in LDL.small dense')
-,('http://loinc.org', '100733-5', 'Cholesterol.in LDL^corrected for Cholesterol.in lipoprotein (little a)')
-,('http://loinc.org', '86911-5', 'Cholesterol.in LDL goal')
-,('http://loinc.org', '54238-1', 'LDL.oxidized')
-,('http://loinc.org', '9620-6', 'Lipoprotein.beta')
-,('http://loinc.org', '17846-7', 'Lipoprotein.beta')
-,('http://loinc.org', '92719-4', 'Lipoprotein.broad beta.subparticle.large')
-,('http://loinc.org', '92718-6', 'Lipoprotein.broad beta.subparticle.small')
-,('http://loinc.org', '2574-2', 'Lipoprotein.beta')
-,('http://loinc.org', '26821-9', 'Lipoprotein.beta')
-,('http://loinc.org', '17782-4', 'Lipoprotein.beta.subparticle')
-,('http://loinc.org', '33413-6', 'Lipoprotein.beta/Lipoprotein.total')
-,('http://loinc.org', '50193-2', 'Cholesterol.in LDL.narrow density')
-,('http://loinc.org', '48143-2', 'LDL.oxidized Ab')
-,('http://loinc.org', '17083-7', 'Lipoprotein.beta')
-,('http://loinc.org', '9346-8', 'Lipoprotein.beta')
-,('http://loinc.org', '15122-5', 'Lipoprotein.beta/Lipoprotein.total')
-,('http://loinc.org', '92721-0', 'Lipoprotein.pre-beta.subparticle.medium')
-,('http://loinc.org', '92720-2', 'Lipoprotein.pre-beta.subparticle.small')
-,('http://loinc.org', '44717-7', 'Lipoprotein.beta/Lipoprotein.alpha')
-,('http://loinc.org', '68935-6', 'LDL.oxidized Ab')
-,('http://loinc.org', '43728-5', 'Lipoprotein.pre-beta.subparticle.large')
-,('http://loinc.org', '56777-6', 'Lipoprotein.pre-beta/Lipoprotein.beta')
-,('http://loinc.org', '14816-3', 'Lipoprotein.pre-beta')
-,('http://loinc.org', '43396-1', 'Cholesterol.non HDL')
-,('http://loinc.org', '70204-3', 'Cholesterol.non HDL')
-,('http://loinc.org', '47228-2', 'Cholesterol.non HDL/Cholesterol.total')
-) AS t (system, code, display) ;
+
+('http://loinc.org','100732-7','Cholesterol.in lipoprotein (little a) & Cholesterol.in LDL panel, Blood'),
+('http://loinc.org','100733-5','LDL cholesterol corrected for Cholesterol.in lipoprotein (little a), Blood'),
+('http://loinc.org','11054-4','LDL cholesterol/HDL Cholesterol, Blood'),
+('http://loinc.org','12773-8','LDL cholesterol, Blood'),
+('http://loinc.org','13457-7','LDL cholesterol, Blood'),
+('http://loinc.org','13459-3','LDL cholesterol/Total Cholesterol, Blood'),
+('http://loinc.org','14155-6','LDL cholesterol, Blood'),
+('http://loinc.org','14814-8','Lipoprotein.beta, Blood'),
+('http://loinc.org','14815-5','Lipoprotein.beta, Blood'),
+('http://loinc.org','14816-3','Lipoprotein.pre-beta, Blood'),
+('http://loinc.org','15122-5','Lipoprotein.beta/total Lipoprotein, Blood'),
+('http://loinc.org','16615-7','Total cholesterol/LDL Cholesterol, Blood'),
+('http://loinc.org','16616-5','HDL cholesterol/LDL Cholesterol, Blood'),
+('http://loinc.org','17083-7','Lipoprotein.beta, Body fluid'),
+('http://loinc.org','17782-4','Lipoprotein.beta.subparticle, Blood'),
+('http://loinc.org','17846-7','Lipoprotein.beta, Blood'),
+('http://loinc.org','18261-8','LDL cholesterol, Blood ultracentrifugate'),
+('http://loinc.org','18262-6','LDL cholesterol, Blood'),
+('http://loinc.org','2089-1','LDL cholesterol, Blood'),
+('http://loinc.org','22748-8','LDL cholesterol, Blood'),
+('http://loinc.org','2574-2','Lipoprotein.beta, Blood'),
+('http://loinc.org','26821-9','Lipoprotein.beta, Body fluid'),
+('http://loinc.org','3046-0','Triglyceride+ester in LDL, Blood'),
+('http://loinc.org','33413-6','Lipoprotein.beta/total Lipoprotein, Pleural fluid'),
+('http://loinc.org','35505-7','Lipoprotein.beta.subparticle, Blood'),
+('http://loinc.org','39469-2','LDL cholesterol, Blood'),
+('http://loinc.org','43394-6','Cholesterol in LDL Acylated, Blood'),
+('http://loinc.org','43396-1','Non-HDL cholesterol, Blood'),
+('http://loinc.org','43727-7','Lipoprotein.beta.subparticle.small, Blood'),
+('http://loinc.org','43728-5','Lipoprotein.pre-beta.subparticle.large, Blood'),
+('http://loinc.org','44711-0','LDL cholesterol/Apolipoprotein B, Blood'),
+('http://loinc.org','44717-7','Lipoprotein.beta/Lipoprotein.alpha, Blood'),
+('http://loinc.org','44915-7','LDL cholesterol/HDL Cholesterol, Blood'),
+('http://loinc.org','47213-4','Cholesterol in LDL Real Size Pattern, Blood'),
+('http://loinc.org','47215-9','LDL medium, Blood'),
+('http://loinc.org','47228-2','Non-HDL cholesterol/Total Cholesterol, Blood'),
+('http://loinc.org','48143-2','LDL.oxidized antibody, Blood'),
+('http://loinc.org','48635-7','Cholesterol in LDL Pattern A, Blood'),
+('http://loinc.org','48636-5','Cholesterol in LDL Pattern BII, Blood'),
+('http://loinc.org','48637-3','Cholesterol in LDL Pattern BI, Blood'),
+('http://loinc.org','49132-4','LDL cholesterol, Blood'),
+('http://loinc.org','50193-2','Cholesterol in LDL.narrow Density, Blood'),
+('http://loinc.org','53133-5','LDL cholesterol, Body fluid'),
+('http://loinc.org','53805-8','LDL apheresis procedure'),
+('http://loinc.org','53806-6','LDL apheresis procedure'),
+('http://loinc.org','54238-1','LDL.oxidized, Blood'),
+('http://loinc.org','54434-6','Lipoprotein.beta.subparticle, Blood'),
+('http://loinc.org','55440-2','LDL cholesterol, Blood'),
+('http://loinc.org','56036-7','Apolipoprotein B/LDL Cholesterol, Blood'),
+('http://loinc.org','56777-6','Lipoprotein.pre-beta/Lipoprotein.beta, Blood'),
+('http://loinc.org','57698-3','Lipid Panel With Direct LDL, Blood'),
+('http://loinc.org','68935-6','LDL.oxidized antibody, Blood'),
+('http://loinc.org','69419-0','LDL cholesterol, Blood'),
+('http://loinc.org','70204-3','Non-HDL cholesterol, Blood'),
+('http://loinc.org','86911-5','LDLc goal'),
+('http://loinc.org','90364-1','Cholesterol.in LDL.small Dense, Blood'),
+('http://loinc.org','91105-7','LDL 1 cholesterol, Blood'),
+('http://loinc.org','91106-5','LDL 2 cholesterol, Blood'),
+('http://loinc.org','91107-3','LDL 3 cholesterol, Blood'),
+('http://loinc.org','91108-1','LDL 4 cholesterol, Blood'),
+('http://loinc.org','91109-9','LDL 5 cholesterol, Blood'),
+('http://loinc.org','91110-7','LDL 6 cholesterol, Blood'),
+('http://loinc.org','91111-5','LDL 7 cholesterol, Blood'),
+('http://loinc.org','91112-3','LDL 1 cholesterol, Blood'),
+('http://loinc.org','91113-1','LDL 2 cholesterol, Blood'),
+('http://loinc.org','91114-9','LDL 3 cholesterol, Blood'),
+('http://loinc.org','91115-6','LDL 4 cholesterol, Blood'),
+('http://loinc.org','91116-4','LDL 5 cholesterol, Blood'),
+('http://loinc.org','91117-2','LDL 6 cholesterol, Blood'),
+('http://loinc.org','91118-0','LDL 7 cholesterol, Blood'),
+('http://loinc.org','92712-9','Lipoprotein.beta.subparticle.very small-d, Blood'),
+('http://loinc.org','92713-7','Lipoprotein.beta.subparticle.very small-c, Blood'),
+('http://loinc.org','92714-5','Lipoprotein.beta.subparticle.very small-b, Blood'),
+('http://loinc.org','92715-2','Lipoprotein.beta.subparticle.very small-a, Blood'),
+('http://loinc.org','92716-0','LDL large-b, Blood'),
+('http://loinc.org','92717-8','LDL large-a, Blood'),
+('http://loinc.org','92718-6','IDL small, Blood'),
+('http://loinc.org','92719-4','IDL large, Blood'),
+('http://loinc.org','92720-2','VLDL small, Blood'),
+('http://loinc.org','92721-0','VLDL medium, Blood'),
+('http://loinc.org','9346-8','Lipoprotein.beta, Blood'),
+('http://loinc.org','9620-6','Lipoprotein.beta, Pleural fluid'),
+('http://loinc.org','96258-9','LDL cholesterol, Blood'),
+('http://loinc.org','96259-7','LDL cholesterol, Blood'),
+('http://loinc.org','96597-0','LDL cholesterol, Dried blood spot'),
+('http://loinc.org','96735-6','LDL medium, Blood'),
+('http://loinc.org','96959-2','Cholesterol.in LDL.small Dense, Blood')
+) AS t (system,code,display) ;
