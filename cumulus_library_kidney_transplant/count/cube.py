@@ -140,7 +140,7 @@ def make_variables() -> List[Path]:
     file_list = [cube_pat(source, cols),
                  cube_enc(source, cols)]
 
-    variable_list = vsac_variables.list_view_variables() + custom_variables.list_view_variables()
+    variable_list = vsac_variables.list_view_variables() + custom_variables.list_view_custom()
     for variable in variable_list:
         if '__dx' in variable:
             file_list.append(cube_pat(variable, Columns.valueset.value + Columns.diagnoses.value))

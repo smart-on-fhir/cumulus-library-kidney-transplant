@@ -2,70 +2,21 @@ from typing import List
 from pathlib import Path
 from cumulus_library_kidney_transplant import filetool
 from cumulus_library_kidney_transplant import fhir2sql
-from cumulus_library_kidney_transplant.variable.aspect import AspectKey
-from cumulus_library_kidney_transplant.variable.spreadsheet import SpreadsheetReader, Delimiter, Vocab
 
 # List of aggregated Rx and Lab custom variables.
-VAR_LIST = ['rx_custom', 'lab_custom']
+CUSTOM_LIST = ['rx_custom', 'lab_custom']
 
-RX_LIST = ['azathioprine', 'mycophenolate',
-           'cyclosporin', 'tacrolimus',
-           'everolimus', 'sirolimus',
-           'prednisone', 'prednisolone', 'methylprednisolone',
-           'alemtuzumab','atg','basiliximab','rituximab',
-           'belatacept',
-           'cytogam','ivig','ig']
-
-# List of Lab Drug Levels, important for finding measures of Patient Compliance.
-# Example, https://pubmed.ncbi.nlm.nih.gov/15021850/
-LAB_DRUG_LIST = ['azathioprine',
-                 'azathioprine_tpmt_gene',
-                 'cyclosporin',
-                 'mycophenolate',
-                 'sirolimus',
-                 'tacrolimus']
-
-# List of lab metabolic measures
-LAB_METABOLIC_LIST = ['hemoglobin_a1c',
-                      'insulin',
-                      'c_peptide',
-                      'albumin_urine',
-                      'ketone_urine',
-                      'gad',  # glutamic acid decarboxylase
-                      'glucose',
-                      'triglyceride',
-                      'hdl',
-                      'ldl']
-
-# List of other lab viral measures
-LAB_VIRUS_LIST = ['cytomegalovirus']
-
-LAB_LIST = LAB_DRUG_LIST + LAB_METABOLIC_LIST + LAB_VIRUS_LIST
-
-def deprecated_list_view_valuesets() -> List[str]:
-    return list_view_valuesets_rx() + \
-           list_view_valuesets_lab()
-
-def list_view_variables() -> List[str]:
-    return fhir2sql.name_prefix(VAR_LIST)
-
-def list_view_valuesets_rx() -> List[str]:
+def make_union() -> List[Path]:
     """
-    :return: List of SQL files for each rx in `RX_LIST`
+    :return: Variable aggregations for SQL query convenience.
     """
-    valuesets = [f'rx_{drug}' for drug in RX_LIST]
-    valuesets.append('rx_custom')
-    return sorted(list(set(fhir2sql.name_prefix(valuesets))))
+    return [union_view_custom('lab', list_variables_lab(), f'lab_custom'),
+            union_view_custom('rx', list_variables_rx(), f'rx_custom')]
 
-def list_view_valuesets_lab() -> List[str]:
-    """
-    :return: List of SQL files for each lab in `LAB_LIST`
-    """
-    valuesets = [f'lab_{lab}' for lab in LAB_LIST]
-    valuesets.append('lab_custom')
-    return sorted(list(set(fhir2sql.name_prefix(valuesets))))
+def list_view_custom() -> List[str]:
+    return fhir2sql.name_prefix(CUSTOM_LIST)
 
-def union_view_list(rx_or_lab: str, variable_list: list, view_name: str) -> Path:
+def union_view_custom(rx_or_lab: str, variable_list: list, view_name: str) -> Path:
     """
     :param rx_or_lab: "rx" or "lab" target
     :param variable_list: list of variables to aggregate
@@ -76,43 +27,31 @@ def union_view_list(rx_or_lab: str, variable_list: list, view_name: str) -> Path
     targets = fhir2sql.name_prefix(targets)
     return fhir2sql.union_view_list(targets, view_name)
 
-def make_union() -> List[Path]:
-    """
-    :return: Variable aggregations for SQL query convenience.
-    """
-    return [union_view_list('lab', LAB_LIST, f'lab_custom'),
-            union_view_list('rx', RX_LIST, f'rx_custom')]
+def list_variables_lab() -> List[str]:
+    return list_variables('lab_*.csv')
 
-def make_aspect(vocab: Vocab, aspect_key: AspectKey, variable_list: list, delimiter: Delimiter) -> List[Path]:
-    """
-    Make SQL table for each custom variable CSV/TSV definition.
+def list_variables_rx() -> List[str]:
+    return list_variables('rx_*.csv')
 
-    :param vocab: the "system" for the custom defined valueset
-    :param aspect_key: AspectKey: 'lab', 'rx', or 'dx" currently suported
-    :param variable_list: List of variable names
-    :param delimiter: CSV or TSV data
-    :return: List of SQL files for custom variables
-    """
-    file_list = list()
-    for entry in variable_list:
-        print(f'custom_variables.py {aspect_key.name}_{entry}')
-        filename = filetool.path_spreadsheet(f'{aspect_key.name}_{entry}.{delimiter.name}')
-        reader = SpreadsheetReader(filename, entry, vocab, delimiter)
-        codes = reader.read_coding_list()
-        file_list.append(fhir2sql.define(codes, f'{aspect_key.name}_{entry}'))
-    return sorted(list(set(file_list)))
+def list_variables(pattern) -> List[str]:
+    return [path2variable(v) for v in filetool.list_spreadsheets(pattern)]
+
+def path2variable(path: Path) -> str:
+    return str(path.name).replace('.csv', '')
+
+def make_target(pattern:str) -> List[Path]:
+    view_list = list()
+    for lab_csv in filetool.list_spreadsheets(pattern):
+        var_name = path2variable(lab_csv)
+        view_name = fhir2sql.name_prefix(var_name)
+        view_list.append(fhir2sql.csv2view(lab_csv, view_name))
+    return sorted(list(set(view_list)))
 
 def make_lab() -> List[Path]:
-    """
-    :return: Lab Variables {system=Vocab.LOINC}
-    """
-    return make_aspect(Vocab.LOINC, AspectKey.lab, LAB_LIST, Delimiter.csv)
+    return make_target('lab_*.csv')
 
 def make_rx() -> List[Path]:
-    """
-    :return: Lab Variables {system=Vocab.RXNORM}
-    """
-    return make_aspect(Vocab.RXNORM, AspectKey.rx, RX_LIST, Delimiter.tsv)
+    return make_target('rx_*.csv')
 
 def make() -> List[Path]:
     """

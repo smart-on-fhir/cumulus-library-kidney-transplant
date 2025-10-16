@@ -22,7 +22,7 @@ class VariableMulti:
 # VSAC and custom variables list
 ###############################################################################
 def list_variables() -> List[str]:
-    return list(sorted(vsac_variables.list_view_variables()) + list(sorted(custom_variables.list_view_variables())))
+    return list(sorted(vsac_variables.list_view_variables()) + list(sorted(custom_variables.list_view_custom())))
 
 def make_diabetes() -> List[Path]:
     text = filetool.load_template('cohort_multi_variable.sql')
