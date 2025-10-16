@@ -102,7 +102,7 @@ class StudyBuilderConfig:
         :return: dict JSON of StudyBuilderConfig
         """
         if not from_path:
-            from_path = filetool.path_home('foo_StudyBuilderConfig.json')
+            from_path = filetool.path_home('StudyBuilderConfig.json')
         return filetool.read_json(from_path)
 
     @staticmethod
