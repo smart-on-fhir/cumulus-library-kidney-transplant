@@ -1,7 +1,6 @@
-from pathlib import Path
 import pandas as pd
 from cumulus_library_kidney_transplant import filetool, fhir2sql
-from cumulus_library_kidney_transplant import loinc_names
+from variable import loinc_names
 from cumulus_library_kidney_transplant.spreadsheet.document import (
     type_of_service,
     subject_matter_domain,
@@ -46,7 +45,7 @@ def ontology2valueset():
     Save ONTOLOGY_CSV as {code,display,system}
     """
     ont = pd.read_csv(ONTOLOGY_CSV)
-    loinc = pd.read_csv(loinc_names.LOINC_VALUESET_CSV)
+    loinc = loinc_names.loinc2valueset(loinc_names.LOINC_CSV)
 
     ont['LoincNumber'] = ont['LoincNumber'].str.strip()
     loinc['code'] = loinc['code'].str.strip()
@@ -75,7 +74,7 @@ def include_loinc_part(loinc_part_type:str = None) -> None:
         include_loinc_part('Document.Role')
 
     ontology_df = pd.read_csv(ONTOLOGY_CSV)
-    loinc_df = pd.read_csv(loinc_names.LOINC_VALUESET_CSV)
+    loinc_df = loinc_names.loinc2valueset()
     loinc_df = loinc_df.drop_duplicates(subset="code", keep="first")
     lookup = loinc_df.set_index("code")["display"].to_dict()
     matches = dict()
