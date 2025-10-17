@@ -55,7 +55,7 @@ def hydrate(loinc_df:DataFrame, valueset_csv:Path) -> None:
     filtered.to_csv(filetool.path_spreadsheet(hydrate_csv), index=False)
 
 def clean():
-    for lab_csv in filetool.list_spreadsheets('lab_*.csv'):
+    for lab_csv in filetool.list_spreadsheet_csv('lab_*.csv'):
         if '.hydrate.csv' in lab_csv.name or '.backup.csv' in lab_csv.name:
             print('clean() ', lab_csv)
             lab_csv.unlink()
@@ -63,7 +63,7 @@ def clean():
 def main():
     clean()
     loinc_df = loinc2valueset(LOINC_CONSUMER_CSV)
-    for valueset_csv in filetool.list_spreadsheets('lab_*.csv'):
+    for valueset_csv in filetool.list_spreadsheet_csv('lab_*.csv'):
         variable_name = valueset_csv.name.replace('.csv', '')
         print(variable_name)
         hydrate(loinc_df, valueset_csv)

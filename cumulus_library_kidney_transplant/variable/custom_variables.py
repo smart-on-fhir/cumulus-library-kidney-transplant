@@ -26,14 +26,14 @@ def list_variables_rx() -> List[str]:
     return list_variables('rx_*.csv')
 
 def list_variables(pattern) -> List[str]:
-    return [path2variable(v) for v in filetool.list_spreadsheets(pattern)]
+    return [path2variable(v) for v in filetool.list_spreadsheet_csv(pattern)]
 
 def path2variable(path: Path) -> str:
     return str(path.name).replace('.csv', '')
 
 def make_target(pattern:str) -> List[Path]:
     view_list = list()
-    for lab_csv in filetool.list_spreadsheets(pattern):
+    for lab_csv in filetool.list_spreadsheet_csv(pattern):
         var_name = path2variable(lab_csv)
         view_name = fhir2sql.name_prefix(var_name)
         view_list.append(fhir2sql.csv2view(lab_csv, view_name))

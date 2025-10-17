@@ -6,7 +6,7 @@ class TestValueSetCodes(unittest.TestCase):
 
     def test_rx(self):
         emptyset = set()
-        for file_csv in filetool.list_spreadsheets('rx_*.csv'):
+        for file_csv in filetool.list_spreadsheet_csv('rx_*.csv'):
             file_tsv = str(file_csv).replace('.csv', '.tsv')
 
             print(file_csv)
