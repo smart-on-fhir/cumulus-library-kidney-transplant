@@ -5,7 +5,6 @@ from cumulus_library_kidney_transplant import (
     filetool,
     criteria,
     study_population,
-    doc_ontology,
     cohorts,
     casedef)
 from cumulus_library_kidney_transplant.count import cube
@@ -15,6 +14,7 @@ from cumulus_library_kidney_transplant.variable import (
     aspect,
     vsac_variables,
     vsac_markdown,
+    loinc_doc,
     custom_variables)
 
 ###############################################################################
@@ -170,7 +170,7 @@ def make_study_sql(study: StudyBuilderConfig = None) -> List[Path]:
 
     return (criteria_sql +
             study_population.make() +
-            doc_ontology.make() +
+            loinc_doc.make() +
             vsac_variables.make() +
             custom_variables.make() +
             cohorts.make() +

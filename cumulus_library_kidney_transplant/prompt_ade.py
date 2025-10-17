@@ -2,7 +2,6 @@ from typing import List
 from collections import OrderedDict
 from pathlib import Path
 from cumulus_library_kidney_transplant import filetool, guard, jaccard
-from cumulus_library_kidney_transplant.variable.custom_variables import RX_LIST
 
 ######################################################################
 # Constants
@@ -10,6 +9,14 @@ from cumulus_library_kidney_transplant.variable.custom_variables import RX_LIST
 ADE = 'Adverse Drug Events'
 IRAE = 'Immune Related Adverse Events'
 RX_CLASS = ['immunosuppresive', 'corticosteroids', 'antibiotics', 'plasmapheresis']
+
+RX_LIST = ['azathioprine', 'mycophenolate',
+           'cyclosporin', 'tacrolimus',
+           'everolimus', 'sirolimus',
+           'prednisone', 'prednisolone', 'methylprednisolone',
+           'alemtuzumab','atg','basiliximab','rituximab',
+           'belatacept',
+           'cytogam','ivig','ig']
 
 ######################################################################
 # GPT responses are manually entered via https://chatgpt.com/

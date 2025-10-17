@@ -1,187 +1,188 @@
 create or replace view irae__rx_methylprednisolone as select * from (values
-('http://www.nlm.nih.gov/research/umls/rxnorm', '1008080', 'aspirin / Methylprednisolone')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '105404', 'Methylprednisolone 50 MG/ML Injectable Solution')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '106991', 'lidocaine / Methylprednisolone')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '107005', 'Methylprednisolone / neomycin')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1100385', 'Methylprednisolone acetate 0.01 MG/MG')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1100386', 'Methylprednisolone Topical Gel')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1100387', 'Methylprednisolone acetate 1 % Topical Gel')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1100389', 'Methylprednisolone acetate 0.01 MG/MG [HybriSil]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1100390', 'Methylprednisolone Topical Gel [HybriSil]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1100391', 'Methylprednisolone acetate 0.01 MG/MG Topical Gel [HybriSil]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1153745', 'aspirin / Methylprednisolone Oral Product')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1153746', 'aspirin / Methylprednisolone Pill')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1163485', 'Methylprednisolone / neomycin Topical Product')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1163486', 'Methylprednisolone Injectable Product')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1163487', 'Methylprednisolone Ophthalmic Product')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1163488', 'Methylprednisolone Oral Product')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1163489', 'Methylprednisolone Pill')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1163490', 'Methylprednisolone Rectal Product')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1163491', 'Methylprednisolone Topical Product')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1164046', 'lidocaine / Methylprednisolone Injectable Product')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1165881', 'A-MethaPred Injectable Product')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1173110', 'DEPO-Medrol Injectable Product')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1183796', 'Medrol Oral Product')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1183797', 'Medrol Pill')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1184840', 'SOLU-Medrol Injectable Product')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1357886', 'Methylprednisolone 2000 MG Injection')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1357888', 'SOLU-Medrol 2 GM Injection')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1358496', 'Methylprednisolone acetate 40 MG/ML')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1358497', 'lidocaine / Methylprednisolone Injectable Suspension')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1358498', 'lidocaine hydrochloride 1 % / Methylprednisolone acetate 4 % Injectable Suspension')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1358499', 'Methylprednisolone acetate 0.0025 MG/MG')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1358500', 'Methylprednisolone acetate 0.0025 MG/MG / neomycin 0.0035 MG/MG Topical Ointment')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1358501', 'Neo-Medrol')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1358502', 'Methylprednisolone acetate 0.0025 MG/MG / neomycin 0.0035 MG/MG [Neo-Medrol]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1358503', 'Methylprednisolone / neomycin Topical Ointment [Neo-Medrol]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1358504', 'Neo-Medrol Topical Product')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1358505', 'Methylprednisolone acetate 0.0025 MG/MG / neomycin 0.0035 MG/MG Topical Ointment [Neo-Medrol]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1358506', 'Methylprednisolone acetate 0.25 % Topical Ointment')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1358508', 'Methylprednisolone acetate 1 % Topical Ointment')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1358509', 'Methylprednisolone acetate 20 MG/ML')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1358510', 'Methylprednisolone acetate 20 MG/ML Injectable Suspension')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1358511', 'Methylprednisolone acetate 20 MG/ML [DEPO-Medrol]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1358512', 'DEPO-Medrol 20 MG/ML Injectable Suspension')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1358610', 'Methylprednisolone acetate 40 MG/ML Injectable Suspension')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1358611', 'Methylprednisolone acetate 40 MG/ML [DEPO-Medrol]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1358612', 'DEPO-Medrol 40 MG/ML Injectable Suspension')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1358616', 'Methylprednisolone acetate 80 MG/ML')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1358617', 'Methylprednisolone acetate 80 MG/ML Injectable Suspension')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1358618', 'Methylprednisolone acetate 80 MG/ML [DEPO-Medrol]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1358619', 'DEPO-Medrol 80 MG/ML Injectable Suspension')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1358737', 'Methylprednisolone acetate 0.0025 MG/MG / neomycin 0.007 MG/MG Topical Ointment')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1358743', 'Methylprednisolone acetate 0.005 MG/MG')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1358744', 'Methylprednisolone acetate 0.5 % Topical Ointment')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1358745', 'Methylprednisolone acetate 10 MG/ML')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1358746', 'Methylprednisolone acetate 10 MG/ML / neomycin 3.5 MG/ML Topical Cream')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1358747', 'Methylprednisolone acetate 16 MG/ML')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1358748', 'Methylprednisolone acetate 16 MG/ML Injectable Suspension')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1358749', 'Methylprednisolone acetate 2.5 MG/ML')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1358750', 'Methylprednisolone acetate 2.5 MG/ML / neomycin 3.5 MG/ML Topical Cream')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1358754', 'Methylprednisolone acetate 0.25 % Topical Cream')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1358760', 'Methylprednisolone acetate 40 MG')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1358761', 'Methylprednisolone acetate 40 MG Enema')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1545708', 'Methylprednisolone acetate 40 ML')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1545709', 'Methylprednisolone acetate 40 ML Injectable Suspension')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1545711', 'Methylprednisolone acetate 40 ML [DEPO-Medrol]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1545712', 'DEPO-Medrol 40 ML Injectable Suspension')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '155323', 'Methylprednisolone acetate')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1743702', 'Methylprednisolone 125 MG')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1743703', 'Methylprednisolone Injection')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1743704', 'Methylprednisolone 125 MG Injection')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1743705', 'Methylprednisolone 125 MG [SOLU-Medrol]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1743706', 'Methylprednisolone Injection [SOLU-Medrol]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1743707', 'SOLU-Medrol 125 MG Injection')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1743719', 'Methylprednisolone 500 MG')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1743720', 'Methylprednisolone 500 MG Injection')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1743721', 'Methylprednisolone 500 MG [SOLU-Medrol]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1743722', 'SOLU-Medrol 500 MG Injection')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1743725', 'Methylprednisolone 1000 MG')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1743726', 'Methylprednisolone 1000 MG Injection')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1743727', 'Methylprednisolone 1000 MG [SOLU-Medrol]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1743729', 'SOLU-Medrol 1 GM Injection')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1743779', '1 ML Methylprednisolone acetate 40 MG/ML Injection')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1743780', 'Methylprednisolone Injection [DEPO-Medrol]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1743781', '1 ML DEPO-Medrol 40 MG/ML Injection')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1743782', 'Methylprednisolone acetate 40 MG/ML Injection')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1743783', 'DEPO-Medrol 40 MG/ML Injection')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1743855', '1 ML Methylprednisolone acetate 80 MG/ML Injection')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1743856', '1 ML DEPO-Medrol 80 MG/ML Injection')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1743857', 'Methylprednisolone acetate 80 MG/ML Injection')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1743858', 'DEPO-Medrol 80 MG/ML Injection')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1744013', 'Methylprednisolone 2000 MG')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1744015', 'Methylprednisolone 2000 MG [SOLU-Medrol]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1744018', 'Methylprednisolone 40 MG [SOLU-Medrol]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1744020', 'Methylprednisolone 40 MG [A-MethaPred]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1744021', 'Methylprednisolone Injection [A-MethaPred]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1744024', 'Methylprednisolone 125 MG [A-MethaPred]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '197969', 'Methylprednisolone 2 MG Oral Tablet')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '197970', 'Methylprednisolone 24 MG Oral Tablet')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '197971', 'Methylprednisolone 32 MG Oral Tablet')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '197973', 'Methylprednisolone 8 MG Oral Tablet')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '199771', 'Methylprednisolone 100 MG Oral Tablet')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '202702', 'Medrol')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '203189', 'Methylprednisolone sodium succinate')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '203856', 'SOLU-Medrol')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '203857', 'A-MethaPred')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '207136', 'Medrol 2 MG Oral Tablet')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '207137', 'Medrol 8 MG Oral Tablet')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '207138', 'Medrol 16 MG Oral Tablet')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '207139', 'Medrol 24 MG Oral Tablet')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '207141', 'Medrol 32 MG Oral Tablet')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '207190', 'A-MethaPred 40 MG Injection')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '207191', 'SOLU-Medrol 40 MG Injection')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '207192', 'A-METHAPRED 125 MG Injection')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '207193', 'SOLU-Medrol 62.5 MG/ML Injectable Solution')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '22584', 'DEPO-Medrol')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '245993', 'ASA 300 MG / Methylprednisolone 1.5 MG Oral Tablet')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '246024', 'Methylprednisolone 1 MG/ML Ophthalmic Solution')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '259966', 'Methylprednisolone 4 MG Oral Tablet')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '260330', 'Medrol 4 MG Oral Tablet')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '2645554', 'Methylprednisolone acetate / neomycin Topical Ointment')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '2646189', 'Methylprednisolone acetate / neomycin Topical Cream')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '2646530', 'Methylprednisolone acetate Injection')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '2647085', 'Methylprednisolone acetate Injectable Suspension')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '2648369', 'Methylprednisolone acetate Topical Ointment')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '2648537', 'Methylprednisolone acetate Topical Gel')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '2649216', 'Methylprednisolone acetate Topical Cream')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '2649252', 'lidocaine hydrochloride / Methylprednisolone acetate Injectable Suspension')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '2649371', 'Methylprednisolone acetate Enema')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '2654547', 'Methylprednisolone acetate Topical Gel [HybriSil]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '2655432', 'Methylprednisolone acetate Injection [DEPO-Medrol]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '2655659', 'Methylprednisolone acetate / neomycin Topical Ointment [Neo-Medrol]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '2656424', 'Methylprednisolone acetate Injectable Suspension [DEPO-Medrol]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '2660311', 'Methylprednisolone acetate Rectal Product')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '2660314', 'lidocaine hydrochloride / Methylprednisolone acetate Injectable Product')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '2662482', 'Methylprednisolone acetate Injectable Product')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '2663205', 'Methylprednisolone acetate / neomycin Topical Product')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '2663618', 'Methylprednisolone acetate Topical Product')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '29917', 'Methylprednisolone sodium phosphate')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '311659', 'Methylprednisolone 40 MG Injection')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '314099', 'Methylprednisolone 62.5 MG/ML Injectable Solution')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '316285', 'Methylprednisolone 2 MG')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '316286', 'Methylprednisolone 24 MG')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '316287', 'Methylprednisolone 32 MG')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '316288', 'Methylprednisolone 8 MG')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '317426', 'Methylprednisolone 16 MG')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '317427', 'Methylprednisolone 4 MG')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '328161', 'Methylprednisolone 16 MG Oral Tablet')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '330037', 'Methylprednisolone 40 MG')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '332216', 'Methylprednisolone 100 MG')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '334064', 'Methylprednisolone 1.5 MG')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '337312', 'Methylprednisolone 20 MG/ML')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '340167', 'Methylprednisolone 1 MG/ML')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '346173', 'Methylprednisolone 62.5 MG/ML')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '360536', 'Methylprednisolone 50 MG/ML')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '362772', 'Methylprednisolone Injectable Solution [SOLU-Medrol]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '365570', 'Methylprednisolone Injectable Suspension [DEPO-Medrol]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '368772', 'Methylprednisolone Oral Tablet [Medrol]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '372863', 'Methylprednisolone Topical Ointment')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '372865', 'Methylprednisolone Enema')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '372866', 'Methylprednisolone Injectable Suspension')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '372867', 'Methylprednisolone Ophthalmic Solution')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '372868', 'Methylprednisolone Oral Tablet')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '372870', 'aspirin / Methylprednisolone Oral Tablet')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '376326', 'Methylprednisolone / neomycin Topical Ointment')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '376403', 'Methylprednisolone / neomycin Topical Cream')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '376656', 'Methylprednisolone Injectable Solution')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '377758', 'Methylprednisolone Topical Cream')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '415817', 'Methylprednisolone 20 MG/ML Injectable Solution')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '415856', 'Methylprednisolone 5 MG/ML Injectable Solution')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '415857', 'Methylprednisolone 10 MG/ML Injectable Solution')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '429197', 'Methylprednisolone 40 MG Oral Tablet')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '446407', 'Methylprednisolone 10 MG/ML')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '446408', 'Methylprednisolone 5 MG/ML')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '567927', 'Methylprednisolone 2 MG [Medrol]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '567928', 'Methylprednisolone 8 MG [Medrol]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '567929', 'Methylprednisolone 16 MG [Medrol]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '567930', 'Methylprednisolone 24 MG [Medrol]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '567932', 'Methylprednisolone 32 MG [Medrol]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '567984', 'Methylprednisolone 62.5 MG/ML [SOLU-Medrol]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '574125', 'Methylprednisolone 4 MG [Medrol]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '62136', 'Methylprednisolone aceponate')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '6902', 'Methylprednisolone')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '762675', '{21 (Methylprednisolone 4 MG Oral Tablet) } Pack')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '804173', 'Methylprednisolone 16 MG Oral Tablet 14 Count Pak')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '834023', 'Medrol Dosepak')
-) AS t (system, code, display) ;
+
+('http://www.nlm.nih.gov/research/umls/rxnorm','1008080','aspirin / methylPREDNISolone'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','105404','methylPREDNISolone 50 MG/ML Injectable Solution'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','106991','lidocaine / methylPREDNISolone'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','107005','methylPREDNISolone / neomycin'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1100385','methylPREDNISolone acetate 0.01 MG/MG'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1100386','methylPREDNISolone Topical Gel'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1100387','methylPREDNISolone acetate 1 % Topical Gel'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1100389','methylPREDNISolone acetate 0.01 MG/MG [HybriSil]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1100390','methylPREDNISolone Topical Gel [HybriSil]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1100391','methylPREDNISolone acetate 0.01 MG/MG Topical Gel [HybriSil]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1153745','aspirin / methylPREDNISolone Oral Product'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1153746','aspirin / methylPREDNISolone Pill'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1163485','methylPREDNISolone / neomycin Topical Product'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1163486','methylPREDNISolone Injectable Product'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1163487','methylPREDNISolone Ophthalmic Product'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1163488','methylPREDNISolone Oral Product'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1163489','methylPREDNISolone Pill'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1163490','methylPREDNISolone Rectal Product'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1163491','methylPREDNISolone Topical Product'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1164046','lidocaine / methylPREDNISolone Injectable Product'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1165881','A-MethaPred Injectable Product'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1173110','DEPO-Medrol Injectable Product'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1183796','Medrol Oral Product'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1183797','Medrol Pill'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1184840','SOLU-Medrol Injectable Product'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1357886','methylPREDNISolone 2000 MG Injection'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1357888','SOLU-Medrol 2 GM Injection'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1358496','methylPREDNISolone acetate 40 MG/ML'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1358497','lidocaine / methylPREDNISolone Injectable Suspension'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1358498','lidocaine hydrochloride 1 % / methylPREDNISolone acetate 4 % Injectable Suspension'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1358499','methylPREDNISolone acetate 0.0025 MG/MG'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1358500','methylPREDNISolone acetate 0.0025 MG/MG / neomycin 0.0035 MG/MG Topical Ointment'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1358501','Neo-Medrol'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1358502','methylPREDNISolone acetate 0.0025 MG/MG / neomycin 0.0035 MG/MG [Neo-Medrol]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1358503','methylPREDNISolone / neomycin Topical Ointment [Neo-Medrol]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1358504','Neo-Medrol Topical Product'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1358505','methylPREDNISolone acetate 0.0025 MG/MG / neomycin 0.0035 MG/MG Topical Ointment [Neo-Medrol]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1358506','methylPREDNISolone acetate 0.25 % Topical Ointment'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1358508','methylPREDNISolone acetate 1 % Topical Ointment'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1358509','methylPREDNISolone acetate 20 MG/ML'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1358510','methylPREDNISolone acetate 20 MG/ML Injectable Suspension'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1358511','methylPREDNISolone acetate 20 MG/ML [DEPO-Medrol]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1358512','DEPO-Medrol 20 MG/ML Injectable Suspension'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1358610','methylPREDNISolone acetate 40 MG/ML Injectable Suspension'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1358611','methylPREDNISolone acetate 40 MG/ML [DEPO-Medrol]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1358612','DEPO-Medrol 40 MG/ML Injectable Suspension'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1358616','methylPREDNISolone acetate 80 MG/ML'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1358617','methylPREDNISolone acetate 80 MG/ML Injectable Suspension'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1358618','methylPREDNISolone acetate 80 MG/ML [DEPO-Medrol]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1358619','DEPO-Medrol 80 MG/ML Injectable Suspension'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1358737','methylPREDNISolone acetate 0.0025 MG/MG / neomycin 0.007 MG/MG Topical Ointment'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1358743','methylPREDNISolone acetate 0.005 MG/MG'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1358744','methylPREDNISolone acetate 0.5 % Topical Ointment'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1358745','methylPREDNISolone acetate 10 MG/ML'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1358746','methylPREDNISolone acetate 10 MG/ML / neomycin 3.5 MG/ML Topical Cream'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1358747','methylPREDNISolone acetate 16 MG/ML'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1358748','methylPREDNISolone acetate 16 MG/ML Injectable Suspension'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1358749','methylPREDNISolone acetate 2.5 MG/ML'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1358750','methylPREDNISolone acetate 2.5 MG/ML / neomycin 3.5 MG/ML Topical Cream'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1358754','methylPREDNISolone acetate 0.25 % Topical Cream'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1358760','methylPREDNISolone acetate 40 MG'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1358761','methylPREDNISolone acetate 40 MG Enema'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1545708','methylPREDNISolone acetate 40 ML'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1545709','methylPREDNISolone acetate 40 ML Injectable Suspension'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1545711','methylPREDNISolone acetate 40 ML [DEPO-Medrol]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1545712','DEPO-Medrol 40 ML Injectable Suspension'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','155323','methylPREDNISolone acetate'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1743702','methylPREDNISolone 125 MG'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1743703','methylPREDNISolone Injection'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1743704','methylPREDNISolone 125 MG Injection'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1743705','methylPREDNISolone 125 MG [SOLU-Medrol]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1743706','methylPREDNISolone Injection [SOLU-Medrol]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1743707','SOLU-Medrol 125 MG Injection'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1743719','methylPREDNISolone 500 MG'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1743720','methylPREDNISolone 500 MG Injection'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1743721','methylPREDNISolone 500 MG [SOLU-Medrol]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1743722','SOLU-Medrol 500 MG Injection'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1743725','methylPREDNISolone 1000 MG'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1743726','methylPREDNISolone 1000 MG Injection'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1743727','methylPREDNISolone 1000 MG [SOLU-Medrol]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1743729','SOLU-Medrol 1 GM Injection'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1743779','1 ML methylPREDNISolone acetate 40 MG/ML Injection'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1743780','methylPREDNISolone Injection [DEPO-Medrol]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1743781','1 ML DEPO-Medrol 40 MG/ML Injection'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1743782','methylPREDNISolone acetate 40 MG/ML Injection'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1743783','DEPO-Medrol 40 MG/ML Injection'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1743855','1 ML methylPREDNISolone acetate 80 MG/ML Injection'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1743856','1 ML DEPO-Medrol 80 MG/ML Injection'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1743857','methylPREDNISolone acetate 80 MG/ML Injection'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1743858','DEPO-Medrol 80 MG/ML Injection'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1744013','methylPREDNISolone 2000 MG'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1744015','methylPREDNISolone 2000 MG [SOLU-Medrol]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1744018','methylPREDNISolone 40 MG [SOLU-Medrol]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1744020','methylPREDNISolone 40 MG [A-MethaPred]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1744021','methylPREDNISolone Injection [A-MethaPred]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1744024','methylPREDNISolone 125 MG [A-MethaPred]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','197969','methylPREDNISolone 2 MG Oral Tablet'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','197970','methylPREDNISolone 24 MG Oral Tablet'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','197971','methylPREDNISolone 32 MG Oral Tablet'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','197973','methylPREDNISolone 8 MG Oral Tablet'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','199771','methylPREDNISolone 100 MG Oral Tablet'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','202702','Medrol'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','203189','methylPREDNISolone sodium succinate'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','203856','SOLU-Medrol'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','203857','A-MethaPred'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','207136','Medrol 2 MG Oral Tablet'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','207137','Medrol 8 MG Oral Tablet'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','207138','Medrol 16 MG Oral Tablet'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','207139','Medrol 24 MG Oral Tablet'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','207141','Medrol 32 MG Oral Tablet'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','207190','A-MethaPred 40 MG Injection'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','207191','SOLU-Medrol 40 MG Injection'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','207192','A-METHAPRED 125 MG Injection'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','207193','SOLU-Medrol 62.5 MG/ML Injectable Solution'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','22584','DEPO-Medrol'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','245993','ASA 300 MG / Methylprednisolone 1.5 MG Oral Tablet'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','246024','methylPREDNISolone 1 MG/ML Ophthalmic Solution'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','259966','methylPREDNISolone 4 MG Oral Tablet'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','260330','Medrol 4 MG Oral Tablet'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','2645554','methylPREDNISolone acetate / neomycin Topical Ointment'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','2646189','methylPREDNISolone acetate / neomycin Topical Cream'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','2646530','methylPREDNISolone acetate Injection'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','2647085','methylPREDNISolone acetate Injectable Suspension'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','2648369','methylPREDNISolone acetate Topical Ointment'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','2648537','methylPREDNISolone acetate Topical Gel'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','2649216','methylPREDNISolone acetate Topical Cream'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','2649252','lidocaine hydrochloride / methylPREDNISolone acetate Injectable Suspension'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','2649371','methylPREDNISolone acetate Enema'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','2654547','methylPREDNISolone acetate Topical Gel [HybriSil]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','2655432','methylPREDNISolone acetate Injection [DEPO-Medrol]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','2655659','methylPREDNISolone acetate / neomycin Topical Ointment [Neo-Medrol]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','2656424','methylPREDNISolone acetate Injectable Suspension [DEPO-Medrol]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','2660311','methylPREDNISolone acetate Rectal Product'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','2660314','lidocaine hydrochloride / methylPREDNISolone acetate Injectable Product'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','2662482','methylPREDNISolone acetate Injectable Product'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','2663205','methylPREDNISolone acetate / neomycin Topical Product'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','2663618','methylPREDNISolone acetate Topical Product'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','29917','methylPREDNISolone sodium phosphate'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','311659','methylPREDNISolone 40 MG Injection'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','314099','methylPREDNISolone 62.5 MG/ML Injectable Solution'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','316285','methylPREDNISolone 2 MG'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','316286','methylPREDNISolone 24 MG'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','316287','methylPREDNISolone 32 MG'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','316288','methylPREDNISolone 8 MG'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','317426','methylPREDNISolone 16 MG'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','317427','methylPREDNISolone 4 MG'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','328161','methylPREDNISolone 16 MG Oral Tablet'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','330037','methylPREDNISolone 40 MG'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','332216','methylPREDNISolone 100 MG'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','334064','methylPREDNISolone 1.5 MG'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','337312','methylPREDNISolone 20 MG/ML'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','340167','methylPREDNISolone 1 MG/ML'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','346173','methylPREDNISolone 62.5 MG/ML'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','360536','methylPREDNISolone 50 MG/ML'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','362772','methylPREDNISolone Injectable Solution [SOLU-Medrol]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','365570','methylPREDNISolone Injectable Suspension [DEPO-Medrol]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','368772','methylPREDNISolone Oral Tablet [Medrol]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','372863','methylPREDNISolone Topical Ointment'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','372865','methylPREDNISolone Enema'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','372866','methylPREDNISolone Injectable Suspension'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','372867','methylPREDNISolone Ophthalmic Solution'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','372868','methylPREDNISolone Oral Tablet'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','372870','aspirin / methylPREDNISolone Oral Tablet'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','376326','methylPREDNISolone / neomycin Topical Ointment'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','376403','methylPREDNISolone / neomycin Topical Cream'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','376656','methylPREDNISolone Injectable Solution'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','377758','methylPREDNISolone Topical Cream'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','415817','methylPREDNISolone 20 MG/ML Injectable Solution'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','415856','methylPREDNISolone 5 MG/ML Injectable Solution'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','415857','methylPREDNISolone 10 MG/ML Injectable Solution'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','429197','methylPREDNISolone 40 MG Oral Tablet'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','446407','methylPREDNISolone 10 MG/ML'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','446408','methylPREDNISolone 5 MG/ML'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','567927','methylPREDNISolone 2 MG [Medrol]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','567928','methylPREDNISolone 8 MG [Medrol]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','567929','methylPREDNISolone 16 MG [Medrol]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','567930','methylPREDNISolone 24 MG [Medrol]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','567932','methylPREDNISolone 32 MG [Medrol]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','567984','methylPREDNISolone 62.5 MG/ML [SOLU-Medrol]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','574125','methylPREDNISolone 4 MG [Medrol]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','62136','methylPREDNISolone aceponate'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','6902','methylPREDNISolone'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','762675','{21 (methylPREDNISolone 4 MG Oral Tablet) } Pack'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','804173','Methylprednisolone 16 MG Oral Tablet 14 Count Pak'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','834023','Medrol Dosepak')
+) AS t (system,code,display) ;

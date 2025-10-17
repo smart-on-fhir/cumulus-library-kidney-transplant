@@ -1,4 +1,5 @@
 from typing import List
+from cumulus_library_kidney_transplant.vocab import Vocab
 
 ##############################################################################
 # Anti-Metabolites
@@ -71,6 +72,7 @@ Everolimus = ['Everolimus',
               'Afinitor',
               'Votubia',
               'RAD001',
+              'Torpenz',
               'SDZ-RAD']
 
 Sirolimus = ['Sirolimus',
@@ -126,8 +128,9 @@ def str_like(keywords: List[str]) -> str:
 def select_code_display(keywords, sab='RXNORM') -> str:
     partition  = 'row_number() over (partition by code order by length(str), str) as rn'
     source = 'umls.MRCONSO_drugs'
+    rxnorm = Vocab.RXNORM
     where = f" SAB='{sab}' and \n ( {str_like(keywords)})"
-    select = 'SELECT code, display FROM ranked WHERE rn = 1 order by code'
+    select = f"SELECT '{rxnorm}' as system, code, display FROM ranked WHERE rn = 1 order by code"
     return f"with ranked AS ( select code, str as display, {partition} from {source} where {where}) \n {select};\n"
 
 ###############################################################################
@@ -136,7 +139,8 @@ def select_code_display(keywords, sab='RXNORM') -> str:
 #
 ###############################################################################
 if __name__ == "__main__":
-    sql = [select_code_display(drug) for drug in DRUG_LIST]
-    sql = '\n'.join(sql)
-
-    print(sql)
+    for drug in DRUG_LIST:
+        print('####################################')
+        print(drug)
+        sql = select_code_display(drug)
+        print(sql)

@@ -1,76 +1,77 @@
 create or replace view irae__rx_rituximab as select * from (values
-('http://www.nlm.nih.gov/research/umls/rxnorm', '1157967', 'Rituximab Injectable Product')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1185345', 'Rituxan Injectable Product')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '121191', 'Rituximab')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1657861', 'Rituximab Injection')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1657862', '10 ML Rituximab 10 MG/ML Injection')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1657863', 'Rituximab Injection [Rituxan]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1657864', 'Rituxan 100 MG in 10 ML Injection')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1657865', 'Rituximab 10 MG/ML Injection')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1657866', 'Rituxan 10 MG/ML Injection')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1657867', '50 ML Rituximab 10 MG/ML Injection')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1657868', 'Rituxan 500 MG in 50 ML Injection')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1927881', 'Rituximab 120 MG/ML')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1927882', 'hyaluronidase / Rituximab Injectable Product')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1927883', 'hyaluronidase / Rituximab Injection')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1927884', 'hyaluronidase / Rituximab')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1927885', '11.7 ML hyaluronidase, human recombinant 2000 UNT/ML / Rituximab 120 MG/ML Injection')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1927886', 'Rituxan Hycela')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1927887', 'hyaluronidase, human recombinant 2000 UNT/ML / Rituximab 120 MG/ML [Rituxan Hycela]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1927888', 'hyaluronidase / Rituximab Injection [Rituxan Hycela]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1927889', 'Rituxan Hycela Injectable Product')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1927890', 'Rituxan Hycela 1400 MG / 23,400 UNT in 11.7 ML Injection')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1927891', 'hyaluronidase, human recombinant 2000 UNT/ML / Rituximab 120 MG/ML Injection')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1927892', 'hyaluronidase, human recombinant 2000 UNT/ML / Rituximab 120 MG/ML Injection [Rituxan Hycela]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1927893', '13.4 ML hyaluronidase, human recombinant 2000 UNT/ML / Rituximab 120 MG/ML Injection')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1927894', 'Rituxan Hycela 1600 MG / 26,800 UNT in 13.4 ML Injection')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '2105824', 'Rituximab-abbs')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '2105825', 'Rituximab-abbs 10 MG/ML')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '2105826', '10 ML Rituximab-abbs 10 MG/ML Injection')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '2105827', 'Truxima')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '2105828', 'Rituximab-abbs 10 MG/ML [Truxima]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '2105829', 'Rituximab Injection [Truxima]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '2105830', 'Truxima Injectable Product')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '2105831', '10 ML Truxima 10 MG/ML Injection')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '2105832', 'Rituximab-abbs 10 MG/ML Injection')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '2105833', 'Truxima 10 MG/ML Injection')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '2105834', '50 ML Rituximab-abbs 10 MG/ML Injection')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '2105835', '50 ML Truxima 10 MG/ML Injection')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '226754', 'Rituxan')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '2273510', 'Rituximab-pvvr')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '2273511', 'Rituximab-pvvr 10 MG/ML')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '2273512', '10 ML Rituximab-pvvr 10 MG/ML Injection')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '2273513', 'Ruxience')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '2273514', 'Rituximab-pvvr 10 MG/ML [Ruxience]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '2273515', 'Rituximab Injection [Ruxience]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '2273516', 'Ruxience Injectable Product')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '2273517', '10 ML Ruxience 10 MG/ML Injection')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '2273518', 'Rituximab-pvvr 10 MG/ML Injection')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '2273519', 'Ruxience 10 MG/ML Injection')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '2273520', '50 ML Rituximab-pvvr 10 MG/ML Injection')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '2273521', '50 ML Ruxience 10 MG/ML Injection')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '2472325', 'Rituximab-arrx')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '2472326', 'Rituximab-arrx 10 MG/ML')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '2472327', '10 ML Rituximab-arrx 10 MG/ML Injection')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '2472329', 'Rituximab-arrx 10 MG/ML [Riabni]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '2472330', 'Rituximab Injection [Riabni]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '2472332', '10 ML Rituximab-arrx 10 MG/ML Injection [Riabni]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '2472333', 'Rituximab-arrx 10 MG/ML Injection')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '2472334', 'Rituximab-arrx 10 MG/ML Injection [Riabni]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '2472335', '50 ML Rituximab-arrx 10 MG/ML Injection')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '2472336', '50 ML Rituximab-arrx 10 MG/ML Injection [Riabni]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '2646070', 'hyaluronidase, human recombinant / Rituximab Injection')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '2646375', 'Rituximab-abbs Injection')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '2647172', 'Rituximab-pvvr Injection')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '2647548', 'Rituximab-arrx Injection')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '2654386', 'hyaluronidase, human recombinant / Rituximab Injection [Rituxan Hycela]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '2654837', 'Rituximab-pvvr Injection [Ruxience]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '2655716', 'Rituximab-abbs Injection [Truxima]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '2657079', 'Rituximab-arrx Injection [Riabni]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '2660105', 'Rituximab-arrx Injectable Product')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '2662462', 'Rituximab-abbs Injectable Product')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '2663237', 'hyaluronidase, human recombinant / Rituximab Injectable Product')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '2663424', 'Rituximab-pvvr Injectable Product')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '316648', 'Rituximab 10 MG/ML')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '573051', 'Rituximab 10 MG/ML [Rituxan]')
-) AS t (system, code, display) ;
+
+('http://www.nlm.nih.gov/research/umls/rxnorm','1157967','riTUXimab Injectable Product'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1185345','Rituxan Injectable Product'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','121191','riTUXimab'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1657861','riTUXimab Injection'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1657862','10 ML riTUXimab 10 MG/ML Injection'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1657863','riTUXimab Injection [Rituxan]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1657864','Rituxan 100 MG in 10 ML Injection'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1657865','riTUXimab 10 MG/ML Injection'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1657866','Rituxan 10 MG/ML Injection'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1657867','50 ML riTUXimab 10 MG/ML Injection'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1657868','Rituxan 500 MG in 50 ML Injection'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1927881','riTUXimab 120 MG/ML'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1927882','hyaluronidase / riTUXimab Injectable Product'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1927883','hyaluronidase / riTUXimab Injection'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1927884','hyaluronidase / riTUXimab'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1927885','11.7 ML hyaluronidase, human recombinant 2000 UNT/ML / riTUXimab 120 MG/ML Injection'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1927886','Rituxan Hycela'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1927887','hyaluronidase, human recombinant 2000 UNT/ML / riTUXimab 120 MG/ML [Rituxan Hycela]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1927888','hyaluronidase / riTUXimab Injection [Rituxan Hycela]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1927889','Rituxan Hycela Injectable Product'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1927890','Rituxan Hycela 1400 MG / 23,400 UNT in 11.7 ML Injection'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1927891','hyaluronidase, human recombinant 2000 UNT/ML / riTUXimab 120 MG/ML Injection'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1927892','hyaluronidase, human recombinant 2000 UNT/ML / riTUXimab 120 MG/ML Injection [Rituxan Hycela]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1927893','13.4 ML hyaluronidase, human recombinant 2000 UNT/ML / riTUXimab 120 MG/ML Injection'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1927894','Rituxan Hycela 1600 MG / 26,800 UNT in 13.4 ML Injection'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','2105824','riTUXimab-abbs'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','2105825','riTUXimab-abbs 10 MG/ML'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','2105826','10 ML riTUXimab-abbs 10 MG/ML Injection'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','2105827','Truxima'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','2105828','riTUXimab-abbs 10 MG/ML [Truxima]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','2105829','riTUXimab Injection [Truxima]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','2105830','Truxima Injectable Product'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','2105831','10 ML Truxima 10 MG/ML Injection'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','2105832','riTUXimab-abbs 10 MG/ML Injection'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','2105833','Truxima 10 MG/ML Injection'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','2105834','50 ML riTUXimab-abbs 10 MG/ML Injection'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','2105835','50 ML Truxima 10 MG/ML Injection'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','226754','Rituxan'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','2273510','riTUXimab-pvvr'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','2273511','riTUXimab-pvvr 10 MG/ML'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','2273512','10 ML riTUXimab-pvvr 10 MG/ML Injection'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','2273513','Ruxience'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','2273514','riTUXimab-pvvr 10 MG/ML [Ruxience]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','2273515','riTUXimab Injection [Ruxience]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','2273516','Ruxience Injectable Product'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','2273517','10 ML Ruxience 10 MG/ML Injection'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','2273518','riTUXimab-pvvr 10 MG/ML Injection'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','2273519','Ruxience 10 MG/ML Injection'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','2273520','50 ML riTUXimab-pvvr 10 MG/ML Injection'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','2273521','50 ML Ruxience 10 MG/ML Injection'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','2472325','riTUXimab-arrx'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','2472326','riTUXimab-arrx 10 MG/ML'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','2472327','10 ML riTUXimab-arrx 10 MG/ML Injection'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','2472329','riTUXimab-arrx 10 MG/ML [Riabni]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','2472330','riTUXimab Injection [Riabni]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','2472332','10 ML riTUXimab-arrx 10 MG/ML Injection [Riabni]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','2472333','riTUXimab-arrx 10 MG/ML Injection'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','2472334','riTUXimab-arrx 10 MG/ML Injection [Riabni]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','2472335','50 ML riTUXimab-arrx 10 MG/ML Injection'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','2472336','50 ML riTUXimab-arrx 10 MG/ML Injection [Riabni]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','2646070','hyaluronidase, human recombinant / riTUXimab Injection'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','2646375','riTUXimab-abbs Injection'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','2647172','riTUXimab-pvvr Injection'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','2647548','riTUXimab-arrx Injection'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','2654386','hyaluronidase, human recombinant / riTUXimab Injection [Rituxan Hycela]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','2654837','riTUXimab-pvvr Injection [Ruxience]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','2655716','riTUXimab-abbs Injection [Truxima]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','2657079','riTUXimab-arrx Injection [Riabni]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','2660105','riTUXimab-arrx Injectable Product'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','2662462','riTUXimab-abbs Injectable Product'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','2663237','hyaluronidase, human recombinant / riTUXimab Injectable Product'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','2663424','riTUXimab-pvvr Injectable Product'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','316648','riTUXimab 10 MG/ML'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','573051','riTUXimab 10 MG/ML [Rituxan]')
+) AS t (system,code,display) ;

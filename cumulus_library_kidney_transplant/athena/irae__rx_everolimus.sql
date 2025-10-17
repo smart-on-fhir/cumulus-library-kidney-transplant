@@ -1,74 +1,75 @@
 create or replace view irae__rx_everolimus as select * from (values
-('http://www.nlm.nih.gov/research/umls/rxnorm', '2685204', 'Everolimus 10 MG Oral Tablet [Torpenz]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '2685205', 'Everolimus 5 MG [Torpenz]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '2685201', 'Everolimus Oral Tablet [Torpenz]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1308428', 'Everolimus 2 MG Tablet for Oral Suspension')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '998189', 'Everolimus 2.5 MG Oral Tablet')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '977436', 'Zortress 0.5 MG Oral Tablet')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '845509', 'Afinitor')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '845514', 'Everolimus 5 MG')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '845517', 'Everolimus 5 MG [Afinitor]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '2056896', 'Everolimus 1 MG [Zortress]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1119399', 'Everolimus 7.5 MG')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1163787', 'Everolimus Pill')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '2685206', 'Everolimus 5 MG Oral Tablet [Torpenz]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '2685208', 'Everolimus 7.5 MG Oral Tablet [Torpenz]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '2685207', 'Everolimus 7.5 MG [Torpenz]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1310137', 'Afinitor Oral Liquid Product')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1310144', 'Afinitor DISPERZ 3 MG Tablet for Oral Suspension')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1310147', 'Afinitor DISPERZ 5 MG Tablet for Oral Suspension')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '998188', 'Everolimus 2.5 MG')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '977428', 'Zortress')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '977430', 'Everolimus Oral Tablet [Zortress]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '977431', 'Zortress 0.25 MG Oral Tablet')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '977434', 'Everolimus 0.5 MG Oral Tablet')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '977435', 'Everolimus 0.5 MG [Zortress]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '977438', 'Everolimus 0.75 MG Oral Tablet')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '977439', 'Everolimus 0.75 MG [Zortress]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '977440', 'Zortress 0.75 MG Oral Tablet')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1172066', 'Afinitor Oral Product')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '845515', 'Everolimus 5 MG Oral Tablet')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '845518', 'Afinitor 5 MG Oral Tablet')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '2056897', 'ZORTRESS 1 MG Oral Tablet')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1119400', 'Everolimus 7.5 MG Oral Tablet')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '2685197', 'Everolimus [Torpenz]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '2685198', 'Everolimus 2.5 MG [Torpenz]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '2685199', 'Everolimus Oral Product [Torpenz]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '2685200', 'Everolimus Pill [Torpenz]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1308430', 'Everolimus 3 MG Tablet for Oral Suspension')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1310138', 'Afinitor DISPERZ 2 MG Tablet for Oral Suspension')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1869520', 'Everolimus 3 MG [Afinitor]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1869515', 'Everolimus 2 MG [Afinitor]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1869512', 'Everolimus 2 MG')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1186316', 'Zortress Oral Product')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1186317', 'Zortress Pill')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '977426', 'Everolimus 0.25 MG')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '977429', 'Everolimus 0.25 MG [Zortress]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '845510', 'Everolimus 10 MG [Afinitor]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '845511', 'Everolimus Oral Tablet [Afinitor]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '2056894', 'Everolimus 1 MG')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1163786', 'Everolimus Oral Product')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1869513', 'Everolimus Tablet for Oral Suspension')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '141704', 'Everolimus')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '2685202', 'Everolimus 2.5 MG Oral Tablet [Torpenz]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '2685203', 'Everolimus 10 MG [Torpenz]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1308426', 'Everolimus Oral Liquid Product')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1308432', 'Everolimus 5 MG Tablet for Oral Suspension')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1869516', 'Everolimus Tablet for Oral Suspension [Afinitor]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1869518', 'Everolimus 3 MG')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '998190', 'Everolimus 2.5 MG [Afinitor]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '998191', 'Afinitor 2.5 MG Oral Tablet')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '977427', 'Everolimus 0.25 MG Oral Tablet')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '977433', 'Everolimus 0.5 MG')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '977437', 'Everolimus 0.75 MG')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1172067', 'Afinitor Pill')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '845505', 'Everolimus 10 MG')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '845506', 'Everolimus Oral Tablet')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '845507', 'Everolimus 10 MG Oral Tablet')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '845508', '{28 (Everolimus 10 MG Oral Tablet) } Pack')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '845512', 'Afinitor 10 MG Oral Tablet')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '845516', '{28 (Everolimus 5 MG Oral Tablet) } Pack')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '2056895', 'Everolimus 1 MG Oral Tablet')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1119401', 'Everolimus 7.5 MG [Afinitor]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1119402', 'Afinitor 7.5 MG Oral Tablet')
-) AS t (system, code, display) ;
+
+('http://www.nlm.nih.gov/research/umls/rxnorm','1119399','everolimus 7.5 MG'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1119400','everolimus 7.5 MG Oral Tablet'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1119401','everolimus 7.5 MG [Afinitor]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1119402','AFINITOR 7.5 MG Oral Tablet'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1163786','everolimus Oral Product'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1163787','everolimus Pill'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1172066','Afinitor Oral Product'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1172067','Afinitor Pill'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1186316','Zortress Oral Product'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1186317','Zortress Pill'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1308426','everolimus Oral Liquid Product'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1308428','everolimus 2 MG Tablet for Oral Suspension'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1308430','everolimus 3 MG Tablet for Oral Suspension'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1308432','everolimus 5 MG Tablet for Oral Suspension'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1310137','Afinitor Oral Liquid Product'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1310138','AFINITOR DISPERZ 2 MG Tablet for Oral Suspension'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1310144','AFINITOR DISPERZ 3 MG Tablet for Oral Suspension'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1310147','AFINITOR DISPERZ 5 MG Tablet for Oral Suspension'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','141704','everolimus'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1869512','everolimus 2 MG'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1869513','everolimus Tablet for Oral Suspension'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1869515','everolimus 2 MG [Afinitor]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1869516','everolimus Tablet for Oral Suspension [Afinitor]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1869518','everolimus 3 MG'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1869520','everolimus 3 MG [Afinitor]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','2056894','everolimus 1 MG'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','2056895','everolimus 1 MG Oral Tablet'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','2056896','everolimus 1 MG [Zortress]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','2056897','ZORTRESS 1 MG Oral Tablet'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','2685197','Torpenz'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','2685198','everolimus 2.5 MG [Torpenz]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','2685199','Torpenz Oral Product'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','2685200','Torpenz Pill'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','2685201','everolimus Oral Tablet [Torpenz]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','2685202','TORPENZ 2.5 MG Oral Tablet'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','2685203','everolimus 10 MG [Torpenz]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','2685204','TORPENZ 10 MG Oral Tablet'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','2685205','everolimus 5 MG [Torpenz]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','2685206','TORPENZ 5 MG Oral Tablet'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','2685207','everolimus 7.5 MG [Torpenz]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','2685208','TORPENZ 7.5 MG Oral Tablet'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','845505','everolimus 10 MG'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','845506','everolimus Oral Tablet'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','845507','everolimus 10 MG Oral Tablet'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','845508','{28 (everolimus 10 MG Oral Tablet) } Pack'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','845509','Afinitor'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','845510','everolimus 10 MG [Afinitor]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','845511','everolimus Oral Tablet [Afinitor]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','845512','AFINITOR 10 MG Oral Tablet'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','845514','everolimus 5 MG'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','845515','everolimus 5 MG Oral Tablet'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','845516','{28 (everolimus 5 MG Oral Tablet) } Pack'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','845517','everolimus 5 MG [Afinitor]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','845518','AFINITOR 5 MG Oral Tablet'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','977426','everolimus 0.25 MG'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','977427','everolimus 0.25 MG Oral Tablet'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','977428','Zortress'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','977429','everolimus 0.25 MG [Zortress]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','977430','everolimus Oral Tablet [Zortress]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','977431','Zortress 0.25 MG Oral Tablet'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','977433','everolimus 0.5 MG'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','977434','everolimus 0.5 MG Oral Tablet'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','977435','everolimus 0.5 MG [Zortress]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','977436','Zortress 0.5 MG Oral Tablet'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','977437','everolimus 0.75 MG'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','977438','everolimus 0.75 MG Oral Tablet'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','977439','everolimus 0.75 MG [Zortress]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','977440','Zortress 0.75 MG Oral Tablet'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','998188','everolimus 2.5 MG'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','998189','everolimus 2.5 MG Oral Tablet'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','998190','everolimus 2.5 MG [Afinitor]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','998191','AFINITOR 2.5 MG Oral Tablet')
+) AS t (system,code,display) ;

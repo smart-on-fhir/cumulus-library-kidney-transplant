@@ -1,17 +1,17 @@
-LOINC_NUM,COMPONENT,PROPERTY,TIME_ASPCT,SYSTEM,SCALE_TYP,METHOD_TYP,CLASS,VersionLastChanged,STATUS,CLASSTYPE,ORDER_OBS,EXTERNAL_COPYRIGHT_NOTICE,EXAMPLE_UNITS,LONG_COMMON_NAME,EXAMPLE_UCUM_UNITS,VersionFirstReleased,LHCForms,FormalName
-1754-1,Albumin,MCnc,Pt,Urine,Qn,,CHEM,2.73,ACTIVE,1,Both,,mg/L;mcg/mL,"Albumin [Mass/volume] in Urine",g/dL,1.0,false,Albumin:MCnc:Pt:Urine:Qn:
-21059-1,Albumin,MCnc,24H,Urine,Qn,,CHEM,2.73,ACTIVE,1,Both,,mg/dL,"Albumin [Mass/volume] in 24 hour Urine",mg/dL,1.0m,false,Albumin:MCnc:24H:Urine:Qn:
-61196-2,Albumin,MCnc,Pt,Urine^Fetus,Qn,,CHEM,2.70,ACTIVE,1,Both,,mg/L,"Albumin [Mass/volume] in Urine from Fetus",mg/L,2.34,false,Albumin:MCnc:Pt:Urine^Fetus:Qn:
-6942-7,Albumin,MCnc,Pt,Urine,Qn,Electrophoresis,CHEM,2.73,ACTIVE,1,Both,,"g/L;g/dL; mg/dL","Albumin [Mass/volume] in Urine by Electrophoresis",g/dL,1.0h(2),false,Albumin:MCnc:Pt:Urine:Qn:Electrophoresis
-77940-5,Albumin,MCnc,XXX,Urine,Qn,Electrophoresis,CHEM,2.52,ACTIVE,1,Observation,,mg/dl,"Albumin [Mass/volume] by Electrophoresis in Urine collected for unspecified duration",mg/dL,2.52,false,Albumin:MCnc:XXX:Urine:Qn:Electrophoresis
-51190-7,Albumin,MCnc,24H,Urine,Qn,Electrophoresis,CHEM,2.73,ACTIVE,1,Observation,,g/L,"Albumin [Mass/volume] in 24 hour Urine by Electrophoresis",g/L,2.22,false,Albumin:MCnc:24H:Urine:Qn:Electrophoresis
-14957-5,Albumin,MCnc,Pt,Urine,Qn,"Detection limit <= 20 mg/L",CHEM,2.73,ACTIVE,1,Both,,"mg/L;mcg/mL; mg/dL","Microalbumin [Mass/volume] in Urine",ug/mL;mg/dL,1.0k,false,"Albumin:MCnc:Pt:Urine:Qn:Detection limit <= 20 mg/L"
-100158-5,Albumin,MCnc,XXX,Urine,Qn,"Detection limit <= 20 mg/L",UA,2.73,ACTIVE,1,Both,,mg/L,"Microalbumin [Mass/volume] in Urine collected for unspecified duration",mg/L,2.73,false,"Albumin:MCnc:XXX:Urine:Qn:Detection limit <= 20 mg/L"
-57369-1,Albumin,MCnc,12H,Urine,Qn,"Detection limit <= 20 mg/L",CHEM,2.73,ACTIVE,1,Both,,mg/dL,"Microalbumin [Mass/volume] in 12 hour Urine",mg/dL,2.29,false,"Albumin:MCnc:12H:Urine:Qn:Detection limit <= 20 mg/L"
-30003-8,Albumin,MCnc,24H,Urine,Qn,"Detection limit <= 20 mg/L",CHEM,2.73,ACTIVE,1,Both,,mg/L;mcg/mL,"Microalbumin [Mass/volume] in 24 hour Urine",ug/mL;mg/dL,2.04,false,"Albumin:MCnc:24H:Urine:Qn:Detection limit <= 20 mg/L"
-43605-5,Albumin,MCnc,4H,Urine,Qn,"Detection limit <= 20 mg/L",CHEM,2.34,ACTIVE,1,Both,,mg/dL,"Microalbumin [Mass/volume] in 4 hour Urine",mg/dL,2.17,false,"Albumin:MCnc:4H:Urine:Qn:Detection limit <= 20 mg/L"
-11218-5,Albumin,MCnc,Pt,Urine,SemiQn,"Detection limit <= 20 mg/L test strip",CHEM,2.75,ACTIVE,1,Both,,mg/dL,"Microalbumin [Mass/volume] in Urine by Test strip",mg/dL,1.0j-a,false,"Albumin:MCnc:Pt:Urine:SemiQn:Detection limit <= 20 mg/L test strip"
-53530-2,Albumin,MCnc,24H,Urine,Qn,"Detection limit <= 1.0 mg/L",CHEM,2.73,ACTIVE,1,Both,,mg/dL,"Microalbumin [Mass/volume] in 24 hour Urine by Detection limit <= 1.0 mg/L",mg/dL,2.26,false,"Albumin:MCnc:24H:Urine:Qn:Detection limit <= 1.0 mg/L"
-53531-0,Albumin,MCnc,Pt,Urine,Qn,"Detection limit <= 1.0 mg/L",CHEM,2.73,ACTIVE,1,Both,,mg/dL,"Microalbumin [Mass/volume] in Urine by Detection limit <= 1.0 mg/L",mg/dL,2.26,false,"Albumin:MCnc:Pt:Urine:Qn:Detection limit <= 1.0 mg/L"
-89999-7,Albumin,MCnc,Pt,Urine,Qn,"Detection limit <= 3.0 mg/L",UA,2.72,ACTIVE,1,Both,,g/L,"Microalbumin [Mass/volume] in Urine by Detection limit <= 3.0 mg/L",g/L,2.65,false,"Albumin:MCnc:Pt:Urine:Qn:Detection limit <= 3.0 mg/L"
-40857-5,Prealbumin,MCnc,Pt,Urine,Qn,,CHEM,2.42,ACTIVE,1,Observation,,mg/L,"Prealbumin [Mass/volume] in Urine",mg/L,2.15,false,Prealbumin:MCnc:Pt:Urine:Qn:
+system,code,display
+http://loinc.org,100158-5,"Albumin, Urine"
+http://loinc.org,11218-5,"Albumin, Urine"
+http://loinc.org,14957-5,"Albumin, Urine"
+http://loinc.org,1754-1,"Albumin, Urine"
+http://loinc.org,21059-1,"Albumin, Urine"
+http://loinc.org,30003-8,"Albumin, Urine"
+http://loinc.org,40857-5,"Prealbumin, Urine"
+http://loinc.org,43605-5,"Albumin, Urine"
+http://loinc.org,51190-7,"Albumin, Urine"
+http://loinc.org,53530-2,"Albumin, Urine"
+http://loinc.org,53531-0,"Albumin, Urine"
+http://loinc.org,57369-1,"Albumin, Urine"
+http://loinc.org,61196-2,Fetal Albumin
+http://loinc.org,6942-7,"Albumin, Urine"
+http://loinc.org,77940-5,"Albumin, Urine"
+http://loinc.org,89999-7,"Albumin, Urine"

@@ -1,57 +1,58 @@
 create or replace view irae__rx_azathioprine as select * from (values
-('http://www.nlm.nih.gov/research/umls/rxnorm', '404475', 'AZASAN 75 MG Oral Tablet')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '404476', 'AZASAN 100 MG Oral Tablet')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '404872', 'Azasan')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '405819', 'Azathioprine Oral Tablet [Azasan]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '105609', 'Azathioprine 50 MG Oral Tablet [Azamune]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '105610', 'Imuran 25 MG Oral Tablet')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '105612', 'Azathioprine 50 MG Oral Tablet [Immunoprin]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '105613', 'Azathioprine 50 MG Oral Tablet [Berkaprine]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '267476', 'Azathioprine sodium')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '576332', 'Azathioprine 50 MG [Azasan]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '565180', 'Azathioprine 10 MG [Imuran]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '369525', 'Azathioprine Oral Tablet [Azamune]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1155001', 'Azathioprine Oral Product')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1172007', 'Imuran Pill')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '199310', 'Azathioprine 25 MG Oral Tablet')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '360265', 'Azathioprine 75 MG')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '701338', 'Azasan 25 MG Oral Tablet')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '701337', 'Azathioprine 25 MG [Azasan]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '329313', 'Azathioprine 25 MG')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '108922', 'Azathioprine 50 MG Oral Tablet [Oprisine]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '564118', 'Azathioprine 50 MG [Azamune]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '564122', 'Azathioprine 50 MG [Berkaprine]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1155002', 'Azathioprine Pill')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '385562', 'Azathioprine 10 MG')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '404351', 'Azasan 50 MG Oral Tablet')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '105611', 'IMURAN 50 MG Oral Tablet')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '197388', 'Azathioprine 50 MG Oral Tablet')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '153130', 'Imuran 10 MG Oral Tablet')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '564119', 'Azathioprine 25 MG [Imuran]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '564121', 'Azathioprine 50 MG [Immunoprin]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '564655', 'Azathioprine 50 MG [Oprisine]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '368521', 'Azathioprine Oral Tablet [Berkaprine]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '369534', 'Azathioprine Oral Tablet [Immunoprin]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1172006', 'Imuran Oral Product')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1176318', 'Azasan Oral Product')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1176319', 'Azasan Pill')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1789839', 'Azathioprine Injection')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '315447', 'Azathioprine 50 MG')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '359229', 'Azathioprine 75 MG Oral Tablet')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '202559', 'Imuran')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '403109', 'Azathioprine Oral Tablet [Oprisine]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '410148', 'Azathioprine 250 MG Oral Capsule')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '239983', 'Azathioprine 100 MG Injection')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '434684', 'Azathioprine 250 MG')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '434685', 'Azathioprine Oral Capsule')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1256', 'Azathioprine')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '153129', 'Azathioprine 10 MG Oral Tablet')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '576426', 'Azathioprine 75 MG [Azasan]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '576427', 'Azathioprine 100 MG [Azasan]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '564120', 'Azathioprine 50 MG [Imuran]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '368214', 'Azathioprine Oral Tablet [Imuran]')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '370973', 'Azathioprine Oral Tablet')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '1155000', 'Azathioprine Injectable Product')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '359228', 'Azathioprine 100 MG Oral Tablet')
-,('http://www.nlm.nih.gov/research/umls/rxnorm', '360266', 'Azathioprine 100 MG')
-) AS t (system, code, display) ;
+
+('http://www.nlm.nih.gov/research/umls/rxnorm','105609','azaTHIOprine 50 MG Oral Tablet [Azamune]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','105610','Imuran 25 MG Oral Tablet'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','105611','IMURAN 50 MG Oral Tablet'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','105612','azaTHIOprine 50 MG Oral Tablet [Immunoprin]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','105613','azaTHIOprine 50 MG Oral Tablet [Berkaprine]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','108922','azaTHIOprine 50 MG Oral Tablet [Oprisine]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1155000','azaTHIOprine Injectable Product'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1155001','azaTHIOprine Oral Product'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1155002','azaTHIOprine Pill'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1172006','Imuran Oral Product'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1172007','Imuran Pill'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1176318','Azasan Oral Product'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1176319','Azasan Pill'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1256','azaTHIOprine'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','153129','azaTHIOprine 10 MG Oral Tablet'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','153130','Imuran 10 MG Oral Tablet'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','1789839','azaTHIOprine Injection'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','197388','azaTHIOprine 50 MG Oral Tablet'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','199310','azaTHIOprine 25 MG Oral Tablet'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','202559','Imuran'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','239983','azaTHIOprine 100 MG Injection'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','267476','azaTHIOprine sodium'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','315447','azaTHIOprine 50 MG'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','329313','azaTHIOprine 25 MG'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','359228','azaTHIOprine 100 MG Oral Tablet'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','359229','azaTHIOprine 75 MG Oral Tablet'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','360265','azaTHIOprine 75 MG'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','360266','azaTHIOprine 100 MG'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','368214','azaTHIOprine Oral Tablet [Imuran]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','368521','azaTHIOprine Oral Tablet [Berkaprine]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','369525','azaTHIOprine Oral Tablet [Azamune]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','369534','azaTHIOprine Oral Tablet [Immunoprin]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','370973','azaTHIOprine Oral Tablet'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','385562','azaTHIOprine 10 MG'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','403109','azaTHIOprine Oral Tablet [Oprisine]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','404351','Azasan 50 MG Oral Tablet'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','404475','AZASAN 75 MG Oral Tablet'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','404476','AZASAN 100 MG Oral Tablet'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','404872','Azasan'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','405819','azaTHIOprine Oral Tablet [Azasan]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','410148','azaTHIOprine 250 MG Oral Capsule'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','434684','azaTHIOprine 250 MG'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','434685','azaTHIOprine Oral Capsule'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','564118','azaTHIOprine 50 MG [Azamune]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','564119','azaTHIOprine 25 MG [Imuran]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','564120','azaTHIOprine 50 MG [Imuran]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','564121','azaTHIOprine 50 MG [Immunoprin]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','564122','azaTHIOprine 50 MG [Berkaprine]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','564655','azaTHIOprine 50 MG [Oprisine]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','565180','azaTHIOprine 10 MG [Imuran]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','576332','azaTHIOprine 50 MG [Azasan]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','576426','azaTHIOprine 75 MG [Azasan]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','576427','azaTHIOprine 100 MG [Azasan]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','701337','azaTHIOprine 25 MG [Azasan]'),
+('http://www.nlm.nih.gov/research/umls/rxnorm','701338','Azasan 25 MG Oral Tablet')
+) AS t (system,code,display) ;

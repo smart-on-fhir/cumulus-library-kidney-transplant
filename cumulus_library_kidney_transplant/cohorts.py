@@ -140,7 +140,7 @@ def list_variables() -> List[str]:
     :return: List of all variables from VSAC anc custom sources.
     """
     return list(sorted(vsac_variables.list_view_variables()) +
-                list(sorted(custom_variables.list_view_variables())))
+                list(sorted(custom_variables.list_view_custom())))
 
 ###############################################################################
 # EACH Select Variable, make a cohort for each by itself.

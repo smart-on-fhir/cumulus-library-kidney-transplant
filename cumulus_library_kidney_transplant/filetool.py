@@ -76,6 +76,9 @@ def path_spreadsheet(filename: Path | str) -> Path:
     """
     return Path(os.path.join(path_home(), 'spreadsheet', filename))
 
+def list_spreadsheet_csv(pattern:str = '*.csv') -> list[Path]:
+    spreadsheet_dir = path_home() / 'spreadsheet'
+    return list(spreadsheet_dir.glob(pattern))
 
 ###############################################################################
 #

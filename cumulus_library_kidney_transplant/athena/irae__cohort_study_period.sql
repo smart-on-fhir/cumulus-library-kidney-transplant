@@ -14,7 +14,7 @@ range as (
             and
             (E.period_end_day   between include.period_start and include.period_end)
             and
-            (E.period_start_date < CURRENT_DATE)
+            (E.period_start_day < CURRENT_DATE)
 ),
 history as (
     SELECT  DISTINCT

@@ -1,3 +1,4 @@
+code	display
 1009211	immunoglobulin G, human 100 MG/ML [Flebogamma]
 106479	immunoglobulin G, human 160 MG/ML Injectable Solution [Kabiglobulin]
 106483	varicella-zoster immune globulin 50 MG/ML Injectable Solution
@@ -223,19 +224,9 @@
 1876673	Gammaplex 10 % in 100 ML Injection
 1876674	Gammaplex 10 % in 200 ML Injection
 197906	lymphocyte immune globulin, anti-thymocyte, equine 250 MG in 5 mL Injection
-1992534	rabies immune globulin, human Injection [Kedrab]
-1992536	2 ML rabies immune globulin, human 150 UNT/ML Injection [Kedrab]
-1992537	rabies immune globulin, human 150 UNT/ML Injection [Kedrab]
-1992538	10 ML rabies immune globulin, human 150 UNT/ML Injection [Kedrab]
 1999440	cytomegalovirus immune globulin, human 50 MG/ML Injection
 1999441	cytomegalovirus immune globulin, human 50 MG/ML Injection [Cytogam]
 202189	immunoglobulin G, human 160 MG/ML Injectable Solution [Gammabulin]
-2043306	1 ML rabies immune globulin, human 300 UNT/ML Injection
-2043308	1 ML rabies immune globulin, human 300 UNT/ML Injection [HyperRAB]
-2043309	rabies immune globulin, human 300 UNT/ML Injection
-2043310	rabies immune globulin, human 300 UNT/ML Injection [HyperRAB]
-2043311	5 ML rabies immune globulin, human 300 UNT/ML Injection
-2043312	5 ML rabies immune globulin, human 300 UNT/ML Injection [HyperRAB]
 204528	50 ML cytomegalovirus immune globulin, human 50 MG/ML Injection
 204569	immunoglobulin G Injectable Solution
 206289	5 ML lymphocyte immune globulin, anti-thymocyte globulin, equine 50 MG/ML Injection [ATGAM]
@@ -302,8 +293,6 @@
 2196492	50 ML immune globulin subcutaneous (human) - klhw 200 MG/ML Injection
 2196493	50 ML immune globulin subcutaneous (human) - klhw 200 MG/ML Injection [Xembify]
 226026	Octagam
-2267417	3 ML rabies immune globulin, human 300 UNT/ML Injection
-2267418	3 ML rabies immune globulin, human 300 UNT/ML Injection [HyperRAB]
 2282515	lymphocyte immune globulin, anti-thymocyte globulin Injectable Product
 2282516	lymphocyte immune globulin, anti-thymocyte globulin Injection
 2282519	lymphocyte immune globulin, anti-thymocyte globulin Injection [ATGAM]
@@ -428,6 +417,5 @@
 646808	varicella-zoster immune globulin 50 UNT/ML Injectable Solution
 758996	Privigen
 758997	immunoglobulin G, human 100 MG/ML [Privigen]
-830477	Imogam Rabies, Human Rabies Immunoglobulin Injectable Solution
 991216	Gammaplex
 991217	immunoglobulin G, human 50 MG/ML [Gammaplex]

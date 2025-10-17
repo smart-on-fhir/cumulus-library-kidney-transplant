@@ -20,6 +20,9 @@ select 'lab_cytomegalovirus' as valueset, system, code, display from
 select 'lab_gad' as valueset, system, code, display from 
  irae__lab_gad
  UNION ALL
+select 'lab_gfr_custom' as valueset, system, code, display from 
+ irae__lab_gfr_custom
+ UNION ALL
 select 'lab_glucose' as valueset, system, code, display from 
  irae__lab_glucose
  UNION ALL
@@ -28,6 +31,9 @@ select 'lab_hdl' as valueset, system, code, display from
  UNION ALL
 select 'lab_hemoglobin_a1c' as valueset, system, code, display from 
  irae__lab_hemoglobin_a1c
+ UNION ALL
+select 'lab_hla' as valueset, system, code, display from 
+ irae__lab_hla
  UNION ALL
 select 'lab_insulin' as valueset, system, code, display from 
  irae__lab_insulin
