@@ -1,15 +1,8 @@
-from typing import List
 from pathlib import Path
 
 from cumulus_library.builders.counts import CountsBuilder
 from cumulus_library_kidney_transplant import filetool, fhir2sql
 from cumulus_library_kidney_transplant.filetool import PREFIX
-
-    # def cube_patient_min5(source_table='study_population', table_cols=None, table_name=None, min_subject=5) -> Path:
-    #     return cube_patient(source_table, table_cols, table_name, min_subject)
-    #
-    # def cube_patient_min1(source_table='study_population', table_cols=None, table_name=None, min_subject=1) -> Path:
-    #     return cube_patient(source_table, table_cols, table_name, min_subject)
 
 def cube_encounter(source_table='study_population', table_cols=None, table_name=None, min_subject=10) -> Path:
     """
