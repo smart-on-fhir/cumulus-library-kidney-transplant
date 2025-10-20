@@ -1,2 +1,0 @@
-What are all generic, brand, and ingredient names for "immunosuppresive" ? 
-Respond with a JSON dictionary where each {key:value} is {ingredient:drug name}.
