@@ -4,9 +4,6 @@ with variable_cohorts as
 	select distinct 'doc_biopsy'	 as variable, valueset, code, display, system, encounter_ref, subject_ref  from irae__cohort_doc_biopsy UNION ALL
 	select distinct 'dx_autoimmune'	 as variable, valueset, code, display, system, encounter_ref, subject_ref  from irae__cohort_dx_autoimmune UNION ALL
 	select distinct 'dx_cancer'	 as variable, valueset, code, display, system, encounter_ref, subject_ref  from irae__cohort_dx_cancer UNION ALL
-	select distinct 'dx_diabetes'	 as variable, valueset, code, display, system, encounter_ref, subject_ref  from irae__cohort_dx_diabetes UNION ALL
-	select distinct 'dx_heart'	 as variable, valueset, code, display, system, encounter_ref, subject_ref  from irae__cohort_dx_heart UNION ALL
-	select distinct 'dx_htn'	 as variable, valueset, code, display, system, encounter_ref, subject_ref  from irae__cohort_dx_htn UNION ALL
 	select distinct 'dx_immunocompromised'	 as variable, valueset, code, display, system, encounter_ref, subject_ref  from irae__cohort_dx_immunocompromised UNION ALL
 	select distinct 'dx_infection'	 as variable, valueset, code, display, system, encounter_ref, subject_ref  from irae__cohort_dx_infection UNION ALL
 	select distinct 'dx_kidney'	 as variable, valueset, code, display, system, encounter_ref, subject_ref  from irae__cohort_dx_kidney UNION ALL
