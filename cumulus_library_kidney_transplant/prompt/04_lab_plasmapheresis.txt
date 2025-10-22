@@ -1,2 +1,0 @@
-Which laboratory tests may report abnormal results due to "plasmapheresis" drug(s)?
-Respond with a JSON dictionary where each {key:value} is {TestName:AbnormalResult}.
