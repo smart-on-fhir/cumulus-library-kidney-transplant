@@ -4,10 +4,9 @@ from pathlib import Path
 from cumulus_library_kidney_transplant import filetool
 from cumulus_library_kidney_transplant import fhir2sql
 from cumulus_library_kidney_transplant.study_prefix import PREFIX
-from cumulus_library_kidney_transplant.variable import vsac_api
 from cumulus_library_kidney_transplant.variable.aspect import Aspect, AspectMap, AspectKey      # TODO: refactor
 from cumulus_library_kidney_transplant.variable.vsac_variables_defined import get_aspect_map
-
+from cumulus_library.apis import umls
 # Cancer valueset are currently a special corner case
 DX_CANCER_LIST = ['carcinoma',
                   'squamous',
@@ -56,13 +55,12 @@ def make_aspect(aspect: Aspect) -> List[Path]:
     Download and store JSON and generate SQL for each VSAC ValueSet.
     Each Valueset is cached in valueset to enable faster build caching.
 
-    `vsac_api.py` connect to NLM hosted server (requires UMLS ApiKey) .
     `fhir2sql.py` converts FHIR json into SQL tables for each valueset.
 
     :param aspect: see `list_aspects()`, Dx, Rx, Lab, LabPanel, Proc, Doc
     :return: Path to SQL File to create variable definition valuesets.
     """
-    api = vsac_api.UmlsApi()
+    api = umls.UmlsApi()
     var_list = list()
     print('================================')
     print(f'* aspect {aspect.key.as_json()}')
