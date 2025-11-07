@@ -278,7 +278,8 @@ file_names = [
     "cumulus_library_kidney_transplant/athena/irae__count_document_sample_casedef_post.sql",
     "cumulus_library_kidney_transplant/athena/irae__count_document_sample_casedef_post_10.sql",
     "cumulus_library_kidney_transplant/athena/irae__count_document_sample_casedef_post_100.sql",
-    "cumulus_library_kidney_transplant/nlp_result_to_highlights/builder_irae_highlights.py",
+    "cumulus_library_kidney_transplant/nlp_result_to_highlights/builder_irae_highlights_donor.py",
+    "cumulus_library_kidney_transplant/nlp_result_to_highlights/builder_irae_highlights_longitudinal.py",
 ]
 
 [export_config]
