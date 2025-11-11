@@ -7,8 +7,8 @@ from cumulus_library import base_utils, databases
 from cumulus_library.template_sql import sql_utils
 
 
-class IraeNlpHighlightsBuilder(cumulus_library.BaseTableBuilder):
-    display_text = "Transforming IRAE NLP results into a table of highlights..."
+class IraeNlpHighlightsLongitudinalBuilder(cumulus_library.BaseTableBuilder):
+    display_text = "Transforming longitudinal IRAE NLP results into a table of highlights..."
 
     @staticmethod
     def _is_table_valid(database: databases.DatabaseBackend, table_name: str) -> bool:
@@ -25,11 +25,12 @@ class IraeNlpHighlightsBuilder(cumulus_library.BaseTableBuilder):
             "irae__nlp_gpt5",
             "irae__nlp_gpt_oss_120b",
             "irae__nlp_llama4_scout",
+            "irae__nlp_claude_sonnet45",
         ]
         valid_tables = set()
         with base_utils.get_progress_bar() as progress:
             task = progress.add_task(
-                "Discovering available NLP tables...",
+                "Discovering available NLP tables for longitudinal IRAE variables...",
                 total=len(source_tables),
             )
             for source_table in source_tables:
@@ -46,7 +47,7 @@ class IraeNlpHighlightsBuilder(cumulus_library.BaseTableBuilder):
     ):
         valid_tables = self._get_valid_irae_nlp_tables(config.db)
         query = cumulus_library.get_template(
-            "irae__highlights",
+            "irae__highlights_longitudinal",
             pathlib.Path(__file__).parent,
             table_names=valid_tables,
         )
