@@ -25,6 +25,7 @@ class IraeNlpHighlightsDonorBuilder(cumulus_library.BaseTableBuilder):
             "irae__nlp_donor_gpt5",
             "irae__nlp_donor_gpt_oss_120b",
             "irae__nlp_donor_llama4_scout",
+            "irae__nlp_donor_claude_sonnet45",
         ]
         valid_tables = set()
         with base_utils.get_progress_bar() as progress:

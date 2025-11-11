@@ -25,6 +25,7 @@ class IraeNlpHighlightsLongitudinalBuilder(cumulus_library.BaseTableBuilder):
             "irae__nlp_gpt5",
             "irae__nlp_gpt_oss_120b",
             "irae__nlp_llama4_scout",
+            "irae__nlp_claude_sonnet45",
         ]
         valid_tables = set()
         with base_utils.get_progress_bar() as progress:
