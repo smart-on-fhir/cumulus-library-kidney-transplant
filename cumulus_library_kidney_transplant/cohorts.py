@@ -122,17 +122,6 @@ def make_study_variables_wide() -> Path:
     return filetool.save_athena(file, text)
 
 ###############################################################################
-# WARNING: this is a very BIG operation and might TIME OUT
-#
-# Comorbidity (Variable Pairs) from UNION of study variables
-###############################################################################
-def deprecated_make_variable_pairs() -> Path:
-    file = fhir2sql.name_study_variables('pair') + '.sql'
-    text = filetool.load_template(file)
-    text = filetool.inline_template(text)
-    return filetool.save_athena(file, text)
-
-###############################################################################
 # VSAC and custom variables list
 ###############################################################################
 def list_variables() -> List[str]:
