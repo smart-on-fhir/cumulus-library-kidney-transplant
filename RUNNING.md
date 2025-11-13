@@ -174,7 +174,7 @@ uploading notes to a label studio project.
         <View visibleWhen="region-selected" whenLabelValue="Transplant Date">
             <Header value="Transplant Date" />
             <TextArea name="Transplant Date" toName="text" perRegion="true"
-                placeholder="Enter Transplate Date additional info" />
+                placeholder="Enter Transplant Date additional info" />
         </View>
 
         <View visibleWhen="region-selected" whenLabelValue="Donor Type">
