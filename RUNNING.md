@@ -410,7 +410,7 @@ docker compose run --rm \
   --philter=disable \
   --athena-database <relevant_cumulus_library_database> \
   --athena-workgroup <relevant_cumulus_library_workgroup> \
-  --select-by-athena-table irae__highlights \
+  --select-by-athena-table irae__sample_casedef_post_10 \
   --label-by-athena-table irae__highlights
 ```
 
