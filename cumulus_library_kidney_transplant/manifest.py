@@ -26,7 +26,7 @@ def get_file_config() -> List:
     return read_manifest().get('file_config')
 
 def path_manifest() -> Path:
-    return filetool.path_home('../manifest.toml')
+    return filetool.path_home('./manifest.toml')
 
 def read_manifest(file_path: str | Path = None) -> dict:
     if not file_path:
@@ -68,9 +68,6 @@ def list_tables(file_names: List[Path] | List[str], search_term: str = None) -> 
     """
     table_names = list()
     for table in path_relative(file_names):
-        if 'cumulus_library_kidney_transplant/' in table:
-            print(table)
-            _, table = table.split('cumulus_library_kidney_transplant/')
         table = table.replace('athena/', '').replace('.sql', '')
         if search_term:
             if search_term in table:
