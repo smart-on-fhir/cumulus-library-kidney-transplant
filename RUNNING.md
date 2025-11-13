@@ -410,6 +410,7 @@ docker compose run --rm \
   --philter=disable \
   --athena-database <relevant_cumulus_library_database> \
   --athena-workgroup <relevant_cumulus_library_workgroup> \
+  --select-by-athena-table irae__highlights \
   --label-by-athena-table irae__highlights
 ```
 
