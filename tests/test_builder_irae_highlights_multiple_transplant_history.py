@@ -2,6 +2,7 @@ import pathlib
 from unittest import mock
 
 import pytest
+import sqlglot
 
 import cumulus_library
 from cumulus_library_kidney_transplant.nlp_result_to_highlights import (
@@ -132,3 +133,25 @@ def test_prepare_queries_appends_template_from_valid_tables(database, builder):
     )
     # Finally, confirm that the queries associated with the builder are as expected
     assert builder.queries == [rendered_query]
+
+def test_prepare_queries_appended_sql_is_valid(database, builder):
+    # Build a bogus config with our mock database
+    config = cumulus_library.StudyConfig(
+        db=database,
+        schema="placeholder_schema",
+    )
+    valid_tables = {"irae__nlp_multiple_transplant_history_gpt5"}
+    
+    # Mock methods downstream of prepare_queries before calling it
+    with mock.patch.object(
+        builder,
+        "_get_valid_irae_nlp_tables",
+        return_value=valid_tables,
+    ):
+        builder.prepare_queries(config=config)
+
+    # Use sqlglot parsing to confirm that the generated queries are syntactically valid and create
+    # at least one table
+    for query in builder.queries:  
+        table = str(sqlglot.parse_one(query).find(sqlglot.exp.Table))
+        assert table is not None

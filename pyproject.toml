@@ -49,6 +49,7 @@ dev = [
 test = [
     "pytest",
     "pytest-cov",
+    "sqlglot[rs]"
 ]
 
 [tool.flit.sdist]
