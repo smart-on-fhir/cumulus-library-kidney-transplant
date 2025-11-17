@@ -7,7 +7,7 @@ UNION ALL
 {%- set mention_display_lookup = {
     'multiple_transplant_history_mention' : "Multiple Transplant History"
 } -%}
-CREATE TABLE irae__highlights_donor AS
+CREATE TABLE irae__highlights_multiple_transplant_history AS
 {%- if table_names %}
 {%- for table_name in table_names %}
     {%- for mention_key in mention_display_lookup.keys() %}
