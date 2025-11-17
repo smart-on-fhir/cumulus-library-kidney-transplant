@@ -1,4 +1,4 @@
-"""Module for generating age ranges table from NLP"""
+"""Module for generating donor IRAE NLP highlight tables"""
 
 import pathlib
 
