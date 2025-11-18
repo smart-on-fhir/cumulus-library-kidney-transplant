@@ -16,7 +16,7 @@ from cumulus_library_kidney_transplant.variable import (
     vsac_markdown,
     loinc_doc,
     custom_variables)
-from cumulus_library_kidney_transplant.nlp_result_to_highlights import builder_irae_higlights
+from cumulus_library_kidney_transplant.nlp_result_to_highlights import builder_irae_highlights
 
 ###############################################################################
 #
