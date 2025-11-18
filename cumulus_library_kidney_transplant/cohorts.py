@@ -115,21 +115,24 @@ def make_study_variables_wide() -> Path:
     see `template/cohort_study_variables_wide.sql`
     :return: Path to SQL file `athena/irae__cohort_study_variables_wide.sql`
     """
-    select = fhir2sql.select_lookup_study_variables(list_variables())
+    lookup = fhir2sql.select_lookup_study_variables(list_variables())
+    wide = fhir2sql.select_lookup_study_variables_wide(list_variables())
     file = fhir2sql.name_study_variables('wide') + '.sql'
     text = filetool.load_template(file)
-    text = filetool.inline_template(sql=text, variable=select)
+    text = text.replace('$variable_list_lookup', lookup)
+    text = text.replace('$variable_list_wide', wide)
     return filetool.save_athena(file, text)
 
-###############################################################################
-# WARNING: this is a very BIG operation and might TIME OUT
-#
-# Comorbidity (Variable Pairs) from UNION of study variables
-###############################################################################
-def deprecated_make_variable_pairs() -> Path:
-    file = fhir2sql.name_study_variables('pair') + '.sql'
+def make_study_variables_timeline() -> Path:
+    """
+    All study variable cohorts in one table in WIDE format.
+    each column is a study variable.
+
+    see `template/cohort_study_variables_wide.sql`
+    :return: Path to SQL file `athena/irae__cohort_study_variables_wide.sql`
+    """
+    file = fhir2sql.name_study_variables('timeline') + '.sql'
     text = filetool.load_template(file)
-    text = filetool.inline_template(text)
     return filetool.save_athena(file, text)
 
 ###############################################################################
@@ -186,6 +189,8 @@ def make() -> List[Path]:
     :return: List of SQL files for each study variable COHORT.
     """
     variables_each = make_each_study_variable()
-    variables_union_wide = [make_study_variables_union(), make_study_variables_wide()]
+    variables_union = [make_study_variables_union(),
+                       make_study_variables_wide(),
+                       make_study_variables_timeline()]
 
-    return variables_each + variables_union_wide
+    return variables_each + variables_union

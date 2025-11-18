@@ -3,21 +3,27 @@ with lookup as
 (
     select  distinct variable, valueset, encounter_ref
     from    $prefix__cohort_study_variables
+),
+join_study_period as
+(
+    select  distinct
+            $variable_list_lookup,
+            SP.encounter_ref
+    from    $prefix__cohort_study_period as SP
+    left join lookup on SP.encounter_ref = lookup.encounter_ref
+),
+tabular as
+(
+    select  distinct
+            $variable_list_wide,
+            encounter_ref
+    from    join_study_period
+    group by encounter_ref
 )
-select distinct
-    lookup.variable,
-    $variable_list,
-    SP.status,
-    SP.age_at_visit,
-    SP.gender,
-    SP.race_display,
-    SP.ethnicity_display,
-    SP.enc_class_code,
-    SP.enc_period_start_day,
-    SP.enc_period_start_month,
-    SP.enc_period_start_year,
-    SP.enc_period_end_day,
-    SP.encounter_ref,
-    SP.subject_ref
-from $prefix__cohort_study_population as SP
-left join lookup on SP.encounter_ref = lookup.encounter_ref
+select  distinct
+        tabular.*   ,
+        subject_ref
+from    irae__cohort_study_population as study_pop,
+        tabular
+where   tabular.encounter_ref = study_pop.encounter_ref
+;

@@ -39,6 +39,7 @@ select distinct
     SP.race_display,
     SP.ethnicity_display,
     SP.enc_class_code,
+    SP.enc_period_ordinal,
     SP.enc_period_start_day,
     SP.enc_period_start_month,
     SP.enc_period_start_year,

@@ -12,7 +12,7 @@ from cumulus_library_kidney_transplant import guard, filetool
 #
 ###############################################################################
 def get_study_manifest() -> StudyManifest:
-    return StudyManifest(filetool.path_parent())
+    return StudyManifest(filetool.path_home())
 
 ###############################################################################
 #
@@ -26,7 +26,7 @@ def get_file_config() -> List:
     return read_manifest().get('file_config')
 
 def path_manifest() -> Path:
-    return filetool.path_home('./manifest.toml')
+    return filetool.path_home('manifest.toml')
 
 def read_manifest(file_path: str | Path = None) -> dict:
     if not file_path:
@@ -49,11 +49,8 @@ def backup_manifest(file_path: str | Path = None) -> Path | None:
 
 def write_manifest(file_names: List[Path] | List[str]) -> Path:
     saved = read_manifest()
-    # NOTE: Adding the IRAE highlights builder manually before writing the final manifest
-    file_names_copy = [*file_names]
-    file_names_copy.append('cumulus_library_kidney_transplant/nlp_result_to_highlights/builder_irae_highlights.py')
-    saved['file_config']['file_names'] = path_relative(file_names_copy)
-    saved['export_config']['count_list'] = list_tables(file_names_copy, '_count_')
+    saved['file_config']['file_names'] = path_relative(file_names)
+    saved['export_config']['count_list'] = list_tables(file_names, '_count_')
 
     with open(str(path_manifest()), 'wb') as f:
         tomli_w.dump(saved, f)
@@ -77,7 +74,8 @@ def list_tables(file_names: List[Path] | List[str], search_term: str = None) -> 
     return table_names
 
 def path_relative(file_names: List[Path] | List[str]) -> List[str]:
-    split_token = 'cumulus-library-kidney-transplant/'
+    # split_token = 'cumulus-library-kidney-transplant/'
+    split_token = str(filetool.path_home())+'/'
     simpler = list()
     for filename in guard.as_list_str(file_names):
         if split_token in filename:

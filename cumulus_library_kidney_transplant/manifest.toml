@@ -188,6 +188,7 @@ file_names = [
     "athena/irae__cohort_rx_custom.sql",
     "athena/irae__cohort_study_variables.sql",
     "athena/irae__cohort_study_variables_wide.sql",
+    "athena/irae__cohort_study_variables_timeline.sql",
     "athena/irae__casedef_custom_csv.sql",
     "athena/irae__casedef.sql",
     "athena/irae__cohort_casedef.sql",
