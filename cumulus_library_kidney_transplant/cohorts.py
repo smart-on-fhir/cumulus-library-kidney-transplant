@@ -115,10 +115,12 @@ def make_study_variables_wide() -> Path:
     see `template/cohort_study_variables_wide.sql`
     :return: Path to SQL file `athena/irae__cohort_study_variables_wide.sql`
     """
-    select = fhir2sql.select_lookup_study_variables(list_variables())
+    lookup = fhir2sql.select_lookup_study_variables(list_variables())
+    wide = fhir2sql.select_lookup_study_variables_wide(list_variables())
     file = fhir2sql.name_study_variables('wide') + '.sql'
     text = filetool.load_template(file)
-    text = filetool.inline_template(sql=text, variable=select)
+    text = text.replace('$variable_list_lookup', lookup)
+    text = text.replace('$variable_list_wide', wide)
     return filetool.save_athena(file, text)
 
 ###############################################################################

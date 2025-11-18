@@ -269,3 +269,10 @@ def select_lookup_study_variables(variable_list: List[str]) -> str:
         variable = name_simple(variable)
         sql.append(f"\tIF(lookup.variable='{variable}', lookup.valueset) AS {variable}")
     return ',\n'.join(sql)
+
+def select_lookup_study_variables_wide(variable_list: List[str]) -> str:
+    sql = list()
+    for variable in variable_list:
+        variable = name_simple(variable)
+        sql.append(f"\tarbitrary({variable})    FILTER (where {variable}  is NOT null) as {variable}")
+    return ',\n'.join(sql)
