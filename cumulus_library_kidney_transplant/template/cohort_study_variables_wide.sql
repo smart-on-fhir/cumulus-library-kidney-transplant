@@ -21,30 +21,9 @@ tabular as
     group by encounter_ref
 )
 select  distinct
-        status              	,
-        age_at_visit        	,
-        gender              	,
-        race_display        	,
-        ethnicity_display   	,
-        enc_period_ordinal  	,
-        enc_period_start_day	,
-        enc_period_start_week	,
-        enc_period_start_month	,
-        enc_period_start_year	,
-        enc_period_end_day  	,
-        enc_class_code      	,
-        enc_servicetype_code	,
-        enc_servicetype_system	,
-        enc_servicetype_display	,
-        enc_type_code       	,
-        enc_type_system     	,
-        enc_type_display    	,
-        study_pop.encounter_ref ,
-        study_pop.subject_ref
+        tabular.*   ,
+        subject_ref
 from    irae__cohort_study_population as study_pop,
         tabular
 where   tabular.encounter_ref = study_pop.encounter_ref
-
-
-
-
+;

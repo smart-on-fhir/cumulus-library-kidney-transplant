@@ -39,60 +39,39 @@ join_study_period as
 tabular as
 (
     select  distinct
-            	arbitrary(doc_biopsy)    FILTER (WHERE doc_biopsy  IS NOT NULL) AS doc_biopsy,
-	arbitrary(dx_autoimmune)    FILTER (WHERE dx_autoimmune  IS NOT NULL) AS dx_autoimmune,
-	arbitrary(dx_cancer)    FILTER (WHERE dx_cancer  IS NOT NULL) AS dx_cancer,
-	arbitrary(dx_immunocompromised)    FILTER (WHERE dx_immunocompromised  IS NOT NULL) AS dx_immunocompromised,
-	arbitrary(dx_infection)    FILTER (WHERE dx_infection  IS NOT NULL) AS dx_infection,
-	arbitrary(dx_kidney)    FILTER (WHERE dx_kidney  IS NOT NULL) AS dx_kidney,
-	arbitrary(dx_transplant)    FILTER (WHERE dx_transplant  IS NOT NULL) AS dx_transplant,
-	arbitrary(lab_autoimmune)    FILTER (WHERE lab_autoimmune  IS NOT NULL) AS lab_autoimmune,
-	arbitrary(lab_cbc)    FILTER (WHERE lab_cbc  IS NOT NULL) AS lab_cbc,
-	arbitrary(lab_cmp)    FILTER (WHERE lab_cmp  IS NOT NULL) AS lab_cmp,
-	arbitrary(lab_creatinine)    FILTER (WHERE lab_creatinine  IS NOT NULL) AS lab_creatinine,
-	arbitrary(lab_diabetes)    FILTER (WHERE lab_diabetes  IS NOT NULL) AS lab_diabetes,
-	arbitrary(lab_gfr)    FILTER (WHERE lab_gfr  IS NOT NULL) AS lab_gfr,
-	arbitrary(lab_lft)    FILTER (WHERE lab_lft  IS NOT NULL) AS lab_lft,
-	arbitrary(proc_dialysis)    FILTER (WHERE proc_dialysis  IS NOT NULL) AS proc_dialysis,
-	arbitrary(proc_nephrectomy)    FILTER (WHERE proc_nephrectomy  IS NOT NULL) AS proc_nephrectomy,
-	arbitrary(proc_transplant)    FILTER (WHERE proc_transplant  IS NOT NULL) AS proc_transplant,
-	arbitrary(rx_antibiotics)    FILTER (WHERE rx_antibiotics  IS NOT NULL) AS rx_antibiotics,
-	arbitrary(rx_cancer)    FILTER (WHERE rx_cancer  IS NOT NULL) AS rx_cancer,
-	arbitrary(rx_diabetes)    FILTER (WHERE rx_diabetes  IS NOT NULL) AS rx_diabetes,
-	arbitrary(rx_diuretics)    FILTER (WHERE rx_diuretics  IS NOT NULL) AS rx_diuretics,
-	arbitrary(rx_htn)    FILTER (WHERE rx_htn  IS NOT NULL) AS rx_htn,
-	arbitrary(rx_immunosuppressive)    FILTER (WHERE rx_immunosuppressive  IS NOT NULL) AS rx_immunosuppressive,
-	arbitrary(lab_custom)    FILTER (WHERE lab_custom  IS NOT NULL) AS lab_custom,
-	arbitrary(rx_custom)    FILTER (WHERE rx_custom  IS NOT NULL) AS rx_custom,
+            	arbitrary(doc_biopsy)    FILTER (where doc_biopsy  is NOT null) as doc_biopsy,
+	arbitrary(dx_autoimmune)    FILTER (where dx_autoimmune  is NOT null) as dx_autoimmune,
+	arbitrary(dx_cancer)    FILTER (where dx_cancer  is NOT null) as dx_cancer,
+	arbitrary(dx_immunocompromised)    FILTER (where dx_immunocompromised  is NOT null) as dx_immunocompromised,
+	arbitrary(dx_infection)    FILTER (where dx_infection  is NOT null) as dx_infection,
+	arbitrary(dx_kidney)    FILTER (where dx_kidney  is NOT null) as dx_kidney,
+	arbitrary(dx_transplant)    FILTER (where dx_transplant  is NOT null) as dx_transplant,
+	arbitrary(lab_autoimmune)    FILTER (where lab_autoimmune  is NOT null) as lab_autoimmune,
+	arbitrary(lab_cbc)    FILTER (where lab_cbc  is NOT null) as lab_cbc,
+	arbitrary(lab_cmp)    FILTER (where lab_cmp  is NOT null) as lab_cmp,
+	arbitrary(lab_creatinine)    FILTER (where lab_creatinine  is NOT null) as lab_creatinine,
+	arbitrary(lab_diabetes)    FILTER (where lab_diabetes  is NOT null) as lab_diabetes,
+	arbitrary(lab_gfr)    FILTER (where lab_gfr  is NOT null) as lab_gfr,
+	arbitrary(lab_lft)    FILTER (where lab_lft  is NOT null) as lab_lft,
+	arbitrary(proc_dialysis)    FILTER (where proc_dialysis  is NOT null) as proc_dialysis,
+	arbitrary(proc_nephrectomy)    FILTER (where proc_nephrectomy  is NOT null) as proc_nephrectomy,
+	arbitrary(proc_transplant)    FILTER (where proc_transplant  is NOT null) as proc_transplant,
+	arbitrary(rx_antibiotics)    FILTER (where rx_antibiotics  is NOT null) as rx_antibiotics,
+	arbitrary(rx_cancer)    FILTER (where rx_cancer  is NOT null) as rx_cancer,
+	arbitrary(rx_diabetes)    FILTER (where rx_diabetes  is NOT null) as rx_diabetes,
+	arbitrary(rx_diuretics)    FILTER (where rx_diuretics  is NOT null) as rx_diuretics,
+	arbitrary(rx_htn)    FILTER (where rx_htn  is NOT null) as rx_htn,
+	arbitrary(rx_immunosuppressive)    FILTER (where rx_immunosuppressive  is NOT null) as rx_immunosuppressive,
+	arbitrary(lab_custom)    FILTER (where lab_custom  is NOT null) as lab_custom,
+	arbitrary(rx_custom)    FILTER (where rx_custom  is NOT null) as rx_custom,
             encounter_ref
     from    join_study_period
     group by encounter_ref
 )
 select  distinct
-        status              	,
-        age_at_visit        	,
-        gender              	,
-        race_display        	,
-        ethnicity_display   	,
-        enc_period_ordinal  	,
-        enc_period_start_day	,
-        enc_period_start_week	,
-        enc_period_start_month	,
-        enc_period_start_year	,
-        enc_period_end_day  	,
-        enc_class_code      	,
-        enc_servicetype_code	,
-        enc_servicetype_system	,
-        enc_servicetype_display	,
-        enc_type_code       	,
-        enc_type_system     	,
-        enc_type_display    	,
-        study_pop.encounter_ref ,
-        study_pop.subject_ref
+        tabular.*   ,
+        subject_ref
 from    irae__cohort_study_population as study_pop,
         tabular
 where   tabular.encounter_ref = study_pop.encounter_ref
-
-
-
-
+;

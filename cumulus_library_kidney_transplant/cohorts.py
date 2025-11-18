@@ -123,6 +123,18 @@ def make_study_variables_wide() -> Path:
     text = text.replace('$variable_list_wide', wide)
     return filetool.save_athena(file, text)
 
+def make_study_variables_timeline() -> Path:
+    """
+    All study variable cohorts in one table in WIDE format.
+    each column is a study variable.
+
+    see `template/cohort_study_variables_wide.sql`
+    :return: Path to SQL file `athena/irae__cohort_study_variables_wide.sql`
+    """
+    file = fhir2sql.name_study_variables('timeline') + '.sql'
+    text = filetool.load_template(file)
+    return filetool.save_athena(file, text)
+
 ###############################################################################
 # VSAC and custom variables list
 ###############################################################################
@@ -177,6 +189,8 @@ def make() -> List[Path]:
     :return: List of SQL files for each study variable COHORT.
     """
     variables_each = make_each_study_variable()
-    variables_union_wide = [make_study_variables_union(), make_study_variables_wide()]
+    variables_union = [make_study_variables_union(),
+                       make_study_variables_wide(),
+                       make_study_variables_timeline()]
 
-    return variables_each + variables_union_wide
+    return variables_each + variables_union
