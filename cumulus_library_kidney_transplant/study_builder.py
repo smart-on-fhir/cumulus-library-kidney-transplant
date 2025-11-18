@@ -16,6 +16,7 @@ from cumulus_library_kidney_transplant.variable import (
     vsac_markdown,
     loinc_doc,
     custom_variables)
+from cumulus_library_kidney_transplant.nlp_result_to_highlights import builder_irae_higlights
 
 ###############################################################################
 #
@@ -175,8 +176,8 @@ def make_study_sql(study: StudyBuilderConfig = None) -> List[Path]:
             custom_variables.make() +
             cohorts.make() +
             casedef.make() +
-            cube.make())
-
+            cube.make() +
+            builder_irae_higlights.make())
 
 def make_study(study: StudyBuilderConfig= None) -> Path:
     sql_files = make_study_sql(study)
