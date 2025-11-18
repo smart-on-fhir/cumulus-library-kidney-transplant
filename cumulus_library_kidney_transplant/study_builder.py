@@ -177,7 +177,7 @@ def make_study_sql(study: StudyBuilderConfig = None) -> List[Path]:
             cohorts.make() +
             casedef.make() +
             cube.make() +
-            builder_irae_higlights.make())
+            builder_irae_highlights.make())
 
 def make_study(study: StudyBuilderConfig= None) -> Path:
     sql_files = make_study_sql(study)
