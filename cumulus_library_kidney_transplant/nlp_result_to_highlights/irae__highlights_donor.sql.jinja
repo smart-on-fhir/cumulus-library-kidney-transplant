@@ -48,18 +48,23 @@ CREATE TABLE irae__highlights_donor AS
     {%- if mention_key == 'donor_transplant_date_mention' %}
     WHERE
         src.result.{{mention_key}}.donor_transplant_date IS NOT NULL
+        AND (src.generated_on LIKE '%2025-11-24%' OR src.generated_on LIKE '%2025-11-25%') -- adjust date filter as needed
     {%- elif mention_key == 'donor_type_mention' %}
     WHERE
         src.result.{{mention_key}}.donor_type != 'Donor was not mentioned as living or deceased'
+        AND (src.generated_on LIKE '%2025-11-24%' OR src.generated_on LIKE '%2025-11-25%') -- adjust date filter as needed
     {%- elif mention_key == 'donor_relationship_mention' %}
     WHERE
         src.result.{{mention_key}}.donor_relationship != 'Donor relationship status was not mentioned' 
+        AND (src.generated_on LIKE '%2025-11-24%' OR src.generated_on LIKE '%2025-11-25%') -- adjust date filter as needed
     {%- elif mention_key == 'donor_hla_match_quality_mention' %}
     WHERE
         src.result.{{mention_key}}.donor_hla_match_quality != 'HLA match quality not mentioned' 
+        AND (src.generated_on LIKE '%2025-11-24%' OR src.generated_on LIKE '%2025-11-25%') -- adjust date filter as needed
     {%- elif mention_key == 'donor_hla_mismatch_count_mention' %}
     WHERE
         src.result.{{mention_key}}.donor_hla_mismatch_count != 'HLA mismatch count not mentioned' 
+        AND (src.generated_on LIKE '%2025-11-24%' OR src.generated_on LIKE '%2025-11-25%') -- adjust date filter as needed
     {%- else %}
     {%- endif %}
     {{ union_all_delineate(loop) }}
