@@ -86,28 +86,28 @@ def make_timeline() -> Path:
 ########################################################################################################
 # Samples for Chart Review and QA
 ##########################################################################################################
-def make_samples(size: int = None, period: str = 'post') -> Path:
+def make_samples(cnt_patients: int = None, period: str = 'post') -> Path:
     """
     This method is for sampling Documents for LLM/ChartReview.
     This is not used to generate CUBE data.
 
     See `template/sample_casedef*`
 
-    :param size: number of FHIR DocumentReference samples to select from casedef
+    :param cnt_patients: number of FHIR Patient samples to select from casedef
     :param period: "pre", "index", or "post", samples from before, during, or after first casedef encounter.
     :return: Path to SQL file with case definition samples.
     """
     table = fhir2sql.name_sample('casedef')
-    if size:
+    if cnt_patients:
         template = f"{table}_size.sql"
-        target = f"{table}_{period}_{size}.sql"
+        target = f"{table}_{period}_{cnt_patients}.sql"
     else:
         template = f"{table}.sql"
         target = f"{table}_{period}.sql"
 
     sql = filetool.load_template(template)
     sql = filetool.inline_template(sql)
-    sql = sql.replace('$size', str(size))
+    sql = sql.replace('$size', str(cnt_patients))
     sql = sql.replace('$period', period)
     return filetool.save_athena(target, sql)
 
@@ -152,10 +152,12 @@ def make() -> List[Path]:
             make_cohort(),
             make_cohort('exclude'),
             make_cohort('include'),
+            make_index_date(cohort_table, 'index_post', '>='),
             make_index_date(cohort_table, 'index', '='),
             make_index_date(cohort_table, 'pre', '<'),
             make_index_date(cohort_table, 'post', '>'),
             make_timeline(),
+            make_samples(None, 'index_post'),
             make_samples(None, 'index'),
             make_samples(10, 'index'),
             make_samples(100, 'index'),

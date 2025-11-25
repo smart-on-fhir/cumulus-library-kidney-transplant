@@ -33,8 +33,8 @@ encounter_doc_uniq as
             subject_ref,
             documentreference_ref,
             sort_by_date
-    FROM    index_post
-)
+    FROM    encounter_doc
+),
 ordered as (
     SELECT  distinct
             subject_ref,
