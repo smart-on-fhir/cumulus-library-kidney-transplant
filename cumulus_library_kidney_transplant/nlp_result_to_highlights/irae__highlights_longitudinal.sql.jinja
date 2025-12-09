@@ -25,6 +25,9 @@ CREATE TABLE irae__highlights_longitudinal AS
     SELECT
         src.note_ref,
         src.subject_ref,
+        src.generated_on,
+        src.task_version,
+        src.system_fingerprint,
         '{{ table_name }}' AS origin,
         '{{ mention_display_lookup[mention_key] }}' AS label,
         CONCAT(CAST(span[1] AS VARCHAR), ':', CAST(span[2] AS VARCHAR)) AS span,
@@ -146,6 +149,9 @@ CREATE TABLE irae__highlights_longitudinal AS
 SELECT
     'x' AS note_ref,
     'x' AS subject_ref,
+    'x' AS generated_on,
+    'x' AS task_version,
+    'x' AS system_fingerprint,
     'x' AS origin,
     'x' AS label,
     'x' AS span,
