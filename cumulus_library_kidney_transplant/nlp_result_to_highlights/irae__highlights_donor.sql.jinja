@@ -67,7 +67,7 @@ CREATE TABLE irae__highlights_donor AS
         UNNEST(src.result.{{mention_key}}.spans) AS t3(span)
     -- Custom filtering per mention_key
     WHERE 
-        src.task_version == '7'
+        src.task_version = CAST('7' AS INT)
     {%- if mention_key == 'donor_transplant_date_mention' %}
         AND src.result.{{mention_key}}.donor_transplant_date IS NOT NULL
     {%- elif mention_key == 'donor_type_mention' %}
