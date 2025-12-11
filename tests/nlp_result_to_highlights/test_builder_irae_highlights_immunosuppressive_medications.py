@@ -6,7 +6,7 @@ import sqlglot
 
 import cumulus_library
 from cumulus_library_kidney_transplant.nlp_result_to_highlights import (
-    builder_irae_highlights_donor as builder_module,
+    builder_irae_highlights_immunosuppressive_medications as builder_module,
 )
 
 @pytest.fixture()
