@@ -43,7 +43,7 @@ SELECT
     'Immunosuppressive Medication' AS label,
     CONCAT(CAST(span[1] AS VARCHAR), ':', CAST(span[2] AS VARCHAR)) AS span,
     'Medication' AS sublabel_name,
-    medication.status AS sublabel_value
+    medication.ingredient AS sublabel_value
 FROM 
     {{ table_name }} AS src,
     UNNEST(src.result.immunosuppressive_medication_mentions) AS t1(medication),
