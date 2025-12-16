@@ -1,0 +1,74 @@
+<View style="display: flex; align-items: flex-start; gap: 1em; max-height: 100vh; overflow-y: hidden;">
+    <!-- Left panel: labels + filter -->
+    <View style="width: 350px; padding: 0.5em; background: #f7f7f7; border-radius: 4px; max-height: 80vh; overflow-y: auto;">
+        <Header value="Patient $patient_id" style="overflow: hidden; width: 250px; text-overflow: ellipsis; white-space: nowrap; margin: 5px 0px;"/>
+
+        <Labels name="label" toName="text" showInline="false">
+            <Label value="Immunosuppressive Medication" hotkey="W" background="#a3fff9"/>
+            <Label value="Flag Review" hotkey="/"/>
+            <Label value="Exclude Patient" hotkey="X"/>
+        </Labels> 
+
+        <View visibleWhen="region-selected" whenLabelValue="Flag Review">
+            <Header value="Flag Review"/>
+            <TextArea name="Flag Review" toName="text" perRegion="true" placeholder="Enter Flag Review additional info"/>
+        </View>
+
+        <View visibleWhen="region-selected" whenLabelValue="Exclude Patient">
+            <Header value="Exclude Patient"/>
+            <TextArea name="Exclude Patient" toName="text" perRegion="true" placeholder="Enter Exclude Patient additional info"/>
+        </View>
+
+        <View visibleWhen="region-selected" whenLabelValue="Immunosuppressive Medication">
+            <Header value="Medication Status" />
+            <Choices name="Medication Status" toName="text" choice="single-radio" visibleWhen="region-selected" whenLabelValue="Immunosuppressive Medication" perRegion="true">
+                <Choice value="Medication order is active (currently prescribed and intended for ongoing use)."/>
+                <Choice value="Medication is planned/ordered/prescribed but therapy has not yet started."/>
+                <Choice value="Medication course is finished (all doses given or intended duration completed)."/>
+                <Choice value="Medication was stopped or permanently discontinued before completion."/>
+                <Choice value="Medication order was canceled/withdrawn before any doses were administered."/>
+                <Choice value="Medication is temporarily paused (on-hold, suspended, or interrupted)."/>
+                <Choice value="None of the above"/>
+            </Choices>
+        </View>
+
+        <View visibleWhen="region-selected" whenLabelValue="Immunosuppressive Medication">
+            <Header value="Medication"/>
+            <Choices name="Medication" toName="text" choice="single-radio" visibleWhen="region-selected" whenLabelValue="Immunosuppressive Medication" perRegion="true">
+                <Choice value="Azathioprine"/>
+                <Choice value="Mycophenolate Mofetil"/>
+                <Choice value="Other anti-metabolite ingredient"/>
+                <Choice value="Cyclosporine"/>
+                <Choice value="Tacrolimus"/>
+                <Choice value="Other calcineurin inhibitor ingredient"/>
+                <Choice value="Methylprednisolone"/>
+                <Choice value="Prednisolone"/>
+                <Choice value="Prednisone"/>
+                <Choice value="Other corticosteroid ingredient"/>
+                <Choice value="Belatacept"/>
+                <Choice value="Abatacept"/>
+                <Choice value="Other Costimulation blocker ingredient"/>
+                <Choice value="Intravenous Immunoglobulin (IVIG)"/>
+                <Choice value="Cytogam (CMV-specific hyperimmune globulin)"/>
+                <Choice value="Other immunoglobulin therapy"/>
+                <Choice value="Everolimus"/>
+                <Choice value="Sirolimus"/>
+                <Choice value="Other mTOR inhibitor ingredient"/>
+                <Choice value="Alemtuzumab"/>
+                <Choice value="Basiliximab"/>
+                <Choice value="Daclizumab"/>
+                <Choice value="Rituximab"/>
+                <Choice value="Other Monoclonal antibody drug"/>
+                <Choice value="Antithymocyte Globulin (ATG)"/>
+                <Choice value="Other polyclonal antibodies ingredient"/>
+                <Choice value="None of the above"/>
+            </Choices>
+        </View>
+
+    </View>
+
+    <!-- Right panel: text to annotate -->
+    <View style="flex: 1; max-height: 80vh; overflow-y: auto;">
+        <Text name="text" value="$text" granularity="word"/>
+    </View>
+</View>
