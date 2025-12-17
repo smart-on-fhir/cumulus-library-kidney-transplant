@@ -1,0 +1,139 @@
+<View style="display: flex; align-items: flex-start; gap: 1em; max-height: 100vh; overflow-y: hidden;">
+    <!-- Left panel: labels + filter -->
+    <View style="width: 350px; padding: 0.5em; background: #f7f7f7; border-radius: 4px; max-height: 80vh; overflow-y: auto;">        
+        <Header value="Patient $patient_id" style="overflow: hidden; width: 250px; text-overflow: ellipsis; white-space: nowrap; margin: 5px 0px;"/>
+
+        <Labels name="label" toName="text" showInline="false">
+            <Label value="Transplant Date" hotkey="W" background="#a3fff9"/>
+            <Label value="Donor Type" hotkey="T" background="#5900ff"/>
+            <Label value="Donor Relationship" hotkey="S" background="#00ff1e"/>
+            <Label value="Hla Match Quality" hotkey="Q" background="#ff0000"/>
+            <Label value="Hla Mismatch Count" hotkey="M" background="#ff0000"/>
+            <Label value="Donor Serostatus" hotkey="D" background="#008b8b"/>
+            <Label value="Donor Serostatus EBV" background="#008b8b"/>
+            <Label value="Donor Serostatus CMV" background="#008b8b"/>
+            <Label value="Recipient Serostatus" hotkey="R" background="#e59137"/>
+            <Label value="Recipient Serostatus CMV" background="#e59137"/>
+            <Label value="Recipient Serostatus EBV" background="#e59137"/>
+            <Label value="FlagReview" hotkey="/"/>
+            <Label value="Exclude Patient" hotkey="X"/>
+        </Labels> 
+
+        <View visibleWhen="region-selected" whenLabelValue="FlagReview">
+            <Header value="FlagReview"/>
+            <TextArea name="FlagReview" toName="text" perRegion="true" placeholder="Enter FlagReview additional info"/>
+        </View>
+        
+        <View visibleWhen="region-selected" whenLabelValue="Exclude Patient">
+            <Header value="Exclude Patient"/>
+            <TextArea name="Exclude Patient" toName="text" perRegion="true" placeholder="Enter Exclude Patient additional info"/>
+        </View>
+
+        <View visibleWhen="region-selected" whenLabelValue="Transplant Date">
+            <Header value="Transplant Date"/>
+            <TextArea name="Transplant Date" toName="text" perRegion="true" placeholder="Enter Transplant Date additional info"/>
+        </View>
+
+        <View visibleWhen="region-selected" whenLabelValue="Donor Type">
+            <Header value="Donor Type"/>
+            <Choices name="Donor Type" toName="text" choice="single-radio" visibleWhen="region-selected" whenLabelValue="Donor Type" perRegion="true">
+                <Choice value="Donor was alive at time of renal transplant"/>
+                <Choice value="Donor was deceased at time of renal transplant"/>
+                <Choice value="Donor was not mentioned as living or deceased"/>
+            </Choices>
+        </View>
+
+        <View visibleWhen="region-selected" whenLabelValue="Donor Relationship">
+            <Header value="Donor Relationship"/>
+            <Choices name="Donor Relationship" toName="text" choice="single-radio" visibleWhen="region-selected" whenLabelValue="Donor Relationship" perRegion="true">
+                <Choice value="Donor was biologically related to the renal transplant recipient"/>
+                <Choice value="Donor was biologically unrelated to the renal transplant recipient"/>
+                <Choice value="Donor relationship status was not mentioned"/>
+            </Choices>
+        </View>
+
+        <View visibleWhen="region-selected" whenLabelValue="Hla Match Quality">
+            <Header value="Hla Match Quality"/>
+            <Choices name="Hla Match Quality" toName="text" choice="single-radio" visibleWhen="region-selected" whenLabelValue="Hla Match Quality" perRegion="true">
+                <Choice value="Well matched (0-1 mismatches) OR recipient explicitly documented as not sensitized"/>
+                <Choice value="Moderately matched (2-4 mismatches) OR recipient explicitly documented as sensitized"/>
+                <Choice value="Poorly matched (5-6 mismatches) OR recipient explicitly documented as highly sensitized"/>
+                <Choice value="HLA match quality not mentioned"/>
+            </Choices>
+        </View>
+
+        <View visibleWhen="region-selected" whenLabelValue="Hla Mismatch Count">
+            <Header value="Hla Mismatch Count"/>
+            <Choices name="Hla Mismatch Count" toName="text" choice="single-radio" visibleWhen="region-selected" whenLabelValue="Hla Mismatch Count" perRegion="true">
+                <Choice value="0"/>
+                <Choice value="1"/>
+                <Choice value="2"/>
+                <Choice value="3"/>
+                <Choice value="4"/>
+                <Choice value="5"/>
+                <Choice value="6"/>
+                <Choice value="HLA mismatch count not mentioned"/>
+            </Choices>
+        </View>
+
+        <View visibleWhen="region-selected" whenLabelValue="Donor Serostatus">
+            <Header value="Donor Serostatus"/>
+            <Choices name="Donor Serostatus" toName="text" choice="single-radio" visibleWhen="region-selected" whenLabelValue="Donor Serostatus" perRegion="true">
+                <Choice value="SEROPOSITIVE"/>
+                <Choice value="SERONEGATIVE"/>
+                <Choice value="NOT_MENTIONED"/>
+            </Choices>
+        </View>
+        
+        <View visibleWhen="region-selected" whenLabelValue="Donor Serostatus EBV">
+            <Header value="Donor Serostatus EBV"/>
+            <Choices name="Donor Serostatus EBV" toName="text" choice="single-radio" visibleWhen="region-selected" whenLabelValue="Donor Serostatus EBV" perRegion="true">
+                <Choice value="SEROPOSITIVE"/>
+                <Choice value="SERONEGATIVE"/>
+                <Choice value="NOT_MENTIONED"/>
+            </Choices>
+        </View>
+        
+        <View visibleWhen="region-selected" whenLabelValue="Donor Serostatus CMV">
+            <Header value="Donor Serostatus CMV"/>
+            <Choices name="Donor Serostatus CMV" toName="text" choice="single-radio" visibleWhen="region-selected" whenLabelValue="Donor Serostatus CMV" perRegion="true">
+                <Choice value="SEROPOSITIVE"/>
+                <Choice value="SERONEGATIVE"/>
+                <Choice value="NOT_MENTIONED"/>
+            </Choices>
+        </View>
+
+        <View visibleWhen="region-selected" whenLabelValue="Recipient Serostatus">
+            <Header value="Recipient Serostatus"/>
+            <Choices name="Recipient Serostatus" toName="text" choice="single-radio" visibleWhen="region-selected" whenLabelValue="Recipient Serostatus" perRegion="true">
+                <Choice value="SEROPOSITIVE"/>
+                <Choice value="SERONEGATIVE"/>
+                <Choice value="NOT_MENTIONED"/>
+            </Choices>
+        </View>
+        
+        <View visibleWhen="region-selected" whenLabelValue="Recipient Serostatus CMV">
+            <Header value="Recipient Serostatus CMV"/>
+            <Choices name="Recipient Serostatus CMV" toName="text" choice="single-radio" visibleWhen="region-selected" whenLabelValue="Recipient Serostatus CMV" perRegion="true">
+                <Choice value="SEROPOSITIVE"/>
+                <Choice value="SERONEGATIVE"/>
+                <Choice value="NOT_MENTIONED"/>
+            </Choices>
+        </View>
+        
+        <View visibleWhen="region-selected" whenLabelValue="Recipient Serostatus EBV">
+            <Header value="Recipient Serostatus EBV"/>
+            <Choices name="Recipient Serostatus EBV" toName="text" choice="single-radio" visibleWhen="region-selected" whenLabelValue="Recipient Serostatus EBV" perRegion="true">
+                <Choice value="SEROPOSITIVE"/>
+                <Choice value="SERONEGATIVE"/>
+                <Choice value="NOT_MENTIONED"/>
+            </Choices>
+        </View>
+
+    </View>
+
+    <!-- Right panel: text to annotate -->
+    <View style="flex: 1; max-height: 80vh; overflow-y: auto;">
+        <Text name="text" value="$text" granularity="word"/>
+    </View>
+</View>

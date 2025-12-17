@@ -260,6 +260,7 @@ file_names = [
     "athena/irae__count_document_sample_casedef_post.sql",
     "athena/irae__count_document_sample_casedef_post_10.sql",
     "athena/irae__count_document_sample_casedef_post_100.sql",
+    "nlp_result_to_highlights/builder_irae_highlights_immunosuppressive_medications.py",
     "nlp_result_to_highlights/builder_irae_highlights_multiple_transplant_history.py",
     "nlp_result_to_highlights/builder_irae_highlights_donor.py",
     "nlp_result_to_highlights/builder_irae_highlights_longitudinal.py",
