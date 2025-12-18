@@ -16,6 +16,7 @@ Note that these instructions only use the `irae__sample_casedef_*_10` sample of 
 created by the kidney study. Full runs of this work should reference the full set of notes, at 
 `irae__sample_casedef_*`.
 
+A reminder that PHI-free example notes and example LLM responses can be found in our [cumulus-kidney-transplant-examples](https://github.com/smart-on-fhir/cumulus-kidney-transplant-examples) repo. Specifically, LLM responses for our four tasks can be found under [/examples/fhir/llm-output](https://github.com/smart-on-fhir/cumulus-kidney-transplant-examples/tree/main/examples/fhir/llm-output)
 
 ## Prerequisites
 
