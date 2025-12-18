@@ -79,11 +79,11 @@ Gather some DocumentReference ndjson from your EHR.
 You can either re-export the documents of interest,
 or use ndjson from a previous export. Ideally these notes
 are pre-inlined with clinical note content, as this will 
-save time/hassle re-downloading the notes everytime we run 
+save time/hassle re-downloading the notes every time we run 
 NLP. If you're gathering notes using our `smart-fetch` tool 
 the notes should be [inlined automatically when exporting](https://docs.smarthealthit.org/cumulus/fetch/hydration.html#inlining-clinical-notes).
 
-Place the ndjson in a folder, and take note of the pathes to 
+Place the ndjson in a folder, and take note of the paths to 
 both your peri-operative notes and your post-operative notes
 for later steps.
 
@@ -177,7 +177,7 @@ to save time, targeting the following builders:
 3. `builder_irae_highlights_donor`. 
 4. `builder_irae_highlights_longitudinal`. 
 
-### 5.a Immunosuppresive Medications
+### 5.a Immunosuppressive Medications against peri-operative notes
 ```sh
 cumulus-library build \
   --database <relevant_cumulus_library_database> \
@@ -188,7 +188,7 @@ cumulus-library build \
   --builder builder_irae_highlights_immunosuppressive_medications
 ```
 
-### 5.b History of Multiple Transplants
+### 5.b History of Multiple Transplants against peri-operative notes
 ```sh
 cumulus-library build \
   --database <relevant_cumulus_library_database> \
@@ -199,7 +199,7 @@ cumulus-library build \
   --builder builder_irae_highlights_multiple_transplant_history
 ```
 
-### 5.c Donor characteristics
+### 5.c Donor Characteristics against peri-operative notes
 ```sh
 cumulus-library build \
   --database <relevant_cumulus_library_database> \
@@ -210,7 +210,7 @@ cumulus-library build \
   --builder builder_irae_highlights_donor
 ```
 
-### 5.d Outcome variables
+### 5.d Outcome Variables against post-operative notes
 ```sh
 cumulus-library build \
   --database <relevant_cumulus_library_database> \
@@ -227,7 +227,7 @@ uploading notes to a label studio project.
 
 ## 6. Configure Label Studio
 
-For chart annotation, individual reviewers should have separate projects from eachother 
+For chart annotation, individual reviewers should have separate projects from each other 
 to ensure blinding against other annotators responses. Additionally, each NLP task will have a
 different UI configuration. Those config files can be found in this project, with the `LS_*` prefix.
 For each annotator, for each one of the 4 NLP tasks above, we should do the following
@@ -248,7 +248,7 @@ For **every project** you've created you now need to upload highlighted notes. R
 [upload-notes docs](https://docs.smarthealthit.org/cumulus/etl/chart-review.html) as needed, but 
 you'll want to run a variation of `upload-notes` with the following options:
 
-### 7.a Immunosuppresive Medications 
+### 7.a Immunosuppressive Medications against peri-operative notes 
 ```shell
 docker compose run --rm \
   cumulus-etl upload-notes \
@@ -265,7 +265,7 @@ docker compose run --rm \
   --label-by-athena-table irae_highlights_immunosuppressive_medications
 ```
 
-### 7.b History of Multiple Transplants 
+### 7.b History of Multiple Transplants against peri-operative notes 
 ```shell
 docker compose run --rm \
   cumulus-etl upload-notes \
@@ -282,7 +282,7 @@ docker compose run --rm \
   --label-by-athena-table irae_highlights_multiple_transplant_history
 ```
 
-### 7.c Donor characteristics 
+### 7.c Donor Characteristics against peri-operative notes 
 ```shell
 docker compose run --rm \
   cumulus-etl upload-notes \
@@ -299,7 +299,7 @@ docker compose run --rm \
   --label-by-athena-table irae_highlights_donor
 ```
 
-### 7.d Outcome variables 
+### 7.d Outcome Variables against post-operative notes 
 ```shell
 docker compose run --rm \
   cumulus-etl upload-notes \

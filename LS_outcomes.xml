@@ -35,9 +35,9 @@
             <Header value="Rx Therapeutic" />
             <Choices name="Rx Therapeutic" toName="text" choice="single-radio" visibleWhen="region-selected" whenLabelValue="Rx Therapeutic" perRegion="true">
                 <Choice value="Immunosuppression levels are documented as therapeutic, adequate, or within target range."/>
-            <Choice value="Immunosuppression levels are documented as subtherapeutic, insufficient, or below target range."/>
-            <Choice value="Immunosuppression levels are documented as supratherapeutic, above therapeutic level, or above target range."/>
-            <Choice value="None of the above"/>
+                <Choice value="Immunosuppression levels are documented as subtherapeutic, insufficient, or below target range."/>
+                <Choice value="Immunosuppression levels are documented as supratherapeutic, above therapeutic level, or above target range."/>
+                <Choice value="None of the above"/>
             </Choices>
         </View>
 
@@ -45,9 +45,9 @@
             <Header value="Rx Compliance" />
             <Choices name="Rx Compliance" toName="text" choice="single-radio" visibleWhen="region-selected" whenLabelValue="Rx Compliance" perRegion="true">
                 <Choice value="Patient is documented as compliant with immunosuppressive medications."/>
-            <Choice value="Patient is documented as only partially compliant with immunosuppressive medications."/>
-            <Choice value="Patient is documented as noncompliant with immunosuppressive medications."/>
-            <Choice value="None of the above"/>
+                <Choice value="Patient is documented as only partially compliant with immunosuppressive medications."/>
+                <Choice value="Patient is documented as noncompliant with immunosuppressive medications."/>
+                <Choice value="None of the above"/>
             </Choices>
         </View>
 
@@ -55,8 +55,8 @@
             <Header value="DSA" />
             <Choices name="DSA" toName="text" choice="single-radio" visibleWhen="region-selected" whenLabelValue="DSA" perRegion="true">
                 <Choice value="DSA diagnostic test positive, DSA diagnosis 'confirmed' or 'positive', or increase in immunosuppression due to DSA"/>
-            <Choice value="DSA suspected, DSA likely, DSA cannot be ruled out, DSA test result pending, or treatment with IVIG/plasmapheresis"/>
-            <Choice value="None of the above"/>
+                <Choice value="DSA suspected, DSA likely, DSA cannot be ruled out, DSA test result pending, or treatment with IVIG/plasmapheresis"/>
+                <Choice value="None of the above"/>
             </Choices>
         </View>
 
@@ -64,8 +64,8 @@
             <Header value="Infection" />
             <Choices name="Infection" toName="text" choice="single-radio" visibleWhen="region-selected" whenLabelValue="Infection" perRegion="true">
                 <Choice value="Infection confirmed by laboratory test or imaging, infection diagnosis was 'confirmed' or 'positive', or reduced immunosuppression due to infection"/>
-            <Choice value="Infection is suspected, likely, cannot be ruled out, infection is a differential diagnosis or infectious test result is pending"/>
-            <Choice value="None of the above"/>
+                <Choice value="Infection is suspected, likely, cannot be ruled out, infection is a differential diagnosis or infectious test result is pending"/>
+                <Choice value="None of the above"/>
             </Choices>
         </View>
 
@@ -73,8 +73,8 @@
             <Header value="Viral" />
             <Choices name="Viral" toName="text" choice="single-radio" visibleWhen="region-selected" whenLabelValue="Viral" perRegion="true">
                 <Choice value="Viral infection confirmed by laboratory test or imaging, viral infection diagnosis was 'confirmed' or 'positive', or reduced immunosuppression due to viral infection"/>
-            <Choice value="Viral infection is suspected, likely, cannot be ruled out, viral infection is a differential diagnosis or viral test result is pending"/>
-            <Choice value="None of the above"/>
+                <Choice value="Viral infection is suspected, likely, cannot be ruled out, viral infection is a differential diagnosis or viral test result is pending"/>
+                <Choice value="None of the above"/>
             </Choices>
         </View>
 
@@ -82,8 +82,8 @@
             <Header value="Bacterial" />
             <Choices name="Bacterial" toName="text" choice="single-radio" visibleWhen="region-selected" whenLabelValue="Bacterial" perRegion="true">
                 <Choice value="Bacterial infection confirmed by laboratory test or imaging, bacterial infection diagnosis was 'confirmed' or 'positive', or reduced immunosuppression due to bacterial infection"/>
-            <Choice value="Bacterial infection is suspected, likely, cannot be ruled out, bacterial infection is a differential diagnosis or bacterial test result is pending"/>
-            <Choice value="None of the above"/>
+                <Choice value="Bacterial infection is suspected, likely, cannot be ruled out, bacterial infection is a differential diagnosis or bacterial test result is pending"/>
+                <Choice value="None of the above"/>
             </Choices>
         </View>
 
@@ -91,8 +91,8 @@
             <Header value="Fungal" />
             <Choices name="Fungal" toName="text" choice="single-radio" visibleWhen="region-selected" whenLabelValue="Fungal" perRegion="true">
                 <Choice value="Fungal infection confirmed by laboratory test or imaging, fungal infection diagnosis was 'confirmed' or 'positive', or reduced immunosuppression due to fungal infection"/>
-            <Choice value="Fungal infection is suspected, likely, cannot be ruled out, fungal infection is a differential diagnosis or fungal test result is pending"/>
-            <Choice value="None of the above"/>
+                <Choice value="Fungal infection is suspected, likely, cannot be ruled out, fungal infection is a differential diagnosis or fungal test result is pending"/>
+                <Choice value="None of the above"/>
             </Choices>
         </View>
 
@@ -100,9 +100,9 @@
             <Header value="Graft Rejection" />
             <Choices name="Graft Rejection" toName="text" choice="single-radio" visibleWhen="region-selected" whenLabelValue="Graft Rejection" perRegion="true">
                 <Choice value="Biopsy proven kidney graft rejection or pathology proven kidney graft rejection"/>
-            <Choice value="Kidney graft rejection was 'diagnosed', 'confirmed' or 'positive'"/>
-            <Choice value="Kidney graft rejection presumed, suspected, likely, cannot be ruled out, biopsy result pending, or treatment with IVIG/plasmapheresis"/>
-            <Choice value="None of the above"/>
+                <Choice value="Kidney graft rejection was 'diagnosed', 'confirmed' or 'positive'"/>
+                <Choice value="Kidney graft rejection presumed, suspected, likely, cannot be ruled out, biopsy result pending, or treatment with IVIG/plasmapheresis"/>
+                <Choice value="None of the above"/>
             </Choices>
         </View>
 
@@ -110,8 +110,8 @@
             <Header value="Graft Failure" />
             <Choices name="Graft Failure" toName="text" choice="single-radio" visibleWhen="region-selected" whenLabelValue="Graft Failure" perRegion="true">
                 <Choice value="Kidney graft has failed or kidney graft loss"/>
-            <Choice value="Kidney graft failure presumed, suspected, likely, or cannot be ruled out"/>
-            <Choice value="None of the above"/>
+                <Choice value="Kidney graft failure presumed, suspected, likely, or cannot be ruled out"/>
+                <Choice value="None of the above"/>
             </Choices>
         </View>
 
@@ -119,9 +119,9 @@
             <Header value="PTLD" />
             <Choices name="PTLD" toName="text" choice="single-radio" visibleWhen="region-selected" whenLabelValue="PTLD" perRegion="true">
                 <Choice value="Biopsy proven or pathology proven PTLD"/>
-            <Choice value="PTLD was 'diagnosed', 'confirmed' or 'positive' or viral positive lymphoma"/>
-            <Choice value="PTLD presumed, suspected, likely, cannot be ruled out, PTLD biopsy result pending, or treatment with chemotherapy/radiation"/>
-            <Choice value="None of the above"/>
+                <Choice value="PTLD was 'diagnosed', 'confirmed' or 'positive' or viral positive lymphoma"/>
+                <Choice value="PTLD presumed, suspected, likely, cannot be ruled out, PTLD biopsy result pending, or treatment with chemotherapy/radiation"/>
+                <Choice value="None of the above"/>
             </Choices>
         </View>
 
@@ -129,9 +129,9 @@
             <Header value="Cancer" />
             <Choices name="Cancer" toName="text" choice="single-radio" visibleWhen="region-selected" whenLabelValue="Cancer" perRegion="true">
                 <Choice value="Biopsy proven or pathology proven cancer"/>
-            <Choice value="Cancer was 'diagnosed', 'confirmed' or 'positive'"/>
-            <Choice value="Cancer is presumed, suspected, likely, cannot be ruled out, biopsy of any lesion, or treatment with chemotherapy/radiation"/>
-            <Choice value="None of the above"/>
+                <Choice value="Cancer was 'diagnosed', 'confirmed' or 'positive'"/>
+                <Choice value="Cancer is presumed, suspected, likely, cannot be ruled out, biopsy of any lesion, or treatment with chemotherapy/radiation"/>
+                <Choice value="None of the above"/>
             </Choices>
         </View>
 
@@ -139,7 +139,7 @@
             <Header value="Deceased" />
             <Choices name="Deceased" toName="text" choice="single-radio" visibleWhen="region-selected" whenLabelValue="Deceased" perRegion="true">
                 <Choice value="True"/>
-            <Choice value="False"/>
+                <Choice value="False"/>
             </Choices>
         </View>
 
