@@ -28,7 +28,6 @@
                 <Choice value="Medication was stopped or permanently discontinued before completion."/>
                 <Choice value="Medication order was canceled/withdrawn before any doses were administered."/>
                 <Choice value="Medication is temporarily paused (on-hold, suspended, or interrupted)."/>
-                <Choice value="None of the above"/>
             </Choices>
         </View>
 
@@ -61,7 +60,6 @@
                 <Choice value="Other Monoclonal antibody drug"/>
                 <Choice value="Antithymocyte Globulin (ATG)"/>
                 <Choice value="Other polyclonal antibodies ingredient"/>
-                <Choice value="None of the above"/>
             </Choices>
         </View>
 

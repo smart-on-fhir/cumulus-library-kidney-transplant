@@ -39,7 +39,6 @@
             <Choices name="Donor Type" toName="text" choice="single-radio" visibleWhen="region-selected" whenLabelValue="Donor Type" perRegion="true">
                 <Choice value="Donor was alive at time of renal transplant"/>
                 <Choice value="Donor was deceased at time of renal transplant"/>
-                <Choice value="Donor was not mentioned as living or deceased"/>
             </Choices>
         </View>
 
@@ -48,7 +47,6 @@
             <Choices name="Donor Relationship" toName="text" choice="single-radio" visibleWhen="region-selected" whenLabelValue="Donor Relationship" perRegion="true">
                 <Choice value="Donor was biologically related to the renal transplant recipient"/>
                 <Choice value="Donor was biologically unrelated to the renal transplant recipient"/>
-                <Choice value="Donor relationship status was not mentioned"/>
             </Choices>
         </View>
 
@@ -58,7 +56,6 @@
                 <Choice value="Well matched (0-1 mismatches) OR recipient explicitly documented as not sensitized"/>
                 <Choice value="Moderately matched (2-4 mismatches) OR recipient explicitly documented as sensitized"/>
                 <Choice value="Poorly matched (5-6 mismatches) OR recipient explicitly documented as highly sensitized"/>
-                <Choice value="HLA match quality not mentioned"/>
             </Choices>
         </View>
 
@@ -72,7 +69,6 @@
                 <Choice value="4"/>
                 <Choice value="5"/>
                 <Choice value="6"/>
-                <Choice value="HLA mismatch count not mentioned"/>
             </Choices>
         </View>
 
@@ -81,7 +77,6 @@
             <Choices name="Donor Serostatus" toName="text" choice="single-radio" visibleWhen="region-selected" whenLabelValue="Donor Serostatus" perRegion="true">
                 <Choice value="SEROPOSITIVE"/>
                 <Choice value="SERONEGATIVE"/>
-                <Choice value="NOT_MENTIONED"/>
             </Choices>
         </View>
         
@@ -90,7 +85,6 @@
             <Choices name="Donor Serostatus EBV" toName="text" choice="single-radio" visibleWhen="region-selected" whenLabelValue="Donor Serostatus EBV" perRegion="true">
                 <Choice value="SEROPOSITIVE"/>
                 <Choice value="SERONEGATIVE"/>
-                <Choice value="NOT_MENTIONED"/>
             </Choices>
         </View>
         
@@ -99,7 +93,6 @@
             <Choices name="Donor Serostatus CMV" toName="text" choice="single-radio" visibleWhen="region-selected" whenLabelValue="Donor Serostatus CMV" perRegion="true">
                 <Choice value="SEROPOSITIVE"/>
                 <Choice value="SERONEGATIVE"/>
-                <Choice value="NOT_MENTIONED"/>
             </Choices>
         </View>
 
@@ -108,7 +101,6 @@
             <Choices name="Recipient Serostatus" toName="text" choice="single-radio" visibleWhen="region-selected" whenLabelValue="Recipient Serostatus" perRegion="true">
                 <Choice value="SEROPOSITIVE"/>
                 <Choice value="SERONEGATIVE"/>
-                <Choice value="NOT_MENTIONED"/>
             </Choices>
         </View>
         
@@ -117,7 +109,6 @@
             <Choices name="Recipient Serostatus CMV" toName="text" choice="single-radio" visibleWhen="region-selected" whenLabelValue="Recipient Serostatus CMV" perRegion="true">
                 <Choice value="SEROPOSITIVE"/>
                 <Choice value="SERONEGATIVE"/>
-                <Choice value="NOT_MENTIONED"/>
             </Choices>
         </View>
         
@@ -126,7 +117,6 @@
             <Choices name="Recipient Serostatus EBV" toName="text" choice="single-radio" visibleWhen="region-selected" whenLabelValue="Recipient Serostatus EBV" perRegion="true">
                 <Choice value="SEROPOSITIVE"/>
                 <Choice value="SERONEGATIVE"/>
-                <Choice value="NOT_MENTIONED"/>
             </Choices>
         </View>
 
