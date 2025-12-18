@@ -5,15 +5,18 @@ encounter_doc as (
             etl.group_name,
             casedef.subject_ref,
             casedef.encounter_ref,
-            doc.documentreference_ref,
-            doc.enc_period_ordinal,
-            doc.enc_period_start_day,
-            doc.doc_author_day,
-            doc.doc_date,
             case
             when (doc.doc_author_day    is NOT null)    then doc.doc_author_day
             when (doc.doc_date          is NOT null)    then doc.doc_date
-            else doc.enc_period_start_day               end as sort_by_date
+            else doc.enc_period_start_day               end as sort_by_date,
+            doc.documentreference_ref,
+            doc.doc_author_day,
+            doc.doc_date,
+            doc.enc_period_start_day,
+            doc.enc_period_ordinal,
+            doc.doc_type_code,
+            doc.doc_type_display,
+            doc.doc_type_system
     FROM
             etl__completion_encounters              as etl,
             irae__cohort_casedef_pre         as casedef,
@@ -23,26 +26,33 @@ encounter_doc as (
     AND     casedef.encounter_ref   = concat('Encounter/', etl.encounter_id)
     ORDER BY
             casedef.subject_ref
-), 
+),
+encounter_doc_uniq as
+(
+    SELECT  DISTINCT
+            subject_ref,
+            documentreference_ref,
+            sort_by_date
+    FROM    encounter_doc
+),
 ordered as (
     SELECT  distinct
-            encounter_doc.*,
+            subject_ref,
+            documentreference_ref,
+            sort_by_date,
             ROW_NUMBER() OVER (
                 PARTITION   BY  subject_ref
-                ORDER       BY  enc_period_start_day,
-                                sort_by_date,
+                ORDER       BY  sort_by_date,
                                 documentreference_ref
             )   AS doc_ordinal
-    FROM    encounter_doc
+    FROM    encounter_doc_uniq
 )
-SELECT
-        ordered.*,
-        doc.doc_type_code, 
-        doc.doc_type_display, 
-        doc.doc_type_system
+SELECT  distinct
+        encounter_doc.*,
+        ordered.doc_ordinal
 FROM
         ordered,
-        irae__cohort_study_population_doc as doc
+        encounter_doc
 WHERE
-        ordered.documentreference_ref = doc.documentreference_ref
+        ordered.documentreference_ref = encounter_doc.documentreference_ref
 ;
