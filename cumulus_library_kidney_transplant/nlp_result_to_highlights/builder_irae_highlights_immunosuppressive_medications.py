@@ -45,13 +45,10 @@ class IraeNlpHighlightsDonorBuilder(cumulus_library.BaseTableBuilder):
         config: cumulus_library.StudyConfig,
         **kwargs,
     ):
-        print("Preparing queries")
         valid_tables = self._get_valid_irae_nlp_tables(config.db)
-        print(valid_tables)
         query = cumulus_library.get_template(
             "irae__highlights_immunosuppressive_medications",
             pathlib.Path(__file__).parent,
             table_names=valid_tables,
         )
-        print(query)
         self.queries.append(query)
