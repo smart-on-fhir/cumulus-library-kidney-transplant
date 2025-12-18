@@ -164,7 +164,9 @@ And with that, the natural language processing of notes is finished.
 The rest of this guide will be about setting up a chart review for human comparison with NLP.
 
 Importantly: re-run your [Cumulus AWS Glue crawler](https://docs.smarthealthit.org/cumulus/etl/setup/#create-tables-with-glue) 
-at this point in order to pick up this new NLP table and its schema.
+at this point in order to pick up the newly created NLP tables and their schemas. Note
+that as you run these tasks against _new models_, you will need to run this crawler again (though
+only for the first time)
 
 ## 5. Generate NLP Highlights
 
