@@ -4,7 +4,7 @@ import pathlib
 
 import cumulus_library
 from cumulus_library import base_utils, databases
-from cumulus_library.template_sql import sql_utils
+from cumulus_library.template_sql import sql_utils, base_templates
 
 
 class IraeNlpHighlightsDonorBuilder(cumulus_library.BaseTableBuilder):
@@ -12,12 +12,27 @@ class IraeNlpHighlightsDonorBuilder(cumulus_library.BaseTableBuilder):
 
     @staticmethod
     def _is_table_valid(database: databases.DatabaseBackend, table_name: str) -> bool:
-        return sql_utils.is_field_present(
+        if table_name != 'irae__nlp_donor_gpt_oss_120b' and table_name != 'irae__nlp_donor_gpt4o': 
+            return False
+        valid = sql_utils.is_field_present(
             database=database,
             source_table=table_name,
             source_col="result",
             expected={},
         )
+        # In addition to checking for the presence of a result column, we also want to check for the presence of donor_serostatus_mention data in the result column's schema. We will do this with a somewhat hacky query and a check that the resulting table_schema is not empty.
+        query = cumulus_library.get_template(
+            "result_column_check",
+            pathlib.Path(__file__).parent,
+            schema_name=database.schema_name,
+            table_names=[table_name],
+            expected_column='donor_serostatus_mention',
+        )
+        try:
+            table_schema = database.cursor().execute(query).fetchall()
+        except database.operational_errors():
+            table_schema = []
+        return valid and table_schema != []
 
     def _get_valid_irae_nlp_tables(self, database: databases.DatabaseBackend) -> set[str]:
         source_tables = [

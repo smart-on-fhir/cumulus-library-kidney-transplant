@@ -1,0 +1,9 @@
+SELECT
+    table_name,
+    column_name,
+    data_type
+FROM information_schema.columns
+WHERE
+    table_schema = '{{ schema_name }}'
+    AND table_name IN ('{{ table_names|join("', '")|lower }}')
+    AND data_type LIKE LOWER('%{{ expected_column|lower }}%')
