@@ -156,3 +156,29 @@ def test_prepare_queries_appended_sql_is_valid(database, builder):
     for query in builder.queries:  
         table = str(sqlglot.parse_one(query).find(sqlglot.exp.Table))
         assert table is not None
+
+def test_is_table_valid_checks_schema_for_donor_serostatus_mention(database, builder):
+    # Test that the schema check for donor_serostatus_mention is performed
+    mock_cursor = mock.Mock()
+    database.cursor.return_value = mock_cursor
+    
+    with mock.patch.object(
+        builder_module.sql_utils, "is_field_present", return_value=True
+    ), mock.patch.object(
+        builder_module.cumulus_library, "get_template", return_value="SELECT schema"
+    ) as mock_get_template:
+        # Case 1: Empty schema - should return False
+        mock_cursor.execute.return_value.fetchall.return_value = []
+        result = builder._is_table_valid(database, "irae__nlp_donor_gpt4o")
+        assert result is False
+        
+        # Case 2: Non-empty schema - should return True
+        mock_cursor.execute.return_value.fetchall.return_value = [("donor_serostatus_mention",)]
+        result = builder._is_table_valid(database, "irae__nlp_donor_gpt4o")
+        assert result is True
+        
+        # Verify the template was called with the correct expected column
+        calls = mock_get_template.call_args_list
+        for call in calls:
+            assert call.kwargs.get("expected_column") == "donor_serostatus_mention"
+
