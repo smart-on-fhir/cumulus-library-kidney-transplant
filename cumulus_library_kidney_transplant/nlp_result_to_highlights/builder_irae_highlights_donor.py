@@ -12,8 +12,6 @@ class IraeNlpHighlightsDonorBuilder(cumulus_library.BaseTableBuilder):
 
     @staticmethod
     def _is_table_valid(database: databases.DatabaseBackend, table_name: str) -> bool:
-        if table_name != 'irae__nlp_donor_gpt_oss_120b' and table_name != 'irae__nlp_donor_gpt4o': 
-            return False
         valid = sql_utils.is_field_present(
             database=database,
             source_table=table_name,
