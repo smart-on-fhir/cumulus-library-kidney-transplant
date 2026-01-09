@@ -7,14 +7,15 @@ To this end, we provide instructions on annotating 100 notes from our patient co
 - It introduces chart reviewers to the label studio interface.
 - It helps establish, roughly, how long this annotation process is for a subsample of notes (and by extension how much time can be saved via automated annotation).
 
-To establish annotator agreement, we must: 
+To establish annotator agreement, we will: 
 1. Build the kidney study using `cumulus-library build`.
 2. Sample from our cohort for 100 notes using Athena.
 3. Upload those notes to labelstudio projects for chart reviewers using `cumulus-etl upload-notes`.
-4. Chart reviewers annotate those notes using labelstudio.
-5. Donor-task NLP is run for those 100 notes using `cumulus-etl nlp` and highlights for LS are
-   generated using `cumulus-library build`.
-6. Agreement scores are calculated using `chart-review`.
+4. Have chart reviewers annotate those notes using labelstudio.
+5. Run Donor-task NLP for those 100 notes using `cumulus-etl nlp` and 
+   generate highlights for LS using `cumulus-library build`.
+6. Calculate agreement scores using `chart-review`.
+
 
 ## Prerequisites
 
