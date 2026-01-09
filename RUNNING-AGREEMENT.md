@@ -170,7 +170,9 @@ cumulus-library build \
   --builder builder_irae_highlights_donor
 ```
 
-This will produce a `irae__highlights_donor` table for future use. 
+This will produce a `irae__highlights_donor` table for future use. Note that 
+if you run `cumulus-library clean -t irae`, this table will be deleted. Keep that in mind
+when cleaning up your study environments in Athena.
 
 
 ## 6 Calculate Agreement 
