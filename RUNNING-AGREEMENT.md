@@ -24,8 +24,7 @@ The guide's steps break down as follows:
 
 ## Prerequisites
 
-- Familiarity with running [chart-review](https://github.com/smart-on-fhir/chart-review), 
-  documentation [here](https://docs.smarthealthit.org/cumulus/chart-review/)
+- Familiarity with running [chart-review](https://docs.smarthealthit.org/cumulus/chart-review/)
 - An existing Cumulus stack, with an already-built `core` study.
   - See the general [Cumulus documentation](https://docs.smarthealthit.org/cumulus/)
     for setting that up.
