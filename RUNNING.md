@@ -25,11 +25,9 @@ A reminder that PHI-free example notes and example LLM responses can be found in
     for setting that up.
 - Familiarity with [creating new cumulus library studies](https://docs.smarthealthit.org/cumulus/library/creating-studies.html#creating-library-studies)
 - Familiarity with [running NLP workflows using cumulus etl](https://docs.smarthealthit.org/cumulus/etl/nlp/example.html)
-- [Clone this repo locally](git@github.com:smart-on-fhir/cumulus-library-kidney-transplant.git); 
-  we will use this later with the --study-dir argument to reference this study when building, since
-  it isn't yet available to install with pip.
-  - NOTE: When this library is published, users will be able to 
-    install with `pip install cumulus-library-kidney-transplant` instead.  
+- This module should be installed in the same python environment as the cumulus stack. This can 
+  be done by running `pip install cumulus-library-kidney-transplant`, which will add an `irae` target 
+  to `cumulus-library`. 
 - **Lastly, make sure that your cloud environment has been updated to use the [latest set of DeltaTables](https://github.com/smart-on-fhir/cumulus-etl/blob/main/docs/setup/cumulus-aws-template.yaml). To support these numerous new tasks, new tables have been introduced.**
 
 ## 1. Run the ETL & Library study
@@ -42,7 +40,6 @@ cumulus-library build \
   --database <relevant_cumulus_library_database> \
   --workgroup <relevant_cumulus_library_workgroup> \
   --profile <relevant_cumulus_library_profile> \
-  --study-dir <path/to/kidney-study-dir> \
   -t irae 
 ```
 
@@ -186,7 +183,6 @@ cumulus-library build \
   --database <relevant_cumulus_library_database> \
   --workgroup <relevant_cumulus_library_workgroup> \
   --profile <relevant_cumulus_library_profile> \
-  --study-dir <path/to/kidney-study-dir> \
   -t irae \
   --builder builder_irae_highlights_immunosuppressive_medications
 ```
@@ -197,7 +193,6 @@ cumulus-library build \
   --database <relevant_cumulus_library_database> \
   --workgroup <relevant_cumulus_library_workgroup> \
   --profile <relevant_cumulus_library_profile> \
-  --study-dir <path/to/kidney-study-dir> \
   -t irae \
   --builder builder_irae_highlights_multiple_transplant_history
 ```
@@ -208,7 +203,6 @@ cumulus-library build \
   --database <relevant_cumulus_library_database> \
   --workgroup <relevant_cumulus_library_workgroup> \
   --profile <relevant_cumulus_library_profile> \
-  --study-dir <path/to/kidney-study-dir> \
   -t irae \
   --builder builder_irae_highlights_donor
 ```
@@ -219,7 +213,6 @@ cumulus-library build \
   --database <relevant_cumulus_library_database> \
   --workgroup <relevant_cumulus_library_workgroup> \
   --profile <relevant_cumulus_library_profile> \
-  --study-dir <path/to/kidney-study-dir> \
   -t irae \
   --builder builder_irae_highlights_longitudinal
 ```
