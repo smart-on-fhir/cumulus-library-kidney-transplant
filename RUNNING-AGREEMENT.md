@@ -178,7 +178,7 @@ when cleaning up your study environments in Athena.
 ## 6 Calculate Agreement 
 
 Finally, we need to calculate the agreement between annotators - comparing human to human, 
-and LLM to human - using the `chart-review` package. As of chart-review version 2.5.0, multiple 
+and LLM to human - using the `chart-review` package. As of chart-review version 2.4.1, multiple 
 labelstudio files can be used to describe annotations across different annotators. 
 
 
