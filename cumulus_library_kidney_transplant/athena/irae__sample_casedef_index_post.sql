@@ -1,4 +1,4 @@
-CREATE table irae__sample_casedef_post as
+CREATE table irae__sample_casedef_index_post as
 WITH
 encounter_doc as (
     SELECT  distinct
@@ -19,7 +19,7 @@ encounter_doc as (
             doc.doc_type_system
     FROM
             etl__completion_encounters              as etl,
-            irae__cohort_casedef_post         as casedef,
+            irae__cohort_casedef_index_post         as casedef,
             irae__cohort_study_population_doc    as doc
     WHERE
             casedef.encounter_ref   = doc.encounter_ref
