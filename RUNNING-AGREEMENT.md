@@ -157,9 +157,15 @@ docker compose run --rm -it\
   --athena-workgroup <relevant_cumulus_library_workgroup> 
 ```
 
-After you've run the task, we want to transform these LLM responses into a format that can be 
-used to populate a labelstudio project. We will do this by using a specific builder identified 
-in our kidney study. 
+Importantly: re-run your [Cumulus AWS Glue crawler](https://docs.smarthealthit.org/cumulus/etl/setup/#create-tables-with-glue) 
+at this point in order to pick up the newly created NLP table and it's schema. Note
+that if you run any new tasks or existing tasks against _new models_, you will 
+need to run this crawler again (though only for the first time).
+
+After you've run the task and rerun Glue crawlers, 
+we want to transform these LLM responses into a format that can be 
+used to populate a labelstudio project. We will do this 
+by using a specific builder identified in our kidney study. 
 
 ```sh
 cumulus-library build \
@@ -195,6 +201,31 @@ the following `config.yaml` file:
 annotators:
   andy: 2
   dylan: 4
+```
+
+To avoid computing agreement on irrelevant labels (e.g. `FlagReview`), we will specify which 
+labels and sublabels we want to compare using the `labels` field in our yaml config. 
+The syntax for this is detailed in the chart-review docs - learn more 
+[here](https://docs.smarthealthit.org/cumulus/chart-review/config.html#labels). 
+Adding to our previous config, we should now have: 
+
+```yaml
+annotators:
+  andy: 2
+  dylan: 4
+
+labels:  
+  - Transplant Date | *
+  - Donor Type | *
+  - Donor Relationship | *
+  - Hla Match Quality | *
+  - Hla Mismatch Count | *
+  - Donor Serostatus | *
+  - Donor Serostatus EBV | *
+  - Donor Serostatus CMV | *
+  - Recipient Serostatus | *
+  - Recipient Serostatus EBV | *
+  - Recipient Serostatus CMV | *
 ```
 
 Now run `chart-review accuracy` and record the reported value for Cohen's Kappa: 
@@ -250,6 +281,19 @@ annotators:
   andy: 2
   dylan: 4
   llm: 999
+
+labels:  
+  - Transplant Date | *
+  - Donor Type | *
+  - Donor Relationship | *
+  - Hla Match Quality | *
+  - Hla Mismatch Count | *
+  - Donor Serostatus | *
+  - Donor Serostatus EBV | *
+  - Donor Serostatus CMV | *
+  - Recipient Serostatus | *
+  - Recipient Serostatus EBV | *
+  - Recipient Serostatus CMV | *
 ```
 
 Now run `chart-review accuracy` and record the reported value for Cohen's Kappa: 
