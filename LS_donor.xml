@@ -31,7 +31,7 @@
 
         <View visibleWhen="region-selected" whenLabelValue="Transplant Date">
             <Header value="Transplant Date"/>
-            <TextArea name="Transplant Date" toName="text" perRegion="true" placeholder="Enter Transplant Date additional info"/>
+            <DateTime name="Transplant Date" toName="text" perRegion="true" only="date" />
         </View>
 
         <View visibleWhen="region-selected" whenLabelValue="Donor Type">
