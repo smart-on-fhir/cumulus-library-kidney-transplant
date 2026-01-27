@@ -19,4 +19,4 @@ from    casedef,
         $prefix__cohort_study_population_dx as dx
 where   casedef.subject_ref = dx.subject_ref
 and     (dx.dx_code, dx.dx_system) not in
-        (select distinct code, system from $prefix__valueset_casedef)
+        (select distinct code, system from $prefix__casedef)
