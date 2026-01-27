@@ -9,7 +9,7 @@ patient_list as (
 select      distinct
             note.*
 from
-            irae__sample_casedef_peri as doc,
+            irae__sample_casedef_peri as note,
             patient_list as P
 where       P.subject_ref = note.subject_ref
 order by    subject_ref,
