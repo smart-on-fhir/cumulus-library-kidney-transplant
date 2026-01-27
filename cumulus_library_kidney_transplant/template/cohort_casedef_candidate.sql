@@ -70,7 +70,7 @@ select  distinct
         casedef.*
 from    $prefix__casedef   as casedef,
         $prefix__cohort_study_population_diag
-where   casedef.system  = diag_code_system
+where   casedef.system  = diag_system
 and     casedef.code    = diag_code
 
 UNION ALL

@@ -70,7 +70,7 @@ select  distinct
         casedef.*
 from    irae__casedef   as casedef,
         irae__cohort_study_population_diag
-where   casedef.system  = diag_code_system
+where   casedef.system  = diag_system
 and     casedef.code    = diag_code
 
 UNION ALL
