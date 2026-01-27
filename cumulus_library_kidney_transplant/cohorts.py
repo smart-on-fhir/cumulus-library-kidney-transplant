@@ -14,6 +14,13 @@ from cumulus_library_kidney_transplant import fhir2sql, filetool
 # Each study $variable COHORT is selected from a irae__cohort_study_population* table.
 #
 #####################################################################################################
+def list_variables() -> List[str]:
+    """
+    :return: List of all variables from VSAC anc custom sources.
+    """
+    return list(sorted(vsac_variables.list_view_variables()) +
+                list(sorted(custom_variables.list_view_custom())))
+
 def ctas(cohort: str, variable: str, where: list) -> str:
     """
     CTAS(create table as) will create a COHORT table as a subselection of the
@@ -30,6 +37,9 @@ def ctas(cohort: str, variable: str, where: list) -> str:
            select_from, 'WHERE', fhir2sql.sql_and(where)]
     return '\n'.join(sql)
 
+###############################################################################
+# make cohort of type=aspect [dx, rx, proc, diag, lab]
+###############################################################################
 def cohort_dx(variable: str) -> Path:
     """
     :return: Path to athena SQL irae__cohort_dx_$variable
@@ -92,7 +102,7 @@ def cohort_doc(variable: str) -> Path:
     return fhir2sql.save_athena_view(fhir2sql.name_cohort(variable), sql)
 
 ###############################################################################
-# Select Variables UNION and WIDE representation
+# Helper functions for UNION and WIDE variable representations
 ###############################################################################
 def select_union(variable_list: list[str]) -> str:
     """
@@ -129,10 +139,13 @@ def select_lookup_wide(variable_list: list[str]) -> str:
         sql.append(f"\tarbitrary({variable})    FILTER (where {variable} ) as {variable}")
     return ',\n'.join(sql)
 
+###############################################################################
+# MAKE variables UNION and WIDE representations
+###############################################################################
 def make_union() -> Path:
     """
     All study variable cohorts in one table.
-    "see `template/cohort_study_variables.sql`"
+    "see `template/cohort_variable.sql`"
     :return: Path to SQL file for each study variable 1+ `valueset`
     """
     template_sql = filetool.load_template(f"cohort_variable_union.sql")
@@ -147,7 +160,7 @@ def make_wide() -> Path:
     All study variable cohorts in one table in WIDE format.
     each column is a study variable.
 
-    see `template/cohort_study_variables_wide.sql`
+    see `template/cohort_variable_wide.sql`
     :return: Path to SQL file `athena/irae__cohort_study_variables_wide.sql`
     """
     variable_list = list_variables()
@@ -159,18 +172,11 @@ def make_wide() -> Path:
 
     return filetool.save_athena(target_file, template_sql)
 
-###############################################################################
-# VSAC and custom variables list
-###############################################################################
-def list_variables() -> List[str]:
-    """
-    :return: List of all variables from VSAC anc custom sources.
-    """
-    return list(sorted(vsac_variables.list_view_variables()) +
-                list(sorted(custom_variables.list_view_custom())))
+def make_timeline() -> Path:
+    return filetool.copy_template('cohort_variable_timeline.sql')
 
 ###############################################################################
-# EACH Select Variable, make a cohort for each by itself.
+# MAKE EACH Variable (make a cohort for each variable by itself)
 ###############################################################################
 def make_each_study_variable() -> List[Path]:
     """
@@ -212,6 +218,6 @@ def make() -> List[Path]:
     :return: List of SQL files for each study variable COHORT.
     """
     variables_each = make_each_study_variable()
-    variables_all = [make_union(), make_wide()]
+    variables_all = [make_union(), make_wide(), make_timeline()]
 
     return variables_each + variables_all

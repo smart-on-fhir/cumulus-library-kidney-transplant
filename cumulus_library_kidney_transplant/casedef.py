@@ -43,75 +43,35 @@ def make_cohort(include_exclude: str = None) -> Path:
     return filetool.save_athena_view(table, sql)
 
 ########################################################################################################
-# Index first encounter matching case definition
+# case definition "aspects"
 ##########################################################################################################
-
-def make_index_date_deprecated(cohort_table, period, equality) -> Path:
+def make_cohort_aspects() -> list[Path]:
     """
-    Index date refers when the case definition criteria was first met.
-    This means the first Encounter where $variable was recorded for each patient.
-
-    `template/cohort_casedef_index.sql`
-
-    :param cohort_table: case definition variable table
-    :param period:
-        "pre"= select cohort BEFORE case definition first encounter;
-        "index" = select cohort DURING case definition first encounter;
-        "post"= select cohort AFTER case definition first encounter
-    :param equality: date comparison "=", "<", ">"
-    :return: Path to SQL table containing cohort matching case definition
+    Make cohort for casdef [dx, rx, lab, proc]
     """
-    template = 'cohort_casedef_period_deprecated.sql'
-    view = f'{name_casedef()}_{period}.sql'
-    sql = filetool.load_template(template)
-    sql = sql.replace('$period', period)
-    sql = sql.replace('$equality', equality)
-    return filetool.save_athena(view, sql)
+    return [filetool.copy_template(f'cohort_casedef_{aspect}.sql')
+            for aspect in ['dx', 'rx', 'lab', 'proc']]
 
 ########################################################################################################
-# Timeline (pre/index/post) view with `cohort_casedef`
+# make samples
 ##########################################################################################################
-
-def make_timeline_deprecated() -> Path:
+def make_samples() -> list[Path]:
     """
-    Return a timeline of the case definition with respect to all study variables.
-    see `template/cohort_casedef_timeline_deprecated.sql`
-    :return: SQL file of case definition cohort as a timeline sequence of events.
+    Make note samples for each casedef temporality [pre, per, peri_post, post]
     """
-    template = fhir2sql.name_join('cohort', 'casedef_timeline') + '.sql'
-    sql = filetool.load_template(template)
-    sql = filetool.inline_template(sql)
-    return filetool.save_athena(template, sql)
+    samples = list()
+    samples.append(filetool.copy_template('sample_casedef.sql')) # all note samples for casedef
+    for temporality in ['pre', 'peri', 'peri_post', 'post']:
+        replacements = {'$temporality': temporality}
+        text = filetool.load_template('sample_casedef_temporality.sql', replacements)
+        target_table = fhir2sql.name_prefix(f'sample_casedef_{temporality}')
+        target_file = filetool.path_athena(f'{target_table}.sql')
+        samples.append(Path(filetool.write_text(text, target_file)))
+    return samples
 
 ########################################################################################################
-# Samples for Chart Review and QA
+# make
 ##########################################################################################################
-def make_samples(size: int = None, period: str = 'post') -> Path:
-    """
-    This method is for sampling Documents for LLM/ChartReview.
-    This is not used to generate CUBE data.
-
-    See `template/sample_casedef*`
-
-    :param size: number of FHIR DocumentReference samples to select from casedef
-    :param period: "pre", "index", or "post", samples from before, during, or after first casedef encounter.
-    :return: Path to SQL file with case definition samples.
-    """
-    table = fhir2sql.name_sample('casedef')
-    if size:
-        template = f"{table}_size.sql"
-        target = f"{table}_{period}_{size}.sql"
-    else:
-        template = f"{table}.sql"
-        target = f"{table}_{period}.sql"
-
-    sql = filetool.load_template(template)
-    sql = filetool.inline_template(sql)
-    sql = sql.replace('$size', str(size))
-    sql = sql.replace('$period', period)
-    return filetool.save_athena(target, sql)
-
-
 def make() -> List[Path]:
     """
     Case Definition processing steps
@@ -127,8 +87,8 @@ def make() -> List[Path]:
     5. "Include" (flag) patients matching the case definition for whome exclusion criteria was found.
     The include cohort is the set of patients MINUS the exclude patients from previous step.
 
-    6. CTAS "Index": first encounter matching the case definition.
-    This is the "index date" (medical research term not SQL index).
+    6. CTAS "peri": first encounter matching the case definition.
+    This is the index date (medical research term not SQL index).
 
     7. CTAS "Pre" encounters before index date for patients matching the case definition.
     This is the patient longitudinal history.
@@ -150,4 +110,4 @@ def make() -> List[Path]:
             make_cohort('candidate'),
             make_cohort('exclude'),
             make_cohort('include'),
-            make_cohort()]
+            make_cohort()] + make_cohort_aspects() + make_samples()

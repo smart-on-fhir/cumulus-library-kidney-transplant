@@ -1,4 +1,4 @@
-create      table irae__cohort_study_variables_timeline as
+create      table $prefix__cohort_study_variable_timeline as
 select      distinct
             wide.*                  ,
             status              	,
@@ -19,7 +19,7 @@ select      distinct
             enc_type_code       	,
             enc_type_system     	,
             enc_type_display
-from        irae__cohort_study_population        as population
-left join   irae__cohort_study_variables_wide    as wide
+from        $prefix__cohort_study_population        as population
+left join   $prefix__cohort_study_variables_wide    as wide
 on          population.encounter_ref = wide.encounter_ref
 ;
