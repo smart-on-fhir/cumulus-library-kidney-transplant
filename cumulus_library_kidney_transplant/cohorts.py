@@ -104,7 +104,7 @@ def make_study_variables_union() -> Path:
     select = fhir2sql.select_union_study_variables(list_variables())
     file = fhir2sql.name_study_variables() + '.sql'
     text = filetool.load_template(file)
-    text = filetool.inline_template(sql=text, variable=select)
+    text = filetool.replace_text(text, {'variable':select})
     return filetool.save_athena(file, text)
 
 def make_study_variables_wide() -> Path:

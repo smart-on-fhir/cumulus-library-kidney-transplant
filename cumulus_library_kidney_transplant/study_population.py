@@ -58,7 +58,7 @@ def make_study_population() -> List[Path]:
     file_list = list()
     for table in list_tables():
         sql = filetool.load_template(f'{table}.sql')
-        sql = filetool.inline_template(sql)
+        sql = filetool.replace_text(sql)
         file_list.append(filetool.save_athena_view(table, sql))
     return file_list
 
