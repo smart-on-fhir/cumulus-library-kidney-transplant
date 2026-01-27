@@ -159,47 +159,6 @@ def make_wide() -> Path:
 
     return filetool.save_athena(target_file, template_sql)
 
-def make_study_variables_union_deprecated() -> Path:
-    """
-    All study variable cohorts in one table.
-
-    "see `template/cohort_study_variables.sql`"
-    :return: Path to SQL file for each study variable 1+ `valueset`
-    """
-    select = fhir2sql.select_union_study_variables(list_variables())
-    file = fhir2sql.name_study_variables() + '.sql'
-    text = filetool.load_template(file)
-    text = filetool.replace_text(text, {'variables':select})
-    return filetool.save_athena(file, text)
-
-def make_study_variables_wide_deprecated() -> Path:
-    """
-    All study variable cohorts in one table in WIDE format.
-    each column is a study variable.
-
-    see `template/cohort_study_variables_wide.sql`
-    :return: Path to SQL file `athena/irae__cohort_study_variables_wide.sql`
-    """
-    lookup = fhir2sql.select_lookup_study_variables(list_variables())
-    wide = fhir2sql.select_lookup_study_variables_wide(list_variables())
-    file = fhir2sql.name_study_variables('wide') + '.sql'
-    text = filetool.load_template(file)
-    text = text.replace('$variable_list_lookup', lookup)
-    text = text.replace('$variable_list_wide', wide)
-    return filetool.save_athena(file, text)
-
-def make_study_variables_timeline_deprecated() -> Path:
-    """
-    All study variable cohorts in one table in WIDE format.
-    each column is a study variable.
-
-    see `template/cohort_study_variables_wide.sql`
-    :return: Path to SQL file `athena/irae__cohort_study_variables_wide.sql`
-    """
-    file = fhir2sql.name_study_variables('timeline') + '.sql'
-    text = filetool.load_template(file)
-    return filetool.save_athena(file, text)
-
 ###############################################################################
 # VSAC and custom variables list
 ###############################################################################
@@ -233,7 +192,6 @@ def make_each_study_variable() -> List[Path]:
             raise Exception(f'unknown variable type {variable}')
     return group_list
 
-
 def make() -> List[Path]:
     """
     Make Patient COHORTS for each study variable from
@@ -255,8 +213,5 @@ def make() -> List[Path]:
     """
     variables_each = make_each_study_variable()
     variables_all = [make_union(), make_wide()]
-    #variables_union = [make_study_variables_union_deprecated(),
-    #                   make_study_variables_wide_deprecated(),
-    #                   make_study_variables_timeline_deprecated()]
 
     return variables_each + variables_all
