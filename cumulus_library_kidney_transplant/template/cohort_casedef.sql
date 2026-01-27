@@ -11,7 +11,7 @@ match_casedef as (
             sp.enc_period_ordinal,
             dx.subject_ref,
             dx.encounter_ref
-    from    $prefix__valueset_casedef as casedef,
+    from    $prefix__casedef as casedef,
             $prefix__cohort_study_population_dx as SP,
             core__condition as dx
     where   casedef.code = dx.code
