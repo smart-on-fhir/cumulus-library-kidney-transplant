@@ -20,6 +20,6 @@ select      distinct
             enc_type_system     	,
             enc_type_display
 from        $prefix__cohort_study_population    as population
-left join   $prefix__cohort_study_variable_wide as wide
+left join   $prefix__cohort_variable_wide       as wide
 on          population.encounter_ref = wide.encounter_ref
 ;

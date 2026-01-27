@@ -67,6 +67,13 @@ def make_samples() -> list[Path]:
         target_table = fhir2sql.name_prefix(f'sample_casedef_{temporality}')
         target_file = filetool.path_athena(f'{target_table}.sql')
         samples.append(Path(filetool.write_text(text, target_file)))
+
+        limit = '10'
+        replacements['$limit'] = limit
+        text = filetool.load_template('sample_casedef_temporality_limit.sql', replacements)
+        target_table = fhir2sql.name_prefix(f'sample_casedef_{temporality}_limit_{limit}')
+        target_file = filetool.path_athena(f'{target_table}.sql')
+        samples.append(Path(filetool.write_text(text, target_file)))
     return samples
 
 ########################################################################################################
