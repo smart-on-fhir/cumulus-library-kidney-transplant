@@ -10,7 +10,6 @@ def list_tables() -> List[str]:
     table = fhir2sql.name_join('cohort', 'study_population')
     return [table] + fhir2sql.list_table_aspect(table)
 
-# MHG: The following two functions don't actually create files
 def make_meta_date() -> List[Path]:
     """
     :return:
