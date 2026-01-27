@@ -46,7 +46,7 @@ def make_cohort(include_exclude: str = None) -> Path:
 # Index first encounter matching case definition
 ##########################################################################################################
 
-def make_index_date(cohort_table, period, equality) -> Path:
+def make_index_date_deprecated(cohort_table, period, equality) -> Path:
     """
     Index date refers when the case definition criteria was first met.
     This means the first Encounter where $variable was recorded for each patient.
@@ -61,7 +61,7 @@ def make_index_date(cohort_table, period, equality) -> Path:
     :param equality: date comparison "=", "<", ">"
     :return: Path to SQL table containing cohort matching case definition
     """
-    template = 'cohort_casedef_period.sql'
+    template = 'cohort_casedef_period_deprecated.sql'
     view = f'{name_casedef()}_{period}.sql'
     sql = filetool.load_template(template)
     sql = sql.replace('$period', period)
@@ -72,10 +72,10 @@ def make_index_date(cohort_table, period, equality) -> Path:
 # Timeline (pre/index/post) view with `cohort_casedef`
 ##########################################################################################################
 
-def make_timeline() -> Path:
+def make_timeline_deprecated() -> Path:
     """
     Return a timeline of the case definition with respect to all study variables.
-    see `template/cohort_casedef_timeline.sql`
+    see `template/cohort_casedef_timeline_deprecated.sql`
     :return: SQL file of case definition cohort as a timeline sequence of events.
     """
     template = fhir2sql.name_join('cohort', 'casedef_timeline') + '.sql'
@@ -152,10 +152,10 @@ def make() -> List[Path]:
             make_cohort(),
             make_cohort('exclude'),
             make_cohort('include'),
-            make_index_date(cohort_table, 'index', '='),
-            make_index_date(cohort_table, 'pre', '<'),
-            make_index_date(cohort_table, 'post', '>'),
-            make_timeline(),
+            make_index_date_deprecated(cohort_table, 'index', '='),
+            make_index_date_deprecated(cohort_table, 'pre', '<'),
+            make_index_date_deprecated(cohort_table, 'post', '>'),
+            make_timeline_deprecated(),
             make_samples(None, 'index'),
             make_samples(10, 'index'),
             make_samples(100, 'index'),
