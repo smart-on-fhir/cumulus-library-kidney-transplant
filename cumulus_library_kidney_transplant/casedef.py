@@ -145,23 +145,9 @@ def make() -> List[Path]:
 
     :return: List of SQL table cohorts selected before and after the case definition +timeline +samples
     """
-    cohort_table = fhir2sql.name_join('cohort', 'casedef')
-
     return [make_casedef_custom_csv(),
             make_casedef_custom(),
-            make_cohort(),
+            make_cohort('candidate'),
             make_cohort('exclude'),
             make_cohort('include'),
-            make_index_date_deprecated(cohort_table, 'index', '='),
-            make_index_date_deprecated(cohort_table, 'pre', '<'),
-            make_index_date_deprecated(cohort_table, 'post', '>'),
-            make_timeline_deprecated(),
-            make_samples(None, 'index'),
-            make_samples(10, 'index'),
-            make_samples(100, 'index'),
-            make_samples(None, 'pre'),
-            make_samples(10, 'pre'),
-            make_samples(100, 'pre'),
-            make_samples(None, 'post'),
-            make_samples(10, 'post'),
-            make_samples(100, 'post')]
+            make_cohort()]
