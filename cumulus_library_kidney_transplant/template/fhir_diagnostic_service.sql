@@ -1,4 +1,4 @@
-create or replace view fhir_diagnostic_service as select * from (values
+create or replace view $prefix__fhir_diagnostic_service as select * from (values
 ('http://loinc.org','LP29684-5','Radiology'),
 ('http://loinc.org','LP29708-2','Cardiology'),
 ('http://loinc.org','LP75011-4','Laboratory'),

@@ -12,7 +12,7 @@ def list_tables() -> List[str]:
 
 def make_meta() -> list[Path]:
     target_list = list()
-    for target in ['meta_date', 'meta_version', 'fhir_diagnostic_service']:
+    for target in ['meta_date', 'meta_version']:
         table = fhir2sql.name_prefix(target)
         sql = filetool.load_template(f'{target}.sql')
         target_list.append(filetool.save_athena_view(table, sql))
@@ -54,4 +54,4 @@ def make_study_population() -> List[Path]:
     return file_list
 
 def make() -> List[Path]:
-    return make_meta() + make_study_period() + make_study_population()
+    return make_study_period() + make_study_population() + make_meta()
