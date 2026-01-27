@@ -1,0 +1,20 @@
+config_type="file_upload"
+
+# ---------------------------------------------------------
+# Source: CURATED by CHIP
+
+[tables.valueset_casedef]
+col_types = [
+    "STRING",   # system
+    "STRING",   # code
+    "STRING",   # display
+    "BOOLEAN",  # include
+    "BOOLEAN",  # likely
+    "BOOLEAN",  # preop
+    "BOOLEAN",  # transplant
+    "BOOLEAN",  # lab
+    "BOOLEAN",  # imaging
+    "BOOLEAN",  # outcome
+    "BOOLEAN",  # rejection
+    "BOOLEAN"]  # failure
+file = "../resources/casedef.csv"
