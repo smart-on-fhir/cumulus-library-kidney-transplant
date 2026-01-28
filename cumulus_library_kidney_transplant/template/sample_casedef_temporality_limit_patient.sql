@@ -1,15 +1,14 @@
-create table irae__sample_casedef_pre_10 as
+create or replace view $prefix__sample_casedef_$temporality_limit_patient_$limit as
 WITH
 patient_list as (
     select  distinct
             subject_ref
-    from    irae__sample_casedef_pre
-    limit   10
+    from    $prefix__sample_casedef_$temporality
+    limit   $limit
 )
 select      distinct
             note.*
-from
-            irae__sample_casedef_pre as note,
+from        $prefix__sample_casedef_$temporality as note,
             patient_list as P
 where       P.subject_ref = note.subject_ref
 order by    subject_ref,

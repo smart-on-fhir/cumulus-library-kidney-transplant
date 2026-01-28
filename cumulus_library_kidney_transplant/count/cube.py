@@ -190,17 +190,12 @@ def make_casedef_samples() -> List[Path]:
 
     :return: Path to CUBE table for the casedef_timeline
     """
-    cols = ['doc_type_code', 'doc_type_display', 'doc_type_system', 'group_name']
+    cols = ['note_code', 'note_display', 'note_system', 'group_name']
     file_list = list()
-    for period in ['pre', 'index', 'post']:
-        for size in [None, '10', '100']:
-            if size:
-                from_table = fhir2sql.name_sample(f'casedef_{period}_{size}')
-                file_list.append(cube_doc(from_table, cols))
-            else:
-                from_table = fhir2sql.name_sample(f'casedef_{period}')
-                file_list.append(cube_pat(from_table, cols))
-                file_list.append(cube_doc(from_table, cols))
+    for period in ['pre', 'peri', 'peri_post', 'post']:
+        from_table = fhir2sql.name_sample(f'casedef_{period}')
+        file_list.append(cube_pat(from_table, cols))
+        file_list.append(cube_doc(from_table, cols))
     return file_list
 
 def make() -> List[Path]:

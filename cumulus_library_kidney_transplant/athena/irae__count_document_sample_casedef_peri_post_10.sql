@@ -1,4 +1,4 @@
-CREATE TABLE irae__count_document_sample_casedef_post_10 AS (
+CREATE TABLE irae__count_document_sample_casedef_peri_post_10 AS (
     WITH
     filtered_table AS (
         SELECT
@@ -11,7 +11,7 @@ CREATE TABLE irae__count_document_sample_casedef_post_10 AS (
             s."note_display",
             s."note_system"
             --noqa: enable=RF03, AL02
-        FROM irae__sample_casedef_post_10 AS s
+        FROM irae__sample_casedef_peri_post_10 AS s
         INNER JOIN core__encounter AS e
             ON s.encounter_ref = e.encounter_ref
     ),
