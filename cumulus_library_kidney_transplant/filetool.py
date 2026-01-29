@@ -100,24 +100,27 @@ def path_template(file_sql: Path | str) -> Path:
     template = name_template(file_sql)
     return Path(os.path.join(path_home(), 'template', template))
 
-def load_template(file_sql: Path | str) -> str:
-    return inline_template(read_text(path_template(file_sql)))
+def load_template(file_sql: Path | str, replacements:dict = None) -> str:
+    text= replace_text(read_text(path_template(file_sql)))
+    return replace_text(text, replacements)
 
 def copy_template(file_sql: str) -> Path:
     """
     :param file_sql: name of SQL file to copy from "template" to "athena" with the $prefix replaced.
     :return: Manifest Path to athena/$prefix__$file_sql
     """
-    sql = inline_template(read_text(path_template(file_sql)))
+    sql = replace_text(read_text(path_template(file_sql)))
     return save_athena(f"{PREFIX}__{file_sql}", sql)
 
-def inline_template(sql: str, variable: str = None) -> str:
-    sql = sql.replace('$prefix', PREFIX)
-    if variable:
-        sql = sql.replace('$variable_list', variable)
-        sql = sql.replace('$variable', variable)
-    return sql
-
+def replace_text(original:str, replacements:dict = None) -> str:
+    if not replacements:
+        replacements = dict()
+    if '$prefix' not in replacements:
+        replacements['$prefix']=PREFIX
+    output = original
+    for key, value in replacements.items():
+        output = output.replace(key, value)
+    return output
 
 ###############################################################################
 #

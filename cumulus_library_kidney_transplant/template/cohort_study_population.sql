@@ -22,7 +22,7 @@ study_population as (
             E.type_display          as enc_type_display,
             E.subject_ref,
             E.encounter_ref
-    from    core__encounter                 as E,
+    from    core__encounter                as E,
             $prefix__cohort_study_period       as SP,
             $prefix__include_gender            as G,
             $prefix__include_age_at_visit      as age

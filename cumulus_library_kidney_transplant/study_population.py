@@ -10,22 +10,13 @@ def list_tables() -> List[str]:
     table = fhir2sql.name_join('cohort', 'study_population')
     return [table] + fhir2sql.list_table_aspect(table)
 
-# MHG: The following two functions don't actually create files
-def make_meta_date() -> List[Path]:
-    """
-    :return:
-    """
-    table = fhir2sql.name_prefix('meta_date')
-    sql = filetool.load_template(f'meta_date.sql')
-    return [filetool.save_athena_view(table, sql)]
-
-def make_meta_version() -> List[Path]:
-    """
-    :return:
-    """
-    table = fhir2sql.name_prefix('meta_version')
-    sql = filetool.load_template(f'meta_version.sql')
-    return [filetool.save_athena_view(table, sql)]
+def make_meta() -> list[Path]:
+    target_list = list()
+    for target in ['meta_date', 'meta_version']:
+        table = fhir2sql.name_prefix(target)
+        sql = filetool.load_template(f'{target}.sql')
+        target_list.append(filetool.save_athena_view(table, sql))
+    return target_list
 
 def make_study_period() -> List[Path]:
     return [filetool.copy_template('cohort_study_period.sql')]
@@ -58,9 +49,9 @@ def make_study_population() -> List[Path]:
     file_list = list()
     for table in list_tables():
         sql = filetool.load_template(f'{table}.sql')
-        sql = filetool.inline_template(sql)
+        sql = filetool.replace_text(sql)
         file_list.append(filetool.save_athena_view(table, sql))
     return file_list
 
 def make() -> List[Path]:
-    return make_study_period() + make_study_population() + make_meta_date() + make_meta_version()
+    return make_study_period() + make_study_population() + make_meta()
