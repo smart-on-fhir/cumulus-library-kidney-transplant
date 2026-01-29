@@ -1,4 +1,4 @@
-CREATE TABLE irae__count_patient_study_variables AS (
+CREATE TABLE irae__count_patient_study_variable AS (
     WITH
     filtered_table AS (
         SELECT
@@ -10,7 +10,7 @@ CREATE TABLE irae__count_patient_study_variables AS (
             s."valueset",
             s."variable"
             --noqa: enable=RF03, AL02
-        FROM irae__cohort_study_variables AS s
+        FROM irae__cohort_study_variable AS s
     ),
     
     null_replacement AS (

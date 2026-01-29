@@ -12,9 +12,9 @@ encounter_casedef as (
             casedef.ordinal_since,
             population.enc_period_start_day,
             population.enc_period_ordinal,
-            enc_class_code,
-            enc_type_display,
-            enc_servicetype_display
+            population.enc_class_code,
+            population.enc_type_display,
+            population.enc_servicetype_display
     FROM    etl__completion_encounters          as etl,
             irae__cohort_casedef             as casedef,
             irae__cohort_study_population    as population
