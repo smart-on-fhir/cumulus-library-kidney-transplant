@@ -72,7 +72,7 @@ def make_temporality(template_name:str, temporality:str, limit: int = None) -> P
     :param template_name: name of the SQL template to load
     :param temporality: str one of ['pre', 'peri', 'peri_post', 'post']
     :param limit: int patients or notes in sample
-    :return: path to Atehna SQL
+    :return: path to Athena SQL
     """
     table_name = template_name.replace('temporality', temporality)
 
