@@ -9,10 +9,8 @@
             <Label value="Donor Relationship" hotkey="S" background="#00ff1e"/>
             <Label value="Hla Match Quality" hotkey="Q" background="#ff0000"/>
             <Label value="Hla Mismatch Count" hotkey="M" background="#ff0000"/>
-            <Label value="Donor Serostatus" hotkey="D" background="#008b8b"/>
             <Label value="Donor Serostatus EBV" background="#008b8b"/>
             <Label value="Donor Serostatus CMV" background="#008b8b"/>
-            <Label value="Recipient Serostatus" hotkey="R" background="#e59137"/>
             <Label value="Recipient Serostatus CMV" background="#e59137"/>
             <Label value="Recipient Serostatus EBV" background="#e59137"/>
             <Label value="FlagReview" hotkey="/"/>
@@ -71,14 +69,6 @@
                 <Choice value="6"/>
             </Choices>
         </View>
-
-        <View visibleWhen="region-selected" whenLabelValue="Donor Serostatus">
-            <Header value="Donor Serostatus"/>
-            <Choices name="Donor Serostatus" toName="text" choice="single-radio" visibleWhen="region-selected" whenLabelValue="Donor Serostatus" perRegion="true">
-                <Choice value="SEROPOSITIVE"/>
-                <Choice value="SERONEGATIVE"/>
-            </Choices>
-        </View>
         
         <View visibleWhen="region-selected" whenLabelValue="Donor Serostatus EBV">
             <Header value="Donor Serostatus EBV"/>
@@ -91,14 +81,6 @@
         <View visibleWhen="region-selected" whenLabelValue="Donor Serostatus CMV">
             <Header value="Donor Serostatus CMV"/>
             <Choices name="Donor Serostatus CMV" toName="text" choice="single-radio" visibleWhen="region-selected" whenLabelValue="Donor Serostatus CMV" perRegion="true">
-                <Choice value="SEROPOSITIVE"/>
-                <Choice value="SERONEGATIVE"/>
-            </Choices>
-        </View>
-
-        <View visibleWhen="region-selected" whenLabelValue="Recipient Serostatus">
-            <Header value="Recipient Serostatus"/>
-            <Choices name="Recipient Serostatus" toName="text" choice="single-radio" visibleWhen="region-selected" whenLabelValue="Recipient Serostatus" perRegion="true">
                 <Choice value="SEROPOSITIVE"/>
                 <Choice value="SERONEGATIVE"/>
             </Choices>

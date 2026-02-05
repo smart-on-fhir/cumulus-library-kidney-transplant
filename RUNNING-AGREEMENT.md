@@ -50,7 +50,7 @@ cumulus-library build \
   -t irae 
 ```
 
-We will use the `irae__sample_casedef_index_100` tables we just created to sample for some notes of interest.
+We will use the `irae__sample_casedef_peri` tables we just created to sample for some notes of interest.
 
 
 ## 2 Sample and Unarchive Notes 
@@ -64,7 +64,7 @@ SELECT DISTINCT
 	encounter_ref,
 	documentreference_ref
 FROM 
-   irae__sample_casedef_index_100
+   irae__sample_casedef_peri
 ORDER BY
 	documentreference_ref
 LIMIT 100;
@@ -79,7 +79,7 @@ SELECT
 	subject_ref, 
 	encounter_ref, 
 	MAX(group_name) as group_name
-FROM irae__sample_casedef_index_100
+FROM irae__sample_casedef_peri
 GROUP BY 
 	documentreference_ref, 
 	subject_ref, 
@@ -220,10 +220,8 @@ labels:
   - Donor Relationship | *
   - Hla Match Quality | *
   - Hla Mismatch Count | *
-  - Donor Serostatus | *
   - Donor Serostatus EBV | *
   - Donor Serostatus CMV | *
-  - Recipient Serostatus | *
   - Recipient Serostatus EBV | *
   - Recipient Serostatus CMV | *
 ```
