@@ -150,10 +150,7 @@ def make_variables() -> List[Path]:
 
     :return: List of study variable CUBE tables
     """
-    source = fhir2sql.name_cohort('study_variable')
-    cols = Columns.valueset.value + ['variable']
-    file_list = [cube_pat(source, cols),
-                 cube_enc(source, cols)]
+    file_list = list()
 
     variable_list = vsac_variables.list_view_variables() + custom_variables.list_view_custom()
     for variable in variable_list:
