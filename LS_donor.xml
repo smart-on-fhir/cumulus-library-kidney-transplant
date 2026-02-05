@@ -14,7 +14,6 @@
             <Label value="Recipient Serostatus CMV" background="#e59137"/>
             <Label value="Recipient Serostatus EBV" background="#e59137"/>
             <Label value="FlagReview" hotkey="/"/>
-            <Label value="Exclude Patient" hotkey="X"/>
         </Labels> 
 
         <View visibleWhen="region-selected" whenLabelValue="FlagReview">
@@ -22,11 +21,6 @@
             <TextArea name="FlagReview" toName="text" perRegion="true" placeholder="Enter FlagReview additional info"/>
         </View>
         
-        <View visibleWhen="region-selected" whenLabelValue="Exclude Patient">
-            <Header value="Exclude Patient"/>
-            <TextArea name="Exclude Patient" toName="text" perRegion="true" placeholder="Enter Exclude Patient additional info"/>
-        </View>
-
         <View visibleWhen="region-selected" whenLabelValue="Transplant Date">
             <Header value="Transplant Date"/>
             <DateTime name="Transplant Date" toName="text" perRegion="true" only="date" />

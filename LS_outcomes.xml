@@ -17,18 +17,12 @@
             <Label value="PTLD" hotkey="P" background="#FF8C00"/>
             <Label value="Cancer" hotkey="C" background="#FF8C00"/>
             <Label value="Deceased" hotkey="D" background="#00008B"/>
-            <Label value="Exclude Patient" hotkey="X"/>
             <Label value="FlagReview" hotkey="/" />
         </Labels> 
 
         <View visibleWhen="region-selected" whenLabelValue="FlagReview">
             <Header value="FlagReview" />
             <TextArea name="FlagReview" toName="text" perRegion="true" placeholder="Enter FlagReview additional info"/>
-        </View>
-
-        <View visibleWhen="region-selected" whenLabelValue="Exclude Patient">
-            <Header value="Exclude Patient"/>
-            <TextArea name="Exclude Patient" toName="text" perRegion="true" placeholder="Enter Exclude Patient additional info"/>
         </View>
 
         <View visibleWhen="region-selected" whenLabelValue="Rx Therapeutic">

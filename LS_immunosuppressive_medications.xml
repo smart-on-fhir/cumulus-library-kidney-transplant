@@ -6,17 +6,11 @@
         <Labels name="label" toName="text" showInline="false">
             <Label value="Immunosuppressive Medication" hotkey="W" background="#a3fff9"/>
             <Label value="Flag Review" hotkey="/"/>
-            <Label value="Exclude Patient" hotkey="X"/>
         </Labels> 
 
         <View visibleWhen="region-selected" whenLabelValue="Flag Review">
             <Header value="Flag Review"/>
             <TextArea name="Flag Review" toName="text" perRegion="true" placeholder="Enter Flag Review additional info"/>
-        </View>
-
-        <View visibleWhen="region-selected" whenLabelValue="Exclude Patient">
-            <Header value="Exclude Patient"/>
-            <TextArea name="Exclude Patient" toName="text" perRegion="true" placeholder="Enter Exclude Patient additional info"/>
         </View>
 
         <View visibleWhen="region-selected" whenLabelValue="Immunosuppressive Medication">
