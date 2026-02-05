@@ -89,7 +89,7 @@ pre-inlined with clinical note content, as this will save time/hassle re-downloa
 every time we run NLP. If you're gathering notes using our `smart-fetch` tool the notes should be 
 [inlined automatically when exporting](https://docs.smarthealthit.org/cumulus/fetch/hydration.html#inlining-clinical-notes).
 
-## 2.a Select Samples by variable 
+## 2.a Select Samples by Variable 
 
 With this ndjson in a folder, we want to sample from these NDJSON to ensure we have some 
 representative sample of notes that mention our variables of interest. To achieve this, 
