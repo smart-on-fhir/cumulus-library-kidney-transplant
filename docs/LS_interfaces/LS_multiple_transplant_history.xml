@@ -1,0 +1,29 @@
+<View style="display: flex; align-items: flex-start; gap: 1em; max-height: 100vh; overflow-y: hidden;">
+    <!-- Left panel: labels + filter -->
+    <View style="width: 350px; padding: 0.5em; background: #f7f7f7; border-radius: 4px; max-height: 80vh; overflow-y: auto;">
+        <Header value="Patient $patient_id" style="overflow: hidden; width: 250px; text-overflow: ellipsis; white-space: nowrap; margin: 5px 0px;"/>
+
+        <Labels name="label" toName="text" showInline="false">
+            <Label value="Multiple Transplant History" hotkey="H" background="#a3fff9"/>
+            <Label value="Flag Review" hotkey="/"/>
+        </Labels> 
+
+        <View visibleWhen="region-selected" whenLabelValue="Flag Review">
+            <Header value="Flag Review"/>
+            <TextArea name="Flag Review" toName="text" perRegion="true" placeholder="Enter Flag Review additional info"/>
+        </View>
+
+        <View visibleWhen="region-selected" whenLabelValue="Multiple Transplant History">
+            <Header value="Multiple Transplant History"/>
+            <Choices name="Multiple Transplant History" toName="text" choice="single-radio" visibleWhen="region-selected" whenLabelValue="Multiple Transplant History" perRegion="true">
+                <Choice value="true"/>
+                <Choice value="false"/>
+            </Choices>
+        </View>
+    </View>
+
+    <!-- Right panel: text to annotate -->
+    <View style="flex: 1; max-height: 80vh; overflow-y: auto;">
+        <Text name="text" value="$text" granularity="word"/>
+    </View>
+</View>
