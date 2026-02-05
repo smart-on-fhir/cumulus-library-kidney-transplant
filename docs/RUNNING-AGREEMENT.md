@@ -2,24 +2,29 @@
 
 This guide will walk you through establishing the level of annotator agreement between human
 chart reviewers and other chart reviewers, as well as between human annotators and LLMs. 
-Specifically, each site will have multiple (>= 2) chart reviewers annotate 100 notes for 
-donor characteristic variables from scratch, without LLM predictions. By comparing 
-the annotations between reviewers and eventually between reviewers and LLMs, we can:
+Specifically, each site will have multiple (>= 2) chart reviewers annotate a representative 
+sample of notes for  donor characteristic variables from scratch, without LLM predictions. 
+By comparing the annotations between reviewers and eventually between reviewers and LLMs, we can:
 
 - Establish the annotator agreement between chart reviewers on our task, starting from blank notes;
 - Establish the annotators agreement scores compared against LLM-generated annotations; and 
 - (Hopefully) Demonstrate that annotators have similar agreement between the LLM and between each 
-  other, rejoicing if the agreement with the LLM responses is greater than between reviewers alone 
+  other, rejoicing if the agreement with the LLM responses is greater than between reviewers alone; 
+- Establish true ground-truth by adjudicating the disagreements, giving us a data set with which 
+  we can evaluate the LLMs chart-review capabilities
 
 
 The guide's steps break down as follows: 
 1. Build the kidney study using `cumulus-library build`.
-2. Sample from our cohort for 100 notes using Athena.
-3. Upload those notes to labelstudio projects for chart reviewers using `cumulus-etl upload-notes`.
+2. Sample from our cohort using Athena tables and keyword-specific filters.
+3. Upload those notes to labelstudio projects for chart reviewers 
+   using `cumulus-etl upload-notes`.
 4. Have chart reviewers annotate those notes using labelstudio.
-5. Run Donor-task NLP for those 100 notes using `cumulus-etl nlp` and 
+5. Run Donor-task NLP for those notes using `cumulus-etl nlp` and 
    generate highlights for LS using `cumulus-library build`.
 6. Calculate agreement scores using `chart-review`.
+7. WIP: Adjudicate disagreements in one of the annotators projects, creating a 
+   ground-truth set of annotations
 
 
 ## Prerequisites
@@ -50,28 +55,17 @@ cumulus-library build \
   -t irae 
 ```
 
-We will use the `irae__sample_casedef_index_100` tables we just created to sample for some notes of interest.
+We will use the `irae__sample_casedef_peri` tables we just created to sample for 
+some notes of interest. NOTE: If you have issues reaching expected sample counts in step 2,
+consider switching this to `irae__sample_casedef_pre` or `irae__sample_casedef_post`.
 
 
-## 2 Sample and Unarchive Notes 
+## 2 Unarchive Notes and Select Samples
 
-Sites will have their own bespoke process for translating notes identified in the aforementioned Athena table into 
-unarchived copies of the notes text, PHI and all. One helpful query for formatting the information of interest: 
-
-```sql
-SELECT DISTINCT 
-	subject_ref,
-	encounter_ref,
-	documentreference_ref
-FROM 
-   irae__sample_casedef_index_100
-ORDER BY
-	documentreference_ref
-LIMIT 100;
-```
-
-If your site needs the `group_name` field that Athena provides in your archiving process and your system has a 
-many-to-many relationship between patients and groups, we've found the following query useful: 
+Sites will have their own bespoke process for translating notes identified in the 
+aforementioned Athena table into unarchived copies of the notes text, PHI and all. 
+Some sites generate specific exports based on the athena table of interest. A 
+helpful query for formatting the information of interest: 
 
 ```sql
 SELECT 
@@ -79,15 +73,15 @@ SELECT
 	subject_ref, 
 	encounter_ref, 
 	MAX(group_name) as group_name
-FROM irae__sample_casedef_index_100
+FROM irae__sample_casedef_peri
 GROUP BY 
 	documentreference_ref, 
 	subject_ref, 
 	encounter_ref
-ORDER BY 
-	documentreference_ref
-LIMIT 100
 ```
+
+If your site does not need the `group_name` field, you can drop the MAX line and the
+GROUP BY lines.
 
 With these notes identified, gather DocumentReference ndjson from your EHR. You can either 
 re-export the documents of interest, or use ndjson from a previous export. Ideally these notes are 
@@ -95,14 +89,66 @@ pre-inlined with clinical note content, as this will save time/hassle re-downloa
 every time we run NLP. If you're gathering notes using our `smart-fetch` tool the notes should be 
 [inlined automatically when exporting](https://docs.smarthealthit.org/cumulus/fetch/hydration.html#inlining-clinical-notes).
 
-Place the ndjson in a folder, and take note of the paths to these notes for later steps.
+## 2.a Select Samples by variable 
 
+With this ndjson in a folder, we want to sample from these NDJSON to ensure we have some 
+representative sample of notes that mention our variables of interest. To achieve this, 
+we will leverage the `cumulus-etl sample` subcommand and keywords of interest, curated 
+alongside domain experts. A Google Sheet containing all these keywords can be found 
+[here](https://docs.google.com/spreadsheets/d/1RO2ybvj-6ZBuuujSQLKU8_I7RF90NMUkmI4It_7_Klo/).
+
+In `docs/variable_sample_commands` we have the scaffolding for building samples. Feel free 
+to modify the command to suit your needs, but after running individual samples we need all the 
+corresponding `DocumentReference.ndjson` files contained in a single parent directory. Each 
+`sample` creates one of these NDJSON files, so make sure that you're not writing all 
+your samples to the same directory location 
+
+The recommended layout for the resulting sample is: 
+```
+samples/
+  - Donor-Relationship/
+  - Donor-Serostatus-CMV/
+  - Donor-Serostatus-EBV/
+  - Donor-Status/
+  - HLA-Mismatch/
+  - HLA-Quality/
+  - Recipient-Serostatus-CMV/
+  - Recipient-Serostatus-EBV/
+  - Transplant-Date/
+```
+
+Which can be achieved by running the following: 
+```sh
+mkdir -p ./samples/Donor-Relationship-notes
+mkdir -p ./samples/Donor-Serostatus-CMV-notes
+mkdir -p ./samples/Donor-Serostatus-EBV-notes
+mkdir -p ./samples/Donor-Status-notes
+mkdir -p ./samples/HLA-Mismatch-notes
+mkdir -p ./samples/HLA-Quality-notes
+mkdir -p ./samples/Recipient-Serostatus-CMV-notes
+mkdir -p ./samples/Recipient-Serostatus-EBV-notes
+mkdir -p ./samples/Transplant-Date-notes
+```
+
+With this directory structure set up you can update the scripts in `docs/variable_sample_commands` 
+with site-specific variables to generate samples of 30 notes for each variable of interest.
+
+Inspect the resulting sample CSV files to confirm they contain 31 lines (
+one for the CSV header; 30 rows of notes). One way of doing this is to use:
+
+```sh 
+less samples/Transplant-Date-notes.csv | wc -l
+```
+
+After successfully sampling for each variable and confirming that our samples are the size we 
+expect, we can upload these notes to label studio.
 
 ## 3 Upload to Label Studio 
 
 For chart annotation, individual reviewers should have separate projects from each other to 
 ensure blinding against other annotators responses. For this agreement task, you should use 
-the `LS_DONOR` config file in this project. For each annotator, we should do the following
+the `LS_DONOR` config file found in `./docs/LS_interfaces`. For each annotator, 
+we should do the following:
 
 - Install Label Studio according to [their docs](https://labelstud.io/guide/install.html).
 - Create a new project, named however you like - probably something related to annotator agreement`.
@@ -112,12 +158,12 @@ the `LS_DONOR` config file in this project. For each annotator, we should do the
 
 Once created, you will be looking at an empty project page.  Take note of the new URL, you'll need 
 to know the Label Studio project IDs later (the number `/projects/<NUM>` in the URL). From here, 
-we need to populate the project with the notes we've just unarchived.
+we need to populate the project with the notes we've sampled.
 
 ```shell
 docker compose run --rm \
   cumulus-etl upload-notes \
-  <input folder with ndjson files from step 2 above> \
+  <input folder with all samples from step 2 above> \
   <label studio url> \
   <your typical ETL PHI folder> \
   --philter=disable \
@@ -144,13 +190,13 @@ is helpful for this annotation process.
 ## 5 Run Donor NLP Task
 
 In parallel to human annotation, we want to generate some LLM-based annotations for this task. 
-For the 100 notes previously idenfitied, run: 
+For the notes sampled, run: 
 
 ```sh
 docker compose run --rm -it\
   cumulus-etl nlp \
   --task irae__nlp_donor_gpt_oss_120b_OR_WHATEVER_MODEL_YOU_ARE_USING \
-  <input folder with ndjson files from step 2 above> \
+  <input folder with sampled notes from step 2 above> \
   <your typical ETL PHI folder> \
   <your typical ETL OUTPUT folder> \
   --athena-database <relevant_cumulus_library_database> \
@@ -188,7 +234,7 @@ and LLM to human - using the `chart-review` package. As of chart-review version 
 labelstudio files can be used to describe annotations across different annotators. 
 
 
-### Agreement Between Human Chart Reviewers
+### 6.1 Agreement Between Human Chart Reviewers
 
 To compare our human annotators, export labelstudio-export from each annotator's unique project 
 and move those files into the same directory. Inspect the export files for the unique ID's 
@@ -220,10 +266,8 @@ labels:
   - Donor Relationship | *
   - Hla Match Quality | *
   - Hla Mismatch Count | *
-  - Donor Serostatus | *
   - Donor Serostatus EBV | *
   - Donor Serostatus CMV | *
-  - Recipient Serostatus | *
   - Recipient Serostatus EBV | *
   - Recipient Serostatus CMV | *
 ```
@@ -237,7 +281,7 @@ chart-review accuracy andy dylan
 Since all we're concerned with is Cohen's Kappa, the order of which annotations are ground truth 
 and which are the comparing annotator doesn't matter. 
 
-### Agreement Between Humans and LLM 
+### 6.2 Agreement Between Humans and LLM 
 
 Apologies in advance for this part...
 
@@ -303,3 +347,18 @@ chart-review accuracy andy llm
 chart-review accuracy dylan llm
 ```
 
+# 7 WIP Adjudicating Disagreements 
+
+With an idea of the annotator agreement from our initial labelling, the reviewers 
+should now go through all notes and come to a common agreement on what the ground truth 
+is for these notes. To expedite this process, it's recommended that this process start with 
+the original annotations created by one of the chart reviewers. As a group, reviewers
+should step through the notes where there was disagreement, adjudicate those disagreements,
+and update the annotations to reflect the agreed-upon mentions. 
+
+If you take this approach, ensure that you have a copy of the original annotations you're 
+updating in this adjudication process. We will need the original annotations in order to replicate 
+the agreement scores. 
+
+Doing this will yield a set of annotations we can now consider ground-truth. Using those 
+we can compare against the LLMs predictions to determine the LLMs performance at this task. 

@@ -225,8 +225,9 @@ uploading notes to a label studio project.
 
 For chart annotation, individual reviewers should have separate projects from each other 
 to ensure blinding against other annotators responses. Additionally, each NLP task will have a
-different UI configuration. Those config files can be found in this project, with the `LS_*` prefix.
-For each annotator, for each one of the 4 NLP tasks above, we should do the following
+different UI configuration. Those config files can be found in `./docs/LS_interfaces`, 
+with the `LS_*` prefix. For each annotator, for each one of the 4 NLP tasks above, 
+we should do the following
 
 - Install Label Studio according to [their docs](https://labelstud.io/guide/install.html).
 - Create a new project, named however you like.
