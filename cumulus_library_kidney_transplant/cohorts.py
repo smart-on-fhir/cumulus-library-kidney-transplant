@@ -162,7 +162,7 @@ def make_wide() -> Path:
 
     see `template/cohort_variable_wide.sql`
     :return: Path to SQL file `athena/
-    irae__cohort_study_variables_wide.sql`
+    irae__cohort_study_variable_wide.sql`
     """
     variable_list = list_variables()
     template_sql = filetool.load_template(f"cohort_variable_wide.sql")
