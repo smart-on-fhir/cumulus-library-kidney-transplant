@@ -12,7 +12,7 @@ docker compose run --rm -it\
   --export-to ./samples/HLA-Mismatch-notes \
   --count 30 \
   --seed 07201869 \
-  --columns "note, subject, encounter" \
+  --columns "note,subject,encounter" \
   --phi-dir <your typical ETL PHI folder> \
   --athena-database <relevant_cumulus_library_database>  \
   --athena-workgroup <relevant_cumulus_library_workgroup> \

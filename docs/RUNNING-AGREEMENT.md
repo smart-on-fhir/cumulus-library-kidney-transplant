@@ -130,7 +130,18 @@ mkdir -p ./samples/Recipient-Serostatus-EBV-notes
 mkdir -p ./samples/Transplant-Date-notes
 ```
 
-After successfully sampling for each variable we can upload these notes to label studio
+With this directory structure set up you can update the scripts in `docs/variable_sample_commands` 
+with site-specific variables to generate samples of 30 notes for each variable of interest.
+
+Inspect the resulting sample CSV files to confirm they contain 31 lines (
+one for the CSV header; 30 rows of notes). One way of doing this is to use:
+
+```sh 
+less samples/Transplant-Date-notes.csv | wc -l
+```
+
+After successfully sampling for each variable and confirming that our samples are the size we 
+expect, we can upload these notes to label studio.
 
 ## 3 Upload to Label Studio 
 
