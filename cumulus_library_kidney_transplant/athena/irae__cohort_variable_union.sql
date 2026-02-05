@@ -1,31 +1,31 @@
 create table irae__cohort_variable_union as
 with variable_cohorts as
 (
-	select distinct 'doc_biopsy'	 as variable, code, display, system, encounter_ref  from irae__cohort_doc_biopsy UNION ALL
-	select distinct 'dx_autoimmune'	 as variable, code, display, system, encounter_ref  from irae__cohort_dx_autoimmune UNION ALL
-	select distinct 'dx_cancer'	 as variable, code, display, system, encounter_ref  from irae__cohort_dx_cancer UNION ALL
-	select distinct 'dx_immunocompromised'	 as variable, code, display, system, encounter_ref  from irae__cohort_dx_immunocompromised UNION ALL
-	select distinct 'dx_infection'	 as variable, code, display, system, encounter_ref  from irae__cohort_dx_infection UNION ALL
-	select distinct 'dx_kidney'	 as variable, code, display, system, encounter_ref  from irae__cohort_dx_kidney UNION ALL
-	select distinct 'dx_transplant'	 as variable, code, display, system, encounter_ref  from irae__cohort_dx_transplant UNION ALL
-	select distinct 'lab_autoimmune'	 as variable, code, display, system, encounter_ref  from irae__cohort_lab_autoimmune UNION ALL
-	select distinct 'lab_cbc'	 as variable, code, display, system, encounter_ref  from irae__cohort_lab_cbc UNION ALL
-	select distinct 'lab_cmp'	 as variable, code, display, system, encounter_ref  from irae__cohort_lab_cmp UNION ALL
-	select distinct 'lab_creatinine'	 as variable, code, display, system, encounter_ref  from irae__cohort_lab_creatinine UNION ALL
-	select distinct 'lab_diabetes'	 as variable, code, display, system, encounter_ref  from irae__cohort_lab_diabetes UNION ALL
-	select distinct 'lab_gfr'	 as variable, code, display, system, encounter_ref  from irae__cohort_lab_gfr UNION ALL
-	select distinct 'lab_lft'	 as variable, code, display, system, encounter_ref  from irae__cohort_lab_lft UNION ALL
-	select distinct 'proc_dialysis'	 as variable, code, display, system, encounter_ref  from irae__cohort_proc_dialysis UNION ALL
-	select distinct 'proc_nephrectomy'	 as variable, code, display, system, encounter_ref  from irae__cohort_proc_nephrectomy UNION ALL
-	select distinct 'proc_transplant'	 as variable, code, display, system, encounter_ref  from irae__cohort_proc_transplant UNION ALL
-	select distinct 'rx_antibiotics'	 as variable, code, display, system, encounter_ref  from irae__cohort_rx_antibiotics UNION ALL
-	select distinct 'rx_cancer'	 as variable, code, display, system, encounter_ref  from irae__cohort_rx_cancer UNION ALL
-	select distinct 'rx_diabetes'	 as variable, code, display, system, encounter_ref  from irae__cohort_rx_diabetes UNION ALL
-	select distinct 'rx_diuretics'	 as variable, code, display, system, encounter_ref  from irae__cohort_rx_diuretics UNION ALL
-	select distinct 'rx_htn'	 as variable, code, display, system, encounter_ref  from irae__cohort_rx_htn UNION ALL
-	select distinct 'rx_immunosuppressive'	 as variable, code, display, system, encounter_ref  from irae__cohort_rx_immunosuppressive UNION ALL
-	select distinct 'lab_custom'	 as variable, code, display, system, encounter_ref  from irae__cohort_lab_custom UNION ALL
-	select distinct 'rx_custom'	 as variable, code, display, system, encounter_ref  from irae__cohort_rx_custom
+	select 'doc_biopsy'	 as variable, code, display, system, encounter_ref  from irae__cohort_doc_biopsy UNION ALL
+	select 'dx_autoimmune'	 as variable, code, display, system, encounter_ref  from irae__cohort_dx_autoimmune UNION ALL
+	select 'dx_cancer'	 as variable, code, display, system, encounter_ref  from irae__cohort_dx_cancer UNION ALL
+	select 'dx_immunocompromised'	 as variable, code, display, system, encounter_ref  from irae__cohort_dx_immunocompromised UNION ALL
+	select 'dx_infection'	 as variable, code, display, system, encounter_ref  from irae__cohort_dx_infection UNION ALL
+	select 'dx_kidney'	 as variable, code, display, system, encounter_ref  from irae__cohort_dx_kidney UNION ALL
+	select 'dx_transplant'	 as variable, code, display, system, encounter_ref  from irae__cohort_dx_transplant UNION ALL
+	select 'lab_autoimmune'	 as variable, code, display, system, encounter_ref  from irae__cohort_lab_autoimmune UNION ALL
+	select 'lab_cbc'	 as variable, code, display, system, encounter_ref  from irae__cohort_lab_cbc UNION ALL
+	select 'lab_cmp'	 as variable, code, display, system, encounter_ref  from irae__cohort_lab_cmp UNION ALL
+	select 'lab_creatinine'	 as variable, code, display, system, encounter_ref  from irae__cohort_lab_creatinine UNION ALL
+	select 'lab_diabetes'	 as variable, code, display, system, encounter_ref  from irae__cohort_lab_diabetes UNION ALL
+	select 'lab_gfr'	 as variable, code, display, system, encounter_ref  from irae__cohort_lab_gfr UNION ALL
+	select 'lab_lft'	 as variable, code, display, system, encounter_ref  from irae__cohort_lab_lft UNION ALL
+	select 'proc_dialysis'	 as variable, code, display, system, encounter_ref  from irae__cohort_proc_dialysis UNION ALL
+	select 'proc_nephrectomy'	 as variable, code, display, system, encounter_ref  from irae__cohort_proc_nephrectomy UNION ALL
+	select 'proc_transplant'	 as variable, code, display, system, encounter_ref  from irae__cohort_proc_transplant UNION ALL
+	select 'rx_antibiotics'	 as variable, code, display, system, encounter_ref  from irae__cohort_rx_antibiotics UNION ALL
+	select 'rx_cancer'	 as variable, code, display, system, encounter_ref  from irae__cohort_rx_cancer UNION ALL
+	select 'rx_diabetes'	 as variable, code, display, system, encounter_ref  from irae__cohort_rx_diabetes UNION ALL
+	select 'rx_diuretics'	 as variable, code, display, system, encounter_ref  from irae__cohort_rx_diuretics UNION ALL
+	select 'rx_htn'	 as variable, code, display, system, encounter_ref  from irae__cohort_rx_htn UNION ALL
+	select 'rx_immunosuppressive'	 as variable, code, display, system, encounter_ref  from irae__cohort_rx_immunosuppressive UNION ALL
+	select 'lab_custom'	 as variable, code, display, system, encounter_ref  from irae__cohort_lab_custom UNION ALL
+	select 'rx_custom'	 as variable, code, display, system, encounter_ref  from irae__cohort_rx_custom
 )
 select distinct
     variable_cohorts.variable,
