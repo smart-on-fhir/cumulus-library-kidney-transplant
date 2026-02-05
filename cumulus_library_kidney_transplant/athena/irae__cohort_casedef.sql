@@ -1,7 +1,7 @@
 create  table irae__cohort_casedef as
 WITH
 match_casedef as (
-    select  distinct
+    select
             casedef.code        as dx_code,
             casedef.display     as dx_display,
             casedef.system      as dx_system,
@@ -19,7 +19,7 @@ match_casedef as (
     and     dx.encounter_ref = sp.encounter_ref
 ),
 longitudinal as (
-    select  distinct
+    select
             sp.enc_period_ordinal,
             sp.enc_period_start_day,
             sp.age_at_visit,
@@ -36,7 +36,7 @@ longitudinal as (
     where   match_casedef.subject_ref = sp.subject_ref
 ),
 calc_duration as (
-    select  distinct
+    select
             min(age_at_visit) as age_at_dx_min,
             max(age_at_visit) as age_at_dx_max,
             min(enc_period_ordinal)  as enc_period_ordinal_min,
@@ -57,7 +57,7 @@ calc_days_since as (
     where   longitudinal.subject_ref = calc_duration.subject_ref
 ),
 calc_ordinal as (
-    select  distinct
+    select
             days_since,
             ordinal_since,
             (days_since < 0)    as pre,
@@ -68,7 +68,7 @@ calc_ordinal as (
     from    calc_days_since
 ),
 join_longitudinal as (
-    select  distinct
+    select
             longitudinal.subject_ref,
             longitudinal.encounter_ref,
             calc_ordinal.days_since,
