@@ -112,7 +112,7 @@ def select_union(variable_list: list[str]) -> str:
     sql = list()
     for variable in variable_list:
         variable = fhir2sql.name_simple(variable)
-        select = f"\tselect distinct '{variable}'\t as variable, code, display, system, encounter_ref "
+        select = f"\tselect '{variable}'\t as variable, code, display, system, encounter_ref "
         from_table = f" from {fhir2sql.PREFIX}__cohort_{variable}"
         sql.append(select + from_table)
     return ' UNION ALL\n'.join(sql)
