@@ -24,6 +24,7 @@ docker compose run --rm -it\
   --select-by-word "Live Donor" \
   --select-by-word "Live Renal" \
   --select-by-word "Live Kidney" \
+  --select-by-word "LDRT" \
   --select-by-word "Deceased Donor" \
   --select-by-word "Deceased Kidney" \
   --select-by-word "Deceased Renal" \
@@ -39,9 +40,12 @@ docker compose run --rm -it\
   --select-by-word "DD renal" \
   --select-by-word "Renal DD" \
   --select-by-word "Kidney DD" \
-  --select-by-word "LRD" \
+  --select-by-word "DDRT" \
   --select-by-word "living related donor" \
   --select-by-word "living relative" \
+  --select-by-word "DDRT" \
+  --select-by-word "LRD" \
+  --select-by-word "LRRT" \
   --select-by-word "LURD" \
   --select-by-word "living unrelated donor" \
   --select-by-athena-table irae__sample_casedef_peri \
