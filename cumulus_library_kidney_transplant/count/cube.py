@@ -83,6 +83,21 @@ def cube_doc(from_table='study_population', cols=None, cube_table=None) -> Path:
     sql = get_counts_builder().count_documentreference(cube_table, from_table, cols, skip_status_filter=True)
     return filetool.save_athena_view(cube_table, sql)
 
+def cube_note(from_table='study_population', cols=None, cube_table=None) -> Path:
+    """
+    cube_note extends functionality of cube_doc and enables "count(distinct note_ref)"
+    :param from_table: line-level cohort to derive counts from
+    :param cols: columns to include in the CUBE group by expression
+    :param cube_table: output CUBE table
+    :return: Path to CUBE table
+    """
+    doc_file = cube_doc(from_table, cols, cube_table)
+    note_file = Path(str(doc_file).replace('_document_', '_note_'))
+    doc_sql = filetool.read_text(doc_file)
+    note_sql = filetool.replace_text(doc_sql,
+                                     {'documentreference_ref': 'note_ref', '_document_':'_note_'})
+    return Path(filetool.write_text(note_sql, note_file))
+
 def make_study_population() -> List[Path]:
     """
     CUBE each study population cohort by unique
@@ -135,10 +150,7 @@ def make_variables() -> List[Path]:
 
     :return: List of study variable CUBE tables
     """
-    source = fhir2sql.name_cohort('study_variables')
-    cols = Columns.valueset.value + ['variable']
-    file_list = [cube_pat(source, cols),
-                 cube_enc(source, cols)]
+    file_list = list()
 
     variable_list = vsac_variables.list_view_variables() + custom_variables.list_view_custom()
     for variable in variable_list:
@@ -166,10 +178,10 @@ def make_casedef_timeline() -> List[Path]:
         * FHIR Patient
         * FHIR Encounter
 
-    :return: Path to CUBE table for the casedef_timeline
+    :return: Path to CUBE table for the casedef
     """
-    from_table = fhir2sql.name_cohort('casedef_timeline')
-    cols = ['casedef_period', 'age_at_visit', 'gender', 'enc_period_start_year']
+    from_table = fhir2sql.name_cohort('casedef')
+    cols = ['ordinal_since', 'age_at_dx_min', 'age_at_visit', 'gender', 'dx_code', 'dx_display']
     return [cube_pat(from_table, cols),
             cube_enc(from_table, cols)]
 
@@ -190,17 +202,12 @@ def make_casedef_samples() -> List[Path]:
 
     :return: Path to CUBE table for the casedef_timeline
     """
-    cols = ['doc_type_code', 'doc_type_display', 'doc_type_system', 'group_name']
+    cols = ['note_code', 'note_display', 'note_system', 'group_name']
     file_list = list()
-    for period in ['pre', 'index', 'post']:
-        for size in [None, '10', '100']:
-            if size:
-                from_table = fhir2sql.name_sample(f'casedef_{period}_{size}')
-                file_list.append(cube_doc(from_table, cols))
-            else:
-                from_table = fhir2sql.name_sample(f'casedef_{period}')
-                file_list.append(cube_pat(from_table, cols))
-                file_list.append(cube_doc(from_table, cols))
+    for period in ['pre', 'peri', 'peri_post', 'post']:
+        from_table = fhir2sql.name_sample(f'casedef_{period}')
+        file_list.append(cube_pat(from_table, cols))
+        file_list.append(cube_note(from_table, cols))
     return file_list
 
 def make() -> List[Path]:

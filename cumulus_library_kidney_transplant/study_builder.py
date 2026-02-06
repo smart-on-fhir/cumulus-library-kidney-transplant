@@ -167,7 +167,11 @@ def make_study_sql(study: StudyBuilderConfig = None) -> List[Path]:
         ),
         # FHIR Patient.race, default ANY
         criteria.race.include(
-            race_list=study.race_list)]
+            race_list=study.race_list),
+
+        # Dependency because LOINC names are not always provided
+        filetool.copy_template('fhir_diagnostic_service.sql')
+    ]
 
     return (criteria_sql +
             study_population.make() +

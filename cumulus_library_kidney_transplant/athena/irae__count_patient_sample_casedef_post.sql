@@ -4,10 +4,10 @@ CREATE TABLE irae__count_patient_sample_casedef_post AS (
         SELECT
             s.subject_ref,
             --noqa: disable=RF03, AL02
-            s."doc_type_code",
-            s."doc_type_display",
-            s."doc_type_system",
-            s."group_name"
+            s."group_name",
+            s."note_code",
+            s."note_display",
+            s."note_system"
             --noqa: enable=RF03, AL02
         FROM irae__sample_casedef_post AS s
     ),
@@ -16,54 +16,54 @@ CREATE TABLE irae__count_patient_sample_casedef_post AS (
         SELECT
             subject_ref,
             coalesce(
-                cast(doc_type_code AS varchar),
-                'cumulus__none'
-            ) AS doc_type_code,
-            coalesce(
-                cast(doc_type_display AS varchar),
-                'cumulus__none'
-            ) AS doc_type_display,
-            coalesce(
-                cast(doc_type_system AS varchar),
-                'cumulus__none'
-            ) AS doc_type_system,
-            coalesce(
                 cast(group_name AS varchar),
                 'cumulus__none'
-            ) AS group_name
+            ) AS group_name,
+            coalesce(
+                cast(note_code AS varchar),
+                'cumulus__none'
+            ) AS note_code,
+            coalesce(
+                cast(note_display AS varchar),
+                'cumulus__none'
+            ) AS note_display,
+            coalesce(
+                cast(note_system AS varchar),
+                'cumulus__none'
+            ) AS note_system
         FROM filtered_table
     ),
 
     powerset AS (
         SELECT
             count(DISTINCT subject_ref) AS cnt_subject_ref,
-            "doc_type_code",
-            "doc_type_display",
-            "doc_type_system",
             "group_name",
+            "note_code",
+            "note_display",
+            "note_system",
             concat_ws(
                 '-',
-                COALESCE("doc_type_code",''),
-                COALESCE("doc_type_display",''),
-                COALESCE("doc_type_system",''),
-                COALESCE("group_name",'')
+                COALESCE("group_name",''),
+                COALESCE("note_code",''),
+                COALESCE("note_display",''),
+                COALESCE("note_system",'')
             ) AS id
         FROM null_replacement
         GROUP BY
             cube(
-            "doc_type_code",
-            "doc_type_display",
-            "doc_type_system",
-            "group_name"
+            "group_name",
+            "note_code",
+            "note_display",
+            "note_system"
             )
     )
 
     SELECT
         p.cnt_subject_ref AS cnt,
-        p."doc_type_code",
-        p."doc_type_display",
-        p."doc_type_system",
-        p."group_name"
+        p."group_name",
+        p."note_code",
+        p."note_display",
+        p."note_system"
     FROM powerset AS p
     WHERE 
         p.cnt_subject_ref >= 10

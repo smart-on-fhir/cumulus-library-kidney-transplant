@@ -18,7 +18,7 @@ first_visit as
 (
     select  min(enc_period_start_day) as index_date,
             subject_ref
-    from    irae__cohort_casedef
+    from    irae__cohort_casedef_candidate
     where   include
     group by subject_ref
 ),
@@ -26,7 +26,7 @@ complication as
 (
     select  min(enc_period_start_day) as index_date,
             subject_ref, valueset, code, display, system
-    from    irae__cohort_casedef
+    from    irae__cohort_casedef_candidate
     where   NOT include
     group by subject_ref, valueset, code, display, system
 ),
@@ -49,6 +49,6 @@ exclusion_list as (
 select  distinct
         exclusion_list.*
 from    exclusion_list,
-        irae__cohort_casedef as casedef
+        irae__cohort_casedef_candidate as casedef
 where   exclusion_list.subject_ref = casedef.subject_ref
 ;
