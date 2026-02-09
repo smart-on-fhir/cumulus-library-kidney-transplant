@@ -41,11 +41,10 @@ docker compose run --rm -it\
   --select-by-word "Renal DD" \
   --select-by-word "Kidney DD" \
   --select-by-word "DDRT" \
-  --select-by-word "living related donor" \
-  --select-by-word "living relative" \
-  --select-by-word "DDRT" \
   --select-by-word "LRD" \
   --select-by-word "LRRT" \
+  --select-by-word "living related donor" \
+  --select-by-word "living relative" \
   --select-by-word "LURD" \
   --select-by-word "living unrelated donor" \
   --select-by-athena-table irae__sample_casedef_peri \

@@ -47,6 +47,11 @@ docker compose run --rm -it\
   --select-by-word "moderate match" \
   --select-by-word "partial match" \
   --select-by-word "partially match" \
+  --select-by-word "HLA Quality " \
+  --select-by-word "Highly Sensitized" \
+  --select-by-word "Alloimmunized" \
+  --select-by-word "Desensitization" \
+  --select-by-word "Desensitized" \
   --select-by-word "intermediate match" \
   --select-by-word "acceptable match" \
   --select-by-word "acceptably matched" \

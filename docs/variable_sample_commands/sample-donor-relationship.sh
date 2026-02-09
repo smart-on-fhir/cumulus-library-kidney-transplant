@@ -39,6 +39,7 @@ docker compose run --rm -it\
   --select-by-word "non-directed donor" \
   --select-by-word "nondirected donor" \
   --select-by-word "LRD" \
+  --select-by-word "LRRT" \
   --select-by-word "living related donor" \
   --select-by-word "living relative" \
   --select-by-word "LURD" \
