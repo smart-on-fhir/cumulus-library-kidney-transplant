@@ -6,12 +6,13 @@ def generate_exclusion_regex(patterns):
     Combines multiple keywords/regexes into a single regex that 
     only matches if NONE of the patterns are present.
     """
-   
     # Join patterns with a logical OR (|)
-    combined_patterns = "|".join(f"(?:{p})" for p in patterns)
-    
+    edge = r"\b"
+    combined_patterns = "|".join(f"{edge}{p}{edge}" for p in patterns)
+
     # Combine with negative lookahead 
-    return re.compile(rf"^(?!.*(?:{combined_patterns})).*$")
+    # using .*$ at the end causes a catastrophic backtracking problem
+    return re.compile(rf"^(?!.*(?:{combined_patterns}))")
 
 def get_exclusion_patterns():
     keywords = [
@@ -224,6 +225,10 @@ def get_exclusion_patterns():
         "transplant on" ,
         re.compile(r"now day\s*\+?\d+"),
         re.compile(r"transplant\s*\(?\d+\s*/\s*\d+\)?"),
+        ###################
+        # Avoid Noise from 
+        # Unprocessed Note Text 
+        "OperationOutcome",
     ]
     
     # Escape patterns 
