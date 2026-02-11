@@ -106,15 +106,16 @@ your samples to the same directory location
 The recommended layout for the resulting sample is: 
 ```
 samples/
-  - Donor-Relationship/
-  - Donor-Serostatus-CMV/
-  - Donor-Serostatus-EBV/
-  - Donor-Status/
-  - HLA-Mismatch/
-  - HLA-Quality/
-  - Recipient-Serostatus-CMV/
-  - Recipient-Serostatus-EBV/
-  - Transplant-Date/
+  - Donor-Relationship-notes/
+  - Donor-Serostatus-CMV-notes/
+  - Donor-Serostatus-EBV-notes/
+  - Donor-Status-notes/
+  - HLA-Mismatch-notes/
+  - HLA-Quality-notes/
+  - Recipient-Serostatus-CMV-notes/
+  - Recipient-Serostatus-EBV-notes/
+  - Transplant-Date-notes/
+  - Other-notes/
 ```
 
 Which can be achieved by running the following: 
@@ -128,10 +129,13 @@ mkdir -p ./samples/HLA-Quality-notes
 mkdir -p ./samples/Recipient-Serostatus-CMV-notes
 mkdir -p ./samples/Recipient-Serostatus-EBV-notes
 mkdir -p ./samples/Transplant-Date-notes
+mkdir -p ./samples/Other-notes
 ```
 
 With this directory structure set up you can update the scripts in `docs/variable_sample_commands` 
 with site-specific variables to generate samples of 30 notes for each variable of interest.
+Make sure you also run `sample-unmatched.sh` to ensure we include notes not matched by 
+any of the variables themselves.
 
 Inspect the resulting sample CSV files to confirm they contain 31 lines (
 one for the CSV header; 30 rows of notes). One way of doing this is to use:
