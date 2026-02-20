@@ -15,7 +15,7 @@ def parse_keyword_tsv(tsv_path: Path) -> tuple[dict[str, dict], list[str]]:
     rows = list(reader)
 
     if not rows:
-        return {}
+        return {}, []
 
     # Row 0: column headers (but skip the first cell "Link to Variables")
     variable_names = rows[0][1:]
@@ -92,11 +92,11 @@ def generate_select_by_keyword_lines(keywords: Iterable[str]) -> str:
     for kw in keywords:
         if kw.startswith('REGEX:'):
             regex_pattern = re.compile(kw.split('REGEX:')[1].strip()).pattern
-            keyword_lines.append(f'  --select-by-regex "{regex_pattern}" \\')
+            keyword_lines.append(f'--select-by-regex "{regex_pattern}" \\')
         else:
-            keyword_lines.append(f'  --select-by-word "{kw}" \\')
+            keyword_lines.append(f'--select-by-word "{kw}" \\')
 
-    return "\n".join(keyword_lines)
+    return "\n  ".join(keyword_lines)
 
 
 def get_keyword_patterns(keyword_set: Iterable[str]) -> list[str]:

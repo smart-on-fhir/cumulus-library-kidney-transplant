@@ -17,7 +17,7 @@ docker compose run --rm -it \
   --athena-database <relevant_cumulus_library_database>  \
   --athena-workgroup <relevant_cumulus_library_workgroup> \
   --athena-region <relevant_cumulus_region> \
-    --select-by-word "therapeutic" \
+  --select-by-word "therapeutic" \
   --select-by-word "within range" \
   --select-by-word "at goal" \
   --select-by-word "at target" \

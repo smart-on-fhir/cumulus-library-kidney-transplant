@@ -17,7 +17,7 @@ docker compose run --rm -it \
   --athena-database <relevant_cumulus_library_database>  \
   --athena-workgroup <relevant_cumulus_library_workgroup> \
   --athena-region <relevant_cumulus_region> \
-    --select-by-word "Recipient" \
+  --select-by-word "Recipient" \
   --select-by-word "Transplant" \
   --select-by-word "Donor" \
   --select-by-word "Donation" \
