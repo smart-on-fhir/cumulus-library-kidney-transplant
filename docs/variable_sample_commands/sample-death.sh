@@ -3,13 +3,13 @@
 start_time=$(date +%s)
 echo "Process started at: $(date)"
 
-# Transplant Date
-echo "Transplant Date"
+# Death
+echo "Death"
 docker compose run --rm -it \
   cumulus-etl sample \
   <input folder with ndjson files from step 2 above> \
-  --output ./samples/transplant-date.csv\
-  --export-to ./samples/transplant-date/\
+  --output ./samples/death.csv\
+  --export-to ./samples/death/\
   --count 30 \
   --seed 07201869 \
   --columns "note,subject,encounter" \
@@ -17,18 +17,21 @@ docker compose run --rm -it \
   --athena-database <relevant_cumulus_library_database>  \
   --athena-workgroup <relevant_cumulus_library_workgroup> \
   --athena-region <relevant_cumulus_region> \
-    --select-by-word "KDIGO" \
-  --select-by-word "Transplant Date" \
-  --select-by-word "transplanted on" \
-  --select-by-word "POD" \
-  --select-by-word "transplant on" \
-  --select-by-regex "now day\s*\+?\d+" \
-  --select-by-regex "transplant\s*\(?\d+\s*/\s*\d+\)?" \
-  --select-by-word "Recipient" \
-  --select-by-word "Transplant" \
-  --select-by-word "Donor" \
-  --select-by-word "Donation" \
-  --select-by-word "Organ" \
+    --select-by-word "Cadaveric" \
+  --select-by-word "cadaver" \
+  --select-by-word "Sepsis" \
+  --select-by-word "Sepsis-like" \
+  --select-by-word "Septic" \
+  --select-by-word "Septicemia" \
+  --select-by-word "Shock" \
+  --select-by-word "SIRS" \
+  --select-by-word "Death" \
+  --select-by-word "dead" \
+  --select-by-word "died" \
+  --select-by-word "passed away" \
+  --select-by-word "end of life" \
+  --select-by-word "did not survive" \
+  --select-by-word "passed peacefully" \
   --select-by-athena-table irae__sample_casedef_peri \
   --allow-large-selection
 

@@ -5,11 +5,11 @@ echo "Process started at: $(date)"
 
 # Donor Status
 echo "Donor Status"
-docker compose run --rm -it\
+docker compose run --rm -it \
   cumulus-etl sample \
   <input folder with ndjson files from step 2 above> \
-  --output ./samples/Donor-Status-notes.csv \
-  --export-to ./samples/Donor-Status-notes \
+  --output ./samples/donor-status.csv\
+  --export-to ./samples/donor-status/\
   --count 30 \
   --seed 07201869 \
   --columns "note,subject,encounter" \
@@ -17,7 +17,7 @@ docker compose run --rm -it\
   --athena-database <relevant_cumulus_library_database>  \
   --athena-workgroup <relevant_cumulus_library_workgroup> \
   --athena-region <relevant_cumulus_region> \
-  --select-by-word "KDIGO" \
+    --select-by-word "KDIGO" \
   --select-by-word "Living Donor" \
   --select-by-word "Living Kidney" \
   --select-by-word "Living Renal" \
@@ -56,4 +56,3 @@ elapsed=$((end_time - start_time))
 
 echo "Process finished at: $(date)"
 echo "Total duration: $elapsed seconds"
-

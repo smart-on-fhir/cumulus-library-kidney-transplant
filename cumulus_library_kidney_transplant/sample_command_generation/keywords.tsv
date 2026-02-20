@@ -1,23 +1,23 @@
-Link to Variables	Transplant Date	Donor Status	Donor Relationship	HLA Quality	HLA Mismatch	Donor Serostatus EBV	Donor Serostatus CMV	Recipient Serostatus EBV	Recipient Serostatus CMV	Therapeutic	Sub	Supra	Compliant	Partial	NON	Any Infection	Viral	Bacterial	Fungal	PTLD	Cancer	Any Rejection	DSA	Biopsy	Failure	Death
-KDIGO	X	X	X	X	X											X	X						X			
+Link to Variables	Transplant Date	Donor Status	Donor Relationship	HLA Quality	HLA Mismatch	Donor Serostatus EBV	Donor Serostatus CMV	Recipient Serostatus EBV	Recipient Serostatus CMV	Therapeutic	Subtherapeutic 	Supratherapeutic 	Compliant	Partially Compliant	Non Compliant	Any Infection	Viral Infection	Bacterial Infection	Fungal Infection	PTLD	Cancer	Any Rejection	DSA	Failure	Death
+KDIGO	X	X	X	X	X											X	X						X		
 "Transplant Date 
 transplanted on
 POD
 transplant on 
 REGEX: now day\s*\+?\d+
-REGEX: transplant\s*\(?\d+\s*/\s*\d+\)?"	X																									
+REGEX: transplant\s*\(?\d+\s*/\s*\d+\)?"	X																								
 "Recipient
 Transplant 
 Donor
 Donation
-Organ"	X					X	X	X	X																	
+Organ"	X					X	X	X	X																
 "Living Donor
 Living Kidney
 Living Renal
 Live Donor
 Live Renal
 Live Kidney
-LDRT"		X																								
+LDRT"		X																							
 "Deceased Donor
 Deceased Kidney
 Deceased Renal
@@ -25,15 +25,15 @@ Deceased Organ
 Heart beating
 Beating heart
 Brain dead
-Brain-dead"		X																								
+Brain-dead"		X																							
 "Cadaveric
-cadaver"		X																							X	X
+cadaver"		X																						X	X
 "DD donor
 DD kidney
 DD renal
 Renal DD
 Kidney DD
-DDRT"		X																								
+DDRT"		X																							
 "Related Donor
 Familial donor
 Family donor
@@ -43,23 +43,23 @@ Mother donor
 Father donor
 Child donor
 Brother donor
-Sister donor"			X																							
+Sister donor"			X																						
 "Unrelated donor 
 directed donor
 altruistic donor
 good samaritan donor
 anonymous donor
-volunteer donor"			X																							
+volunteer donor"			X																						
 "NDD
 non directed donor
 non-directed donor
-nondirected donor"			X																							
+nondirected donor"			X																						
 "LRD
 LRRT
 living related donor
-living relative"		X	X																							
+living relative"		X	X																						
 "LURD
-living unrelated donor"		X	X																							
+living unrelated donor"		X	X																						
 "HLA
 human leukocyte antigen
 antigen matched
@@ -70,7 +70,7 @@ HLA-B
 HLA-C
 HLA-DR
 HLA-DQ
-HLA-DP"				X	X																	X	X			
+HLA-DP"				X	X																	X	X		
 "HLA Quality 
 Highly Sensitized
 Not Sensitized
@@ -78,10 +78,10 @@ Alloimmunized
 Desensitization
 Desensitized
 Sensitized
-Sensitization"				X																						
+Sensitization"				X																					
 "mismatch
 mismatches
-mismatched"				X	X																					
+mismatched"				X	X																				
 "well matched
 good match
 excellent match
@@ -98,7 +98,7 @@ completely matched
 perfect match
 perfectly matched
 identical match
-identically matched"				X	X																					
+identically matched"				X	X																				
 "moderately matched
 moderate match
 partial match
@@ -107,7 +107,7 @@ intermediate match
 acceptable match
 acceptably matched
 suitable match
-compatible match"				X	X																					
+compatible match"				X	X																				
 "poorly matched
 poor match
 weak match
@@ -115,7 +115,7 @@ weakly matched
 high mismatch
 highly mismatched
 unfavorable match
-unfavorably matched"				X	X																					
+unfavorably matched"				X	X																				
 "serostatus 
 seropositive 
 seropositivity
@@ -123,15 +123,15 @@ IgG positive
 seronegative
 seronegativity
 IgG negative
-PCR"						X	X	X	X																	
+PCR"						X	X	X	X																
 "Epstein-Barr
 Epstein
 EBV
-EBV+"						X		X								X	X									
+EBV+"						X		X								X	X								
 "Cytomegalovirus
 CMV
 CMV+
-CMV-"							X		X							X	X									
+CMV-"							X		X							X	X								
 "donor serostatus
 D+
 D +
@@ -156,7 +156,7 @@ Donor -
 Donor(-)
 Donor (-)
 Donor nonreactive
-Donor-negative"						X	X																			
+Donor-negative"						X	X																		
 "recipient serostatus
 R+
 R +
@@ -181,4 +181,393 @@ Recip -
 Recip(-)
 Recip (-)
 Recipient nonreactive
-Recip-negative"								X	X																	
+Recip-negative"								X	X																
+"therapeutic
+within range
+at goal
+at target
+goal level
+target level
+target range
+appropriate level
+adequate level
+acceptable level
+stable level
+good level"										X	X	X	X	X	X										
+"subtherapeutic
+inadequate level
+insufficient level
+below goal
+below level 
+below range
+below target
+under goal
+under level
+under range
+under target
+not at goal
+not at target"										X	X	X	X	X	X										
+"supratherapeutic
+bolus
+supra level
+elevated level
+excessive level
+above level
+above goal
+above range
+above target
+over target
+high level
+toxic level
+above range
+above therapeutic
+above target"										X	X	X	X	X	X										
+"Trough
+Level 
+Levels
+Target
+Goal
+Baseline"										X	X	X	X	X	X										
+"Immunosuppression
+immunosuppressive
+immunosuppressant"										X	X	X	X	X	X										
+"Compliant
+Compliance"										X	X	X	X	X	X										
+"taking as prescribed
+taking medications
+taking regularly
+takes medications
+takes meds
+regularly taking
+regularly takes"													X	X	X										
+"Partially Compliant
+partial compliance
+partially adherent
+sometimes compliant
+partial adherence
+intermittently compliant
+sometimes compliant
+inconsistent adherence
+inconsistent with meds
+occasionally misses doses
+occasional missed doses
+takes meds irregularly
+incomplete compliance"													X	X	X										
+"Noncompliant
+non-compliant
+not compliant
+non adherence
+non-adherent
+not adherent
+poor compliance
+poor adherence
+fails to take meds
+fails to take medications
+does not take meds
+does not take medications
+stopped taking meds
+refuses medication
+missed doses
+frequently misses doses
+frequent missed doses"													X	X	X										
+"Adherence 
+Adheres
+Adhere"													X	X	X										
+"Surveillance
+Monitoring
+Monitor 
+Vigilance
+Vigilant
+Watch
+Watching"													X	X	X	X	X	X	X	X	X	X	X		
+"Screening
+Screen"													X	X	X	X	X	X	X	X	X	X	X		
+"Tracking
+Track
+Oversight
+Oversee"													X	X	X	X							X		
+"Prophylaxis
+Prophylactic
+Prevention
+Preventive
+Preemptive"																X	X	X					X		
+"Empiric
+empirical
+empirically"																X	X	X					X		
+"Inflammation
+Inflammatory
+Inflamed
+Glomerulonephritis
+Pyelonephritis
+Nephritis
+Tubulitis
+Enteritis
+Ureteritis
+Cellulitis
+Peritonitis
+Endocarditis
+Erythema
+Edema"																X	X	X	X	X	X	X	X	X	
+"UTI
+urinary tract infection"																X	X	X	X				X		
+"UTD
+Hydronephrosis
+VUR
+Vesicoureteral Reflux
+Ureter"																X	X	X	X				X		
+"Surgical site
+SSI
+Abscess
+Wound
+Catheter
+CLABSI
+Exit-site 
+Exit site 
+Purulence
+Purulent"																X	X	X	X				X		
+"Infection
+Infections
+Infectious
+Infected
+Infect
+Opportunistic"																X	X	X	X	X			X		
+"Invasion
+Invades
+Invaded
+Invade"																X	X	X	X	X			X		
+"Pathogenic
+Pathogen
+Antigen
+Virulent
+Virulence
+Microorganism"																X	X	X	X	X			X		
+"Sepsis
+Sepsis-like 
+Septic
+Septicemia
+Shock
+SIRS"																X	X	X	X	X			X	X	X
+"PNA
+Pneumonia
+Pneumoniae"																X	X	X	X	X			X		
+"Viral
+Virus
+Viremia"																X	X			X			X		
+"BK Virus
+BK Viral
+BKV
+BKV+
+BKN 
+Polyomaviridae
+SV40"																X	X			X			X		
+"Herpes
+HSV
+HSV+
+Zoster
+VZV
+VZV+
+Shingles
+Varicella"																X	X			X			X		
+"Hepatitis
+HBV
+HBV+
+HCV
+HCV+"				 												X	X			X			X		
+"Bacterial
+Bacteria
+Bacteremia"																X		X					X		
+"Gram stain
+Gram staining
+Gram positive 
+Gram negative
+Gram-positive 
+Gram-negative"																X		X					X		
+"Antibiotics
+Antibiotic
+Resistance
+Resistant"																X		X							
+"Strains
+Strain
+Variant"																X		X							
+"Enterococcus
+Streptococcus
+VRE
+Klebsiella
+Bacillus"																X		X							
+"Clostridium
+Clostridioides
+C. diff
+C diff
+C.diff 
+Cdiff"																X		X							
+"Escherichia
+E.coli 
+E coli
+E. coli"																X		X							
+"Microbe
+Microbial
+Polymicrobial
+Colonization
+Colonized
+Colonies
+Colony"																X		X		X					
+Antimicrobial																X	X	X	X	X			X		
+"Mycobacterium
+Mycobacteria"																X		X	X						
+"Fungal
+Fungemia
+Fungus 
+Mold
+Yeast
+Mycosis
+Mycotic"																X			X				X		
+"Pneumocystis
+Pneumocystosis
+Jirovecii
+PCP
+PJP"																X			X				X		
+"Candida
+Candidiasis"																X			X				X		
+"Aspergillus
+Aspergillosis
+Fumigatus"																X			X						
+"Mycosis
+Mycotic"																			X						
+"PTLD
+Lymphoproliferative
+Lymphoproliferation
+Proliferative
+Proliferating
+Proliferate
+Proliferated"																				X	X				
+"Cancers
+Cancer
+Proliferation
+Proliferative
+Proliferate
+Metastatic
+Malignant
+Malignancy
+Hyperplasia
+Hyperplastic
+Neoplasia
+Neoplastic
+Neoplasm"																				X	X				
+"Carcinomas
+Carcinoma
+Adenocarcinoma"																					X				
+"Sarcomas
+Sarcoma
+Kaposi’s
+Kaposi"																					X				
+"Melanomas
+Melanoma
+Non-Melanoma"																					X				
+"Lymphomas
+Lymphoma
+Non-hodgkin
+Hodgkin's
+Hodgkin
+NHL"																					X				
+Chemotherapy																					X				
+"Dysfunction
+Disfunction
+nonfunctional
+non functional
+nonfunctioning
+not functioning
+Graft Function
+Allograft Function 
+Kidney Function 
+Renal Function"																						X	X	X	
+"Biopsy
+Biopsies"																X	X	X	X	X	X	X	X	X	
+"Biospecimen
+Biosample
+Specimen
+Tissue"																X	X	X	X	X	X	X	X		
+"Resection
+resected
+re-excision
+re-excised
+re-excise
+excise
+excised"																					X	X	X		
+"Graft
+Allograft"																						X	X	X	
+"Pathology
+Pathological"																X	X	X	X	X	X	X	X		
+"IHC
+immunohistochemistry
+immunostain
+immunostaining
+histologic
+staining
+stain"																X	X	X	X	X	X	X	X		
+"Rejection
+Rejected
+Reject"																						X	X	X	
+"AMR
+Antibody-Mediated
+Antibody Mediated"																						X	X	X	
+"DSA
+DSAs
+Donor specific"																						X	X	X	
+"Antibodies
+Antibody"																						X	X	X	
+"IGG
+IVIG
+immunoglobulin"																									
+"B-cells
+B cells
+B lymphocytes
+B-lymphocytes
+B-cell
+B cell
+B lymphocyte
+B-lymphocyte"																X				X	X	X	X	X	
+"T-cells
+T cells
+T lymphocytes
+T-lymphocytes
+T-cell
+T cell
+T lymphocyte
+T-lymphocyte"																X				X	X	X	X	X	
+"TCMR
+ACR
+Cytotoxic
+Acute cellular"																X				X	X	X	X	X	
+"Banff
+Grading 
+Grade"																						X	X	X	
+"Failure
+Failed
+Fail"																						X	X	X	
+"Fibrosis
+Fibrotic
+Stenosis
+Ischemia
+Narrowing
+Stricture
+Obstruction"																						X	X	X	
+"Thrombosis
+Thrombotic
+Microangiopathy
+Renal vein
+Renal artery"																						X	X	X	
+"Dialysis
+Hemodialysis
+Peritoneal"																								X	
+"Nephrectomy
+Graftectomy
+Explantation
+Removal
+Removed"																								X	
+"Death
+dead
+died
+passed away
+end of life
+did not survive
+passed peacefully"																									X

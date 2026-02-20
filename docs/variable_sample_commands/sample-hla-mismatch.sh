@@ -5,11 +5,11 @@ echo "Process started at: $(date)"
 
 # HLA Mismatch
 echo "HLA Mismatch"
-docker compose run --rm -it\
+docker compose run --rm -it \
   cumulus-etl sample \
   <input folder with ndjson files from step 2 above> \
-  --output ./samples/HLA-Mismatch-notes.csv \
-  --export-to ./samples/HLA-Mismatch-notes \
+  --output ./samples/hla-mismatch.csv\
+  --export-to ./samples/hla-mismatch/\
   --count 30 \
   --seed 07201869 \
   --columns "note,subject,encounter" \
@@ -17,12 +17,18 @@ docker compose run --rm -it\
   --athena-database <relevant_cumulus_library_database>  \
   --athena-workgroup <relevant_cumulus_library_workgroup> \
   --athena-region <relevant_cumulus_region> \
-  --select-by-word "KDIGO" \
+    --select-by-word "KDIGO" \
   --select-by-word "HLA" \
   --select-by-word "human leukocyte antigen" \
   --select-by-word "antigen matched" \
   --select-by-word "antigen matches" \
   --select-by-word "antigen match" \
+  --select-by-word "HLA-A" \
+  --select-by-word "HLA-B" \
+  --select-by-word "HLA-C" \
+  --select-by-word "HLA-DR" \
+  --select-by-word "HLA-DQ" \
+  --select-by-word "HLA-DP" \
   --select-by-word "mismatch" \
   --select-by-word "mismatches" \
   --select-by-word "mismatched" \
@@ -60,12 +66,8 @@ docker compose run --rm -it\
   --select-by-word "highly mismatched" \
   --select-by-word "unfavorable match" \
   --select-by-word "unfavorably matched" \
-  --select-by-word "DSA" \
-  --select-by-word "DSAs" \
-  --select-by-word "Donor specific" \
   --select-by-athena-table irae__sample_casedef_peri \
   --allow-large-selection
-
 
 # Record end time
 end_time=$(date +%s)
@@ -73,4 +75,3 @@ elapsed=$((end_time - start_time))
 
 echo "Process finished at: $(date)"
 echo "Total duration: $elapsed seconds"
-

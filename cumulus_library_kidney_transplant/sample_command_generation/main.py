@@ -2,10 +2,12 @@ import csv
 import re
 import sys
 from pathlib import Path
+from typing import Iterable
 
-def parse_keyword_tsv(tsv_path: Path) -> dict[str, dict]:
+def parse_keyword_tsv(tsv_path: Path) -> tuple[dict[str, dict], list[str]]:
     """
-    Parse a keyword-mapping TSV and return the variable-lookup dict
+    Parse a keyword-mapping TSV 
+    returns the keyword lookup dict and the variables of interest 
     """
     tsv_path = Path(tsv_path)
     tsv = tsv_path.open()
@@ -52,9 +54,67 @@ def parse_keyword_tsv(tsv_path: Path) -> dict[str, dict]:
             "relevant variables": relevant_vars,
         }
 
-    return lookup
+    return lookup, variable_names
 
-def generate_exclusion_regex(patterns):
+
+def file_friendly_variable_name(variable: str) -> str:
+    """
+    Variables as file-friendly slugs
+    """
+    return variable.lower().replace(" ", "-").replace("_", "-")
+
+
+def space_friendly_variable_name(variable: str) -> str:
+    """
+    Variable names as human-readable strings
+    """
+    return variable.replace("-", " ").replace("_", " ")
+
+
+def get_keywords_for_variable(lookup: dict, variable_name: str) -> list[str]:
+    """
+    Extract all keywords for a variable from our lookup
+    """
+    keywords = []
+    for group in lookup.values():
+        if variable_name in group["relevant variables"]:
+            keywords.extend(group["keywords"])
+    return keywords
+
+
+def generate_select_by_keyword_lines(keywords: Iterable[str]) -> str:
+    """
+    Generate the --select-by-word and --select-by-regex based on keywords
+    """
+    keyword_lines = []
+    if not keywords:
+        return ""
+    for kw in keywords:
+        if kw.startswith('REGEX:'):
+            regex_pattern = re.compile(kw.split('REGEX:')[1].strip()).pattern
+            keyword_lines.append(f'  --select-by-regex "{regex_pattern}" \\')
+        else:
+            keyword_lines.append(f'  --select-by-word "{kw}" \\')
+
+    return "\n".join(keyword_lines)
+
+
+def get_keyword_patterns(keyword_set: Iterable[str]) -> list[str]:
+    """
+    Given a set of keywords, some of which may be regexes (marked with "REGEX:"),
+    return a list of patterns where regexes are compiled and keywords are escaped.
+    """
+    # Parse Regex patterns as regexes, but escape all other keywords 
+    patterns = []
+    for kw in keyword_set:
+        if kw.startswith('REGEX:'):
+            patterns.append(re.compile(kw.split('REGEX:')[1].strip()).pattern)
+        else:
+            patterns.append(re.escape(kw))
+    return patterns
+
+
+def generate_exclusion_regex(patterns: list[str]) -> re.Pattern:
     """
     Combines multiple keywords/regexes into a single regex that 
     only matches if NONE of the patterns are present.
@@ -67,35 +127,78 @@ def generate_exclusion_regex(patterns):
     # using .*$ at the end causes a catastrophic backtracking problem
     return re.compile(rf"^(?!.*(?:{combined_patterns}))")
 
-def get_exclusion_patterns(keyword_set: set):
-    # Escape patterns 
-    patterns = []
-    for k in keyword_set:
-        if k.startswith('REGEX:'):
-            patterns.append(re.compile(k.split('REGEX:')[1].strip()).pattern)
-        else:
-            patterns.append(re.escape(k))
-    return patterns
 
-def make_negation_regex(keyword_path: Path):
-    keyword_lookup = parse_keyword_tsv(keyword_path)
+def make_negation_regex(keyword_lookup: dict[str, dict]) -> re.Pattern:
+    """
+    Generate a single regex pattern that matches only if none of the keywords (or regexes) 
+    are matched
+    """
     keyword_set = set()
     for keyword_group in keyword_lookup.values(): 
         keyword_set.update(set(keyword_group['keywords']))
     
-    # --- Example Usage ---
-    keywords_and_regexes = get_exclusion_patterns(keyword_set)
-    master_regex = generate_exclusion_regex(keywords_and_regexes)
-    print(f"Generated Regex: {master_regex}\n")
-    
-    # Write the master_regex to a file in the same directory as this script
-    script_dir = Path(__file__).parent
-    output_file = script_dir / "negation_regex.txt"
-    with open(output_file, "w") as f:
-        f.write(master_regex.pattern)
-    
-    print(f"Regex written to {output_file}")
+    keyword_patterns = get_keyword_patterns(keyword_set)
+    return generate_exclusion_regex(keyword_patterns)
+
+
+def render_sample_script(variable: str, keywords: list[str], source_table: str) -> str:
+  """
+  For a given variable and its related keywords, render a sample command script that uses those keywords in the --select-by-word and --select-by-regex flags. 
+
+  TODO: Make things like seed, count, etc configurable 
+  """
+  human_readable_var = space_friendly_variable_name(variable)
+  file_variable = file_friendly_variable_name(variable)
+  select_by_lines = generate_select_by_keyword_lines(keywords)
+  return f'''#!/bin/bash
+
+start_time=$(date +%s)
+echo "Process started at: $(date)"
+
+# {human_readable_var}
+echo "{human_readable_var}"
+docker compose run --rm -it \\
+  cumulus-etl sample \\
+  <input folder with ndjson files from step 2 above> \\
+  --output ./samples/{file_variable}.csv\\
+  --export-to ./samples/{file_variable}/\\
+  --count 30 \\
+  --seed 07201869 \\
+  --columns "note,subject,encounter" \\
+  --phi-dir <your typical ETL PHI folder> \\
+  --athena-database <relevant_cumulus_library_database>  \\
+  --athena-workgroup <relevant_cumulus_library_workgroup> \\
+  --athena-region <relevant_cumulus_region> \\
+  {select_by_lines}
+  --select-by-athena-table {source_table} \\
+  --allow-large-selection
+
+# Record end time
+end_time=$(date +%s)
+elapsed=$((end_time - start_time))
+
+echo "Process finished at: $(date)"
+echo "Total duration: $elapsed seconds"
+'''
+
+
 
 if __name__ == "__main__":
     keyword_path = Path(sys.argv[1]) if len(sys.argv) > 1 else Path(__file__).parent / 'keywords.tsv'
-    make_negation_regex(keyword_path)
+    output_dir = Path(sys.argv[2]) if len(sys.argv) > 2 else Path(__file__).parent / '../../docs/variable_sample_commands'
+    source_table = sys.argv[3] if len(sys.argv) > 3 else 'irae__sample_casedef_peri'
+    include_unmatched = len(sys.argv) > 4 and sys.argv[4] == "--include-unmatched"
+    keyword_lookup, variables  = parse_keyword_tsv(keyword_path)
+    for variable in variables:
+        keywords = get_keywords_for_variable(keyword_lookup, variable)
+        script = render_sample_script(variable, keywords, source_table)
+        slug = file_friendly_variable_name(variable)
+        (output_dir / f"sample-{slug}.sh").write_text(script)
+    if include_unmatched:
+        # uses the full keyword set → negation regex
+        negation_regex = f"REGEX: {make_negation_regex(keyword_lookup).pattern}"
+        unmatched_variable = 'Other Notes'
+        unmatched_script = render_sample_script(unmatched_variable, [negation_regex], source_table)
+        slug = file_friendly_variable_name(unmatched_variable)
+        # Controlled variable name  - we know it's file friendly
+        (output_dir / f"sample-{slug}.sh").write_text(script)

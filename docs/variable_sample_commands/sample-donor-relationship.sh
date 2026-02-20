@@ -5,11 +5,11 @@ echo "Process started at: $(date)"
 
 # Donor Relationship
 echo "Donor Relationship"
-docker compose run --rm -it\
+docker compose run --rm -it \
   cumulus-etl sample \
   <input folder with ndjson files from step 2 above> \
-  --output ./samples/Donor-Relationship-notes.csv \
-  --export-to ./samples/Donor-Relationship-notes \
+  --output ./samples/donor-relationship.csv\
+  --export-to ./samples/donor-relationship/\
   --count 30 \
   --seed 07201869 \
   --columns "note,subject,encounter" \
@@ -17,7 +17,7 @@ docker compose run --rm -it\
   --athena-database <relevant_cumulus_library_database>  \
   --athena-workgroup <relevant_cumulus_library_workgroup> \
   --athena-region <relevant_cumulus_region> \
-  --select-by-word "KDIGO" \
+    --select-by-word "KDIGO" \
   --select-by-word "Related Donor" \
   --select-by-word "Familial donor" \
   --select-by-word "Family donor" \
@@ -47,11 +47,9 @@ docker compose run --rm -it\
   --select-by-athena-table irae__sample_casedef_peri \
   --allow-large-selection
 
-
 # Record end time
 end_time=$(date +%s)
 elapsed=$((end_time - start_time))
 
 echo "Process finished at: $(date)"
 echo "Total duration: $elapsed seconds"
-
