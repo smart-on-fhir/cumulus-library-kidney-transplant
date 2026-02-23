@@ -234,7 +234,6 @@ def main():
         unmatched_variable = 'Other Notes'
         unmatched_script = render_sample_script(unmatched_variable, [negation_regex], source_table)
         slug = file_friendly_variable_name(unmatched_variable)
-        # Controlled variable name  - we know it's file friendly
         (output_dir / f"sample-{slug}.sh").write_text(unmatched_script)
 
 
