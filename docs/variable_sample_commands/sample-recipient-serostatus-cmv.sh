@@ -2,6 +2,13 @@
 
 start_time=$(date +%s)
 echo "Process started at: $(date)"
+echo 
+echo $SAMPLE_INPUT_FOLDER
+echo $SAMPLE_PHI_DIR
+echo $SAMPLE_ATHENA_DB 
+echo $SAMPLE_ATHENA_WORKGROUP
+echo $SAMPLE_ATHENA_REGION
+
 
 # Recipient Serostatus CMV
 echo "Recipient Serostatus CMV"

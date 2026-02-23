@@ -155,6 +155,13 @@ def render_sample_script(variable: str, keywords: list[str], source_table: str) 
 
 start_time=$(date +%s)
 echo "Process started at: $(date)"
+echo 
+echo $SAMPLE_INPUT_FOLDER
+echo $SAMPLE_PHI_DIR
+echo $SAMPLE_ATHENA_DB 
+echo $SAMPLE_ATHENA_WORKGROUP
+echo $SAMPLE_ATHENA_REGION
+
 
 # {human_readable_var}
 echo "{human_readable_var}"
@@ -229,6 +236,7 @@ def main():
         script = render_sample_script(variable, keywords, source_table)
         slug = file_friendly_variable_name(variable)
         (output_dir / f"sample-{slug}.sh").write_text(script)
+        (output_dir / f"sample-{slug}.sh").chmod(0o755)  # make the script executable
     if include_unmatched:
         # uses the full keyword set → negation regex
         negation_regex = f"REGEX: {make_negation_regex(keyword_lookup).pattern}"
@@ -236,6 +244,7 @@ def main():
         unmatched_script = render_sample_script(unmatched_variable, [negation_regex], source_table)
         slug = file_friendly_variable_name(unmatched_variable)
         (output_dir / f"sample-{slug}.sh").write_text(unmatched_script)
+        (output_dir / f"sample-{slug}.sh").chmod(0o755)  # make the script executable
 
 
 
