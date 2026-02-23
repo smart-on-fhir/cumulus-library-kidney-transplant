@@ -217,12 +217,12 @@ def main():
     parser = define_parser()
     args = parser.parse_args()
 
-    keyword_path = args.keyword_path
+    variable_keyword_path = args.variable_keyword_path
     output_dir = args.output_dir
     source_table = args.source_table
     include_unmatched = args.include_unmatched
 
-    keyword_lookup, variables = parse_keyword_tsv(keyword_path)
+    keyword_lookup, variables = parse_keyword_tsv(variable_keyword_path)
     for variable in variables:
         keywords = get_keywords_for_variable(keyword_lookup, variable)
         script = render_sample_script(variable, keywords, source_table)
