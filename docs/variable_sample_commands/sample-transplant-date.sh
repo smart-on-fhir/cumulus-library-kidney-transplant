@@ -28,7 +28,6 @@ docker compose run --rm -it \
   --select-by-word "Transplant" \
   --select-by-word "Donor" \
   --select-by-word "Donation" \
-  --select-by-word "Organ" \
   --select-by-athena-table irae__sample_casedef_peri \
   --allow-large-selection
 

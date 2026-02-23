@@ -21,7 +21,6 @@ docker compose run --rm -it \
   --select-by-word "Transplant" \
   --select-by-word "Donor" \
   --select-by-word "Donation" \
-  --select-by-word "Organ" \
   --select-by-word "serostatus" \
   --select-by-word "seropositive" \
   --select-by-word "seropositivity" \
