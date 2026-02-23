@@ -159,16 +159,16 @@ echo "Process started at: $(date)"
 echo "{human_readable_var}"
 docker compose run --rm -it \\
   cumulus-etl sample \\
-  <input folder with ndjson files from step 2 above> \\
+  $SAMPLE_INPUT_FOLDER \\
   --output ./samples/{file_variable}.csv\\
   --export-to ./samples/{file_variable}/\\
   --count 30 \\
   --seed 07201869 \\
   --columns "note,subject,encounter" \\
-  --phi-dir <your typical ETL PHI folder> \\
-  --athena-database <relevant_cumulus_library_database>  \\
-  --athena-workgroup <relevant_cumulus_library_workgroup> \\
-  --athena-region <relevant_cumulus_region> \\
+  --phi-dir $SAMPLE_PHI_DIR \\
+  --athena-database $SAMPLE_ATHENA_DB  \\
+  --athena-workgroup $SAMPLE_ATHENA_WORKGROUP \\
+  --athena-region $SAMPLE_ATHENA_REGION \\
   {select_by_lines}
   --select-by-athena-table {source_table} \\
   --allow-large-selection
