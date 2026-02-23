@@ -156,11 +156,11 @@ def render_sample_script(variable: str, keywords: list[str], source_table: str) 
 start_time=$(date +%s)
 echo "Process started at: $(date)"
 echo 
-echo $SAMPLE_INPUT_FOLDER
-echo $SAMPLE_PHI_DIR
-echo $SAMPLE_ATHENA_DB 
-echo $SAMPLE_ATHENA_WORKGROUP
-echo $SAMPLE_ATHENA_REGION
+echo "SAMPLE_INPUT_FOLDER: $SAMPLE_INPUT_FOLDER"
+echo "SAMPLE_PHI_DIR: $SAMPLE_PHI_DIR"
+echo "SAMPLE_ATHENA_DB: $SAMPLE_ATHENA_DB "
+echo "SAMPLE_ATHENA_WORKGROUP: $SAMPLE_ATHENA_WORKGROUP"
+echo "SAMPLE_ATHENA_REGION: $SAMPLE_ATHENA_REGION"
 
 
 # {human_readable_var}
