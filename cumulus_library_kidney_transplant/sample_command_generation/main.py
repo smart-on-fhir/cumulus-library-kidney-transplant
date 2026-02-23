@@ -1,6 +1,6 @@
+import argparse
 import csv
 import re
-import sys
 from pathlib import Path
 from typing import Iterable
 
@@ -181,14 +181,48 @@ echo "Process finished at: $(date)"
 echo "Total duration: $elapsed seconds"
 '''
 
+def define_parser(): 
+    """
+    Set up our parser for generating sample commands based on a keyword TSV. 
+    """
+    parser = argparse.ArgumentParser(
+        description="Generate cumulus-etl sample shell scripts from a keyword TSV."
+    )
+    parser.add_argument(
+        "--variable_keyword_path",
+        type=Path,
+        default=Path(__file__).parent / "keywords.tsv",
+        help="Path to the variable-keyword mapping TSV (default: %(default)s)",
+    )
+    parser.add_argument(
+        "--output_dir",
+        type=Path,
+        default=Path(__file__).parent / "../../docs/variable_sample_commands",
+        help="Directory to write sample shell scripts into (default: %(default)s)",
+    )
+    parser.add_argument(
+        "--source_table",
+        default="irae__sample_casedef_peri",
+        help="Athena source table passed to --select-by-athena-table (default: %(default)s)",
+    )
+    parser.add_argument(
+        "--include-unmatched",
+        action="store_true",
+        default=False,
+        help="Also write a script for notes that match none of the keywords (default: %(default)s)",
+    )
+    return parser
 
+def main():
+    parser = define_parser()
+    args = parser.parse_args()
 
-if __name__ == "__main__":
-    keyword_path = Path(sys.argv[1]) if len(sys.argv) > 1 else Path(__file__).parent / 'keywords.tsv'
-    output_dir = Path(sys.argv[2]) if len(sys.argv) > 2 else Path(__file__).parent / '../../docs/variable_sample_commands'
-    source_table = sys.argv[3] if len(sys.argv) > 3 else 'irae__sample_casedef_peri'
-    include_unmatched = len(sys.argv) > 4 and sys.argv[4] == "--include-unmatched"
-    keyword_lookup, variables  = parse_keyword_tsv(keyword_path)
+    keyword_path = args.keyword_path
+    output_dir = args.output_dir
+    source_table = args.source_table
+    include_unmatched = args.include_unmatched
+
+    keyword_lookup, variables = parse_keyword_tsv(keyword_path)
     for variable in variables:
         keywords = get_keywords_for_variable(keyword_lookup, variable)
         script = render_sample_script(variable, keywords, source_table)
@@ -201,4 +235,9 @@ if __name__ == "__main__":
         unmatched_script = render_sample_script(unmatched_variable, [negation_regex], source_table)
         slug = file_friendly_variable_name(unmatched_variable)
         # Controlled variable name  - we know it's file friendly
-        (output_dir / f"sample-{slug}.sh").write_text(script)
+        (output_dir / f"sample-{slug}.sh").write_text(unmatched_script)
+
+
+
+if __name__ == "__main__":
+    main()

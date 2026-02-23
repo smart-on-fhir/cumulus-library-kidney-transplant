@@ -97,7 +97,7 @@ we will leverage the `cumulus-etl sample` subcommand and keywords of interest, c
 alongside domain experts. A Google Sheet containing all these keywords can be found 
 [here](https://docs.google.com/spreadsheets/d/1RO2ybvj-6ZBuuujSQLKU8_I7RF90NMUkmI4It_7_Klo/).
 
-In `docs/variable_sample_commands` we have the scaffolding for building samples. Feel free 
+In `docs/variable_sample_commands` we have the scaffolded script for building samples. Feel free 
 to modify the command to suit your needs, but after running individual samples we need all the 
 corresponding `DocumentReference.ndjson` files contained in a single parent directory. Each 
 `sample` creates one of these NDJSON files, so make sure that you're not writing all 
@@ -134,7 +134,7 @@ mkdir -p ./samples/Other-notes
 
 With this directory structure set up you can update the scripts in `docs/variable_sample_commands` 
 with site-specific variables to generate samples of 30 notes for each variable of interest.
-Make sure you also run `sample-unmatched.sh` to ensure we include notes not matched by 
+Make sure you also run `sample-other-notes.sh` to ensure we include notes not matched by 
 any of the variables themselves.
 
 Inspect the resulting sample CSV files to confirm they contain 31 lines (
