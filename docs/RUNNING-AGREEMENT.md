@@ -98,9 +98,9 @@ alongside domain experts. A Google Sheet containing all these keywords can be fo
 
 Using `cumulus_library_kidney_transplant/sample_command_generation`, we templated
 `cumulus-etl sample` scaffolded scripts for saved in `docs/variable_sample_commands`. 
-Modify these commands with site-specific variables, and run these samples such that they are all 
-samples we need all the corresponding `DocumentReference.ndjson` files contained in a single 
-parent directory. The recommended layout for the resulting sample is: 
+Modify these commands with site-specific variables or provide variables to the ENV variables we use 
+in our templating, the run the samples so that all the resulting `DocumentReference.ndjson` files 
+are contained in a common parent directory. The recommended layout for the resulting sample is: 
 ```
 samples/
   - Donor-Relationship-notes/
@@ -128,10 +128,6 @@ mkdir -p ./samples/Recipient-Serostatus-EBV-notes
 mkdir -p ./samples/Transplant-Date-notes
 mkdir -p ./samples/Other-notes
 ```
-
-Update the scripts in `docs/variable_sample_commands` with site-specific variables to sample 30 notes
-for each variable of interest.Make sure you also run `sample-other-notes.sh` to ensure we 
-include notes not matched by any of the variables themselves.
 
 Inspect the resulting sample CSV files to confirm they contain 31 lines (
 one for the CSV header; 30 rows of notes). One way of doing this is to use:
