@@ -61,14 +61,14 @@ def file_friendly_variable_name(variable: str) -> str:
     """
     Variables as file-friendly slugs
     """
-    return variable.lower().replace(" ", "-").replace("_", "-")
+    return variable.strip().lower().replace(" ", "-").replace("_", "-")
 
 
 def space_friendly_variable_name(variable: str) -> str:
     """
     Variable names as human-readable strings
     """
-    return variable.replace("-", " ").replace("_", " ")
+    return variable.strip().replace("-", " ").replace("_", " ")
 
 
 def get_keywords_for_variable(lookup: dict, variable_name: str) -> list[str]:
@@ -121,6 +121,7 @@ def generate_exclusion_regex(patterns: list[str]) -> re.Pattern:
     """
     # Join patterns with a logical OR (|)
     edge = r"\b"
+    patterns.sort()
     combined_patterns = "|".join(f"{edge}{p}{edge}" for p in patterns)
 
     # Combine with negative lookahead 
