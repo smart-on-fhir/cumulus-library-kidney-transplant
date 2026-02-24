@@ -13,10 +13,11 @@ echo "SAMPLE_ATHENA_REGION: $SAMPLE_ATHENA_REGION"
 # Transplant Date
 echo "Transplant Date"
 docker compose run --rm -it \
+  -v "$(pwd):/host" \
   cumulus-etl sample \
   $SAMPLE_INPUT_FOLDER \
-  --output ./samples/transplant-date.csv\
-  --export-to ./samples/transplant-date/\
+  --output /host/samples/transplant-date.csv\
+  --export-to /host/samples/transplant-date/\
   --count 30 \
   --seed 07201869 \
   --columns "note,subject,encounter" \
