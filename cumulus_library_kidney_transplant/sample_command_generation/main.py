@@ -11,48 +11,46 @@ def parse_keyword_tsv(tsv_path: pathlib.Path) -> tuple[dict[str, dict], list[str
     """
     tsv_path = pathlib.Path(tsv_path)
     with open(tsv_path) as tsv:
-        reader = csv.reader(tsv, delimiter="\t")
-        rows = list(reader)
+        tsv_reader = csv.reader(tsv, delimiter="\t")
+        
+        # Row 0: column headers (but skip the first cell "Link to Variables")
+        variable_names = next(tsv_reader)[1:]
+        if variable_names is None:
+            return {}, []  # empty TSV case
+        
+        lookup = {}
 
-    if not rows:
-        return {}, []
+        # Each row is a conceptual group of keywords, marking which variables these keywords 
+        # are related to
+        for row in tsv_reader:
+            # safety in case we have a blank row or no keywords for this row
+            if not row or not row[0].strip():
+                continue
 
-    # Row 0: column headers (but skip the first cell "Link to Variables")
-    variable_names = rows[0][1:]
+            # First cell in a row describes all the relevant keywords for this group
+            keyword_cell = row[0]
+            relevance_cells = row[1:]
 
-    lookup = {}
+            # Each line in the first cell is one keyword (strip surrounding space; None otherwise)
+            keywords = [
+                kw.strip() 
+                for kw in keyword_cell.splitlines() 
+                if kw.strip()
+            ]
+            if not keywords:
+                continue
 
-    # Each row is a conceptual group of keywords, marking which variables these keywords 
-    # are related to
-    for row in rows[1:]:
-        # safety in case we have a blank row or no keywords for this row
-        if not row or not row[0].strip():
-            continue
+            # Track which variables are relevant for this 
+            relevant_vars = [
+                variable_names[i] 
+                for i, cell in enumerate(relevance_cells)
+                if i < len(variable_names) and cell.strip().upper() == "X"
+            ]
 
-        # First cell in a row describes all the relevant keywords for this group
-        keyword_cell = row[0]
-        relevance_cells = row[1:]
-
-        # Each line in the first cell is one keyword (strip surrounding space; None otherwise)
-        keywords = [
-            kw.strip() 
-            for kw in keyword_cell.splitlines() 
-            if kw.strip()
-        ]
-        if not keywords:
-            continue
-
-        # Track which variables are relevant for this 
-        relevant_vars = [
-            variable_names[i] 
-            for i, cell in enumerate(relevance_cells)
-            if i < len(variable_names) and cell.strip().upper() == "X"
-        ]
-
-        lookup[keywords[0]] = {
-            "keywords": keywords,
-            "relevant variables": relevant_vars,
-        }
+            lookup[keywords[0]] = {
+                "keywords": keywords,
+                "relevant variables": relevant_vars,
+            }
 
     return lookup, variable_names
 
@@ -230,7 +228,13 @@ def main():
     source_table = args.source_table
     include_unmatched = args.include_unmatched
 
-    keyword_lookup, variables = parse_keyword_tsv(variable_keyword_path)
+    # Better error management for TSV parsing
+    try: 
+        keyword_lookup, variables = parse_keyword_tsv(variable_keyword_path)
+    except:
+        print(f"Error parsing TSV at {variable_keyword_path}. Please check the file format.")
+        return
+    
     for variable in variables:
         keywords = get_keywords_for_variable(keyword_lookup, variable)
         script = render_sample_script(variable, keywords, source_table)
