@@ -32,11 +32,11 @@ docker compose run --rm -it \
   --select-by-word "seronegative" \
   --select-by-word "seronegativity" \
   --select-by-word "IgG negative" \
-  --select-by-word "PCR" \
   --select-by-word "Epstein-Barr" \
   --select-by-word "Epstein" \
   --select-by-word "EBV" \
   --select-by-word "EBV+" \
+  --select-by-word "EBV-" \
   --select-by-word "recipient serostatus" \
   --select-by-word "R+" \
   --select-by-word "R +" \

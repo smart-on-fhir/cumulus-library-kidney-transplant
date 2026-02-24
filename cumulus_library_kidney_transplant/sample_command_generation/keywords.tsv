@@ -1,4 +1,4 @@
-Link to Variables	Transplant Date	Donor Status 	Donor Relationship	HLA Quality	HLA Mismatch	Donor Serostatus EBV	Donor Serostatus CMV	Recipient Serostatus EBV	Recipient Serostatus CMV
+Link to Variables	Transplant Date	Donor Status	Donor Relationship	HLA Quality	HLA Mismatch	Donor Serostatus EBV	Donor Serostatus CMV	Recipient Serostatus EBV	Recipient Serostatus CMV
 KDIGO	X	X	X	X	X				
 "Transplant Date 
 transplanted on
@@ -121,39 +121,23 @@ seropositivity
 IgG positive
 seronegative
 seronegativity
-IgG negative
-PCR"						X	X	X	X
+IgG negative"						X	X	X	X
 "Epstein-Barr
 Epstein
 EBV
-EBV+"						X		X	
+EBV+
+EBV-"						X		X	
 "Cytomegalovirus
 CMV
 CMV+
 CMV-"							X		X
 "donor serostatus
-D+
-D +
-D(+)
-D (+)
 D-pos
 Donor pos
-Donor+
-Donor +
-Donor(+)
-Donor (+)
 Donor reactive
 Donor-positive
-D-
-D -
-D(-)
-D (-)
 D-neg
 Donor neg
-Donor-
-Donor -
-Donor(-)
-Donor (-)
 Donor nonreactive
 Donor-negative"						X	X		
 "recipient serostatus

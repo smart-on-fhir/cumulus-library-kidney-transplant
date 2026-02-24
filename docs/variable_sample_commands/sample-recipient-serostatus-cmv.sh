@@ -32,7 +32,6 @@ docker compose run --rm -it \
   --select-by-word "seronegative" \
   --select-by-word "seronegativity" \
   --select-by-word "IgG negative" \
-  --select-by-word "PCR" \
   --select-by-word "Cytomegalovirus" \
   --select-by-word "CMV" \
   --select-by-word "CMV+" \
