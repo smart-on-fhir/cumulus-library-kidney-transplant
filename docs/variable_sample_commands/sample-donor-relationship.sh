@@ -13,10 +13,11 @@ echo "SAMPLE_ATHENA_REGION: $SAMPLE_ATHENA_REGION"
 # Donor Relationship
 echo "Donor Relationship"
 docker compose run --rm -it \
+  -v "$(pwd)/samples:/data/samples" \
   cumulus-etl sample \
   $SAMPLE_INPUT_FOLDER \
-  --output ./samples/donor-relationship.csv\
-  --export-to ./samples/donor-relationship/\
+  --output /data/samples/donor-relationship.csv\
+  --export-to /data/samples/donor-relationship/\
   --count 30 \
   --seed 07201869 \
   --columns "note,subject,encounter" \

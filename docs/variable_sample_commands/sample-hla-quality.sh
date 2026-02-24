@@ -13,10 +13,11 @@ echo "SAMPLE_ATHENA_REGION: $SAMPLE_ATHENA_REGION"
 # HLA Quality
 echo "HLA Quality"
 docker compose run --rm -it \
+  -v "$(pwd)/samples:/data/samples" \
   cumulus-etl sample \
   $SAMPLE_INPUT_FOLDER \
-  --output ./samples/hla-quality.csv\
-  --export-to ./samples/hla-quality/\
+  --output /data/samples/hla-quality.csv\
+  --export-to /data/samples/hla-quality/\
   --count 30 \
   --seed 07201869 \
   --columns "note,subject,encounter" \

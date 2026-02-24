@@ -13,10 +13,11 @@ echo "SAMPLE_ATHENA_REGION: $SAMPLE_ATHENA_REGION"
 # Donor Serostatus CMV
 echo "Donor Serostatus CMV"
 docker compose run --rm -it \
+  -v "$(pwd)/samples:/data/samples" \
   cumulus-etl sample \
   $SAMPLE_INPUT_FOLDER \
-  --output ./samples/donor-serostatus-cmv.csv\
-  --export-to ./samples/donor-serostatus-cmv/\
+  --output /data/samples/donor-serostatus-cmv.csv\
+  --export-to /data/samples/donor-serostatus-cmv/\
   --count 30 \
   --seed 07201869 \
   --columns "note,subject,encounter" \

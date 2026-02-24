@@ -13,10 +13,11 @@ echo "SAMPLE_ATHENA_REGION: $SAMPLE_ATHENA_REGION"
 # Other Notes
 echo "Other Notes"
 docker compose run --rm -it \
+  -v "$(pwd)/samples:/data/samples" \
   cumulus-etl sample \
   $SAMPLE_INPUT_FOLDER \
-  --output ./samples/other-notes.csv\
-  --export-to ./samples/other-notes/\
+  --output /data/samples/other-notes.csv\
+  --export-to /data/samples/other-notes/\
   --count 30 \
   --seed 07201869 \
   --columns "note,subject,encounter" \

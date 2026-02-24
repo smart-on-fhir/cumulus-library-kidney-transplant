@@ -13,10 +13,11 @@ echo "SAMPLE_ATHENA_REGION: $SAMPLE_ATHENA_REGION"
 # HLA Mismatch
 echo "HLA Mismatch"
 docker compose run --rm -it \
+  -v "$(pwd)/samples:/data/samples" \
   cumulus-etl sample \
   $SAMPLE_INPUT_FOLDER \
-  --output ./samples/hla-mismatch.csv\
-  --export-to ./samples/hla-mismatch/\
+  --output /data/samples/hla-mismatch.csv\
+  --export-to /data/samples/hla-mismatch/\
   --count 30 \
   --seed 07201869 \
   --columns "note,subject,encounter" \

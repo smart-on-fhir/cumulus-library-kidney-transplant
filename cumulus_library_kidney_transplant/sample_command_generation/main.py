@@ -164,10 +164,11 @@ echo "SAMPLE_ATHENA_REGION: $SAMPLE_ATHENA_REGION"
 # {human_readable_var}
 echo "{human_readable_var}"
 docker compose run --rm -it \\
+  -v "$(pwd)/samples:/data/samples" \\
   cumulus-etl sample \\
   $SAMPLE_INPUT_FOLDER \\
-  --output ./samples/{file_variable}.csv\\
-  --export-to ./samples/{file_variable}/\\
+  --output /data/samples/{file_variable}.csv\\
+  --export-to /data/samples/{file_variable}/\\
   --count 30 \\
   --seed 07201869 \\
   --columns "note,subject,encounter" \\
