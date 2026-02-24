@@ -118,10 +118,8 @@ unfavorably matched"				X	X
 "serostatus 
 seropositive 
 seropositivity
-IgG positive
 seronegative
-seronegativity
-IgG negative"						X	X	X	X
+seronegativity"						X	X	X	X
 "Epstein-Barr
 Epstein
 EBV
@@ -141,27 +139,11 @@ Donor neg
 Donor nonreactive
 Donor-negative"						X	X		
 "recipient serostatus
-R+
-R +
-R(+)
-R (+)
 R-pos
 Recip pos
-Recip+
-Recip +
-Recip(+)
-Recip (+)
 Recipient reactive
 Recip-positive
-R-
-R -
-R(-)
-R (-)
 R-neg
 Recip neg
-Recip-
-Recip -
-Recip(-)
-Recip (-)
 Recipient nonreactive
 Recip-negative"								X	X
