@@ -2,21 +2,28 @@
 
 start_time=$(date +%s)
 echo "Process started at: $(date)"
+echo 
+echo "SAMPLE_INPUT_FOLDER: $SAMPLE_INPUT_FOLDER"
+echo "SAMPLE_PHI_DIR: $SAMPLE_PHI_DIR"
+echo "SAMPLE_ATHENA_DB: $SAMPLE_ATHENA_DB "
+echo "SAMPLE_ATHENA_WORKGROUP: $SAMPLE_ATHENA_WORKGROUP"
+echo "SAMPLE_ATHENA_REGION: $SAMPLE_ATHENA_REGION"
+
 
 # Donor Relationship
 echo "Donor Relationship"
-docker compose run --rm -it\
+docker compose run --rm -it \
   cumulus-etl sample \
-  <input folder with ndjson files from step 2 above> \
-  --output ./samples/Donor-Relationship-notes.csv \
-  --export-to ./samples/Donor-Relationship-notes \
+  $SAMPLE_INPUT_FOLDER \
+  --output ./samples/donor-relationship.csv\
+  --export-to ./samples/donor-relationship/\
   --count 30 \
   --seed 07201869 \
   --columns "note,subject,encounter" \
-  --phi-dir <your typical ETL PHI folder> \
-  --athena-database <relevant_cumulus_library_database>  \
-  --athena-workgroup <relevant_cumulus_library_workgroup> \
-  --athena-region <relevant_cumulus_region> \
+  --phi-dir $SAMPLE_PHI_DIR \
+  --athena-database $SAMPLE_ATHENA_DB  \
+  --athena-workgroup $SAMPLE_ATHENA_WORKGROUP \
+  --athena-region $SAMPLE_ATHENA_REGION \
   --select-by-word "KDIGO" \
   --select-by-word "Related Donor" \
   --select-by-word "Familial donor" \
@@ -39,6 +46,7 @@ docker compose run --rm -it\
   --select-by-word "non-directed donor" \
   --select-by-word "nondirected donor" \
   --select-by-word "LRD" \
+  --select-by-word "LRRT" \
   --select-by-word "living related donor" \
   --select-by-word "living relative" \
   --select-by-word "LURD" \
@@ -46,11 +54,9 @@ docker compose run --rm -it\
   --select-by-athena-table irae__sample_casedef_peri \
   --allow-large-selection
 
-
 # Record end time
 end_time=$(date +%s)
 elapsed=$((end_time - start_time))
 
 echo "Process finished at: $(date)"
 echo "Total duration: $elapsed seconds"
-

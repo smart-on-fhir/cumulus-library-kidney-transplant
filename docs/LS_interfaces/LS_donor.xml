@@ -11,8 +11,8 @@
             <Label value="Hla Mismatch Count" hotkey="M" background="#ff0000"/>
             <Label value="Donor Serostatus EBV" background="#008b8b"/>
             <Label value="Donor Serostatus CMV" background="#008b8b"/>
-            <Label value="Recipient Serostatus CMV" background="#e59137"/>
             <Label value="Recipient Serostatus EBV" background="#e59137"/>
+            <Label value="Recipient Serostatus CMV" background="#e59137"/>
             <Label value="FlagReview" hotkey="/"/>
         </Labels> 
 

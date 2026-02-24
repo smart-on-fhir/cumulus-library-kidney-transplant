@@ -91,30 +91,28 @@ every time we run NLP. If you're gathering notes using our `smart-fetch` tool th
 
 ## 2.a Select Samples by Variable 
 
-With this ndjson in a folder, we want to sample from these NDJSON to ensure we have some 
-representative sample of notes that mention our variables of interest. To achieve this, 
-we will leverage the `cumulus-etl sample` subcommand and keywords of interest, curated 
+Next we sample from our notes' NDJSON to identify notes related to our variables of interest. 
+To achieve this, we leverage the `cumulus-etl sample` subcommand and keywords of interest, curated 
 alongside domain experts. A Google Sheet containing all these keywords can be found 
 [here](https://docs.google.com/spreadsheets/d/1RO2ybvj-6ZBuuujSQLKU8_I7RF90NMUkmI4It_7_Klo/).
 
-In `docs/variable_sample_commands` we have the scaffolding for building samples. Feel free 
-to modify the command to suit your needs, but after running individual samples we need all the 
-corresponding `DocumentReference.ndjson` files contained in a single parent directory. Each 
-`sample` creates one of these NDJSON files, so make sure that you're not writing all 
-your samples to the same directory location 
-
-The recommended layout for the resulting sample is: 
+Using `cumulus_library_kidney_transplant/sample_command_generation`, we templated
+`cumulus-etl sample` scaffolded scripts for saved in `docs/variable_sample_commands`. 
+Modify these commands with site-specific variables or provide variables to the ENV variables we use 
+in our templating, the run the samples so that all the resulting `DocumentReference.ndjson` files 
+are contained in a common parent directory. The recommended layout for the resulting sample is: 
 ```
 samples/
-  - Donor-Relationship/
-  - Donor-Serostatus-CMV/
-  - Donor-Serostatus-EBV/
-  - Donor-Status/
-  - HLA-Mismatch/
-  - HLA-Quality/
-  - Recipient-Serostatus-CMV/
-  - Recipient-Serostatus-EBV/
-  - Transplant-Date/
+  - Donor-Relationship-notes/
+  - Donor-Serostatus-CMV-notes/
+  - Donor-Serostatus-EBV-notes/
+  - Donor-Status-notes/
+  - HLA-Mismatch-notes/
+  - HLA-Quality-notes/
+  - Recipient-Serostatus-CMV-notes/
+  - Recipient-Serostatus-EBV-notes/
+  - Transplant-Date-notes/
+  - Other-notes/
 ```
 
 Which can be achieved by running the following: 
@@ -128,10 +126,8 @@ mkdir -p ./samples/HLA-Quality-notes
 mkdir -p ./samples/Recipient-Serostatus-CMV-notes
 mkdir -p ./samples/Recipient-Serostatus-EBV-notes
 mkdir -p ./samples/Transplant-Date-notes
+mkdir -p ./samples/Other-notes
 ```
-
-With this directory structure set up you can update the scripts in `docs/variable_sample_commands` 
-with site-specific variables to generate samples of 30 notes for each variable of interest.
 
 Inspect the resulting sample CSV files to confirm they contain 31 lines (
 one for the CSV header; 30 rows of notes). One way of doing this is to use:

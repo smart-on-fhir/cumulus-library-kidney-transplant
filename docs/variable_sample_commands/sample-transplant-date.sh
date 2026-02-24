@@ -2,33 +2,39 @@
 
 start_time=$(date +%s)
 echo "Process started at: $(date)"
+echo 
+echo "SAMPLE_INPUT_FOLDER: $SAMPLE_INPUT_FOLDER"
+echo "SAMPLE_PHI_DIR: $SAMPLE_PHI_DIR"
+echo "SAMPLE_ATHENA_DB: $SAMPLE_ATHENA_DB "
+echo "SAMPLE_ATHENA_WORKGROUP: $SAMPLE_ATHENA_WORKGROUP"
+echo "SAMPLE_ATHENA_REGION: $SAMPLE_ATHENA_REGION"
+
 
 # Transplant Date
 echo "Transplant Date"
-docker compose run --rm -it\
+docker compose run --rm -it \
   cumulus-etl sample \
-  <input folder with ndjson files from step 2 above> \
-  --output ./samples/Transplant-Date-notes.csv \
-  --export-to ./samples/Transplant-Date-notes \
+  $SAMPLE_INPUT_FOLDER \
+  --output ./samples/transplant-date.csv\
+  --export-to ./samples/transplant-date/\
   --count 30 \
   --seed 07201869 \
   --columns "note,subject,encounter" \
-  --phi-dir <your typical ETL PHI folder> \
-  --athena-database <relevant_cumulus_library_database>  \
-  --athena-workgroup <relevant_cumulus_library_workgroup> \
-  --athena-region <relevant_cumulus_region> \
+  --phi-dir $SAMPLE_PHI_DIR \
+  --athena-database $SAMPLE_ATHENA_DB  \
+  --athena-workgroup $SAMPLE_ATHENA_WORKGROUP \
+  --athena-region $SAMPLE_ATHENA_REGION \
   --select-by-word "KDIGO" \
+  --select-by-word "Transplant Date" \
+  --select-by-word "transplanted on" \
+  --select-by-word "POD" \
+  --select-by-word "transplant on" \
+  --select-by-regex "now day\s*\+?\d+" \
+  --select-by-regex "transplant\s*\(?\d+\s*/\s*\d+\)?" \
   --select-by-word "Recipient" \
   --select-by-word "Transplant" \
   --select-by-word "Donor" \
   --select-by-word "Donation" \
-  --select-by-word "Organ" \
-  --select-by-word "Transplant Date"  \
-  --select-by-word "transplanted on" \
-  --select-by-word "POD" \
-  --select-by-word "transplant on"  \
-  --select-by-regex "now day \+{0,1}\d+" \
-  --select-by-regex "transplant \({0,1}\d+\s*\/\s*\d+\){0,1}" \
   --select-by-athena-table irae__sample_casedef_peri \
   --allow-large-selection
 
@@ -38,4 +44,3 @@ elapsed=$((end_time - start_time))
 
 echo "Process finished at: $(date)"
 echo "Total duration: $elapsed seconds"
-

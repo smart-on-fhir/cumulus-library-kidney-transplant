@@ -2,27 +2,48 @@
 
 start_time=$(date +%s)
 echo "Process started at: $(date)"
+echo 
+echo "SAMPLE_INPUT_FOLDER: $SAMPLE_INPUT_FOLDER"
+echo "SAMPLE_PHI_DIR: $SAMPLE_PHI_DIR"
+echo "SAMPLE_ATHENA_DB: $SAMPLE_ATHENA_DB "
+echo "SAMPLE_ATHENA_WORKGROUP: $SAMPLE_ATHENA_WORKGROUP"
+echo "SAMPLE_ATHENA_REGION: $SAMPLE_ATHENA_REGION"
+
 
 # HLA Quality
 echo "HLA Quality"
-docker compose run --rm -it\
+docker compose run --rm -it \
   cumulus-etl sample \
-  <input folder with ndjson files from step 2 above> \
-  --output ./samples/HLA-Quality-notes.csv \
-  --export-to ./samples/HLA-Quality-notes \
+  $SAMPLE_INPUT_FOLDER \
+  --output ./samples/hla-quality.csv\
+  --export-to ./samples/hla-quality/\
   --count 30 \
   --seed 07201869 \
   --columns "note,subject,encounter" \
-  --phi-dir <your typical ETL PHI folder> \
-  --athena-database <relevant_cumulus_library_database>  \
-  --athena-workgroup <relevant_cumulus_library_workgroup> \
-  --athena-region <relevant_cumulus_region> \
+  --phi-dir $SAMPLE_PHI_DIR \
+  --athena-database $SAMPLE_ATHENA_DB  \
+  --athena-workgroup $SAMPLE_ATHENA_WORKGROUP \
+  --athena-region $SAMPLE_ATHENA_REGION \
   --select-by-word "KDIGO" \
   --select-by-word "HLA" \
   --select-by-word "human leukocyte antigen" \
   --select-by-word "antigen matched" \
   --select-by-word "antigen matches" \
   --select-by-word "antigen match" \
+  --select-by-word "HLA-A" \
+  --select-by-word "HLA-B" \
+  --select-by-word "HLA-C" \
+  --select-by-word "HLA-DR" \
+  --select-by-word "HLA-DQ" \
+  --select-by-word "HLA-DP" \
+  --select-by-word "HLA Quality" \
+  --select-by-word "Highly Sensitized" \
+  --select-by-word "Not Sensitized" \
+  --select-by-word "Alloimmunized" \
+  --select-by-word "Desensitization" \
+  --select-by-word "Desensitized" \
+  --select-by-word "Sensitized" \
+  --select-by-word "Sensitization" \
   --select-by-word "mismatch" \
   --select-by-word "mismatches" \
   --select-by-word "mismatched" \
@@ -69,4 +90,3 @@ elapsed=$((end_time - start_time))
 
 echo "Process finished at: $(date)"
 echo "Total duration: $elapsed seconds"
-
