@@ -17,9 +17,14 @@ from cumulus_library_kidney_transplant.sample_command_generation import (
 
 #################################################
 # SHARED FIXTURES
+
+# Raw strings for regex keywords avoid SyntaxWarning on Python 3.12+
+_NOW_DAY_RE = r"REGEX: now day\s*\+?\d+"
+_TRANSPLANT_DATE_RE = r"REGEX: transplant\s*\(?\d+\s*/\s*\d+\)?"
+
 FIXTURE_TSV = (
     "Link to Variables\tTransplant Date\tDonor Status\tDonor Relationship\n"
-    '"Transplant Date \ntransplanted on\nPOD\ntransplant on \nREGEX: now day\s*\+?\d+\nREGEX: transplant\s*\(?\d+\s*/\s*\d+\)?"\tX\t\t\n'
+    f'"Transplant Date \ntransplanted on\nPOD\ntransplant on \n{_NOW_DAY_RE}\n{_TRANSPLANT_DATE_RE}"\tX\t\t\n'
     '"Living Donor\nLiving Kidney\nLDRT"\t\tX\t\n'
     '"LURD\nliving unrelated donor"\t\tX\tX\n'
 )
@@ -28,7 +33,7 @@ FIXTURE_TSV = (
 EXPECTED_VARIABLES = ["Transplant Date", "Donor Status", "Donor Relationship"]
 EXPECTED_LOOKUP = {
     "Transplant Date": {
-        "keywords": ["Transplant Date", "transplanted on", "POD", "transplant on", "REGEX: now day\s*\+?\d+", "REGEX: transplant\s*\(?\d+\s*/\s*\d+\)?"],
+        "keywords": ["Transplant Date", "transplanted on", "POD", "transplant on", _NOW_DAY_RE, _TRANSPLANT_DATE_RE],
         "relevant variables": ["Transplant Date"],
     },
     "Living Donor": {
@@ -77,8 +82,7 @@ class TestParseKeywordTsv(unittest.TestCase):
     def test_multi_line_transplant_date_keywords(self):
         self.assertEqual(
             self.lookup["Transplant Date"]["keywords"],
-            ["Transplant Date", "transplanted on", "POD", "transplant on",
-             "REGEX: now day\\s*\\+?\\d+", "REGEX: transplant\\s*\\(?\\d+\\s*/\\s*\\d+\\)?"],
+            ["Transplant Date", "transplanted on", "POD", "transplant on", _NOW_DAY_RE, _TRANSPLANT_DATE_RE],
         )
 
     def test_multi_line_living_donor_keywords(self):
@@ -97,8 +101,8 @@ class TestParseKeywordTsv(unittest.TestCase):
         keywords = self.lookup["Transplant Date"]["keywords"]
         regex_keywords = [k for k in keywords if k.startswith("REGEX:")]
         self.assertEqual(len(regex_keywords), 2)
-        self.assertIn("REGEX: now day\\s*\\+?\\d+", regex_keywords)
-        self.assertIn("REGEX: transplant\\s*\\(?\\d+\\s*/\\s*\\d+\\)?", regex_keywords)
+        self.assertIn(_NOW_DAY_RE, regex_keywords)
+        self.assertIn(_TRANSPLANT_DATE_RE, regex_keywords)
 
     def test_transplant_date_keywords_relevant_only_to_transplant_date(self):
         self.assertEqual(
@@ -179,8 +183,8 @@ class TestGetKeywordsForVariable(unittest.TestCase):
 
     def test_transplant_date_includes_both_regex_patterns(self):
         keywords = get_keywords_for_variable(self.lookup, "Transplant Date")
-        self.assertIn("REGEX: now day\\s*\\+?\\d+", keywords)
-        self.assertIn("REGEX: transplant\\s*\\(?\\d+\\s*/\\s*\\d+\\)?", keywords)
+        self.assertIn(_NOW_DAY_RE, keywords)
+        self.assertIn(_TRANSPLANT_DATE_RE, keywords)
 
     def test_transplant_date_excludes_donor_terms(self):
         keywords = get_keywords_for_variable(self.lookup, "Transplant Date")

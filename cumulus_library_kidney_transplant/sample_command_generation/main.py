@@ -1,18 +1,18 @@
 import argparse
 import csv
 import re
-from pathlib import Path
+import pathlib 
 from typing import Iterable
 
-def parse_keyword_tsv(tsv_path: Path) -> tuple[dict[str, dict], list[str]]:
+def parse_keyword_tsv(tsv_path: pathlib.Path) -> tuple[dict[str, dict], list[str]]:
     """
     Parse a keyword-mapping TSV 
     returns the keyword lookup dict and the variables of interest 
     """
-    tsv_path = Path(tsv_path)
-    tsv = tsv_path.open()
-    reader = csv.reader(tsv, delimiter="\t")
-    rows = list(reader)
+    tsv_path = pathlib.Path(tsv_path)
+    with open(tsv_path) as tsv:
+        reader = csv.reader(tsv, delimiter="\t")
+        rows = list(reader)
 
     if not rows:
         return {}, []
@@ -198,14 +198,14 @@ def define_parser():
     )
     parser.add_argument(
         "--variable_keyword_path",
-        type=Path,
-        default=Path(__file__).parent / "keywords.tsv",
-        help="Path to the variable-keyword mapping TSV (default: %(default)s)",
+        type=pathlib.Path,
+        default=pathlib.Path(__file__).parent / "keywords.tsv",
+        help="Variable-keyword mapping TSV (default: %(default)s)",
     )
     parser.add_argument(
         "--output_dir",
-        type=Path,
-        default=Path(__file__).parent / "../../docs/variable_sample_commands",
+        type=pathlib.Path,
+        default=pathlib.Path(__file__).parent / "../../docs/variable_sample_commands",
         help="Directory to write sample shell scripts into (default: %(default)s)",
     )
     parser.add_argument(
