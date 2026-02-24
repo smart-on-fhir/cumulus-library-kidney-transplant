@@ -14,8 +14,9 @@ def parse_keyword_tsv(tsv_path: pathlib.Path) -> tuple[dict[str, dict], list[str
         tsv_reader = csv.reader(tsv, delimiter="\t")
         
         # Row 0: column headers (but skip the first cell "Link to Variables")
-        variable_names = next(tsv_reader)[1:]
-        if variable_names is None:
+        try: 
+            variable_names = next(tsv_reader)[1:]
+        except StopIteration:
             return {}, []  # empty TSV case
         
         lookup = {}
@@ -164,10 +165,11 @@ echo "SAMPLE_ATHENA_REGION: $SAMPLE_ATHENA_REGION"
 # {human_readable_var}
 echo "{human_readable_var}"
 docker compose run --rm -it \\
+  -v "$(pwd):/host" \\
   cumulus-etl sample \\
   $SAMPLE_INPUT_FOLDER \\
-  --output ./samples/{file_variable}.csv\\
-  --export-to ./samples/{file_variable}/\\
+  --output /host/samples/{file_variable}.csv\\
+  --export-to /host/samples/{file_variable}/\\
   --count 30 \\
   --seed 07201869 \\
   --columns "note,subject,encounter" \\
