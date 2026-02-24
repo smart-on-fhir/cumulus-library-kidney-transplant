@@ -9,7 +9,7 @@ REGEX: transplant\s*\(?\d+\s*/\s*\d+\)?"	X
 "Recipient
 Transplant 
 Donor
-Donation"	X					X	X	X	X
+Donation"	X								
 "Living Donor
 Living Kidney
 Living Renal
