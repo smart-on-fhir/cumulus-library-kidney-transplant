@@ -1,4 +1,4 @@
-Link to Variables	Transplant Date	Donor Status 	Donor Relationship	HLA Quality	HLA Mismatch	Donor Serostatus EBV	Donor Serostatus CMV	Recipient Serostatus EBV	Recipient Serostatus CMV
+Link to Variables	Transplant Date	Donor Status	Donor Relationship	HLA Quality	HLA Mismatch	Donor Serostatus EBV	Donor Serostatus CMV	Recipient Serostatus EBV	Recipient Serostatus CMV
 KDIGO	X	X	X	X	X				
 "Transplant Date 
 transplanted on
@@ -9,7 +9,7 @@ REGEX: transplant\s*\(?\d+\s*/\s*\d+\)?"	X
 "Recipient
 Transplant 
 Donor
-Donation"	X					X	X	X	X
+Donation"	X								
 "Living Donor
 Living Kidney
 Living Renal
@@ -118,66 +118,32 @@ unfavorably matched"				X	X
 "serostatus 
 seropositive 
 seropositivity
-IgG positive
 seronegative
-seronegativity
-IgG negative
-PCR"						X	X	X	X
+seronegativity"						X	X	X	X
 "Epstein-Barr
 Epstein
 EBV
-EBV+"						X		X	
+EBV+
+EBV-"						X		X	
 "Cytomegalovirus
 CMV
 CMV+
 CMV-"							X		X
 "donor serostatus
-D+
-D +
-D(+)
-D (+)
 D-pos
 Donor pos
-Donor+
-Donor +
-Donor(+)
-Donor (+)
 Donor reactive
 Donor-positive
-D-
-D -
-D(-)
-D (-)
 D-neg
 Donor neg
-Donor-
-Donor -
-Donor(-)
-Donor (-)
 Donor nonreactive
 Donor-negative"						X	X		
 "recipient serostatus
-R+
-R +
-R(+)
-R (+)
 R-pos
 Recip pos
-Recip+
-Recip +
-Recip(+)
-Recip (+)
 Recipient reactive
 Recip-positive
-R-
-R -
-R(-)
-R (-)
 R-neg
 Recip neg
-Recip-
-Recip -
-Recip(-)
-Recip (-)
 Recipient nonreactive
 Recip-negative"								X	X
