@@ -118,11 +118,15 @@ def generate_exclusion_regex(patterns: list[str]) -> re.Pattern:
     Combines multiple keywords/regexes into a single regex that 
     only matches if NONE of the patterns are present.
     """
-    # Join patterns with a logical OR (|)
-    edge = r"\b"
+    # Lifted from cumulus-etl's cli_utils.user_regex_to_pattern - Thanks Mike!
+    # Make a custom version of \b that allows non-word characters to be on edge of the term too.
+    # For example:
+    #   This misses: re.match(r"\ba\+\b", "a+")
+    #   But this hits: re.match(r"\ba\+", "a+")
+    # So to work around that, we look for the word boundary ourselves.
+    edge = r"(\W|$|^)"
     patterns.sort()
     combined_patterns = "|".join(f"{edge}{p}{edge}" for p in patterns)
-
     # Combine with negative lookahead 
     # using .*$ at the end causes a catastrophic backtracking problem
     return re.compile(rf"^(?!.*(?:{combined_patterns}))")
