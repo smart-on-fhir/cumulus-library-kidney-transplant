@@ -23,14 +23,15 @@ _NOW_DAY_RE = r"REGEX: now day\s*\+?\d+"
 _TRANSPLANT_DATE_RE = r"REGEX: transplant\s*\(?\d+\s*/\s*\d+\)?"
 
 FIXTURE_TSV = (
-    "Link to Variables\tTransplant Date\tDonor Status\tDonor Relationship\n"
-    f'"Transplant Date \ntransplanted on\nPOD\ntransplant on \n{_NOW_DAY_RE}\n{_TRANSPLANT_DATE_RE}"\tX\t\t\n'
-    '"Living Donor\nLiving Kidney\nLDRT"\t\tX\t\n'
-    '"LURD\nliving unrelated donor"\t\tX\tX\n'
+    "Link to Variables\tTransplant Date\tDonor Status\tDonor Relationship\tDonor Serostatus EBV\n"
+    f'"Transplant Date \ntransplanted on\nPOD\ntransplant on \n{_NOW_DAY_RE}\n{_TRANSPLANT_DATE_RE}"\tX\t\t\t\n'
+    '"Living Donor\nLiving Kidney\nLDRT"\t\tX\t\t\n'
+    '"LURD\nliving unrelated donor"\t\tX\tX\t\n'
+    '"EBV\+\nEBV-"\t\t\tX\t\n'
 )
 
 # Expected parse results derived from FIXTURE_TSV
-EXPECTED_VARIABLES = ["Transplant Date", "Donor Status", "Donor Relationship"]
+EXPECTED_VARIABLES = ["Transplant Date", "Donor Status", "Donor Relationship", "Donor Serostatus EBV"]
 EXPECTED_LOOKUP = {
     "Transplant Date": {
         "keywords": ["Transplant Date", "transplanted on", "POD", "transplant on", _NOW_DAY_RE, _TRANSPLANT_DATE_RE],
@@ -44,6 +45,10 @@ EXPECTED_LOOKUP = {
         "keywords": ["LURD", "living unrelated donor"],
         "relevant variables": ["Donor Status", "Donor Relationship"],
     },
+    "EBV+": {
+        "keywords": ["EBV+", "EBV-"],
+        "relevant variables": ["Donor Serostatus EBV"],
+    }
 }
 
 DEFAULT_SOURCE_TABLE = "irae__sample_casedef_peri"
@@ -76,7 +81,7 @@ class TestParseKeywordTsv(unittest.TestCase):
     def test_lookup_keys_are_first_keyword_of_each_group(self):
         self.assertEqual(
             set(self.lookup.keys()),
-            {"Transplant Date", "Living Donor", "LURD"},
+            {"Transplant Date", "Living Donor", "LURD", "EBV\\+"},
         )
 
     def test_multi_line_transplant_date_keywords(self):
@@ -95,6 +100,14 @@ class TestParseKeywordTsv(unittest.TestCase):
         self.assertEqual(
             self.lookup["LURD"]["keywords"],
             ["LURD", "living unrelated donor"],
+        )
+
+    def test_multi_line_ebv_keywords(self):
+        self.assertEqual(
+            self.lookup["EBV\\+"]["keywords"],
+            ["EBV\\+", "EBV"
+            ""
+            "-"],
         )
 
     def test_regex_keywords_in_transplant_date_lookup(self):
@@ -194,7 +207,7 @@ class TestGetKeywordsForVariable(unittest.TestCase):
         self.assertNotIn("living unrelated donor", keywords)
 
     def test_unknown_variable_returns_empty_list(self):
-        self.assertEqual(get_keywords_for_variable(self.lookup, "Any Rejection"), [])
+        self.assertEqual(get_keywords_for_variable(self.lookup, "Non-IRAE Variable"), [])
 
 
 #################################################
@@ -295,36 +308,47 @@ class TestGenerateExclusionRegex(unittest.TestCase):
 #
 class TestMakeNegationRegex(unittest.TestCase):
     def setUp(self):
-        self.regex = make_negation_regex(EXPECTED_LOOKUP)
+        self.negation_regex = make_negation_regex(EXPECTED_LOOKUP)
 
     def test_returns_compiled_pattern(self):
-        self.assertIsInstance(self.regex, re.Pattern)
+        self.assertIsInstance(self.negation_regex, re.Pattern)
 
     def test_matches_note_with_no_relevant_keywords(self):
         self.assertIsNotNone(
-            self.regex.match("patient presents for routine annual nephrology visit")
+            self.negation_regex.match("patient presents for routine annual nephrology visit")
         )
 
     def test_no_match_when_transplant_date_term_present(self):
-        self.assertIsNone(self.regex.match("Transplant Date was recorded in chart"))
+        self.assertIsNone(self.negation_regex.match("Transplant Date was recorded in chart"))
 
     def test_no_match_when_transplanted_on_present(self):
-        self.assertIsNone(self.regex.match("patient was transplanted on March 1st"))
+        self.assertIsNone(self.negation_regex.match("patient was transplanted on March 1st"))
 
     def test_no_match_when_living_donor_present(self):
-        self.assertIsNone(self.regex.match("Living Donor nephrectomy performed"))
+        self.assertIsNone(self.negation_regex.match("Living Donor nephrectomy performed"))
 
     def test_no_match_when_ldrt_abbreviation_present(self):
-        self.assertIsNone(self.regex.match("LDRT scheduled for next month"))
+        self.assertIsNone(self.negation_regex.match("LDRT scheduled for next month"))
 
     def test_no_match_when_lurd_present(self):
-        self.assertIsNone(self.regex.match("LURD was the donor type"))
+        self.assertIsNone(self.negation_regex.match("LURD was the donor type"))
 
     def test_no_match_when_living_unrelated_donor_present(self):
-        self.assertIsNone(self.regex.match("patient received a living unrelated donor kidney"))
-
+        self.assertIsNone(self.negation_regex.match("patient received a living unrelated donor kidney"))
+    
     def test_no_match_when_transplant_date_regex_matches(self):
-        self.assertIsNone(self.regex.match("transplant 11/15 reviewed in clinic"))
+        self.assertIsNone(self.negation_regex.match("transplant 11/15 reviewed in clinic"))
+
+    def test_no_match_when_ebv_positive_matches(self):
+        self.assertIsNone(self.negation_regex.match("dfadsafds EBV+ donor serostatus noted"))
+    
+    def test_no_match_when_ebv_negative_matches(self):
+        self.assertIsNone(self.negation_regex.match("EBV- donor serostatus noted in chart"))
+    
+    def test_negation_has_match_when_ebv_no_pos_negative(self):
+        # Since all we test for is EBV+ or EBV-, a note that mentions EBV without either 
+        # should be a match for the negation regex 
+        self.assertIsNotNone(self.negation_regex.match("EBV donor serostatus noted in chart"))
 
     def test_all_plain_keywords_trigger_exclusion(self):
         plain_keywords = [
@@ -341,7 +365,7 @@ class TestMakeNegationRegex(unittest.TestCase):
         for kw, sentence in plain_keywords:
             with self.subTest(keyword=kw):
                 self.assertIsNone(
-                    self.regex.match(sentence),
+                    self.negation_regex.match(sentence),
                     f"Expected no match when '{kw}' is present in: {sentence!r}",
                 )
 
