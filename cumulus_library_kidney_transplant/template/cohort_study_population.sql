@@ -1,19 +1,18 @@
-create table $prefix__cohort_study_population as
+create table {{ prefix }}__cohort_study_population as
 WITH
 study_population as (
     select  distinct
             E.status,
             E.age_at_visit,
+            valueset_age_group.age_group,
             E.gender,
             E.race_display,
             E.ethnicity_display,
             SP.period_ordinal       as enc_period_ordinal,
             E.period_start_day      as enc_period_start_day,
-            E.period_start_week     as enc_period_start_week,
-            E.period_start_month    as enc_period_start_month,
-            E.period_start_year     as enc_period_start_year,
             E.period_end_day        as enc_period_end_day,
             E.class_code            as enc_class_code,
+            E.class_display         as enc_class_display,
             E.servicetype_code      as enc_servicetype_code,
             E.servicetype_system    as enc_servicetype_system,
             E.servicetype_display   as enc_servicetype_display,
@@ -22,13 +21,15 @@ study_population as (
             E.type_display          as enc_type_display,
             E.subject_ref,
             E.encounter_ref
-    from    core__encounter                as E,
-            $prefix__cohort_study_period       as SP,
-            $prefix__include_gender            as G,
-            $prefix__include_age_at_visit      as age
+    from    core__encounter                     as E,
+            {{ prefix }}__cohort_study_period        as SP,
+            {{ prefix }}__include_gender             as G,
+            {{ prefix }}__include_age_at_visit       as age,
+            {{ prefix }}__valueset_age_group         as valueset_age_group
     where   (E.encounter_ref = SP.encounter_ref)  and
             (E.gender = G.code)                   and
-            (E.age_at_visit between age.age_min and age.age_max)
+            (E.age_at_visit between age.age_min and age.age_max) and
+            (E.age_at_visit = valueset_age_group.age_at_visit)
 ),
 utilization as (
     select  count(distinct enc_period_ordinal) as cnt_period,
@@ -59,7 +60,7 @@ from
         study_population,
         utilization,
         duration_days,
-        $prefix__include_utilization as include
+        {{ prefix }}__include_utilization as include
 where
         study_population.subject_ref = utilization.subject_ref
 and     study_population.subject_ref = duration_days.subject_ref

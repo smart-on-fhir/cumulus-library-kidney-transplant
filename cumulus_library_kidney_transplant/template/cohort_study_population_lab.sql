@@ -1,6 +1,6 @@
 -- https://github.com/smart-on-fhir/cumulus-library-ibd-cds/issues/14
 
-create table $prefix__cohort_study_population_lab as
+create table {{ prefix }}__cohort_study_population_lab as
 with join_lab as
 (
     select distinct
@@ -18,12 +18,11 @@ with join_lab as
         valuequantity_unit              as lab_valuequantity_unit,
         valuequantity_system            as lab_valuequantity_system,
         valuequantity_code              as lab_valuequantity_code,
-        valuestring                     as lab_valuestring,
         lab.status                      as lab_status,
         observation_ref,
         study_population.*
     from
-        $prefix__cohort_study_population as study_population,
+        {{ prefix }}__cohort_study_population as study_population,
         core__observation as lab
     where
         lab.category_code = 'laboratory' and
