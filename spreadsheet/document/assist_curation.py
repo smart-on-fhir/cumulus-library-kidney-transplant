@@ -1,13 +1,13 @@
 import pandas as pd
 from cumulus_library_kidney_transplant import filetool, fhir2sql
 from variable import loinc_names
-from cumulus_library_kidney_transplant.spreadsheet.document import (
+from spreadsheet.document import (
     type_of_service,
     subject_matter_domain,
     kind,
-    role,
     study_keywords
 )
+from spreadsheet.document import role
 
 ##############################################################################
 # LOINC 2.8.1 files
