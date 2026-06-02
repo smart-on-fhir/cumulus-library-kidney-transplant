@@ -1,4 +1,4 @@
-create or replace view irae__sample_casedef_post_limit_patient_10 as
+create TABLE irae__sample_casedef_post_limit_patient_10 as
 WITH
 patient_list as (
     select  distinct

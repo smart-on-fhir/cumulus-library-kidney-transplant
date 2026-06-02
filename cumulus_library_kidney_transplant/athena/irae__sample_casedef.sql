@@ -13,6 +13,7 @@ encounter_casedef as (
             population.enc_period_start_day,
             population.enc_period_ordinal,
             population.enc_class_code,
+            population.enc_class_display,
             population.enc_type_display,
             population.enc_servicetype_display
     FROM    etl__completion_encounters          as etl,

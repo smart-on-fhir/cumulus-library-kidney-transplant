@@ -1,4 +1,4 @@
-create or replace view irae__sample_casedef_peri_post_limit_note_50 as
+create TABLE irae__sample_casedef_peri_post_limit_note_50 as
 select  distinct
         subject_ref, note_ordinal, days_since, note_ref, group_name
 from
