@@ -1,22 +1,14 @@
-create  table irae__cohort_casedef_dx as
-WITH
-casedef as
-(
-    select  days_since,
-            ordinal_since,
-            dx_system,
-            coalesce(dx_code, 'NO_CODE')        as dx_code,
-            coalesce(dx_display, 'NO_DISPLAY')  as dx_display,
-            subject_ref,
-            encounter_ref
-    from    irae__cohort_casedef
-)
-select  distinct
+CREATE  TABLE irae__cohort_casedef_dx AS
+SELECT  DISTINCT
+        casedef.subtype,
         casedef.days_since,
         casedef.ordinal_since,
+        casedef.casedef_period,
+        variable_union.variable,
         dx.*
-from    casedef,
-        irae__cohort_study_population_dx as dx
-where   casedef.subject_ref = dx.subject_ref
-and     (dx.dx_code, dx.dx_system) not in
-        (select distinct code, system from irae__casedef)
+FROM    irae__cohort_casedef as casedef
+JOIN    irae__cohort_study_population_dx as dx
+ON      casedef.encounter_ref = dx.encounter_ref
+LEFT JOIN irae__cohort_variable_union_dx AS variable_union
+ON      dx.condition_ref = variable_union.condition_ref
+;

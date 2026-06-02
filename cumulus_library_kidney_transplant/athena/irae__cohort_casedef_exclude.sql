@@ -27,31 +27,36 @@ CREATE TABLE irae__cohort_casedef_exclude as WITH
 --                    AND     casedef.system  = cohort.system
 --                )
 --    ),
-first_visit AS
+first_include AS
 (
-    SELECT  MIN(enc_period_start_day) AS index_date,
-            subject_ref
-    FROM    irae__cohort_casedef_candidate
+    SELECT  MIN(sp.enc_period_start_day)    AS index_date,
+            sp.subject_ref
+    FROM    irae__cohort_casedef_candidate  AS casedef
+    JOIN    irae__cohort_study_population   AS sp
+    ON      casedef.encounter_ref = sp.encounter_ref
     WHERE   include
-    GROUP BY subject_ref
+    GROUP BY sp.subject_ref
 ),
-complication AS
+first_exclude AS
 (
-    SELECT  MIN(enc_period_start_day) AS index_date,
-            subject_ref, valueset, code, display, system
-    FROM    irae__cohort_casedef_candidate
-    WHERE   NOT include
-    GROUP BY subject_ref, valueset, code, display, system
+    SELECT  MIN(sp.enc_period_start_day)    AS index_date,
+            sp.subject_ref
+    FROM    irae__cohort_casedef_candidate  AS casedef
+    JOIN    irae__cohort_study_population   AS sp
+    ON      casedef.encounter_ref = sp.encounter_ref
+    WHERE NOT include
+    GROUP BY sp.subject_ref
 ),
-first_visit_complication AS
+first_filter AS
 (
     SELECT  DISTINCT
-            valueset, system, code, display,
-            complication.subject_ref
-    FROM    first_visit
-    JOIN    complication
-    ON      first_visit.subject_ref = complication.subject_ref
-    AND     first_visit.index_date > complication.index_date
+            first_exclude.subject_ref,
+            first_include.index_date    as index_date_include,
+            first_exclude.index_date    as index_date_exclude
+    FROM    first_include
+    JOIN    first_exclude
+    ON      first_include.subject_ref   = first_exclude.subject_ref
+    AND     first_include.index_date    > first_exclude.index_date
 ),
 exclusion_list AS
 (
@@ -59,10 +64,12 @@ exclusion_list AS
 --    UNION ALL
 --    select * from proc_transplant
 --    UNION ALL
-    select * from first_visit_complication
+    select * from first_filter
 )
 SELECT  DISTINCT
-        exclusion_list.*
+        index_date_include,
+        index_date_exclude,
+        casedef.*
 FROM    exclusion_list
 JOIN    irae__cohort_casedef_candidate AS casedef
 ON      exclusion_list.subject_ref = casedef.subject_ref

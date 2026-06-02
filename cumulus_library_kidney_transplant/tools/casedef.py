@@ -1,0 +1,63 @@
+from pathlib import Path
+from cumulus_library_kidney_transplant.tools import manifest, template, filetool, tablespace
+
+
+def make_cohort() -> list[Path]:
+    return [template.copy('cohort_casedef.sql')]
+
+def make_cohort_candidate() -> list[Path]:
+    out = list()
+    for rule in ['candidate', 'exclude', 'include']:
+        file= f'cohort_casedef_{rule}.sql'
+        dest = tablespace.name_prefix(file)
+        path = filetool.path_athena(dest)
+
+        if path.exists():
+            out.append(path)
+        else:
+            out.append(template.copy(file))
+    return out
+
+def make_cohort_aspects() -> list[Path]:
+    """
+    Make cohorts for each case definition aspect [dx, rx, lab, proc].
+    Default= one table for each [dx, rx, lab, proc]
+
+    :return: list of file.sql
+    """
+    return [template.copy(f'cohort_casedef_{aspect}.sql')
+            for aspect in ['dx', 'rx', 'lab', 'proc']]
+
+def make_timeline() -> list[Path]:
+    """
+    Make a timeline with ALL variables represented in WIDE (tabular) format *with*
+    the Case Definition and rich study population encounter metadata.
+
+    see also:
+    * cohort_casedef.sql
+    * cohort_variable_wide.sql
+    * cohort_study_population_enc.sql
+
+    :return: list of file.sql
+    """
+    return [template.copy(f'cohort_timeline.sql')]
+
+#-----------------------------------------------------------------------------
+# Make
+#-----------------------------------------------------------------------------
+def make() -> list[str]:
+    rules_files = make_cohort_candidate()
+    cohort_files = make_cohort()
+    aspect_files = make_cohort_aspects()
+    timeline_files = make_timeline()
+
+    return [manifest.as_toml_sql(rules_files, 'filter include/exclude', type_build='build:serial'),
+            manifest.as_toml_sql(cohort_files, 'cohort from case definition (valueset_casedef)'),
+            manifest.as_toml_sql(aspect_files, 'cohort for case definition aspects (dx, rx, lab, proc)'),
+            manifest.as_toml_sql(timeline_files, 'timeline for casedef with variables')]
+
+if __name__ == '__main__':
+    for target in make():
+        print(target)
+
+

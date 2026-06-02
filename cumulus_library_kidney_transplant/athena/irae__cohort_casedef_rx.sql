@@ -1,13 +1,14 @@
-create  table irae__cohort_casedef_rx as
-select  distinct
+CREATE  TABLE irae__cohort_casedef_rx AS
+SELECT  DISTINCT
+        casedef.subtype,
         casedef.days_since,
         casedef.ordinal_since,
-        casedef.dx_category_code,
-        casedef.dx_system,
-        casedef.dx_code,
-        casedef.dx_display,
+        casedef.casedef_period,
+        variable_union.variable,
         rx.*
-from    irae__cohort_casedef as casedef,
-        irae__cohort_study_population_rx as rx
-where   casedef.encounter_ref = rx.encounter_ref
+FROM    irae__cohort_casedef             AS casedef
+JOIN    irae__cohort_study_population_rx AS rx
+ON      casedef.encounter_ref = rx.encounter_ref
+LEFT JOIN irae__cohort_variable_union_rx AS variable_union
+ON      rx.medicationrequest_ref = variable_union.medicationrequest_ref
 ;
