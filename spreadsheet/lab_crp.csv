@@ -1,0 +1,13 @@
+system,code,display
+http://loinc.org,30522-7,C reactive protein [Mass/volume] in Serum or Plasma by High sensitivity method
+http://loinc.org,1988-5,C reactive protein [Mass/volume] in Serum or Plasma
+http://loinc.org,76486-0,C reactive protein [Moles/volume] in Serum or Plasma by High sensitivity method
+http://loinc.org,111006-3,C reactive protein [Measurement] in Serum or Plasma
+http://loinc.org,76485-2,C reactive protein [Moles/volume] in Serum or Plasma
+http://loinc.org,105126-7,"C reactive protein [Mass/volume] in Serum, Plasma or Blood"
+http://loinc.org,106736-2,"C reactive protein [Mass/volume] in Serum, Plasma or Blood by Rapid immunoassay"
+http://loinc.org,71426-1,C reactive protein [Mass/volume] in Blood by High sensitivity method
+http://loinc.org,76485-2,C reactive protein [Moles/volume] in Serum or Plasma
+urn:oid:1.2.840.114350.1.13.713.3.7.2.768282,123539,External CRP
+urn:oid:1.2.840.114350.1.13.713.3.7.2.768282,1558001,"CRP, High Sensitivity"
+urn:oid:1.2.840.114350.1.13.713.3.7.2.768282,1558108,CRP
