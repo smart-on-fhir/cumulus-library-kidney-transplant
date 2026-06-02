@@ -1,3 +1,4 @@
+system,code,display
 http://hl7.org/fhir/sid/icd-10-cm,B25.0,"Cytomegaloviral pneumonitis"
 http://hl7.org/fhir/sid/icd-10-cm,B25.1,"Cytomegaloviral hepatitis"
 http://hl7.org/fhir/sid/icd-10-cm,B25.2,"Cytomegaloviral pancreatitis"

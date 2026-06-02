@@ -1,3 +1,4 @@
+system,code,display
 http://hl7.org/fhir/sid/icd-10-cm,G04.00,"Acute disseminated encephalitis and encephalomyelitis, unspecified"
 http://hl7.org/fhir/sid/icd-10-cm,G04.01,"Postinfectious acute disseminated encephalitis and encephalomyelitis (postinfectious ADEM)"
 http://hl7.org/fhir/sid/icd-10-cm,G04.02,"Postimmunization acute disseminated encephalitis, myelitis and encephalomyelitis"

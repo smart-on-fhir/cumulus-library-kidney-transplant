@@ -1,3 +1,4 @@
+system,code,display
 http://hl7.org/fhir/sid/icd-10-cm,A00,"Cholera"
 http://hl7.org/fhir/sid/icd-10-cm,A00.0,"Cholera due to Vibrio cholerae 01, biovar cholerae"
 http://hl7.org/fhir/sid/icd-10-cm,A00.1,"Cholera due to Vibrio cholerae 01, biovar eltor"

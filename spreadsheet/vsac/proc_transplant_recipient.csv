@@ -1,3 +1,4 @@
+system,code,display
 http://hl7.org/fhir/sid/icd-9-cm,V42.0,"Kidney replaced by transplant"
 http://hl7.org/fhir/sid/icd-9-cm,V42.1,"Heart replaced by transplant"
 http://hl7.org/fhir/sid/icd-9-cm,V42.2,"Heart valve replaced by transplant"

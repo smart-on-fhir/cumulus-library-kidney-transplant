@@ -1,3 +1,4 @@
+system,code,display
 http://hl7.org/fhir/sid/icd-10-cm,I12.0,"Hypertensive chronic kidney disease with stage 5 chronic kidney disease or end stage renal disease"
 http://hl7.org/fhir/sid/icd-10-cm,I12.9,"Hypertensive chronic kidney disease with stage 1 through stage 4 chronic kidney disease, or unspecified chronic kidney disease"
 http://hl7.org/fhir/sid/icd-10-cm,I13.0,"Hypertensive heart and chronic kidney disease with heart failure and stage 1 through stage 4 chronic kidney disease, or unspecified chronic kidney disease"
