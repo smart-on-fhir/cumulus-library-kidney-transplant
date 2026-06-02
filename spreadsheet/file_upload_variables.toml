@@ -1,172 +1,127 @@
 config_type="file_upload"
 
-[tables.valueset_diag_cte_enterography]
-file = "diag_cte_enterography.csv"
+[tables.valueset_casedef]
+# https://github.com/smart-on-fhir/cumulus-library/issues/569
+col_types = [
+    "STRING",   # system
+    "STRING",   # code
+    "STRING",   # display
+    "BOOLEAN",  # include
+    "STRING",  # likely
+    "STRING",  # preop
+    "STRING",  # transplant
+    "STRING",  # rejection
+    "STRING",  # failure
+    "STRING",  # outcome
+    "STRING",  # lab
+    "STRING"]  # imaging
+file = "casedef.csv"
 
-[tables.valueset_diag_mre_enterography]
-file = "diag_mre_enterography.csv"
+[tables.valueset_lab_albumin_urine]
+file = "lab_albumin_urine.csv"
 
-[tables.valueset_diag_mri_pelvis]
-file = "diag_mri_pelvis.csv"
+[tables.valueset_lab_azathioprine]
+file = "lab_azathioprine.csv"
 
-[tables.valueset_diag_us_abdomen]
-file = "diag_us_abdomen.csv"
+[tables.valueset_lab_azathioprine_tpmt_gene]
+file = "lab_azathioprine_tpmt_gene.csv"
 
-[tables.valueset_diag_pathology]
-file = "diag_pathology.csv"
+[tables.valueset_lab_c_peptide]
+file = "lab_c_peptide.csv"
 
-[tables.valueset_dx_casedef]
-file = "dx_casedef.csv"
+[tables.valueset_lab_cyclosporin]
+file = "lab_cyclosporin.csv"
 
-[tables.valueset_dx_differential]
-file = "dx_differential.csv"
+[tables.valueset_lab_cytomegalovirus]
+file = "lab_cytomegalovirus.csv"
 
-[tables.valueset_dx_eim_arthritis]
-file = "dx_eim_arthritis.csv"
+[tables.valueset_lab_gad]
+file = "lab_gad.csv"
 
-[tables.valueset_dx_eim_erythema_nodosum]
-file = "dx_eim_erythema_nodosum.csv"
+[tables.valueset_lab_gfr_custom]
+file = "lab_gfr_custom.csv"
 
-[tables.valueset_dx_eim_fever]
-file = "dx_eim_fever.csv"
+[tables.valueset_lab_glucose]
+file = "lab_glucose.csv"
 
-[tables.valueset_dx_eim_pyoderma_gangrenosum]
-file = "dx_eim_pyoderma_gangrenosum.csv"
+[tables.valueset_lab_hdl]
+file = "lab_hdl.csv"
 
-[tables.valueset_dx_eim_uveitis]
-file = "dx_eim_uveitis.csv"
+[tables.valueset_lab_hemoglobin_a1c]
+file = "lab_hemoglobin_a1c.csv"
 
-[tables.valueset_dx_sign_anemia]
-file = "dx_sign_anemia.csv"
+[tables.valueset_lab_hla]
+file = "lab_hla.csv"
 
-[tables.valueset_dx_symptom_abdominal_pain]
-file = "dx_symptom_abdominal_pain.csv"
+[tables.valueset_lab_insulin]
+file = "lab_insulin.csv"
 
-[tables.valueset_dx_symptom_appetite]
-file = "dx_symptom_appetite.csv"
+[tables.valueset_lab_ketone_urine]
+file = "lab_ketone_urine.csv"
 
-[tables.valueset_dx_symptom_constipation]
-file = "dx_symptom_constipation.csv"
+[tables.valueset_lab_ldl]
+file = "lab_ldl.csv"
 
-[tables.valueset_dx_symptom_diarrhea]
-file = "dx_symptom_diarrhea.csv"
+[tables.valueset_lab_mycophenolate]
+file = "lab_mycophenolate.csv"
 
-[tables.valueset_dx_symptom_fatigue]
-file = "dx_symptom_fatigue.csv"
+[tables.valueset_lab_sirolimus]
+file = "lab_sirolimus.csv"
 
-[tables.valueset_dx_symptom_mouth]
-file = "dx_symptom_mouth.csv"
+[tables.valueset_lab_tacrolimus]
+file = "lab_tacrolimus.csv"
 
-[tables.valueset_dx_symptom_nausea]
-file = "dx_symptom_nausea.csv"
+[tables.valueset_lab_triglyceride]
+file = "lab_triglyceride.csv"
 
-[tables.valueset_dx_symptom_perianal]
-file = "dx_symptom_perianal.csv"
+[tables.valueset_rx_alemtuzumab]
+file = "rx_alemtuzumab.csv"
 
-[tables.valueset_dx_symptom_rectal_bleeding]
-file = "dx_symptom_rectal_bleeding.csv"
+[tables.valueset_rx_atg]
+file = "rx_atg.csv"
 
-[tables.valueset_dx_symptom_tenesmus]
-file = "dx_symptom_tenesmus.csv"
+[tables.valueset_rx_azathioprine]
+file = "rx_azathioprine.csv"
 
-[tables.valueset_dx_symptom_weight_loss]
-file = "dx_symptom_weight_loss.csv"
+[tables.valueset_rx_basiliximab]
+file = "rx_basiliximab.csv"
 
-[tables.valueset_lab_anti_tnf]
-file = "lab_anti_tnf.csv"
+[tables.valueset_rx_belatacept]
+file = "rx_belatacept.csv"
 
-[tables.valueset_lab_albumin]
-file = "lab_albumin.csv"
+[tables.valueset_rx_cyclosporin]
+file = "rx_cyclosporin.csv"
 
-[tables.valueset_lab_calprotectin]
-file = "lab_calprotectin.csv"
+[tables.valueset_rx_cytogam]
+file = "rx_cytogam.csv"
 
-[tables.valueset_lab_crp]
-file = "lab_crp.csv"
+[tables.valueset_rx_everolimus]
+file = "rx_everolimus.csv"
 
-[tables.valueset_lab_cytokine]
-file = "lab_cytokine.csv"
+[tables.valueset_rx_ig]
+file = "rx_ig.csv"
 
-[tables.valueset_lab_esr]
-file = "lab_esr.csv"
+[tables.valueset_rx_ivig]
+file = "rx_ivig.csv"
 
-[tables.valueset_lab_folate]
-file = "lab_folate.csv"
+[tables.valueset_rx_methylprednisolone]
+file = "rx_methylprednisolone.csv"
 
-[tables.valueset_lab_hematocrit]
-file = "lab_hematocrit.csv"
+[tables.valueset_rx_mycophenolate]
+file = "rx_mycophenolate.csv"
 
-[tables.valueset_lab_hemoglobin]
-file = "lab_hemoglobin.csv"
+[tables.valueset_rx_prednisolone]
+file = "rx_prednisolone.csv"
 
-[tables.valueset_lab_iron_ferritin]
-file = "lab_iron_ferritin.csv"
+[tables.valueset_rx_prednisone]
+file = "rx_prednisone.csv"
 
-[tables.valueset_lab_iron_serum]
-file = "lab_iron_serum.csv"
+[tables.valueset_rx_rituximab]
+file = "rx_rituximab.csv"
 
-[tables.valueset_lab_iron_tibc]
-file = "lab_iron_tibc.csv"
+[tables.valueset_rx_sirolimus]
+file = "rx_sirolimus.csv"
 
-[tables.valueset_lab_iron_transferrin]
-file = "lab_iron_transferrin.csv"
+[tables.valueset_rx_tacrolimus]
+file = "rx_tacrolimus.csv"
 
-[tables.valueset_lab_mcv]
-file = "lab_mcv.csv"
-
-[tables.valueset_lab_platelets]
-file = "lab_platelets.csv"
-
-[tables.valueset_lab_vitamin_b12]
-file = "lab_vitamin_b12.csv"
-
-[tables.valueset_lab_vitamin_d]
-file = "lab_vitamin_d.csv"
-
-[tables.valueset_lab_zinc]
-file = "lab_zinc.csv"
-
-[tables.valueset_paris_cd_behavior]
-file = "paris_cd_behavior.csv"
-
-[tables.valueset_paris_cd_location]
-file = "paris_cd_location.csv"
-
-[tables.valueset_paris_ibd_subtype]
-file = "paris_ibd_subtype.csv"
-
-[tables.valueset_paris_uc_location]
-file = "paris_uc_location.csv"
-
-[tables.valueset_paris_uc_severity]
-file = "paris_uc_severity.csv"
-
-[tables.valueset_rx_class_advanced_other]
-file = "rx_class_advanced_other.csv"
-
-[tables.valueset_rx_class_antibiotic]
-file = "rx_class_antibiotic.csv"
-
-[tables.valueset_rx_class_anti_integrin]
-file = "rx_class_anti_integrin.csv"
-
-[tables.valueset_rx_class_anti_interleukin]
-file = "rx_class_anti_interleukin.csv"
-
-[tables.valueset_rx_class_anti_tnf]
-file = "rx_class_anti_tnf.csv"
-
-[tables.valueset_rx_class_corticosteroid]
-file = "rx_class_corticosteroid.csv"
-
-[tables.valueset_rx_class_immunomodulator]
-file = "rx_class_immunomodulator.csv"
-
-[tables.valueset_rx_class_jak]
-file = "rx_class_jak.csv"
-
-[tables.valueset_rx_class_mesalamine]
-file = "rx_class_mesalamine.csv"
-
-[tables.valueset_llm_task_yield]
-file = "llm_task_yield.csv"
