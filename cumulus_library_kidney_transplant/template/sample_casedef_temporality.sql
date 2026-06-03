@@ -1,4 +1,4 @@
-create TABLE $prefix__sample_casedef_$temporality as
+create TABLE {{ prefix }}__sample_casedef_{{ temporality }} as
 WITH
 encounter_casedef as (
     SELECT  distinct
@@ -10,11 +10,11 @@ encounter_casedef as (
             population.enc_period_start_day,
             population.enc_period_ordinal
     FROM    etl__completion_encounters          as etl,
-            $prefix__cohort_casedef             as casedef,
-            $prefix__cohort_study_population    as population
+            {{ prefix }}__cohort_casedef             as casedef,
+            {{ prefix }}__cohort_study_population    as population
     WHERE   casedef.encounter_ref   = population.encounter_ref
     AND     casedef.encounter_ref   = concat('Encounter/', etl.encounter_id)
-    AND     casedef.$temporality
+    AND     casedef.{{ temporality }}
 ),
 encounter_doc as (
     SELECT  distinct
@@ -34,7 +34,7 @@ encounter_doc as (
             doc.doc_type_display        as note_display,
             doc.documentreference_ref   as note_ref
     FROM    encounter_casedef           as casedef,
-            $prefix__cohort_study_population_doc as doc
+            {{ prefix }}__cohort_study_population_doc as doc
     WHERE   casedef.encounter_ref   = doc.encounter_ref
     AND     doc.aux_has_text
 ),
@@ -56,7 +56,7 @@ encounter_diag as (
             diag.diag_display                   as note_display,
             diag.diagnosticreport_ref           as note_ref
     FROM    encounter_casedef                   as casedef,
-            $prefix__cohort_study_population_diag as diag
+            {{ prefix }}__cohort_study_population_diag as diag
     WHERE   casedef.encounter_ref   = diag.encounter_ref
     AND     diag.aux_has_text
 ),
