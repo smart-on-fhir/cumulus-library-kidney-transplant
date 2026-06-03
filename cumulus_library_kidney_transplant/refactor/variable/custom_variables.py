@@ -1,7 +1,6 @@
 from typing import List
 from pathlib import Path
-from cumulus_library_kidney_transplant import filetool
-from cumulus_library_kidney_transplant import fhir2sql
+from refactor import fhir2sql, filetool
 
 # List of aggregated Rx and Lab custom variables.
 CUSTOM_LIST = ['rx_custom', 'lab_custom']

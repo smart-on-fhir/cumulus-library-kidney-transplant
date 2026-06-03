@@ -1,11 +1,10 @@
 import os
 from typing import List
 from pathlib import Path
-from cumulus_library_kidney_transplant import filetool
-from cumulus_library_kidney_transplant import fhir2sql
-from cumulus_library_kidney_transplant.study_prefix import PREFIX
-from cumulus_library_kidney_transplant.variable.aspect import Aspect, AspectMap, AspectKey      # TODO: refactor
-from cumulus_library_kidney_transplant.variable.vsac_variables_defined import get_aspect_map
+from refactor import fhir2sql, filetool
+from refactor.study_prefix import PREFIX
+from refactor.variable.aspect import Aspect  # TODO: refactor
+from refactor.variable.vsac_variables_defined import get_aspect_map
 from cumulus_library.apis import umls
 # Cancer valueset are currently a special corner case
 DX_CANCER_LIST = ['carcinoma',
@@ -72,6 +71,8 @@ def make_aspect(aspect: Aspect) -> List[Path]:
             json_file = filetool.path_valueset(f"{PREFIX}__{variable.name}/{valueset.name}.json")
             view_name = f"{PREFIX}__{variable.name}_{valueset.name}"
             view_file = filetool.path_athena(f'{view_name}.sql')
+            csv_dir = '/spreadsheet/vsac/'
+            csv_file = csv_dir + f'{variable.name}_{valueset.name}.csv'
 
             if not os.path.exists(json_file):
                 print(f'**** Downloading {variable.name} {valueset.as_json()}')
@@ -92,6 +93,14 @@ def make_aspect(aspect: Aspect) -> List[Path]:
                     code_list += fhir2sql.expansion2codelist(entry)
                 sql = fhir2sql.codelist2view(code_list, view_name)
                 filetool.save_athena_view(view_name, sql)
+
+            if not os.path.exists(csv_file):
+                print(f'**** Writing {csv_file}')
+                code_list = list()
+                for entry in filetool.read_json(json_file):
+                    code_list += fhir2sql.expansion2codelist(entry)
+                out = fhir2sql.codelist2csv(code_list)
+                filetool.write_text(out, csv_file)
 
             var_list.append(view_file)
             valueset_list.append(view_name)

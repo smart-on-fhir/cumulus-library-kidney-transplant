@@ -1,6 +1,6 @@
 from typing import List
-from cumulus_library_kidney_transplant.variable.aspect import Variable, Valueset, Aspect, AspectMap
-from cumulus_library_kidney_transplant.variable.aspect import Diagnoses, Medications, Labs, Procedures, Documents
+from refactor.variable.aspect import Variable, AspectMap
+from refactor.variable.aspect import Diagnoses, Medications, Labs, Procedures, Documents
 
 ###############################################################################
 #

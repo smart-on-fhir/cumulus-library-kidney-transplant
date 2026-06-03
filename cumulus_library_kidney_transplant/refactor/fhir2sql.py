@@ -5,7 +5,7 @@ from pathlib import Path
 from fhirclient.models.coding import Coding
 from refactor import guard, filetool
 from refactor.study_prefix import PREFIX
-from cumulus_library_kidney_transplant.variable.aspect import AspectKey
+from refactor.variable.aspect import AspectKey
 from refactor.filetool import save_athena_view
 
 ###############################################################################

@@ -1,5 +1,5 @@
 from typing import List
-from cumulus_library_kidney_transplant.vocab import Vocab
+from refactor.vocab import Vocab
 
 ##############################################################################
 # Anti-Metabolites
