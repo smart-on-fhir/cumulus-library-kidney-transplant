@@ -17,62 +17,44 @@ col_types = [
     "STRING"]  # imaging
 file = "casedef.csv"
 
-[tables.valueset_lab_albumin_urine]
-file = "lab_albumin_urine.csv"
+[tables.valueset_lab_albumin]
+file = "lab_albumin.csv"
 
-[tables.valueset_lab_azathioprine]
-file = "lab_azathioprine.csv"
+[tables.valueset_lab_crp]
+file = "lab_crp.csv"
 
-[tables.valueset_lab_azathioprine_tpmt_gene]
-file = "lab_azathioprine_tpmt_gene.csv"
+[tables.valueset_lab_drug_level_azathioprine]
+file = "lab_drug_level_azathioprine.csv"
 
-[tables.valueset_lab_c_peptide]
-file = "lab_c_peptide.csv"
+[tables.valueset_lab_drug_level_cyclosporin]
+file = "lab_drug_level_cyclosporin.csv"
 
-[tables.valueset_lab_cyclosporin]
-file = "lab_cyclosporin.csv"
+[tables.valueset_lab_drug_level_mycophenolate]
+file = "lab_drug_level_mycophenolate.csv"
 
-[tables.valueset_lab_cytomegalovirus]
-file = "lab_cytomegalovirus.csv"
+[tables.valueset_lab_drug_level_sirolimus]
+file = "lab_drug_level_sirolimus.csv"
 
-[tables.valueset_lab_gad]
-file = "lab_gad.csv"
+[tables.valueset_lab_drug_level_tacrolimus]
+file = "lab_drug_level_tacrolimus.csv"
+
+[tables.valueset_lab_esr]
+file = "lab_esr.csv"
 
 [tables.valueset_lab_gfr_custom]
 file = "lab_gfr_custom.csv"
 
-[tables.valueset_lab_glucose]
-file = "lab_glucose.csv"
-
-[tables.valueset_lab_hdl]
-file = "lab_hdl.csv"
-
-[tables.valueset_lab_hemoglobin_a1c]
-file = "lab_hemoglobin_a1c.csv"
-
 [tables.valueset_lab_hla]
 file = "lab_hla.csv"
 
-[tables.valueset_lab_insulin]
-file = "lab_insulin.csv"
+[tables.valueset_lab_infection_viral_cmv]
+file = "lab_infection_viral_cmv.csv"
 
-[tables.valueset_lab_ketone_urine]
-file = "lab_ketone_urine.csv"
+[tables.valueset_lab_iron_ferritin]
+file = "lab_iron_ferritin.csv"
 
-[tables.valueset_lab_ldl]
-file = "lab_ldl.csv"
-
-[tables.valueset_lab_mycophenolate]
-file = "lab_mycophenolate.csv"
-
-[tables.valueset_lab_sirolimus]
-file = "lab_sirolimus.csv"
-
-[tables.valueset_lab_tacrolimus]
-file = "lab_tacrolimus.csv"
-
-[tables.valueset_lab_triglyceride]
-file = "lab_triglyceride.csv"
+[tables.valueset_lab_tpmt_gene]
+file = "lab_tpmt_gene.csv"
 
 [tables.valueset_rx_alemtuzumab]
 file = "rx_alemtuzumab.csv"
@@ -124,4 +106,3 @@ file = "rx_sirolimus.csv"
 
 [tables.valueset_rx_tacrolimus]
 file = "rx_tacrolimus.csv"
-
