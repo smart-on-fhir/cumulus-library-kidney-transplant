@@ -19,9 +19,9 @@ description="cohort for case definition aspects (dx, rx, lab, proc)"
 type="build:parallel"
 files= [
 	"athena/irae__cohort_casedef_dx.sql",
-	"athena/irae__cohort_casedef_rx.sql",
 	"athena/irae__cohort_casedef_lab.sql",
-	"athena/irae__cohort_casedef_proc.sql"
+	"athena/irae__cohort_casedef_proc.sql",
+	"athena/irae__cohort_casedef_rx.sql"
 ]
 
 [[actions]]

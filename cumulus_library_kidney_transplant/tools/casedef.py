@@ -1,6 +1,5 @@
 from pathlib import Path
-from cumulus_library_kidney_transplant.tools import manifest, template, filetool, tablespace
-
+from cumulus_library_kidney_transplant.tools import manifest, template, filetool, tablespace, study_variable
 
 def make_cohort() -> list[Path]:
     return [template.copy('cohort_casedef.sql')]
@@ -18,15 +17,16 @@ def make_cohort_candidate() -> list[Path]:
             out.append(template.copy(file))
     return out
 
-def make_cohort_aspects() -> list[Path]:
+def make_cohort_aspects(casedef_meta='') -> list[Path]:
     """
     Make cohorts for each case definition aspect [dx, rx, lab, proc].
     Default= one table for each [dx, rx, lab, proc]
-
+    :param casedef_meta: optionally include "casedef.subtype" or other study specific case definition metadata.
     :return: list of file.sql
     """
-    return [template.copy(f'cohort_casedef_{aspect}.sql')
-            for aspect in ['dx', 'rx', 'lab', 'proc']]
+    # Default aspects using the templates that join study_population_$aspect.
+    aspect_list = ['dx', 'lab', 'proc', 'rx']
+    return [template.copy(f'cohort_casedef_{aspect}.sql', casedef_meta=casedef_meta) for aspect in aspect_list]
 
 def make_timeline() -> list[Path]:
     """
