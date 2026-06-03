@@ -1,6 +1,6 @@
 CREATE  TABLE irae__cohort_casedef_lab AS
 SELECT  DISTINCT
-        casedef.subtype,
+        
         casedef.days_since,
         casedef.ordinal_since,
         casedef.casedef_period,
@@ -9,6 +9,6 @@ SELECT  DISTINCT
 FROM    irae__cohort_casedef as casedef
 JOIN    irae__cohort_study_population_lab as lab
 ON      casedef.encounter_ref = lab.encounter_ref
-LEFT JOIN irae__cohort_variable_union_lab AS variable_union
-ON      lab.observation_ref = variable_union.observation_ref
+LEFT JOIN irae__cohort_variable_union AS variable_union
+ON      lab.observation_ref = variable_union.resource_ref
 ;
