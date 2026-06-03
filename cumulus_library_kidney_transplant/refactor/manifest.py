@@ -3,7 +3,8 @@ from pathlib import Path
 import tomllib
 import tomli_w
 from cumulus_library.study_manifest import StudyManifest
-from cumulus_library_kidney_transplant import guard, filetool
+from refactor import guard, filetool
+
 
 ###############################################################################
 #
@@ -75,7 +76,7 @@ def list_tables(file_names: List[Path] | List[str], search_term: str = None) -> 
 
 def path_relative(file_names: List[Path] | List[str]) -> List[str]:
     # split_token = 'cumulus-library-kidney-transplant/'
-    split_token = str(filetool.path_home())+'/'
+    split_token = str(filetool.path_home()) + '/'
     simpler = list()
     for filename in guard.as_list_str(file_names):
         if split_token in filename:
