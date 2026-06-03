@@ -48,7 +48,7 @@ def as_toml_sql(file_list:list[Path], description:str=None, type_build='build:pa
     _desc = f'description={_quote(description)}'
     _type = 'type=' + _quote(type_build)
     _files = [_quote('athena/'+f.name) for f in file_list]
-    _files = 'files= (\n\t'+ ',\n\t'.join(_files) + '\n)'
+    _files = 'files= [\n\t'+ ',\n\t'.join(_files) + '\n]'
     return  header() + '\n'.join([_desc, _type, _files])
 
 def as_toml_tables(file_list:list[Path], description:str=None, type_export='export:counts') -> str:
