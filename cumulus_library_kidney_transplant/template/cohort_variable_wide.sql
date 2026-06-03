@@ -1,29 +1,21 @@
-create table $prefix__cohort_variable_wide as
-with lookup as
+CREATE TABLE {{ prefix }}__cohort_variable_wide AS
+with
+select_wide_bool AS
 (
-    select  distinct variable, encounter_ref
-    from    $prefix__cohort_variable_union
-),
-join_study_period as
-(
-    select  distinct
-            $variable_list_lookup,
-            SP.encounter_ref
-    from    $prefix__cohort_study_period as SP
-    left join lookup on SP.encounter_ref = lookup.encounter_ref
-),
-tabular as
-(
-    select  distinct
-            $variable_list_wide,
+    SELECT
+            {{ select_wide_bool }},
             encounter_ref
-    from    join_study_period
-    group by encounter_ref
+    FROM    {{ prefix }}__cohort_variable_union
+),
+select_wide_any AS
+(
+    SELECT
+            {{ select_wide_any }},
+            encounter_ref
+    FROM    select_wide_bool
+    GROUP BY encounter_ref
 )
-select  distinct
-        tabular.*   ,
-        subject_ref
-from    irae__cohort_study_population as study_pop,
-        tabular
-where   tabular.encounter_ref = study_pop.encounter_ref
+SELECT  DISTINCT
+        select_wide_any.*
+FROM    select_wide_any
 ;
