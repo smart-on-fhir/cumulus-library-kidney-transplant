@@ -1,5 +1,6 @@
 import unittest
-from cumulus_library_kidney_transplant.variable import custom_variables
+from refactor.variable import custom_variables
+
 
 class TestSpreadsheet(unittest.TestCase):
     def test_list_variables(self):
