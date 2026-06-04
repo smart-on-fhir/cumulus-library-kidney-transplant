@@ -43,7 +43,7 @@ def as_toml_sql(file_list:list[Path], description:str=None, type_build='build:pa
     :param description: key name to display during build
     :param file_list: list of paths to files to execute in parallel
     :param type_build builld:serial False if builld:parallel
-    :return: str content for `manifest_deprecated.toml` submanifest
+    :return: str content for `manifest.toml` submanifest
     """
     _desc = f'description={_quote(description)}'
     _type = 'type=' + _quote(type_build)
@@ -58,7 +58,7 @@ def as_toml_tables(file_list:list[Path], description:str=None, type_export='expo
     :param description: key name to display during build
     :param file_list: list of paths to files to execute in parallel
     :param type_export: supports one of ['export:counts', 'export:annotated_counts', 'export:flat', 'export:metadata']
-    :return: str content for `manifest_deprecated.toml` submanifest
+    :return: str content for `manifest.toml` submanifest
     """
     _desc = f'description={_quote(description)}'
     _type = 'type=' + _quote(type_export)
@@ -71,7 +71,7 @@ def as_toml_file_upload(file_list:list[Path]) -> str:
     """
     @Refactor: TOML templates be Jinja `template.py`
 
-    :return: str content for `manifest_deprecated.toml` submanifest
+    :return: str content for `manifest.toml` submanifest
     """
     out = ['config_type="file_upload"']
     for filename in file_list:

@@ -51,7 +51,7 @@ def make() -> list[str]:
     * cohort_study_population_proc.sql  -> FHIR Procedure
     * cohort_study_population_diag.sql  -> FHIR DiagnosticReport
 
-    :return: list of str manifest_deprecated.toml declarations
+    :return: list of str toml declarations
     """
     study_period = make_study_population([STUDY_PERIOD])
     study_population = make_study_population([STUDY_POPULATION])

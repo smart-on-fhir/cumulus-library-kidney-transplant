@@ -9,7 +9,7 @@
  `select * from irae__gpt4_parsed` 
 
 4. Term Frequency for each column at the subject/encounter level
-* [rank_llm.py](../count/rank_llm.py) main() outputs  
+* [rank_llm.py](../refactor/count/rank_llm.py) main() outputs  
   * athena-no-spans-july-17.csv.all.cnt.tsv 
   * athena-no-spans-july-17.csv.first.cnt.tsv
 * [irae__gpt4_term_freq_all.sql](irae__gpt4_term_freq_all.sql)

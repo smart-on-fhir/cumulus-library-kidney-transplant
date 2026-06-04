@@ -8,8 +8,8 @@ from refactor import guard, filetool
 
 ###############################################################################
 #
-# StudyManifest by cumulus-library is the futureproof answer for manifest_deprecated.toml
-# Expect deprecation of custom manifest_deprecated.toml in future IRAE study releases.
+# StudyManifest by cumulus-library is the futureproof answer for manifest.toml
+# Expect deprecation of custom manifest.toml in future IRAE study releases.
 #
 ###############################################################################
 def get_study_manifest() -> StudyManifest:
@@ -17,7 +17,7 @@ def get_study_manifest() -> StudyManifest:
 
 ###############################################################################
 #
-# IRAE Custom "study builder" methods for manifest_deprecated.toml
+# IRAE Custom "study builder" methods for manifest.toml
 #
 ###############################################################################
 def get_file_config() -> List:
@@ -27,7 +27,7 @@ def get_file_config() -> List:
     return read_manifest().get('file_config')
 
 def path_manifest() -> Path:
-    return filetool.path_home('manifest_deprecated.toml')
+    return filetool.path_home('manifest.toml')
 
 def read_manifest(file_path: str | Path = None) -> dict:
     if not file_path:
