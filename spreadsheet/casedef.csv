@@ -88,11 +88,11 @@
 "http://snomed.info/sct","236584009","Perfusion injury of renal transplant","false",,,,,,"true",,
 "http://snomed.info/sct","58797008","Complication of transplanted kidney","false",,,,,,"true",,
 "http://hl7.org/fhir/sid/icd-9-cm","996.73","Other complications due to renal dialysis device, implant, and graft","false",,,,,,"true",,
-"http://snomed.info/sct","175948009","Exploration of renal transplant (procedure)","false",,,,,,"true",,
+"http://snomed.info/sct","175948009","Exploration of renal transplant (procedure)","true",,,,,,,,"true"
 "http://snomed.info/sct","236573002","Very mild acute rejection of renal transplant","false",,,,"true",,,,
 "http://snomed.info/sct","236575009","Acute rejection of renal transplant - grade I","false",,,,"true",,,,
 "http://snomed.info/sct","284348003","Excision of rejected transplanted kidney (procedure)","false",,,,,"true",,,
-"http://snomed.info/sct","428645009","Examination of recipient after kidney transplant (procedure)","false",,,,,,"true",,
+"http://snomed.info/sct","428645009","Examination of recipient after kidney transplant (procedure)","true","true",,,,,,,
 "http://snomed.info/sct","430403008","Percutaneous transluminal angioplasty of transplanted renal artery using fluoroscopic guidance","false",,,,,,"true",,
 "http://www.ama-assn.org/go/cpt","50370","Removal of previously transplanted donor kidney","false",,,,,"true",,,
 "http://hl7.org/fhir/sid/icd-10-cm","T86.11","Kidney transplant rejection","false",,,,"true",,,,
@@ -154,7 +154,7 @@
 "http://snomed.info/sct","213150003","Kidney transplant failure and rejection","false",,,,,"true",,,
 "http://snomed.info/sct","236578006","Chronic rejection of renal transplant","false",,,,"true",,,,
 "http://snomed.info/sct","433688005","Percutaneous thrombolysis of transplanted renal artery using fluoroscopic guidance","false",,,,,,"true",,
-"http://www.ama-assn.org/go/cpt","0319U","RNA expression by select transcriptome sequencing in pre-kidney transplant peripheral blood specimen, algorithm reported as risk score for early acute rejection","true","true",,,,,,,
+"http://www.ama-assn.org/go/cpt","0319U","RNA expression by select transcriptome sequencing in pre-kidney transplant peripheral blood specimen, algorithm reported as risk score for early acute rejection","true","true",,,,,,"true",
 "http://www.cms.gov/Medicare/Coding/ICD10","B40M1Z","Imaging @ Lower Arteries @ Plain Radiography @ Renal Artery Transplant @ Low Osmolar @ None","true",,,,,,,,"true"
 "http://www.cms.gov/Medicare/Coding/ICD10","B42MZZZ","Computerized Tomography (CT Scan) of Renal Artery Transplant","true",,,,,,,,"true"
 "http://www.cms.gov/Medicare/Coding/ICD10","BT39Z","Imaging @ Urinary System @ Magnetic Resonance Imaging (MRI) @ Kidney Transplant @ None","true",,,,,,,,"true"
@@ -202,5 +202,11 @@
 "http://snomed.info/sct","217024004","Transplantation of kidney as the cause of abnormal reaction of patient, or of later complication, without mention of misadventure at the time of operation (disorder)","false",,,,,,"true",,
 "http://snomed.info/sct","236576005","Acute rejection of renal transplant - grade II","false",,,,"true",,,,
 "http://snomed.info/sct","236577001","Acute rejection of renal transplant - grade III","false",,,,"true",,,,
-"http://snomed.info/sct","420106004","Fluoroscopic venography of renal transplant (procedure)","false",,,,,,"true",,
+"http://snomed.info/sct","420106004","Fluoroscopic venography of renal transplant (procedure)","true",,,,,,,,"true"
 "http://snomed.info/sct","707148007","Recurrent post-transplant renal disease","false",,,,,"true",,,
+http://hl7.org/fhir/sid/icd-10-cm,"Z76.82","Awaiting organ transplant status","true","true",,,,,,,
+http://hl7.org/fhir/sid/icd-9-cm,"V49.83","Awaiting organ transplant status","true","true",,,,,,,
+http://loinc.org,80863-4,"US Doppler for transplanted kidney","true",,,,,,,"true",
+http://loinc.org,38766-2,"US guidance for biopsy of transplanted kidney","true",,,,,,,"true",
+http://loinc.org,80737-0,"Calculated panel reactive antibody - Serum","true",,,,,,,"true",
+http://loinc.org,72322-1,"HLA-A+B+C (class I) IgG antibody, Blood","true",,,,,,,"true",
