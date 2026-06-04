@@ -1,34 +1,34 @@
-CREATE TABLE $prefix__medicationrequest_dn_dosage_quantity as
-with workaround as
+CREATE  TABLE {{ prefix }}__medicationrequest_dn_dosage_quantity AS
+with    workaround AS
 (
-    SELECT  distinct
+    SELECT  DISTINCT
             json_extract(CAST(DAR AS json), '$.dosequantity') AS doseQuantity,
             json_extract(CAST(DAR AS json), '$.ratequantity') AS rateQuantity,
-            MR.id,
-            SP.medicationrequest_ref
-    FROM    $prefix__cohort_study_population_rx as SP,
-            medicationRequest as mr,
-            UNNEST(dosageInstruction)   AS t(DI),
-            UNNEST(DI.doseAndRate)      AS t(DAR)
-    WHERE   SP.medicationrequest_ref = concat('MedicationRequest/', MR.id)
+            mr.id,
+            sp.medicationrequest_ref
+    FROM    {{ prefix }}__cohort_study_population_rx AS sp,
+            medicationRequest           AS mr,
+            UNNEST(dosageInstruction)   AS t(di),
+            UNNEST(di.doseAndRate)      AS t(dar)
+    WHERE   SP.medicationrequest_ref = concat('MedicationRequest/', mr.id)
 ),
-guard_schema as
+guard_schema AS
 (
-    SELECT  TRY_CAST(doseQuantity AS ROW(code varchar, system varchar, unit varchar, value double)) as doseQuantity,
-            TRY_CAST(rateQuantity AS ROW(code varchar, system varchar, unit varchar, value double)) as rateQuantity,
+    SELECT  TRY_CAST(doseQuantity AS ROW(code VARCHAR, system VARCHAR, unit VARCHAR, value DOUBLE)) AS doseQuantity,
+            TRY_CAST(rateQuantity AS ROW(code VARCHAR, system VARCHAR, unit VARCHAR, value DOUBLE)) AS rateQuantity,
             id, medicationrequest_ref
     FROM    workaround
 )
 select  distinct
-        doseQuantity."code"     as dose_code,
-        doseQuantity."system"   as dose_system,
-        doseQuantity."unit"     as dose_unit,
-        doseQuantity."value"    as dose_value,
+        doseQuantity."code"     AS dose_code,
+        doseQuantity."system"   AS dose_system,
+        doseQuantity."unit"     AS dose_unit,
+        doseQuantity."value"    AS dose_value,
         doseQuantity,
-        rateQuantity."code"     as rate_code,
-        rateQuantity."system"   as rate_system,
-        rateQuantity."unit"     as rate_unit,
-        rateQuantity."value"    as rate_value,
+        rateQuantity."code"     AS rate_code,
+        rateQuantity."system"   AS rate_system,
+        rateQuantity."unit"     AS rate_unit,
+        rateQuantity."value"    AS rate_value,
         rateQuantity
         id, medicationrequest_ref
 from    guard_schema; 

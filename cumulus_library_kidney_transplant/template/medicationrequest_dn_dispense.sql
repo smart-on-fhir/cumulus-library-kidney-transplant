@@ -1,29 +1,29 @@
-CREATE TABLE $prefix__medicationrequest_dn_dispense  as
+CREATE TABLE {{ prefix }}__medicationrequest_dn_dispense  as
 -- https://github.com/smart-on-fhir/cumulus/issues/66
-with workaround as
+WITH    workaround AS
 (
-  select    distinct
-            cast(dispenseRequest.validityPeriod as json) as validityPeriod,
+    SELECT  DISTINCT
+            CAST(dispenseRequest.validityPeriod AS json) AS validityPeriod,
             dispenseRequest.numberOfRepeatsAllowed,
             dispenseRequest.expectedSupplyDuration,
             dispenseRequest.quantity,
-            MR.id,
-            SP.medicationrequest_ref
-  from      medicationRequest as MR,
-            $prefix__cohort_study_population_rx as SP
-  where     SP.medicationrequest_ref = concat('MedicationRequest/', MR.id)
+            mr.id,
+            sp.medicationrequest_ref
+    FROM    medicationRequest AS mr
+    JOIN    {{ prefix }}__cohort_study_population_rx AS sp            
+            ON sp.medicationrequest_ref = concat('MedicationRequest/', mr.id)
 )
-select  distinct
-        date(from_iso8601_timestamp(json_extract_scalar(validityPeriod, '$.start')))    as validity_start_date,
-        date(from_iso8601_timestamp(json_extract_scalar(validityPeriod, '$.end')))      as validity_end_date,
+SELECT  DISTINCT
+        DATE(from_iso8601_timestamp(json_extract_scalar(validityPeriod, '$.start')))    AS validity_start_date,
+        DATE(from_iso8601_timestamp(json_extract_scalar(validityPeriod, '$.end')))      AS validity_end_date,
         numberOfRepeatsAllowed,
-        expectedSupplyDuration."code"   as duration_code,
-        expectedSupplyDuration."system" as duration_system,
-        expectedSupplyDuration."unit"   as duration_unit,
-        expectedSupplyDuration."value"  as duration_value,
-        quantity."unit"                 as quantity_unit,
-        quantity."value"                as quantity_value,
+        expectedSupplyDuration."code"   AS duration_code,
+        expectedSupplyDuration."system" AS duration_system,
+        expectedSupplyDuration."unit"   AS duration_unit,
+        expectedSupplyDuration."value"  AS duration_value,
+        quantity."unit"                 AS quantity_unit,
+        quantity."value"                AS quantity_value,
         expectedSupplyDuration,
         id,
         medicationrequest_ref
-from workaround;
+FROM    workaround;

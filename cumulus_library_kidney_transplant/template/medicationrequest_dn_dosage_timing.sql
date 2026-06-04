@@ -1,14 +1,14 @@
-CREATE TABLE $prefix__medicationrequest_dn_dosage_timing as
-select  distinct
-        date(from_iso8601_timestamp(DI.timing.repeat.boundsperiod."start")) as timing_start_date,
-        date(from_iso8601_timestamp(DI.timing.repeat.boundsperiod."end"))   as timing_end_date,
-        DI.timing.code.text                     as timimg_text,
-        DI.timing.repeat.duration               as repeat_duration,
-        DI.timing.repeat.durationUnit           as repeat_durationunit,
-        DI.timing.repeat."count"                as repeat_count,
-        id, concat('MedicationRequest/', id)    as medicationrequest_ref
-FROM    $prefix__cohort_study_population_rx        as SP,
-        medicationRequest                       as mr,
-        UNNEST(dosageInstruction)               AS t(DI)
+CREATE  TABLE {{ prefix }}__medicationrequest_dn_dosage_timing AS
+SELECT  DISTINCT
+        date(from_iso8601_timestamp(di.timing.repeat.boundsperiod."start")) AS timing_start_date,
+        date(from_iso8601_timestamp(di.timing.repeat.boundsperiod."end"))   AS timing_end_date,
+        di.timing.code.text                     AS timimg_text,
+        di.timing.repeat.duration               AS repeat_duration,
+        di.timing.repeat.durationUnit           AS repeat_durationunit,
+        di.timing.repeat."count"                AS repeat_count,
+        id, concat('MedicationRequest/', id)    AS medicationrequest_ref
+FROM    {{ prefix }}__cohort_study_population_rx AS sp,
+        medicationRequest                       AS mr,
+        UNNEST(dosageInstruction)               AS t(di)
 WHERE   SP.medicationrequest_ref = concat('MedicationRequest/', MR.id)
 ;
