@@ -30,7 +30,7 @@ join_diag_display as (
     from    join_diag
     left    join    loinc.consumer_name
             on      join_diag.diag_code = loinc.consumer_name.loinc_number
-    left    join    irae__fhir_diagnostic_service as valueset
+    left    join    irae__include_diag_category as valueset
             on      join_diag.diag_category_code = valueset.code
 )
 select      distinct

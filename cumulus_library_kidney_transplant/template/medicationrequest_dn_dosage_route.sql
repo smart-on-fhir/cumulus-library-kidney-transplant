@@ -1,12 +1,12 @@
-CREATE TABLE $prefix__medicationrequest_dn_dosage_route as
+CREATE TABLE {{ prefix }}__medicationrequest_dn_dosage_route as
 select  distinct
-        RC."code"       as route_code,
-        RC."display"    as route_display,
-        RC."system"     as route_system,
-        DI.route,
-        id, concat('MedicationRequest', id) as medicationrequest_ref
-FROM    $prefix__cohort_study_population_rx as SP,
-        medicationRequest as mr,
-        UNNEST(dosageInstruction)   as t(DI),
-        UNNEST(DI.route.coding)     AS t(RC)
-WHERE   SP.medicationrequest_ref = concat('MedicationRequest/', MR.id);
+        rc."code"       AS route_code,
+        rc."display"    AS route_display,
+        rc."system"     AS route_system,
+        di.route,
+        id, concat('MedicationRequest', id) AS medicationrequest_ref
+FROM    {{ prefix }}__cohort_study_population_rx AS SP,
+        medicationRequest           AS mr,
+        UNNEST(dosageInstruction)   AS t(DI),
+        UNNEST(di.route.coding)     AS t(RC)
+WHERE   sp.medicationrequest_ref = concat('MedicationRequest/', MR.id);

@@ -1,20 +1,26 @@
-CREATE TABLE $prefix__cohort_study_period as
+CREATE TABLE {{ prefix }}__cohort_study_period as
 WITH
+include as
+(
+    select
+        coalesce(date(period_start), date('2000-01-01')) as period_start,
+        coalesce(date(period_end),  date(CURRENT_DATE)) as period_end,
+        include_history
+    from
+        {{ prefix }}__include_study_period
+),
 range as (
-    select  distinct
+    SELECT  DISTINCT
             E.subject_ref,
             E.period_start_day,
             E.period_end_day,
             E.encounter_ref
-    from
-            core__encounter             as E,
-            $prefix__include_study_period  as include
-    where
-            (E.period_start_day between include.period_start and include.period_end)
-            and
-            (E.period_end_day   between include.period_start and include.period_end)
-            and
-            (E.period_start_day < CURRENT_DATE)
+    FROM
+            core__encounter as E,
+            include
+    WHERE   (E.period_start_day between date(include.period_start) and date(include.period_end))
+    AND     (E.period_end_day   between date(include.period_start) and date(include.period_end))
+    AND     (E.period_start_day < CURRENT_DATE)
 ),
 history as (
     SELECT  DISTINCT
@@ -25,9 +31,9 @@ history as (
     FROM
             core__encounter             as E
     JOIN
-            $prefix__include_study_period  as include
+            include
       ON    include.include_history
-     AND    e.period_start_day < include.period_start
+     AND    e.period_start_day < date(include.period_start)
     WHERE   EXISTS  (
             SELECT  1
             FROM    range

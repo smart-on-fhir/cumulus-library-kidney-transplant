@@ -1,4 +1,4 @@
-create TABLE $prefix__cohort_study_population_diag as
+create TABLE {{ prefix }}__cohort_study_population_diag as
 WITH
 join_diag as (
     select  distinct
@@ -15,7 +15,7 @@ join_diag as (
             diag.diagnosticreport_ref       as diagnosticreport_ref,
             diag.result_ref,
     	    study_population.*
-	from    $prefix__cohort_study_population as study_population,
+	from    {{ prefix }}__cohort_study_population as study_population,
     	    core__diagnosticreport          as diag
     where   study_population.encounter_ref  = diag.encounter_ref
 ),
@@ -30,7 +30,7 @@ join_diag_display as (
     from    join_diag
     left    join    loinc.consumer_name
             on      join_diag.diag_code = loinc.consumer_name.loinc_number
-    left    join    $prefix__fhir_diagnostic_service as valueset
+    left    join    {{ prefix }}__include_diag_category as valueset
             on      join_diag.diag_category_code = valueset.code
 )
 select      distinct

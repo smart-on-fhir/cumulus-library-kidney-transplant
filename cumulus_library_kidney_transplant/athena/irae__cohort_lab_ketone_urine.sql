@@ -1,0 +1,7 @@
+create table irae__cohort_lab_ketone_urine as 
+select distinct * from 
+ irae__cohort_study_population_lab , 
+irae__valueset_lab_ketone_urine
+WHERE
+irae__cohort_study_population_lab.lab_observation_code = irae__valueset_lab_ketone_urine.code and 
+irae__cohort_study_population_lab.lab_observation_system = irae__valueset_lab_ketone_urine.system

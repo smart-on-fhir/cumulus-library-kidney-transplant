@@ -1,0 +1,108 @@
+config_type="file_upload"
+
+[tables.valueset_casedef]
+# https://github.com/smart-on-fhir/cumulus-library/issues/569
+col_types = [
+    "STRING",   # system
+    "STRING",   # code
+    "STRING",   # display
+    "BOOLEAN",  # include
+    "STRING",  # likely
+    "STRING",  # preop
+    "STRING",  # transplant
+    "STRING",  # rejection
+    "STRING",  # failure
+    "STRING",  # outcome
+    "STRING",  # lab
+    "STRING"]  # imaging
+file = "casedef.csv"
+
+[tables.valueset_lab_albumin]
+file = "lab_albumin.csv"
+
+[tables.valueset_lab_crp]
+file = "lab_crp.csv"
+
+[tables.valueset_lab_drug_level_azathioprine]
+file = "lab_drug_level_azathioprine.csv"
+
+[tables.valueset_lab_drug_level_cyclosporin]
+file = "lab_drug_level_cyclosporin.csv"
+
+[tables.valueset_lab_drug_level_mycophenolate]
+file = "lab_drug_level_mycophenolate.csv"
+
+[tables.valueset_lab_drug_level_sirolimus]
+file = "lab_drug_level_sirolimus.csv"
+
+[tables.valueset_lab_drug_level_tacrolimus]
+file = "lab_drug_level_tacrolimus.csv"
+
+[tables.valueset_lab_esr]
+file = "lab_esr.csv"
+
+[tables.valueset_lab_gfr_custom]
+file = "lab_gfr_custom.csv"
+
+[tables.valueset_lab_hla]
+file = "lab_hla.csv"
+
+[tables.valueset_lab_infection_viral_cmv]
+file = "lab_infection_viral_cmv.csv"
+
+[tables.valueset_lab_iron_ferritin]
+file = "lab_iron_ferritin.csv"
+
+[tables.valueset_lab_tpmt_gene]
+file = "lab_tpmt_gene.csv"
+
+[tables.valueset_rx_alemtuzumab]
+file = "rx_alemtuzumab.csv"
+
+[tables.valueset_rx_atg]
+file = "rx_atg.csv"
+
+[tables.valueset_rx_azathioprine]
+file = "rx_azathioprine.csv"
+
+[tables.valueset_rx_basiliximab]
+file = "rx_basiliximab.csv"
+
+[tables.valueset_rx_belatacept]
+file = "rx_belatacept.csv"
+
+[tables.valueset_rx_cyclosporin]
+file = "rx_cyclosporin.csv"
+
+[tables.valueset_rx_cytogam]
+file = "rx_cytogam.csv"
+
+[tables.valueset_rx_everolimus]
+file = "rx_everolimus.csv"
+
+[tables.valueset_rx_ig]
+file = "rx_ig.csv"
+
+[tables.valueset_rx_ivig]
+file = "rx_ivig.csv"
+
+[tables.valueset_rx_methylprednisolone]
+file = "rx_methylprednisolone.csv"
+
+[tables.valueset_rx_mycophenolate]
+file = "rx_mycophenolate.csv"
+
+[tables.valueset_rx_prednisolone]
+file = "rx_prednisolone.csv"
+
+[tables.valueset_rx_prednisone]
+file = "rx_prednisone.csv"
+
+[tables.valueset_rx_rituximab]
+file = "rx_rituximab.csv"
+
+[tables.valueset_rx_sirolimus]
+file = "rx_sirolimus.csv"
+
+[tables.valueset_rx_tacrolimus]
+file = "rx_tacrolimus.csv"

@@ -1,0 +1,17 @@
+system,code,display
+http://loinc.org,1751-7,Albumin [Mass/vol] in Serum or Plasma
+http://loinc.org,77148-5,"Albumin [Mass/vol] in Serum, Plasma or Blood"
+http://loinc.org,1759-0,Albumin/Globulin [Mass Ratio] in Serum or Plasma
+http://loinc.org,44429-9,Albumin/Globulin [Mass Ratio] in Serum or Plasma
+http://loinc.org,13980-8,Albumin/Protein.total in Serum or Plasma
+http://loinc.org,54346-2,Albumin [Mass/vol] in Stool
+http://loinc.org,1747-5,Albumin [Mass/vol] in Body fluid
+http://loinc.org,61152-5,Albumin [Mass/volume] in Serum or Plasma BCP method
+http://loinc.org,61151-7,Albumin [Mass/volume] in Serum or Plasma BCG method
+http://loinc.org,2862-1,Albumin [Mass/vol] Ser/Plas by Electrophoresis
+urn:oid:1.2.840.114350.1.13.713.3.7.2.768282,1230014475,Albumin
+urn:oid:1.2.840.114350.1.13.713.3.7.2.768282,1810650,Albumin
+urn:oid:1.2.840.114350.1.13.713.3.7.2.768282,210000005,External Albumin
+urn:oid:1.2.840.114350.1.13.713.3.7.2.768282,1230010381,"Albumin, Protein Electrophoresis"
+urn:oid:1.2.840.114350.1.13.713.3.7.2.768282,1230012357,"Albumin, ELP"
+urn:oid:1.2.840.114350.1.13.713.3.7.2.768282,1553980,Prealbumin

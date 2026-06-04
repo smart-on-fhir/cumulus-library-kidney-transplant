@@ -1,0 +1,7 @@
+create table irae__cohort_lab_drug_level_azathioprine as 
+select distinct * from 
+ irae__cohort_study_population_lab , 
+irae__valueset_lab_drug_level_azathioprine
+WHERE
+irae__cohort_study_population_lab.lab_observation_code = irae__valueset_lab_drug_level_azathioprine.code and 
+irae__cohort_study_population_lab.lab_observation_system = irae__valueset_lab_drug_level_azathioprine.system

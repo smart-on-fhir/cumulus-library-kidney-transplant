@@ -1,6 +1,10 @@
-create TABLE irae__cohort_casedef_include as
-select  distinct
-        irae__cohort_casedef_candidate.*
-from    irae__cohort_casedef_candidate
-where   subject_ref not in 
-(select  distinct subject_ref from irae__cohort_casedef_exclude); 
+CREATE  TABLE   irae__cohort_casedef_include AS
+SELECT  DISTINCT
+        candidate.*
+FROM    irae__cohort_casedef_candidate AS candidate
+WHERE   NOT EXISTS (
+            SELECT  1
+            FROM    irae__cohort_casedef_exclude AS exclude
+            WHERE   exclude.subject_ref = candidate.subject_ref
+        )
+;

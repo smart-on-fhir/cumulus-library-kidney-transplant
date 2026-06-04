@@ -1,13 +1,13 @@
-create  table irae__cohort_casedef_proc as
-select  distinct
+CREATE  TABLE irae__cohort_casedef_proc as
+SELECT  DISTINCT
+        
         casedef.days_since,
         casedef.ordinal_since,
-        casedef.dx_category_code,
-        casedef.dx_system,
-        casedef.dx_code,
-        casedef.dx_display,
+        casedef.casedef_period,
         proc.*
-from    irae__cohort_casedef as casedef,
-        irae__cohort_study_population_proc as proc
-where   casedef.encounter_ref = proc.encounter_ref
+FROM    irae__cohort_casedef as casedef
+JOIN    irae__cohort_study_population_proc as proc
+ON      casedef.encounter_ref = proc.encounter_ref
+LEFT JOIN irae__cohort_variable_union AS variable_union
+ON      proc.procedure_ref = variable_union.resource_ref
 ;

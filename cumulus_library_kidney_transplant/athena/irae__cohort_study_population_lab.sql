@@ -18,7 +18,6 @@ with join_lab as
         valuequantity_unit              as lab_valuequantity_unit,
         valuequantity_system            as lab_valuequantity_system,
         valuequantity_code              as lab_valuequantity_code,
-        valuestring                     as lab_valuestring,
         lab.status                      as lab_status,
         observation_ref,
         study_population.*
@@ -40,5 +39,4 @@ left join
         loinc.consumer_name on join_lab.lab_observation_code =
         loinc.consumer_name.loinc_number
 ;
-
 

@@ -1,91 +1,75 @@
-create table    $prefix__cohort_casedef_candidate as
-select  distinct
-        'casedef_dx'    as valueset,
-        condition_ref   as resource_ref,
-        enc_period_ordinal,
-        enc_period_start_day,
-        age_at_visit,
-        subject_ref,
-        encounter_ref,
-        casedef.*
-from    $prefix__casedef   as casedef,
-        $prefix__cohort_study_population_dx
-where   casedef.system  = dx_system
-and     casedef.code    = dx_code
-
-UNION ALL
-select  distinct
-        'casedef_proc'  as valueset,
-        procedure_ref   as resource_ref,
-        enc_period_ordinal,
-        enc_period_start_day,
-        age_at_visit,
-        subject_ref,
-        encounter_ref,
-        casedef.*
-from    $prefix__casedef   as casedef,
-        $prefix__cohort_study_population_proc
-where   casedef.system  = proc_system
-and     casedef.code    = proc_code
-
-UNION ALL
-select  distinct
-        'casedef_lab'   as valueset,
-        observation_ref as resource_ref,
-        enc_period_ordinal,
-        enc_period_start_day,
-        age_at_visit,
-        subject_ref,
-        encounter_ref,
-        casedef.*
-from    $prefix__casedef   as casedef,
-        $prefix__cohort_study_population_lab
-where   casedef.system  = lab_observation_system
-and     casedef.code    = lab_observation_code
-
-UNION ALL
-select  distinct
-        'casedef_rx'            as valueset,
-        medicationrequest_ref   as resource_ref,
-        enc_period_ordinal,
-        enc_period_start_day,
-        age_at_visit,
-        subject_ref,
-        encounter_ref,
-        casedef.*
-from    $prefix__casedef           as casedef,
-        $prefix__cohort_study_population_rx
-where   casedef.system  = rx_system
-and     casedef.code    = rx_code
-
-UNION ALL
-select  distinct
-        'casedef_diag'  as valueset,
-        result_ref      as resource_ref,
-        enc_period_ordinal,
-        enc_period_start_day,
-        age_at_visit,
-        subject_ref,
-        encounter_ref,
-        casedef.*
-from    $prefix__casedef   as casedef,
-        $prefix__cohort_study_population_diag
-where   casedef.system  = diag_system
-and     casedef.code    = diag_code
-
-UNION ALL
-select  distinct
-        'casedef_doc'           as valueset,
-        documentreference_ref   as resource_ref,
-        enc_period_ordinal,
-        enc_period_start_day,
-        age_at_visit,
-        subject_ref,
-        encounter_ref,
-        casedef.*
-from    $prefix__casedef           as casedef,
-        $prefix__cohort_study_population_doc
-where   casedef.system  = doc_type_system
-and     casedef.code    = doc_type_code
-;
-
+CREATE TABLE {{ prefix }}__cohort_casedef_candidate AS
+WITH population AS (
+    SELECT 'casedef_dx'     AS valueset,
+            dx_system       AS system,
+            dx_code         AS code,
+            condition_ref   AS resource_ref,
+            subject_ref,
+            encounter_ref
+    FROM    {{ prefix }}__cohort_study_population_dx
+    WHERE   dx_system       IS NOT NULL
+    AND     dx_code         IS NOT NULL
+    UNION ALL
+    SELECT 'casedef_rx'             AS valueset,
+            rx_system               AS system,
+            rx_code                 AS code,
+            medicationrequest_ref   AS resource_ref,
+            subject_ref,
+            encounter_ref
+    FROM    {{ prefix }}__cohort_study_population_rx
+    WHERE   rx_system       IS NOT NULL
+    AND     rx_code         IS NOT NULL
+    UNION ALL
+    SELECT 'casedef_proc'   AS valueset,
+            proc_system     AS system,
+            proc_code       AS code,
+            procedure_ref   AS resource_ref,
+            subject_ref,
+            encounter_ref
+    FROM    {{ prefix }}__cohort_study_population_proc
+    WHERE   proc_system       IS NOT NULL
+    AND     proc_code         IS NOT NULL
+    UNION ALL
+    SELECT 'casedef_lab'            AS valueset,
+            lab_observation_system  AS system,
+            lab_observation_code    AS code,
+            observation_ref         AS resource_ref,
+            subject_ref,
+            encounter_ref
+    FROM    {{ prefix }}__cohort_study_population_lab
+    WHERE   lab_observation_system  IS NOT NULL
+    AND     lab_observation_code    IS NOT NULL
+    UNION ALL
+    SELECT 'casedef_diag'   AS valueset,
+            diag_system     AS system,
+            diag_code       AS code,
+            result_ref      AS resource_ref,
+            subject_ref,
+            encounter_ref
+    FROM    {{ prefix }}__cohort_study_population_diag
+    WHERE   diag_system       IS NOT NULL
+    AND     diag_code         IS NOT NULL
+    UNION ALL
+    SELECT 'casedef_doc'            AS valueset,
+            doc_type_system         AS system,
+            doc_type_code           AS code,
+            documentreference_ref   AS resource_ref,
+            subject_ref,
+            encounter_ref
+    FROM    {{ prefix }}__cohort_study_population_doc
+    WHERE   doc_type_system IS NOT NULL
+    AND     doc_type_code   IS NOT NULL
+),
+population_distinct AS (
+    SELECT DISTINCT valueset, system, code, resource_ref, subject_ref, encounter_ref
+    FROM population
+)
+SELECT  p.valueset,
+        casedef.*,
+        p.resource_ref,
+        p.subject_ref,
+        p.encounter_ref
+FROM    population_distinct     AS p
+JOIN    {{ prefix }}__valueset_casedef  AS casedef
+        ON  casedef.system = p.system
+        AND casedef.code   = p.code

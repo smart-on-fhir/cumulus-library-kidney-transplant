@@ -1,0 +1,42 @@
+[[actions]]
+description = 'file_upload CSV valueset definitions for study variables'
+type = "build:parallel"
+files = [
+  '../spreadsheet/file_upload_variables.toml'
+]
+
+[[actions]]
+description="variable cohorts"
+type="build:parallel"
+files= [
+	"athena/irae__cohort_lab_albumin.sql",
+	"athena/irae__cohort_lab_crp.sql",
+	"athena/irae__cohort_lab_drug_level_azathioprine.sql",
+	"athena/irae__cohort_lab_drug_level_cyclosporin.sql",
+	"athena/irae__cohort_lab_drug_level_mycophenolate.sql",
+	"athena/irae__cohort_lab_drug_level_sirolimus.sql",
+	"athena/irae__cohort_lab_drug_level_tacrolimus.sql",
+	"athena/irae__cohort_lab_esr.sql",
+	"athena/irae__cohort_lab_gfr_custom.sql",
+	"athena/irae__cohort_lab_hla.sql",
+	"athena/irae__cohort_lab_infection_viral_cmv.sql",
+	"athena/irae__cohort_lab_iron_ferritin.sql",
+	"athena/irae__cohort_lab_tpmt_gene.sql",
+	"athena/irae__cohort_rx_alemtuzumab.sql",
+	"athena/irae__cohort_rx_atg.sql",
+	"athena/irae__cohort_rx_azathioprine.sql",
+	"athena/irae__cohort_rx_basiliximab.sql",
+	"athena/irae__cohort_rx_belatacept.sql",
+	"athena/irae__cohort_rx_cyclosporin.sql",
+	"athena/irae__cohort_rx_cytogam.sql",
+	"athena/irae__cohort_rx_everolimus.sql",
+	"athena/irae__cohort_rx_ig.sql",
+	"athena/irae__cohort_rx_ivig.sql",
+	"athena/irae__cohort_rx_methylprednisolone.sql",
+	"athena/irae__cohort_rx_mycophenolate.sql",
+	"athena/irae__cohort_rx_prednisolone.sql",
+	"athena/irae__cohort_rx_prednisone.sql",
+	"athena/irae__cohort_rx_rituximab.sql",
+	"athena/irae__cohort_rx_sirolimus.sql",
+	"athena/irae__cohort_rx_tacrolimus.sql"
+]

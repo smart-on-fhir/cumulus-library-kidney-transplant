@@ -1,13 +1,14 @@
-create  table $prefix__cohort_casedef_rx as
-select  distinct
+CREATE  TABLE {{ prefix }}__cohort_casedef_rx AS
+SELECT  DISTINCT
+        {{ casedef_meta }}
         casedef.days_since,
         casedef.ordinal_since,
-        casedef.dx_category_code,
-        casedef.dx_system,
-        casedef.dx_code,
-        casedef.dx_display,
+        casedef.casedef_period,
+        variable_union.variable,
         rx.*
-from    $prefix__cohort_casedef as casedef,
-        $prefix__cohort_study_population_rx as rx
-where   casedef.encounter_ref = rx.encounter_ref
+FROM    {{ prefix }}__cohort_casedef                AS casedef
+JOIN    {{ prefix }}__cohort_study_population_rx    AS rx
+ON      casedef.encounter_ref = rx.encounter_ref
+LEFT JOIN {{ prefix }}__cohort_variable_union       AS variable_union
+ON      rx.medicationrequest_ref = variable_union.resource_ref
 ;
