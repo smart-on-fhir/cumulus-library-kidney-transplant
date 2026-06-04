@@ -31,7 +31,7 @@
 "http://www.cms.gov/Medicare/Coding/ICD10","B42M1Z","Imaging @ Lower Arteries @ Computerized Tomography (CT Scan) @ Renal Artery Transplant @ Low Osmolar @ None","true",,,,,,,,"true"
 "http://www.cms.gov/Medicare/Coding/ICD10","BT39Y","Imaging @ Urinary System @ Magnetic Resonance Imaging (MRI) @ Kidney Transplant @ Other Contrast","true",,,,,,,,"true"
 "http://hl7.org/fhir/sid/icd-9-cm","V42.0","Kidney transplant status","true",,,"true",,,,,
-"http://snomed.info/sct","1344862006","Fluoroscopy guided percutaneous transluminal angioplasty of renal transplant with contrast","true",,,,,,,,"true"
+"http://snomed.info/sct","1344862006","Fluoroscopy guided percutaneous transluminal angioplasty of renal transplant with contrast","false",,,,,,"true",,
 "http://snomed.info/sct","428629007","Pretransplant evaluation of live kidney donor","true","true",,,,,,,
 "http://snomed.info/sct","698306007","Awaiting transplantation of kidney (situation)","true","true",,,,,,,
 "http://snomed.info/sct","711411006","Allotransplantation of kidney from beating heart cadaver (procedure)","true",,,"true",,,,,
@@ -56,7 +56,6 @@
 "http://www.cms.gov/Medicare/Coding/ICD10","BT290Z","Imaging @ Urinary System @ Computerized Tomography (CT Scan) @ Kidney Transplant @ High Osmolar @ None","true",,,,,,,,"true"
 "http://snomed.info/sct","23137002","Anaesthesia for renal transplant, recipient","true",,"true",,,,,,
 "http://snomed.info/sct","70536003","Transplant of kidney (procedure)","true",,,"true",,,,,
-"http://www.ama-assn.org/go/cpt","50323","Backbench standard preparation of cadaver donor renal allograft prior to transplantation, including dissection and removal of perinephric fat, diaphragmatic and retroperitoneal attachments, excision of adrenal gland, and preparation of ureter(s), renal vein(s), and renal artery(s), ligating branches, as necessary","true","true",,,,,,,
 "http://www.ama-assn.org/go/cpt","50323","Preparation of donor kidney for transplantation","true",,"true",,,,,,
 "http://www.cms.gov/Medicare/Coding/ICD10","0TY10","Medical and Surgical @ Urinary System @ Transplantation @ Kidney, Left @ Open","true",,,"true",,,,,
 "http://www.cms.gov/Medicare/Coding/ICD10","B40M","Imaging @ Lower Arteries @ Plain Radiography @ Renal Artery Transplant","true",,,,,,,,"true"
@@ -72,10 +71,8 @@
 "http://www.cms.gov/Medicare/Coding/ICD10","BT39YZ","Imaging @ Urinary System @ Magnetic Resonance Imaging (MRI) @ Kidney Transplant @ Other Contrast @ None","true",,,,,,,,"true"
 "http://hl7.org/fhir/sid/icd-9-cm","55.69","Other kidney transplantation","true",,,"true",,,,,
 "http://snomed.info/sct","183985008","Renal transplant planned (situation)","true","true",,,,,,,
-"http://snomed.info/sct","420852008","Transplant kidney (substance)","true",,,"true",,,,,
 "http://snomed.info/sct","440449002","MR angiography of transplanted kidney","true",,,,,,,,"true"
 "http://snomed.info/sct","763471008","Fluoroscopic venography of renal vein using contrast with insertion of metallic stent graft (procedure)","true","true",,,,,,,
-"http://www.ama-assn.org/go/cpt","1008104","Backbench reconstruction of cadaver or living donor renal allograft prior to transplantation","true",,"true",,,,,,
 "http://www.cms.gov/Medicare/Coding/ICD10","B42M0Z","Imaging @ Lower Arteries @ Computerized Tomography (CT Scan) @ Renal Artery Transplant @ High Osmolar @ None","true",,,,,,,,"true"
 "http://www.cms.gov/Medicare/Coding/ICD10","BT291ZZ","CT Scan of Kidney Transplant using L Osm Contrast","true",,,,,,,,"true"
 "http://snomed.info/sct","1334077000","Ultrasonography of transplanted bilateral kidneys with contrast","true",,,,,,,,"true"
@@ -108,7 +105,6 @@
 "http://www.cms.gov/Medicare/Coding/ICD10","B42MZ2","Imaging @ Lower Arteries @ Computerized Tomography (CT Scan) @ Renal Artery Transplant @ None @ Intravascular Optical Coherence","true",,,,,,,,"true"
 "http://snomed.info/sct","1290258003","Structure of transplanted kidney in right iliac fossa region of abdomen","true",,,"true",,,,,
 "http://snomed.info/sct","1333889005","Antegrade insertion of stent into right ureter of transplanted kidney using fluoroscopic guidance","true",,,"true",,,,,
-"http://snomed.info/sct","420970005","Donor transplant kidney (substance)","true","true",,,,,,,
 "http://snomed.info/sct","473195006","Normal renal function of transplanted kidney (finding)","true",,,"true",,,,,
 "http://snomed.info/sct","927531000000100","Ultrasonography of transplanted kidney with contrast (procedure)","true",,,,,,,,"true"
 "http://snomed.info/sct","765479007","Allotransplantation of right kidney (procedure)","true",,,"true",,,,,
@@ -127,10 +123,8 @@
 "http://www.cms.gov/Medicare/Coding/ICD10","BT39Y0Z","MRI of Kidney Transplant using Oth Contrast, Unenh, Enhance","true",,,,,,,,"true"
 "http://hl7.org/fhir/sid/icd-9-cm","55.6","Transplant of kidney","true",,,"true",,,,,
 "http://snomed.info/sct","313030004","Donor renal transplantation (procedure)","true","true",,,,,,,
-"http://snomed.info/sct","698306007","Awaiting renal transplant","true","true",,,,,,,
 "http://snomed.info/sct","711413009","Allotransplantation of kidney from non-beating heart cadaver (procedure)","true",,,"true",,,,,
 "http://www.ama-assn.org/go/cpt","0018M","Measurement of kidney donor and third-party-induced CD154+T-cytotoxic memory cells in whole peripheral blood specimen, algorithm reported as kidney transplant rejection risk score","true",,"true",,,,,,
-"http://www.ama-assn.org/go/cpt","50325","Preparation of living donor kidney for transplantation","true",,"true",,,,,,
 "http://www.ama-assn.org/go/cpt","50365","Implantation of renal allograft with recipient nephrectomy","true",,,"true",,,,,
 "http://www.cms.gov/Medicare/Coding/ICD10","BT29Z","Imaging @ Urinary System @ Computerized Tomography (CT Scan) @ Kidney Transplant @ None","true",,,,,,,,"true"
 "http://snomed.info/sct","1334062008","Retrograde insertion of stent into bilateral ureters of transplanted kidney using fluoroscopic guidance","true",,,"true",,,,,
