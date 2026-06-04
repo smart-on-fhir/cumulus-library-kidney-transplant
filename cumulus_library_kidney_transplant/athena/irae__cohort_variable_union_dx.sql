@@ -12,5 +12,5 @@ AND     var.system = dx.dx_system
 AND     var.code = dx.dx_code
 WHERE   var.variable IN
 (
- 
+ 'dx_transplant'
 );

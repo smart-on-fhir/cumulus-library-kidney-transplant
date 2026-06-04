@@ -17,6 +17,9 @@ col_types = [
     "STRING"]  # imaging
 file = "casedef.csv"
 
+[tables.valueset_dx_transplant]
+file = "dx_transplant.csv"
+
 [tables.valueset_lab_albumin]
 file = "lab_albumin.csv"
 
@@ -55,6 +58,9 @@ file = "lab_iron_ferritin.csv"
 
 [tables.valueset_lab_tpmt_gene]
 file = "lab_tpmt_gene.csv"
+
+[tables.valueset_proc_nephrectomy]
+file = "proc_nephrectomy.csv"
 
 [tables.valueset_rx_alemtuzumab]
 file = "rx_alemtuzumab.csv"

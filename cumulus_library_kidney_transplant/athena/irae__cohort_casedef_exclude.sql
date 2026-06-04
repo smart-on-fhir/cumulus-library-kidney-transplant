@@ -15,17 +15,11 @@ candidate_list AS
 ),
 any_transplant AS
 (
-    SELECT  system, code, display, 'dx_transplant_recipient'    AS exclude_reason
-    FROM    irae__valueset_dx_transplant_recipient
+    SELECT  system, code, display, 'dx_transplant'    AS exclude_reason
+    FROM    irae__valueset_dx_transplant
     UNION ALL
-    SELECT  system, code, display, 'dx_transplant_solid_organ'  AS exclude_reason
-    FROM    irae__valueset_dx_transplant_solid_organ
-    UNION ALL
-    SELECT  system, code, display, 'dx_transplant_stem_cell'    AS exclude_reason
-    FROM    irae__valueset_dx_transplant_stem_cell
-    UNION ALL
-    SELECT  system, code, display, 'proc_transplant_other_major' AS exclude_reason
-    FROM    irae__cohort_proc_transplant_other_major
+    SELECT  system, code, display, 'proc_transplant' AS exclude_reason
+    FROM    irae__cohort_proc_transplant
 ),
 other_transplant AS
 (

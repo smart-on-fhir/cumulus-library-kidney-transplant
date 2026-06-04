@@ -1,6 +1,7 @@
 create table irae__cohort_variable_union as
 with select_union as
 (
+	select 'dx_transplant'	 as variable, code, display, system, encounter_ref, condition_ref as resource_ref from irae__cohort_dx_transplant UNION ALL
 	select 'lab_albumin'	 as variable, code, display, system, encounter_ref, observation_ref as resource_ref from irae__cohort_lab_albumin UNION ALL
 	select 'lab_crp'	 as variable, code, display, system, encounter_ref, observation_ref as resource_ref from irae__cohort_lab_crp UNION ALL
 	select 'lab_drug_level_azathioprine'	 as variable, code, display, system, encounter_ref, observation_ref as resource_ref from irae__cohort_lab_drug_level_azathioprine UNION ALL
@@ -14,6 +15,8 @@ with select_union as
 	select 'lab_infection_viral_cmv'	 as variable, code, display, system, encounter_ref, observation_ref as resource_ref from irae__cohort_lab_infection_viral_cmv UNION ALL
 	select 'lab_iron_ferritin'	 as variable, code, display, system, encounter_ref, observation_ref as resource_ref from irae__cohort_lab_iron_ferritin UNION ALL
 	select 'lab_tpmt_gene'	 as variable, code, display, system, encounter_ref, observation_ref as resource_ref from irae__cohort_lab_tpmt_gene UNION ALL
+	select 'proc_nephrectomy'	 as variable, code, display, system, encounter_ref, procedure_ref as resource_ref from irae__cohort_proc_nephrectomy UNION ALL
+	select 'proc_transplant'	 as variable, code, display, system, encounter_ref, procedure_ref as resource_ref from irae__cohort_proc_transplant UNION ALL
 	select 'rx_alemtuzumab'	 as variable, code, display, system, encounter_ref, medicationrequest_ref as resource_ref from irae__cohort_rx_alemtuzumab UNION ALL
 	select 'rx_atg'	 as variable, code, display, system, encounter_ref, medicationrequest_ref as resource_ref from irae__cohort_rx_atg UNION ALL
 	select 'rx_azathioprine'	 as variable, code, display, system, encounter_ref, medicationrequest_ref as resource_ref from irae__cohort_rx_azathioprine UNION ALL
