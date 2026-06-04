@@ -1,5 +1,5 @@
 from typing import List
-from refactor.vocab import Vocab
+from tools.vocab import Vocab
 
 ##############################################################################
 # Anti-Metabolites
