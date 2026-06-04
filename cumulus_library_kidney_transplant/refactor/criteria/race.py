@@ -2,7 +2,8 @@ from enum import Enum
 from typing import List
 from pathlib import Path
 from fhirclient.models.coding import Coding
-from cumulus_library_kidney_transplant import guard, fhir2sql
+from refactor import fhir2sql, guard
+
 
 class Race(Enum):
     """

@@ -1,13 +1,13 @@
 import pandas as pd
-from cumulus_library_kidney_transplant import filetool, fhir2sql
-from variable import loinc_names
-from spreadsheet.document import (
+from refactor import fhir2sql, filetool
+from refactor.variable import loinc_names
+from refactor.document import (
     type_of_service,
     subject_matter_domain,
-    kind,
     study_keywords
 )
-from spreadsheet.document import role
+from refactor.document import kind
+from refactor.document import role
 
 ##############################################################################
 # LOINC 2.8.1 files
