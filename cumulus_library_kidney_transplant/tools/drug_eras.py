@@ -1,6 +1,6 @@
 from typing import List
 from pathlib import Path
-from refactor import filetool
+from cumulus_library_kidney_transplant.tools import template
 
 
 def make(append_manifest=False) -> List[Path]:
@@ -18,5 +18,5 @@ def make(append_manifest=False) -> List[Path]:
     """
     table_list = ['dispense', 'dosage_timing', 'dosage_quantity', 'dosage_route']
     table_list = [f'medicationrequest_dn_{t}.sql' for t in table_list]
-    file_list = [filetool.copy_template(f) for f in table_list]
+    file_list = [template.copy(f) for f in table_list]
     return file_list if append_manifest else list()
