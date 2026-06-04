@@ -24,7 +24,7 @@
 "http://www.cms.gov/Medicare/Coding/ICD10","BT29","Imaging @ Urinary System @ Computerized Tomography (CT Scan) @ Kidney Transplant","true",,,,,,,,"true"
 "http://snomed.info/sct","161665007","History of renal transplant (situation)","true",,,"true",,,,,
 "http://snomed.info/sct","286624003","Allograft kidney (substance)","true",,,"true",,,,,
-"http://snomed.info/sct","428575007","Hypertension secondary to kidney transplant","true",,,"true",,,,,
+"http://snomed.info/sct","428575007","Hypertension secondary to kidney transplant","false",,,,,,"true",,
 "http://snomed.info/sct","764643003","Fluoroscopy guided removal of nephrostomy tube from transplanted kidney","true",,,,,,,,"true"
 "http://www.ama-assn.org/go/cpt","00862","Anesthesia for procedure on upper urinary tubes or removal of kidney for transplant","true",,"true",,,,,,
 "http://www.cms.gov/Medicare/Coding/ICD10","B42M0","Imaging @ Lower Arteries @ Computerized Tomography (CT Scan) @ Renal Artery Transplant @ High Osmolar","true",,,,,,,,"true"
@@ -82,8 +82,6 @@
 "http://snomed.info/sct","286626001","Live donor allogeneic transplant kidney (substance)","true",,,"true",,,,,
 "http://snomed.info/sct","419139005","Fluoroscopic angiography of renal transplant","true",,,,,,,,"true"
 "http://snomed.info/sct","429496005","Examination of live donor after kidney transplant","true","true",,,,,,,
-"http://snomed.info/sct","763471008","Fluoroscopic venogram of renal vein using contrast with insertion of metallic stent graft","true","true",,,,,,,
-"http://snomed.info/sct","763471008","Fluoroscopic venography of renal vein using contrast with insertion of metallic stent graft","true","true",,,,,,,
 "http://snomed.info/sct","782655004","Laparoscopic transplant of kidney using robotic assistance (procedure)","true",,,"true",,,,,
 "http://snomed.info/sct","122531000119108","Lymphoproliferative disorder following kidney transplant","false",,,,,,"true",,
 "http://snomed.info/sct","213147001","(Transplanted organ failure) or (deteriorating renal function after renal transplant) (disorder)","false",,,,,,"true",,
