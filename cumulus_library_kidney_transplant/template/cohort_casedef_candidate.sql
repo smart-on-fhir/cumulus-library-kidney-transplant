@@ -1,72 +1,75 @@
 CREATE TABLE {{ prefix }}__cohort_casedef_candidate AS
-SELECT  DISTINCT
-        'casedef_dx'            AS valueset,
-        condition_ref           AS resource_ref,
+WITH population AS (
+    SELECT 'casedef_dx'     AS valueset,
+            dx_system       AS system,
+            dx_code         AS code,
+            condition_ref   AS resource_ref,
+            subject_ref,
+            encounter_ref
+    FROM    {{ prefix }}__cohort_study_population_dx
+    WHERE   dx_system       IS NOT NULL
+    AND     dx_code         IS NOT NULL
+    UNION ALL
+    SELECT 'casedef_rx'             AS valueset,
+            rx_system               AS system,
+            rx_code                 AS code,
+            medicationrequest_ref   AS resource_ref,
+            subject_ref,
+            encounter_ref
+    FROM    {{ prefix }}__cohort_study_population_rx
+    WHERE   rx_system       IS NOT NULL
+    AND     rx_code         IS NOT NULL
+    UNION ALL
+    SELECT 'casedef_proc'   AS valueset,
+            proc_system     AS system,
+            proc_code       AS code,
+            procedure_ref   AS resource_ref,
+            subject_ref,
+            encounter_ref
+    FROM    {{ prefix }}__cohort_study_population_proc
+    WHERE   proc_system       IS NOT NULL
+    AND     proc_code         IS NOT NULL
+    UNION ALL
+    SELECT 'casedef_lab'            AS valueset,
+            lab_observation_system  AS system,
+            lab_observation_code    AS code,
+            observation_ref         AS resource_ref,
+            subject_ref,
+            encounter_ref
+    FROM    {{ prefix }}__cohort_study_population_lab
+    WHERE   lab_observation_system  IS NOT NULL
+    AND     lab_observation_code    IS NOT NULL
+    UNION ALL
+    SELECT 'casedef_diag'   AS valueset,
+            diag_system     AS system,
+            diag_code       AS code,
+            result_ref      AS resource_ref,
+            subject_ref,
+            encounter_ref
+    FROM    {{ prefix }}__cohort_study_population_diag
+    WHERE   diag_system       IS NOT NULL
+    AND     diag_code         IS NOT NULL
+    UNION ALL
+    SELECT 'casedef_doc'            AS valueset,
+            doc_type_system         AS system,
+            doc_type_code           AS code,
+            documentreference_ref   AS resource_ref,
+            subject_ref,
+            encounter_ref
+    FROM    {{ prefix }}__cohort_study_population_doc
+    WHERE   doc_type_system IS NOT NULL
+    AND     doc_type_code   IS NOT NULL
+),
+population_distinct AS (
+    SELECT DISTINCT valueset, system, code, resource_ref, subject_ref, encounter_ref
+    FROM population
+)
+SELECT  p.valueset,
         casedef.*,
-        subject_ref,
-        encounter_ref
-FROM    {{ prefix }}__valueset_casedef  AS casedef,
-        {{ prefix }}__cohort_study_population_dx
-WHERE   casedef.system  = dx_system
-AND     casedef.code    = dx_code
-
-UNION ALL
-SELECT  DISTINCT
-        'casedef_proc'          AS valueset,
-        procedure_ref           AS resource_ref,
-        casedef.*,
-        subject_ref,
-        encounter_ref
-FROM    {{ prefix }}__valueset_casedef   AS casedef,
-        {{ prefix }}__cohort_study_population_proc
-WHERE   casedef.system  = proc_system
-AND     casedef.code    = proc_code
-
-UNION ALL
-SELECT  DISTINCT
-        'casedef_lab'           AS valueset,
-        observation_ref         AS resource_ref,
-        casedef.*,
-        subject_ref,
-        encounter_ref
-FROM    {{ prefix }}__valueset_casedef   AS casedef,
-        {{ prefix }}__cohort_study_population_lab
-WHERE   casedef.system  = lab_observation_system
-AND     casedef.code    = lab_observation_code
-
-UNION ALL
-SELECT  DISTINCT
-        'casedef_rx'            AS valueset,
-        medicationrequest_ref   AS resource_ref,
-        casedef.*,
-        subject_ref,
-        encounter_ref
-FROM    {{ prefix }}__valueset_casedef   AS casedef,
-        {{ prefix }}__cohort_study_population_rx
-WHERE   casedef.system  = rx_system
-AND     casedef.code    = rx_code
-
-UNION ALL
-SELECT  DISTINCT
-        'casedef_diag'          AS valueset,
-        result_ref              AS resource_ref,
-        casedef.*,
-        subject_ref,
-        encounter_ref
-FROM    {{ prefix }}__valueset_casedef   AS casedef,
-        {{ prefix }}__cohort_study_population_diag
-WHERE   casedef.system  = diag_system
-AND     casedef.code    = diag_code
-
-UNION ALL
-SELECT  DISTINCT
-        'casedef_doc'           AS valueset,
-        documentreference_ref   AS resource_ref,
-        casedef.*,
-        subject_ref,
-        encounter_ref
-FROM    {{ prefix }}__valueset_casedef   AS casedef,
-        {{ prefix }}__cohort_study_population_doc
-WHERE   casedef.system  = doc_type_system
-AND     casedef.code    = doc_type_code
-;
+        p.resource_ref,
+        p.subject_ref,
+        p.encounter_ref
+FROM    population_distinct     AS p
+JOIN    {{ prefix }}__valueset_casedef  AS casedef
+        ON  casedef.system = p.system
+        AND casedef.code   = p.code
