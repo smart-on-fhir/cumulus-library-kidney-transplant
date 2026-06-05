@@ -1,0 +1,146 @@
+system,code,display,priority,evidence
+http://loinc.org,600-7,Bacteria identified in Blood by Culture,high,confirmed
+http://loinc.org,610-6,Bacteria identified in Body fluid by Aerobe culture,high,confirmed
+http://loinc.org,611-4,Bacteria identified in Body fluid by Culture,high,confirmed
+http://loinc.org,88683-8,Bacteria identified in Bronchoalveolar lavage by Anaerobe culture,high,confirmed
+http://loinc.org,49543-2,Bacteria identified in Cerebral spinal fluid by Culture,high,confirmed
+http://loinc.org,634-6,Bacteria identified in Specimen by Aerobe culture,high,confirmed
+http://loinc.org,635-3,Bacteria identified in Specimen by Anaerobe culture,high,confirmed
+http://loinc.org,6463-4,Bacteria identified in Specimen by Culture,high,confirmed
+http://loinc.org,6460-0,Bacteria identified in Sputum by Culture,high,confirmed
+http://loinc.org,624-7,Bacteria identified in Sputum by Respiratory culture,high,confirmed
+http://loinc.org,630-4,Bacteria identified in Urine by Culture,high,confirmed
+http://loinc.org,6462-6,Bacteria identified in Wound by Culture,high,confirmed
+http://loinc.org,42330-1,Bordetella pertussis DNA [Presence] in Nasopharynx by NAA with non-probe detection,high,confirmed
+http://loinc.org,29621-0,Bordetella pertussis DNA [Presence] in Nasopharynx by NAA with probe detection,high,confirmed
+http://loinc.org,23826-1,Bordetella pertussis DNA [Presence] in Specimen by NAA with probe detection,high,confirmed
+http://loinc.org,80684-4,Campylobacter coli+jejuni+lari 16S rRNA [Presence] in Stool by NAA with probe detection,high,confirmed
+http://loinc.org,82196-7,Campylobacter coli+jejuni+upsaliensis DNA [Presence] in Stool by NAA with non-probe detection,high,confirmed
+http://loinc.org,23859-2,Chlamydophila pneumoniae DNA [Presence] in Specimen by NAA with probe detection,high,confirmed
+http://loinc.org,34468-9,Clostridioides difficile toxin A+B [Presence] in Stool by Immunoassay,high,confirmed
+http://loinc.org,82197-5,Clostridioides difficile toxin A+B tcdA+tcdB genes [Presence] in Stool by NAA with non-probe detection,high,confirmed
+http://loinc.org,80685-1,Clostridioides difficile toxin A+B tcdA+tcdB genes [Presence] in Stool by NAA with probe detection,high,confirmed
+http://loinc.org,10895-1,Clostridioides difficile toxin B [Presence] in Stool,high,confirmed
+http://loinc.org,54067-4,Clostridioides difficile toxin genes [Presence] in Stool by NAA with probe detection,high,confirmed
+http://loinc.org,106061-5,Enteric bacteria panel - Stool by NAA with probe detection,high,confirmed
+http://loinc.org,82204-9,Escherichia coli O157 DNA [Presence] in Stool by NAA with non-probe detection,high,confirmed
+http://loinc.org,97320-6,Escherichia coli O157 DNA [Presence] in Stool by NAA with probe detection,high,confirmed
+http://loinc.org,81285-9,Escherichia coli Stx1 and Stx2 toxin genes [Presence] in Stool by NAA with probe detection,high,confirmed
+http://loinc.org,82203-1,Escherichia coli Stx1 and Stx2 toxin stx1+stx2 genes [Presence] in Stool by NAA with non-probe detection,high,confirmed
+http://loinc.org,80679-4,Escherichia coli Stx1 and Stx2 toxin stx1+stx2 genes [Presence] in Stool by NAA with probe detection,high,confirmed
+http://loinc.org,92695-6,Gastrointestinal bacterial pathogens panel - Stool by NAA with probe detection,high,confirmed
+http://loinc.org,93407-5,Gram negative blood culture panel by NAA with probe detection in Positive blood culture,high,confirmed
+http://loinc.org,92789-7,Gram positive blood culture panel by NAA with probe detection in Positive blood culture,high,confirmed
+http://loinc.org,88259-7,Gram-negative bacteria identified [Interpretation] by Probe and target amplification method in Positive blood culture,high,confirmed
+http://loinc.org,85778-9,Haemophilus influenzae DNA [Presence] by NAA with non-probe detection in Positive blood culture,high,confirmed
+http://loinc.org,49613-3,Haemophilus influenzae DNA [Presence] in Cerebral spinal fluid by NAA with probe detection,high,confirmed
+http://loinc.org,6447-7,Legionella pneumophila Ag [Presence] in Urine by Immunoassay,high,confirmed
+http://loinc.org,5020-3,Legionella pneumophila DNA [Presence] in Specimen by NAA with probe detection,high,confirmed
+http://loinc.org,6448-5,Legionella pneumophila serogroup 1 Ag [Presence] in Urine by Immunoassay,high,confirmed
+http://loinc.org,32781-7,Legionella sp Ag [Presence] in Urine,high,confirmed
+http://loinc.org,48813-0,Methicillin resistance mecA gene [Presence] in Positive blood culture by NAA with probe detection,high,confirmed
+http://loinc.org,77666-6,Methicillin resistance mecA mRNA [Presence] in Positive blood culture by FISH,high,confirmed
+http://loinc.org,35492-8,Methicillin resistant Staphylococcus aureus (MRSA) DNA [Presence] in Specimen by NAA with probe detection,high,confirmed
+http://loinc.org,87969-2,Microscopic observation [Identifier] in Blood by Gram stain,high,confirmed
+http://loinc.org,21021-1,Microscopic observation [Identifier] in Bronchial specimen by Gram stain,high,confirmed
+http://loinc.org,11477-7,Microscopic observation [Identifier] in Specimen by Acid fast stain,high,confirmed
+http://loinc.org,11545-1,Microscopic observation [Identifier] in Specimen by Acid fast stain.Kinyoun modified,high,confirmed
+http://loinc.org,664-3,Microscopic observation [Identifier] in Specimen by Gram stain,high,confirmed
+http://loinc.org,10357-2,Microscopic observation [Identifier] in Wound by Gram stain,high,confirmed
+http://loinc.org,543-9,Mycobacterium sp identified in Specimen by Organism specific culture,high,confirmed
+http://loinc.org,33634-7,Mycobacterium tuberculosis DNA [Presence] in Sputum by NAA with probe detection,high,confirmed
+http://loinc.org,14467-0,Mycobacterium tuberculosis complex DNA [Presence] in Specimen by NAA with probe detection,high,confirmed
+http://loinc.org,35283-1,Mycobacterium tuberculosis complex DNA [Presence] in Sputum by NAA with probe detection,high,confirmed
+http://loinc.org,46248-1,Mycobacterium tuberculosis complex rpoB gene [Presence] in Specimen by NAA with probe detection,high,confirmed
+http://loinc.org,29257-3,Mycoplasma pneumoniae DNA [Presence] in Specimen by NAA with probe detection,high,confirmed
+http://loinc.org,49616-6,Neisseria meningitidis DNA [Presence] in Cerebral spinal fluid by NAA with probe detection,high,confirmed
+http://loinc.org,5021-1,Neisseria meningitidis DNA [Presence] in Specimen by NAA with probe detection,high,confirmed
+http://loinc.org,85776-3,Proteus sp DNA [Presence] by NAA with non-probe detection in Positive blood culture,high,confirmed
+http://loinc.org,82199-1,Salmonella enterica+bongori DNA [Presence] in Stool by NAA with non-probe detection,high,confirmed
+http://loinc.org,97313-1,Salmonella sp DNA [Presence] in Stool by NAA with probe detection,high,confirmed
+http://loinc.org,80678-6,Salmonella sp invA+fliC genes [Presence] in Stool by NAA with probe detection,high,confirmed
+http://loinc.org,101427-3,Shigella sp DNA [Presence] in Stool by NAA with probe detection,high,confirmed
+http://loinc.org,82300-5,Shigella sp [Presence] in Stool by Culture,high,confirmed
+http://loinc.org,80350-2,Shigella species+EIEC invasion plasmid antigen H ipaH gene [Presence] in Stool by NAA with non-probe detection,high,confirmed
+http://loinc.org,70242-3,Shigella species+EIEC invasion plasmid antigen H ipaH gene [Presence] in Stool by NAA with probe detection,high,confirmed
+http://loinc.org,85765-6,Staphylococcus aureus DNA [Presence] by NAA with non-probe detection in Positive blood culture,high,confirmed
+http://loinc.org,94512-1,Staphylococcus aureus and Methicillin Resistant Staphylococcus aureus identified in Isolate or Specimen by Molecular genetics method,high,confirmed
+http://loinc.org,24027-5,Streptococcus pneumoniae Ag [Presence] in Urine,high,confirmed
+http://loinc.org,77949-6,Streptococcus pneumoniae Ag [Presence] in Urine by Rapid immunoassay,high,confirmed
+http://loinc.org,49612-5,Streptococcus pneumoniae DNA [Presence] in Cerebral spinal fluid by NAA with probe detection,high,confirmed
+http://loinc.org,78012-2,Streptococcus pyogenes Ag [Presence] in Throat by Rapid immunoassay,high,confirmed
+http://loinc.org,94366-2,Streptococcus pyogenes DNA [Presence] in Lower respiratory specimen by NAA with probe detection,high,confirmed
+http://loinc.org,101300-2,Streptococcus pyogenes DNA [Presence] in Throat by NAA with non-probe detection,high,confirmed
+http://loinc.org,60489-2,Streptococcus pyogenes DNA [Presence] in Throat by NAA with probe detection,high,confirmed
+http://loinc.org,85766-4,Streptococcus sp DNA [Presence] by NAA with non-probe detection in Positive blood culture,high,confirmed
+http://loinc.org,92774-9,Streptococcus sp DNA [Presence] by NAA with probe detection in Positive blood culture,high,confirmed
+http://loinc.org,82201-5,Vibrio cholerae DNA [Presence] in Stool by NAA with non-probe detection,high,confirmed
+http://loinc.org,97314-9,Vibrio cholerae DNA [Presence] in Stool by NAA with probe detection,high,confirmed
+http://loinc.org,80680-2,Vibrio cholerae toxin ctxA gene [Presence] in Stool by NAA with probe detection,high,confirmed
+http://loinc.org,82202-3,Yersinia enterocolitica DNA [Presence] in Stool by NAA with non-probe detection,high,confirmed
+http://loinc.org,92723-6,Yersinia enterocolitica DNA [Presence] in Stool by NAA with probe detection,high,confirmed
+http://loinc.org,90439-1,Atypical pneumonia pathogens panel - Respiratory system specimen by NAA with probe detection,medium,confirmed
+http://loinc.org,79425-5,Bacteria identified in Lower respiratory specimen by Cystic fibrosis respiratory culture,medium,confirmed
+http://loinc.org,73960-7,Bacteria identified in Mouth by Culture,medium,confirmed
+http://loinc.org,87932-0,Bacteria identified in Sinus by Aerobe culture,medium,confirmed
+http://loinc.org,87943-7,Bacteria identified in Sinus by Anaerobe culture,medium,confirmed
+http://loinc.org,626-2,Bacteria identified in Throat by Culture,medium,confirmed
+http://loinc.org,73670-2,Bacteria producing coagulase and protein A [Presence] in Isolate by Latex agglutination,medium,confirmed
+http://loinc.org,85762-3,Blood pathogens panel by NAA with non-probe detection in Positive blood culture,medium,
+http://loinc.org,550-4,Bordetella pertussis Ag [Presence] in Nasopharynx by Immunofluorescence,medium,confirmed
+http://loinc.org,20449-5,Borrelia burgdorferi Ab [Presence] in Serum by Immunoassay,medium,
+http://loinc.org,6321-4,Borrelia burgdorferi IgM Ab [Presence] in Serum by Immunoblot,medium,confirmed
+http://loinc.org,6356-0,Chlamydia trachomatis DNA [Presence] in Genital specimen by NAA with probe detection,medium,confirmed
+http://loinc.org,21613-5,Chlamydia trachomatis DNA [Presence] in Specimen by NAA with probe detection,medium,confirmed
+http://loinc.org,6357-8,Chlamydia trachomatis DNA [Presence] in Urine by NAA with probe detection,medium,confirmed
+http://loinc.org,45084-1,Chlamydia trachomatis DNA [Presence] in Vaginal fluid by NAA with probe detection,medium,confirmed
+http://loinc.org,42931-6,Chlamydia trachomatis rRNA [Presence] in Urine by NAA with probe detection,medium,confirmed
+http://loinc.org,53926-2,Chlamydia trachomatis rRNA [Presence] in Vaginal fluid by NAA with probe detection,medium,confirmed
+http://loinc.org,36902-5,Chlamydia trachomatis+Neisseria gonorrhoeae DNA [Presence] in Specimen by NAA with probe detection,medium,confirmed
+http://loinc.org,44806-8,Chlamydia trachomatis+Neisseria gonorrhoeae DNA [Presence] in Urine by NAA with probe detection,medium,confirmed
+http://loinc.org,95183-0,Clostridioides difficile toxin and BI-NAP1-027 strain DNA panel - Stool by NAA with probe detection,medium,confirmed
+http://loinc.org,80349-4,Enteroaggregative Escherichia coli DNA [Presence] in Stool by NAA with non-probe detection,medium,confirmed
+http://loinc.org,80348-6,Enteropathogenic Escherichia coli DNA [Presence] in Stool by NAA with non-probe detection,medium,confirmed
+http://loinc.org,80351-0,Enterotoxigenic Escherichia coli DNA [Presence] in Stool by NAA with non-probe detection,medium,confirmed
+http://loinc.org,79386-9,Escherichia coli Stx1 toxin stx1 gene [Presence] in Stool by NAA with probe detection,medium,confirmed
+http://loinc.org,17780-8,Helicobacter pylori Ag [Presence] in Stool by Immunoassay,medium,confirmed
+http://loinc.org,29891-9,Helicobacter pylori [Presence] in Stomach by Urease test,medium,confirmed
+http://loinc.org,11475-1,Microorganism identified in Specimen by Culture,medium,
+http://loinc.org,38379-4,Mycobacterium avium complex DNA [Presence] in Specimen by NAA with probe detection,medium,confirmed
+http://loinc.org,5255-5,Mycoplasma pneumoniae IgM Ab [Units/volume] in Serum,medium,confirmed
+http://loinc.org,24111-7,Neisseria gonorrhoeae DNA [Presence] in Specimen by NAA with probe detection,medium,confirmed
+http://loinc.org,45081-7,Neisseria gonorrhoeae DNA [Presence] in Vaginal fluid by NAA with probe detection,medium,confirmed
+http://loinc.org,43305-2,Neisseria gonorrhoeae rRNA [Presence] in Specimen by NAA with probe detection,medium,confirmed
+http://loinc.org,82198-3,Plesiomonas shigelloides DNA [Presence] in Stool by NAA with non-probe detection,medium,confirmed
+http://loinc.org,70296-9,Plesiomonas shigelloides DNA [Presence] in Stool by NAA with probe detection,medium,confirmed
+http://loinc.org,20507-0,Reagin Ab [Presence] in Serum by RPR,medium,confirmed
+http://loinc.org,5290-2,Reagin Ab [Presence] in Serum by VDRL,medium,confirmed
+http://loinc.org,79383-6,Salmonella sp rpoD gene [Presence] in Stool by NAA with probe detection,medium,confirmed
+http://loinc.org,81657-9,Salmonella sp spaO gene [Presence] in Stool by NAA with probe detection,medium,confirmed
+http://loinc.org,6558-1,Streptococcus pyogenes Ag [Presence] in Specimen by Immunoassay,medium,confirmed
+http://loinc.org,6559-9,Streptococcus pyogenes Ag [Presence] in Specimen by Immunofluorescence,medium,confirmed
+http://loinc.org,68954-7,Streptococcus pyogenes rRNA [Presence] in Throat by Probe,medium,confirmed
+http://loinc.org,47238-1,Treponema pallidum IgG Ab [Presence] in Serum by Immunoassay,medium,
+http://loinc.org,82200-7,Vibrio cholerae+parahaemolyticus+vulnificus DNA [Presence] in Stool by NAA with non-probe detection,medium,confirmed
+http://loinc.org,92686-5,Vibrio cholerae+parahaemolyticus+vulnificus DNA [Presence] in Stool by NAA with probe detection,medium,confirmed
+http://loinc.org,97315-6,Vibrio parahaemolyticus DNA [Presence] in Stool by NAA with probe detection,medium,confirmed
+http://loinc.org,97316-4,Vibrio vulnificus DNA [Presence] in Stool by NAA with probe detection,medium,confirmed
+http://loinc.org,79385-1,Yersinia enterocolitica recN gene [Presence] in Stool by NAA with probe detection,medium,confirmed
+http://loinc.org,701-3,Yersinia sp identified in Stool by Culture,medium,confirmed
+http://loinc.org,6320-6,Borrelia burgdorferi IgG Ab [Presence] in Serum by Immunoblot,low,
+http://loinc.org,5195-3,Helicobacter pylori IgG Ab [Presence] in Serum,low,
+http://loinc.org,72892-3,MRSA SCCmec and mecA genes panel - Nose by NAA with probe detection,low,
+http://loinc.org,86622-8,MRSA SCCmec and mecA+mecC genes panel - Nose by NAA with probe detection,low,
+http://loinc.org,90001-9,Methicillin resistant Staphylococcus aureus (MRSA) DNA [Presence] in Nose by NAA with probe detection,low,
+http://loinc.org,92701-2,Staphylococcus aureus DNA [Presence] in Nose by NAA with probe detection,low,
+http://loinc.org,79448-7,Staphylococcus aureus and Methicillin-resistant Staphylococcus aureus panel - Nose by NAA with probe detection,low,
+http://loinc.org,72887-3,Staphylococcus aureus methicillin resistance SCCmec [Presence] in Nose by NAA with probe detection,low,
+http://snomed.info/sct,409611004,Aerobic blood culture (procedure),high,confirmed
+http://snomed.info/sct,104177005,"Blood culture for bacteria, including anaerobic screen (procedure)",high,confirmed
+http://snomed.info/sct,62777006,Gram stain method (procedure),high,confirmed
+http://snomed.info/sct,117011000,Quantitative urine culture (procedure),high,confirmed
+http://snomed.info/sct,117056007,Respiratory microbial culture (procedure),high,confirmed
+http://snomed.info/sct,104178000,Bacterial culture (procedure),medium,confirmed
+http://snomed.info/sct,413625003,Bacterial culture and sensitivity (procedure),medium,confirmed
+http://snomed.info/sct,61594008,Microbial culture (procedure),medium,
+http://snomed.info/sct,117013002,"Quantitative urine culture, 1:100 dilution (procedure)",medium,confirmed
