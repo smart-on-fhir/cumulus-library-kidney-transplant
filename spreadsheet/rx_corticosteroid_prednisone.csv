@@ -1,0 +1,141 @@
+system,code,display,priority
+http://www.nlm.nih.gov/research/umls/rxnorm,227730,Deltasone,high
+http://www.nlm.nih.gov/research/umls/rxnorm,206988,Deltasone 10 MG Oral Tablet,high
+http://www.nlm.nih.gov/research/umls/rxnorm,206837,Deltasone 2.5 MG Oral Tablet,high
+http://www.nlm.nih.gov/research/umls/rxnorm,206997,Deltasone 20 MG Oral Tablet,high
+http://www.nlm.nih.gov/research/umls/rxnorm,206954,Deltasone 5 MG Oral Tablet,high
+http://www.nlm.nih.gov/research/umls/rxnorm,207048,Deltasone 50 MG Oral Tablet,high
+http://www.nlm.nih.gov/research/umls/rxnorm,1172410,Deltasone Oral Product,high
+http://www.nlm.nih.gov/research/umls/rxnorm,1172411,Deltasone Pill,high
+http://www.nlm.nih.gov/research/umls/rxnorm,351400,PREDNICOT 10 MG Oral Tablet,high
+http://www.nlm.nih.gov/research/umls/rxnorm,351401,PREDNICOT 20 MG Oral Tablet,high
+http://www.nlm.nih.gov/research/umls/rxnorm,351399,PREDNICOT 5 MG Oral Tablet,high
+http://www.nlm.nih.gov/research/umls/rxnorm,352903,Prednicot,high
+http://www.nlm.nih.gov/research/umls/rxnorm,1185258,Prednicot Oral Product,high
+http://www.nlm.nih.gov/research/umls/rxnorm,1185259,Prednicot Pill,high
+http://www.nlm.nih.gov/research/umls/rxnorm,582600,Prednisone Intensol,high
+http://www.nlm.nih.gov/research/umls/rxnorm,582603,Prednisone Intensol 5 MG/ML Oral Solution,high
+http://www.nlm.nih.gov/research/umls/rxnorm,1185261,Prednisone Intensol Oral Liquid Product,high
+http://www.nlm.nih.gov/research/umls/rxnorm,1185262,Prednisone Intensol Oral Product,high
+http://www.nlm.nih.gov/research/umls/rxnorm,1303126,Rayos,high
+http://www.nlm.nih.gov/research/umls/rxnorm,1303131,Rayos 1 MG Delayed Release Oral Tablet,high
+http://www.nlm.nih.gov/research/umls/rxnorm,1303134,Rayos 2 MG Delayed Release Oral Tablet,high
+http://www.nlm.nih.gov/research/umls/rxnorm,1303137,Rayos 5 MG Delayed Release Oral Tablet,high
+http://www.nlm.nih.gov/research/umls/rxnorm,1303129,Rayos Oral Product,high
+http://www.nlm.nih.gov/research/umls/rxnorm,1303130,Rayos Pill,high
+http://www.nlm.nih.gov/research/umls/rxnorm,220028,Sterapred,high
+http://www.nlm.nih.gov/research/umls/rxnorm,845491,Sterapred 5 MG 12 Day Uni-Pak,high
+http://www.nlm.nih.gov/research/umls/rxnorm,206957,Sterapred 5 MG Oral Tablet,high
+http://www.nlm.nih.gov/research/umls/rxnorm,845492,Sterapred 5 MG Uni-Pak,high
+http://www.nlm.nih.gov/research/umls/rxnorm,220029,Sterapred DS,high
+http://www.nlm.nih.gov/research/umls/rxnorm,206990,Sterapred DS 10 MG Oral Tablet,high
+http://www.nlm.nih.gov/research/umls/rxnorm,845493,Sterapred DS 12 Day Uni-Pak,high
+http://www.nlm.nih.gov/research/umls/rxnorm,1178982,Sterapred DS Oral Product,high
+http://www.nlm.nih.gov/research/umls/rxnorm,1178983,Sterapred DS Pill,high
+http://www.nlm.nih.gov/research/umls/rxnorm,845494,Sterapred DS Uni-Pak,high
+http://www.nlm.nih.gov/research/umls/rxnorm,795861,Sterapred DS Uni-Pak 6 Day,high
+http://www.nlm.nih.gov/research/umls/rxnorm,1178984,Sterapred Oral Product,high
+http://www.nlm.nih.gov/research/umls/rxnorm,1178985,Sterapred Pill,high
+http://www.nlm.nih.gov/research/umls/rxnorm,795855,Sterapred Uni-Pak 12 Day,high
+http://www.nlm.nih.gov/research/umls/rxnorm,795857,Sterapred Uni-Pak 6 Day,high
+http://www.nlm.nih.gov/research/umls/rxnorm,8640,predniSONE,high
+http://www.nlm.nih.gov/research/umls/rxnorm,438434,predniSONE 0.005 MG/MG,high
+http://www.nlm.nih.gov/research/umls/rxnorm,317475,predniSONE 1 MG,high
+http://www.nlm.nih.gov/research/umls/rxnorm,1303125,predniSONE 1 MG Delayed Release Oral Tablet,high
+http://www.nlm.nih.gov/research/umls/rxnorm,198144,predniSONE 1 MG Oral Tablet,high
+http://www.nlm.nih.gov/research/umls/rxnorm,201082,predniSONE 1 MG Oral Tablet [Econosone],high
+http://www.nlm.nih.gov/research/umls/rxnorm,206754,predniSONE 1 MG Oral Tablet [Meticorten],high
+http://www.nlm.nih.gov/research/umls/rxnorm,206755,predniSONE 1 MG Oral Tablet [Orasone],high
+http://www.nlm.nih.gov/research/umls/rxnorm,565678,predniSONE 1 MG [Econosone],high
+http://www.nlm.nih.gov/research/umls/rxnorm,567565,predniSONE 1 MG [Meticorten],high
+http://www.nlm.nih.gov/research/umls/rxnorm,567566,predniSONE 1 MG [Orasone],high
+http://www.nlm.nih.gov/research/umls/rxnorm,1303127,predniSONE 1 MG [Rayos],high
+http://www.nlm.nih.gov/research/umls/rxnorm,316580,predniSONE 1 MG/ML,high
+http://www.nlm.nih.gov/research/umls/rxnorm,315187,predniSONE 1 MG/ML Oral Solution,high
+http://www.nlm.nih.gov/research/umls/rxnorm,206199,predniSONE 1 MG/ML Oral Solution [Liquid Pred],high
+http://www.nlm.nih.gov/research/umls/rxnorm,539946,predniSONE 1 MG/ML [Liquid Pred],high
+http://www.nlm.nih.gov/research/umls/rxnorm,317663,predniSONE 10 MG,high
+http://www.nlm.nih.gov/research/umls/rxnorm,746380,predniSONE 10 MG Oral Capsule,high
+http://www.nlm.nih.gov/research/umls/rxnorm,198145,predniSONE 10 MG Oral Tablet,high
+http://www.nlm.nih.gov/research/umls/rxnorm,206989,predniSONE 10 MG Oral Tablet [Orasone],high
+http://www.nlm.nih.gov/research/umls/rxnorm,541815,predniSONE 10 MG Oral Tablet [Predone],high
+http://www.nlm.nih.gov/research/umls/rxnorm,567784,predniSONE 10 MG [Deltasone],high
+http://www.nlm.nih.gov/research/umls/rxnorm,567785,predniSONE 10 MG [Orasone],high
+http://www.nlm.nih.gov/research/umls/rxnorm,575331,predniSONE 10 MG [Prednicot],high
+http://www.nlm.nih.gov/research/umls/rxnorm,541813,predniSONE 10 MG [Predone],high
+http://www.nlm.nih.gov/research/umls/rxnorm,567786,predniSONE 10 MG [Sterapred DS],high
+http://www.nlm.nih.gov/research/umls/rxnorm,451141,predniSONE 100 MG,high
+http://www.nlm.nih.gov/research/umls/rxnorm,335473,predniSONE 2 MG,high
+http://www.nlm.nih.gov/research/umls/rxnorm,1303132,predniSONE 2 MG Delayed Release Oral Tablet,high
+http://www.nlm.nih.gov/research/umls/rxnorm,1303133,predniSONE 2 MG [Rayos],high
+http://www.nlm.nih.gov/research/umls/rxnorm,316581,predniSONE 2.5 MG,high
+http://www.nlm.nih.gov/research/umls/rxnorm,198146,predniSONE 2.5 MG Oral Tablet,high
+http://www.nlm.nih.gov/research/umls/rxnorm,567645,predniSONE 2.5 MG [Deltasone],high
+http://www.nlm.nih.gov/research/umls/rxnorm,316582,predniSONE 20 MG,high
+http://www.nlm.nih.gov/research/umls/rxnorm,746836,predniSONE 20 MG Oral Capsule,high
+http://www.nlm.nih.gov/research/umls/rxnorm,312615,predniSONE 20 MG Oral Tablet,high
+http://www.nlm.nih.gov/research/umls/rxnorm,206998,predniSONE 20 MG Oral Tablet [Orasone],high
+http://www.nlm.nih.gov/research/umls/rxnorm,541872,predniSONE 20 MG Oral Tablet [Predone],high
+http://www.nlm.nih.gov/research/umls/rxnorm,567793,predniSONE 20 MG [Deltasone],high
+http://www.nlm.nih.gov/research/umls/rxnorm,567794,predniSONE 20 MG [Orasone],high
+http://www.nlm.nih.gov/research/umls/rxnorm,575332,predniSONE 20 MG [Prednicot],high
+http://www.nlm.nih.gov/research/umls/rxnorm,541871,predniSONE 20 MG [Predone],high
+http://www.nlm.nih.gov/research/umls/rxnorm,316583,predniSONE 25 MG,high
+http://www.nlm.nih.gov/research/umls/rxnorm,312616,predniSONE 25 MG Oral Tablet,high
+http://www.nlm.nih.gov/research/umls/rxnorm,451143,predniSONE 30 MG,high
+http://www.nlm.nih.gov/research/umls/rxnorm,451144,predniSONE 40 MG,high
+http://www.nlm.nih.gov/research/umls/rxnorm,429332,predniSONE 40 MG Oral Tablet,high
+http://www.nlm.nih.gov/research/umls/rxnorm,316584,predniSONE 5 MG,high
+http://www.nlm.nih.gov/research/umls/rxnorm,1303135,predniSONE 5 MG Delayed Release Oral Tablet,high
+http://www.nlm.nih.gov/research/umls/rxnorm,746837,predniSONE 5 MG Oral Capsule,high
+http://www.nlm.nih.gov/research/umls/rxnorm,312617,predniSONE 5 MG Oral Tablet,high
+http://www.nlm.nih.gov/research/umls/rxnorm,105412,predniSONE 5 MG Oral Tablet [Decortisyl],high
+http://www.nlm.nih.gov/research/umls/rxnorm,201083,predniSONE 5 MG Oral Tablet [Econosone],high
+http://www.nlm.nih.gov/research/umls/rxnorm,206955,predniSONE 5 MG Oral Tablet [Orasone],high
+http://www.nlm.nih.gov/research/umls/rxnorm,206956,predniSONE 5 MG Oral Tablet [Prednicen-M],high
+http://www.nlm.nih.gov/research/umls/rxnorm,763181,predniSONE 5 MG Tablet 21 Count Pack,high
+http://www.nlm.nih.gov/research/umls/rxnorm,564054,predniSONE 5 MG [Decortisyl],high
+http://www.nlm.nih.gov/research/umls/rxnorm,567755,predniSONE 5 MG [Deltasone],high
+http://www.nlm.nih.gov/research/umls/rxnorm,565679,predniSONE 5 MG [Econosone],high
+http://www.nlm.nih.gov/research/umls/rxnorm,567756,predniSONE 5 MG [Orasone],high
+http://www.nlm.nih.gov/research/umls/rxnorm,567757,predniSONE 5 MG [Prednicen-M],high
+http://www.nlm.nih.gov/research/umls/rxnorm,575330,predniSONE 5 MG [Prednicot],high
+http://www.nlm.nih.gov/research/umls/rxnorm,1303136,predniSONE 5 MG [Rayos],high
+http://www.nlm.nih.gov/research/umls/rxnorm,567758,predniSONE 5 MG [Sterapred],high
+http://www.nlm.nih.gov/research/umls/rxnorm,316585,predniSONE 5 MG/ML,high
+http://www.nlm.nih.gov/research/umls/rxnorm,205301,predniSONE 5 MG/ML Oral Solution,high
+http://www.nlm.nih.gov/research/umls/rxnorm,582601,predniSONE 5 MG/ML [predniSONE Intensol],high
+http://www.nlm.nih.gov/research/umls/rxnorm,316586,predniSONE 50 MG,high
+http://www.nlm.nih.gov/research/umls/rxnorm,198148,predniSONE 50 MG Oral Tablet,high
+http://www.nlm.nih.gov/research/umls/rxnorm,207049,predniSONE 50 MG Oral Tablet [Orasone],high
+http://www.nlm.nih.gov/research/umls/rxnorm,567841,predniSONE 50 MG [Deltasone],high
+http://www.nlm.nih.gov/research/umls/rxnorm,567842,predniSONE 50 MG [Orasone],high
+http://www.nlm.nih.gov/research/umls/rxnorm,451147,predniSONE 8 MG,high
+http://www.nlm.nih.gov/research/umls/rxnorm,429331,predniSONE 8 MG Oral Tablet,high
+http://www.nlm.nih.gov/research/umls/rxnorm,1303124,predniSONE Delayed Release Oral Tablet,high
+http://www.nlm.nih.gov/research/umls/rxnorm,1303128,predniSONE Delayed Release Oral Tablet [Rayos],high
+http://www.nlm.nih.gov/research/umls/rxnorm,746379,predniSONE Oral Capsule,high
+http://www.nlm.nih.gov/research/umls/rxnorm,1161704,predniSONE Oral Liquid Product,high
+http://www.nlm.nih.gov/research/umls/rxnorm,1161705,predniSONE Oral Product,high
+http://www.nlm.nih.gov/research/umls/rxnorm,373583,predniSONE Oral Solution,high
+http://www.nlm.nih.gov/research/umls/rxnorm,364008,predniSONE Oral Solution [Liquid Pred],high
+http://www.nlm.nih.gov/research/umls/rxnorm,582602,predniSONE Oral Solution [predniSONE Intensol],high
+http://www.nlm.nih.gov/research/umls/rxnorm,373585,predniSONE Oral Tablet,high
+http://www.nlm.nih.gov/research/umls/rxnorm,380828,predniSONE Oral Tablet [Decortisyl],high
+http://www.nlm.nih.gov/research/umls/rxnorm,92354,predniSONE Oral Tablet [Deltasone],high
+http://www.nlm.nih.gov/research/umls/rxnorm,380827,predniSONE Oral Tablet [Econosone],high
+http://www.nlm.nih.gov/research/umls/rxnorm,368867,predniSONE Oral Tablet [Meticorten],high
+http://www.nlm.nih.gov/research/umls/rxnorm,368790,predniSONE Oral Tablet [Orasone],high
+http://www.nlm.nih.gov/research/umls/rxnorm,368813,predniSONE Oral Tablet [Prednicen-M],high
+http://www.nlm.nih.gov/research/umls/rxnorm,368654,predniSONE Oral Tablet [Prednicot],high
+http://www.nlm.nih.gov/research/umls/rxnorm,541814,predniSONE Oral Tablet [Predone],high
+http://www.nlm.nih.gov/research/umls/rxnorm,368806,predniSONE Oral Tablet [Sterapred DS],high
+http://www.nlm.nih.gov/research/umls/rxnorm,368812,predniSONE Oral Tablet [Sterapred],high
+http://www.nlm.nih.gov/research/umls/rxnorm,1161706,predniSONE Pill,high
+http://www.nlm.nih.gov/research/umls/rxnorm,795854,{12 (predniSONE 5 MG Oral Tablet) } Pack,high
+http://www.nlm.nih.gov/research/umls/rxnorm,763185,{21 (predniSONE 10 MG Oral Tablet) } Pack,high
+http://www.nlm.nih.gov/research/umls/rxnorm,834395,{25 (predniSONE 10 MG Oral Tablet) } Pack,high
+http://www.nlm.nih.gov/research/umls/rxnorm,763183,{48 (predniSONE 10 MG Oral Tablet) } Pack,high
+http://www.nlm.nih.gov/research/umls/rxnorm,763179,{48 (predniSONE 5 MG Oral Tablet) } Pack,high
+http://www.nlm.nih.gov/research/umls/rxnorm,795860,{6 (predniSONE 10 MG Oral Tablet) } Pack,high
+http://www.nlm.nih.gov/research/umls/rxnorm,795856,{6 (predniSONE 5 MG Oral Tablet) } Pack,high
