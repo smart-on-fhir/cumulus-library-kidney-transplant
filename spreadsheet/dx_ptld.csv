@@ -1,0 +1,46 @@
+system,code,display
+http://hl7.org/fhir/sid/icd-10-cm,D47.Z1,Post-transplant lymphoproliferative disorder (PTLD)
+http://hl7.org/fhir/sid/icd-10-cm,D47.Z9,"Other specified neoplasms of uncertain behavior of lymphoid, hematopoietic and related tissue"
+http://hl7.org/fhir/sid/icd-10-cm,D47.9,"Neoplasm of uncertain behavior of lymphoid, hematopoietic and related tissue, unspecified"
+http://hl7.org/fhir/sid/icd-10-cm,C96.Z,"Other specified malignant neoplasms of lymphoid, hematopoietic and related tissue"
+http://hl7.org/fhir/sid/icd-10-cm,C96.9,"Malignant neoplasm of lymphoid, hematopoietic and related tissue, unspecified"
+http://hl7.org/fhir/sid/icd-10-cm,C81,Hodgkin lymphoma
+http://hl7.org/fhir/sid/icd-10-cm,C81.90,"Hodgkin lymphoma, unspecified, unspecified site"
+http://hl7.org/fhir/sid/icd-10-cm,C81.99,"Hodgkin lymphoma, unspecified, extranodal and solid organ sites"
+http://hl7.org/fhir/sid/icd-10-cm,C82,Follicular lymphoma
+http://hl7.org/fhir/sid/icd-10-cm,C83,Non-follicular lymphoma
+http://hl7.org/fhir/sid/icd-10-cm,C83.30,"Diffuse large B-cell lymphoma, unspecified site"
+http://hl7.org/fhir/sid/icd-10-cm,C83.39,"Diffuse large B-cell lymphoma, extranodal and solid organ sites"
+http://hl7.org/fhir/sid/icd-10-cm,C83.70,"Burkitt lymphoma, unspecified site"
+http://hl7.org/fhir/sid/icd-10-cm,C83.79,"Burkitt lymphoma, extranodal and solid organ sites"
+http://hl7.org/fhir/sid/icd-10-cm,C84,Mature T/NK-cell lymphomas
+http://hl7.org/fhir/sid/icd-10-cm,C85,Other specified and unspecified types of non-Hodgkin lymphoma
+http://hl7.org/fhir/sid/icd-10-cm,C85.90,"Non-Hodgkin lymphoma, unspecified, unspecified site"
+http://hl7.org/fhir/sid/icd-10-cm,C85.99,"Non-Hodgkin lymphoma, unspecified, extranodal and solid organ sites"
+http://hl7.org/fhir/sid/icd-10-cm,C86,Other specified types of T/NK-cell lymphoma
+http://hl7.org/fhir/sid/icd-10-cm,C88,Malignant immunoproliferative diseases and certain other B-cell lymphomas
+http://hl7.org/fhir/sid/icd-10-cm,C90,Multiple myeloma and malignant plasma cell neoplasms
+http://hl7.org/fhir/sid/icd-10-cm,C91,Lymphoid leukemia
+http://snomed.info/sct,254290004,Post-transplant lymphoproliferative disorder (disorder)
+http://snomed.info/sct,722956007,Early post-transplant lymphoproliferative disorder (disorder)
+http://snomed.info/sct,445964006,Monomorphic posttransplant lymphoproliferative disorder (disorder)
+http://snomed.info/sct,762316003,Polymorphic lymphoproliferative disorder following transplant (disorder)
+http://snomed.info/sct,397351004,"Post-transplant lymphoproliferative disorder, polymorphic (morphologic abnormality)"
+http://snomed.info/sct,450943001,"Post transplant lymphoproliferative disorder, no International Classification of Diseases for Oncology subtype (morphologic abnormality)"
+http://snomed.info/sct,277466009,Lymphoproliferative disorder (disorder)
+http://snomed.info/sct,414629003,Lymphoproliferative disorder (morphologic abnormality)
+http://snomed.info/sct,254289008,Post-transplant neoplasia (disorder)
+http://snomed.info/sct,716788007,Epstein-Barr virus positive diffuse large B-cell lymphoma of elderly (disorder)
+http://snomed.info/sct,724647003,Diffuse large B-cell lymphoma co-occurrent with chronic inflammation caused by Epstein-Barr virus (disorder)
+http://snomed.info/sct,783566008,Mucocutaneous ulcer caused by Epstein-Barr virus (disorder)
+http://snomed.info/sct,450906003,Systemic Epstein Barr virus positive T-cell lymphoproliferative disease of childhood (morphologic abnormality)
+http://snomed.info/sct,118600007,Malignant lymphoma (disorder)
+http://snomed.info/sct,118601006,Non-Hodgkin's lymphoma (clinical)
+http://snomed.info/sct,109979007,B-cell lymphoma (clinical)
+http://snomed.info/sct,109969005,"Diffuse non-Hodgkin's lymphoma, large cell (disorder)"
+http://snomed.info/sct,118617000,Burkitt's lymphoma (clinical)
+http://snomed.info/sct,77381001,Burkitt lymphoma (morphologic abnormality)
+http://snomed.info/sct,1163005009,Hodgkin lymphoma (morphologic abnormality)
+http://snomed.info/sct,762690000,Classical Hodgkin lymphoma (disorder)
+http://snomed.info/sct,450909005,Plasmablastic lymphoma (morphologic abnormality)
+http://snomed.info/sct,1162576007,Plasma cell myeloma (morphologic abnormality)
