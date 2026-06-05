@@ -147,6 +147,8 @@ def _make_variable_wide(aspect:Aspect, generator=None) -> Path:
             return _make_variable_wide(aspect, select_wide_doc)
         elif aspect == Aspect.rx:
             return _make_variable_wide(aspect, select_wide_rx)
+        elif aspect == Aspect.proc:
+            return _make_variable_wide(aspect, select_wide_proc)
         else:
             raise NotImplementedError(f"'{aspect}' aspect type not yet supported.")
     else:
@@ -269,6 +271,25 @@ def select_wide_doc(variable_list: list[str] = None, columns: dict = None) -> st
         columns = {'doc_author_day': 'date',
                    'doc_type_code': 'code',
                    'documentreference_ref': 'ref'}
+    return select_wide_dict(variable_list, columns)
+
+def select_wide_proc(variable_list: list[str] = None, columns: dict = None) -> str:
+    """
+    FHIR Procedure
+    * https://build.fhir.org/procedure.html
+    * https://build.fhir.org/procedure-definitions.html#Procedure.performer.period
+    * https://build.fhir.org/procedure-definitions.html#Procedure.category
+
+    :param variable_list: default = Procedure variables
+    :param columns: default= author date, code
+    :return: str SQL
+    """
+    if not variable_list:
+        variable_list = list_variables(Aspect.proc)
+    if not columns:
+        columns = {'performeddatetime_day': 'date',
+                   'category_code': 'code',
+                   'procedure_ref': 'ref'}
     return select_wide_dict(variable_list, columns)
 
 #-----------------------------------------------------------------------------

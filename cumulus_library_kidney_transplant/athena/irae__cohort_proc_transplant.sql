@@ -1,0 +1,7 @@
+create table irae__cohort_proc_transplant as 
+select distinct * from 
+ irae__cohort_study_population_proc , 
+irae__valueset_proc_transplant
+WHERE
+irae__cohort_study_population_proc.proc_code = irae__valueset_proc_transplant.code and 
+irae__cohort_study_population_proc.proc_system = irae__valueset_proc_transplant.system

@@ -9,6 +9,7 @@ files = [
 description="variable cohorts"
 type="build:parallel"
 files= [
+	"athena/irae__cohort_dx_transplant.sql",
 	"athena/irae__cohort_lab_albumin.sql",
 	"athena/irae__cohort_lab_crp.sql",
 	"athena/irae__cohort_lab_drug_level_azathioprine.sql",
@@ -22,6 +23,8 @@ files= [
 	"athena/irae__cohort_lab_infection_viral_cmv.sql",
 	"athena/irae__cohort_lab_iron_ferritin.sql",
 	"athena/irae__cohort_lab_tpmt_gene.sql",
+	"athena/irae__cohort_proc_nephrectomy.sql",
+	"athena/irae__cohort_proc_transplant.sql",
 	"athena/irae__cohort_rx_alemtuzumab.sql",
 	"athena/irae__cohort_rx_atg.sql",
 	"athena/irae__cohort_rx_azathioprine.sql",

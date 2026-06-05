@@ -3,7 +3,8 @@ with
 select_wide_bool AS
 (
     SELECT
-            	IF(variable='lab_albumin', True) AS lab_albumin,
+            	IF(variable='dx_transplant', True) AS dx_transplant,
+		IF(variable='lab_albumin', True) AS lab_albumin,
 		IF(variable='lab_crp', True) AS lab_crp,
 		IF(variable='lab_drug_level_azathioprine', True) AS lab_drug_level_azathioprine,
 		IF(variable='lab_drug_level_cyclosporin', True) AS lab_drug_level_cyclosporin,
@@ -16,6 +17,8 @@ select_wide_bool AS
 		IF(variable='lab_infection_viral_cmv', True) AS lab_infection_viral_cmv,
 		IF(variable='lab_iron_ferritin', True) AS lab_iron_ferritin,
 		IF(variable='lab_tpmt_gene', True) AS lab_tpmt_gene,
+		IF(variable='proc_nephrectomy', True) AS proc_nephrectomy,
+		IF(variable='proc_transplant', True) AS proc_transplant,
 		IF(variable='rx_alemtuzumab', True) AS rx_alemtuzumab,
 		IF(variable='rx_atg', True) AS rx_atg,
 		IF(variable='rx_azathioprine', True) AS rx_azathioprine,
@@ -39,7 +42,8 @@ select_wide_bool AS
 select_wide_any AS
 (
     SELECT
-            	arbitrary(lab_albumin) FILTER (where lab_albumin ) as lab_albumin,
+            	arbitrary(dx_transplant) FILTER (where dx_transplant ) as dx_transplant,
+		arbitrary(lab_albumin) FILTER (where lab_albumin ) as lab_albumin,
 		arbitrary(lab_crp) FILTER (where lab_crp ) as lab_crp,
 		arbitrary(lab_drug_level_azathioprine) FILTER (where lab_drug_level_azathioprine ) as lab_drug_level_azathioprine,
 		arbitrary(lab_drug_level_cyclosporin) FILTER (where lab_drug_level_cyclosporin ) as lab_drug_level_cyclosporin,
@@ -52,6 +56,8 @@ select_wide_any AS
 		arbitrary(lab_infection_viral_cmv) FILTER (where lab_infection_viral_cmv ) as lab_infection_viral_cmv,
 		arbitrary(lab_iron_ferritin) FILTER (where lab_iron_ferritin ) as lab_iron_ferritin,
 		arbitrary(lab_tpmt_gene) FILTER (where lab_tpmt_gene ) as lab_tpmt_gene,
+		arbitrary(proc_nephrectomy) FILTER (where proc_nephrectomy ) as proc_nephrectomy,
+		arbitrary(proc_transplant) FILTER (where proc_transplant ) as proc_transplant,
 		arbitrary(rx_alemtuzumab) FILTER (where rx_alemtuzumab ) as rx_alemtuzumab,
 		arbitrary(rx_atg) FILTER (where rx_atg ) as rx_atg,
 		arbitrary(rx_azathioprine) FILTER (where rx_azathioprine ) as rx_azathioprine,

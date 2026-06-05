@@ -105,3 +105,19 @@ tables= [
 	"irae__cube_note_sample_casedef_peri_post",
 	"irae__cube_note_sample_casedef_post"
 ]
+
+[[actions]]
+description="SQL study metadata"
+type="build:parallel"
+files= [
+	"athena/irae__meta_date.sql",
+	"athena/irea__meta_version.sql"
+]
+
+[[actions]]
+description="export study metadata"
+type="export:meta"
+tables= [
+	"irae__meta_date",
+	"irae__meta_version"
+]
