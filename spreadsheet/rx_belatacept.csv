@@ -1,11 +1,16 @@
-"system","code","display"
-"http://www.nlm.nih.gov/research/umls/rxnorm","1112973","belatacept"
-"http://www.nlm.nih.gov/research/umls/rxnorm","1112976","belatacept 250 MG Injection"
-"http://www.nlm.nih.gov/research/umls/rxnorm","1112977","Nulojix"
-"http://www.nlm.nih.gov/research/umls/rxnorm","1112980","Nulojix 250 MG Injection"
-"http://www.nlm.nih.gov/research/umls/rxnorm","1155316","belatacept Injectable Product"
-"http://www.nlm.nih.gov/research/umls/rxnorm","1178807","Nulojix Injectable Product"
-"http://www.nlm.nih.gov/research/umls/rxnorm","1804970","belatacept 250 MG"
-"http://www.nlm.nih.gov/research/umls/rxnorm","1804971","belatacept Injection"
-"http://www.nlm.nih.gov/research/umls/rxnorm","1804973","belatacept 250 MG [Nulojix]"
-"http://www.nlm.nih.gov/research/umls/rxnorm","1804974","belatacept Injection [Nulojix]"
+system,code,display,priority,evidence
+http://www.nlm.nih.gov/research/umls/rxnorm,1112973,belatacept,high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,1112976,belatacept 250 MG Injection,high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,1112977,Nulojix,high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,1112980,Nulojix 250 MG Injection,high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,1155316,belatacept Injectable Product,high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,1178807,Nulojix Injectable Product,high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,1804970,belatacept 250 MG,high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,1804971,belatacept Injection,high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,1804973,belatacept 250 MG [Nulojix],high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,1804974,belatacept Injection [Nulojix],high,confirmed
+http://snomed.info/sct,714777004,Product containing belatacept (medicinal product),medium,confirmed
+http://snomed.info/sct,774751009,Product containing only belatacept (medicinal product),medium,confirmed
+http://snomed.info/sct,714778009,Product containing belatacept in parenteral dose form (medicinal product form),medium,confirmed
+http://snomed.info/sct,19464711000001108,Product containing precisely belatacept 250 milligram/1 each powder for conventional release solution for infusion (medicinal product),medium,confirmed
+http://www.whocc.no/atc,L04AA28,belatacept,medium,confirmed
