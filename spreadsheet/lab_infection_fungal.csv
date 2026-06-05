@@ -1,0 +1,158 @@
+system,code,display,priority,evidence
+http://loinc.org,601-5,Fungus identified in Blood by Culture,high,confirmed
+http://loinc.org,569-4,Fungus identified in Cerebral spinal fluid by Culture,high,confirmed
+http://loinc.org,570-2,Fungus identified in Body fluid by Culture,high,confirmed
+http://loinc.org,580-1,Fungus identified in Specimen by Culture,high,confirmed
+http://loinc.org,40435-0,Fungus identified in Urine by Culture,medium,confirmed
+http://loinc.org,575-1,Fungus identified in Skin by Culture,low,confirmed
+http://loinc.org,577-7,Fungus identified in Sputum by Culture,high,confirmed
+http://loinc.org,6409-7,Fungus identified in Sputum tracheal aspirate by Culture,high,confirmed
+http://loinc.org,24009-3,Fungus identified in Bronchial specimen by Culture,high,confirmed
+http://loinc.org,88686-1,Fungus identified in Bronchoalveolar lavage by Culture,high,confirmed
+http://loinc.org,89656-3,Fungus identified in Lower respiratory specimen by Culture,high,confirmed
+http://loinc.org,91812-8,Fungus identified in Upper respiratory specimen by Culture,medium,confirmed
+http://loinc.org,105618-3,Fungus identified in Throat by Culture,medium,confirmed
+http://loinc.org,76073-6,Fungus identified in Nose by Culture,medium,confirmed
+http://loinc.org,87980-9,Fungus identified in Sinus by Culture,medium,confirmed
+http://loinc.org,21003-9,Fungus identified in Specimen by Fungus stain,high,confirmed
+http://loinc.org,32809-6,Fungus identified in Bronchial specimen by Fungus stain,high,confirmed
+http://loinc.org,667-6,Microscopic observation [Identifier] in Specimen by KOH preparation,medium,
+http://loinc.org,644-5,Microscopic observation [Identifier] in Skin by KOH preparation,low,
+http://loinc.org,68383-9,Microscopic observation [Identifier] in Body fluid by KOH preparation,medium,
+http://loinc.org,55303-2,Fungus [Presence] in Skin by KOH preparation,low,confirmed
+http://loinc.org,70125-0,Yeast.hyphae [Presence] in Specimen by KOH preparation,medium,confirmed
+http://loinc.org,74759-2,Yeast [Presence] in Specimen by Gram stain,medium,confirmed
+http://loinc.org,18482-0,Yeast [Presence] in Specimen by Organism specific culture,medium,confirmed
+http://loinc.org,90078-7,Yeast identified in Isolate by Organism specific culture,medium,confirmed
+http://loinc.org,100903-4,Yeast and Candida sp identification panel - Specimen by Organism specific culture,medium,
+http://loinc.org,555-3,Candida sp identified in Specimen by Organism specific culture,medium,confirmed
+http://loinc.org,42176-8,"1,3 beta glucan [Mass/volume] in Serum",high,confirmed
+http://loinc.org,93812-6,"1,3 beta glucan [Presence] in Serum",high,confirmed
+http://loinc.org,92805-1,Blood Fungal Pathogens Panel by NAA with probe detection in Positive blood culture,high,
+http://loinc.org,85762-3,Blood pathogens panel by NAA with non-probe detection in Positive blood culture,medium,
+http://loinc.org,70022-9,Candida albicans DNA [Presence] in Blood by NAA with probe detection,high,confirmed
+http://loinc.org,70023-7,Candida tropicalis DNA [Presence] in Blood by NAA with probe detection,high,confirmed
+http://loinc.org,70024-5,Candida parapsilosis DNA [Presence] in Blood by NAA with probe detection,high,confirmed
+http://loinc.org,70025-2,Candida krusei DNA [Presence] in Blood by NAA with probe detection,high,confirmed
+http://loinc.org,70026-0,Candida glabrata DNA [Presence] in Blood by NAA with probe detection,high,confirmed
+http://loinc.org,85781-3,Candida albicans DNA [Presence] by NAA with non-probe detection in Positive blood culture,high,confirmed
+http://loinc.org,85782-1,Candida glabrata DNA [Presence] by NAA with non-probe detection in Positive blood culture,high,confirmed
+http://loinc.org,92791-3,Candida auris DNA [Presence] by NAA with probe detection in Positive blood culture,high,confirmed
+http://loinc.org,92792-1,Candida dubliniensis DNA [Presence] by NAA with probe detection in Positive blood culture,high,confirmed
+http://loinc.org,92793-9,Candida famata DNA [Presence] by NAA with probe detection in Positive blood culture,medium,confirmed
+http://loinc.org,92799-6,Candida parapsilosis DNA [Presence] by NAA with probe detection in Positive blood culture,high,confirmed
+http://loinc.org,95766-2,Candida auris DNA [Presence] in Blood by NAA with non-probe detection,high,confirmed
+http://loinc.org,95765-4,Candida auris DNA [Presence] in Specimen by NAA with non-probe detection,high,confirmed
+http://loinc.org,95764-7,Candida auris DNA [Presence] in Urine by NAA with non-probe detection,medium,confirmed
+http://loinc.org,106583-8,Candida auris DNA [Presence] in Body fluid by NAA with non-probe detection,high,confirmed
+http://loinc.org,101781-3,Candida guilliermondii DNA [Presence] in Specimen by NAA with probe detection,medium,confirmed
+http://loinc.org,72481-5,Candida sp 6 panel - Vaginal fluid by NAA with probe detection,low,
+http://loinc.org,69562-7,Candida albicans DNA [Presence] in Vaginal fluid by NAA with probe detection,low,confirmed
+http://loinc.org,69563-5,Candida glabrata DNA [Presence] in Vaginal fluid by NAA with probe detection,low,confirmed
+http://loinc.org,72389-0,Candida krusei DNA [Presence] in Vaginal fluid by NAA with probe detection,low,confirmed
+http://loinc.org,72390-8,Candida lusitaniae DNA [Presence] in Vaginal fluid by NAA with probe detection,low,confirmed
+http://loinc.org,72495-5,Candida parapsilosis DNA [Presence] in Vaginal fluid by NAA with probe detection,low,confirmed
+http://loinc.org,72391-6,Candida tropicalis DNA [Presence] in Vaginal fluid by NAA with probe detection,low,confirmed
+http://loinc.org,33461-5,Candida albicans Ab [Presence] in Cerebral spinal fluid,medium,confirmed
+http://loinc.org,51539-5,Candida albicans IgG Ab [Presence] in Serum,low,
+http://loinc.org,44099-0,Galactomannan Ag [Presence] in Serum or Plasma by Immunoassay,high,confirmed
+http://loinc.org,35383-9,Galactomannan Ag [Units/volume] in Serum or Plasma,high,confirmed
+http://loinc.org,62467-6,Aspergillus Ag [Units/volume] in Serum or Plasma or Bronchoalveolar lavage by Immunoassay,high,confirmed
+http://loinc.org,100671-7,Aspergillus sp DNA [Presence] in Blood by NAA with probe detection,high,confirmed
+http://loinc.org,49863-4,Aspergillus sp DNA [Presence] in Specimen by NAA with probe detection,high,confirmed
+http://loinc.org,62478-3,Aspergillus fumigatus DNA [Presence] in Specimen by NAA with probe detection,high,confirmed
+http://loinc.org,100672-5,Aspergillus fumigatus DNA [Presence] in Blood by NAA with probe detection,high,confirmed
+http://loinc.org,111821-5,Aspergillus fumigatus CYP51A gene DNA TR34 and TR46 resistance mutations [Identifier] in Bronchoalveolar lavage by NAA with probe detection,high,confirmed
+http://loinc.org,9632-1,Aspergillus fumigatus Ab [Presence] in Serum,low,
+http://loinc.org,70910-5,Cryptococcus sp Ag [Presence] in Serum by Rapid immunoassay,high,confirmed
+http://loinc.org,70911-3,Cryptococcus sp Ag [Presence] in Cerebral spinal fluid by Rapid immunoassay,high,confirmed
+http://loinc.org,30324-8,Cryptococcus sp Ag [Presence] in Serum by Latex agglutination,high,confirmed
+http://loinc.org,40768-4,Cryptococcus sp Ag [Titer] in Serum,high,confirmed
+http://loinc.org,29896-8,Cryptococcus sp Ag [Presence] in Cerebral spinal fluid,high,confirmed
+http://loinc.org,9817-8,Cryptococcus sp Ag [Titer] in Cerebral spinal fluid,high,confirmed
+http://loinc.org,97940-1,Cryptococcus sp [Presence] in Isolate by Organism specific culture,high,confirmed
+http://loinc.org,44524-7,Histoplasma capsulatum Ag [Presence] in Urine by Immunoassay,high,confirmed
+http://loinc.org,13971-7,Histoplasma capsulatum Ag [Units/volume] in Urine by Immunoassay,high,confirmed
+http://loinc.org,44525-4,Histoplasma capsulatum Ag [Presence] in Serum by Immunoassay,high,confirmed
+http://loinc.org,19108-0,Histoplasma capsulatum Ag [Presence] in Serum,high,confirmed
+http://loinc.org,57766-8,Histoplasma capsulatum Ag [Mass/volume] in Body fluid,high,confirmed
+http://loinc.org,110971-9,Histoplasma capsulatum Ag [Measurement] in Serum,medium,confirmed
+http://loinc.org,109810-2,Histoplasma capsulatum Ag [Measurement] in Cerebral spinal fluid,high,confirmed
+http://loinc.org,88926-1,Histoplasma capsulatum DNA [Presence] in Tissue by NAA with probe detection,high,confirmed
+http://loinc.org,81653-8,Histoplasma capsulatum+Blastomyces dermatitidis DNA [Presence] in Specimen by NAA with probe detection,high,confirmed
+http://loinc.org,101588-2,Histoplasma capsulatum+Blastomyces dermatitidis Ag [Presence] in Serum or Plasma by Immunoassay,high,confirmed
+http://loinc.org,101589-0,Histoplasma capsulatum+Blastomyces dermatitidis Ag [Mass/volume] in Serum or Plasma by Immunoassay,high,confirmed
+http://loinc.org,104871-9,Histoplasma capsulatum+Blastomyces dermatitidis Ag [Presence] in Urine by Immunoassay,high,confirmed
+http://loinc.org,90227-0,Histoplasma capsulatum Ab panel - Serum,medium,
+http://loinc.org,5218-3,Histoplasma capsulatum Ab [Presence] in Serum by Immune diffusion (ID),medium,
+http://loinc.org,5219-1,Histoplasma capsulatum Ab [Titer] in Serum by Complement fixation,medium,
+http://loinc.org,20573-2,Histoplasma capsulatum mycelial Ab [Titer] in Serum by Complement fixation,medium,
+http://loinc.org,20574-0,Histoplasma capsulatum yeast Ab [Titer] in Serum by Complement fixation,medium,
+http://loinc.org,6816-3,Histoplasma capsulatum mycelial Ab [Presence] in Serum by Immune diffusion (ID),medium,
+http://loinc.org,90232-0,Histoplasma capsulatum Ab [Presence] in Serum by Immunodiffusion,medium,
+http://loinc.org,40712-2,Coccidioides immitis Ab [Presence] in Serum by Immunoassay,medium,
+http://loinc.org,13917-0,Coccidioides immitis Ab [Titer] in Cerebral spinal fluid by Complement fixation,high,confirmed
+http://loinc.org,22206-7,Coccidioides immitis Ab [Units/volume] in Serum,medium,
+http://loinc.org,22207-5,Coccidioides immitis Ab [Titer] in Cerebral spinal fluid,high,confirmed
+http://loinc.org,22208-3,Coccidioides immitis Ab [Titer] in Serum,medium,
+http://loinc.org,22209-1,Coccidioides immitis IgG Ab [Presence] in Serum,medium,
+http://loinc.org,22210-9,Coccidioides immitis IgM Ab [Presence] in Serum,medium,confirmed
+http://loinc.org,30207-5,Coccidioides immitis IgG Ab [Presence] in Cerebral spinal fluid,high,
+http://loinc.org,30208-3,Coccidioides immitis IgM Ab [Presence] in Cerebral spinal fluid,high,confirmed
+http://loinc.org,30209-1,Coccidioides immitis Ab [Presence] in Cerebral spinal fluid by Complement fixation,high,confirmed
+http://loinc.org,33379-9,Coccidioides sp Ab [Presence] in Serum by Complement fixation,medium,
+http://loinc.org,33380-7,Coccidioides sp Ab [Titer] in Serum by Complement fixation,medium,
+http://loinc.org,33416-9,Coccidioides sp Ab [Presence] in Serum by Immunoassay,medium,
+http://loinc.org,43849-9,Coccidioides sp IgG Ab [Presence] in Serum by Immunoassay,medium,
+http://loinc.org,43850-7,Coccidioides sp IgM Ab [Presence] in Serum by Immunoassay,medium,confirmed
+http://loinc.org,5095-5,Coccidioides immitis Ab [Presence] in Serum by Immune diffusion (ID),medium,
+http://loinc.org,5096-3,Coccidioides immitis Ab [Titer] in Serum by Complement fixation,medium,
+http://loinc.org,38385-1,Coccidioides immitis Ag [Presence] in Cerebral spinal fluid,high,confirmed
+http://loinc.org,62458-5,Coccidioides immitis IgM Ab [Presence] in Serum by Immune diffusion (ID),medium,confirmed
+http://loinc.org,62459-3,Coccidioides immitis IgG Ab [Presence] in Serum by Immune diffusion (ID),medium,
+http://loinc.org,75710-4,Coccidioides immitis+posadasii IgM Ab [Presence] in Cerebral spinal fluid by Immune diffusion (ID),high,confirmed
+http://loinc.org,93224-4,Coccidioides sp Ag [Mass/volume] in Bronchoalveolar lavage by Immunoassay,high,confirmed
+http://loinc.org,93225-1,Coccidioides sp Ag [Mass/volume] in Cerebral spinal fluid by Immunoassay,high,confirmed
+http://loinc.org,700-5,Pneumocystis jirovecii Ag [Presence] in Specimen by Immunofluorescence,high,confirmed
+http://loinc.org,14522-7,Pneumocystis jirovecii Ag [Presence] in Bronchial specimen by Immunofluorescence,high,confirmed
+http://loinc.org,91824-3,Pneumocystis jirovecii Ag [Presence] in Lower respiratory specimen by Immunofluorescence,high,confirmed
+http://loinc.org,6521-9,Pneumocystis jirovecii DNA [Presence] in Specimen by NAA with probe detection,high,confirmed
+http://loinc.org,88690-3,Pneumocystis jirovecii DNA [Presence] in Lower respiratory specimen by NAA with probe detection,high,confirmed
+http://loinc.org,88688-7,Pneumocystis jirovecii DNA [#/volume] in Lower respiratory specimen by NAA with probe detection,high,confirmed
+http://loinc.org,100693-1,Pneumocystis jirovecii DNA [Log #/volume] in Respiratory system specimen by NAA with probe detection,high,confirmed
+http://loinc.org,49440-1,Pneumocystis jirovecii DNA [#/volume] in Serum or Plasma by NAA with probe detection,high,confirmed
+http://loinc.org,95912-2,Pneumocystis jirovecii DNA [Presence] in Tissue by NAA with probe detection,high,confirmed
+http://loinc.org,101178-2,Pneumocystis jirovecii DNA [Cycle Threshold #] in Respiratory system specimen by NAA with probe detection,high,confirmed
+http://loinc.org,109624-7,Pneumocystis jirovecii DNA [Measurement] in Lower respiratory specimen,medium,confirmed
+http://loinc.org,88557-4,Scedosporium apiospermum DNA [Presence] in Specimen by NAA with probe detection,high,confirmed
+http://loinc.org,88548-3,Scedosporium apiospermum DNA [Presence] in Tissue by NAA with probe detection,high,confirmed
+http://loinc.org,88550-9,Scedosporium apiospermum DNA [Presence] in Lower respiratory specimen by NAA with probe detection,high,confirmed
+http://loinc.org,88552-5,Scedosporium prolificans DNA [Presence] in Specimen by NAA with probe detection,high,confirmed
+http://loinc.org,88554-1,Scedosporium prolificans DNA [Presence] in Tissue by NAA with probe detection,high,confirmed
+http://loinc.org,88556-6,Scedosporium prolificans DNA [Presence] in Lower respiratory specimen by NAA with probe detection,high,confirmed
+http://loinc.org,101782-1,Fusarium solani DNA [Presence] in Specimen by NAA with probe detection,high,confirmed
+http://loinc.org,101783-9,Fusarium oxysporum DNA [Presence] in Specimen by NAA with probe detection,high,confirmed
+http://loinc.org,101784-7,Scopulariopsis brevicaulis DNA [Presence] in Specimen by NAA with probe detection,medium,confirmed
+http://loinc.org,101754-0,Trichophyton tonsurans DNA [Presence] in Specimen by NAA with probe detection,low,confirmed
+http://loinc.org,101756-5,Trichophyton interdigitale DNA [Presence] in Specimen by NAA with probe detection,low,confirmed
+http://loinc.org,101757-3,Trichophyton mentagrophytes DNA [Presence] in Specimen by NAA with probe detection,low,confirmed
+http://loinc.org,101758-1,Trichophyton quinckeanum DNA [Presence] in Specimen by NAA with probe detection,low,confirmed
+http://loinc.org,69939-7,Trichophyton rubrum DNA [Presence] in Nail by NAA with probe detection,low,confirmed
+http://loinc.org,101769-8,Trichophyton rubrum DNA [Presence] in Specimen by NAA with probe detection,low,confirmed
+http://loinc.org,101767-2,Trichophyton verrucosum DNA [Presence] in Specimen by NAA with probe detection,low,confirmed
+http://loinc.org,101770-6,Trichophyton violaceum DNA [Presence] in Specimen by NAA with probe detection,low,confirmed
+http://loinc.org,101771-4,Epidermophyton floccosum DNA [Presence] in Specimen by NAA with probe detection,low,confirmed
+http://loinc.org,101772-2,Microsporum canis DNA [Presence] in Specimen by NAA with probe detection,low,confirmed
+http://loinc.org,101773-0,Microsporum audouinii DNA [Presence] in Specimen by NAA with probe detection,low,confirmed
+http://loinc.org,101774-8,Microsporum ferrugineum DNA [Presence] in Specimen by NAA with probe detection,low,confirmed
+http://snomed.info/sct,123828003,Fungal organisms morphologically consistent with Candida species (finding),medium,confirmed
+http://snomed.info/sct,53326005,Candida albicans (organism),medium,confirmed
+http://snomed.info/sct,3265006,Genus Candida (organism),medium,confirmed
+http://snomed.info/sct,865929003,Infection caused by Candida auris (disorder),high,confirmed
+http://snomed.info/sct,2429008,Aspergillus (organism),high,confirmed
+http://snomed.info/sct,32684000,Aspergillus fumigatus (organism),high,confirmed
+http://snomed.info/sct,67168003,Cryptococcus neoformans (organism),high,confirmed
+http://snomed.info/sct,243468002,Cryptococcus neoformans var neoformans (organism),high,confirmed
+http://snomed.info/sct,243509006,Histoplasma capsulatum var capsulatum (organism),high,confirmed
+http://snomed.info/sct,81951003,Histoplasma species (organism),high,confirmed
+http://snomed.info/sct,719555004,Pneumocystis jirovecii cyst (organism),high,confirmed
