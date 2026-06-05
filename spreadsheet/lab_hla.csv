@@ -623,3 +623,10 @@ http://loinc.org,98004-5,"HLA-A & B & C (class I) & HLA-DP & DQ & DR (class II),
 http://loinc.org,98005-2,"HLA-A & B & C (class I) & HLA-DP & DQ & DR (class II), Blood or tissue specimen"
 http://loinc.org,98006-0,"HLA-A & B & C (class I) & HLA-DP & DQ & DR (class II) antibody, Blood"
 http://loinc.org,80737-0,"Calculated panel reactive antibody - Serum"
+http://loinc.org,96046-8,B and T cell crossmatch panel - Patient serum and Donor blood by Flow cytometry (FC)
+http://loinc.org,96047-6,T cell crossmatch [Presence] in Patient serum and Donor blood by Flow cytometry (FC)
+http://loinc.org,96048-4,T cell median channel shift in Patient serum and Donor blood by Flow cytometry (FC)
+http://loinc.org,96049-2,B cell crossmatch [Presence] in Patient serum and Donor blood by Flow cytometry (FC)
+http://loinc.org,96050-0,B cell median channel shift in Patient serum and Donor blood by Flow cytometry (FC)
+http://loinc.org,46720-9,T cell crossmatch [Presence] in Blood
+http://loinc.org,48390-9,B cell crossmatch [Presence] in Blood from Donor
