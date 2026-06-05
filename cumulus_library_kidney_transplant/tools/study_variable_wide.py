@@ -277,13 +277,15 @@ def select_wide_proc(variable_list: list[str] = None, columns: dict = None) -> s
     """
     FHIR Procedure
     * https://build.fhir.org/procedure.html
+    * https://build.fhir.org/procedure-definitions.html#Procedure.performer.period
+    * https://build.fhir.org/procedure-definitions.html#Procedure.category
 
     :param variable_list: default = Procedure variables
     :param columns: default= author date, code
     :return: str SQL
     """
     if not variable_list:
-        variable_list = list_variables(Aspect.doc)
+        variable_list = list_variables(Aspect.proc)
     if not columns:
         columns = {'performeddatetime_day': 'date',
                    'category_code': 'code',
