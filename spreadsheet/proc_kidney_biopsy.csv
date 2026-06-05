@@ -1,0 +1,52 @@
+system,code,display,priority,evidence
+http://snomed.info/sct,7246002,Kidney biopsy (procedure),high,confirmed
+http://snomed.info/sct,769246001,Closed biopsy of kidney (procedure),high,confirmed
+http://snomed.info/sct,274326000,Percutaneous renal needle biopsy (procedure),high,confirmed
+http://snomed.info/sct,275155009,Needle biopsy of kidney (procedure),high,confirmed
+http://snomed.info/sct,10106002,Core needle biopsy of kidney (procedure),high,confirmed
+http://snomed.info/sct,48426002,Fine needle biopsy of kidney (procedure),high,confirmed
+http://snomed.info/sct,274358005,Surgical biopsy of kidney (procedure),high,confirmed
+http://snomed.info/sct,40134000,Open biopsy of kidney (procedure),high,confirmed
+http://snomed.info/sct,116029000,Wedge biopsy of kidney (procedure),high,confirmed
+http://snomed.info/sct,274321005,Biopsy of kidney (procedure),high,confirmed
+http://snomed.info/sct,438813007,Biopsy of kidney using ultrasound guidance (procedure),high,confirmed
+http://snomed.info/sct,1141000087106,Biopsy of left kidney using ultrasonographic guidance (procedure),high,confirmed
+http://snomed.info/sct,1151000087109,Biopsy of right kidney using ultrasonographic guidance (procedure),high,confirmed
+http://snomed.info/sct,1641000087102,Biopsy of bilateral kidneys using ultrasonographic guidance (procedure),high,confirmed
+http://snomed.info/sct,16451571000119101,Needle biopsy of right kidney using ultrasonographic guidance (procedure),high,confirmed
+http://snomed.info/sct,16451621000119103,Needle biopsy of left kidney using ultrasonographic guidance (procedure),high,confirmed
+http://snomed.info/sct,16460061000119103,Percutaneous needle biopsy of left kidney using ultrasonographic guidance (procedure),high,confirmed
+http://snomed.info/sct,16460111000119102,Percutaneous needle biopsy of right kidney using ultrasonographic guidance (procedure),high,confirmed
+http://snomed.info/sct,419174006,Ultrasound scan and biopsy of kidney (procedure),high,confirmed
+http://snomed.info/sct,408071000119106,Percutaneous renal needle biopsy using ultrasonographic guidance (procedure),high,confirmed
+http://snomed.info/sct,438820000,Biopsy of kidney using computed tomography guidance (procedure),high,confirmed
+http://snomed.info/sct,1391000087101,Biopsy of left kidney using computed tomography guidance (procedure),high,confirmed
+http://snomed.info/sct,1401000087103,Biopsy of right kidney using computed tomography guidance (procedure),high,confirmed
+http://snomed.info/sct,1811000087104,Biopsy of bilateral kidneys using computed tomography guidance (procedure),high,confirmed
+http://snomed.info/sct,16549791000119102,Needle biopsy of left kidney using computed tomography guidance (procedure),high,confirmed
+http://snomed.info/sct,16549841000119104,Needle biopsy of right kidney using computed tomography guidance (procedure),high,confirmed
+http://snomed.info/sct,447393003,Biopsy of kidney using fluoroscopic guidance (procedure),high,confirmed
+http://snomed.info/sct,6451000087105,Biopsy of left kidney using fluoroscopic guidance (procedure),high,confirmed
+http://snomed.info/sct,6461000087108,Biopsy of right kidney using fluoroscopic guidance (procedure),high,confirmed
+http://snomed.info/sct,19531000087109,Biopsy of bilateral kidneys using fluoroscopic guidance (procedure),high,confirmed
+http://snomed.info/sct,431662003,Percutaneous transjugular biopsy of kidney using fluoroscopic guidance (procedure),high,confirmed
+http://snomed.info/sct,708688004,Percutaneous fine needle aspiration biopsy of kidney using imaging guidance (procedure),medium,confirmed
+http://snomed.info/sct,175967008,Percutaneous needle biopsy of renal lesion (procedure),medium,confirmed
+http://snomed.info/sct,175962002,Nephroscopy and biopsy of renal lesion (procedure),medium,confirmed
+http://snomed.info/sct,426606005,Diagnostic endoscopic retrograde examination of kidney and biopsy of lesion of kidney (procedure),medium,confirmed
+http://snomed.info/sct,440512006,Biopsy of transplanted kidney using ultrasound guidance (procedure),high,confirmed
+http://snomed.info/sct,6501000179109,Laparoscopic biopsy of transplanted kidney (procedure),high,confirmed
+http://snomed.info/sct,719033000,Evaluation of kidney biopsy specimen (procedure),medium,confirmed
+http://www.ama-assn.org/go/cpt,50200,"Renal biopsy; percutaneous, by trocar or needle",high,confirmed
+http://www.ama-assn.org/go/cpt,50205,Renal biopsy; by surgical exposure of kidney,high,confirmed
+http://www.cms.gov/Medicare/Coding/ICD10,0TB00ZX,"Excision of Right Kidney, Open Approach, Diagnostic",high,confirmed
+http://www.cms.gov/Medicare/Coding/ICD10,0TB03ZX,"Excision of Right Kidney, Percutaneous Approach, Diagnostic",high,confirmed
+http://www.cms.gov/Medicare/Coding/ICD10,0TB04ZX,"Excision of Right Kidney, Percutaneous Endoscopic Approach, Diagnostic",high,confirmed
+http://www.cms.gov/Medicare/Coding/ICD10,0TB10ZX,"Excision of Left Kidney, Open Approach, Diagnostic",high,confirmed
+http://www.cms.gov/Medicare/Coding/ICD10,0TB13ZX,"Excision of Left Kidney, Percutaneous Approach, Diagnostic",high,confirmed
+http://www.cms.gov/Medicare/Coding/ICD10,0TB14ZX,"Excision of Left Kidney, Percutaneous Endoscopic Approach, Diagnostic",high,confirmed
+http://www.cms.gov/Medicare/Coding/ICD10,0TB20ZX,"Excision of Bilateral Kidneys, Open Approach, Diagnostic",medium,confirmed
+http://www.cms.gov/Medicare/Coding/ICD10,0TB23ZX,"Excision of Bilateral Kidneys, Percutaneous Approach, Diagnostic",medium,confirmed
+http://www.cms.gov/Medicare/Coding/ICD10,0TB24ZX,"Excision of Bilateral Kidneys, Percutaneous Endoscopic Approach, Diagnostic",medium,confirmed
+http://hl7.org/fhir/sid/icd-9-cm,55.23,Closed [percutaneous] [needle] biopsy of kidney,medium,confirmed
+http://hl7.org/fhir/sid/icd-9-cm,55.24,Open biopsy of kidney,medium,confirmed

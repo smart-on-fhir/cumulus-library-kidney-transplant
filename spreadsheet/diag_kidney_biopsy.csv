@@ -1,0 +1,20 @@
+system,code,display,priority,evidence
+http://loinc.org,65757-7,Kidney Pathology biopsy report,high,confirmed
+http://loinc.org,24772-6,US Guidance for biopsy of Kidney,high,confirmed
+http://loinc.org,26340-0,US Guidance for biopsy of Kidney - bilateral,high,confirmed
+http://loinc.org,26341-8,US Guidance for biopsy of Kidney - left,high,confirmed
+http://loinc.org,26342-6,US Guidance for biopsy of Kidney - right,high,confirmed
+http://loinc.org,38766-2,US Guidance for biopsy of transplanted kidney,high,confirmed
+http://loinc.org,87041-0,Guidance for percutaneous biopsy of Kidney,high,confirmed
+http://loinc.org,30607-6,CT Guidance for biopsy of Kidney - bilateral,high,confirmed
+http://loinc.org,42279-0,CT Guidance for biopsy of Kidney,high,confirmed
+http://loinc.org,88323-1,CT Guidance for biopsy of Kidney - right,high,confirmed
+http://loinc.org,88325-6,CT Guidance for biopsy of Kidney - left,high,confirmed
+http://loinc.org,89614-2,CT Guidance for biopsy of Kidney-- WO contrast,high,confirmed
+http://loinc.org,89621-7,CT Guidance for biopsy of Kidney-- W contrast IV,high,confirmed
+http://loinc.org,100883-8,MR Guidance for biopsy of Kidney - left,medium,confirmed
+http://loinc.org,100884-6,MR Guidance for biopsy of Kidney - right,medium,confirmed
+http://loinc.org,11529-5,Surgical pathology study,low,confirmed
+http://loinc.org,60568-3,Pathology synoptic report,low,confirmed
+http://loinc.org,66121-5,Tissue Pathology biopsy report,low,confirmed
+http://loinc.org,81220-6,Diagnostic imaging report - recommended C-CDA R2.0 and R2.1 sections,low,

@@ -1,0 +1,23 @@
+system,code,display,priority,evidence
+http://loinc.org,65757-7,Kidney Pathology biopsy report,high,confirmed
+http://loinc.org,22637-3,Pathology report final diagnosis Narrative,medium,confirmed
+http://loinc.org,22635-7,Pathology report microscopic observation Narrative Other stain,medium,confirmed
+http://loinc.org,22634-0,Pathology report gross observation Narrative,medium,confirmed
+http://loinc.org,22636-5,Pathology report relevant history Narrative,low,
+http://loinc.org,22638-1,Pathology report comments [Interpretation] Narrative,low,confirmed
+http://loinc.org,35265-8,Pathology report addendum Narrative,low,confirmed
+http://loinc.org,33746-9,Pathologic findings,low,confirmed
+http://loinc.org,22633-2,Pathology report site of origin,low,
+http://loinc.org,11529-5,Surgical pathology study,low,confirmed
+http://loinc.org,66121-5,Tissue Pathology biopsy report,low,confirmed
+http://snomed.info/sct,719341006,Kidney biopsy result borderline abnormal (finding),high,confirmed
+http://snomed.info/sct,723066005,Kidney biopsy result normal (finding),medium,confirmed
+http://snomed.info/sct,309269002,Kidney biopsy specimen (specimen),high,confirmed
+http://snomed.info/sct,438661003,Specimen from transplanted kidney obtained by biopsy (specimen),high,confirmed
+http://snomed.info/sct,122670001,Specimen from kidney obtained by (core) needle biopsy (specimen),high,confirmed
+http://snomed.info/sct,122671002,Specimen from kidney obtained by fine needle aspiration procedure (specimen),medium,confirmed
+http://snomed.info/sct,122672009,Specimen from kidney obtained by incisional biopsy (specimen),medium,confirmed
+http://snomed.info/sct,122673004,Specimen from kidney obtained by wedge biopsy (specimen),medium,confirmed
+http://snomed.info/sct,397221008,Specimen from renal pelvis obtained by biopsy (specimen),medium,confirmed
+http://snomed.info/sct,127473003,Specimen from kidney (specimen),low,
+http://snomed.info/sct,127474009,Tissue specimen from kidney (specimen),low,
