@@ -1,0 +1,34 @@
+system,code,display
+http://loinc.org,11529-5,Surgical pathology study
+http://loinc.org,22637-3,Pathology report final diagnosis Narrative
+http://loinc.org,60567-5,Comprehensive pathology report panel
+http://loinc.org,60568-3,Pathology report.synoptic Document
+http://loinc.org,60570-9,Pathology Consult note
+http://loinc.org,60571-7,Pathology Consult note.synoptic
+http://loinc.org,35265-8,Pathology report addendum in Specimen Narrative
+http://loinc.org,60569-1,Pathology Report addendum.synoptic Document
+http://loinc.org,83321-0,Pathology report intraoperative observation in Specimen Document
+http://loinc.org,66121-5,Tissue Pathology biopsy report
+http://loinc.org,66112-4,Lymph node Pathology biopsy report
+http://loinc.org,66119-9,Bone marrow Pathology biopsy report Narrative
+http://loinc.org,65754-4,Skin Pathology biopsy report
+http://loinc.org,65757-7,Kidney Pathology biopsy report
+http://loinc.org,101119-6,Leukemia and lymphoma immunophenotyping in Specimen Document by Flow cytometry (FC)
+http://loinc.org,54226-6,Lymphoma panel - Specimen by Flow cytometry (FC)
+http://loinc.org,54227-4,Lymphoma - acute screen panel - Specimen by Flow cytometry (FC)
+http://loinc.org,54228-2,Lymphoma - CLL screen panel - Specimen by Flow cytometry (FC)
+http://loinc.org,54229-0,Lymphoma - T-cell screen panel - Specimen by Flow cytometry (FC)
+http://loinc.org,45269-8,Chronic leukemia panel - Specimen by Flow cytometry (FC)
+http://loinc.org,45270-6,Acute leukemia panel - Specimen by Flow cytometry (FC)
+http://loinc.org,21748-9,Kappa LC gene rearrangements [Presence] in Blood or Tissue by Molecular genetics method
+http://loinc.org,21753-9,TCRG gene rearrangements [Presence] in Blood or Tissue by Molecular genetics method
+http://loinc.org,46998-1,TCRB and HC gene rearrangements in Blood or Tissue by Molecular genetics method
+http://loinc.org,104272-0,IgH and IgK gene rearrangement status [Identifier] in Specimen by Molecular genetics method Nominal
+http://loinc.org,78221-9,IGH gene rearrangements [Presence] in Blood or Tissue by FISH
+http://loinc.org,78228-4,IGH gene rearrangements [Interpretation] in Blood or Tissue by FISH Narrative
+http://loinc.org,78236-7,Cells.IGH gene rearrangements/Cells counted in Blood or Tissue by FISH
+http://loinc.org,78215-1,MYC gene rearrangements [Presence] in Blood or Tissue by FISH
+http://loinc.org,78218-5,BCL2 gene rearrangements [Presence] in Blood or Tissue by FISH
+http://loinc.org,21746-3,BCL6 gene rearrangements [Presence] in Blood or Tissue by Molecular genetics method
+http://loinc.org,78203-7,BCL6 gene rearrangements [Presence] in Blood or Tissue by FISH
+http://loinc.org,21808-1,"t(14;18)(q32;q21.3)(IGH,BCL2) fusion transcript [Presence] in Blood or Tissue by Molecular genetics method"
