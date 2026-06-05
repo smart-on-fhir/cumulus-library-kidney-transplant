@@ -62,6 +62,9 @@ file = "lab_tpmt_gene.csv"
 [tables.valueset_proc_nephrectomy]
 file = "proc_nephrectomy.csv"
 
+[tables.valueset_proc_transplant]
+file = "proc_transplant.csv"
+
 [tables.valueset_rx_alemtuzumab]
 file = "rx_alemtuzumab.csv"
 
