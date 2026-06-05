@@ -1,0 +1,190 @@
+system,code,display,priority,evidence
+http://loinc.org,94499-1,Respiratory viral pathogens DNA and RNA panel - Respiratory system specimen Qualitative by NAA with probe detection,high,
+http://loinc.org,92143-7,Respiratory pathogens DNA and RNA panel - Respiratory system specimen by NAA with probe detection,medium,
+http://loinc.org,92696-4,Gastrointestinal viral pathogens panel - Stool by NAA with probe detection,high,
+http://loinc.org,79381-0,Gastrointestinal pathogens panel - Stool by NAA with probe detection,medium,
+http://loinc.org,82195-9,Gastrointestinal pathogens DNA and RNA panel - Stool by NAA with non-probe detection,medium,
+http://loinc.org,106062-3,Enteric pathogen panel - Stool by NAA with probe detection,medium,
+http://loinc.org,49345-2,BK virus DNA [#/volume] (viral load) in Blood by NAA with probe detection,high,confirmed
+http://loinc.org,100674-1,BK virus DNA [Log #/volume] (viral load) in Blood by NAA with probe detection,high,confirmed
+http://loinc.org,41479-7,BK virus DNA [#/volume] (viral load) in Serum or Plasma by NAA with probe detection,high,confirmed
+http://loinc.org,32284-2,BK virus DNA [Units/volume] (viral load) in Serum or Plasma by NAA with probe detection,high,confirmed
+http://loinc.org,108224-7,BK virus DNA [log units/volume] (viral load) in Serum or Plasma by NAA with probe detection,high,confirmed
+http://loinc.org,41480-5,BK virus DNA [#/volume] (viral load) in Urine by NAA with probe detection,high,confirmed
+http://loinc.org,32285-9,BK virus DNA [Units/volume] (viral load) in Urine by NAA with probe detection,high,confirmed
+http://loinc.org,80386-6,BK virus DNA [Presence] in Urine by NAA with probe detection,high,confirmed
+http://loinc.org,90440-9,BK virus + JC virus DNA [Presence] in Specimen by NAA with probe detection,high,confirmed
+http://loinc.org,33295-7,JC virus DNA [Presence] in Cerebral spinal fluid by NAA with probe detection,high,confirmed
+http://loinc.org,49410-4,JC virus DNA [#/volume] (viral load) in Cerebral spinal fluid by NAA with probe detection,high,confirmed
+http://loinc.org,101732-6,JC virus DNA [log units/volume] (viral load) in Cerebral spinal fluid by NAA with probe detection,high,confirmed
+http://loinc.org,101342-4,JC virus DNA [Units/volume] (viral load) in Serum or Plasma by NAA with probe detection,high,confirmed
+http://loinc.org,101731-8,JC virus DNA [log units/volume] (viral load) in Serum or Plasma by NAA with probe detection,high,confirmed
+http://loinc.org,11483-5,Varicella zoster virus DNA [Presence] in Specimen by NAA with probe detection,high,confirmed
+http://loinc.org,94584-0,Varicella zoster virus DNA [Presence] in Specimen by NAA with non-probe detection,high,confirmed
+http://loinc.org,49451-8,Varicella zoster virus DNA [#/volume] (viral load) in Specimen by NAA with probe detection,high,confirmed
+http://loinc.org,100982-8,Varicella zoster virus DNA [Log #/volume] (viral load) in Specimen by NAA with probe detection,high,confirmed
+http://loinc.org,29248-2,Varicella zoster virus DNA [Presence] in Blood by NAA with probe detection,high,confirmed
+http://loinc.org,82188-4,Varicella zoster virus DNA [Presence] in Cerebral spinal fluid by NAA with non-probe detection,high,confirmed
+http://loinc.org,87961-9,Varicella zoster virus DNA [Presence] in Body fluid by NAA with probe detection,high,confirmed
+http://loinc.org,88536-8,Varicella zoster virus DNA [Presence] in Aspirate by NAA with probe detection,high,confirmed
+http://loinc.org,35399-5,Varicella zoster virus DNA [Presence] in Eye by NAA with probe detection,high,confirmed
+http://loinc.org,35400-1,Varicella zoster virus DNA [Presence] in Tissue by NAA with probe detection,high,confirmed
+http://loinc.org,31982-2,Varicella zoster virus Ag [Presence] in Specimen,medium,confirmed
+http://loinc.org,5881-8,Varicella zoster virus Ag [Presence] in Skin by Immunofluorescence,high,confirmed
+http://loinc.org,5882-6,Varicella zoster virus Ag [Presence] in Specimen by Immunofluorescence,high,confirmed
+http://loinc.org,8048-1,Varicella zoster virus IgM Ab [Units/volume] in Serum,medium,confirmed
+http://loinc.org,22606-8,Varicella zoster virus IgM Ab [Titer] in Serum,medium,confirmed
+http://loinc.org,6570-6,Varicella zoster virus IgM Ab [Titer] in Serum by Immunofluorescence,medium,confirmed
+http://loinc.org,38351-3,Herpes virus 6 DNA panel - Specimen by NAA with probe detection,high,
+http://loinc.org,33941-6,Herpes virus 6 DNA [Presence] in Blood by NAA with probe detection,high,confirmed
+http://loinc.org,33942-4,Herpes virus 6 DNA [Presence] in Cerebral spinal fluid by NAA with probe detection,high,confirmed
+http://loinc.org,33940-8,Herpes virus 6 DNA [Presence] in Tissue by NAA with probe detection,high,confirmed
+http://loinc.org,101254-1,Herpes virus 6 DNA [Units/volume] (viral load) in Serum or Plasma by NAA with probe detection,high,confirmed
+http://loinc.org,97992-2,Herpes virus 6 IgM Ab [Presence] in Serum by Immunofluorescence,medium,confirmed
+http://loinc.org,49403-9,Herpes virus 8 DNA [#/volume] (viral load) in Specimen by NAA with probe detection,high,confirmed
+http://loinc.org,97873-4,Herpes virus 8 IgM Ab [Presence] in Serum or Plasma,medium,confirmed
+http://loinc.org,97863-5,Herpes virus 8 IgM Ab [Presence] in Serum or Plasma by Immunofluorescence,medium,confirmed
+http://loinc.org,9571-1,Parvovirus B19 DNA [Presence] in Specimen by NAA with probe detection,high,confirmed
+http://loinc.org,50348-2,Parvovirus B19 DNA [Presence] in Blood by NAA with probe detection,high,confirmed
+http://loinc.org,50344-1,Parvovirus B19 DNA [Presence] in Body fluid by NAA with probe detection,high,confirmed
+http://loinc.org,91796-3,Parvovirus B19 DNA [Presence] in Upper respiratory specimen by NAA with probe detection,high,confirmed
+http://loinc.org,34950-6,Parvovirus B19 IgG and IgM panel - Serum,medium,
+http://loinc.org,7984-8,Parvovirus B19 IgM Ab [Units/volume] in Serum,medium,confirmed
+http://loinc.org,32794-0,Parvovirus B19 IgM Ab [Units/volume] in Serum by Immunoassay,medium,confirmed
+http://loinc.org,94306-8,SARS-CoV-2 (COVID-19) RNA panel - Specimen by NAA with probe detection,high,
+http://loinc.org,94531-1,SARS-CoV-2 (COVID-19) RNA panel - Respiratory system specimen by NAA with probe detection,high,
+http://loinc.org,94500-6,SARS-CoV-2 (COVID-19) RNA [Presence] in Respiratory system specimen by NAA with probe detection,high,confirmed
+http://loinc.org,95608-6,SARS-CoV-2 (COVID-19) RNA [Presence] in Respiratory system specimen by NAA with non-probe detection,high,confirmed
+http://loinc.org,94845-5,SARS-CoV-2 (COVID-19) RNA [Presence] in Saliva (oral fluid) by NAA with probe detection,high,confirmed
+http://loinc.org,95406-5,SARS-CoV-2 (COVID-19) RNA [Presence] in Nose by NAA with probe detection,high,confirmed
+http://loinc.org,94533-7,SARS-CoV-2 (COVID-19) N gene [Presence] in Respiratory system specimen by NAA with probe detection,high,confirmed
+http://loinc.org,94534-5,SARS-CoV-2 (COVID-19) RdRp gene [Presence] in Respiratory system specimen by NAA with probe detection,high,confirmed
+http://loinc.org,94559-2,SARS-CoV-2 (COVID-19) ORF1ab region [Presence] in Respiratory system specimen by NAA with probe detection,high,confirmed
+http://loinc.org,94640-0,SARS-CoV-2 (COVID-19) S gene [Presence] in Respiratory system specimen by NAA with probe detection,high,confirmed
+http://loinc.org,98132-4,SARS-CoV-2 (COVID-19) ORF1a region [Presence] in Respiratory system specimen by NAA with probe detection,high,confirmed
+http://loinc.org,98131-6,SARS-CoV-2 (COVID-19) ORF1b region [Presence] in Respiratory system specimen by NAA with probe detection,high,confirmed
+http://loinc.org,94502-2,SARS-related coronavirus RNA [Presence] in Respiratory system specimen by NAA with probe detection,high,confirmed
+http://loinc.org,94558-4,SARS-CoV-2 (COVID-19) Ag [Presence] in Respiratory system specimen by Rapid immunoassay,high,confirmed
+http://loinc.org,105066-5,SARS-CoV+SARS-CoV-2 (COVID-19) Ag [Presence] in Specimen,medium,confirmed
+http://loinc.org,95422-2,Influenza virus A and B and SARS-CoV-2 (COVID-19) RNA panel - Respiratory system specimen by NAA with probe detection,high,
+http://loinc.org,95380-2,Influenza virus A and B and SARS-CoV-2 (COVID-19) and SARS-related CoV RNA panel - Respiratory system specimen by NAA with probe detection,high,
+http://loinc.org,92142-9,Influenza virus A RNA [Presence] in Respiratory system specimen by NAA with probe detection,high,confirmed
+http://loinc.org,92141-1,Influenza virus B RNA [Presence] in Respiratory system specimen by NAA with probe detection,high,confirmed
+http://loinc.org,85477-8,Influenza virus A RNA [Presence] in Upper respiratory specimen by NAA with probe detection,high,confirmed
+http://loinc.org,85478-6,Influenza virus B RNA [Presence] in Upper respiratory specimen by NAA with probe detection,high,confirmed
+http://loinc.org,34487-9,Influenza virus A RNA [Presence] in Specimen by NAA with probe detection,high,confirmed
+http://loinc.org,40982-1,Influenza virus B RNA [Presence] in Specimen by NAA with probe detection,high,confirmed
+http://loinc.org,46082-4,Influenza virus A Ag [Presence] in Nasopharynx by Rapid immunoassay,high,confirmed
+http://loinc.org,46083-2,Influenza virus B Ag [Presence] in Nasopharynx by Rapid immunoassay,high,confirmed
+http://loinc.org,97733-0,Influenza virus types A and B and subtypes RNA panel - Specimen by NAA with probe detection,high,
+http://loinc.org,39528-5,Adenovirus DNA [Presence] in Specimen by NAA with probe detection,high,confirmed
+http://loinc.org,96503-8,Adenovirus DNA [Presence] in Respiratory system specimen by NAA with probe detection,high,confirmed
+http://loinc.org,92987-7,Adenovirus DNA [Presence] in Lower respiratory specimen by NAA with non-probe detection,high,confirmed
+http://loinc.org,92690-7,Adenovirus 40+41 DNA [Presence] in Stool by NAA with probe detection,high,confirmed
+http://loinc.org,80674-5,Adenovirus 40+41 fiber protein gene [Presence] in Stool by NAA with probe detection,high,confirmed
+http://loinc.org,82209-8,Adenovirus 40+41 DNA [Presence] in Stool by NAA with non-probe detection,high,confirmed
+http://loinc.org,92135-3,Human bocavirus 1+2+3 DNA [Presence] in Respiratory system specimen by NAA with probe detection,medium,confirmed
+http://loinc.org,88593-9,Human bocavirus DNA [Presence] in Lower respiratory specimen by NAA with probe detection,medium,confirmed
+http://loinc.org,88613-5,Human bocavirus DNA [Presence] in Upper respiratory specimen by NAA with probe detection,medium,confirmed
+http://loinc.org,91832-6,Human bocavirus Ag [Presence] in Lower respiratory specimen by Immunofluorescence,medium,confirmed
+http://loinc.org,91811-0,Human bocavirus Ag [Presence] in Upper respiratory specimen by Immunofluorescence,medium,confirmed
+http://loinc.org,38917-1,Human metapneumovirus RNA [Presence] in Specimen by NAA with probe detection,high,confirmed
+http://loinc.org,92134-6,Human metapneumovirus RNA [Presence] in Respiratory system specimen by NAA with probe detection,high,confirmed
+http://loinc.org,77024-8,Human metapneumovirus RNA [Presence] in Nasopharynx by NAA with probe detection,high,confirmed
+http://loinc.org,89651-4,Human metapneumovirus RNA [Presence] in Lower respiratory specimen by NAA with probe detection,high,confirmed
+http://loinc.org,105731-4,Human metapneumovirus RNA [Presence] in Bronchoalveolar lavage by NAA with probe detection,high,confirmed
+http://loinc.org,29908-1,Parainfluenza virus 1 RNA [Presence] in Specimen by NAA with probe detection,high,confirmed
+http://loinc.org,29909-9,Parainfluenza virus 2 RNA [Presence] in Specimen by NAA with probe detection,high,confirmed
+http://loinc.org,29910-7,Parainfluenza virus 3 RNA [Presence] in Specimen by NAA with probe detection,high,confirmed
+http://loinc.org,92137-9,Parainfluenza virus 4 RNA [Presence] in Respiratory system specimen by NAA with probe detection,high,confirmed
+http://loinc.org,76087-6,Parainfluenza virus 4 RNA [Presence] in Nasopharynx by NAA with probe detection,high,confirmed
+http://loinc.org,94486-8,Parainfluenza virus 4 RNA [Presence] in Lower respiratory specimen by NAA with non-probe detection,high,confirmed
+http://loinc.org,101288-9,Human coronavirus 229E+HKU1+NL63+OC43 RNA [Presence] in Throat by NAA with non-probe detection,medium,confirmed
+http://loinc.org,92146-0,Human coronavirus 229E+NL63 RNA [Presence] in Respiratory system specimen by NAA with probe detection,medium,confirmed
+http://loinc.org,92147-8,Human coronavirus HKU1+OC43 RNA [Presence] in Respiratory system specimen by NAA with probe detection,medium,confirmed
+http://loinc.org,77008-1,Human coronavirus 229E+OC43 RNA [Presence] in Nasopharynx by NAA with probe detection,medium,confirmed
+http://loinc.org,105079-8,Human coronavirus 229E RNA [Presence] in Specimen,medium,confirmed
+http://loinc.org,105078-0,Human coronavirus OC43 RNA [Presence] in Specimen,medium,confirmed
+http://loinc.org,7993-9,Rhinovirus RNA [Presence] in Specimen by NAA with probe detection,medium,confirmed
+http://loinc.org,92130-4,Rhinovirus RNA [Presence] in Respiratory system specimen by NAA with probe detection,medium,confirmed
+http://loinc.org,77025-5,Rhinovirus RNA [Presence] in Nasopharynx by NAA with probe detection,medium,confirmed
+http://loinc.org,92885-3,Rhinovirus+Enterovirus RNA [Presence] in Lower respiratory specimen by NAA with probe detection,medium,confirmed
+http://loinc.org,97954-2,Rhinovirus+Enterovirus A+B+C RNA [Presence] in Respiratory system specimen by NAA with probe detection,medium,confirmed
+http://loinc.org,29591-5,Enterovirus RNA [Presence] in Specimen by NAA with probe detection,medium,confirmed
+http://loinc.org,92132-0,Enterovirus A+B+C RNA [Presence] in Respiratory system specimen by NAA with probe detection,medium,confirmed
+http://loinc.org,76074-4,Enterovirus RNA [Presence] in Nasopharynx by NAA with probe detection,medium,confirmed
+http://loinc.org,97151-5,Enterovirus RNA [Presence] in Serum or Plasma by NAA with non-probe detection,medium,confirmed
+http://loinc.org,70065-8,Enterovirus Ag [Presence] in Stool by Immunoassay,medium,confirmed
+http://loinc.org,86323-3,Enterovirus Ag [Presence] in Specimen by Immunofluorescence,medium,confirmed
+http://loinc.org,86586-5,Parechovirus A RNA [Presence] in Cerebral spinal fluid by NAA with probe detection,medium,confirmed
+http://loinc.org,92691-5,Astrovirus RNA [Presence] in Stool by NAA with probe detection,medium,confirmed
+http://loinc.org,69938-9,Astrovirus RNA [Presence] in Specimen by NAA with probe detection,medium,confirmed
+http://loinc.org,7811-3,Astrovirus RNA [Presence] in Serum by NAA with probe detection,medium,confirmed
+http://loinc.org,82210-6,Astrovirus subtypes 1-8 RNA [Presence] in Stool by NAA with non-probe detection,medium,confirmed
+http://loinc.org,92692-3,Norovirus genogroup I+II RNA [Presence] in Stool by NAA with probe detection,medium,confirmed
+http://loinc.org,88701-8,Norovirus genogroups I and II RNA panel - Stool by NAA with probe detection,medium,
+http://loinc.org,54905-5,Norovirus genogroup I RNA [Presence] in Stool by NAA with probe detection,medium,confirmed
+http://loinc.org,79388-5,Norovirus genogroup I+II orf1-orf2 junction region [Presence] in Stool by NAA with probe detection,medium,confirmed
+http://loinc.org,82211-4,Norovirus genogroup I+II RNA [Presence] in Stool by NAA with non-probe detection,medium,confirmed
+http://loinc.org,92693-1,Rotavirus A RNA [Presence] in Stool by NAA with probe detection,medium,confirmed
+http://loinc.org,79389-3,Rotavirus A nsp5 gene [Presence] in Stool by NAA with probe detection,medium,confirmed
+http://loinc.org,80675-2,Rotavirus A VP6 gene [Presence] in Stool by NAA with probe detection,medium,confirmed
+http://loinc.org,62859-4,Rotavirus RNA [Presence] in Specimen by NAA with probe detection,medium,confirmed
+http://loinc.org,86690-5,Rotavirus C RNA [Presence] in Specimen by NAA with probe detection,medium,confirmed
+http://loinc.org,82212-2,Rotavirus A RNA [Presence] in Stool by NAA with non-probe detection,medium,confirmed
+http://loinc.org,92694-9,Sapovirus genogroups I+II+IV+V RNA [Presence] in Stool by NAA with probe detection,medium,confirmed
+http://loinc.org,101562-7,Sapovirus genogroups I+II+IV RNA [Presence] in Stool by NAA with probe detection,medium,confirmed
+http://loinc.org,101563-5,Sapovirus genogroup V RNA [Presence] in Stool by NAA with probe detection,medium,confirmed
+http://loinc.org,82213-0,Sapovirus genogroups I+II+IV+V RNA [Presence] in Stool by NAA with non-probe detection,medium,confirmed
+http://loinc.org,22314-9,Hepatitis A virus IgM Ab [Presence] in Serum,medium,confirmed
+http://loinc.org,94539-4,Hepatitis A virus IgM and IgG panel - Serum,medium,
+http://loinc.org,7906-1,Hepatitis D virus RNA [Presence] in Serum or Plasma by NAA with probe detection,medium,confirmed
+http://loinc.org,80426-0,Hepatitis D virus RNA [#/volume] (viral load) in Serum or Plasma by NAA with probe detection,medium,confirmed
+http://loinc.org,85512-2,Hepatitis D virus RNA [Units/volume] (viral load) in Serum or Plasma by NAA with probe detection,medium,confirmed
+http://loinc.org,95144-2,Hepatitis D virus RNA panel - Serum or Plasma,medium,
+http://loinc.org,90460-7,Hepatitis E virus RNA [Presence] in Serum or Plasma by NAA with probe detection,medium,confirmed
+http://loinc.org,69961-1,Hepatitis E virus RNA [Units/volume] (viral load) in Serum or Plasma by NAA with probe detection,medium,confirmed
+http://loinc.org,78750-7,Hepatitis E virus RNA [log units/volume] (viral load) in Serum or Plasma by NAA with probe detection,medium,confirmed
+http://loinc.org,91071-1,Hepatitis E virus RNA [Presence] in Stool by NAA with probe detection,medium,confirmed
+http://loinc.org,95156-6,Hepatitis E virus RNA [Presence] in Specimen by NAA with probe detection,medium,confirmed
+http://loinc.org,95207-7,Hepatitis E virus RNA panel - Serum or Plasma,medium,
+http://loinc.org,20447-9,HIV 1 RNA [#/volume] (viral load) in Serum or Plasma by NAA with probe detection,high,confirmed
+http://loinc.org,29541-0,HIV 1 RNA [Log #/volume] (viral load) in Serum or Plasma by NAA with probe detection,high,confirmed
+http://loinc.org,48511-0,HIV 1 RNA [#/volume] (viral load) in Serum or Plasma by Probe and target amplification method detection limit = 50 copies/mL,high,confirmed
+http://loinc.org,48510-2,HIV 1 RNA [Log #/volume] (viral load) in Serum or Plasma by Probe and target amplification method detection limit = 1.7 log copies/mL,high,confirmed
+http://loinc.org,5018-7,HIV 1 RNA [Presence] in Specimen by NAA with probe detection,high,confirmed
+http://loinc.org,69353-1,HIV 2 RNA [Presence] in Serum or Plasma by NAA with probe detection,high,confirmed
+http://loinc.org,96557-4,HIV 1 and 2 RNA panel - Serum or Plasma by NAA with probe detection,high,
+http://loinc.org,79380-2,HIV 1 RNA+proviral DNA [Presence] in Blood by NAA with probe detection,high,confirmed
+http://loinc.org,79379-4,HIV 1 RNA+proviral DNA [Presence] in Plasma by NAA with probe detection,high,confirmed
+http://loinc.org,105080-6,HIV 1+2 Ab+HIV1 p24 Ag [Presence] in Serum or Plasma,medium,confirmed
+http://loinc.org,80387-4,"HIV 1+2 Ab [Presence] in Serum, Plasma or Blood by Rapid immunoassay",medium,confirmed
+http://loinc.org,31201-7,HIV 1+2 Ab [Presence] in Serum or Plasma by Immunoassay,medium,confirmed
+http://loinc.org,77742-5,HTLV I and II Ab Panel,low,
+http://loinc.org,77747-4,HTLV II gp46-II Ab [Presence] in Serum or Plasma by Immunoblot,low,confirmed
+http://loinc.org,48508-6,Measles virus RNA [Presence] in Specimen by NAA with probe detection,medium,confirmed
+http://loinc.org,35276-5,Measles virus IgM Ab [Presence] in Serum by Immunoassay,medium,confirmed
+http://loinc.org,25421-9,Measles virus IgM Ab [Units/volume] in Serum by Immunoassay,medium,confirmed
+http://loinc.org,22418-8,Mumps virus IgM Ab [Presence] in Serum,medium,confirmed
+http://loinc.org,6478-2,Mumps virus IgM Ab [Presence] in Serum by Immunoassay,medium,confirmed
+http://loinc.org,25419-3,Mumps virus IgM Ab [Units/volume] in Serum by Immunoassay,medium,confirmed
+http://loinc.org,47532-7,Mumps virus RNA [Presence] in Specimen by NAA with probe detection,medium,confirmed
+http://loinc.org,53603-7,Mumps virus RNA [Presence] in Serum by NAA with probe detection,medium,confirmed
+http://loinc.org,8015-0,Rubella virus IgM Ab [Units/volume] in Serum,medium,confirmed
+http://loinc.org,85622-9,Zika virus RNA [Presence] in Serum or Plasma by NAA with probe detection,low,confirmed
+http://loinc.org,85623-7,Zika virus RNA [Presence] in Urine by NAA with probe detection,low,confirmed
+http://loinc.org,80824-6,Zika virus IgM Ab [Presence] in Serum or Plasma by Immunoassay,low,confirmed
+http://loinc.org,49896-4,Human papilloma virus 16+18+31+33+35+39+45+51+52+56+58+59+68 DNA [Presence] in Specimen by NAA with probe detection,low,confirmed
+http://loinc.org,70061-7,Human papilloma virus 16 and 18 DNA [Presence] in Specimen by NAA with probe detection,low,confirmed
+http://loinc.org,75696-5,Human papilloma virus 31+33+35+39+45+51+52+56+58+59+66+68 DNA [Presence] in Anorectal specimen by Probe and signal amplification method,low,confirmed
+http://loinc.org,75664-3,Human papilloma virus 16 DNA [Presence] in Anorectal specimen by Probe and signal amplification method,low,confirmed
+http://loinc.org,59263-4,Human papilloma virus 16 DNA [Presence] in Cervix by Probe with signal amplification,low,confirmed
+http://loinc.org,82456-5,Human papilloma virus 16 E6+E7 mRNA [Presence] in Cervix by NAA with probe detection,low,confirmed
+http://loinc.org,93778-9,Human papilloma virus 6+11 E6+E7 mRNA [Presence] in Tissue by Probe,low,confirmed
+http://loinc.org,95539-3,Human papilloma virus 31 DNA [Presence] in Cervix by NAA with probe detection,low,confirmed
+http://loinc.org,95538-5,Human papilloma virus 33+58 DNA [Presence] in Cervix by NAA with probe detection,low,confirmed
+http://loinc.org,95537-7,Human papilloma virus 35+39+68 DNA [Presence] in Cervix by NAA with probe detection,low,confirmed
+http://loinc.org,95536-9,Human papilloma virus 45 DNA [Presence] in Cervix by NAA with probe detection,low,confirmed
+http://loinc.org,95535-1,Human papilloma virus 51 DNA [Presence] in Cervix by NAA with probe detection,low,confirmed
+http://loinc.org,95534-4,Human papilloma virus 52 DNA [Presence] in Cervix by NAA with probe detection,low,confirmed
+http://loinc.org,95533-6,Human papilloma virus 56+59+66 DNA [Presence] in Cervix by NAA with probe detection,low,confirmed
