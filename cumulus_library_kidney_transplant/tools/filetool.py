@@ -128,6 +128,17 @@ def write_text(contents: str, file_path: Path | str, encoding: str = 'UTF-8') ->
         file_path.close()
         return file_path.name
 
+def write_lines(contents: list[str], file_path: Path | str, encoding: str = 'UTF-8') -> Path:
+    """
+    Write a list of strings to a file, one string per line.
+
+    Returns the path to the file written.
+    """
+    with m_open(file=file_path, mode='w', encoding=encoding) as f:
+        for line in contents:
+            f.write(line.rstrip("\n") + "\n")
+    return Path(file_path)
+
 def m_open(**kwargs):
     """
     Wrapper for built in open with exception handling and logging
