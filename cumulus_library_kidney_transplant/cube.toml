@@ -111,7 +111,7 @@ description="SQL study metadata"
 type="build:parallel"
 files= [
 	"athena/irae__meta_date.sql",
-	"athena/irea__meta_version.sql"
+	"athena/irae__meta_version.sql"
 ]
 
 [[actions]]
