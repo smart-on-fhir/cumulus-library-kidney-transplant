@@ -1,0 +1,27 @@
+system,code,display
+http://hl7.org/fhir/sid/icd-10-cm,B27.00,Gammaherpesviral mononucleosis without complication
+http://hl7.org/fhir/sid/icd-10-cm,B27.01,Gammaherpesviral mononucleosis with polyneuropathy
+http://hl7.org/fhir/sid/icd-10-cm,B27.02,Gammaherpesviral mononucleosis with meningitis
+http://hl7.org/fhir/sid/icd-10-cm,B27.09,Gammaherpesviral mononucleosis with other complication
+http://hl7.org/fhir/sid/icd-10-cm,B27.90,"Infectious mononucleosis, unspecified without complication"
+http://hl7.org/fhir/sid/icd-10-cm,B27.91,"Infectious mononucleosis, unspecified with polyneuropathy"
+http://hl7.org/fhir/sid/icd-10-cm,B27.92,"Infectious mononucleosis, unspecified with meningitis"
+http://hl7.org/fhir/sid/icd-10-cm,B27.99,"Infectious mononucleosis, unspecified with other complication"
+http://snomed.info/sct,402121009,Epstein-Barr virus infection (disorder)
+http://snomed.info/sct,240530001,Epstein-Barr virus disease (disorder)
+http://snomed.info/sct,773738009,Chronic Epstein-Barr virus infection syndrome (disorder)
+http://snomed.info/sct,716660007,Congenital infection caused by Epstein-Barr virus (disorder)
+http://snomed.info/sct,302919001,Epstein-Barr virus hepatitis (disorder)
+http://snomed.info/sct,416195002,Epstein-Barr virus infection of the retina (disorder)
+http://snomed.info/sct,406579002,Epstein Barr virus infection of the central nervous system (disorder)
+http://snomed.info/sct,721769003,Meningitis caused by Epstein-Barr virus (disorder)
+http://snomed.info/sct,186668002,Gammaherpesviral mononucleosis (disorder)
+http://snomed.info/sct,271558008,Infectious mononucleosis (disorder)
+http://snomed.info/sct,61596005,Heterophil-positive mononucleosis syndrome (disorder)
+http://snomed.info/sct,65230006,Heterophil-negative mononucleosis syndrome (disorder)
+http://snomed.info/sct,230175007,Infectious mononucleosis encephalitis (disorder)
+http://snomed.info/sct,232401004,Glandular fever pharyngitis (disorder)
+http://snomed.info/sct,233622005,Infectious mononucleosis pneumonia (disorder)
+http://snomed.info/sct,238370005,Infectious mononucleosis exanthem (disorder)
+http://snomed.info/sct,128872002,Fatal infectious mononucleosis (disorder)
+http://snomed.info/sct,65447009,Pericarditis associated with infectious mononucleosis (disorder)
