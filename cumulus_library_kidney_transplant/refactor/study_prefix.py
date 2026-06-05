@@ -1,3 +1,3 @@
-from refactor import manifest
+from refactor import manifest_deprecated
 
-PREFIX = manifest.get_study_prefix()
+PREFIX = manifest_deprecated.get_study_prefix()
