@@ -1,0 +1,103 @@
+system,code,display,priority,evidence
+http://www.nlm.nih.gov/research/umls/rxnorm,1156186,cycloSPORINE Injectable Product,high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,1156188,cycloSPORINE Oral Liquid Product,high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,1156189,cycloSPORINE Oral Product,high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,1156190,cycloSPORINE Pill,high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,1169824,Gengraf Oral Liquid Product,high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,1169825,Gengraf Oral Product,high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,1169826,Gengraf Pill,high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,1181672,Neoral Oral Liquid Product,high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,1181673,Neoral Oral Product,high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,1181674,Neoral Pill,high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,1185408,SandIMMUNE Injectable Product,high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,1185409,SandIMMUNE Oral Liquid Product,high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,1185410,SandIMMUNE Oral Product,high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,1185411,SandIMMUNE Pill,high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,1732364,cycloSPORINE Injection,high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,1732366,cycloSPORINE Injection [SandIMMUNE],high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,1732368,cycloSPORINE 50 MG/ML Injection,high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,1732369,SandIMMUNE 50 MG/ML Injection,high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,1797520,"cycloSPORINE, modified 50 MG [Gengraf]",high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,1797521,GENGRAF 50 MG Oral Capsule,high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,197552,SandIMMUNE 100 MG Oral Capsule,high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,197553,cycloSPORINE 25 MG Oral Capsule,high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,202816,SandIMMUNE,high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,202817,Neoral,high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,205168,cycloSPORINE 50 MG Oral Capsule,high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,205175,5 ML cycloSPORINE 50 MG/ML Injection,high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,212810,SandIMMUNE 25 MG Oral Capsule,high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,212821,SandIMMUNE 50 MG Oral Capsule,high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,212844,5 ML SandIMMUNE 50 MG/ML Injection,high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,212957,SandIMMUNE 100 MG/ML Oral Solution,high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,212958,cycloSPORINE 100 MG/ML Oral Solution [Sangcya],high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,236077,"cycloSPORINE, modified",high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,241834,"cycloSPORINE, modified 100 MG Oral Capsule",high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,261530,Gengraf,high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,2645340,"cycloSPORINE, modified Oral Capsule",high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,2647505,"cycloSPORINE, modified Oral Solution",high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,2656813,"cycloSPORINE, modified Oral Capsule [Gengraf]",high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,2657141,"cycloSPORINE, modified Oral Capsule [Neoral]",high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,2657509,"cycloSPORINE, modified Oral Solution [Neoral]",high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,2657747,"cycloSPORINE, modified Oral Solution [Gengraf]",high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,2660112,"cycloSPORINE, modified Oral Product",high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,2662711,"cycloSPORINE, modified Pill",high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,2663521,"cycloSPORINE, modified Oral Liquid Product",high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,2665976,"cycloSPORINE, modified 100 MG [Sporimune]",high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,2665979,cycloSPORINE Oral Capsule [Sporimune],high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,2665980,"cycloSPORINE, modified Oral Capsule [Sporimune]",high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,2665981,"cycloSPORINE, modified 100 MG Oral Capsule [Sporimune]",high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,2665982,"cycloSPORINE, modified 25 MG [Sporimune]",high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,2665983,"cycloSPORINE, modified 25 MG Oral Capsule [Sporimune]",high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,2665984,"cycloSPORINE, modified 50 MG [Sporimune]",high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,2665985,"cycloSPORINE, modified 50 MG Oral Capsule [Sporimune]",high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,3008,cycloSPORINE,high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,309632,cycloSPORINE 100 MG/ML Oral Solution,high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,315749,cycloSPORINE 100 MG,high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,315750,cycloSPORINE 100 MG/ML,high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,315751,cycloSPORINE 25 MG,high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,315752,cycloSPORINE 50 MG,high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,315753,cycloSPORINE 50 MG/ML,high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,328160,cycloSPORINE 100 MG Oral Capsule,high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,334294,"cycloSPORINE, modified 100 MG",high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,348431,cycloSPORINE 1000 MG/ML Oral Solution,high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,358763,cycloSPORINE 1000 MG/ML,high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,363914,cycloSPORINE Oral Solution [Gengraf],high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,363942,cycloSPORINE Oral Solution [Neoral],high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,364418,cycloSPORINE Oral Solution [Sangcya],high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,366173,cycloSPORINE Oral Capsule [Gengraf],high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,366479,cycloSPORINE Oral Capsule [Neoral],high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,366488,cycloSPORINE Oral Capsule [SandIMMUNE],high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,371666,cycloSPORINE Oral Capsule,high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,371667,cycloSPORINE Oral Solution,high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,484788,cycloSPORINE microemulsion,high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,486331,cycloSPORINE 100 MG/ML [SandIMMUNE],high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,565430,cycloSPORINE 100 MG [SandIMMUNE],high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,572889,cycloSPORINE 25 MG [SandIMMUNE],high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,572895,cycloSPORINE 50 MG [SandIMMUNE],high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,572915,cycloSPORINE 50 MG/ML [SandIMMUNE],high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,572919,cycloSPORINE 100 MG/ML [Sangcya],high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,583288,cycloSPORINE 100 MG [Cyslosporine],high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,583289,cycloSPORINE Oral Capsule [Cyslosporine],high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,583290,cycloSPORINE 100 MG Oral Capsule [Cyslosporine],high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,670177,cycloSPORINE 50 MG/ML Oral Solution,high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,835787,"cycloSPORINE, modified 100 MG [Gengraf]",high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,835835,GENGRAF 100 MG Oral Capsule,high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,835885,"cycloSPORINE, modified 100 MG/ML",high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,835886,"cycloSPORINE, modified 100 MG/ML Oral Solution",high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,835887,"cycloSPORINE, modified 100 MG/ML [Gengraf]",high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,835892,GENGRAF 100 MG in 1 mL Oral Solution,high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,835893,"cycloSPORINE, modified 25 MG",high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,835894,"cycloSPORINE, modified 25 MG Oral Capsule",high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,835895,"cycloSPORINE, modified 25 MG [Gengraf]",high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,835896,GENGRAF 25 MG Oral Capsule,high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,835897,"cycloSPORINE, modified 100 MG/ML [Neoral]",high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,835899,NEORAL 100 MG in 1 mL Oral Solution,high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,835900,"cycloSPORINE, modified 100 MG [Neoral]",high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,835901,"cycloSPORINE, modified 25 MG [Neoral]",high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,835909,Neoral 25 MG Oral Capsule,high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,835911,Neoral 100 MG Oral Capsule,high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,835918,"cycloSPORINE, modified 10 MG",high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,835919,"cycloSPORINE, modified 10 MG Oral Capsule",high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,835924,"cycloSPORINE, modified 50 MG",high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,835925,"cycloSPORINE, modified 50 MG Oral Capsule",high,confirmed
+http://www.nlm.nih.gov/research/umls/rxnorm,94035,cycloSPORINE Oral Solution [SandIMMUNE],high,confirmed
