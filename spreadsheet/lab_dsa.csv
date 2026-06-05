@@ -1,0 +1,67 @@
+system,code,display,priority
+http://loinc.org,46720-9,T cell crossmatch [Presence] in Blood,high
+http://loinc.org,48390-9,B cell crossmatch [Presence] in Blood from Donor,high
+http://loinc.org,77639-3,"HLA Class I and II IgG Panel, Blood",high
+http://loinc.org,77640-1,"Interpretation of HLA Class I and II IgG antibody test result, Blood",high
+http://loinc.org,80737-0,Calculated panel reactive antibody - Serum,high
+http://loinc.org,94428-0,"HLA Class I and II IgG Panel, Blood",high
+http://loinc.org,96046-8,B and T cell crossmatch panel - Patient serum and Donor blood by Flow cytometry (FC),high
+http://loinc.org,96047-6,T cell crossmatch [Presence] in Patient serum and Donor blood by Flow cytometry (FC),high
+http://loinc.org,96048-4,T cell median channel shift in Patient serum and Donor blood by Flow cytometry (FC),high
+http://loinc.org,96049-2,B cell crossmatch [Presence] in Patient serum and Donor blood by Flow cytometry (FC),high
+http://loinc.org,96050-0,B cell median channel shift in Patient serum and Donor blood by Flow cytometry (FC),high
+http://loinc.org,97999-7,"HLA-DP & DQ & DR (class II) Ab.IgG donor specific, Blood",high
+http://loinc.org,98003-7,"HLA-A & B & C (class I) Ab.IgG donor specific, Blood",high
+http://loinc.org,34960-5,"HLA antibody, Blood",medium
+http://loinc.org,35471-2,"HLA antibody, Blood or tissue specimen",medium
+http://loinc.org,40734-6,"HLA antibody, Blood",medium
+http://loinc.org,41618-0,"HLA antibody, Blood",medium
+http://loinc.org,44534-6,"HLA antibody, Blood",medium
+http://loinc.org,45153-4,"HLA antibody, Blood",medium
+http://loinc.org,4693-8,"HLA Ag Absent, Blood or tissue specimen",medium
+http://loinc.org,46993-2,"HLA Ab panel, Blood",medium
+http://loinc.org,46994-0,"HLA-A+B+C (class I) antibody, Blood",medium
+http://loinc.org,46995-7,"HLA-DP+DQ+DR (class II) antibody, Blood",medium
+http://loinc.org,46996-5,"HLA Ab positive cells, Blood",medium
+http://loinc.org,46997-3,"HLA Ab cells tested, Blood",medium
+http://loinc.org,48501-1,"HLA antibody, Blood",medium
+http://loinc.org,50968-7,"HLA antibody, Blood",medium
+http://loinc.org,59586-8,"HLA IgG antibody, Blood",medium
+http://loinc.org,72321-3,"HLA-DP+DQ+DR (class II) IgG antibody, Blood",medium
+http://loinc.org,72322-1,"HLA-A+B+C (class I) IgG antibody, Blood",medium
+http://loinc.org,72323-9,"HLA-DP+DQ+DR (class II) IgG antibody, Blood",medium
+http://loinc.org,72328-8,"HLA-A+B+C (class I) IgG antibody, Blood",medium
+http://loinc.org,77637-7,"HLA-A and B and C (class I) IgG Panel, Blood",medium
+http://loinc.org,77638-5,"HLA-DP and DQ and DR (class II) IgG Panel, Blood",medium
+http://loinc.org,77641-9,"HLA-A IgG antibody, Blood",medium
+http://loinc.org,77642-7,"HLA-B IgG antibody, Blood",medium
+http://loinc.org,77643-5,"HLA-C IgG antibody, Blood",medium
+http://loinc.org,77644-3,"HLA-DP IgG antibody, Blood",medium
+http://loinc.org,77645-0,"HLA-DQ IgG antibody, Blood",medium
+http://loinc.org,77646-8,"HLA-DR IgG antibody, Blood",medium
+http://loinc.org,94429-8,"HLA-DP & DQ & DR (class II) Ab.IgG low risk, Blood",medium
+http://loinc.org,94430-6,"HLA-A & B & C (class I) Ab.IgG low risk, Blood",medium
+http://loinc.org,94432-2,"HLA-DP and DQ and DR (class II) IgG antibody, Blood",medium
+http://loinc.org,94433-0,"HLA-DP & DQ & DR (class II) Ab.IgG with prozone effect, Blood",medium
+http://loinc.org,94434-8,"HLA-DPB1 IgG antibody, Blood",medium
+http://loinc.org,94435-5,"HLA-DPA1 IgG antibody, Blood",medium
+http://loinc.org,94436-3,"HLA-DQB1 IgG antibody, Blood",medium
+http://loinc.org,94437-1,"HLA-DQA1 IgG antibody, Blood",medium
+http://loinc.org,94438-9,"HLA-DRB3 & HLA-DRB4 & HLA DRB5 IgG antibody, Blood",medium
+http://loinc.org,94439-7,"HLA-DRB1 IgG antibody, Blood",medium
+http://loinc.org,94440-5,"HLA-DP and DQ and DR (class II) IgG Panel, Blood",medium
+http://loinc.org,94441-3,"HLA-A and B and C (class I) IgG antibody, Blood",medium
+http://loinc.org,94442-1,"HLA-A & B & C (class I) Ab.IgG with prozone effect, Blood",medium
+http://loinc.org,94443-9,"HLA-C IgG antibody, Blood",medium
+http://loinc.org,94444-7,"HLA-B IgG antibody, Blood",medium
+http://loinc.org,94445-4,"HLA-A IgG antibody, Blood",medium
+http://loinc.org,94446-2,"HLA-A and B and C (class I) IgG Panel, Blood",medium
+http://loinc.org,94447-0,"HLA-DP & DQ & DR (class II) Ab.IgG high risk, Blood",medium
+http://loinc.org,94448-8,"HLA-DP & DQ & DR (class II) Ab.IgG intermediate risk, Blood",medium
+http://loinc.org,94449-6,"HLA-A & B & C (class I) Ab.IgG high risk, Blood",medium
+http://loinc.org,94450-4,"HLA-A & B & C (class I) Ab.IgG intermediate risk, Blood",medium
+http://loinc.org,95269-7,"HLA-A+B+C (class I) antibody, Blood",medium
+http://loinc.org,98006-0,"HLA-A & B & C (class I) & HLA-DP & DQ & DR (class II) antibody, Blood",medium
+http://loinc.org,72905-3,"Neutrophil Ab and HLA Ab Screen Panel, Blood",low
+http://loinc.org,95270-5,"Platelet and HLA glycoprotein antibody panel, Blood",low
+http://loinc.org,97997-1,"Interpretation of HPA & HLA antibody test result, Blood",low

@@ -1,0 +1,114 @@
+system,code,display,priority
+http://hl7.org/fhir/sid/icd-10-cm,I12.0,Hypertensive chronic kidney disease with stage 5 chronic kidney disease or end stage renal disease,high
+http://hl7.org/fhir/sid/icd-10-cm,I13.11,"Hypertensive heart and chronic kidney disease without heart failure, with stage 5 chronic kidney disease, or end stage renal disease",high
+http://hl7.org/fhir/sid/icd-10-cm,I13.2,"Hypertensive heart and chronic kidney disease with heart failure and with stage 5 chronic kidney disease, or end stage renal disease",high
+http://hl7.org/fhir/sid/icd-10-cm,N18.6,End stage renal disease,high
+http://hl7.org/fhir/sid/icd-10-cm,T86.12,Kidney transplant failure,high
+http://hl7.org/fhir/sid/icd-10-cm,Z49.01,Encounter for fitting and adjustment of extracorporeal dialysis catheter,high
+http://hl7.org/fhir/sid/icd-10-cm,Z49.02,Encounter for fitting and adjustment of peritoneal dialysis catheter,high
+http://hl7.org/fhir/sid/icd-10-cm,Z49.31,Encounter for adequacy testing for hemodialysis,high
+http://hl7.org/fhir/sid/icd-10-cm,Z49.32,Encounter for adequacy testing for peritoneal dialysis,high
+http://hl7.org/fhir/sid/icd-10-cm,Z99.2,Dependence on renal dialysis,high
+http://snomed.info/sct,111411000119103,End stage renal disease due to hypertension (disorder),high
+http://snomed.info/sct,114711000119105,Infection due to and following peritoneal dialysis (disorder),high
+http://snomed.info/sct,1153581007,Matrix stone formation during renal dialysis (disorder),high
+http://snomed.info/sct,1259584009,Dementia due to and following dialysis (disorder),high
+http://snomed.info/sct,127991000119101,Hypertension concurrent and due to end stage renal disease on dialysis due to type 2 diabetes mellitus (disorder),high
+http://snomed.info/sct,128001000119105,Hypertension concurrent and due to end stage renal disease on dialysis due to type 1 diabetes mellitus (disorder),high
+http://snomed.info/sct,12963004,Dialysis-associated ascites (disorder),high
+http://snomed.info/sct,133031000119106,Thrombosis of arteriovenous graft caused by hemodialysis arteriovenous access device (disorder),high
+http://snomed.info/sct,153891000119101,End stage renal disease on dialysis due to hypertension (disorder),high
+http://snomed.info/sct,19765000,Complication of dialysis (disorder),high
+http://snomed.info/sct,213150003,Kidney transplant failure and rejection (disorder),high
+http://snomed.info/sct,233766001,Dialysis-associated hypoxia (disorder),high
+http://snomed.info/sct,236435004,End stage renal failure on dialysis (disorder),high
+http://snomed.info/sct,236436003,End stage renal failure with renal transplant (disorder),high
+http://snomed.info/sct,236538004,Acute disorder of hemodialysis (disorder),high
+http://snomed.info/sct,236539007,First use syndrome of dialysis (disorder),high
+http://snomed.info/sct,236541008,Hyperchloremic acidosis associated with dialysis (disorder),high
+http://snomed.info/sct,236542001,Long-term disorder of dialysis (disorder),high
+http://snomed.info/sct,236550005,Polyserositis syndrome of dialysis (disorder),high
+http://snomed.info/sct,236556004,Bloodstained peritoneal dialysis effluent (disorder),high
+http://snomed.info/sct,236569000,Primary non-function of renal transplant (disorder),high
+http://snomed.info/sct,236583003,Failed renal transplant (disorder),high
+http://snomed.info/sct,26944003,Acute megaloblastic anemia due to dialysis (disorder),high
+http://snomed.info/sct,276883000,Peritoneal dialysis-associated peritonitis (disorder),high
+http://snomed.info/sct,285841000119104,Malignant hypertensive end stage renal disease (disorder),high
+http://snomed.info/sct,286371000119107,Malignant hypertensive end stage renal disease on dialysis (disorder),high
+http://snomed.info/sct,292760002,Dialysis fluid adverse reaction (disorder),high
+http://snomed.info/sct,292761003,Peritoneal dialysis solution adverse reaction (disorder),high
+http://snomed.info/sct,292762005,Hemodialysis fluid adverse reaction (disorder),high
+http://snomed.info/sct,32599008,Hemodialysis-associated amyloidosis (disorder),high
+http://snomed.info/sct,33461007,Complication of peritoneal dialysis (disorder),high
+http://snomed.info/sct,33603003,Complication of renal dialysis (disorder),high
+http://snomed.info/sct,368471000119109,End stage renal disease on dialysis due to drug induced diabetes mellitus (disorder),high
+http://snomed.info/sct,402458002,Hemodialysis-associated secondary amyloidosis of skin (disorder),high
+http://snomed.info/sct,402762007,Skin lesion associated with hemodialysis (disorder),high
+http://snomed.info/sct,403732009,Hemodialysis-associated pseudoporphyria (disorder),high
+http://snomed.info/sct,404813001,Peritoneal dialysis leakage (disorder),high
+http://snomed.info/sct,408667000,Hemodialysis-associated hypotension (disorder),high
+http://snomed.info/sct,428937001,Dependence on peritoneal dialysis due to end stage renal disease (finding),high
+http://snomed.info/sct,428982002,Dependence on hemodialysis due to end stage renal disease (finding),high
+http://snomed.info/sct,429075005,Dependence on dialysis due to end stage renal disease (finding),high
+http://snomed.info/sct,430333000,Hematoma of dialysis access site (disorder),high
+http://snomed.info/sct,431873008,Peritonitis due to infected peritoneal dialysis catheter (disorder),high
+http://snomed.info/sct,433991000124108,Peritoneal dialysis access failure (disorder),high
+http://snomed.info/sct,434061000124103,Hemodialysis access failure (disorder),high
+http://snomed.info/sct,440663004,Encapsulating peritoneal sclerosis due to peritoneal dialysis (disorder),high
+http://snomed.info/sct,46177005,End-stage renal disease (disorder),high
+http://snomed.info/sct,699235009,Continuous ambulatory peritoneal dialysis associated peritonitis (disorder),high
+http://snomed.info/sct,702634004,Inadequate peritoneal dialysis (disorder),high
+http://snomed.info/sct,702635003,Inadequate hemodialysis (disorder),high
+http://snomed.info/sct,704667004,Hypertension concurrent and due to end stage renal disease on dialysis (disorder),high
+http://snomed.info/sct,707090004,Spondyloarthropathy due to hemodialysis-associated amyloidosis (disorder),high
+http://snomed.info/sct,707324008,Anemia co-occurrent and due to end stage renal disease (disorder),high
+http://snomed.info/sct,712487000,End stage renal disease due to benign hypertension (disorder),high
+http://snomed.info/sct,713721008,Hydrothorax as complication of peritoneal dialysis (disorder),high
+http://snomed.info/sct,713724000,Abdominal hernia as complication of peritoneal dialysis (disorder),high
+http://snomed.info/sct,713727007,Hemoperitoneum as complication of peritoneal dialysis (disorder),high
+http://snomed.info/sct,714152005,Chronic kidney disease stage 5 on dialysis (disorder),high
+http://snomed.info/sct,714153000,Chronic kidney disease stage 5 with transplant (disorder),high
+http://snomed.info/sct,724612006,Avascular necrosis of bone due to and following renal dialysis (disorder),high
+http://snomed.info/sct,783187005,Aseptic peritoneal eosinophilia due to and following dialysis (disorder),high
+http://snomed.info/sct,85223007,Complication of hemodialysis (disorder),high
+http://snomed.info/sct,87235005,Dialysis disequilibrium syndrome (disorder),high
+http://snomed.info/sct,88351001,Hypercalcemia associated with chronic dialysis (disorder),high
+http://snomed.info/sct,90771000119100,End stage renal disease on dialysis due to type 1 diabetes mellitus (disorder),high
+http://snomed.info/sct,90791000119104,End stage renal disease on dialysis due to type 2 diabetes mellitus (disorder),high
+http://snomed.info/sct,96701000119107,Hypertensive heart AND chronic kidney disease on dialysis (disorder),high
+http://hl7.org/fhir/sid/icd-10-cm,N18.5,"Chronic kidney disease, stage 5",medium
+http://hl7.org/fhir/sid/icd-10-cm,T86.92,Unspecified transplanted organ and tissue failure,medium
+http://snomed.info/sct,120261000119101,Benign hypertensive heart disease and chronic renal disease stage 5 (disorder),medium
+http://snomed.info/sct,129161000119100,Chronic kidney disease stage 5 due to hypertension (disorder),medium
+http://snomed.info/sct,140101000119109,Hypertension in chronic kidney disease stage 5 due to type 2 diabetes mellitus (disorder),medium
+http://snomed.info/sct,153851000119106,Malignant hypertensive chronic kidney disease stage 5 (disorder),medium
+http://snomed.info/sct,236434000,End stage renal failure without renal replacement therapy (disorder),medium
+http://snomed.info/sct,236552002,Adynamic bone disease (disorder),medium
+http://snomed.info/sct,236554001,Pain during inflow of dialysate (disorder),medium
+http://snomed.info/sct,236555000,Pain during outflow of dialysate (disorder),medium
+http://snomed.info/sct,236559006,Loss of ultrafiltration (disorder),medium
+http://snomed.info/sct,236560001,Loss of solute clearance (disorder),medium
+http://snomed.info/sct,236587002,Transplant glomerulopathy (disorder),medium
+http://snomed.info/sct,236588007,Transplant glomerulopathy - early form (disorder),medium
+http://snomed.info/sct,236589004,Transplant glomerulopathy - late form (disorder),medium
+http://snomed.info/sct,269295009,Transplanted organ failure (disorder),medium
+http://snomed.info/sct,285011000119108,Chronic kidney disease stage 5 due to benign hypertension (disorder),medium
+http://snomed.info/sct,292763000,Hemofiltration solution adverse reaction (disorder),medium
+http://snomed.info/sct,368461000119103,Chronic kidney disease stage 5 due to drug induced diabetes mellitus (disorder),medium
+http://snomed.info/sct,433146000,Chronic kidney disease stage 5 (disorder),medium
+http://snomed.info/sct,440228000,Leakage of peritoneal dialysate into subcutaneous tissue of abdominal wall (disorder),medium
+http://snomed.info/sct,440310004,Leakage of peritoneal dialysate into pleural cavity (disorder),medium
+http://snomed.info/sct,711000119100,Chronic kidney disease stage 5 due to type 2 diabetes mellitus (disorder),medium
+http://snomed.info/sct,719501003,Ultrafiltration failure (disorder),medium
+http://snomed.info/sct,90761000119106,Chronic kidney disease stage 5 due to type 1 diabetes mellitus (disorder),medium
+http://snomed.info/sct,96711000119105,Hypertensive heart AND chronic kidney disease stage 5 (disorder),medium
+http://hl7.org/fhir/sid/icd-10-cm,T86.10,Unspecified complication of kidney transplant,low
+http://hl7.org/fhir/sid/icd-10-cm,T86.19,Other complication of kidney transplant,low
+http://hl7.org/fhir/sid/icd-10-cm,T86.90,Unspecified complication of unspecified transplanted organ and tissue,low
+http://hl7.org/fhir/sid/icd-10-cm,T86.99,Other complications of unspecified transplanted organ and tissue,low
+http://hl7.org/fhir/sid/icd-9-cm,585.5,"Chronic kidney disease, Stage V",low
+http://hl7.org/fhir/sid/icd-9-cm,585.6,End stage renal disease,low
+http://hl7.org/fhir/sid/icd-9-cm,V45.11,Renal dialysis status,low
+http://snomed.info/sct,277010001,Unexplained episode of renal transplant dysfunction (disorder),low
+http://snomed.info/sct,425369003,Chronic progressive renal failure (disorder),low
+http://snomed.info/sct,90688005,Chronic renal failure syndrome (disorder),low
