@@ -1,5 +1,5 @@
 [[actions]]
-description=""
+description="variable cohorts"
 type="build:parallel"
 files= [
 	"athena/irae__cohort_diag_kidney_biopsy.sql",

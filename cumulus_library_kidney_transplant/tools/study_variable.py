@@ -39,7 +39,7 @@ def list_variables_as_str(variable_list:list[str], quote="'", seperator=',') -> 
     return tablespace.sql_quote(variable_list, quote, seperator)
 
 def list_variable_uploads() -> list[Path]:
-    return filetool.filter_spreadsheet(filetool.list_spreadsheet())
+    return filetool.filter_aspect(filetool.list_spreadsheet())
 
 #-----------------------------------------------------------------------------
 # Aspect(s) for Variable
@@ -51,7 +51,7 @@ def list_aspects() -> list[Aspect]:
     """
     :return: list of aspects that have variables defined (dx, rx, diag, ...)
     """
-    return list(set(dict_aspects().keys()))
+    return list(dict_aspects().keys())
 
 def dict_aspects() -> dict[Aspect, list[str]]:
     """
@@ -141,15 +141,10 @@ def make() -> list[Path]:
     upload_list = list_variable_uploads()
     variable_list = [make_cohort(variable) for variable in list_variables()]
 
-    return [manifest.save_file_upload_toml(upload_list,
-                                           'file_upload_study_variable.toml'),
-            manifest.save_sql_toml(variable_list, 'study_variable.toml')]
+    return [manifest.save_file_upload_toml(upload_list, 'file_upload_study_variable.toml'),
+            manifest.save_sql_toml(variable_list, 'study_variable.toml', description='variable cohorts')]
 
 
 if __name__ == '__main__':
     for output_toml in make():
         print(output_toml)
-
-    # for clean_file in clean():
-    #     print(clean_file)
-
