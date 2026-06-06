@@ -59,8 +59,8 @@ def make() -> list[Path]:
     aspect_tables = [f"{STUDY_POPULATION}_{aspect}" for aspect in aspect_list]
     aspect_tables = make_study_population(aspect_tables)
 
-    sections = [manifest.as_sql_toml(study_period, 'study_period', 'study_period cohort'),
-                manifest.as_sql_toml(study_population, 'study_population', 'study_population cohort'),
+    sections = [manifest.as_sql_toml(study_period, 'study_period'),
+                manifest.as_sql_toml(study_population, 'study_population'),
                 manifest.as_sql_toml(aspect_tables, f'study_population aspects {str(aspect_list)}')]
 
     return [manifest.save_lines_toml(sections, 'study_population.toml')]
