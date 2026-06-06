@@ -1,19 +1,12 @@
 config_type="file_upload"
 
-[[actions]]
-description = 'file_upload CSV valueset definitions for study variables'
-type = "build:serial"
-files = [
-  '../spreadsheet/file_upload_casedef.toml'
-]
-
 [tables.valueset_casedef]
 # https://github.com/smart-on-fhir/cumulus-library/issues/569
 col_types = [
-    "STRING",   # system
-    "STRING",   # code
-    "STRING",   # display
-    "BOOLEAN",  # include
+    "STRING",  # system
+    "STRING",  # code
+    "STRING",  # display
+    "BOOLEAN", # include
     "STRING",  # likely
     "STRING",  # preop
     "STRING",  # transplant

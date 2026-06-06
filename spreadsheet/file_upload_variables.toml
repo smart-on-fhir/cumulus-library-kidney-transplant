@@ -1,4 +1,9 @@
 config_type="file_upload"
+[tables.valueset_age_group]
+file = "age_group.csv"
+
+[tables.valueset_casedef]
+file = "casedef.csv"
 
 [tables.valueset_diag_kidney_biopsy]
 file = "diag_kidney_biopsy.csv"
