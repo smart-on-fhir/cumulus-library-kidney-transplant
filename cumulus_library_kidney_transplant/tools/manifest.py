@@ -96,7 +96,7 @@ def save_text_toml(content:str, toml_file:Path|str) -> Path:
 def _actions(description, action_type, key, values:list[str]) -> str:
     lines = [_description(description),
              _type(action_type),
-             _list(key, values)]
+             _dict(key, values)]
     return f"\n[[actions]]\n" + '\n'.join(lines)
 
 def _description(description:str = None) -> str:
@@ -105,7 +105,7 @@ def _description(description:str = None) -> str:
 def _type(toml_type:str=None) -> str:
     return f'type={_quote(toml_type)}'
 
-def _list(key, values_list:list=None) -> str:
+def _dict(key, values_list:list=None) -> str:
     return f'{key}= [\n\t'+ ',\n\t'.join(values_list) + '\n]'
 
 def _quote(text:str, quote_char:str='"') -> str:
