@@ -10,7 +10,7 @@ def make_study_meta_sql(data_package_version:int = DATA_PACKAGE_VERSION) -> list
     return [template.copy(f"meta_date.sql"),
             template.copy(f"meta_version.sql", data_package_version=str(data_package_version))]
 
-def make():
+def make_inline()->list[str]:
     """
     Make SQL study meta and suggest TOML, example
 
@@ -31,10 +31,14 @@ def make():
     ]
     """
     file_list = make_study_meta_sql()
+
     return [
-        manifest.as_toml_sql(file_list, 'SQL study metadata'),
-        manifest.as_toml_tables(file_list, 'export study metadata', 'export:meta')
+        manifest.as_sql_toml(file_list, 'SQL study metadata'),
+        manifest.as_export_toml(file_list, 'export study metadata', 'export:meta')
     ]
+
+def make() -> list[Path]:
+    return [manifest.save_lines_toml(make_inline(), 'study_meta.toml')]
 
 if __name__ == '__main__':
     for target in make():

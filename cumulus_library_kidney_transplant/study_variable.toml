@@ -1,16 +1,10 @@
-[[actions]]
-description = 'file_upload CSV valueset definitions for study variables'
-type = "build:parallel"
-files = [
-  '../spreadsheet/file_upload_variables.toml'
-]
 
 [[actions]]
-description="variable cohorts"
+description=""
 type="build:parallel"
 files= [
 	"athena/irae__cohort_diag_kidney_biopsy.sql",
-    "athena/irae__cohort_doc_type_relevant.sql",
+	"athena/irae__cohort_doc_type_relevant.sql",
 	"athena/irae__cohort_dx_cancer_general.sql",
 	"athena/irae__cohort_dx_cancer_specific.sql",
 	"athena/irae__cohort_dx_graft_failure.sql",

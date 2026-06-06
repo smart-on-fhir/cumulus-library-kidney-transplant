@@ -28,7 +28,7 @@ def make_study_population(table_list:list) -> list[Path]:
     """
     return [template.copy(f"{table}.sql") for table in table_list]
 
-def make() -> list[str]:
+def make() -> list[Path]:
     """
     Study Population is built from "template/" dir.
     Study Population contains all Patient encounters matching criteria and all FHIR resources below.
@@ -59,9 +59,11 @@ def make() -> list[str]:
     aspect_tables = [f"{STUDY_POPULATION}_{aspect}" for aspect in aspect_list]
     aspect_tables = make_study_population(aspect_tables)
 
-    return [manifest.as_toml_sql(study_period, 'study_period'),
-            manifest.as_toml_sql(study_population, 'study_population'),
-            manifest.as_toml_sql(aspect_tables, f'study_population aspects {str(aspect_list)}')]
+    sections = [manifest.as_sql_toml(study_period, 'study_period'),
+                manifest.as_sql_toml(study_population, 'study_population'),
+                manifest.as_sql_toml(aspect_tables, f'study_population aspects {str(aspect_list)}')]
+
+    return [manifest.save_lines_toml(sections, 'study_population.toml')]
 
 if __name__ == '__main__':
     for manifest_toml in make():

@@ -1,7 +1,4 @@
 from pathlib import Path
-
-from tenacity import retry
-
 from cumulus_library_kidney_transplant.tools import filetool, tablespace, manifest, template, fhir_reference
 from cumulus_library_kidney_transplant.tools.fhir_reference import Aspect
 from cumulus_library_kidney_transplant.tools.tablespace import name_trim, name_cohort
@@ -14,22 +11,25 @@ from cumulus_library_kidney_transplant.tools.study_variable import (
 #-----------------------------------------------------------------------------
 # Step 1) UNION ALL
 #-----------------------------------------------------------------------------
-def make_variable_union() -> list[Path]:
+def make_variable_union_bool() -> list[Path]:
     """
     1.1 Create table of all variable cohorts together (UNION ALL) having a single column
         `variable` which denotes the cohort source.
 
+    :return: path to cohort_variable_union.sql
+    """
+    return [_make_variable_union(aspect=None)]
+
+def make_variable_union_aspect() -> list[Path]:
+    """
     1.2 Create tables of variables grouped by Aspect
 
-    :return: list of SQL files for each aspect
-            * cohort_variable_union (all variables)
-            * cohort_variable_union_lab
-            * cohort_variable_union_diag
-            * cohort_variable_union_doc
-            * cohort_variable_union_rx
+    :return: [cohort_variable_union_lab.sql,
+             cohort_variable_union_diag.sql,
+             cohort_variable_union_doc.sql,
+             cohort_variable_union_rx.sql]
     """
-    aspect_list = [None] + list_aspects()
-    return [_make_variable_union(aspect) for aspect in aspect_list]
+    return [_make_variable_union(aspect=aspect) for aspect in list_aspects()]
 
 def _make_variable_union(aspect:Aspect=None) -> Path:
     """
@@ -55,9 +55,9 @@ def select_union(variable_list: list[str]) -> str:
     sql = list()
     for variable in variable_list:
         variable = name_trim(variable)
-        select = f"\tselect '{variable}'\t as variable, code, display, system, encounter_ref"
-        select+= f", {fhir_reference.get_column(variable).reference} as resource_ref"
-        from_table = f" from {tablespace.PREFIX}__cohort_{variable}"
+        select = f"\tSELECT '{variable}'\t AS variable, code, display, system, encounter_ref"
+        select+= f", {fhir_reference.get_column(variable).reference} AS resource_ref"
+        from_table = f" FROM {tablespace.PREFIX}__cohort_{variable}"
         sql.append(select + from_table)
     return ' UNION ALL\n'.join(sql)
 
@@ -173,7 +173,7 @@ def select_wide_dict(variable_list:list[str], columns:dict) -> str:
     sql = list()
     for variable in variable_list:
         for key, val in columns.items():
-            sql.append(f"IF(variable='{variable}', {key}) as {variable}_{val}")
+            sql.append(f"IF(variable='{variable}', {key}) AS {variable}_{val}")
     return ',\n'.join(sql).strip()
 
 def select_wide_dx(variable_list: list[str] = None, columns: dict = None) -> str:
@@ -260,7 +260,7 @@ def select_wide_doc(variable_list: list[str] = None, columns: dict = None) -> st
     """
     FHIR DocumentReference
     * https://build.fhir.org/documentreference.html
-
+z
     :param variable_list: default = Document Reference variables
     :param columns: default= author date, code
     :return: str SQL
@@ -287,23 +287,28 @@ def select_wide_proc(variable_list: list[str] = None, columns: dict = None) -> s
     if not variable_list:
         variable_list = list_variables(Aspect.proc)
     if not columns:
-        columns = {'performeddatetime_day': 'date',
-                   'category_code': 'code',
+        columns = {'proc_performed_day': 'date',
+                   'proc_category_code': 'code',
                    'procedure_ref': 'ref'}
     return select_wide_dict(variable_list, columns)
 
 #-----------------------------------------------------------------------------
 # Make
 #-----------------------------------------------------------------------------
-def make() -> list[str]:
+def make() -> list[Path]:
     """
     Make cohort UNION variables as one big table
     Make cohort WIDE variables as one big table (tabular with each column is a variable)
     :return: list of TOML outputs
     """
-    return [manifest.as_toml_sql(make_variable_union(), 'variable union'),
-            manifest.as_toml_sql([make_variable_wide_bool()], 'variable wide (bool)'),
-            manifest.as_toml_sql(make_variable_wide(), 'variable wide (lab, diag, dx, rx)')]
+    aspect_list = [aspect.name for aspect in list_aspects()]
+
+    sections = [manifest.as_sql_toml(make_variable_union_bool(), 'variable union (bool)'),
+                manifest.as_sql_toml(make_variable_union_aspect(), f'variable union {aspect_list}'),
+                manifest.as_sql_toml([make_variable_wide_bool()], 'variable wide (bool)'),
+                manifest.as_sql_toml(make_variable_wide(), f'variable wide {aspect_list}'), ]
+
+    return [manifest.save_lines_toml(sections, 'study_variable_wide.toml')]
 
 if __name__ == '__main__':
     for output_toml in make():

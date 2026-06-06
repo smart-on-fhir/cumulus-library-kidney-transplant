@@ -1,9 +1,3 @@
-[[actions]]
-description = 'inclusion/exclusion criteria for study population'
-type = "build:parallel"
-files = [
-  '../spreadsheet/file_upload_population.toml'
-]
 
 [[actions]]
 description="study_period"

@@ -1,3 +1,4 @@
+from pathlib import Path
 from cumulus_library_kidney_transplant.tools import (
     study_meta,
     study_population,
@@ -8,7 +9,7 @@ from cumulus_library_kidney_transplant.tools import (
     cube_fhir
 )
 
-def make_study() -> list[str]:
+def make_study() -> list[Path]:
     return (study_meta.make() +
             study_population.make() +
             study_variable.make() +

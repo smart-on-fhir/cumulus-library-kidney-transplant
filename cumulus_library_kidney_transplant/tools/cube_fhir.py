@@ -192,27 +192,29 @@ def make_variable_union() -> list[Path]:
     ]
 
 
-def make():
+def make() -> list[Path]:
     study_population_sql_list = make_study_population()
     casedef_sql_list = make_casedef()
     sample_sql_list = make_casedef_samples()
     variable_sql_list = make_variable_union()
 
     sql_list = [
-        manifest.as_toml_sql(study_population_sql_list, 'SQL cube study population'),
-        manifest.as_toml_sql(variable_sql_list, 'SQL cube variable union'),
-        manifest.as_toml_sql(casedef_sql_list, 'SQL cube casedef'),
-        manifest.as_toml_sql(sample_sql_list, 'SQL cube casedef sample')
+        manifest.as_sql_toml(study_population_sql_list, 'SQL cube study population'),
+        manifest.as_sql_toml(variable_sql_list, 'SQL cube variable union'),
+        manifest.as_sql_toml(casedef_sql_list, 'SQL cube casedef'),
+        manifest.as_sql_toml(sample_sql_list, 'SQL cube casedef sample')
     ]
 
-    table_list = [
-        manifest.as_toml_tables(study_population_sql_list, 'export cube tables study populations'),
-        manifest.as_toml_tables(variable_sql_list, 'export cube tables variable union'),
-        manifest.as_toml_tables(casedef_sql_list, 'export cube tables casedef'),
-        manifest.as_toml_tables(sample_sql_list, 'export cube tables casedef sample')
+    export_list = [
+        manifest.as_export_toml(study_population_sql_list, 'export cube tables study populations'),
+        manifest.as_export_toml(variable_sql_list, 'export cube tables variable union'),
+        manifest.as_export_toml(casedef_sql_list, 'export cube tables casedef'),
+        manifest.as_export_toml(sample_sql_list, 'export cube tables casedef sample')
     ]
 
-    return sql_list + table_list
+    sections = sql_list + export_list + study_meta.make_inline()
+
+    return [manifest.save_lines_toml(sections, 'cube.toml')]
 
 #-----------------------------------------------------------------------------
 # MAIN method
