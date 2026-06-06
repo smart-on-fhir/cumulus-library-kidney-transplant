@@ -1,7 +1,0 @@
-create table irae__cohort_lab_infection_viral_cmv as 
-select distinct * from 
- irae__cohort_study_population_lab , 
-irae__valueset_lab_infection_viral_cmv
-WHERE
-irae__cohort_study_population_lab.lab_observation_code = irae__valueset_lab_infection_viral_cmv.code and 
-irae__cohort_study_population_lab.lab_observation_system = irae__valueset_lab_infection_viral_cmv.system

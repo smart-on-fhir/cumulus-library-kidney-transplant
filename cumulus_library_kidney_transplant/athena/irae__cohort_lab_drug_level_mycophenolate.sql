@@ -1,7 +1,0 @@
-create table irae__cohort_lab_drug_level_mycophenolate as 
-select distinct * from 
- irae__cohort_study_population_lab , 
-irae__valueset_lab_drug_level_mycophenolate
-WHERE
-irae__cohort_study_population_lab.lab_observation_code = irae__valueset_lab_drug_level_mycophenolate.code and 
-irae__cohort_study_population_lab.lab_observation_system = irae__valueset_lab_drug_level_mycophenolate.system
