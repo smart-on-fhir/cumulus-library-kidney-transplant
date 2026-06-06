@@ -144,7 +144,6 @@ def make() -> list[Path]:
     return [manifest.save_file_upload_toml(upload_list, 'file_upload_study_variable.toml'),
             manifest.save_sql_toml(variable_list, 'study_variable.toml', description='variable cohorts')]
 
-
 if __name__ == '__main__':
     for output_toml in make():
         print(output_toml)
