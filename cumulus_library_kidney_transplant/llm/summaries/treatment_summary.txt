@@ -1,0 +1,130 @@
+model = "ImmunosuppressiveMedicationsAnnotation"
+immunosuppressive_medication_mentions: A (possibly empty) list of ImmunosuppressiveMedicationMention instances, which contain:
+    status = RxStatus (Choice Value)
+        # What is the status of this medication?
+        # Possible Values:
+        #   - Medication order is active (currently prescribed and intended for ongoing use).
+        #   - Medication is planned/ordered/prescribed but therapy has not yet started.
+        #   - Medication course is finished (all doses given or intended duration completed).
+        #   - Medication was stopped or permanently discontinued before completion.
+        #   - Medication order was canceled/withdrawn before any doses were administered.
+        #   - Medication is temporarily paused (on-hold, suspended, or interrupted).
+        #   - None of the above
+    category = RxCategory (Choice Value)
+        # In which healthcare setting is this medication prescribed/administered?
+        # Possible Values:
+        #   - Medication ordered/administered during an inpatient/acute care setting
+        #   - Medication ordered/administered during an outpatient setting
+        #   - Medication ordered/consumed by the patient in their home (including long term care, nursing homes, etc)
+        #   - None of the above
+    route = RxRoute (Choice Value)
+        # What is the the route of administration for this medication?
+        # Possible Values:
+        #   - Oral (includes swallowed and sublingual routes)
+        #   - Nasogastric/Feeding tube (NG/PEG)
+        #   - Injection (IV, SC, or IM)
+        #   - Inhalation (respiratory route)
+        #   - Topical (skin or mucosal surface)
+        #   - None of the above
+    phase = TreatmentPhase (Choice Value)
+        # What is the treatment phase for this medication?
+        # Possible Values:
+        #   - Induction therapy
+        #   - Maintenance therapy
+        #   - Rescue therapy
+        #   - None of the above
+    expected_supply_days = Optional mention of [Integer number]
+        # Number of days the medication supply is supposed to last (stale dating the prescription)
+    number_of_repeats_allowed = Optional mention of [Integer number]
+        # number of times (aka refills or repeats) that the patient can receive the prescribed medication
+    frequency = RxFrequency (Choice Value)
+        # What is the frequency of this medication?
+        # Possible Values:
+        #   - QD
+        #   - BID
+        #   - TID
+        #   - QID
+        #   - QOD
+        #   - Q6H
+        #   - Q8H
+        #   - Q12H
+        #   - WEEKLY
+        #   - Q2W
+        #   - Q4W
+        #   - MONTHLY
+        #   - OTHER
+        #   - None of the above
+    start_date = Optional mention of [Plaintext string]
+        # Start date of the prescribed or administered medication
+    end_date = Optional mention of [Plaintext string]
+        # End date of the prescribed or administered medication
+    quantity_unit = RxQuantityUnit (Choice Value)
+        # Medication prescribed unit
+        # Possible Values:
+        #   - mg
+        #   - g
+        #   - ug
+        #   - kg
+        #   - mL
+        #   - L
+        #   - U
+        #   - [iU]
+        #   - {tablet}
+        #   - {capsule}
+        #   - {puff}
+        #   - {patch}
+        #   - {suppository}
+        #   - mg/mL
+        #   - mg/kg
+        #   - U/kg
+        #   - ug/kg/min
+        #   - h
+        #   - min
+        #   - d
+        #   - None of the above
+    quantity_value = Optional mention of [Plaintext string]
+        # Numeric amount of medication prescribed or administered (FHIR Quantity.value)
+    drug_class = RxClassImmunosuppression (Choice Value)
+        # Extract the Immunosuppressive drug class or therapy modality documented for this medication, if present
+        # Possible Values:
+        #   - Anti-Metabolite (ANTIMET)
+        #   - Calcineurin Inhibitor (CNI)
+        #   - Corticosteroid (CS)
+        #   - mTOR Inhibitor (MTOR)
+        #   - Costimulation Blocker/blockade (COSTIM)
+        #   - Immunoglobulin (IVIG)
+        #   - Polyclonal antibody (e.g., ATG, ALG)
+        #   - Monoclonal antibody (mAb, e.g., basiliximab, rituximab)
+        #   - Other immunosuppressive drug
+        #   - None of the above
+    ingredient = RxIngredientImmunosuppression (Choice Value)
+        # Extract the specific immunosuppressive drug ingredient documented for this medication, if present
+        # Possible Values:
+        #   - Azathioprine
+        #   - Mycophenolate Mofetil
+        #   - Other anti-metabolite ingredient
+        #   - Cyclosporine
+        #   - Tacrolimus
+        #   - Other calcineurin inhibitor ingredient
+        #   - Methylprednisolone
+        #   - Prednisolone
+        #   - Prednisone
+        #   - Other corticosteroid ingredient
+        #   - Belatacept
+        #   - Abatacept
+        #   - Other Costimulation blocker ingredient
+        #   - Intravenous Immunoglobulin (IVIG)
+        #   - Cytogam (CMV-specific hyperimmune globulin)
+        #   - Other immunoglobulin therapy
+        #   - Everolimus
+        #   - Sirolimus
+        #   - Other mTOR inhibitor ingredient
+        #   - Alemtuzumab
+        #   - Basiliximab
+        #   - Daclizumab
+        #   - Rituximab
+        #   - Other Monoclonal antibody drug
+        #   - Antithymocyte Globulin (ATG)
+        #   - Other polyclonal antibodies ingredient
+        #   - None of the above
+

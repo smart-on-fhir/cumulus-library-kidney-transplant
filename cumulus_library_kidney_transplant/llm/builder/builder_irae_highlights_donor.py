@@ -4,7 +4,7 @@ import pathlib
 
 import cumulus_library
 from cumulus_library import base_utils, databases
-from cumulus_library.template_sql import sql_utils, base_templates
+from cumulus_library.template_sql import sql_utils
 
 
 class IraeNlpHighlightsDonorBuilder(cumulus_library.BaseTableBuilder):
