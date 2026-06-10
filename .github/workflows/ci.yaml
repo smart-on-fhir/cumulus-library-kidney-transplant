@@ -38,3 +38,43 @@ jobs:
             thresholdAll: 0
             thresholdNew: 0
             thresholdModified: 0
+           
+  # Check that Generated Files are Up-to-Date
+  check-generated-files:
+    name: check generated files
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          token: ${{ secrets.CI_PAT}}
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install "."
+
+      - name: Run create_model_summary.py
+        run: python cumulus_library_kidney_transplant/llm/create_model_summary.py
+
+      - name: Run create_schema.py
+        run: python cumulus_library_kidney_transplant/llm/create_schema.py
+
+      - name: Run create_wide_sql_examples.py
+        run: python cumulus_library_kidney_transplant/llm/create_wide_sql_examples.py
+
+      - name: Check for uncommitted changes
+        run: |
+          git diff --exit-code -- \
+            cumulus_library_kidney_transplant/llm/summaries/ \
+            cumulus_library_kidney_transplant/llm/schemas/ \
+            cumulus_library_kidney_transplant/llm/athena/ \
+          || (echo "Generated files are out of date. Run the scripts locally and commit the results." && exit 1)
+
+  
+
+  
