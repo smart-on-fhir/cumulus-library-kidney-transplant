@@ -174,7 +174,7 @@ cumulus-library build \
   --workgroup <relevant_cumulus_library_workgroup> \
   --profile <relevant_cumulus_library_profile> \
   -t irae \
-  --builder builder_irae_highlights_donor
+  --builder irae_highlights_donor
 ```
 
 This will produce a `irae__highlights_donor` table for future use. Note that 

@@ -4,7 +4,7 @@ import cumulus_library
 from cumulus_library import base_utils, databases
 from cumulus_library.template_sql import sql_utils
 
-from cumulus_library_ibd_cds.tools import filetool
+from cumulus_library_kidney_transplant.tools import filetool
 
 
 class IbdFlatteningMixin:

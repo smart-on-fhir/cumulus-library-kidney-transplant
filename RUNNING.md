@@ -172,10 +172,10 @@ tables in order to generate `irae__highlights_*` tables for each task. We could 
 re-running the whole study, or we could target a table-builder in particular using 
 the `--builder` argument. Since we don't need to rebuild the whole study, we will do the latter 
 to save time, targeting the following builders: 
-1. `builder_irae_highlights_immunosuppressive_medications`. 
-2. `builder_irae_highlights_multiple_transplant_history`. 
-3. `builder_irae_highlights_donor`. 
-4. `builder_irae_highlights_longitudinal`. 
+1. `irae_highlights_immunosuppressive_medications`. 
+2. `irae_highlights_multiple_transplant_history`. 
+3. `irae_highlights_donor`. 
+4. `irae_highlights_longitudinal`. 
 
 ### 5.a Immunosuppressive Medications against peri-operative notes
 ```sh
@@ -184,7 +184,7 @@ cumulus-library build \
   --workgroup <relevant_cumulus_library_workgroup> \
   --profile <relevant_cumulus_library_profile> \
   -t irae \
-  --builder builder_irae_highlights_immunosuppressive_medications
+  --builder irae_highlights_immunosuppressive_medications
 ```
 
 ### 5.b History of Multiple Transplants against peri-operative notes
@@ -194,7 +194,7 @@ cumulus-library build \
   --workgroup <relevant_cumulus_library_workgroup> \
   --profile <relevant_cumulus_library_profile> \
   -t irae \
-  --builder builder_irae_highlights_multiple_transplant_history
+  --builder irae_highlights_multiple_transplant_history
 ```
 
 ### 5.c Donor Characteristics against peri-operative notes
@@ -204,7 +204,7 @@ cumulus-library build \
   --workgroup <relevant_cumulus_library_workgroup> \
   --profile <relevant_cumulus_library_profile> \
   -t irae \
-  --builder builder_irae_highlights_donor
+  --builder irae_highlights_donor
 ```
 
 ### 5.d Outcome Variables against post-operative notes
@@ -214,7 +214,7 @@ cumulus-library build \
   --workgroup <relevant_cumulus_library_workgroup> \
   --profile <relevant_cumulus_library_profile> \
   -t irae \
-  --builder builder_irae_highlights_longitudinal
+  --builder irae_highlights_longitudinal
 ```
 
 The resulting table, `irae__highlights`, formats LLM annotations to be digestible in

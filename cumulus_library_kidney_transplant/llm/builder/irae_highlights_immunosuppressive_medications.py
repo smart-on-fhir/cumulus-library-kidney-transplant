@@ -7,7 +7,7 @@ from cumulus_library import base_utils, databases
 from cumulus_library.template_sql import sql_utils
 
 
-class IraeNlpHighlightsDonorBuilder(cumulus_library.BaseTableBuilder):
+class IraeNlpHighlightsImmunosuppressiveMedicationsBuilder(cumulus_library.BaseTableBuilder):
     display_text = "Transforming donor IRAE NLP results into a table of highlights..."
 
     @staticmethod

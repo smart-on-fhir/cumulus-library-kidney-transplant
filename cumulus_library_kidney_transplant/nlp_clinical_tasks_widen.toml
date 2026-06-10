@@ -1,0 +1,16 @@
+[[actions]]
+description = 'Flattened NLP results for IBD Clinical Tasks'
+type = "build:parallel"
+files = [
+    "llm/builder/irae_highlights_donor.py",
+    "llm/builder/irae_highlights_immunosuppressive_medications.py",
+    "llm/builder/irae_highlights_longitudinal.py",
+    "llm/builder/irae_highlights_multiple_transplant_history.py",
+]
+
+[[actions]]
+description = 'LLM timeline in WIDE format'
+type = "build:parallel"
+files = [
+    "llm/athena/ibd__llm_timeline.sql",
+]
