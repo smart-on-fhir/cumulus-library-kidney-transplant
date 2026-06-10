@@ -1,5 +1,131 @@
 {
   "$defs": {
+    "ImmunosuppressiveMedicationMention": {
+      "description": "Mentions of ImmunosuppressiveMedications for this given chart.",
+      "properties": {
+        "has_mention": {
+          "default": false,
+          "description": "Whether there is any mention of this variable in the text.",
+          "title": "Has Mention",
+          "type": "boolean"
+        },
+        "spans": {
+          "description": "The text spans where this variable is mentioned.",
+          "items": {
+            "type": "string"
+          },
+          "title": "Spans",
+          "type": "array"
+        },
+        "status": {
+          "$ref": "#/$defs/RxStatus",
+          "default": "None of the above",
+          "description": "What is the status of this medication?"
+        },
+        "category": {
+          "$ref": "#/$defs/RxCategory",
+          "default": "None of the above",
+          "description": "In which healthcare setting is this medication prescribed/administered?"
+        },
+        "route": {
+          "$ref": "#/$defs/RxRoute",
+          "default": "None of the above",
+          "description": "What is the the route of administration for this medication?"
+        },
+        "phase": {
+          "$ref": "#/$defs/TreatmentPhase",
+          "default": "None of the above",
+          "description": "What is the treatment phase for this medication?"
+        },
+        "expected_supply_days": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Number of days the medication supply is supposed to last (stale dating the prescription)",
+          "title": "Expected Supply Days"
+        },
+        "number_of_repeats_allowed": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "number of times (aka refills or repeats) that the patient can receive the prescribed medication",
+          "title": "Number Of Repeats Allowed"
+        },
+        "frequency": {
+          "$ref": "#/$defs/RxFrequency",
+          "default": "None of the above",
+          "description": "What is the frequency of this medication?"
+        },
+        "start_date": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Start date of the prescribed or administered medication",
+          "title": "Start Date"
+        },
+        "end_date": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "End date of the prescribed or administered medication",
+          "title": "End Date"
+        },
+        "quantity_unit": {
+          "$ref": "#/$defs/RxQuantityUnit",
+          "default": "None of the above",
+          "description": "Medication prescribed unit"
+        },
+        "quantity_value": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Numeric amount of medication prescribed or administered (FHIR Quantity.value)",
+          "title": "Quantity Value"
+        },
+        "drug_class": {
+          "$ref": "#/$defs/RxClassImmunosuppression",
+          "default": "None of the above",
+          "description": "Extract the Immunosuppressive drug class or therapy modality documented for this medication, if present"
+        },
+        "ingredient": {
+          "$ref": "#/$defs/RxIngredientImmunosuppression",
+          "default": "None of the above",
+          "description": "Extract the specific immunosuppressive drug ingredient documented for this medication, if present"
+        }
+      },
+      "title": "ImmunosuppressiveMedicationMention",
+      "type": "object"
+    },
     "RxCategory": {
       "description": "https://build.fhir.org/valueset-medicationrequest-admin-location.html",
       "enum": [
@@ -148,128 +274,17 @@
       "type": "string"
     }
   },
-  "description": "Mentions of ImmunosuppressiveMedications for this given chart.",
+  "description": "All mentions of ImmunosuppressiveMedications for this given chart.",
   "properties": {
-    "has_mention": {
-      "default": false,
-      "description": "Whether there is any mention of this variable in the text.",
-      "title": "Has Mention",
-      "type": "boolean"
-    },
-    "spans": {
-      "description": "The text spans where this variable is mentioned.",
+    "immunosuppressive_medication_mentions": {
+      "description": "All mentions of ImmunosuppressiveMedications for this given chart.",
       "items": {
-        "type": "string"
+        "$ref": "#/$defs/ImmunosuppressiveMedicationMention"
       },
-      "title": "Spans",
+      "title": "Immunosuppressive Medication Mentions",
       "type": "array"
-    },
-    "status": {
-      "$ref": "#/$defs/RxStatus",
-      "default": "None of the above",
-      "description": "What is the status of this medication?"
-    },
-    "category": {
-      "$ref": "#/$defs/RxCategory",
-      "default": "None of the above",
-      "description": "In which healthcare setting is this medication prescribed/administered?"
-    },
-    "route": {
-      "$ref": "#/$defs/RxRoute",
-      "default": "None of the above",
-      "description": "What is the the route of administration for this medication?"
-    },
-    "phase": {
-      "$ref": "#/$defs/TreatmentPhase",
-      "default": "None of the above",
-      "description": "What is the treatment phase for this medication?"
-    },
-    "expected_supply_days": {
-      "anyOf": [
-        {
-          "type": "integer"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "description": "Number of days the medication supply is supposed to last (stale dating the prescription)",
-      "title": "Expected Supply Days"
-    },
-    "number_of_repeats_allowed": {
-      "anyOf": [
-        {
-          "type": "integer"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "description": "number of times (aka refills or repeats) that the patient can receive the prescribed medication",
-      "title": "Number Of Repeats Allowed"
-    },
-    "frequency": {
-      "$ref": "#/$defs/RxFrequency",
-      "default": "None of the above",
-      "description": "What is the frequency of this medication?"
-    },
-    "start_date": {
-      "anyOf": [
-        {
-          "type": "string"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "description": "Start date of the prescribed or administered medication",
-      "title": "Start Date"
-    },
-    "end_date": {
-      "anyOf": [
-        {
-          "type": "string"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "description": "End date of the prescribed or administered medication",
-      "title": "End Date"
-    },
-    "quantity_unit": {
-      "$ref": "#/$defs/RxQuantityUnit",
-      "default": "None of the above",
-      "description": "Medication prescribed unit"
-    },
-    "quantity_value": {
-      "anyOf": [
-        {
-          "type": "string"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "description": "Numeric amount of medication prescribed or administered (FHIR Quantity.value)",
-      "title": "Quantity Value"
-    },
-    "drug_class": {
-      "$ref": "#/$defs/RxClassImmunosuppression",
-      "default": "None of the above",
-      "description": "Extract the Immunosuppressive drug class or therapy modality documented for this medication, if present"
-    },
-    "ingredient": {
-      "$ref": "#/$defs/RxIngredientImmunosuppression",
-      "default": "None of the above",
-      "description": "Extract the specific immunosuppressive drug ingredient documented for this medication, if present"
     }
   },
-  "title": "ImmunosuppressiveMedicationMention",
+  "title": "ImmunosuppressiveMedicationsAnnotation",
   "type": "object"
 }
