@@ -102,9 +102,10 @@ Place the ndjson in a folder, and take note of the paths to these notes for late
 
 For chart annotation, individual reviewers should have separate projects from each other to 
 ensure blinding against other annotators responses. For this agreement task, you should use 
-the `LS_DONOR` config file in this project. For each annotator, we should do the following
+the `./label-studio-annotation-interfaces/LS_DONOR.xml` config file in this project. 
+For each annotator, do the following:
 
-- Install Label Studio according to [their docs](https://labelstud.io/guide/install.html).
+- (One time) Install Label Studio according to [their docs](https://labelstud.io/guide/install.html).
 - Create a new project, named however you like - probably something related to annotator agreement`.
   - Skip the Data Import tab.
   - On the Label Setup tab, click "Custom template" on the bottom left and copy/paste the 

@@ -18,7 +18,9 @@ class IraeNlpHighlightsDonorBuilder(cumulus_library.BaseTableBuilder):
             source_col="result",
             expected={},
         )
-        # In addition to checking for the presence of a result column, we also want to check for the presence of donor_serostatus_mention data in the result column's schema. We will do this with a somewhat hacky query and a check that the resulting table_schema is not empty.
+        # In addition to checking for the presence of a result column, we also want to check for 
+        # the presence of donor_serostatus_mention data in the result column's schema. We will do 
+        # this with a somewhat hacky query and a check that the resulting table_schema is not empty.
         query = cumulus_library.get_template(
             "result_column_schema_check",
             pathlib.Path(__file__).parent,
