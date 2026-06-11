@@ -7,14 +7,14 @@ from cumulus_library.template_sql import sql_utils
 from cumulus_library_kidney_transplant.tools import filetool
 
 
-class IbdFlatteningMixin:
-    """Mixin providing shared flattening logic for IBD wide-table builders.
+class IraeLLMBaseMixin:
+    """Mixin providing shared flattening logic for IRAE wide-table builders.
 
     Combine with cumulus_library.BaseTableBuilder to create a concrete builder:
 
         class MyBuilder(
             cumulus_library.BaseTableBuilder,
-            IbdFlatteningMixin,
+            IraeFlatteningMixin,
             task_display="My Task",
             task_tabular_display="my_task",
         ):
@@ -22,27 +22,28 @@ class IbdFlatteningMixin:
                 ...
     """
 
-    def __init_subclass__(cls, task_display="", task_tabular_display="", **kwargs):
+    def __init_subclass__(cls, task_display="", task_tabular_display="", task_table_suffix="", **kwargs):
         super().__init_subclass__(**kwargs)
         # Special variable for library builders
-        cls.display_text = f"Flattening IBD {task_display} NLP..."
+        cls.display_text = f"Transforming IRAE {task_display} NLP..."
 
         # Other variables based on these keyword args
         # Progress text to display when checking possible source tables
-        cls.progress_text = f"Discovering available NLP tables for IBD {task_display} variables..."
+        cls.progress_text = f"Discovering available NLP tables for IRAE {task_display} variables..."
 
         # The common prefix across all source tables which vary by LLM deployment
-        cls.src_table_prefix = f"ibd__nlp_{task_tabular_display.lower()}"
+        cls.src_table_prefix = f"irae__nlp_{task_tabular_display.lower()}"
 
         # The ultimate destination table for the builder's resulting sql 
         # This name should also match the relevant jinja template
-        cls.dest_table = f"ibd__llm_{task_tabular_display.lower()}_wide"
+        cls.dest_table = f"irae__llm_{task_tabular_display.lower()}_{task_table_suffix.lower()}"
 
     @staticmethod
     def _is_table_valid(database: databases.DatabaseBackend, table_name: str) -> bool:
         """
-        Check if a table is valid for use in the flattening process.
-        The basic criteria for validity is that the table contains a 'result' column with non-empty results. Sub-classes can add more specific criteria by overriding this method.
+        Check if a table is valid for use/has data.
+        The basic criteria for validity is that the table contains a 'result' column with non-empty results. 
+        Sub-classes can add more specific criteria by overriding this method.
         """        
         return sql_utils.is_field_present(
             database=database,
@@ -62,10 +63,12 @@ class IbdFlatteningMixin:
             table_names=tables,
         )
 
-    def _get_valid_ibd_nlp_tables(self, database: databases.DatabaseBackend) -> set[str]:
+    def _get_valid_irae_nlp_tables(self, database: databases.DatabaseBackend) -> set[str]:
         """
-        Get a set of all valid IBD NLP tables from the database.
+        Get a set of all valid IRAE NLP tables from the database.
         Checks a list of known source tables for LLMs we support.
+
+        NOTE: These models may need to be expanded depending on model availability.
         """
         source_tables = [
             f"{self.src_table_prefix}_claude_sonnet45",
@@ -93,7 +96,7 @@ class IbdFlatteningMixin:
         raise NotImplementedError(f"{type(self).__name__} must implement _make_empty_query")
 
     def _make_query(self, config: cumulus_library.StudyConfig):
-        valid_tables = self._get_valid_ibd_nlp_tables(config.db)
+        valid_tables = self._get_valid_irae_nlp_tables(config.db)
         if valid_tables:
             return self._make_query_with_tables(valid_tables)
         return self._make_empty_query(config)

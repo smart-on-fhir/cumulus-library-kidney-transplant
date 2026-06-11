@@ -3,15 +3,24 @@ Exposes builder classes for transforming LLM-derived kidney transplant annotatio
 into wide formats suitable for analysis and use in our study.
 """
 
-from .irae_highlights_donor import IraeNlpHighlightsDonorBuilder
-from .builder_irae_highlights_immunosuppressive_medications import IraeNlpHighlightsImmunosuppressiveMedicationsBuilder
-from .builder_irae_highlights_longitudinal import IraeNlpHighlightsLongitudinalBuilder
-from .builder_irae_highlights_multiple_transplant_history import IraeNlpHighlightsMultipleTransplantHistoryBuilder
+from .irae_donor_highlights import IraeNlpDonorHighlightsBuilder
+from .irae_immunosuppressive_medications_highlights import IraeNlpImmunosuppressiveMedicationsHighlightsBuilder
+from .irae_longitudinal_highlights import IraeNlpLongitudinalHighlightsBuilder
+from .irae_multiple_transplant_history_highlights import IraeNlpMultipleTransplantHistoryHighlightsBuilder
+
+from .irae_donor_wide import IraeNlpDonorFlattenedBuilder
+from .irae_immunosuppressive_medications_wide import IraeNlpImmunosuppressiveMedicationsFlattenedBuilder
+from .irae_longitudinal_wide import IraeNlpLongitudinalFlattenedBuilder
+from .irae_multiple_transplant_history_wide import IraeNlpMultipleTransplantHistoryFlattenedBuilder
 
 
 __all__ = [
-    'IraeNlpHighlightsDonorBuilder',
-    'IraeNlpHighlightsImmunosuppressiveMedicationsBuilder',
-    'IraeNlpHighlightsLongitudinalBuilder',
-    'IraeNlpHighlightsMultipleTransplantHistoryBuilder',
+    'IraeNlpDonorHighlightsBuilder',
+    'IraeNlpImmunosuppressiveMedicationsHighlightsBuilder',
+    'IraeNlpLongitudinalHighlightsBuilder',
+    'IraeNlpMultipleTransplantHistoryHighlightsBuilder',
+    'IraeNlpDonorFlattenedBuilder',
+    'IraeNlpImmunosuppressiveMedicationsFlattenedBuilder',
+    'IraeNlpLongitudinalFlattenedBuilder',
+    'IraeNlpMultipleTransplantHistoryFlattenedBuilder',
 ]

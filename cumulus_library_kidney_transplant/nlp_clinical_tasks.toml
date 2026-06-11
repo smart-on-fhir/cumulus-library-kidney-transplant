@@ -50,7 +50,7 @@ response_schema = "llm/schemas/irae_donor.json"
 version = 7
 # When we add document-level tasks, we can use `select_by_table` to specify 
 # that this table should only be built for documents that meet certain criteria. 
-# select_by_table = "ibd__llm_document_task_diagnosis"
+# select_by_table = "irae__llm_document_task_diagnosis"
 
 
 
@@ -61,7 +61,7 @@ response_schema = "llm/schemas/irae_meds.json"
 version = 6
 # When we add document-level tasks, we can use `select_by_table` to specify 
 # that this table should only be built for documents that meet certain criteria. 
-# select_by_table = "ibd__llm_document_task_diagnosis"
+# select_by_table = "irae__llm_document_task_diagnosis"
 
 
 [tables.longitudinal]
@@ -79,7 +79,7 @@ response_schema = "llm/schemas/irae_longitudinal.json"
 version = 6
 # When we add document-level tasks, we can use `select_by_table` to specify 
 # that this table should only be built for documents that meet certain criteria. 
-# select_by_table = "ibd__llm_document_task_diagnosis"
+# select_by_table = "irae__llm_document_task_diagnosis"
 
 
 
@@ -90,5 +90,5 @@ response_schema = "llm/schemas/irae_history.json"
 version = 6
 # When we add document-level tasks, we can use `select_by_table` to specify 
 # that this table should only be built for documents that meet certain criteria. 
-# select_by_table = "ibd__llm_document_task_diagnosis"
+# select_by_table = "irae__llm_document_task_diagnosis"
 

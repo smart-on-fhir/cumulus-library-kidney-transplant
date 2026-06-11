@@ -2,8 +2,8 @@ from pathlib import Path
 
 import cumulus_library
 
-from cumulus_library_ibd_cds.tools import filetool
-from cumulus_library_ibd_cds.llm.builder import (
+from cumulus_library_kidney_transplant.tools import filetool
+from cumulus_library_kidney_transplant.llm.builder import (
     IbdNlpDiagnosisFlattenedBuilder,
     IbdNlpTreatmentFlattenedBuilder,
     IbdNlpSurgeryFlattenedBuilder,

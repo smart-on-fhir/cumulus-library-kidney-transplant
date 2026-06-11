@@ -5,8 +5,8 @@ import pytest
 import sqlglot
 
 import cumulus_library
-from cumulus_library_kidney_transplant.nlp_result_to_highlights import (
-    builder_irae_highlights_multiple_transplant_history as builder_module,
+from cumulus_library_kidney_transplant.llm.builder import (
+    irae_multiple_transplant_history_highlights as builder_module,
 )
 
 @pytest.fixture()

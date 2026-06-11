@@ -1,4 +1,4 @@
--- https://github.com/smart-on-fhir/cumulus-library-ibd-cds/issues/14
+-- SRC/Inspiration https://github.com/smart-on-fhir/cumulus-library-ibd-cds/issues/14
 
 create table irae__cohort_study_population_lab as
 with join_lab as

@@ -13,7 +13,7 @@ BASE_DIR = Path(os.path.dirname(__file__))
 
 def create(annotation, filename:str) -> Path:
     """
-    Create an IBD schema using BaseModel.model_json_schema()
+    Create an IRAE schema using BaseModel.model_json_schema()
 
     :param annotation: Annotation class of type BaseModel
     :param filename: name of the json file to write to
