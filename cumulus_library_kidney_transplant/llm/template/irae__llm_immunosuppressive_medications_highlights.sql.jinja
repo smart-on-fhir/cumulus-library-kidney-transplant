@@ -1,11 +1,6 @@
-{%- macro union_all_delineate(loop) -%}
-{%- if not loop.last -%}
-UNION ALL
-{%- endif -%}
-{%- endmacro -%}
+{%- import 'syntax.sql.jinja' as syntax -%}
 
 CREATE TABLE irae__highlights_immunosuppressive_medications AS
-{%- if table_names %}
 {%- for table_name in table_names %}
 -- One pass to get medication status information --
 SELECT
@@ -56,19 +51,5 @@ FROM
 WHERE 
     src.task_version = CAST('6' AS INT)
     AND medication.ingredient <> 'None of the above'
-{{ union_all_delineate(loop) }}
+{{ syntax.union_all_delineate(loop) }}
 {%- endfor %}
-{%- else %}
-SELECT
-    'x' AS note_ref,
-    'x' AS subject_ref,
-    'x' AS generated_on,
-    'x' AS task_version,
-    'x' AS system_fingerprint,
-    'x' AS origin,
-    'x' AS label,
-    'x' AS span,
-    'x' AS sublabel_name,
-    'x' AS sublabel_value
-WHERE 1=0
-{%- endif %}

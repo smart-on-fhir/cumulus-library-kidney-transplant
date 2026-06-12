@@ -1,0 +1,44 @@
+CREATE TABLE irae__llm_longitudinal_wide AS
+SELECT DISTINCT
+    nlp.note_ref,
+    nlp.subject_ref,
+    'irae__nlp_longitudinal_gpt_oss_120b' AS origin,
+    nlp.generated_on,
+    nlp.task_version,
+    nlp.system_fingerprint,
+    nlp.result.rx_therapeutic_status_mention.rx_therapeutic_status,
+    nlp.result.rx_compliance_mention.rx_compliance,
+    -- DSA
+    nlp.result.dsa_mention.dsa_history,
+    nlp.result.dsa_mention.dsa,
+    -- Infection (any)
+    nlp.result.infection_mention.infection_history,
+    nlp.result.infection_mention.infection,
+    -- Viral Infection
+    nlp.result.viral_infection_mention.viral_infection_history,
+    nlp.result.viral_infection_mention.viral_infection,
+    -- Bacterial Infection
+    nlp.result.bacterial_infection_mention.bacterial_infection_history,
+    nlp.result.bacterial_infection_mention.bacterial_infection,
+    -- Fungal Infection
+    nlp.result.fungal_infection_mention.fungal_infection_history,
+    nlp.result.fungal_infection_mention.fungal_infection,
+    -- Graft Rejection
+    nlp.result.graft_rejection_mention.graft_rejection_history,
+    nlp.result.graft_rejection_mention.graft_rejection,
+    -- Graft Failure
+    nlp.result.graft_failure_mention.graft_failure_history,
+    nlp.result.graft_failure_mention.graft_failure,
+    -- PTLD
+    nlp.result.ptld_mention.ptld_history,
+    nlp.result.ptld_mention.ptld,
+    -- Cancer
+    nlp.result.cancer_mention.cancer_history,
+    nlp.result.cancer_mention.cancer,
+    -- Deceased
+    nlp.result.deceased_mention.deceased,
+    nlp.result.deceased_mention.deceased_date
+FROM
+    irae__nlp_longitudinal_gpt_oss_120b AS nlp
+WHERE
+    task_version = 6

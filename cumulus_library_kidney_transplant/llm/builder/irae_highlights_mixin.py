@@ -4,7 +4,7 @@ from cumulus_library.template_sql.base_templates import get_ctas_empty_query
 from cumulus_library_kidney_transplant.llm.builder.irae_base_mixin import IraeLLMBaseMixin
 
 
-class IraeHighlightsMixin(IraeLLMBaseMixin, task_table_suffix='highlights'):
+class IraeHighlightsMixin(IraeLLMBaseMixin):
     """Mixin providing span-highlight creation logic for IRAE.
 
     Combine with cumulus_library.BaseTableBuilder to create a concrete builder:
@@ -17,7 +17,10 @@ class IraeHighlightsMixin(IraeLLMBaseMixin, task_table_suffix='highlights'):
         ):
             pass
     """
-    
+
+    def __init_subclass__(cls, **kwargs):
+        super().__init_subclass__(task_table_suffix='highlights', **kwargs)
+
     def _make_empty_query(self, config: cumulus_library.StudyConfig):
         """
         Creates an empty query for the highlights table.

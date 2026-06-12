@@ -103,21 +103,7 @@ CREATE TABLE irae__highlights_donor AS
         AND src.result.{{mention_key}}.serostatus != 'NOT_MENTIONED' 
     {%- else %}
     {%- endif %}
-    {{ union_all_delineate(loop) }}
+    {{ syntax.union_all_delineate(loop) }}
     {%- endfor %}
-{{ union_all_delineate(loop) }}
+{{ syntax.union_all_delineate(loop) }}
 {%- endfor %}
-{%- else %}
-SELECT
-    'x' AS note_ref,
-    'x' AS subject_ref,
-    'x' AS generated_on,
-    'x' AS task_version,
-    'x' AS system_fingerprint,
-    'x' AS origin,
-    'x' AS label,
-    'x' AS span,
-    'x' AS sublabel_name,
-    'x' AS sublabel_value
-WHERE 1=0 -- empty table
-{%- endif %}

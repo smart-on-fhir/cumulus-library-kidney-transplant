@@ -1,0 +1,18 @@
+{%- import 'syntax.sql.jinja' as syntax -%}
+CREATE TABLE irae__llm_multiple_transplant_history_wide AS
+{%- for table_name in table_names %}
+SELECT DISTINCT
+    nlp.note_ref,
+    nlp.subject_ref,
+    '{{ table_name }}' AS origin,
+    nlp.generated_on,
+    nlp.task_version,
+    nlp.system_fingerprint,
+    -- Multiple Transplant History
+    nlp.result.multiple_transplant_history_mention.multiple_transplant_history
+FROM
+    {{ table_name }} AS nlp
+WHERE
+    task_version = 6
+{{ syntax.union_all_delineate(loop) }}
+{%- endfor %}

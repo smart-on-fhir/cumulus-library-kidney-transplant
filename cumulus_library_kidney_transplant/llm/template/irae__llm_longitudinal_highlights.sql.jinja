@@ -1,9 +1,4 @@
-{%- macro union_all_delineate(loop) -%}
-{%- if not loop.last -%}
-UNION ALL
-{%- endif -%}
-{%- endmacro -%}
-
+{%- import 'syntax.sql.jinja' as syntax -%}
 {%- set mention_display_lookup = {
     'rx_therapeutic_status_mention' : "Rx Therapeutic",
     'rx_compliance_mention' : "Rx Compliance",
@@ -19,7 +14,6 @@ UNION ALL
     'deceased_mention':  "Deceased"
 } -%}
 CREATE TABLE irae__highlights_longitudinal AS
-{%- if table_names %}
 {%- for table_name in table_names %}
     {%- for mention_key in mention_display_lookup.keys() %}
     SELECT
@@ -125,7 +119,7 @@ CREATE TABLE irae__highlights_longitudinal AS
     {%- else %}
     {%- endif %}
 
-    {{ union_all_delineate(loop) }}
+    {{ syntax.union_all_delineate(loop) }}
     {%- endfor %}
     -- Additional SELECT for deceased_mention.deceased_date
     UNION ALL 
@@ -143,19 +137,5 @@ CREATE TABLE irae__highlights_longitudinal AS
     WHERE 
         src.result.deceased_mention.deceased IS NOT NULL
         AND src.result.deceased_mention.deceased 
-{{ union_all_delineate(loop) }}
+{{ syntax.union_all_delineate(loop) }}
 {%- endfor %}
-{%- else %}
-SELECT
-    'x' AS note_ref,
-    'x' AS subject_ref,
-    'x' AS generated_on,
-    'x' AS task_version,
-    'x' AS system_fingerprint,
-    'x' AS origin,
-    'x' AS label,
-    'x' AS span,
-    'x' AS sublabel_name,
-    'x' AS sublabel_value
-WHERE 1=0 -- empty table
-{%- endif %}

@@ -64,8 +64,8 @@ jobs:
       - name: Run create_schema.py
         run: python cumulus_library_kidney_transplant/llm/create_schema.py
 
-      - name: Run create_wide_sql_examples.py
-        run: python cumulus_library_kidney_transplant/llm/create_wide_sql_examples.py
+      - name: Run create_sql_examples.py
+        run: python cumulus_library_kidney_transplant/llm/create_sql_examples.py
 
       - name: Check for uncommitted changes
         run: |
