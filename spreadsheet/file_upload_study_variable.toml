@@ -1,9 +1,4 @@
 config_type="file_upload"
-[tables.valueset_age_group]
-file = "age_group.csv"
-
-[tables.valueset_casedef]
-file = "casedef.csv"
 
 [tables.valueset_diag_kidney_biopsy]
 file = "diag_kidney_biopsy.csv"
@@ -61,24 +56,6 @@ file = "dx_ptld.csv"
 
 [tables.valueset_dx_transplant]
 file = "dx_transplant.csv"
-
-[tables.valueset_fhir_diagnostic_service]
-file = "fhir_diagnostic_service.csv"
-
-[tables.include_age_at_visit]
-file = "include_age_at_visit.csv"
-
-[tables.include_diag_category]
-file = "include_diag_category.csv"
-
-[tables.include_gender]
-file = "include_gender.csv"
-
-[tables.include_study_period]
-file = "include_study_period.csv"
-
-[tables.include_utilization]
-file = "include_utilization.csv"
 
 [tables.valueset_lab_albumin]
 file = "lab_albumin.csv"
@@ -205,6 +182,3 @@ file = "rx_mtor_everolimus.csv"
 
 [tables.valueset_rx_mtor_sirolimus]
 file = "rx_mtor_sirolimus.csv"
-
-[tables.valueset_service_kidney_biopsy]
-file = "service_kidney_biopsy.csv"
