@@ -35,12 +35,12 @@ def pipeline(highlights:str, sample:str, origin:str):
     print(output_csv)
     print('######################################################################')
 
-def highlights_donor_index(highlights:str = 'irae__highlights_donor',
+def highlights_donor_index(highlights:str = 'irae__llm_donor_highlights',
                            sample:str = SAMPLE_INDEX,
                            origin:str=NLP_DONOR_GPT_OSS_120B):
     pipeline(highlights, sample, origin)
 
-def highlights_longitudinal(highlights:str = 'irae__highlights_longitudinal',
+def highlights_longitudinal(highlights:str = 'irae__llm_longitudinal_highlights',
                             sample:str = SAMPLE_POST,
                             origin:str= NLP_GPT_OSS_120B):
     pipeline(highlights, sample, origin)

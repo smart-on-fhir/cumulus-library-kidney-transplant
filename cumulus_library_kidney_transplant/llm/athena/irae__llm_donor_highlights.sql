@@ -1,4 +1,4 @@
-CREATE TABLE irae__highlights_donor AS
+CREATE TABLE irae__llm_donor_highlights AS
     SELECT
         src.note_ref,
         src.subject_ref,

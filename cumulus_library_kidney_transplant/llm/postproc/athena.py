@@ -11,7 +11,7 @@ from kidney_transplant_llm.postproc.schema import (
     HIGHLIGHT_COLS,
     NLP_DONOR_GPT_OSS_120B)
 
-def create_view_str(highlights='irae__highlights_donor',
+def create_view_str(highlights='irae__llm_donor_highlights',
                     sample='irae__sample_casedef_index',
                     origin=NLP_DONOR_GPT_OSS_120B) -> str:
     """
@@ -41,7 +41,7 @@ def create_view_str(highlights='irae__highlights_donor',
     ]
     return '\n'.join(_sql)
 
-def create_view_sql(highlights='irae__highlights_donor',
+def create_view_sql(highlights='irae__llm_donor_highlights',
                     sample='irae__sample_casedef_index',
                     origin=NLP_DONOR_GPT_OSS_120B) -> Path:
 

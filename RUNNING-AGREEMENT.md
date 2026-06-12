@@ -174,10 +174,10 @@ cumulus-library build \
   --workgroup <relevant_cumulus_library_workgroup> \
   --profile <relevant_cumulus_library_profile> \
   -t irae \
-  --builder irae_highlights_donor
+  --builder irae_donor_highlights
 ```
 
-This will produce a `irae__highlights_donor` table for future use. Note that 
+This will produce a `irae__llm_donor_highlights` table for future use. Note that 
 if you run `cumulus-library clean -t irae`, this table will be deleted. Keep that in mind
 when cleaning up your study environments in Athena.
 
@@ -268,8 +268,8 @@ docker compose run --rm \
   --ls-token <PATH_TO_LS_TOKEN> \
   --athena-database <relevant_cumulus_library_database> \
   --athena-workgroup <relevant_cumulus_library_workgroup> \
-  --select-by-athena-table irae_highlights_donor \
-  --label-by-athena-table irae_highlights_donor
+  --select-by-athena-table irae_donor_highlights \
+  --label-by-athena-table irae_donor_highlights
 ```
 
 Once you've gone through, manually confirmed all the LLM predictions, exported the LabelStudio 

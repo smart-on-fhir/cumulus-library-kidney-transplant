@@ -3,7 +3,7 @@ import pandas as pd
 DIRICHLET_MIN_COUNT = 4
 
 # Main dataframe we start with is our term frequency counted df 
-df = pd.read_csv('data/irae/highlights/irae__highlights_donor_index.pivot.tf.csv')
+df = pd.read_csv('data/irae/highlights/irae__llm_donor_highlights_index.pivot.tf.csv')
 
 # For each column/subvalue type, we want a separate df for checking uniqueness and double counts
 subvalue_types = [

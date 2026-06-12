@@ -22,5 +22,5 @@ def path_sample_post() -> Path | None:
 def path_sample(sample_csv: str) -> Path | None:
     return path_phi_dir() / 'sample_casedef' / sample_csv
 
-def path_highlights(highlights_csv='irae__highlights_donor.csv') -> Path | None:
+def path_highlights(highlights_csv='irae__llm_donor_highlights.csv') -> Path | None:
         return path_phi_dir() / 'highlights' / highlights_csv

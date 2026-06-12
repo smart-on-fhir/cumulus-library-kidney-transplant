@@ -58,7 +58,7 @@ HIGHLIGHT_COLS = ['sublabel_name', 'sublabel_value', 'span']
 
 def name_view(highlights:str, sample:str) -> str:
     """
-    :return: str view name like 'irae__highlights_donor_index'
+    :return: str view name like 'irae__llm_donor_highlights_index'
     """
     sample_period = sample.replace('irae__sample_casedef_', '')
     return highlights + '_' + sample_period

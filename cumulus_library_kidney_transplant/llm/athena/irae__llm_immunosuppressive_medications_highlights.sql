@@ -1,4 +1,4 @@
-CREATE TABLE irae__highlights_immunosuppressive_medications AS
+CREATE TABLE irae__llm_immunosuppressive_medications_highlights AS
 -- One pass to get medication status information --
 SELECT
     src.note_ref,

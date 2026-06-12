@@ -5,8 +5,8 @@ import pytest
 import sqlglot
 
 import cumulus_library
-from cumulus_library_kidney_transplant.nlp_result_to_highlights import (
-    builder_irae_highlights_immunosuppressive_medications as builder_module,
+from cumulus_library_kidney_transplant.llm.builder import (
+    irae_immunosuppressive_medications_highlights as builder_module,
 )
 
 @pytest.fixture()
@@ -128,7 +128,7 @@ def test_prepare_queries_appends_template_from_valid_tables(database, builder):
     # Confirm that we called get_template with the correct parameters
     expected_template_dir = pathlib.Path(builder_module.__file__).parent
     mock_get_template.assert_called_once_with(
-        "irae__highlights_immunosuppressive_medications",
+        "irae__llm_immunosuppressive_medications_highlights",
         expected_template_dir,
         table_names=valid_tables,
     )

@@ -13,7 +13,7 @@
     'cancer_mention' : "Cancer",
     'deceased_mention':  "Deceased"
 } -%}
-CREATE TABLE irae__highlights_longitudinal AS
+CREATE TABLE irae__llm_longitudinal_highlights AS
 {%- for table_name in table_names %}
     {%- for mention_key in mention_display_lookup.keys() %}
     SELECT

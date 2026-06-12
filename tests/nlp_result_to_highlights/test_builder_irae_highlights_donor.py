@@ -128,7 +128,7 @@ def test_prepare_queries_appends_template_from_valid_tables(database, builder):
     # Confirm that we called get_template with the correct parameters
     expected_template_dir = pathlib.Path(builder_module.__file__).parent
     mock_get_template.assert_called_once_with(
-        "irae__highlights_donor",
+        "irae__llm_donor_highlights",
         expected_template_dir,
         table_names=valid_tables,
     )

@@ -1,4 +1,4 @@
-CREATE TABLE irae__highlights_longitudinal AS
+CREATE TABLE irae__llm_longitudinal_highlights AS
     SELECT
         src.note_ref,
         src.subject_ref,

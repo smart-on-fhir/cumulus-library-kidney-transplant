@@ -1,4 +1,4 @@
-CREATE TABLE irae__highlights_multiple_transplant_history AS
+CREATE TABLE irae__llm_multiple_transplant_history_highlights AS
     SELECT
         src.note_ref,
         src.subject_ref,
