@@ -58,7 +58,7 @@ def make() -> list[Path]:
         manifest.SqlAction(timeline_files, 'timeline for casedef with variables'),
     ]
 
-    return [manifest.save_sql_toml(actions, 'casedef.toml')]
+    return [manifest.save_actions_toml(actions, 'casedef.toml')]
 
 if __name__ == '__main__':
     for target in make():

@@ -65,7 +65,7 @@ def make() -> list[Path]:
         manifest.SqlAction(aspect_tables, f'study_population aspects {str(aspect_list)}'),
     ]
 
-    return [manifest.save_sql_toml(actions, 'study_population.toml')]
+    return [manifest.save_actions_toml(actions, 'study_population.toml')]
 
 if __name__ == '__main__':
     for manifest_toml in make():

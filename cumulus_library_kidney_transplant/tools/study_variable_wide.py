@@ -310,7 +310,7 @@ def make() -> list[Path]:
         manifest.SqlAction(make_variable_wide(), f'variable wide {aspect_list}'),
     ]
 
-    return [manifest.save_sql_toml(actions, 'study_variable_wide.toml')]
+    return [manifest.save_actions_toml(actions, 'study_variable_wide.toml')]
 
 if __name__ == '__main__':
     for output_toml in make():

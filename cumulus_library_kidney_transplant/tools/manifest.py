@@ -114,20 +114,6 @@ def as_file_upload_toml(file_list: list[Path]) -> dict:
 #-----------------------------------------------------------------------------
 # TOML save helpers
 #-----------------------------------------------------------------------------
-def save_sql_toml(actions: SqlAction | list[SqlAction], toml_file: Path | str) -> Path:
-    """
-    Save a manifest containing one or more SQL build actions.
-    """
-    return save_toml(content=as_sql_toml(actions), toml_file=toml_file)
-
-
-def save_export_toml(actions: ExportAction | list[ExportAction], toml_file: Path | str) -> Path:
-    """
-    Save a manifest containing one or more export actions.
-    """
-    return save_toml(content=as_export_toml(actions), toml_file=toml_file)
-
-
 def save_actions_toml(
     actions: SqlAction | ExportAction | list[SqlAction | ExportAction],
     toml_file: Path | str,

@@ -97,7 +97,7 @@ def make() -> list[Path]:
         manifest.SqlAction(make_temporality_limit_note(50), 'sample size limit notes'),
     ]
 
-    return [manifest.save_sql_toml(actions, 'sample.toml')]
+    return [manifest.save_actions_toml(actions, 'sample.toml')]
 
 if __name__ == '__main__':
     for target in make():
