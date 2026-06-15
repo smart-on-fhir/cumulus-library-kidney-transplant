@@ -1,123 +1,123 @@
 [[actions]]
-description="SQL cube study population"
-type="build:parallel"
-files= [
-	"athena/irae__cube_encounter_study_population_enc.sql",
-	"athena/irae__cube_patient_study_population.sql",
-	"athena/irae__cube_patient_study_population_dx.sql",
-	"athena/irae__cube_patient_study_population_rx.sql",
-	"athena/irae__cube_patient_study_population_proc.sql",
-	"athena/irae__cube_patient_study_population_lab.sql",
-	"athena/irae__cube_patient_study_population_doc.sql",
-	"athena/irae__cube_encounter_study_population_doc.sql",
-	"athena/irae__cube_documentreference_study_population_doc.sql",
-	"athena/irae__cube_patient_study_population_diag.sql",
-	"athena/irae__cube_encounter_study_population_diag.sql",
-	"athena/irae__cube_diagnosticreport_study_population_diag.sql"
+description = "SQL cube study population"
+type = "build:parallel"
+files = [
+    "athena/irae__cube_encounter_study_population_enc.sql",
+    "athena/irae__cube_patient_study_population.sql",
+    "athena/irae__cube_patient_study_population_dx.sql",
+    "athena/irae__cube_patient_study_population_rx.sql",
+    "athena/irae__cube_patient_study_population_proc.sql",
+    "athena/irae__cube_patient_study_population_lab.sql",
+    "athena/irae__cube_patient_study_population_doc.sql",
+    "athena/irae__cube_encounter_study_population_doc.sql",
+    "athena/irae__cube_documentreference_study_population_doc.sql",
+    "athena/irae__cube_patient_study_population_diag.sql",
+    "athena/irae__cube_encounter_study_population_diag.sql",
+    "athena/irae__cube_diagnosticreport_study_population_diag.sql",
 ]
 
 [[actions]]
-description="SQL cube variable union"
-type="build:parallel"
-files= [
-	"athena/irae__cube_patient_variable_union.sql",
-	"athena/irae__cube_encounter_variable_union.sql"
+description = "SQL cube variable union"
+type = "build:parallel"
+files = [
+    "athena/irae__cube_patient_variable_union.sql",
+    "athena/irae__cube_encounter_variable_union.sql",
 ]
 
 [[actions]]
-description="SQL cube casedef"
-type="build:parallel"
-files= [
-	"athena/irae__cube_encounter_casedef.sql",
-	"athena/irae__cube_patient_casedef.sql",
-	"athena/irae__cube_patient_casedef_dx.sql",
-	"athena/irae__cube_patient_casedef_rx.sql",
-	"athena/irae__cube_patient_casedef_lab.sql",
-	"athena/irae__cube_patient_casedef_proc.sql"
+description = "SQL cube casedef"
+type = "build:parallel"
+files = [
+    "athena/irae__cube_encounter_casedef.sql",
+    "athena/irae__cube_patient_casedef.sql",
+    "athena/irae__cube_patient_casedef_dx.sql",
+    "athena/irae__cube_patient_casedef_rx.sql",
+    "athena/irae__cube_patient_casedef_lab.sql",
+    "athena/irae__cube_patient_casedef_proc.sql",
 ]
 
 [[actions]]
-description="SQL cube casedef sample"
-type="build:parallel"
-files= [
-	"athena/irae__cube_patient_sample_casedef.sql",
-	"athena/irae__cube_patient_sample_casedef_pre.sql",
-	"athena/irae__cube_patient_sample_casedef_peri.sql",
-	"athena/irae__cube_patient_sample_casedef_peri_post.sql",
-	"athena/irae__cube_patient_sample_casedef_post.sql",
-	"athena/irae__cube_note_sample_casedef.sql",
-	"athena/irae__cube_note_sample_casedef_pre.sql",
-	"athena/irae__cube_note_sample_casedef_peri.sql",
-	"athena/irae__cube_note_sample_casedef_peri_post.sql",
-	"athena/irae__cube_note_sample_casedef_post.sql"
+description = "SQL cube casedef sample"
+type = "build:parallel"
+files = [
+    "athena/irae__cube_patient_sample_casedef.sql",
+    "athena/irae__cube_patient_sample_casedef_pre.sql",
+    "athena/irae__cube_patient_sample_casedef_peri.sql",
+    "athena/irae__cube_patient_sample_casedef_peri_post.sql",
+    "athena/irae__cube_patient_sample_casedef_post.sql",
+    "athena/irae__cube_note_sample_casedef.sql",
+    "athena/irae__cube_note_sample_casedef_pre.sql",
+    "athena/irae__cube_note_sample_casedef_peri.sql",
+    "athena/irae__cube_note_sample_casedef_peri_post.sql",
+    "athena/irae__cube_note_sample_casedef_post.sql",
 ]
 
 [[actions]]
-description="export cube tables study populations"
-type="export:counts"
-tables= [
-	"irae__cube_encounter_study_population_enc",
-	"irae__cube_patient_study_population",
-	"irae__cube_patient_study_population_dx",
-	"irae__cube_patient_study_population_rx",
-	"irae__cube_patient_study_population_proc",
-	"irae__cube_patient_study_population_lab",
-	"irae__cube_patient_study_population_doc",
-	"irae__cube_encounter_study_population_doc",
-	"irae__cube_documentreference_study_population_doc",
-	"irae__cube_patient_study_population_diag",
-	"irae__cube_encounter_study_population_diag",
-	"irae__cube_diagnosticreport_study_population_diag"
+description = "export cube tables study populations"
+type = "export:counts"
+tables = [
+    "irae__cube_encounter_study_population_enc",
+    "irae__cube_patient_study_population",
+    "irae__cube_patient_study_population_dx",
+    "irae__cube_patient_study_population_rx",
+    "irae__cube_patient_study_population_proc",
+    "irae__cube_patient_study_population_lab",
+    "irae__cube_patient_study_population_doc",
+    "irae__cube_encounter_study_population_doc",
+    "irae__cube_documentreference_study_population_doc",
+    "irae__cube_patient_study_population_diag",
+    "irae__cube_encounter_study_population_diag",
+    "irae__cube_diagnosticreport_study_population_diag",
 ]
 
 [[actions]]
-description="export cube tables variable union"
-type="export:counts"
-tables= [
-	"irae__cube_patient_variable_union",
-	"irae__cube_encounter_variable_union"
+description = "export cube tables variable union"
+type = "export:counts"
+tables = [
+    "irae__cube_patient_variable_union",
+    "irae__cube_encounter_variable_union",
 ]
 
 [[actions]]
-description="export cube tables casedef"
-type="export:counts"
-tables= [
-	"irae__cube_encounter_casedef",
-	"irae__cube_patient_casedef",
-	"irae__cube_patient_casedef_dx",
-	"irae__cube_patient_casedef_rx",
-	"irae__cube_patient_casedef_lab",
-	"irae__cube_patient_casedef_proc"
+description = "export cube tables casedef"
+type = "export:counts"
+tables = [
+    "irae__cube_encounter_casedef",
+    "irae__cube_patient_casedef",
+    "irae__cube_patient_casedef_dx",
+    "irae__cube_patient_casedef_rx",
+    "irae__cube_patient_casedef_lab",
+    "irae__cube_patient_casedef_proc",
 ]
 
 [[actions]]
-description="export cube tables casedef sample"
-type="export:counts"
-tables= [
-	"irae__cube_patient_sample_casedef",
-	"irae__cube_patient_sample_casedef_pre",
-	"irae__cube_patient_sample_casedef_peri",
-	"irae__cube_patient_sample_casedef_peri_post",
-	"irae__cube_patient_sample_casedef_post",
-	"irae__cube_note_sample_casedef",
-	"irae__cube_note_sample_casedef_pre",
-	"irae__cube_note_sample_casedef_peri",
-	"irae__cube_note_sample_casedef_peri_post",
-	"irae__cube_note_sample_casedef_post"
+description = "export cube tables casedef sample"
+type = "export:counts"
+tables = [
+    "irae__cube_patient_sample_casedef",
+    "irae__cube_patient_sample_casedef_pre",
+    "irae__cube_patient_sample_casedef_peri",
+    "irae__cube_patient_sample_casedef_peri_post",
+    "irae__cube_patient_sample_casedef_post",
+    "irae__cube_note_sample_casedef",
+    "irae__cube_note_sample_casedef_pre",
+    "irae__cube_note_sample_casedef_peri",
+    "irae__cube_note_sample_casedef_peri_post",
+    "irae__cube_note_sample_casedef_post",
 ]
 
 [[actions]]
-description="SQL study metadata"
-type="build:parallel"
-files= [
-	"athena/irae__meta_date.sql",
-	"athena/irae__meta_version.sql"
+description = "SQL study metadata"
+type = "build:parallel"
+files = [
+    "athena/irae__meta_date.sql",
+    "athena/irae__meta_version.sql",
 ]
 
 [[actions]]
-description="export study metadata"
-type="export:meta"
-tables= [
-	"irae__meta_date",
-	"irae__meta_version"
+description = "export study metadata"
+type = "export:meta"
+tables = [
+    "irae__meta_date",
+    "irae__meta_version",
 ]

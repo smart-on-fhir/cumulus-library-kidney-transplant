@@ -1,32 +1,32 @@
 [[actions]]
-description="filter include/exclude"
-type="build:serial"
-files= [
-	"athena/irae__cohort_casedef_candidate.sql",
-	"athena/irae__cohort_casedef_exclude.sql",
-	"athena/irae__cohort_casedef_include.sql"
+description = "filter include/exclude"
+type = "build:serial"
+files = [
+    "athena/irae__cohort_casedef_candidate.sql",
+    "athena/irae__cohort_casedef_exclude.sql",
+    "athena/irae__cohort_casedef_include.sql",
 ]
 
 [[actions]]
-description="cohort from case definition (valueset_casedef)"
-type="build:parallel"
-files= [
-	"athena/irae__cohort_casedef.sql"
+description = "cohort from case definition (valueset_casedef)"
+type = "build:parallel"
+files = [
+    "athena/irae__cohort_casedef.sql",
 ]
 
 [[actions]]
-description="cohort for case definition aspects (dx, rx, lab, proc)"
-type="build:parallel"
-files= [
-	"athena/irae__cohort_casedef_dx.sql",
-	"athena/irae__cohort_casedef_lab.sql",
-	"athena/irae__cohort_casedef_proc.sql",
-	"athena/irae__cohort_casedef_rx.sql"
+description = "cohort for case definition aspects (dx, rx, lab, proc)"
+type = "build:parallel"
+files = [
+    "athena/irae__cohort_casedef_dx.sql",
+    "athena/irae__cohort_casedef_lab.sql",
+    "athena/irae__cohort_casedef_proc.sql",
+    "athena/irae__cohort_casedef_rx.sql",
 ]
 
 [[actions]]
-description="timeline for casedef with variables"
-type="build:parallel"
-files= [
-	"athena/irae__cohort_timeline.sql"
+description = "timeline for casedef with variables"
+type = "build:parallel"
+files = [
+    "athena/irae__cohort_timeline.sql",
 ]

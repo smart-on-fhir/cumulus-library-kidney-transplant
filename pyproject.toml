@@ -16,7 +16,7 @@ dependencies = [
     "cumulus-library >= 6.1.0",
     "pyrfc3339",
     "sqlfluff >= 3, <4",
-    "tomli_w",
+    "tomli-w",
 ]
 # You can alter this to discuss your study specifics
 description = "kidney transplant irAE (immuno related adverse events) related to immunosuppressive Medications post transplant"
