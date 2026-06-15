@@ -141,8 +141,10 @@ def make() -> list[Path]:
     upload_list = list_variable_uploads()
     variable_list = [make_cohort(variable) for variable in list_variables()]
 
-    return [manifest.save_file_upload_toml(upload_list, 'file_upload_study_variable.toml'),
-            manifest.save_sql_toml(variable_list, 'study_variable.toml', description='variable cohorts')]
+    upload = manifest.ExportAction(upload_list, 'upload study variable CSV files')
+    athena = manifest.SqlAction(variable_list, 'variable cohorts')
+
+    return [manifest.save_actions_toml([upload, athena], 'study_variable_merged.toml')]
 
 if __name__ == '__main__':
     for output_toml in make():

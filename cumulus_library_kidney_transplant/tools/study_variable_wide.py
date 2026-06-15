@@ -303,12 +303,14 @@ def make() -> list[Path]:
     """
     aspect_list = [aspect.name for aspect in list_aspects()]
 
-    sections = [manifest.as_sql_toml(make_variable_union_bool(), 'variable union (bool)'),
-                manifest.as_sql_toml(make_variable_union_aspect(), f'variable union {aspect_list}'),
-                manifest.as_sql_toml([make_variable_wide_bool()], 'variable wide (bool)'),
-                manifest.as_sql_toml(make_variable_wide(), f'variable wide {aspect_list}'), ]
+    actions = [
+        manifest.SqlAction(make_variable_union_bool(), 'variable union (bool)'),
+        manifest.SqlAction(make_variable_union_aspect(), f'variable union {aspect_list}'),
+        manifest.SqlAction([make_variable_wide_bool()], 'variable wide (bool)'),
+        manifest.SqlAction(make_variable_wide(), f'variable wide {aspect_list}'),
+    ]
 
-    return [manifest.save_lines_toml(sections, 'study_variable_wide.toml')]
+    return [manifest.save_sql_toml(actions, 'study_variable_wide.toml')]
 
 if __name__ == '__main__':
     for output_toml in make():

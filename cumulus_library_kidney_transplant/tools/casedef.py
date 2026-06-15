@@ -1,5 +1,5 @@
 from pathlib import Path
-from cumulus_library_kidney_transplant.tools import manifest, template, filetool, tablespace, study_variable
+from cumulus_library_kidney_transplant.tools import manifest, template, filetool, tablespace
 
 def make_cohort() -> list[Path]:
     return [template.copy('cohort_casedef.sql')]
@@ -51,15 +51,15 @@ def make() -> list[Path]:
     aspect_files = make_cohort_aspects()
     timeline_files = make_timeline()
 
-    sections = [manifest.as_sql_toml(rules_files, 'filter include/exclude', build_type='build:serial'),
-                manifest.as_sql_toml(cohort_files, 'cohort from case definition (valueset_casedef)'),
-                manifest.as_sql_toml(aspect_files, 'cohort for case definition aspects (dx, rx, lab, proc)'),
-                manifest.as_sql_toml(timeline_files, 'timeline for casedef with variables')]
+    actions = [
+        manifest.SqlAction(rules_files, 'filter include/exclude', 'build:serial'),
+        manifest.SqlAction(cohort_files, 'cohort from case definition (valueset_casedef)'),
+        manifest.SqlAction(aspect_files, 'cohort for case definition aspects (dx, rx, lab, proc)'),
+        manifest.SqlAction(timeline_files, 'timeline for casedef with variables'),
+    ]
 
-    return [manifest.save_lines_toml(sections, 'casedef.toml')]
+    return [manifest.save_sql_toml(actions, 'casedef.toml')]
 
 if __name__ == '__main__':
     for target in make():
         print(target)
-
-

@@ -51,7 +51,7 @@ def make() -> list[Path]:
     * cohort_study_population_proc.sql  -> FHIR Procedure
     * cohort_study_population_diag.sql  -> FHIR DiagnosticReport
 
-    :return: list of str toml declarations
+    :return: list of TOML outputs
     """
     study_period = make_study_population([STUDY_PERIOD])
     study_population = make_study_population([STUDY_POPULATION])
@@ -59,11 +59,13 @@ def make() -> list[Path]:
     aspect_tables = [f"{STUDY_POPULATION}_{aspect}" for aspect in aspect_list]
     aspect_tables = make_study_population(aspect_tables)
 
-    sections = [manifest.as_sql_toml(study_period, 'study_period'),
-                manifest.as_sql_toml(study_population, 'study_population'),
-                manifest.as_sql_toml(aspect_tables, f'study_population aspects {str(aspect_list)}')]
+    actions = [
+        manifest.SqlAction(study_period, 'study_period'),
+        manifest.SqlAction(study_population, 'study_population'),
+        manifest.SqlAction(aspect_tables, f'study_population aspects {str(aspect_list)}'),
+    ]
 
-    return [manifest.save_lines_toml(sections, 'study_population.toml')]
+    return [manifest.save_sql_toml(actions, 'study_population.toml')]
 
 if __name__ == '__main__':
     for manifest_toml in make():

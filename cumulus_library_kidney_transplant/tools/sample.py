@@ -89,13 +89,15 @@ def _make_temporality(template_name:str, temporality:str, limit: int = None) -> 
 def make() -> list[Path]:
     aspect_list = list_aspect_names()
 
-    sections = [manifest.as_sql_toml(make_sample(), 'sample_casedef (all)'),
-                manifest.as_sql_toml(make_aspect(), f'sample for aspects {aspect_list}'),
-                manifest.as_sql_toml(make_temporality(), f'sample temporality {TEMPORALITY}'),
-                manifest.as_sql_toml(make_temporality_limit_patient(10), f'sample size limit patients'),
-                manifest.as_sql_toml(make_temporality_limit_note(50), f'sample size limit notes')]
+    actions = [
+        manifest.SqlAction(make_sample(), 'sample_casedef (all)'),
+        manifest.SqlAction(make_aspect(), f'sample for aspects {aspect_list}'),
+        manifest.SqlAction(make_temporality(), f'sample temporality {TEMPORALITY}'),
+        manifest.SqlAction(make_temporality_limit_patient(10), 'sample size limit patients'),
+        manifest.SqlAction(make_temporality_limit_note(50), 'sample size limit notes'),
+    ]
 
-    return [manifest.save_lines_toml(sections, 'sample.toml')]
+    return [manifest.save_sql_toml(actions, 'sample.toml')]
 
 if __name__ == '__main__':
     for target in make():

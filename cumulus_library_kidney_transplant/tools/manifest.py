@@ -1,5 +1,7 @@
+import tomli_w
 from pathlib import Path
 from functools import lru_cache
+from dataclasses import dataclass
 from cumulus_library import StudyManifest
 from cumulus_library_kidney_transplant.tools import filetool
 
@@ -7,7 +9,7 @@ from cumulus_library_kidney_transplant.tools import filetool
 # get study manifest using cumulus library
 #-----------------------------------------------------------------------------
 @lru_cache(maxsize=1)
-def get_manifest(manifest_path: Path|str = None) -> StudyManifest:
+def get_manifest(manifest_path: Path | str = None) -> StudyManifest:
     """
     This method encapsulated changes to v6 StudyManifest
     default: filetool.path_project() = "cumulus_library_irae_cds"
@@ -28,95 +30,213 @@ MANIFEST = get_manifest()
 PREFIX = get_manifest().get_study_prefix()
 
 #-----------------------------------------------------------------------------
-# TOML builders
-# (Future migrate to Jinja template, DICT type or TOML_lib)
+# TOML action declarations
 #-----------------------------------------------------------------------------
-def as_sql_toml(file_list:list[Path], description:str=None, build_type='build:parallel') -> str:
+@dataclass(frozen=True)
+class SqlAction:
     """
-    @Refactor: TOML templates be Jinja `template.py`
+    Cumulus Library SQL build action.
 
-    :param description: key name to display during build
-    :param file_list: list of paths to files to execute in parallel
-    :param build_type: typically "build:parallel" or "build:serial"
-    :return: str content for `manifest.toml` submanifest
+    `manifest.py` owns the TOML details:
+    * SqlAction.file_list becomes the TOML `files` key
+    * each file is written as `athena/<filename>`
+    * SqlAction.build_type becomes the TOML `type` key
     """
-    _files = [_quote('athena/'+f.name) for f in file_list]
-    return _actions(description, build_type, 'files', _files)
+    file_list: list[Path]
+    description: str = ""
+    build_type: str = "build:parallel"
 
-def as_export_toml(file_list:list[Path], description:str=None, export_type='export:counts') -> str:
-    """
-    @Refactor: TOML templates be Jinja `template.py`
 
-    :param description: key name to display during build
-    :param file_list: list of paths to files to execute in parallel
-    :param export_type: supports one of ['export:counts', 'export:annotated_counts', 'export:flat', 'export:metadata']
-    :return: str content for `manifest.toml` submanifest
+@dataclass(frozen=True)
+class ExportAction:
     """
-    _tables = [_quote(f.stem) for f in file_list]
-    return _actions(description, export_type, 'tables', _tables)
+    Cumulus Library export action.
 
-def as_file_upload_toml(file_list:list[Path]) -> str:
+    `manifest.py` owns the TOML details:
+    * ExportAction.file_list becomes the TOML `tables` key
+    * each file stem becomes the exported table name
+    * ExportAction.export_type becomes the TOML `type` key
     """
-    @Refactor: TOML templates be Jinja `template.py`
-    :return: str content for `manifest.toml` submanifest
+    file_list: list[Path]
+    description: str = ""
+    export_type: str = "export:counts"
+
+#-----------------------------------------------------------------------------
+# TOML builders
+#-----------------------------------------------------------------------------
+def as_sql_toml(actions: SqlAction | list[SqlAction]) -> dict:
     """
-    out = ['config_type="file_upload"\n']
+    Build a Python dict for SQL action manifests.
+
+    :param actions: SQL build action, or list of SQL build actions
+    :return: dict content for `manifest.toml` submanifest
+    """
+    return as_actions_toml(_as_list(actions))
+
+
+def as_export_toml(actions: ExportAction | list[ExportAction]) -> dict:
+    """
+    Build a Python dict for export action manifests.
+
+    :param actions: export action, or list of export actions
+    :return: dict content for `manifest.toml` submanifest
+    """
+    return as_actions_toml(_as_list(actions))
+
+
+def as_actions_toml(actions: SqlAction | ExportAction | list[SqlAction | ExportAction]) -> dict:
+    """
+    Build a Python dict for a mixed list of SQL and export actions.
+
+    This is useful when one manifest contains both build and export actions.
+    """
+    return {"actions": [_action_to_dict(action) for action in _as_list(actions)]}
+
+
+def as_file_upload_toml(file_list: list[Path]) -> dict:
+    """
+    Build a Python dict for file-upload manifests.
+
+    :return: dict content for `manifest.toml` submanifest
+    """
+    tables: dict[str, dict[str, str]] = {}
+
     for filename in file_list:
-        simple  = filetool.file_to_simplename(filename.name)
-        if 'include' in filename.name:
-            out.append(f'[tables.{simple}]')
-        else:
-            out.append(f'[tables.valueset_{simple}]')
-        out.append(f'file = "{filename.name}"')
-        out.append('')
-    return '\n'.join(out)
+        simple = filetool.file_to_simplename(filename.name)
+        table_name = simple if "include" in filename.name else f"valueset_{simple}"
+        tables[table_name] = {"file": filename.name}
 
-def save_file_upload_toml(file_list:list[Path], toml_file:Path|str) -> Path:
+    return {
+        "config_type": "file_upload",
+        "tables": tables,
+    }
+
+#-----------------------------------------------------------------------------
+# TOML save helpers
+#-----------------------------------------------------------------------------
+def save_sql_toml(actions: SqlAction | list[SqlAction], toml_file: Path | str) -> Path:
+    """
+    Save a manifest containing one or more SQL build actions.
+    """
+    return save_toml(content=as_sql_toml(actions), toml_file=toml_file)
+
+
+def save_export_toml(actions: ExportAction | list[ExportAction], toml_file: Path | str) -> Path:
+    """
+    Save a manifest containing one or more export actions.
+    """
+    return save_toml(content=as_export_toml(actions), toml_file=toml_file)
+
+
+def save_actions_toml(
+    actions: SqlAction | ExportAction | list[SqlAction | ExportAction],
+    toml_file: Path | str,
+) -> Path:
+    """
+    Save a manifest containing a mixed list of SQL and export actions.
+    """
+    return save_toml(content=as_actions_toml(actions), toml_file=toml_file)
+
+
+def save_file_upload_toml(file_list: list[Path], toml_file: Path | str) -> Path:
     if not isinstance(toml_file, Path):
         toml_file = filetool.path_spreadsheet(toml_file)
-    content=as_file_upload_toml(file_list)
-    return save_text_toml(content=content, toml_file=toml_file)
+    return save_toml(content=as_file_upload_toml(file_list), toml_file=toml_file)
 
-def save_sql_toml(file_list: list[Path], toml_file: Path|str, description:str = None, build='build:parallel') -> Path:
-    content = as_sql_toml(file_list, description, build)
-    return save_text_toml(content=content, toml_file=toml_file)
 
-def save_lines_toml(lines: list[str], toml_file: Path|str) -> Path:
-    content = '\n'.join(lines)
-    return save_text_toml(content=content, toml_file=toml_file)
+def save_toml(content: dict | list[dict], toml_file: Path | str) -> Path:
+    """
+    Serialize Python TOML content with tomli-w and write it to disk.
 
-def save_text_toml(content:str, toml_file:Path|str) -> Path:
+    Accepts either a single TOML dict or a list of section dicts. Lists are
+    merged before serialization so callers can compose sections without ever
+    handling raw TOML strings.
+    """
     if not isinstance(toml_file, Path):
         toml_file = filetool.path_project(toml_file)
-    return filetool.write_text(content.strip(), toml_file)
+
+    content = _merge_toml_sections(content) if isinstance(content, list) else content
+    return save_text_toml(dumps_toml(content), toml_file)
+
+def save_lines_toml(lines: list[str], toml_file: Path | str) -> Path:
+    """
+    Legacy escape hatch for callers that already provide literal TOML lines.
+    Prefer `save_toml()` or the action-based save helpers for new code.
+    """
+    if not isinstance(toml_file, Path):
+        toml_file = filetool.path_project(toml_file)
+    return save_text_toml("\n".join(lines), toml_file)
+
+
+def save_text_toml(content: str, toml_file: Path | str) -> Path:
+    """
+    Legacy escape hatch for callers that already provide literal TOML text.
+    Prefer `save_toml()` or the action-based save helpers for new code.
+    """
+    if not isinstance(toml_file, Path):
+        toml_file = filetool.path_project(toml_file)
+    return filetool.write_text(content.strip() + "\n", toml_file)
 
 #-----------------------------------------------------------------------------
 # TOML helpers
 #-----------------------------------------------------------------------------
-def _actions(description, action_type, key, values:list[str]) -> str:
-    lines = [_description(description),
-             _type(action_type),
-             _dict(key, values)]
-    return f"\n[[actions]]\n" + '\n'.join(lines)
+def _clean_description(description: str | None = None) -> str:
+    if not description:
+        return ""
+    return description.replace("[", "(").replace("]", ")")
 
-def _description(description:str = None) -> str:
-    return f'description={_quote(description)}'
+def _action_to_dict(action: SqlAction | ExportAction) -> dict:
+    if isinstance(action, SqlAction):
+        return {
+            "description": _clean_description(action.description),
+            "type": action.build_type or "",
+            "files": [f"athena/{f.name}" for f in action.file_list],
+        }
 
-def _type(toml_type:str=None) -> str:
-    return f'type={_quote(toml_type)}'
+    if isinstance(action, ExportAction):
+        return {
+            "description": _clean_description(action.description),
+            "type": action.export_type or "",
+            "tables": [f.stem for f in action.file_list],
+        }
 
-def _dict(key, values_list:list=None) -> str:
-    return f'{key}= [\n\t'+ ',\n\t'.join(values_list) + '\n]'
+def _as_list(item):
+    return item if isinstance(item, list) else [item]
 
-def _quote(text:str, quote_char:str='"') -> str:
+def _merge_toml_sections(content: list[dict]) -> dict:
     """
-    :param text:
-    :param quote_char: should be double quotes
-    :return:
-    """
-    if not text:
-        return f'{quote_char}{quote_char}'
+    Merge section dictionaries into one TOML document dictionary.
 
-    text = text.replace('[', '(')
-    text = text.replace(']', ')')
-    return f'{quote_char}{text}{quote_char}'
+    Special handling:
+    * `actions` lists are concatenated for repeated [[actions]] blocks.
+    * `tables` mappings are merged for repeated [tables.*] blocks.
+    * scalar keys must not conflict.
+    """
+    merged: dict = {}
+
+    for section in content:
+        for key, value in section.items():
+            if key == "actions":
+                merged.setdefault("actions", [])
+                merged["actions"].extend(value or [])
+            elif key == "tables":
+                merged.setdefault("tables", {})
+                duplicate_tables = set(merged["tables"]).intersection(value or {})
+                if duplicate_tables:
+                    duplicates = ", ".join(sorted(duplicate_tables))
+                    raise ValueError(f"Duplicate TOML table names: {duplicates}")
+                merged["tables"].update(value or {})
+            elif key not in merged:
+                merged[key] = value
+            elif merged[key] != value:
+                raise ValueError(
+                    f"Conflicting TOML value for key {key!r}: "
+                    f"{merged[key]!r} != {value!r}"
+                )
+    return merged
+
+def dumps_toml(content: dict) -> str:
+    """
+    Serialize TOML via tomli-w rather than hand-quoting strings/lists.
+    """
+    return tomli_w.dumps(content)
