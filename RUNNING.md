@@ -9,7 +9,7 @@ kidney study and related NLP breaks down into five steps:
 5. Running NLP detecting outcome variables against post-transplant notes (from casedef_post)
 
 In addition to running NLP against notes, each NLP task above also entails:
-- Populating a relevant highlights table in athena based on those annotations; and
+- Populating a relevant span-highlights table in athena based on those annotations; and
 - Uploading notes for chart-review, pre-labelled based on LLM annotations.
 
 Note that these instructions only use the `irae__sample_casedef_*_10` sample of 10 patients 
@@ -44,7 +44,7 @@ cumulus-library build \
 ```
 
 You should now have all the interesting results sitting in Athena, with the exception of 
-`irae__highlights_*` tables. We will build these after running NLP, but that requires first 
+span-highlights tables. We will build these after running NLP, but that requires first 
 building our study and defining our patient cohort.
 
 ## 2. Preparing our DocumentReferences 
@@ -168,14 +168,14 @@ only for the first time)
 ## 5. Generate NLP Highlights
 
 Returning to the `cumulus-library`, we want to rebuild the study now that we have LLM response
-tables in order to generate `irae__highlights_*` tables for each task. We could do this by 
+tables in order to generate span-highlights tables for each task. We could do this by 
 re-running the whole study, or we could target a table-builder in particular using 
 the `--builder` argument. Since we don't need to rebuild the whole study, we will do the latter 
 to save time, targeting the following builders: 
-1. `builder_irae_highlights_immunosuppressive_medications`. 
-2. `builder_irae_highlights_multiple_transplant_history`. 
-3. `builder_irae_highlights_donor`. 
-4. `builder_irae_highlights_longitudinal`. 
+1. `irae_immunosuppressive_medications_highlights`. 
+2. `irae_multiple_transplant_history_highlights`. 
+3. `irae_donor_highlights`. 
+4. `irae_longitudinal_highlights`. 
 
 ### 5.a Immunosuppressive Medications against peri-operative notes
 ```sh
@@ -184,7 +184,7 @@ cumulus-library build \
   --workgroup <relevant_cumulus_library_workgroup> \
   --profile <relevant_cumulus_library_profile> \
   -t irae \
-  --builder builder_irae_highlights_immunosuppressive_medications
+  --builder irae_immunosuppressive_medications_highlights
 ```
 
 ### 5.b History of Multiple Transplants against peri-operative notes
@@ -194,7 +194,7 @@ cumulus-library build \
   --workgroup <relevant_cumulus_library_workgroup> \
   --profile <relevant_cumulus_library_profile> \
   -t irae \
-  --builder builder_irae_highlights_multiple_transplant_history
+  --builder irae_multiple_transplant_history_highlights
 ```
 
 ### 5.c Donor Characteristics against peri-operative notes
@@ -204,7 +204,7 @@ cumulus-library build \
   --workgroup <relevant_cumulus_library_workgroup> \
   --profile <relevant_cumulus_library_profile> \
   -t irae \
-  --builder builder_irae_highlights_donor
+  --builder irae_donor_highlights
 ```
 
 ### 5.d Outcome Variables against post-operative notes
@@ -214,10 +214,10 @@ cumulus-library build \
   --workgroup <relevant_cumulus_library_workgroup> \
   --profile <relevant_cumulus_library_profile> \
   -t irae \
-  --builder builder_irae_highlights_longitudinal
+  --builder irae_longitudinal_highlights
 ```
 
-The resulting table, `irae__highlights`, formats LLM annotations to be digestible in
+The resulting highlights tables format LLM annotations to be digestible in
 uploading notes to a label studio project. 
 
 
@@ -257,8 +257,8 @@ docker compose run --rm \
   --ls-token <PATH_TO_LS_TOKEN> \
   --athena-database <relevant_cumulus_library_database> \
   --athena-workgroup <relevant_cumulus_library_workgroup> \
-  --select-by-athena-table irae_highlights_immunosuppressive_medications \
-  --label-by-athena-table irae_highlights_immunosuppressive_medications
+  --select-by-athena-table irae_immunosuppressive_medications_highlights \
+  --label-by-athena-table irae_immunosuppressive_medications_highlights
 ```
 
 ### 7.b History of Multiple Transplants against peri-operative notes 
@@ -274,8 +274,8 @@ docker compose run --rm \
   --ls-token <PATH_TO_LS_TOKEN> \
   --athena-database <relevant_cumulus_library_database> \
   --athena-workgroup <relevant_cumulus_library_workgroup> \
-  --select-by-athena-table irae_highlights_multiple_transplant_history \
-  --label-by-athena-table irae_highlights_multiple_transplant_history
+  --select-by-athena-table irae_multiple_transplant_history_highlights \
+  --label-by-athena-table irae_multiple_transplant_history_highlights
 ```
 
 ### 7.c Donor Characteristics against peri-operative notes 
@@ -291,8 +291,8 @@ docker compose run --rm \
   --ls-token <PATH_TO_LS_TOKEN> \
   --athena-database <relevant_cumulus_library_database> \
   --athena-workgroup <relevant_cumulus_library_workgroup> \
-  --select-by-athena-table irae_highlights_donor \
-  --label-by-athena-table irae_highlights_donor
+  --select-by-athena-table irae_donor_highlights \
+  --label-by-athena-table irae_donor_highlights
 ```
 
 ### 7.d Outcome Variables against post-operative notes 
@@ -308,8 +308,8 @@ docker compose run --rm \
   --ls-token <PATH_TO_LS_TOKEN> \
   --athena-database <relevant_cumulus_library_database> \
   --athena-workgroup <relevant_cumulus_library_workgroup> \
-  --select-by-athena-table irae_highlights_longitudinal \
-  --label-by-athena-table irae_highlights_longitudinal
+  --select-by-athena-table irae_longitudinal_highlights \
+  --label-by-athena-table irae_longitudinal_highlights
 ```
 
 A few noteworthy comments on this command configuration: 

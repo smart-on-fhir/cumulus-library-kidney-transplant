@@ -1,0 +1,5 @@
+model = "MultipleTransplantHistoryAnnotation"
+multiple_transplant_history_mention:
+    multiple_transplant_history = True or False
+        # Whether there is any mention of a history of multiple transplants.
+

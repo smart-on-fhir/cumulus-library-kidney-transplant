@@ -102,9 +102,10 @@ Place the ndjson in a folder, and take note of the paths to these notes for late
 
 For chart annotation, individual reviewers should have separate projects from each other to 
 ensure blinding against other annotators responses. For this agreement task, you should use 
-the `LS_DONOR` config file in this project. For each annotator, we should do the following
+the `./label-studio-annotation-interfaces/LS_DONOR.xml` config file in this project. 
+For each annotator, do the following:
 
-- Install Label Studio according to [their docs](https://labelstud.io/guide/install.html).
+- (One time) Install Label Studio according to [their docs](https://labelstud.io/guide/install.html).
 - Create a new project, named however you like - probably something related to annotator agreement`.
   - Skip the Data Import tab.
   - On the Label Setup tab, click "Custom template" on the bottom left and copy/paste the 
@@ -173,10 +174,10 @@ cumulus-library build \
   --workgroup <relevant_cumulus_library_workgroup> \
   --profile <relevant_cumulus_library_profile> \
   -t irae \
-  --builder builder_irae_highlights_donor
+  --builder irae_donor_highlights
 ```
 
-This will produce a `irae__highlights_donor` table for future use. Note that 
+This will produce a `irae__llm_donor_highlights` table for future use. Note that 
 if you run `cumulus-library clean -t irae`, this table will be deleted. Keep that in mind
 when cleaning up your study environments in Athena.
 
@@ -267,8 +268,8 @@ docker compose run --rm \
   --ls-token <PATH_TO_LS_TOKEN> \
   --athena-database <relevant_cumulus_library_database> \
   --athena-workgroup <relevant_cumulus_library_workgroup> \
-  --select-by-athena-table irae_highlights_donor \
-  --label-by-athena-table irae_highlights_donor
+  --select-by-athena-table irae_donor_highlights \
+  --label-by-athena-table irae_donor_highlights
 ```
 
 Once you've gone through, manually confirmed all the LLM predictions, exported the LabelStudio 

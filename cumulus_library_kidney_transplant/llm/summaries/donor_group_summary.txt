@@ -1,0 +1,101 @@
+model = "KidneyTransplantDonorGroupAnnotation"
+donor_transplant_date_mention:
+    donor_transplant_date = Optional mention of [Plaintext string]
+        # Exact date of first renal transplant; use YYYY-MM-DD format in your response. Only highlight date mentions with an explicit day, month, and year (e.g. 2020-01-15). All other date mentions, or an absence of a date mention, should be indicated with None.
+
+
+donor_type_mention:
+    donor_type = DonorType (Choice Value)
+        # Was the first renal donor living at the time of renal transplant?
+        # Possible Values:
+        #   - Donor was alive at time of renal transplant
+        #   - Donor was deceased at time of renal transplant
+        #   - Donor was not mentioned as living or deceased
+
+
+donor_relationship_mention:
+    donor_relationship = DonorRelationship (Choice Value)
+        # Was the first renal transplant donor biologically related to the recipient?
+        # Possible Values:
+        #   - Donor was biologically related to the renal transplant recipient
+        #   - Donor was biologically unrelated to the renal transplant recipient
+        #   - Donor relationship status was not mentioned
+
+
+donor_hla_match_quality_mention:
+    donor_hla_match_quality = DonorHlaMatchQuality (Choice Value)
+        # What was the HLA match quality for the first renal transplant?
+        # Possible Values:
+        #   - Well matched (0-1 mismatches) OR recipient explicitly documented as not sensitized
+        #   - Moderately matched (2-4 mismatches) OR recipient explicitly documented as sensitized
+        #   - Poorly matched (5-6 mismatches) OR recipient explicitly documented as highly sensitized
+        #   - HLA match quality not mentioned
+
+
+donor_hla_mismatch_count_mention:
+    donor_hla_mismatch_count = DonorHlaMismatchCount (Choice Value)
+        # What was the donor-recipient HLA mismatch count for the first renal transplant?
+        # Possible Values:
+        #   - 0
+        #   - 1
+        #   - 2
+        #   - 3
+        #   - 4
+        #   - 5
+        #   - 6
+        #   - HLA mismatch count not mentioned
+
+
+donor_serostatus_mention:
+    serostatus = Serostatus (Choice Value)
+        # Overall serostatus of the renal donor for ANY virus. Set SEROPOSITIVE if the note documents the donor as seropositive for ANY virus (including CMV, EBV, HBV, HCV, HSV, VZV, or an unspecified virus), or uses generic language such as 'donor is seropositive' without naming the virus. Set SERONEGATIVE only if it explicitly states the donor was seronegative for all IgG tests. Otherwise use NOT_MENTIONED.
+        # Possible Values:
+        #   - SEROPOSITIVE
+        #   - SERONEGATIVE
+        #   - NOT_MENTIONED
+
+
+donor_serostatus_cmv_mention:
+    serostatus = Serostatus (Choice Value)
+        # CMV serostatus of the renal donor. Choose one of: 'SEROPOSITIVE', 'SERONEGATIVE', 'NOT_MENTIONED'. Look for patterns like 'CMV D+', 'CMV D-', 'donor CMV IgG positive', 'donor CMV IgG negative', etc.
+        # Possible Values:
+        #   - SEROPOSITIVE
+        #   - SERONEGATIVE
+        #   - NOT_MENTIONED
+
+
+donor_serostatus_ebv_mention:
+    serostatus = Serostatus (Choice Value)
+        # EBV serostatus of the renal donor. Choose one of: 'SEROPOSITIVE', 'SERONEGATIVE', 'NOT_MENTIONED'. Look for patterns like 'EBV D+', 'EBV D-', 'donor EBV IgG positive', 'donor EBV IgG negative', etc.
+        # Possible Values:
+        #   - SEROPOSITIVE
+        #   - SERONEGATIVE
+        #   - NOT_MENTIONED
+
+
+recipient_serostatus_mention:
+    serostatus = Serostatus (Choice Value)
+        # Serostatus of the recipient at the time of renal transplant for ANY virus. Set SEROPOSITIVE if the note documents the recipient as seropositive for ANY virus (including CMV, EBV, HBV, HCV, HSV, VZV, or an unspecified virus), or if the text states 'recipient is seropositive' without naming the virus. Set SERONEGATIVE only if explicitly stated the recipient was seronegative. Otherwise use NOT_MENTIONED.
+        # Possible Values:
+        #   - SEROPOSITIVE
+        #   - SERONEGATIVE
+        #   - NOT_MENTIONED
+
+
+recipient_serostatus_cmv_mention:
+    serostatus = Serostatus (Choice Value)
+        # CMV serostatus of the recipient at the time of renal transplant. Choose one of: 'SEROPOSITIVE', 'SERONEGATIVE', 'NOT_MENTIONED'. Look for patterns like 'CMV R+', 'CMV R-', 'recipient CMV IgG positive', 'recipient CMV IgG negative', etc.
+        # Possible Values:
+        #   - SEROPOSITIVE
+        #   - SERONEGATIVE
+        #   - NOT_MENTIONED
+
+
+recipient_serostatus_ebv_mention:
+    serostatus = Serostatus (Choice Value)
+        # EBV serostatus of the recipient at the time of renal transplant. Choose one of: 'SEROPOSITIVE', 'SERONEGATIVE', 'NOT_MENTIONED'. Look for patterns like 'EBV R+', 'EBV R-', 'recipient EBV IgG positive', 'recipient EBV IgG negative', etc.
+        # Possible Values:
+        #   - SEROPOSITIVE
+        #   - SERONEGATIVE
+        #   - NOT_MENTIONED
+

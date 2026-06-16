@@ -1,0 +1,23 @@
+CREATE TABLE irae__llm_donor_wide AS
+SELECT DISTINCT
+    nlp.note_ref,
+    nlp.subject_ref,
+    'irae__nlp_donor_gpt_oss_120b' AS origin,
+    nlp.generated_on,
+    nlp.task_version,
+    nlp.system_fingerprint,
+    nlp.result.donor_transplant_date_mention.donor_transplant_date,
+    nlp.result.donor_type_mention.donor_type,
+    nlp.result.donor_relationship_mention.donor_relationship,
+    nlp.result.donor_hla_match_quality_mention.donor_hla_match_quality,
+    nlp.result.donor_hla_mismatch_count_mention.donor_hla_mismatch_count,
+    nlp.result.donor_serostatus_mention.serostatus AS donor_serostatus,
+    nlp.result.donor_serostatus_cmv_mention.serostatus AS donor_serostatus_cmv,
+    nlp.result.donor_serostatus_ebv_mention.serostatus AS donor_serostatus_ebv,
+    nlp.result.recipient_serostatus_mention.serostatus AS recipient_serostatus,
+    nlp.result.recipient_serostatus_cmv_mention.serostatus AS recipient_serostatus_cmv,
+    nlp.result.recipient_serostatus_ebv_mention.serostatus AS recipient_serostatus_ebv
+FROM
+    irae__nlp_donor_gpt_oss_120b AS nlp
+WHERE
+    task_version = 7
