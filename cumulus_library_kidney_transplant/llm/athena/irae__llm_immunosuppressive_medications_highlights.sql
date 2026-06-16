@@ -20,9 +20,9 @@ FROM
             CAST(ARRAY[ARRAY[]] AS ARRAY(ARRAY(INTEGER)))
         )
     ) AS t2(span)
-WHERE 
-    src.task_version = CAST('6' AS INT)
-    AND medication.status <> 'None of the above'
+WHERE
+    src.task_version = 7
+    AND medication.status <> 'NONE_OF_THE_ABOVE'
 -- Second pass to get medication ingredient information --
 UNION ALL
 SELECT
@@ -36,15 +36,15 @@ SELECT
     CONCAT(CAST(span[1] AS VARCHAR), ':', CAST(span[2] AS VARCHAR)) AS span,
     'Medication' AS sublabel_name,
     medication.ingredient AS sublabel_value
-FROM 
+FROM
     irae__nlp_immunosuppressive_medications_gpt_oss_120b AS src,
     UNNEST(src.result.immunosuppressive_medication_mentions) AS t1(medication),
     UNNEST(
         COALESCE(
-            medication.spans, 
+            medication.spans,
             CAST(ARRAY[ARRAY[]] AS ARRAY(ARRAY(INTEGER)))
         )
     ) AS t2(span)
-WHERE 
-    src.task_version = CAST('6' AS INT)
-    AND medication.ingredient <> 'None of the above'
+WHERE
+    src.task_version = 7
+    AND medication.ingredient <> 'NONE_OF_THE_ABOVE'

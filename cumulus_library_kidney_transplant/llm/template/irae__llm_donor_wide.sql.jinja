@@ -22,6 +22,6 @@ SELECT DISTINCT
 FROM
     {{ table_name }} AS nlp
 WHERE
-    task_version = 7
+    task_version = 8
 {{ syntax.union_all_delineate(loop) }}
 {%- endfor %}

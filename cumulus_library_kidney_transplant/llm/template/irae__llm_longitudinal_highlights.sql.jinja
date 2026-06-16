@@ -72,46 +72,46 @@ CREATE TABLE irae__llm_longitudinal_highlights AS
     -- Custom filtering per mention_key 
     {%- if mention_key == 'rx_therapeutic_status_mention' %}
     WHERE
-        src.result.{{mention_key}}.rx_therapeutic_status != 'None of the above' 
+        src.result.{{mention_key}}.rx_therapeutic_status != 'NONE_OF_THE_ABOVE'
     {%- elif mention_key == 'rx_compliance_mention' %}
     WHERE
-        src.result.{{mention_key}}.rx_compliance != 'None of the above' 
+        src.result.{{mention_key}}.rx_compliance != 'NONE_OF_THE_ABOVE'
     {%- elif mention_key == 'dsa_mention' %}
-    WHERE 
+    WHERE
         src.result.{{mention_key}}.{{ mention_key.replace('mention', 'history') }}
-        AND src.result.{{mention_key}}.dsa != 'None of the above' 
+        AND src.result.{{mention_key}}.dsa != 'NONE_OF_THE_ABOVE'
     {%- elif mention_key == 'infection_mention' %}
-    WHERE 
+    WHERE
         src.result.{{mention_key}}.{{ mention_key.replace('mention', 'history') }}
-        AND src.result.{{mention_key}}.infection != 'None of the above' 
+        AND src.result.{{mention_key}}.infection != 'NONE_OF_THE_ABOVE'
     {%- elif mention_key == 'viral_infection_mention' %}
-    WHERE 
+    WHERE
         src.result.{{mention_key}}.{{ mention_key.replace('mention', 'history') }}
-        AND src.result.{{mention_key}}.viral_infection != 'None of the above' 
+        AND src.result.{{mention_key}}.viral_infection != 'NONE_OF_THE_ABOVE'
     {%- elif mention_key == 'bacterial_infection_mention' %}
-    WHERE 
+    WHERE
         src.result.{{mention_key}}.{{ mention_key.replace('mention', 'history') }}
-        AND src.result.{{mention_key}}.bacterial_infection != 'None of the above' 
+        AND src.result.{{mention_key}}.bacterial_infection != 'NONE_OF_THE_ABOVE'
     {%- elif mention_key == 'fungal_infection_mention' %}
-    WHERE 
+    WHERE
         src.result.{{mention_key}}.{{ mention_key.replace('mention', 'history') }}
-        AND src.result.{{mention_key}}.fungal_infection != 'None of the above' 
+        AND src.result.{{mention_key}}.fungal_infection != 'NONE_OF_THE_ABOVE'
     {%- elif mention_key == 'graft_rejection_mention' %}
-    WHERE 
+    WHERE
         src.result.{{mention_key}}.{{ mention_key.replace('mention', 'history') }}
-        AND src.result.{{mention_key}}.graft_rejection != 'None of the above' 
+        AND src.result.{{mention_key}}.graft_rejection != 'NONE_OF_THE_ABOVE'
     {%- elif mention_key == 'graft_failure_mention' %}
-    WHERE 
+    WHERE
         src.result.{{mention_key}}.{{ mention_key.replace('mention', 'history') }}
-        AND src.result.{{mention_key}}.graft_failure != 'None of the above' 
+        AND src.result.{{mention_key}}.graft_failure != 'NONE_OF_THE_ABOVE'
     {%- elif mention_key == 'ptld_mention' %}
-    WHERE 
+    WHERE
         src.result.{{mention_key}}.{{ mention_key.replace('mention', 'history') }}
-        AND src.result.{{mention_key}}.ptld != 'None of the above' 
+        AND src.result.{{mention_key}}.ptld != 'NONE_OF_THE_ABOVE'
     {%- elif mention_key == 'cancer_mention' %}
-    WHERE 
+    WHERE
         src.result.{{mention_key}}.{{ mention_key.replace('mention', 'history') }}
-        AND src.result.{{mention_key}}.cancer != 'None of the above' 
+        AND src.result.{{mention_key}}.cancer != 'NONE_OF_THE_ABOVE'
     {%- elif mention_key == 'deceased_mention' %}
     WHERE 
         src.result.{{mention_key}}.deceased IS NOT NULL

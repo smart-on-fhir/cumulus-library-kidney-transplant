@@ -19,23 +19,23 @@
         },
         "status": {
           "$ref": "#/$defs/RxStatus",
-          "default": "None of the above",
-          "description": "What is the status of this medication?"
+          "default": "NONE_OF_THE_ABOVE",
+          "description": "What is the status of this medication? ACTIVE: Medication order is active (currently prescribed and intended for ongoing use); INTENDED: Medication is planned/ordered/prescribed but therapy has not yet started; COMPLETED: Medication course is finished (all doses given or intended duration completed); STOPPED: Medication was stopped or permanently discontinued before completion; CANCELED: Medication order was canceled/withdrawn before any doses were administered; ON_HOLD: Medication is temporarily paused (on-hold, suspended, or interrupted); NONE_OF_THE_ABOVE: None of the above"
         },
         "category": {
           "$ref": "#/$defs/RxCategory",
-          "default": "None of the above",
-          "description": "In which healthcare setting is this medication prescribed/administered?"
+          "default": "NONE_OF_THE_ABOVE",
+          "description": "In which healthcare setting is this medication prescribed/administered? INPATIENT: Medication ordered/administered during an inpatient/acute care setting; OUTPATIENT: Medication ordered/administered during an outpatient setting; COMMUNITY: Medication ordered/consumed by the patient in their home (including long term care, nursing homes, etc); NONE_OF_THE_ABOVE: None of the above"
         },
         "route": {
           "$ref": "#/$defs/RxRoute",
-          "default": "None of the above",
-          "description": "What is the the route of administration for this medication?"
+          "default": "NONE_OF_THE_ABOVE",
+          "description": "What is the route of administration for this medication? PO: Oral (includes swallowed and sublingual routes); NG: Nasogastric/Feeding tube (NG/PEG); INJECTION: Injection (IV, SC, or IM); INHALATION: Inhalation (respiratory route); TOPICAL: Topical (skin or mucosal surface); NONE_OF_THE_ABOVE: None of the above"
         },
         "phase": {
           "$ref": "#/$defs/TreatmentPhase",
-          "default": "None of the above",
-          "description": "What is the treatment phase for this medication?"
+          "default": "NONE_OF_THE_ABOVE",
+          "description": "What is the treatment phase for this medication? INDUCTION: Induction therapy; MAINTENANCE: Maintenance therapy; RESCUE: Rescue therapy; NONE_OF_THE_ABOVE: None of the above"
         },
         "expected_supply_days": {
           "anyOf": [
@@ -65,8 +65,8 @@
         },
         "frequency": {
           "$ref": "#/$defs/RxFrequency",
-          "default": "None of the above",
-          "description": "What is the frequency of this medication?"
+          "default": "NONE_OF_THE_ABOVE",
+          "description": "What is the frequency of this medication? QD: once daily; BID: twice daily; TID: three times daily; QID: four times daily; QOD: every other day; Q6H: every 6 hours; Q8H: every 8 hours; Q12H: every 12 hours; WEEKLY: once weekly; Q2W: once every 2 weeks; Q4W: once every 4 weeks; MONTHLY: once monthly; OTHER: non-standard frequency (use timing_text); NONE_OF_THE_ABOVE: None of the above"
         },
         "start_date": {
           "anyOf": [
@@ -96,8 +96,8 @@
         },
         "quantity_unit": {
           "$ref": "#/$defs/RxQuantityUnit",
-          "default": "None of the above",
-          "description": "Medication prescribed unit"
+          "default": "NONE_OF_THE_ABOVE",
+          "description": "Medication prescribed unit. Mass: MG=mg, G=g, UG=ug (microgram), KG=kg; Volume: ML=mL, L=L; International Units: U=U, IU=[iU]; Countable: TABLET, CAPSULE, PUFF, PATCH, SUPPOSITORY; Ratios: MG_PER_ML, MG_PER_KG, U_PER_KG, UG_PER_KG_PER_MIN; Time: H=hours, MIN=minutes, D=days; NONE_OF_THE_ABOVE: None of the above"
         },
         "quantity_value": {
           "anyOf": [
@@ -114,47 +114,48 @@
         },
         "drug_class": {
           "$ref": "#/$defs/RxClassImmunosuppression",
-          "default": "None of the above",
-          "description": "Extract the Immunosuppressive drug class or therapy modality documented for this medication, if present"
+          "default": "NONE",
+          "description": "Extract the Immunosuppressive drug class or therapy modality documented for this medication, if present. ANTIMET: Anti-Metabolite (e.g., azathioprine, mycophenolate); CNI: Calcineurin Inhibitor (e.g., tacrolimus, cyclosporine); STEROID: Corticosteroid (e.g., prednisone, methylprednisolone); MTOR: mTOR Inhibitor (e.g., sirolimus, everolimus); COSTIM: Costimulation Blocker/blockade (e.g., belatacept); IVIG: Immunoglobulin (e.g., IVIG, Cytogam); POLYCLONAL: Polyclonal antibody (e.g., ATG, ALG); MONOCLONAL: Monoclonal antibody (e.g., basiliximab, rituximab); OTHER: Other immunosuppressive drug; NONE: None of the above"
         },
         "ingredient": {
           "$ref": "#/$defs/RxIngredientImmunosuppression",
-          "default": "None of the above",
-          "description": "Extract the specific immunosuppressive drug ingredient documented for this medication, if present"
+          "default": "NONE",
+          "description": "Extract the specific immunosuppressive drug ingredient documented for this medication, if present. ANTIMET group: AZA=Azathioprine, MMF=Mycophenolate Mofetil, ANTIMET_OTHER=other anti-metabolite; CNI group: CYA=Cyclosporine, TAC=Tacrolimus, CNI_OTHER=other calcineurin inhibitor; STEROID group: MEDROL=Methylprednisolone, PDL=Prednisolone, PRED=Prednisone, STEROID_OTHER=other corticosteroid; COSTIM group: BEL=Belatacept, ABA=Abatacept, COSTIM_OTHER=other costimulation blocker; IVIG group: IVIG=Intravenous Immunoglobulin, CYTOGAM=Cytogam (CMV-specific hyperimmune globulin), IVIG_OTHER=other immunoglobulin; MTOR group: EVE=Everolimus, SRL=Sirolimus, MTOR_OTHER=other mTOR inhibitor; MONOCLONAL group: ALEM=Alemtuzumab, BASI=Basiliximab, DAC=Daclizumab, RTX=Rituximab, MONOCLONAL_OTHER=other monoclonal antibody; POLYCLONAL group: ATG=Antithymocyte Globulin, POLYCLONAL_OTHER=other polyclonal antibody; NONE: None of the above"
         }
       },
       "title": "ImmunosuppressiveMedicationMention",
       "type": "object"
     },
     "RxCategory": {
-      "description": "https://build.fhir.org/valueset-medicationrequest-admin-location.html",
+      "description": "https://build.fhir.org/valueset-medicationrequest-admin-location.html\n\nINPATIENT: Medication ordered/administered during an inpatient/acute care setting\nOUTPATIENT: Medication ordered/administered during an outpatient setting\nCOMMUNITY: Medication ordered/consumed by the patient in their home (including long term care, nursing homes, etc)\nNONE_OF_THE_ABOVE: None of the above",
       "enum": [
-        "Medication ordered/administered during an inpatient/acute care setting",
-        "Medication ordered/administered during an outpatient setting",
-        "Medication ordered/consumed by the patient in their home (including long term care, nursing homes, etc)",
-        "None of the above"
+        "INPATIENT",
+        "OUTPATIENT",
+        "COMMUNITY",
+        "NONE_OF_THE_ABOVE"
       ],
       "title": "RxCategory",
       "type": "string"
     },
     "RxClassImmunosuppression": {
-      "description": "RxClass Immunosuppression",
+      "description": "Immunosuppressive drug class or therapy modality.\n\nANTIMET: Anti-Metabolite (e.g., azathioprine, mycophenolate)\nCNI: Calcineurin Inhibitor (e.g., tacrolimus, cyclosporine)\nSTEROID: Corticosteroid (e.g., prednisone, methylprednisolone)\nMTOR: mTOR Inhibitor (e.g., sirolimus, everolimus)\nCOSTIM: Costimulation Blocker/blockade (e.g., belatacept)\nIVIG: Immunoglobulin (e.g., IVIG, Cytogam)\nPOLYCLONAL: Polyclonal antibody (e.g., ATG, ALG)\nMONOCLONAL: Monoclonal antibody (mAb, e.g., basiliximab, rituximab)\nOTHER: Other immunosuppressive drug\nNONE: None of the above",
       "enum": [
-        "Anti-Metabolite (ANTIMET)",
-        "Calcineurin Inhibitor (CNI)",
-        "Corticosteroid (CS)",
-        "mTOR Inhibitor (MTOR)",
-        "Costimulation Blocker/blockade (COSTIM)",
-        "Immunoglobulin (IVIG)",
-        "Polyclonal antibody (e.g., ATG, ALG)",
-        "Monoclonal antibody (mAb, e.g., basiliximab, rituximab)",
-        "Other immunosuppressive drug",
-        "None of the above"
+        "ANTIMET",
+        "CNI",
+        "STEROID",
+        "MTOR",
+        "COSTIM",
+        "IVIG",
+        "POLYCLONAL",
+        "MONOCLONAL",
+        "OTHER",
+        "NONE"
       ],
       "title": "RxClassImmunosuppression",
       "type": "string"
     },
     "RxFrequency": {
+      "description": "QD: once daily (1x/day)\nBID: twice daily (2x/day)\nTID: three times daily (3x/day)\nQID: four times daily (4x/day)\nQOD: every other day (1/2x/day)\nQ6H: every 6 hours (4x/day)\nQ8H: every 8 hours (3x/day)\nQ12H: every 12 hours (2x/day)\nWEEKLY: once every 7 days\nQ2W: once every 2 weeks (14 days)\nQ4W: once every 4 weeks (28 days)\nMONTHLY: once every 4 weeks (28 days)\nOTHER: use timing_text for non-standard frequency\nNONE_OF_THE_ABOVE: None of the above",
       "enum": [
         "QD",
         "BID",
@@ -169,106 +170,107 @@
         "Q4W",
         "MONTHLY",
         "OTHER",
-        "None of the above"
+        "NONE_OF_THE_ABOVE"
       ],
       "title": "RxFrequency",
       "type": "string"
     },
     "RxIngredientImmunosuppression": {
-      "description": "The specific immunosuppressive drug ingredient",
+      "description": "The specific immunosuppressive drug ingredient.\n\nANTIMET group: AZA=Azathioprine, MMF=Mycophenolate Mofetil, ANTIMET_OTHER=Other anti-metabolite\nCNI group: CYA=Cyclosporine, TAC=Tacrolimus, CNI_OTHER=Other calcineurin inhibitor\nSTEROID group: MEDROL=Methylprednisolone, PDL=Prednisolone, PRED=Prednisone, STEROID_OTHER=Other corticosteroid\nCOSTIM group: BEL=Belatacept, ABA=Abatacept, COSTIM_OTHER=Other costimulation blocker\nIVIG group: IVIG=Intravenous Immunoglobulin, CYTOGAM=Cytogam (CMV-specific hyperimmune globulin), IVIG_OTHER=Other immunoglobulin\nMTOR group: EVE=Everolimus, SRL=Sirolimus, MTOR_OTHER=Other mTOR inhibitor\nMONOCLONAL group: ALEM=Alemtuzumab, BASI=Basiliximab, DAC=Daclizumab, RTX=Rituximab, MONOCLONAL_OTHER=Other monoclonal antibody\nPOLYCLONAL group: ATG=Antithymocyte Globulin, POLYCLONAL_OTHER=Other polyclonal antibody\nNONE: None of the above",
       "enum": [
-        "Azathioprine",
-        "Mycophenolate Mofetil",
-        "Other anti-metabolite ingredient",
-        "Cyclosporine",
-        "Tacrolimus",
-        "Other calcineurin inhibitor ingredient",
-        "Methylprednisolone",
-        "Prednisolone",
-        "Prednisone",
-        "Other corticosteroid ingredient",
-        "Belatacept",
-        "Abatacept",
-        "Other Costimulation blocker ingredient",
-        "Intravenous Immunoglobulin (IVIG)",
-        "Cytogam (CMV-specific hyperimmune globulin)",
-        "Other immunoglobulin therapy",
-        "Everolimus",
-        "Sirolimus",
-        "Other mTOR inhibitor ingredient",
-        "Alemtuzumab",
-        "Basiliximab",
-        "Daclizumab",
-        "Rituximab",
-        "Other Monoclonal antibody drug",
-        "Antithymocyte Globulin (ATG)",
-        "Other polyclonal antibodies ingredient",
-        "None of the above"
+        "AZA",
+        "MMF",
+        "ANTIMET_OTHER",
+        "CYA",
+        "TAC",
+        "CNI_OTHER",
+        "MEDROL",
+        "PDL",
+        "PRED",
+        "STEROID_OTHER",
+        "BEL",
+        "ABA",
+        "COSTIM_OTHER",
+        "IVIG",
+        "CYTOGAM",
+        "IVIG_OTHER",
+        "EVE",
+        "SRL",
+        "MTOR_OTHER",
+        "ALEM",
+        "BASI",
+        "DAC",
+        "RTX",
+        "MONOCLONAL_OTHER",
+        "ATG",
+        "POLYCLONAL_OTHER",
+        "NONE"
       ],
       "title": "RxIngredientImmunosuppression",
       "type": "string"
     },
     "RxQuantityUnit": {
+      "description": "UCUM unit codes for medication quantity.\n\nMass: MG=mg, G=g, UG=ug (microgram/mcg), KG=kg\nVolume: ML=mL, L=L\nInternational Units: U=U, IU=[iU]\nCountable: TABLET={tablet}, CAPSULE={capsule}, PUFF={puff}, PATCH={patch}, SUPPOSITORY={suppository}\nRatios: MG_PER_ML=mg/mL, MG_PER_KG=mg/kg, U_PER_KG=U/kg, UG_PER_KG_PER_MIN=ug/kg/min\nTime (infusion rates): H=h, MIN=min, D=d\nNONE_OF_THE_ABOVE: None of the above",
       "enum": [
-        "mg",
-        "g",
-        "ug",
-        "kg",
-        "mL",
+        "MG",
+        "G",
+        "UG",
+        "KG",
+        "ML",
         "L",
         "U",
-        "[iU]",
-        "{tablet}",
-        "{capsule}",
-        "{puff}",
-        "{patch}",
-        "{suppository}",
-        "mg/mL",
-        "mg/kg",
-        "U/kg",
-        "ug/kg/min",
-        "h",
-        "min",
-        "d",
-        "None of the above"
+        "IU",
+        "TABLET",
+        "CAPSULE",
+        "PUFF",
+        "PATCH",
+        "SUPPOSITORY",
+        "MG_PER_ML",
+        "MG_PER_KG",
+        "U_PER_KG",
+        "UG_PER_KG_PER_MIN",
+        "H",
+        "MIN",
+        "D",
+        "NONE_OF_THE_ABOVE"
       ],
       "title": "RxQuantityUnit",
       "type": "string"
     },
     "RxRoute": {
-      "description": "Route of Administration can \"help\" (but not deterministic) for drug metadata, examples\n* Injection --> antibody for induction/rescue therapy\n* Topical --> skin lesions\n* Inhalation --> Steroid\nhttps://build.fhir.org/valueset-route-codes.html",
+      "description": "Route of Administration can \"help\" (but not deterministic) for drug metadata, examples\n* Injection --> antibody for induction/rescue therapy\n* Topical --> skin lesions\n* Inhalation --> Steroid\nhttps://build.fhir.org/valueset-route-codes.html\n\nPO: Oral (includes swallowed and sublingual routes)\nNG: Nasogastric/Feeding tube (NG/PEG)\nINJECTION: Injection (IV, SC, or IM)\nINHALATION: Inhalation (respiratory route)\nTOPICAL: Topical (skin or mucosal surface)\nNONE_OF_THE_ABOVE: None of the above",
       "enum": [
-        "Oral (includes swallowed and sublingual routes)",
-        "Nasogastric/Feeding tube (NG/PEG)",
-        "Injection (IV, SC, or IM)",
-        "Inhalation (respiratory route)",
-        "Topical (skin or mucosal surface)",
-        "None of the above"
+        "PO",
+        "NG",
+        "INJECTION",
+        "INHALATION",
+        "TOPICAL",
+        "NONE_OF_THE_ABOVE"
       ],
       "title": "RxRoute",
       "type": "string"
     },
     "RxStatus": {
-      "description": "Medication Status (including Intent because chart review is NOT always identical to Med Request)\nhttps://build.fhir.org/valueset-medicationrequest-status.html\nhttps://build.fhir.org/valueset-medicationrequest-intent.html",
+      "description": "Medication Status (including Intent because chart review is NOT always identical to Med Request)\nhttps://build.fhir.org/valueset-medicationrequest-status.html\nhttps://build.fhir.org/valueset-medicationrequest-intent.html\n\nACTIVE: Medication order is active (currently prescribed and intended for ongoing use).\nINTENDED: Medication is planned/ordered/prescribed but therapy has not yet started.\nCOMPLETED: Medication course is finished (all doses given or intended duration completed).\nSTOPPED: Medication was stopped or permanently discontinued before completion.\nCANCELED: Medication order was canceled/withdrawn before any doses were administered.\nON_HOLD: Medication is temporarily paused (on-hold, suspended, or interrupted).\nNONE_OF_THE_ABOVE: None of the above",
       "enum": [
-        "Medication order is active (currently prescribed and intended for ongoing use).",
-        "Medication is planned/ordered/prescribed but therapy has not yet started.",
-        "Medication course is finished (all doses given or intended duration completed).",
-        "Medication was stopped or permanently discontinued before completion.",
-        "Medication order was canceled/withdrawn before any doses were administered.",
-        "Medication is temporarily paused (on-hold, suspended, or interrupted).",
-        "None of the above"
+        "ACTIVE",
+        "INTENDED",
+        "COMPLETED",
+        "STOPPED",
+        "CANCELED",
+        "ON_HOLD",
+        "NONE_OF_THE_ABOVE"
       ],
       "title": "RxStatus",
       "type": "string"
     },
     "TreatmentPhase": {
-      "description": "Treatment Phase",
+      "description": "Treatment Phase\n\nINDUCTION: Induction therapy\nMAINTENANCE: Maintenance therapy\nRESCUE: Rescue therapy\nNONE_OF_THE_ABOVE: None of the above",
       "enum": [
-        "Induction therapy",
-        "Maintenance therapy",
-        "Rescue therapy",
-        "None of the above"
+        "INDUCTION",
+        "MAINTENANCE",
+        "RESCUE",
+        "NONE_OF_THE_ABOVE"
       ],
       "title": "TreatmentPhase",
       "type": "string"

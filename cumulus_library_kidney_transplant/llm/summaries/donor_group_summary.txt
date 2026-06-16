@@ -6,44 +6,44 @@ donor_transplant_date_mention:
 
 donor_type_mention:
     donor_type = DonorType (Choice Value)
-        # Was the first renal donor living at the time of renal transplant?
+        # Was the first renal donor living at the time of renal transplant? LIVING: Donor was alive at time of renal transplant; DECEASED: Donor was deceased at time of renal transplant; NOT_MENTIONED: Donor was not mentioned as living or deceased
         # Possible Values:
-        #   - Donor was alive at time of renal transplant
-        #   - Donor was deceased at time of renal transplant
-        #   - Donor was not mentioned as living or deceased
+        #   - LIVING
+        #   - DECEASED
+        #   - NOT_MENTIONED
 
 
 donor_relationship_mention:
     donor_relationship = DonorRelationship (Choice Value)
-        # Was the first renal transplant donor biologically related to the recipient?
+        # Was the first renal transplant donor biologically related to the recipient? RELATED: Donor was biologically related to the renal transplant recipient; UNRELATED: Donor was biologically unrelated to the renal transplant recipient; NOT_MENTIONED: Donor relationship status was not mentioned
         # Possible Values:
-        #   - Donor was biologically related to the renal transplant recipient
-        #   - Donor was biologically unrelated to the renal transplant recipient
-        #   - Donor relationship status was not mentioned
+        #   - RELATED
+        #   - UNRELATED
+        #   - NOT_MENTIONED
 
 
 donor_hla_match_quality_mention:
     donor_hla_match_quality = DonorHlaMatchQuality (Choice Value)
-        # What was the HLA match quality for the first renal transplant?
+        # What was the HLA match quality for the first renal transplant? WELL: Well matched (0-1 mismatches) OR recipient explicitly documented as not sensitized; MODERATE: Moderately matched (2-4 mismatches) OR recipient explicitly documented as sensitized; POOR: Poorly matched (5-6 mismatches) OR recipient explicitly documented as highly sensitized; NOT_MENTIONED: HLA match quality not mentioned
         # Possible Values:
-        #   - Well matched (0-1 mismatches) OR recipient explicitly documented as not sensitized
-        #   - Moderately matched (2-4 mismatches) OR recipient explicitly documented as sensitized
-        #   - Poorly matched (5-6 mismatches) OR recipient explicitly documented as highly sensitized
-        #   - HLA match quality not mentioned
+        #   - WELL
+        #   - MODERATE
+        #   - POOR
+        #   - NOT_MENTIONED
 
 
 donor_hla_mismatch_count_mention:
     donor_hla_mismatch_count = DonorHlaMismatchCount (Choice Value)
-        # What was the donor-recipient HLA mismatch count for the first renal transplant?
+        # What was the donor-recipient HLA mismatch count for the first renal transplant? ZERO: 0 mismatches; ONE: 1 mismatch; TWO: 2 mismatches; THREE: 3 mismatches; FOUR: 4 mismatches; FIVE: 5 mismatches; SIX: 6 mismatches; NOT_MENTIONED: HLA mismatch count not mentioned
         # Possible Values:
-        #   - 0
-        #   - 1
-        #   - 2
-        #   - 3
-        #   - 4
-        #   - 5
-        #   - 6
-        #   - HLA mismatch count not mentioned
+        #   - ZERO
+        #   - ONE
+        #   - TWO
+        #   - THREE
+        #   - FOUR
+        #   - FIVE
+        #   - SIX
+        #   - NOT_MENTIONED
 
 
 donor_serostatus_mention:

@@ -41,4 +41,4 @@ SELECT DISTINCT
 FROM
     irae__nlp_longitudinal_gpt_oss_120b AS nlp
 WHERE
-    task_version = 6
+    task_version = 7

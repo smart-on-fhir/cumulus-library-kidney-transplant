@@ -1,5 +1,5 @@
-import json 
-import os 
+import json
+import os
 from enum import StrEnum
 
 from pydantic import BaseModel, Field
@@ -135,9 +135,15 @@ class DonorTransplantDateMention(SpanAugmentedMention):
 
 
 class DonorType(StrEnum):
-    LIVING = "Donor was alive at time of renal transplant"
-    DECEASED = "Donor was deceased at time of renal transplant"
-    NOT_MENTIONED = "Donor was not mentioned as living or deceased"
+    """
+    LIVING: Donor was alive at time of renal transplant
+    DECEASED: Donor was deceased at time of renal transplant
+    NOT_MENTIONED: Donor was not mentioned as living or deceased
+    """
+
+    LIVING = "LIVING"
+    DECEASED = "DECEASED"
+    NOT_MENTIONED = "NOT_MENTIONED"
 
 
 class DonorTypeMention(SpanAugmentedMention):
@@ -149,14 +155,25 @@ class DonorTypeMention(SpanAugmentedMention):
 
     donor_type: DonorType = Field(
         DonorType.NOT_MENTIONED,
-        description="Was the first renal donor living at the time of renal transplant?",
+        description=(
+            "Was the first renal donor living at the time of renal transplant? "
+            "LIVING: Donor was alive at time of renal transplant; "
+            "DECEASED: Donor was deceased at time of renal transplant; "
+            "NOT_MENTIONED: Donor was not mentioned as living or deceased"
+        ),
     )
 
 
 class DonorRelationship(StrEnum):
-    RELATED = "Donor was biologically related to the renal transplant recipient"
-    UNRELATED = "Donor was biologically unrelated to the renal transplant recipient"
-    NOT_MENTIONED = "Donor relationship status was not mentioned"
+    """
+    RELATED: Donor was biologically related to the renal transplant recipient
+    UNRELATED: Donor was biologically unrelated to the renal transplant recipient
+    NOT_MENTIONED: Donor relationship status was not mentioned
+    """
+
+    RELATED = "RELATED"
+    UNRELATED = "UNRELATED"
+    NOT_MENTIONED = "NOT_MENTIONED"
 
 
 class DonorRelationshipMention(SpanAugmentedMention):
@@ -168,17 +185,27 @@ class DonorRelationshipMention(SpanAugmentedMention):
 
     donor_relationship: DonorRelationship = Field(
         DonorRelationship.NOT_MENTIONED,
-        description="Was the first renal transplant donor biologically related to the recipient?",
+        description=(
+            "Was the first renal transplant donor biologically related to the recipient? "
+            "RELATED: Donor was biologically related to the renal transplant recipient; "
+            "UNRELATED: Donor was biologically unrelated to the renal transplant recipient; "
+            "NOT_MENTIONED: Donor relationship status was not mentioned"
+        ),
     )
 
 
 class DonorHlaMatchQuality(StrEnum):
-    WELL = "Well matched (0-1 mismatches) OR recipient explicitly documented as not sensitized"
-    MODERATE = (
-        "Moderately matched (2-4 mismatches) OR recipient explicitly documented as sensitized"
-    )
-    POOR = "Poorly matched (5-6 mismatches) OR recipient explicitly documented as highly sensitized"
-    NOT_MENTIONED = "HLA match quality not mentioned"
+    """
+    WELL: Well matched (0-1 mismatches) OR recipient explicitly documented as not sensitized
+    MODERATE: Moderately matched (2-4 mismatches) OR recipient explicitly documented as sensitized
+    POOR: Poorly matched (5-6 mismatches) OR recipient explicitly documented as highly sensitized
+    NOT_MENTIONED: HLA match quality not mentioned
+    """
+
+    WELL = "WELL"
+    MODERATE = "MODERATE"
+    POOR = "POOR"
+    NOT_MENTIONED = "NOT_MENTIONED"
 
 
 class DonorHlaMatchQualityMention(SpanAugmentedMention):
@@ -189,19 +216,38 @@ class DonorHlaMatchQualityMention(SpanAugmentedMention):
 
     donor_hla_match_quality: DonorHlaMatchQuality = Field(
         DonorHlaMatchQuality.NOT_MENTIONED,
-        description="What was the HLA match quality for the first renal transplant?",
+        description=(
+            "What was the HLA match quality for the first renal transplant? "
+            "WELL: Well matched (0-1 mismatches) OR recipient explicitly documented as not sensitized; "
+            "MODERATE: Moderately matched (2-4 mismatches) OR recipient explicitly documented as sensitized; "
+            "POOR: Poorly matched (5-6 mismatches) OR recipient explicitly documented as highly sensitized; "
+            "NOT_MENTIONED: HLA match quality not mentioned"
+        ),
     )
 
 
 class DonorHlaMismatchCount(StrEnum):
-    ZERO = "0"
-    ONE = "1"
-    TWO = "2"
-    THREE = "3"
-    FOUR = "4"
-    FIVE = "5"
-    SIX = "6"
-    NOT_MENTIONED = "HLA mismatch count not mentioned"
+    """
+    Number of HLA mismatches between donor and recipient.
+
+    ZERO: 0 mismatches
+    ONE: 1 mismatch
+    TWO: 2 mismatches
+    THREE: 3 mismatches
+    FOUR: 4 mismatches
+    FIVE: 5 mismatches
+    SIX: 6 mismatches
+    NOT_MENTIONED: HLA mismatch count not mentioned
+    """
+
+    ZERO = "ZERO"
+    ONE = "ONE"
+    TWO = "TWO"
+    THREE = "THREE"
+    FOUR = "FOUR"
+    FIVE = "FIVE"
+    SIX = "SIX"
+    NOT_MENTIONED = "NOT_MENTIONED"
 
 
 class DonorHlaMismatchCountMention(SpanAugmentedMention):
@@ -212,7 +258,17 @@ class DonorHlaMismatchCountMention(SpanAugmentedMention):
 
     donor_hla_mismatch_count: DonorHlaMismatchCount = Field(
         DonorHlaMismatchCount.NOT_MENTIONED,
-        description="What was the donor-recipient HLA mismatch count for the first renal transplant?",
+        description=(
+            "What was the donor-recipient HLA mismatch count for the first renal transplant? "
+            "ZERO: 0 mismatches; "
+            "ONE: 1 mismatch; "
+            "TWO: 2 mismatches; "
+            "THREE: 3 mismatches; "
+            "FOUR: 4 mismatches; "
+            "FIVE: 5 mismatches; "
+            "SIX: 6 mismatches; "
+            "NOT_MENTIONED: HLA mismatch count not mentioned"
+        ),
     )
 
 
@@ -247,8 +303,3 @@ class KidneyTransplantDonorGroupAnnotation(BaseModel):
     recipient_serostatus_ebv_mention: SerostatusRecipientEBVMention
 
 
-if __name__ == "__main__":
-    basedir = os.path.dirname(__file__)
-
-    with open(f"{basedir}/schemas/irae_donor.json", "w", encoding="utf8") as f:
-        json.dump(KidneyTransplantDonorGroupAnnotation.model_json_schema(), f, indent=2)

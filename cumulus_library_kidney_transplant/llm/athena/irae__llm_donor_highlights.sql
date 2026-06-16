@@ -15,8 +15,8 @@ CREATE TABLE irae__llm_donor_highlights AS
         irae__nlp_donor_gpt_oss_120b AS src, 
         UNNEST(src.result.donor_transplant_date_mention.spans) AS t3(span)
     -- Custom filtering per mention_key
-    WHERE 
-        src.task_version = CAST('7' AS INT)
+    WHERE
+        src.task_version = 8
         AND src.result.donor_transplant_date_mention IS NOT NULL
         AND src.result.donor_transplant_date_mention.donor_transplant_date IS NOT NULL
     UNION ALL
@@ -36,10 +36,10 @@ CREATE TABLE irae__llm_donor_highlights AS
         irae__nlp_donor_gpt_oss_120b AS src, 
         UNNEST(src.result.donor_type_mention.spans) AS t3(span)
     -- Custom filtering per mention_key
-    WHERE 
-        src.task_version = CAST('7' AS INT)
+    WHERE
+        src.task_version = 8
         AND src.result.donor_type_mention IS NOT NULL
-        AND src.result.donor_type_mention.donor_type != 'Donor was not mentioned as living or deceased'
+        AND src.result.donor_type_mention.donor_type != 'NOT_MENTIONED'
     UNION ALL
     SELECT
         src.note_ref,
@@ -57,10 +57,10 @@ CREATE TABLE irae__llm_donor_highlights AS
         irae__nlp_donor_gpt_oss_120b AS src, 
         UNNEST(src.result.donor_relationship_mention.spans) AS t3(span)
     -- Custom filtering per mention_key
-    WHERE 
-        src.task_version = CAST('7' AS INT)
+    WHERE
+        src.task_version = 8
         AND src.result.donor_relationship_mention IS NOT NULL
-        AND src.result.donor_relationship_mention.donor_relationship != 'Donor relationship status was not mentioned'
+        AND src.result.donor_relationship_mention.donor_relationship != 'NOT_MENTIONED'
     UNION ALL
     SELECT
         src.note_ref,
@@ -78,10 +78,10 @@ CREATE TABLE irae__llm_donor_highlights AS
         irae__nlp_donor_gpt_oss_120b AS src, 
         UNNEST(src.result.donor_hla_match_quality_mention.spans) AS t3(span)
     -- Custom filtering per mention_key
-    WHERE 
-        src.task_version = CAST('7' AS INT)
+    WHERE
+        src.task_version = 8
         AND src.result.donor_hla_match_quality_mention IS NOT NULL
-        AND src.result.donor_hla_match_quality_mention.donor_hla_match_quality != 'HLA match quality not mentioned'
+        AND src.result.donor_hla_match_quality_mention.donor_hla_match_quality != 'NOT_MENTIONED'
     UNION ALL
     SELECT
         src.note_ref,
@@ -99,10 +99,10 @@ CREATE TABLE irae__llm_donor_highlights AS
         irae__nlp_donor_gpt_oss_120b AS src, 
         UNNEST(src.result.donor_hla_mismatch_count_mention.spans) AS t3(span)
     -- Custom filtering per mention_key
-    WHERE 
-        src.task_version = CAST('7' AS INT)
+    WHERE
+        src.task_version = 8
         AND src.result.donor_hla_mismatch_count_mention IS NOT NULL
-        AND src.result.donor_hla_mismatch_count_mention.donor_hla_mismatch_count != 'HLA mismatch count not mentioned'
+        AND src.result.donor_hla_mismatch_count_mention.donor_hla_mismatch_count != 'NOT_MENTIONED'
     UNION ALL
     SELECT
         src.note_ref,
@@ -120,8 +120,8 @@ CREATE TABLE irae__llm_donor_highlights AS
         irae__nlp_donor_gpt_oss_120b AS src, 
         UNNEST(src.result.donor_serostatus_mention.spans) AS t3(span)
     -- Custom filtering per mention_key
-    WHERE 
-        src.task_version = CAST('7' AS INT)
+    WHERE
+        src.task_version = 8
         AND src.result.donor_serostatus_mention IS NOT NULL
         AND src.result.donor_serostatus_mention.serostatus != 'NOT_MENTIONED'
     UNION ALL
@@ -141,8 +141,8 @@ CREATE TABLE irae__llm_donor_highlights AS
         irae__nlp_donor_gpt_oss_120b AS src, 
         UNNEST(src.result.donor_serostatus_cmv_mention.spans) AS t3(span)
     -- Custom filtering per mention_key
-    WHERE 
-        src.task_version = CAST('7' AS INT)
+    WHERE
+        src.task_version = 8
         AND src.result.donor_serostatus_cmv_mention IS NOT NULL
         AND src.result.donor_serostatus_cmv_mention.serostatus != 'NOT_MENTIONED'
     UNION ALL
@@ -162,8 +162,8 @@ CREATE TABLE irae__llm_donor_highlights AS
         irae__nlp_donor_gpt_oss_120b AS src, 
         UNNEST(src.result.donor_serostatus_ebv_mention.spans) AS t3(span)
     -- Custom filtering per mention_key
-    WHERE 
-        src.task_version = CAST('7' AS INT)
+    WHERE
+        src.task_version = 8
         AND src.result.donor_serostatus_ebv_mention IS NOT NULL
         AND src.result.donor_serostatus_ebv_mention.serostatus != 'NOT_MENTIONED'
     UNION ALL
@@ -183,8 +183,8 @@ CREATE TABLE irae__llm_donor_highlights AS
         irae__nlp_donor_gpt_oss_120b AS src, 
         UNNEST(src.result.recipient_serostatus_mention.spans) AS t3(span)
     -- Custom filtering per mention_key
-    WHERE 
-        src.task_version = CAST('7' AS INT)
+    WHERE
+        src.task_version = 8
         AND src.result.recipient_serostatus_mention IS NOT NULL
         AND src.result.recipient_serostatus_mention.serostatus != 'NOT_MENTIONED'
     UNION ALL
@@ -204,8 +204,8 @@ CREATE TABLE irae__llm_donor_highlights AS
         irae__nlp_donor_gpt_oss_120b AS src, 
         UNNEST(src.result.recipient_serostatus_cmv_mention.spans) AS t3(span)
     -- Custom filtering per mention_key
-    WHERE 
-        src.task_version = CAST('7' AS INT)
+    WHERE
+        src.task_version = 8
         AND src.result.recipient_serostatus_cmv_mention IS NOT NULL
         AND src.result.recipient_serostatus_cmv_mention.serostatus != 'NOT_MENTIONED'
     UNION ALL
@@ -225,8 +225,8 @@ CREATE TABLE irae__llm_donor_highlights AS
         irae__nlp_donor_gpt_oss_120b AS src, 
         UNNEST(src.result.recipient_serostatus_ebv_mention.spans) AS t3(span)
     -- Custom filtering per mention_key
-    WHERE 
-        src.task_version = CAST('7' AS INT)
+    WHERE
+        src.task_version = 8
         AND src.result.recipient_serostatus_ebv_mention IS NOT NULL
         AND src.result.recipient_serostatus_ebv_mention.serostatus != 'NOT_MENTIONED'
     

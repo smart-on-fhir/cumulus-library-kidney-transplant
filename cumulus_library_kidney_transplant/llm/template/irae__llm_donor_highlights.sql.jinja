@@ -66,23 +66,23 @@ CREATE TABLE irae__llm_donor_highlights AS
         {{ table_name }} AS src, 
         UNNEST(src.result.{{mention_key}}.spans) AS t3(span)
     -- Custom filtering per mention_key
-    WHERE 
-        src.task_version = CAST('7' AS INT)
+    WHERE
+        src.task_version = 8
     {%- if mention_key == 'donor_transplant_date_mention' %}
         AND src.result.{{mention_key}} IS NOT NULL
         AND src.result.{{mention_key}}.donor_transplant_date IS NOT NULL
     {%- elif mention_key == 'donor_type_mention' %}
         AND src.result.{{mention_key}} IS NOT NULL
-        AND src.result.{{mention_key}}.donor_type != 'Donor was not mentioned as living or deceased'
+        AND src.result.{{mention_key}}.donor_type != 'NOT_MENTIONED'
     {%- elif mention_key == 'donor_relationship_mention' %}
         AND src.result.{{mention_key}} IS NOT NULL
-        AND src.result.{{mention_key}}.donor_relationship != 'Donor relationship status was not mentioned' 
+        AND src.result.{{mention_key}}.donor_relationship != 'NOT_MENTIONED'
     {%- elif mention_key == 'donor_hla_match_quality_mention' %}
         AND src.result.{{mention_key}} IS NOT NULL
-        AND src.result.{{mention_key}}.donor_hla_match_quality != 'HLA match quality not mentioned' 
+        AND src.result.{{mention_key}}.donor_hla_match_quality != 'NOT_MENTIONED'
     {%- elif mention_key == 'donor_hla_mismatch_count_mention' %}
         AND src.result.{{mention_key}} IS NOT NULL
-        AND src.result.{{mention_key}}.donor_hla_mismatch_count != 'HLA mismatch count not mentioned' 
+        AND src.result.{{mention_key}}.donor_hla_mismatch_count != 'NOT_MENTIONED'
     {%- elif mention_key == 'donor_serostatus_mention' %}
         AND src.result.{{mention_key}} IS NOT NULL
         AND src.result.{{mention_key}}.serostatus != 'NOT_MENTIONED' 

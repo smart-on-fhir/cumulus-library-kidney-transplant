@@ -1,44 +1,44 @@
 model = "ImmunosuppressiveMedicationsAnnotation"
 immunosuppressive_medication_mentions: A (possibly empty) list of ImmunosuppressiveMedicationMention instances, which contain:
     status = RxStatus (Choice Value)
-        # What is the status of this medication?
+        # What is the status of this medication? ACTIVE: Medication order is active (currently prescribed and intended for ongoing use); INTENDED: Medication is planned/ordered/prescribed but therapy has not yet started; COMPLETED: Medication course is finished (all doses given or intended duration completed); STOPPED: Medication was stopped or permanently discontinued before completion; CANCELED: Medication order was canceled/withdrawn before any doses were administered; ON_HOLD: Medication is temporarily paused (on-hold, suspended, or interrupted); NONE_OF_THE_ABOVE: None of the above
         # Possible Values:
-        #   - Medication order is active (currently prescribed and intended for ongoing use).
-        #   - Medication is planned/ordered/prescribed but therapy has not yet started.
-        #   - Medication course is finished (all doses given or intended duration completed).
-        #   - Medication was stopped or permanently discontinued before completion.
-        #   - Medication order was canceled/withdrawn before any doses were administered.
-        #   - Medication is temporarily paused (on-hold, suspended, or interrupted).
-        #   - None of the above
+        #   - ACTIVE
+        #   - INTENDED
+        #   - COMPLETED
+        #   - STOPPED
+        #   - CANCELED
+        #   - ON_HOLD
+        #   - NONE_OF_THE_ABOVE
     category = RxCategory (Choice Value)
-        # In which healthcare setting is this medication prescribed/administered?
+        # In which healthcare setting is this medication prescribed/administered? INPATIENT: Medication ordered/administered during an inpatient/acute care setting; OUTPATIENT: Medication ordered/administered during an outpatient setting; COMMUNITY: Medication ordered/consumed by the patient in their home (including long term care, nursing homes, etc); NONE_OF_THE_ABOVE: None of the above
         # Possible Values:
-        #   - Medication ordered/administered during an inpatient/acute care setting
-        #   - Medication ordered/administered during an outpatient setting
-        #   - Medication ordered/consumed by the patient in their home (including long term care, nursing homes, etc)
-        #   - None of the above
+        #   - INPATIENT
+        #   - OUTPATIENT
+        #   - COMMUNITY
+        #   - NONE_OF_THE_ABOVE
     route = RxRoute (Choice Value)
-        # What is the the route of administration for this medication?
+        # What is the route of administration for this medication? PO: Oral (includes swallowed and sublingual routes); NG: Nasogastric/Feeding tube (NG/PEG); INJECTION: Injection (IV, SC, or IM); INHALATION: Inhalation (respiratory route); TOPICAL: Topical (skin or mucosal surface); NONE_OF_THE_ABOVE: None of the above
         # Possible Values:
-        #   - Oral (includes swallowed and sublingual routes)
-        #   - Nasogastric/Feeding tube (NG/PEG)
-        #   - Injection (IV, SC, or IM)
-        #   - Inhalation (respiratory route)
-        #   - Topical (skin or mucosal surface)
-        #   - None of the above
+        #   - PO
+        #   - NG
+        #   - INJECTION
+        #   - INHALATION
+        #   - TOPICAL
+        #   - NONE_OF_THE_ABOVE
     phase = TreatmentPhase (Choice Value)
-        # What is the treatment phase for this medication?
+        # What is the treatment phase for this medication? INDUCTION: Induction therapy; MAINTENANCE: Maintenance therapy; RESCUE: Rescue therapy; NONE_OF_THE_ABOVE: None of the above
         # Possible Values:
-        #   - Induction therapy
-        #   - Maintenance therapy
-        #   - Rescue therapy
-        #   - None of the above
+        #   - INDUCTION
+        #   - MAINTENANCE
+        #   - RESCUE
+        #   - NONE_OF_THE_ABOVE
     expected_supply_days = Optional mention of [Integer number]
         # Number of days the medication supply is supposed to last (stale dating the prescription)
     number_of_repeats_allowed = Optional mention of [Integer number]
         # number of times (aka refills or repeats) that the patient can receive the prescribed medication
     frequency = RxFrequency (Choice Value)
-        # What is the frequency of this medication?
+        # What is the frequency of this medication? QD: once daily; BID: twice daily; TID: three times daily; QID: four times daily; QOD: every other day; Q6H: every 6 hours; Q8H: every 8 hours; Q12H: every 12 hours; WEEKLY: once weekly; Q2W: once every 2 weeks; Q4W: once every 4 weeks; MONTHLY: once monthly; OTHER: non-standard frequency (use timing_text); NONE_OF_THE_ABOVE: None of the above
         # Possible Values:
         #   - QD
         #   - BID
@@ -53,78 +53,78 @@ immunosuppressive_medication_mentions: A (possibly empty) list of Immunosuppress
         #   - Q4W
         #   - MONTHLY
         #   - OTHER
-        #   - None of the above
+        #   - NONE_OF_THE_ABOVE
     start_date = Optional mention of [Plaintext string]
         # Start date of the prescribed or administered medication
     end_date = Optional mention of [Plaintext string]
         # End date of the prescribed or administered medication
     quantity_unit = RxQuantityUnit (Choice Value)
-        # Medication prescribed unit
+        # Medication prescribed unit. Mass: MG=mg, G=g, UG=ug (microgram), KG=kg; Volume: ML=mL, L=L; International Units: U=U, IU=[iU]; Countable: TABLET, CAPSULE, PUFF, PATCH, SUPPOSITORY; Ratios: MG_PER_ML, MG_PER_KG, U_PER_KG, UG_PER_KG_PER_MIN; Time: H=hours, MIN=minutes, D=days; NONE_OF_THE_ABOVE: None of the above
         # Possible Values:
-        #   - mg
-        #   - g
-        #   - ug
-        #   - kg
-        #   - mL
+        #   - MG
+        #   - G
+        #   - UG
+        #   - KG
+        #   - ML
         #   - L
         #   - U
-        #   - [iU]
-        #   - {tablet}
-        #   - {capsule}
-        #   - {puff}
-        #   - {patch}
-        #   - {suppository}
-        #   - mg/mL
-        #   - mg/kg
-        #   - U/kg
-        #   - ug/kg/min
-        #   - h
-        #   - min
-        #   - d
-        #   - None of the above
+        #   - IU
+        #   - TABLET
+        #   - CAPSULE
+        #   - PUFF
+        #   - PATCH
+        #   - SUPPOSITORY
+        #   - MG_PER_ML
+        #   - MG_PER_KG
+        #   - U_PER_KG
+        #   - UG_PER_KG_PER_MIN
+        #   - H
+        #   - MIN
+        #   - D
+        #   - NONE_OF_THE_ABOVE
     quantity_value = Optional mention of [Plaintext string]
         # Numeric amount of medication prescribed or administered (FHIR Quantity.value)
     drug_class = RxClassImmunosuppression (Choice Value)
-        # Extract the Immunosuppressive drug class or therapy modality documented for this medication, if present
+        # Extract the Immunosuppressive drug class or therapy modality documented for this medication, if present. ANTIMET: Anti-Metabolite (e.g., azathioprine, mycophenolate); CNI: Calcineurin Inhibitor (e.g., tacrolimus, cyclosporine); STEROID: Corticosteroid (e.g., prednisone, methylprednisolone); MTOR: mTOR Inhibitor (e.g., sirolimus, everolimus); COSTIM: Costimulation Blocker/blockade (e.g., belatacept); IVIG: Immunoglobulin (e.g., IVIG, Cytogam); POLYCLONAL: Polyclonal antibody (e.g., ATG, ALG); MONOCLONAL: Monoclonal antibody (e.g., basiliximab, rituximab); OTHER: Other immunosuppressive drug; NONE: None of the above
         # Possible Values:
-        #   - Anti-Metabolite (ANTIMET)
-        #   - Calcineurin Inhibitor (CNI)
-        #   - Corticosteroid (CS)
-        #   - mTOR Inhibitor (MTOR)
-        #   - Costimulation Blocker/blockade (COSTIM)
-        #   - Immunoglobulin (IVIG)
-        #   - Polyclonal antibody (e.g., ATG, ALG)
-        #   - Monoclonal antibody (mAb, e.g., basiliximab, rituximab)
-        #   - Other immunosuppressive drug
-        #   - None of the above
+        #   - ANTIMET
+        #   - CNI
+        #   - STEROID
+        #   - MTOR
+        #   - COSTIM
+        #   - IVIG
+        #   - POLYCLONAL
+        #   - MONOCLONAL
+        #   - OTHER
+        #   - NONE
     ingredient = RxIngredientImmunosuppression (Choice Value)
-        # Extract the specific immunosuppressive drug ingredient documented for this medication, if present
+        # Extract the specific immunosuppressive drug ingredient documented for this medication, if present. ANTIMET group: AZA=Azathioprine, MMF=Mycophenolate Mofetil, ANTIMET_OTHER=other anti-metabolite; CNI group: CYA=Cyclosporine, TAC=Tacrolimus, CNI_OTHER=other calcineurin inhibitor; STEROID group: MEDROL=Methylprednisolone, PDL=Prednisolone, PRED=Prednisone, STEROID_OTHER=other corticosteroid; COSTIM group: BEL=Belatacept, ABA=Abatacept, COSTIM_OTHER=other costimulation blocker; IVIG group: IVIG=Intravenous Immunoglobulin, CYTOGAM=Cytogam (CMV-specific hyperimmune globulin), IVIG_OTHER=other immunoglobulin; MTOR group: EVE=Everolimus, SRL=Sirolimus, MTOR_OTHER=other mTOR inhibitor; MONOCLONAL group: ALEM=Alemtuzumab, BASI=Basiliximab, DAC=Daclizumab, RTX=Rituximab, MONOCLONAL_OTHER=other monoclonal antibody; POLYCLONAL group: ATG=Antithymocyte Globulin, POLYCLONAL_OTHER=other polyclonal antibody; NONE: None of the above
         # Possible Values:
-        #   - Azathioprine
-        #   - Mycophenolate Mofetil
-        #   - Other anti-metabolite ingredient
-        #   - Cyclosporine
-        #   - Tacrolimus
-        #   - Other calcineurin inhibitor ingredient
-        #   - Methylprednisolone
-        #   - Prednisolone
-        #   - Prednisone
-        #   - Other corticosteroid ingredient
-        #   - Belatacept
-        #   - Abatacept
-        #   - Other Costimulation blocker ingredient
-        #   - Intravenous Immunoglobulin (IVIG)
-        #   - Cytogam (CMV-specific hyperimmune globulin)
-        #   - Other immunoglobulin therapy
-        #   - Everolimus
-        #   - Sirolimus
-        #   - Other mTOR inhibitor ingredient
-        #   - Alemtuzumab
-        #   - Basiliximab
-        #   - Daclizumab
-        #   - Rituximab
-        #   - Other Monoclonal antibody drug
-        #   - Antithymocyte Globulin (ATG)
-        #   - Other polyclonal antibodies ingredient
-        #   - None of the above
+        #   - AZA
+        #   - MMF
+        #   - ANTIMET_OTHER
+        #   - CYA
+        #   - TAC
+        #   - CNI_OTHER
+        #   - MEDROL
+        #   - PDL
+        #   - PRED
+        #   - STEROID_OTHER
+        #   - BEL
+        #   - ABA
+        #   - COSTIM_OTHER
+        #   - IVIG
+        #   - CYTOGAM
+        #   - IVIG_OTHER
+        #   - EVE
+        #   - SRL
+        #   - MTOR_OTHER
+        #   - ALEM
+        #   - BASI
+        #   - DAC
+        #   - RTX
+        #   - MONOCLONAL_OTHER
+        #   - ATG
+        #   - POLYCLONAL_OTHER
+        #   - NONE
 

@@ -20,4 +20,4 @@ SELECT DISTINCT
 FROM
     irae__nlp_donor_gpt_oss_120b AS nlp
 WHERE
-    task_version = 7
+    task_version = 8

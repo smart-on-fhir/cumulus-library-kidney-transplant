@@ -27,5 +27,5 @@ FROM
     irae__nlp_immunosuppressive_medications_gpt_oss_120b AS nlp,
     UNNEST(nlp.result.immunosuppressive_medication_mentions) AS t(medication)
 WHERE
-    task_version = 6
-    AND medication.drug_class <> 'None of the above'
+    task_version = 7
+    AND medication.drug_class <> 'NONE_OF_THE_ABOVE'
