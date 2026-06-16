@@ -1,6 +1,7 @@
 from typing import List
 from pathlib import Path
-from refactor import fhir2sql, filetool
+from cumulus_library_kidney_transplant.tools import filetool, template
+from refactor import fhir2sql
 
 
 #####################################################################################################################
@@ -18,11 +19,6 @@ from refactor import fhir2sql, filetool
 # `spreadsheet/document/subject_matter_domain.py`
 #
 #####################################################################################################################
-def inline_template(template) -> Path:
-    sql = filetool.load_template(f"{template}.sql")
-    view_name = fhir2sql.name_prefix(template)
-    return filetool.save_athena_view(view_name, sql)
-
 def make() -> List[Path]:
     templates = [
         'doc_ontology',
@@ -32,7 +28,7 @@ def make() -> List[Path]:
         'doc_ontology_domain',
         'doc_ontology_include',
     ]
-    return [inline_template(t) for t in templates]
+    return [template.copy(t) for t in templates]
 
 if __name__ == "__main__":
-    make()
+    print(make())

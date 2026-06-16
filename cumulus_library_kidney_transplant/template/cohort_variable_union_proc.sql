@@ -7,7 +7,7 @@ SELECT DISTINCT
         proc.*
 FROM    {{ prefix }}__cohort_variable_union         AS var
 JOIN    {{ prefix }}__cohort_study_population_proc  AS proc
-ON      var.resource_ref = dx.condition_ref
+ON      var.resource_ref = proc.procedure_ref
 AND     var.system = proc.proc_system
 AND     var.code = proc.proc_code
 WHERE   var.variable IN

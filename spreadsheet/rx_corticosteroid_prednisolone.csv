@@ -1,0 +1,279 @@
+system,code,display,priority
+http://www.nlm.nih.gov/research/umls/rxnorm,792207,Flo-Pred,high
+http://www.nlm.nih.gov/research/umls/rxnorm,803310,Flo-Pred 1 MG/ML Oral Suspension,high
+http://www.nlm.nih.gov/research/umls/rxnorm,803308,Flo-Pred 3 MG/ML Oral Suspension,high
+http://www.nlm.nih.gov/research/umls/rxnorm,1169771,Flo-Pred Oral Liquid Product,high
+http://www.nlm.nih.gov/research/umls/rxnorm,1169772,Flo-Pred Oral Product,high
+http://www.nlm.nih.gov/research/umls/rxnorm,795094,MILLIPRED,high
+http://www.nlm.nih.gov/research/umls/rxnorm,808118,MILLIPRED 5 MG Oral Tablet,high
+http://www.nlm.nih.gov/research/umls/rxnorm,1184933,MILLIPRED Oral Liquid Product,high
+http://www.nlm.nih.gov/research/umls/rxnorm,1184934,MILLIPRED Oral Product,high
+http://www.nlm.nih.gov/research/umls/rxnorm,1184935,MILLIPRED Pill,high
+http://www.nlm.nih.gov/research/umls/rxnorm,795097,Millipred 2 MG/ML Oral Solution,high
+http://www.nlm.nih.gov/research/umls/rxnorm,1005831,Millipred DP 12 Day Pack,high
+http://www.nlm.nih.gov/research/umls/rxnorm,1235042,Millipred DP 6 Day Dose Pack,high
+http://www.nlm.nih.gov/research/umls/rxnorm,225925,Minims Prednisolone,high
+http://www.nlm.nih.gov/research/umls/rxnorm,285077,Orapred,high
+http://www.nlm.nih.gov/research/umls/rxnorm,668658,Orapred 10 MG Disintegrating Oral Tablet,high
+http://www.nlm.nih.gov/research/umls/rxnorm,647127,Orapred 15 MG Disintegrating Oral Tablet,high
+http://www.nlm.nih.gov/research/umls/rxnorm,284516,Orapred 3 MG/ML Oral Solution,high
+http://www.nlm.nih.gov/research/umls/rxnorm,668660,Orapred 30 MG Disintegrating Oral Tablet,high
+http://www.nlm.nih.gov/research/umls/rxnorm,1296584,Orapred Disintegrating Oral Product,high
+http://www.nlm.nih.gov/research/umls/rxnorm,1183437,Orapred Oral Liquid Product,high
+http://www.nlm.nih.gov/research/umls/rxnorm,1183438,Orapred Oral Product,high
+http://www.nlm.nih.gov/research/umls/rxnorm,1183439,Orapred Pill,high
+http://www.nlm.nih.gov/research/umls/rxnorm,219136,Pediapred,high
+http://www.nlm.nih.gov/research/umls/rxnorm,260409,Pediapred 1 MG/ML Oral Solution,high
+http://www.nlm.nih.gov/research/umls/rxnorm,1184005,Pediapred Oral Liquid Product,high
+http://www.nlm.nih.gov/research/umls/rxnorm,1184006,Pediapred Oral Product,high
+http://www.nlm.nih.gov/research/umls/rxnorm,219356,Prelone,high
+http://www.nlm.nih.gov/research/umls/rxnorm,284275,Prelone 1 MG/ML Oral Solution,high
+http://www.nlm.nih.gov/research/umls/rxnorm,755702,Prelone 3 MG/ML Oral Solution,high
+http://www.nlm.nih.gov/research/umls/rxnorm,755703,Prelone 5 MG/ML Oral Solution,high
+http://www.nlm.nih.gov/research/umls/rxnorm,1185831,Prelone Oral Liquid Product,high
+http://www.nlm.nih.gov/research/umls/rxnorm,1185832,Prelone Oral Product,high
+http://www.nlm.nih.gov/research/umls/rxnorm,824886,Veripred,high
+http://www.nlm.nih.gov/research/umls/rxnorm,824889,Veripred 20 Oral Solution,high
+http://www.nlm.nih.gov/research/umls/rxnorm,1187894,Veripred Oral Liquid Product,high
+http://www.nlm.nih.gov/research/umls/rxnorm,1187895,Veripred Oral Product,high
+http://www.nlm.nih.gov/research/umls/rxnorm,4497,fluprednisolone,high
+http://www.nlm.nih.gov/research/umls/rxnorm,451836,fluprednisolone 1.5 MG,high
+http://www.nlm.nih.gov/research/umls/rxnorm,436508,fluprednisolone 1.5 MG Oral Tablet,high
+http://www.nlm.nih.gov/research/umls/rxnorm,1161445,fluprednisolone Oral Product,high
+http://www.nlm.nih.gov/research/umls/rxnorm,451837,fluprednisolone Oral Tablet,high
+http://www.nlm.nih.gov/research/umls/rxnorm,1161446,fluprednisolone Pill,high
+http://www.nlm.nih.gov/research/umls/rxnorm,8638,prednisoLONE,high
+http://www.nlm.nih.gov/research/umls/rxnorm,451093,prednisoLONE 0.001 MG/MG,high
+http://www.nlm.nih.gov/research/umls/rxnorm,335533,prednisoLONE 0.0019 MG/MG,high
+http://www.nlm.nih.gov/research/umls/rxnorm,333914,prednisoLONE 0.002 MG/MG,high
+http://www.nlm.nih.gov/research/umls/rxnorm,333915,prednisoLONE 0.0025 MG/MG,high
+http://www.nlm.nih.gov/research/umls/rxnorm,440700,prednisoLONE 0.004 MG/MG,high
+http://www.nlm.nih.gov/research/umls/rxnorm,333913,prednisoLONE 0.005 MG/MG,high
+http://www.nlm.nih.gov/research/umls/rxnorm,416681,prednisoLONE 0.005 MG/MG Paste,high
+http://www.nlm.nih.gov/research/umls/rxnorm,451161,prednisoLONE 0.01 MG/MG,high
+http://www.nlm.nih.gov/research/umls/rxnorm,345097,prednisoLONE 0.01 MG/ML,high
+http://www.nlm.nih.gov/research/umls/rxnorm,345098,prednisoLONE 0.03 MG/ML,high
+http://www.nlm.nih.gov/research/umls/rxnorm,345099,prednisoLONE 0.1 MG/ML,high
+http://www.nlm.nih.gov/research/umls/rxnorm,335528,prednisoLONE 0.2 MG/ML,high
+http://www.nlm.nih.gov/research/umls/rxnorm,563536,prednisoLONE 0.2 MG/ML [Predenema],high
+http://www.nlm.nih.gov/research/umls/rxnorm,563537,prednisoLONE 0.2 MG/ML [Predsol],high
+http://www.nlm.nih.gov/research/umls/rxnorm,335262,prednisoLONE 0.3 MG/ML,high
+http://www.nlm.nih.gov/research/umls/rxnorm,333209,prednisoLONE 1 MG,high
+http://www.nlm.nih.gov/research/umls/rxnorm,199343,prednisoLONE 1 MG Oral Tablet,high
+http://www.nlm.nih.gov/research/umls/rxnorm,328809,prednisoLONE 1 MG/ML,high
+http://www.nlm.nih.gov/research/umls/rxnorm,312614,prednisoLONE 1 MG/ML Oral Solution,high
+http://www.nlm.nih.gov/research/umls/rxnorm,604204,prednisoLONE 1 MG/ML Oral Solution [Bubbli-Pred],high
+http://www.nlm.nih.gov/research/umls/rxnorm,792957,prednisoLONE 1 MG/ML Oral Suspension,high
+http://www.nlm.nih.gov/research/umls/rxnorm,604202,prednisoLONE 1 MG/ML [Bubbli-Pred],high
+http://www.nlm.nih.gov/research/umls/rxnorm,803309,prednisoLONE 1 MG/ML [Flo-Pred],high
+http://www.nlm.nih.gov/research/umls/rxnorm,574196,prednisoLONE 1 MG/ML [Pediapred],high
+http://www.nlm.nih.gov/research/umls/rxnorm,574754,prednisoLONE 1 MG/ML [Prelone],high
+http://www.nlm.nih.gov/research/umls/rxnorm,451089,prednisoLONE 1.1 MG,high
+http://www.nlm.nih.gov/research/umls/rxnorm,349970,prednisoLONE 1.1 MG/ML,high
+http://www.nlm.nih.gov/research/umls/rxnorm,328815,prednisoLONE 1.2 MG/ML,high
+http://www.nlm.nih.gov/research/umls/rxnorm,328816,prednisoLONE 1.25 MG/ML,high
+http://www.nlm.nih.gov/research/umls/rxnorm,335535,prednisoLONE 1.3 MG,high
+http://www.nlm.nih.gov/research/umls/rxnorm,452820,prednisoLONE 10 MG,high
+http://www.nlm.nih.gov/research/umls/rxnorm,643123,prednisoLONE 10 MG Disintegrating Oral Tablet,high
+http://www.nlm.nih.gov/research/umls/rxnorm,436279,prednisoLONE 10 MG Oral Tablet,high
+http://www.nlm.nih.gov/research/umls/rxnorm,668657,prednisoLONE 10 MG [Orapred],high
+http://www.nlm.nih.gov/research/umls/rxnorm,328310,prednisoLONE 10 MG/ML,high
+http://www.nlm.nih.gov/research/umls/rxnorm,249447,prednisoLONE 10 MG/ML Injectable Solution,high
+http://www.nlm.nih.gov/research/umls/rxnorm,1493170,prednisoLONE 10 MG/ML Injectable Solution [Solu-Delta-Cortef],high
+http://www.nlm.nih.gov/research/umls/rxnorm,542615,prednisoLONE 10 MG/ML [Isolone Forte],high
+http://www.nlm.nih.gov/research/umls/rxnorm,542619,prednisoLONE 10 MG/ML [Pred-Phosphate],high
+http://www.nlm.nih.gov/research/umls/rxnorm,572092,prednisoLONE 10 MG/ML [Prednisol],high
+http://www.nlm.nih.gov/research/umls/rxnorm,1493167,prednisoLONE 10 MG/ML [Solu-Delta-Cortef],high
+http://www.nlm.nih.gov/research/umls/rxnorm,335532,prednisoLONE 100 MG,high
+http://www.nlm.nih.gov/research/umls/rxnorm,330164,prednisoLONE 100 MG/ML,high
+http://www.nlm.nih.gov/research/umls/rxnorm,436507,prednisoLONE 100 MG/ML Injectable Solution,high
+http://www.nlm.nih.gov/research/umls/rxnorm,643124,prednisoLONE 15 MG,high
+http://www.nlm.nih.gov/research/umls/rxnorm,643125,prednisoLONE 15 MG Disintegrating Oral Tablet,high
+http://www.nlm.nih.gov/research/umls/rxnorm,647125,prednisoLONE 15 MG [Orapred],high
+http://www.nlm.nih.gov/research/umls/rxnorm,353628,prednisoLONE 16 MG/ML,high
+http://www.nlm.nih.gov/research/umls/rxnorm,102859,prednisoLONE 16 MG/ML Injectable Solution,high
+http://www.nlm.nih.gov/research/umls/rxnorm,102857,prednisoLONE 16 MG/ML Injectable Solution [Codelsol],high
+http://www.nlm.nih.gov/research/umls/rxnorm,103166,prednisoLONE 16 MG/ML Injectable Solution [Codelson],high
+http://www.nlm.nih.gov/research/umls/rxnorm,563156,prednisoLONE 16 MG/ML [Codelsol],high
+http://www.nlm.nih.gov/research/umls/rxnorm,563254,prednisoLONE 16 MG/ML [Codelson],high
+http://www.nlm.nih.gov/research/umls/rxnorm,451086,prednisoLONE 2 MG,high
+http://www.nlm.nih.gov/research/umls/rxnorm,429198,prednisoLONE 2 MG Oral Tablet,high
+http://www.nlm.nih.gov/research/umls/rxnorm,328812,prednisoLONE 2 MG/ML,high
+http://www.nlm.nih.gov/research/umls/rxnorm,794979,prednisoLONE 2 MG/ML Oral Solution,high
+http://www.nlm.nih.gov/research/umls/rxnorm,795095,prednisoLONE 2 MG/ML [MILLIPRED],high
+http://www.nlm.nih.gov/research/umls/rxnorm,335529,prednisoLONE 2.5 MG,high
+http://www.nlm.nih.gov/research/umls/rxnorm,105408,prednisoLONE 2.5 MG Delayed Release Oral Tablet,high
+http://www.nlm.nih.gov/research/umls/rxnorm,105411,prednisoLONE 2.5 MG Oral Tablet,high
+http://www.nlm.nih.gov/research/umls/rxnorm,328813,prednisoLONE 2.5 MG/ML,high
+http://www.nlm.nih.gov/research/umls/rxnorm,336584,prednisoLONE 20 MG,high
+http://www.nlm.nih.gov/research/umls/rxnorm,429199,prednisoLONE 20 MG Oral Tablet,high
+http://www.nlm.nih.gov/research/umls/rxnorm,1191683,prednisoLONE 20 MG Oral Tablet [Prednistab],high
+http://www.nlm.nih.gov/research/umls/rxnorm,563539,prednisoLONE 20 MG [Predfoam],high
+http://www.nlm.nih.gov/research/umls/rxnorm,1191679,prednisoLONE 20 MG [Prednistab],high
+http://www.nlm.nih.gov/research/umls/rxnorm,335531,prednisoLONE 20 MG/ACTUAT,high
+http://www.nlm.nih.gov/research/umls/rxnorm,328808,prednisoLONE 20 MG/ML,high
+http://www.nlm.nih.gov/research/umls/rxnorm,389031,prednisoLONE 20 MG/ML Injectable Solution,high
+http://www.nlm.nih.gov/research/umls/rxnorm,260405,prednisoLONE 20 MG/ML Injectable Solution [Hydeltrasol],high
+http://www.nlm.nih.gov/research/umls/rxnorm,260406,prednisoLONE 20 MG/ML Injectable Solution [Key-Pred SP],high
+http://www.nlm.nih.gov/research/umls/rxnorm,260407,prednisoLONE 20 MG/ML Injectable Solution [Predicort RP],high
+http://www.nlm.nih.gov/research/umls/rxnorm,573944,prednisoLONE 20 MG/ML [Hydeltra-T.B.A.],high
+http://www.nlm.nih.gov/research/umls/rxnorm,574193,prednisoLONE 20 MG/ML [Hydeltrasol],high
+http://www.nlm.nih.gov/research/umls/rxnorm,574194,prednisoLONE 20 MG/ML [Key-Pred SP],high
+http://www.nlm.nih.gov/research/umls/rxnorm,574195,prednisoLONE 20 MG/ML [Predicort RP],high
+http://www.nlm.nih.gov/research/umls/rxnorm,333210,prednisoLONE 25 MG,high
+http://www.nlm.nih.gov/research/umls/rxnorm,199967,prednisoLONE 25 MG Oral Tablet,high
+http://www.nlm.nih.gov/research/umls/rxnorm,337411,prednisoLONE 25 MG/ML,high
+http://www.nlm.nih.gov/research/umls/rxnorm,351159,prednisoLONE 25 MG/ML Oral Solution,high
+http://www.nlm.nih.gov/research/umls/rxnorm,574626,prednisoLONE 25 MG/ML [Cotolone],high
+http://www.nlm.nih.gov/research/umls/rxnorm,574179,prednisoLONE 25 MG/ML [Key-Pred],high
+http://www.nlm.nih.gov/research/umls/rxnorm,574180,prednisoLONE 25 MG/ML [Predcor],high
+http://www.nlm.nih.gov/research/umls/rxnorm,547220,prednisoLONE 25 MG/ML [Pricortin],high
+http://www.nlm.nih.gov/research/umls/rxnorm,317474,prednisoLONE 3 MG/ML,high
+http://www.nlm.nih.gov/research/umls/rxnorm,283077,prednisoLONE 3 MG/ML Oral Solution,high
+http://www.nlm.nih.gov/research/umls/rxnorm,1012208,prednisoLONE 3 MG/ML Oral Solution [AsmalPred Plus],high
+http://www.nlm.nih.gov/research/umls/rxnorm,793099,prednisoLONE 3 MG/ML Oral Suspension,high
+http://www.nlm.nih.gov/research/umls/rxnorm,1012206,prednisoLONE 3 MG/ML [AsmalPred Plus],high
+http://www.nlm.nih.gov/research/umls/rxnorm,803306,prednisoLONE 3 MG/ML [Flo-Pred],high
+http://www.nlm.nih.gov/research/umls/rxnorm,574944,prednisoLONE 3 MG/ML [Orapred],high
+http://www.nlm.nih.gov/research/umls/rxnorm,569628,prednisoLONE 3 MG/ML [Prelone],high
+http://www.nlm.nih.gov/research/umls/rxnorm,643126,prednisoLONE 30 MG,high
+http://www.nlm.nih.gov/research/umls/rxnorm,643127,prednisoLONE 30 MG Disintegrating Oral Tablet,high
+http://www.nlm.nih.gov/research/umls/rxnorm,668659,prednisoLONE 30 MG [Orapred],high
+http://www.nlm.nih.gov/research/umls/rxnorm,446683,prednisoLONE 4 MG/ML,high
+http://www.nlm.nih.gov/research/umls/rxnorm,702306,prednisoLONE 4 MG/ML Oral Solution,high
+http://www.nlm.nih.gov/research/umls/rxnorm,824887,prednisoLONE 4 MG/ML [Veripred],high
+http://www.nlm.nih.gov/research/umls/rxnorm,323977,prednisoLONE 40 MG/ML,high
+http://www.nlm.nih.gov/research/umls/rxnorm,574181,prednisoLONE 40 MG/ML [Depo-Predate],high
+http://www.nlm.nih.gov/research/umls/rxnorm,316579,prednisoLONE 5 MG,high
+http://www.nlm.nih.gov/research/umls/rxnorm,105409,prednisoLONE 5 MG Delayed Release Oral Tablet,high
+http://www.nlm.nih.gov/research/umls/rxnorm,105410,prednisoLONE 5 MG Disintegrating Oral Tablet,high
+http://www.nlm.nih.gov/research/umls/rxnorm,198142,prednisoLONE 5 MG Oral Tablet,high
+http://www.nlm.nih.gov/research/umls/rxnorm,351519,prednisoLONE 5 MG Oral Tablet [Cotolone],high
+http://www.nlm.nih.gov/research/umls/rxnorm,105407,prednisoLONE 5 MG Oral Tablet [Prednesol],high
+http://www.nlm.nih.gov/research/umls/rxnorm,1191686,prednisoLONE 5 MG Oral Tablet [Prednistab],high
+http://www.nlm.nih.gov/research/umls/rxnorm,541705,prednisoLONE 5 MG Oral Tablet [Prednoral],high
+http://www.nlm.nih.gov/research/umls/rxnorm,102858,prednisoLONE 5 MG Oral Tablet [Stintisone],high
+http://www.nlm.nih.gov/research/umls/rxnorm,575438,prednisoLONE 5 MG [Cotolone],high
+http://www.nlm.nih.gov/research/umls/rxnorm,808116,prednisoLONE 5 MG [MILLIPRED],high
+http://www.nlm.nih.gov/research/umls/rxnorm,564053,prednisoLONE 5 MG [Prednesol],high
+http://www.nlm.nih.gov/research/umls/rxnorm,1191685,prednisoLONE 5 MG [Prednistab],high
+http://www.nlm.nih.gov/research/umls/rxnorm,541703,prednisoLONE 5 MG [Prednoral],high
+http://www.nlm.nih.gov/research/umls/rxnorm,563538,prednisoLONE 5 MG [Predsol],high
+http://www.nlm.nih.gov/research/umls/rxnorm,563157,prednisoLONE 5 MG [Stintisone],high
+http://www.nlm.nih.gov/research/umls/rxnorm,328814,prednisoLONE 5 MG/ML,high
+http://www.nlm.nih.gov/research/umls/rxnorm,249066,prednisoLONE 5 MG/ML Oral Solution,high
+http://www.nlm.nih.gov/research/umls/rxnorm,564291,prednisoLONE 5 MG/ML [Minims prednisoLONE],high
+http://www.nlm.nih.gov/research/umls/rxnorm,563270,prednisoLONE 5 MG/ML [Predsol],high
+http://www.nlm.nih.gov/research/umls/rxnorm,539944,prednisoLONE 5 MG/ML [Prelone],high
+http://www.nlm.nih.gov/research/umls/rxnorm,349801,prednisoLONE 50 MG,high
+http://www.nlm.nih.gov/research/umls/rxnorm,348428,prednisoLONE 50 MG Oral Tablet,high
+http://www.nlm.nih.gov/research/umls/rxnorm,343660,prednisoLONE 50 MG/ML,high
+http://www.nlm.nih.gov/research/umls/rxnorm,1493171,prednisoLONE 50 MG/ML Injectable Solution,high
+http://www.nlm.nih.gov/research/umls/rxnorm,1493173,prednisoLONE 50 MG/ML Injectable Solution [Solu-Delta-Cortef],high
+http://www.nlm.nih.gov/research/umls/rxnorm,574627,prednisoLONE 50 MG/ML [Cotolone],high
+http://www.nlm.nih.gov/research/umls/rxnorm,574182,prednisoLONE 50 MG/ML [Key-Pred],high
+http://www.nlm.nih.gov/research/umls/rxnorm,574183,prednisoLONE 50 MG/ML [Medicort],high
+http://www.nlm.nih.gov/research/umls/rxnorm,574184,prednisoLONE 50 MG/ML [Pred-Ject-50],high
+http://www.nlm.nih.gov/research/umls/rxnorm,574185,prednisoLONE 50 MG/ML [Predacort 50],high
+http://www.nlm.nih.gov/research/umls/rxnorm,574186,prednisoLONE 50 MG/ML [Predaject-50],high
+http://www.nlm.nih.gov/research/umls/rxnorm,574187,prednisoLONE 50 MG/ML [Predalone 50],high
+http://www.nlm.nih.gov/research/umls/rxnorm,574188,prednisoLONE 50 MG/ML [Predate-50],high
+http://www.nlm.nih.gov/research/umls/rxnorm,574189,prednisoLONE 50 MG/ML [Predcor],high
+http://www.nlm.nih.gov/research/umls/rxnorm,574190,prednisoLONE 50 MG/ML [Predicort-50],high
+http://www.nlm.nih.gov/research/umls/rxnorm,574191,prednisoLONE 50 MG/ML [Pri-Cortin 50],high
+http://www.nlm.nih.gov/research/umls/rxnorm,1493172,prednisoLONE 50 MG/ML [Solu-Delta-Cortef],high
+http://www.nlm.nih.gov/research/umls/rxnorm,451110,prednisoLONE 8 MG/ML,high
+http://www.nlm.nih.gov/research/umls/rxnorm,323918,prednisoLONE 80 MG/ML,high
+http://www.nlm.nih.gov/research/umls/rxnorm,574192,prednisoLONE 80 MG/ML [Depo-Predate],high
+http://www.nlm.nih.gov/research/umls/rxnorm,373572,prednisoLONE Delayed Release Oral Tablet,high
+http://www.nlm.nih.gov/research/umls/rxnorm,1295508,prednisoLONE Disintegrating Oral Product,high
+http://www.nlm.nih.gov/research/umls/rxnorm,379264,prednisoLONE Disintegrating Oral Tablet,high
+http://www.nlm.nih.gov/research/umls/rxnorm,647126,prednisoLONE Disintegrating Oral Tablet [Orapred],high
+http://www.nlm.nih.gov/research/umls/rxnorm,1165756,prednisoLONE Injectable Product,high
+http://www.nlm.nih.gov/research/umls/rxnorm,373579,prednisoLONE Injectable Solution,high
+http://www.nlm.nih.gov/research/umls/rxnorm,363559,prednisoLONE Injectable Solution [Codelsol],high
+http://www.nlm.nih.gov/research/umls/rxnorm,385326,prednisoLONE Injectable Solution [Codelson],high
+http://www.nlm.nih.gov/research/umls/rxnorm,92892,prednisoLONE Injectable Solution [Hydeltrasol],high
+http://www.nlm.nih.gov/research/umls/rxnorm,363278,prednisoLONE Injectable Solution [Key-Pred SP],high
+http://www.nlm.nih.gov/research/umls/rxnorm,363277,prednisoLONE Injectable Solution [Predicort RP],high
+http://www.nlm.nih.gov/research/umls/rxnorm,1493168,prednisoLONE Injectable Solution [Solu-Delta-Cortef],high
+http://www.nlm.nih.gov/research/umls/rxnorm,1165758,prednisoLONE Oral Liquid Product,high
+http://www.nlm.nih.gov/research/umls/rxnorm,1165759,prednisoLONE Oral Product,high
+http://www.nlm.nih.gov/research/umls/rxnorm,373575,prednisoLONE Oral Solution,high
+http://www.nlm.nih.gov/research/umls/rxnorm,1012207,prednisoLONE Oral Solution [AsmalPred Plus],high
+http://www.nlm.nih.gov/research/umls/rxnorm,604203,prednisoLONE Oral Solution [Bubbli-Pred],high
+http://www.nlm.nih.gov/research/umls/rxnorm,795096,prednisoLONE Oral Solution [MILLIPRED],high
+http://www.nlm.nih.gov/research/umls/rxnorm,364478,prednisoLONE Oral Solution [Orapred],high
+http://www.nlm.nih.gov/research/umls/rxnorm,93720,prednisoLONE Oral Solution [Pediapred],high
+http://www.nlm.nih.gov/research/umls/rxnorm,364214,prednisoLONE Oral Solution [Prelone],high
+http://www.nlm.nih.gov/research/umls/rxnorm,824888,prednisoLONE Oral Solution [Veripred],high
+http://www.nlm.nih.gov/research/umls/rxnorm,792956,prednisoLONE Oral Suspension,high
+http://www.nlm.nih.gov/research/umls/rxnorm,803307,prednisoLONE Oral Suspension [Flo-Pred],high
+http://www.nlm.nih.gov/research/umls/rxnorm,373578,prednisoLONE Oral Tablet,high
+http://www.nlm.nih.gov/research/umls/rxnorm,369438,prednisoLONE Oral Tablet [Cotolone],high
+http://www.nlm.nih.gov/research/umls/rxnorm,808117,prednisoLONE Oral Tablet [MILLIPRED],high
+http://www.nlm.nih.gov/research/umls/rxnorm,385141,prednisoLONE Oral Tablet [Prednesol],high
+http://www.nlm.nih.gov/research/umls/rxnorm,1191680,prednisoLONE Oral Tablet [Prednistab],high
+http://www.nlm.nih.gov/research/umls/rxnorm,541704,prednisoLONE Oral Tablet [Prednoral],high
+http://www.nlm.nih.gov/research/umls/rxnorm,369537,prednisoLONE Oral Tablet [Stintisone],high
+http://www.nlm.nih.gov/research/umls/rxnorm,451160,prednisoLONE Paste,high
+http://www.nlm.nih.gov/research/umls/rxnorm,1156757,prednisoLONE Paste Product,high
+http://www.nlm.nih.gov/research/umls/rxnorm,1156758,prednisoLONE Pill,high
+http://www.nlm.nih.gov/research/umls/rxnorm,755936,prednisoLONE acetate 3 MG/ML Oral Solution,high
+http://www.nlm.nih.gov/research/umls/rxnorm,208988,prednisoLONE acetate 5 MG Oral Tablet,high
+http://www.nlm.nih.gov/research/umls/rxnorm,2659308,prednisoLONE acetate Oral Liquid Product,high
+http://www.nlm.nih.gov/research/umls/rxnorm,2659133,prednisoLONE acetate Oral Product,high
+http://www.nlm.nih.gov/research/umls/rxnorm,2646912,prednisoLONE acetate Oral Solution,high
+http://www.nlm.nih.gov/research/umls/rxnorm,2646929,prednisoLONE acetate Oral Tablet,high
+http://www.nlm.nih.gov/research/umls/rxnorm,2663537,prednisoLONE acetate Pill,high
+http://www.nlm.nih.gov/research/umls/rxnorm,34374,prednisoLONE phosphate,high
+http://www.nlm.nih.gov/research/umls/rxnorm,268872,prednisoLONE sodium metasulphobenzoate,high
+http://www.nlm.nih.gov/research/umls/rxnorm,55062,prednisoLONE sodium phosphate,high
+http://www.nlm.nih.gov/research/umls/rxnorm,55063,prednisoLONE sodium succinate,high
+http://www.nlm.nih.gov/research/umls/rxnorm,34376,prednisoLONE tebutate,high
+http://www.nlm.nih.gov/research/umls/rxnorm,1013114,{21 (prednisoLONE 5 MG Oral Tablet) } Pack,high
+http://www.nlm.nih.gov/research/umls/rxnorm,1005830,{48 (prednisoLONE 5 MG Oral Tablet) } Pack,high
+http://www.nlm.nih.gov/research/umls/rxnorm,312609,prednisoLONE 100 MG/ML Injectable Suspension,medium
+http://www.nlm.nih.gov/research/umls/rxnorm,562654,prednisoLONE 20 MG/ML Injectable Suspension,medium
+http://www.nlm.nih.gov/research/umls/rxnorm,214105,prednisoLONE 20 MG/ML Injectable Suspension [Hydeltra-T.B.A.],medium
+http://www.nlm.nih.gov/research/umls/rxnorm,260125,prednisoLONE 25 MG/ML Injectable Suspension,medium
+http://www.nlm.nih.gov/research/umls/rxnorm,261992,prednisoLONE 25 MG/ML Injectable Suspension [Cotolone],medium
+http://www.nlm.nih.gov/research/umls/rxnorm,260391,prednisoLONE 25 MG/ML Injectable Suspension [Key-Pred],medium
+http://www.nlm.nih.gov/research/umls/rxnorm,260392,prednisoLONE 25 MG/ML Injectable Suspension [Predcor],medium
+http://www.nlm.nih.gov/research/umls/rxnorm,547222,prednisoLONE 25 MG/ML Injectable Suspension [Pricortin],medium
+http://www.nlm.nih.gov/research/umls/rxnorm,562661,prednisoLONE 40 MG/ML Injectable Suspension,medium
+http://www.nlm.nih.gov/research/umls/rxnorm,260393,prednisoLONE 40 MG/ML Injectable Suspension [Depo-Predate],medium
+http://www.nlm.nih.gov/research/umls/rxnorm,260127,prednisoLONE 50 MG/ML Injectable Suspension,medium
+http://www.nlm.nih.gov/research/umls/rxnorm,261993,prednisoLONE 50 MG/ML Injectable Suspension [Cotolone],medium
+http://www.nlm.nih.gov/research/umls/rxnorm,260394,prednisoLONE 50 MG/ML Injectable Suspension [Key-Pred],medium
+http://www.nlm.nih.gov/research/umls/rxnorm,260395,prednisoLONE 50 MG/ML Injectable Suspension [Medicort],medium
+http://www.nlm.nih.gov/research/umls/rxnorm,260396,prednisoLONE 50 MG/ML Injectable Suspension [Pred-Ject-50],medium
+http://www.nlm.nih.gov/research/umls/rxnorm,260397,prednisoLONE 50 MG/ML Injectable Suspension [Predacort 50],medium
+http://www.nlm.nih.gov/research/umls/rxnorm,260398,prednisoLONE 50 MG/ML Injectable Suspension [Predaject-50],medium
+http://www.nlm.nih.gov/research/umls/rxnorm,260399,prednisoLONE 50 MG/ML Injectable Suspension [Predalone 50],medium
+http://www.nlm.nih.gov/research/umls/rxnorm,260400,prednisoLONE 50 MG/ML Injectable Suspension [Predate-50],medium
+http://www.nlm.nih.gov/research/umls/rxnorm,260401,prednisoLONE 50 MG/ML Injectable Suspension [Predcor],medium
+http://www.nlm.nih.gov/research/umls/rxnorm,260402,prednisoLONE 50 MG/ML Injectable Suspension [Predicort-50],medium
+http://www.nlm.nih.gov/research/umls/rxnorm,260403,prednisoLONE 50 MG/ML Injectable Suspension [Pri-Cortin 50],medium
+http://www.nlm.nih.gov/research/umls/rxnorm,412642,prednisoLONE 8 MG/ML Injectable Suspension,medium
+http://www.nlm.nih.gov/research/umls/rxnorm,562662,prednisoLONE 80 MG/ML Injectable Suspension,medium
+http://www.nlm.nih.gov/research/umls/rxnorm,260404,prednisoLONE 80 MG/ML Injectable Suspension [Depo-Predate],medium
+http://www.nlm.nih.gov/research/umls/rxnorm,373568,prednisoLONE Injectable Suspension,medium
+http://www.nlm.nih.gov/research/umls/rxnorm,365625,prednisoLONE Injectable Suspension [Cotolone],medium
+http://www.nlm.nih.gov/research/umls/rxnorm,365614,prednisoLONE Injectable Suspension [Depo-Predate],medium
+http://www.nlm.nih.gov/research/umls/rxnorm,365598,prednisoLONE Injectable Suspension [Hydeltra-T.B.A.],medium
+http://www.nlm.nih.gov/research/umls/rxnorm,365624,prednisoLONE Injectable Suspension [Key-Pred],medium
+http://www.nlm.nih.gov/research/umls/rxnorm,365623,prednisoLONE Injectable Suspension [Medicort],medium
+http://www.nlm.nih.gov/research/umls/rxnorm,365622,prednisoLONE Injectable Suspension [Pred-Ject-50],medium
+http://www.nlm.nih.gov/research/umls/rxnorm,365621,prednisoLONE Injectable Suspension [Predacort 50],medium
+http://www.nlm.nih.gov/research/umls/rxnorm,365620,prednisoLONE Injectable Suspension [Predaject-50],medium
+http://www.nlm.nih.gov/research/umls/rxnorm,365619,prednisoLONE Injectable Suspension [Predalone 50],medium
+http://www.nlm.nih.gov/research/umls/rxnorm,365618,prednisoLONE Injectable Suspension [Predate-50],medium
+http://www.nlm.nih.gov/research/umls/rxnorm,365617,prednisoLONE Injectable Suspension [Predcor],medium
+http://www.nlm.nih.gov/research/umls/rxnorm,365616,prednisoLONE Injectable Suspension [Predicort-50],medium
+http://www.nlm.nih.gov/research/umls/rxnorm,365615,prednisoLONE Injectable Suspension [Pri-Cortin 50],medium
+http://www.nlm.nih.gov/research/umls/rxnorm,547221,prednisoLONE Injectable Suspension [Pricortin],medium
+http://www.nlm.nih.gov/research/umls/rxnorm,34372,prednisoLONE acetate,medium
+http://www.nlm.nih.gov/research/umls/rxnorm,260408,prednisoLONE acetate 20 MG/ML Injectable Solution,medium
+http://www.nlm.nih.gov/research/umls/rxnorm,2661773,prednisoLONE acetate Injectable Product,medium
+http://www.nlm.nih.gov/research/umls/rxnorm,2649492,prednisoLONE acetate Injectable Solution,medium

@@ -1,0 +1,30 @@
+system,code,display,priority,evidence
+http://snomed.info/sct,1197150002,Recurrent hepatitis C virus induced liver disease following liver transplant (disorder),medium,confirmed
+http://snomed.info/sct,128302006,Chronic hepatitis C (disorder),high,confirmed
+http://snomed.info/sct,16623921000119105,Viral hepatitis C in mother during pregnancy (disorder),medium,confirmed
+http://snomed.info/sct,235866006,Acute hepatitis C (disorder),high,confirmed
+http://snomed.info/sct,347891000119103,Chronic hepatitis C with stage 3 fibrosis (disorder),medium,confirmed
+http://snomed.info/sct,435101000124104,Chronic viral hepatitis C with hepatic coma (disorder),high,confirmed
+http://snomed.info/sct,442374005,Hepatitis B and hepatitis C (disorder),medium,confirmed
+http://snomed.info/sct,50711007,Viral hepatitis type C (disorder),high,confirmed
+http://snomed.info/sct,551611000124101,Perinatal hepatitis caused by Hepatitis C virus (disorder),medium,confirmed
+http://snomed.info/sct,702969000,Reactivation of hepatitis C viral hepatitis (disorder),medium,confirmed
+http://snomed.info/sct,703866000,Chronic hepatitis C with stage 2 fibrosis (disorder),medium,confirmed
+http://snomed.info/sct,708198006,Chronic active hepatitis C (disorder),high,confirmed
+http://snomed.info/sct,767809001,Chronic hepatitis C caused by hepatitis C virus genotype 6 (disorder),medium,confirmed
+http://snomed.info/sct,767810006,Chronic hepatitis C caused by hepatitis C virus genotype 5 (disorder),medium,confirmed
+http://snomed.info/sct,768006009,Chronic hepatitis C caused by Hepatitis C virus genotype 3 (disorder),medium,confirmed
+http://snomed.info/sct,768125005,Chronic hepatitis C caused by Hepatitis C virus genotype 2 (disorder),medium,confirmed
+http://snomed.info/sct,768126006,Chronic hepatitis C caused by Hepatitis C virus genotype 4 (disorder),medium,confirmed
+http://snomed.info/sct,768127002,Chronic hepatitis C caused by Hepatitis C virus genotype 1 (disorder),medium,confirmed
+http://snomed.info/sct,768288001,Chronic hepatitis C caused by Hepatitis C virus genotype 1b (disorder),medium,confirmed
+http://snomed.info/sct,768289009,Chronic hepatitis C caused by Hepatitis C virus genotype 1a (disorder),medium,confirmed
+http://snomed.info/sct,838377003,Chronic hepatitis C co-occurrent with human immunodeficiency virus infection (disorder),medium,confirmed
+http://snomed.info/sct,838380002,Chronic hepatitis B co-occurrent with hepatitis C and hepatitis D (disorder),medium,confirmed
+http://hl7.org/fhir/sid/icd-10-cm,B17.1,Acute hepatitis C,high,confirmed
+http://hl7.org/fhir/sid/icd-10-cm,B17.10,Acute hepatitis C without hepatic coma,high,confirmed
+http://hl7.org/fhir/sid/icd-10-cm,B17.11,Acute hepatitis C with hepatic coma,high,confirmed
+http://hl7.org/fhir/sid/icd-10-cm,B18.2,Chronic viral hepatitis C,high,confirmed
+http://hl7.org/fhir/sid/icd-10-cm,B19.2,Unspecified viral hepatitis C,high,confirmed
+http://hl7.org/fhir/sid/icd-10-cm,B19.20,Unspecified viral hepatitis C without hepatic coma,high,confirmed
+http://hl7.org/fhir/sid/icd-10-cm,B19.21,Unspecified viral hepatitis C with hepatic coma,high,confirmed

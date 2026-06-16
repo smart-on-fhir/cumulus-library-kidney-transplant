@@ -3,48 +3,28 @@ from cumulus_library_kidney_transplant.tools import filetool, template, tablespa
 from cumulus_library_kidney_transplant.tools.study_variable import Aspect, list_aspect_names
 
 ########################################################################################################
-# make samples
+# Encounter timing relative to "1st casedef match"
+#
+# pre = before
+# peri = during
+# peri_post = during or after
+# post = after
 ##########################################################################################################
-def make_samples() -> list[Path]:
-    """
-    Make note samples for each casedef temporality [pre, per, peri_post, post]
-    Make note samples for each casedef variable type (aspect like dx, rx, lab)
-    """
-    samples = [template.copy('sample_casedef.sql')]
+TEMPORALITY = ['pre', 'peri', 'peri_post', 'post']
 
-    for aspect in list_aspect_names():
-        samples.append(make_aspect(aspect))
+########################################################################################################
+# Step 1: sample_casedef
+##########################################################################################################
+def make_sample() -> list[Path]:
+    return [template.copy('sample_casedef.sql')]
 
-    for temporality in ['pre', 'peri', 'peri_post', 'post']:
-        samples += [make_temporality(f'sample_casedef_temporality', temporality),
-                    make_temporality(f'sample_casedef_temporality_limit_patient', temporality, 10),
-                    make_temporality(f'sample_casedef_temporality_limit_note', temporality, 50)]
-    return samples
+########################################################################################################
+# Step 2: for each Aspect
+##########################################################################################################
+def make_aspect() -> list[Path]:
+    return [_make_aspect(aspect) for aspect in list_aspect_names()]
 
-def make_temporality(template_name:str, temporality:str, limit: int = None) -> Path:
-    """
-    :param template_name: name of the SQL template to load
-    :param temporality: str one of ['pre', 'peri', 'peri_post', 'post']
-    :param limit: int patients or notes in sample
-    :return: path to Athena SQL
-    """
-    table_name = template_name.replace('temporality', temporality)
-
-    if limit:
-        limit = str(limit)
-        table_name = f'{table_name}_{limit}'
-    else:
-        limit = ''
-
-    text = template.load(f'{template_name}.sql',
-                         temporality=temporality,
-                         limit=limit)
-
-    target_table = tablespace.name_prefix(table_name)
-    target_file = filetool.path_athena(f'{target_table}.sql')
-    return Path(filetool.write_text(text, target_file))
-
-def make_aspect(aspect:Aspect|str) -> Path:
+def _make_aspect(aspect: Aspect | str) -> Path:
     """
     Intended use:
     * Aspect.dx:    sample casedef notes that have an encounter matching 1+ "dx" study variable(s)
@@ -58,19 +38,66 @@ def make_aspect(aspect:Aspect|str) -> Path:
     :return: path to Athena SQL
     """
     if isinstance(aspect, Aspect):
-        return make_aspect(aspect.name)
+        return _make_aspect(aspect.name)
     content = template.load('sample_casedef_aspect.sql', aspect=aspect)
     table = tablespace.name_prefix(f'sample_casedef_{aspect}')
     path = filetool.path_athena(f'{table}.sql')
     return filetool.save_athena(path, content)
 
+########################################################################################################
+# Step 3: for each TEMPORALITY
+##########################################################################################################
+def make_temporality() -> list[Path]:
+    template_name = 'sample_casedef_temporality'
+    return [_make_temporality(template_name, temporality) for temporality in TEMPORALITY]
+
+########################################################################################################
+# Step 4: with sample size limits
+##########################################################################################################
+def make_temporality_limit_patient(limit: int = 10) -> list[Path]:
+    template_name = 'sample_casedef_temporality_limit_patient'
+    return [_make_temporality(template_name, temporality, limit) for temporality in TEMPORALITY]
+
+def make_temporality_limit_note(limit: int = 50) -> list[Path]:
+    template_name = 'sample_casedef_temporality_limit_note'
+    return [_make_temporality(template_name, temporality, limit) for temporality in TEMPORALITY]
+
+def _make_temporality(template_name:str, temporality:str, limit: int = None) -> Path:
+    """
+    :param template_name: name of the SQL template to load
+    :param temporality: str one of ['pre', 'peri', 'peri_post', 'post']
+    :param limit: int patients or notes in sample
+    :return: path to Athena SQL
+    """
+    table_name = template_name.replace('temporality', temporality)
+
+    if limit:
+        limit = str(limit)
+        table_name = f'{table_name}_{limit}'
+    else:
+        limit = ''
+    text = template.load(f'{template_name}.sql',
+                         temporality=temporality,
+                         limit=limit)
+    target_table = tablespace.name_prefix(table_name)
+    target_file = filetool.path_athena(f'{target_table}.sql')
+    return Path(filetool.write_text(text, target_file))
+
 #-----------------------------------------------------------------------------
 # Make
 #-----------------------------------------------------------------------------
-def make() -> list[str]:
-    sample_list = make_samples()
+def make() -> list[Path]:
+    aspect_list = list_aspect_names()
 
-    return [manifest.as_toml_sql(sample_list, 'samples for casedef temporality [pre, per, peri_post, post]')]
+    actions = [
+        manifest.SqlAction(make_sample(), 'sample_casedef (all)'),
+        manifest.SqlAction(make_aspect(), f'sample for aspects {aspect_list}'),
+        manifest.SqlAction(make_temporality(), f'sample temporality {TEMPORALITY}'),
+        manifest.SqlAction(make_temporality_limit_patient(10), 'sample size limit patients'),
+        manifest.SqlAction(make_temporality_limit_note(50), 'sample size limit notes'),
+    ]
+
+    return [manifest.save_actions_toml(actions, 'sample.toml')]
 
 if __name__ == '__main__':
     for target in make():

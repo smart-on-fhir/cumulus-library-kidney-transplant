@@ -1,7 +1,0 @@
-create table irae__cohort_lab_drug_level_sirolimus as 
-select distinct * from 
- irae__cohort_study_population_lab , 
-irae__valueset_lab_drug_level_sirolimus
-WHERE
-irae__cohort_study_population_lab.lab_observation_code = irae__valueset_lab_drug_level_sirolimus.code and 
-irae__cohort_study_population_lab.lab_observation_system = irae__valueset_lab_drug_level_sirolimus.system

@@ -1,0 +1,73 @@
+system,code,display,priority
+http://snomed.info/sct,108241001,Dialysis procedure,high
+http://snomed.info/sct,14684005,Peritoneal dialysis excluding cannulation,high
+http://snomed.info/sct,225230008,Chronic peritoneal dialysis,high
+http://snomed.info/sct,233575001,Intermittent hemodialysis,high
+http://snomed.info/sct,238318009,Continuous ambulatory peritoneal dialysis,high
+http://snomed.info/sct,238319001,Continuous cycling peritoneal dialysis,high
+http://snomed.info/sct,238321006,Intermittent peritoneal dialysis,high
+http://snomed.info/sct,238322004,"Peritoneal dialysis, tidal",high
+http://snomed.info/sct,238323009,Night-time intermittent peritoneal dialysis,high
+http://snomed.info/sct,265550007,Transplant nephrectomy (procedure),high
+http://snomed.info/sct,265764009,Renal dialysis,high
+http://snomed.info/sct,284348003,Excision of rejected transplanted kidney (procedure),high
+http://snomed.info/sct,302497006,Hemodialysis procedure,high
+http://snomed.info/sct,34897002,"Hemodialysis, maintenance in hospital",high
+http://snomed.info/sct,428648006,Automated peritoneal dialysis (procedure),high
+http://snomed.info/sct,57274006,Initial hemodialysis,high
+http://snomed.info/sct,676002,Peritoneal dialysis including cannulation,high
+http://snomed.info/sct,67970008,"Hemodialysis, maintenance at home",high
+http://snomed.info/sct,71192002,Peritoneal dialysis,high
+http://www.ama-assn.org/go/cpt,50370,Removal of transplanted renal allograft,high
+http://www.ama-assn.org/go/cpt,90935,Hemodialysis procedure with single evaluation by physician or other qualified health care professional,high
+http://www.ama-assn.org/go/cpt,90937,Hemodialysis procedure requiring repeated evaluations,high
+http://www.ama-assn.org/go/cpt,90945,Dialysis procedure other than hemodialysis with single evaluation,high
+http://www.ama-assn.org/go/cpt,90947,Dialysis procedure other than hemodialysis requiring repeated evaluations,high
+http://www.cms.gov/Medicare/Coding/HCPCSReleaseCodeSets,G0257,Unscheduled or emergency dialysis treatment for an ESRD patient in a hospital outpatient department,high
+http://www.cms.gov/Medicare/Coding/ICD10,5A1D70Z,"Performance of urinary filtration, intermittent, less than 6 hours per day",high
+http://www.cms.gov/Medicare/Coding/ICD10,5A1D80Z,"Performance of urinary filtration, intermittent, 6-18 hours per day",high
+http://www.cms.gov/Medicare/Coding/ICD10,5A1D90Z,"Performance of urinary filtration, continuous, greater than 18 hours per day",high
+http://snomed.info/sct,182750009,Ultrafiltration,medium
+http://snomed.info/sct,341939001,Extracorporeal haemofiltration,medium
+http://snomed.info/sct,443869003,Total nephrectomy (procedure),medium
+http://snomed.info/sct,68341005,"Hemodialysis, supervision at home",medium
+http://www.ama-assn.org/go/cpt,50220,"Nephrectomy, including partial ureterectomy, any open approach including rib resection",medium
+http://www.ama-assn.org/go/cpt,50225,"Nephrectomy, including partial ureterectomy, complicated because of previous surgery on same kidney",medium
+http://www.ama-assn.org/go/cpt,50230,"Nephrectomy, including partial ureterectomy, radical",medium
+http://www.ama-assn.org/go/cpt,50340,Recipient nephrectomy (separate procedure),medium
+http://www.ama-assn.org/go/cpt,50365,"Renal allotransplantation, implantation of graft; with recipient nephrectomy",medium
+http://www.ama-assn.org/go/cpt,50545,"Laparoscopy, surgical; radical nephrectomy",medium
+http://www.ama-assn.org/go/cpt,50546,"Laparoscopy, surgical; nephrectomy with total ureterectomy",medium
+http://www.ama-assn.org/go/cpt,90951,"ESRD-related services monthly, age <2 years, 4 or more visits",medium
+http://www.ama-assn.org/go/cpt,90952,"ESRD-related services monthly, age <2 years, 2-3 visits",medium
+http://www.ama-assn.org/go/cpt,90953,"ESRD-related services monthly, age <2 years, 1 visit",medium
+http://www.ama-assn.org/go/cpt,90954,"ESRD-related services monthly, age 2-11 years, 4 or more visits",medium
+http://www.ama-assn.org/go/cpt,90955,"ESRD-related services monthly, age 2-11 years, 2-3 visits",medium
+http://www.ama-assn.org/go/cpt,90956,"ESRD-related services monthly, age 2-11 years, 1 visit",medium
+http://www.ama-assn.org/go/cpt,90957,"ESRD-related services monthly, age 12-19 years, 4 or more visits",medium
+http://www.ama-assn.org/go/cpt,90958,"ESRD-related services monthly, age 12-19 years, 2-3 visits",medium
+http://www.ama-assn.org/go/cpt,90959,"ESRD-related services monthly, age 12-19 years, 1 visit",medium
+http://www.ama-assn.org/go/cpt,90960,"ESRD-related services monthly, age 20+ years, 4 or more visits",medium
+http://www.ama-assn.org/go/cpt,90961,"ESRD-related services monthly, age 20+ years, 2-3 visits",medium
+http://www.ama-assn.org/go/cpt,90962,"ESRD-related services monthly, age 20+ years, 1 visit",medium
+http://www.ama-assn.org/go/cpt,90963,"ESRD-related services for home dialysis per full month, age <2 years",medium
+http://www.ama-assn.org/go/cpt,90964,"ESRD-related services for home dialysis per full month, age 2-11 years",medium
+http://www.ama-assn.org/go/cpt,90965,"ESRD-related services for home dialysis per full month, age 12-19 years",medium
+http://www.ama-assn.org/go/cpt,90966,"ESRD-related services for home dialysis per full month, age 20+ years",medium
+http://www.ama-assn.org/go/cpt,90967,"ESRD-related services for dialysis less than full month, per day, age <2 years",medium
+http://www.ama-assn.org/go/cpt,90968,"ESRD-related services for dialysis less than full month, per day, age 2-11 years",medium
+http://www.ama-assn.org/go/cpt,90969,"ESRD-related services for dialysis less than full month, per day, age 12-19 years",medium
+http://www.ama-assn.org/go/cpt,90970,"ESRD-related services for dialysis less than full month, per day, age 20+ years",medium
+http://www.ama-assn.org/go/cpt,90989,"Dialysis training, patient, including helper where applicable, completed course",medium
+http://www.ama-assn.org/go/cpt,90993,"Dialysis training, patient, including helper where applicable, incomplete course",medium
+http://www.ama-assn.org/go/cpt,90999,"Unlisted dialysis procedure, inpatient or outpatient",medium
+http://www.ama-assn.org/go/cpt,99512,Home visit for hemodialysis,medium
+http://www.cms.gov/Medicare/Coding/HCPCSReleaseCodeSets,G0491,Dialysis procedure at Medicare-certified ESRD facility for acute kidney injury without ESRD,medium
+http://www.cms.gov/Medicare/Coding/HCPCSReleaseCodeSets,G0492,Dialysis procedure with single physician evaluation for acute kidney injury without ESRD,medium
+http://www.cms.gov/Medicare/Coding/HCPCSReleaseCodeSets,S9335,Home hemodialysis support service,medium
+http://www.cms.gov/Medicare/Coding/HCPCSReleaseCodeSets,S9339,Home peritoneal dialysis support service,medium
+http://www.cms.gov/Medicare/Coding/ICD10,0TT00ZZ,"Resection of right kidney, open approach",medium
+http://www.cms.gov/Medicare/Coding/ICD10,0TT04ZZ,"Resection of right kidney, percutaneous endoscopic approach",medium
+http://www.cms.gov/Medicare/Coding/ICD10,0TT10ZZ,"Resection of left kidney, open approach",medium
+http://www.cms.gov/Medicare/Coding/ICD10,0TT14ZZ,"Resection of left kidney, percutaneous endoscopic approach",medium
+http://snomed.info/sct,12976005,Donor nephrectomy (procedure),low

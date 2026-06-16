@@ -1,0 +1,6 @@
+system,code,display,priority
+http://snomed.info/sct,225067007,Therapeutic plasma exchange (procedure),high
+http://www.ama-assn.org/go/cpt,36514,Therapeutic apheresis; for plasma pheresis,high
+http://www.cms.gov/Medicare/Coding/ICD10,6A550Z3,"Pheresis of plasma, single",high
+http://www.cms.gov/Medicare/Coding/ICD10,6A551Z3,"Pheresis of plasma, multiple",high
+http://www.ama-assn.org/go/cpt,36516,Therapeutic apheresis; with extracorporeal selective adsorption or selective filtration and plasma reinfusion,medium

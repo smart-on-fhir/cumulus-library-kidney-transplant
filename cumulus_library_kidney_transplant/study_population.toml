@@ -1,33 +1,26 @@
 [[actions]]
-description = 'inclusion/exclusion criteria for study population'
+description = "study_period"
 type = "build:parallel"
 files = [
-  '../spreadsheet/file_upload_population.toml'
+    "athena/irae__cohort_study_period.sql",
 ]
 
 [[actions]]
-description="study_period"
-type="build:parallel"
-files= [
-	"athena/irae__cohort_study_period.sql"
+description = "study_population"
+type = "build:parallel"
+files = [
+    "athena/irae__cohort_study_population.sql",
 ]
 
 [[actions]]
-description="study_population"
-type="build:parallel"
-files= [
-	"athena/irae__cohort_study_population.sql"
-]
-
-[[actions]]
-description="study_population aspects ('enc', 'dx', 'rx', 'lab', 'proc', 'doc', 'diag')"
-type="build:parallel"
-files= [
-	"athena/irae__cohort_study_population_enc.sql",
-	"athena/irae__cohort_study_population_dx.sql",
-	"athena/irae__cohort_study_population_rx.sql",
-	"athena/irae__cohort_study_population_lab.sql",
-	"athena/irae__cohort_study_population_proc.sql",
-	"athena/irae__cohort_study_population_doc.sql",
-	"athena/irae__cohort_study_population_diag.sql"
+description = "study_population aspects ('enc', 'dx', 'rx', 'lab', 'proc', 'doc', 'diag')"
+type = "build:parallel"
+files = [
+    "athena/irae__cohort_study_population_enc.sql",
+    "athena/irae__cohort_study_population_dx.sql",
+    "athena/irae__cohort_study_population_rx.sql",
+    "athena/irae__cohort_study_population_lab.sql",
+    "athena/irae__cohort_study_population_proc.sql",
+    "athena/irae__cohort_study_population_doc.sql",
+    "athena/irae__cohort_study_population_diag.sql",
 ]

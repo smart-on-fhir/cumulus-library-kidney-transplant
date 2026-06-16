@@ -1,29 +1,37 @@
 [[actions]]
-description="variable union (bool)"
-type="build:parallel"
-files= [
-	"athena/irae__cohort_variable_union.sql",
+description = "variable union (bool)"
+type = "build:parallel"
+files = [
+    "athena/irae__cohort_variable_union.sql",
 ]
 
 [[actions]]
-description="variable union (lab, rx)"
-type="build:parallel"
-files= [
-	"athena/irae__cohort_variable_union_lab.sql",
-	"athena/irae__cohort_variable_union_rx.sql"
+description = "variable union ('diag', 'doc', 'dx', 'lab', 'proc', 'rx')"
+type = "build:parallel"
+files = [
+    "athena/irae__cohort_variable_union_diag.sql",
+    "athena/irae__cohort_variable_union_doc.sql",
+    "athena/irae__cohort_variable_union_dx.sql",
+    "athena/irae__cohort_variable_union_lab.sql",
+    "athena/irae__cohort_variable_union_proc.sql",
+    "athena/irae__cohort_variable_union_rx.sql",
 ]
 
 [[actions]]
-description="variable wide (bool)"
-type="build:parallel"
-files= [
-	"athena/irae__cohort_variable_wide.sql"
+description = "variable wide (bool)"
+type = "build:parallel"
+files = [
+    "athena/irae__cohort_variable_wide.sql",
 ]
 
 [[actions]]
-description="variable wide (lab, rx)"
-type="build:parallel"
-files= [
-	"athena/irae__cohort_variable_wide_lab.sql",
-	"athena/irae__cohort_variable_wide_rx.sql"
+description = "variable wide ('diag', 'doc', 'dx', 'lab', 'proc', 'rx')"
+type = "build:parallel"
+files = [
+    "athena/irae__cohort_variable_wide_diag.sql",
+    "athena/irae__cohort_variable_wide_doc.sql",
+    "athena/irae__cohort_variable_wide_dx.sql",
+    "athena/irae__cohort_variable_wide_lab.sql",
+    "athena/irae__cohort_variable_wide_proc.sql",
+    "athena/irae__cohort_variable_wide_rx.sql",
 ]

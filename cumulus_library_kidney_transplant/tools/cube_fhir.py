@@ -10,7 +10,7 @@ from cumulus_library_kidney_transplant.tools.cube import (
 )
 
 #-----------------------------------------------------------------------------
-# Make CUBE for casedef
+# Study Population
 #-----------------------------------------------------------------------------
 def make_study_population() -> list[Path]:
     return [
@@ -100,7 +100,7 @@ def make_study_population() -> list[Path]:
     ]
 
 #-----------------------------------------------------------------------------
-# Make CUBE for casedef
+# Case Definition
 #-----------------------------------------------------------------------------
 def make_casedef() -> list[Path]:
     return [
@@ -152,7 +152,7 @@ def make_casedef() -> list[Path]:
     ]
 
 #-----------------------------------------------------------------------------
-# Make CUBE for casedef SAMPLES
+# Samples from Case Definition
 #-----------------------------------------------------------------------------
 def make_casedef_samples() -> list[Path]:
     table_cols = ['fhir_resource',
@@ -172,7 +172,7 @@ def make_casedef_samples() -> list[Path]:
     return target_output
 
 #-----------------------------------------------------------------------------
-# Make FHIR variables
+# Variables (coded vars matching FHIR resource)
 #-----------------------------------------------------------------------------
 def make_variable_union() -> list[Path]:
     return [
@@ -191,28 +191,28 @@ def make_variable_union() -> list[Path]:
                                    'age_group'])
     ]
 
-
-def make():
+#-----------------------------------------------------------------------------
+# Make
+#-----------------------------------------------------------------------------
+def make() -> list[Path]:
     study_population_sql_list = make_study_population()
     casedef_sql_list = make_casedef()
     sample_sql_list = make_casedef_samples()
     variable_sql_list = make_variable_union()
 
-    sql_list = [
-        manifest.as_toml_sql(study_population_sql_list, 'SQL cube study population'),
-        manifest.as_toml_sql(variable_sql_list, 'SQL cube variable union'),
-        manifest.as_toml_sql(casedef_sql_list, 'SQL cube casedef'),
-        manifest.as_toml_sql(sample_sql_list, 'SQL cube casedef sample')
+    actions = [
+        manifest.SqlAction(study_population_sql_list, 'SQL cube study population'),
+        manifest.SqlAction(variable_sql_list, 'SQL cube variable union'),
+        manifest.SqlAction(casedef_sql_list, 'SQL cube casedef'),
+        manifest.SqlAction(sample_sql_list, 'SQL cube casedef sample'),
+        manifest.ExportAction(study_population_sql_list, 'export cube tables study populations'),
+        manifest.ExportAction(variable_sql_list, 'export cube tables variable union'),
+        manifest.ExportAction(casedef_sql_list, 'export cube tables casedef'),
+        manifest.ExportAction(sample_sql_list, 'export cube tables casedef sample'),
     ]
+    actions.extend(study_meta.make_actions())
 
-    table_list = [
-        manifest.as_toml_tables(study_population_sql_list, 'export cube tables study populations'),
-        manifest.as_toml_tables(variable_sql_list, 'export cube tables variable union'),
-        manifest.as_toml_tables(casedef_sql_list, 'export cube tables casedef'),
-        manifest.as_toml_tables(sample_sql_list, 'export cube tables casedef sample')
-    ]
-
-    return sql_list + table_list
+    return [manifest.save_actions_toml(actions, 'cube.toml')]
 
 #-----------------------------------------------------------------------------
 # MAIN method

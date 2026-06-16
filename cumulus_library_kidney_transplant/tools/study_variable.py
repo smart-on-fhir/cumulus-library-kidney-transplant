@@ -38,6 +38,12 @@ def list_variables_as_str(variable_list:list[str], quote="'", seperator=',') -> 
     """
     return tablespace.sql_quote(variable_list, quote, seperator)
 
+def list_variable_uploads() -> list[Path]:
+    return filetool.filter_aspect(filetool.list_spreadsheet())
+
+#-----------------------------------------------------------------------------
+# Aspect(s) for Variable
+#-----------------------------------------------------------------------------
 def list_aspect_names() -> list[str]:
     return [aspect.name for aspect in list_aspects()]
 
@@ -45,7 +51,7 @@ def list_aspects() -> list[Aspect]:
     """
     :return: list of aspects that have variables defined (dx, rx, diag, ...)
     """
-    return list(set(dict_aspects().keys()))
+    return list(dict_aspects().keys())
 
 def dict_aspects() -> dict[Aspect, list[str]]:
     """
@@ -62,12 +68,53 @@ def dict_aspects() -> dict[Aspect, list[str]]:
     return out
 
 #-----------------------------------------------------------------------------
+# Clean (optional)
+#-----------------------------------------------------------------------------
+def drop_tables()->list[str]:
+    return [f'DROP TABLE IF EXISTS {table};' for table in list_tables()]
+
+def clean_files()->list[str]:
+    return [f'rm -f {file};' for file in list_files()]
+
+def clean()->list[Path]:
+    return [
+        filetool.write_lines(
+            clean_files(),
+            filetool.path_athena('irae__drop_study_variable.sh')),
+        filetool.write_lines(
+            drop_tables(),
+            filetool.path_athena('irae__drop_study_variable.sql'))]
+
+#-----------------------------------------------------------------------------
+# List tables
+#-----------------------------------------------------------------------------
+def list_tables() ->list[str]:
+    """
+    List tables (Athena SQL names) include valuesets and cohorts
+    :return: list of table names
+    """
+    return list_tables_valueset() + list_tables_cohort()
+
+def list_tables_valueset() ->list[str]:
+    return [tablespace.name_valueset(v) for v in list_variables()]
+
+def list_tables_cohort() ->list[str]:
+    return [tablespace.name_cohort(v) for v in list_variables()]
+
+def list_files() ->list[Path]:
+    """
+    List files output by stage `study_variable`
+    :return: list of files for cohort
+    """
+    return [filetool.path_athena(file) for file in list_tables_cohort()]
+
+#-----------------------------------------------------------------------------
 # Cohort variable JOIN study population
 #-----------------------------------------------------------------------------
 def make_cohort(variable: str) -> Path:
     """
     :param variable: variable name (typically ValueSets)
-    :return: str SQL create table for variable with metadata from corresponding study_population_{$Reference}
+    :return: str SQL create table for variable with metadata from corresponding study_population_{aspect}
     """
     col = fhir_reference.get_column(variable)
 
@@ -83,7 +130,7 @@ def make_cohort(variable: str) -> Path:
 #-----------------------------------------------------------------------------
 # Make
 #-----------------------------------------------------------------------------
-def make() -> list[str]:
+def make() -> list[Path]:
     """
     1. Make cohort for each variable
     2. Make cohort UNION variables as one big table
@@ -91,11 +138,11 @@ def make() -> list[str]:
 
     :return: list of TOML outputs
     """
-    upload_list = filetool.list_spreadsheet()
+    upload_list = list_variable_uploads()
     variable_list = [make_cohort(variable) for variable in list_variables()]
 
-    return [manifest.as_toml_file_upload(upload_list),
-            manifest.as_toml_sql(variable_list, 'variable cohorts')]
+    return [manifest.save_file_upload_toml(upload_list, 'file_upload_study_variable.toml'),
+            manifest.save_actions_toml(manifest.SqlAction(variable_list, 'variable cohorts'), 'study_variable.toml')]
 
 if __name__ == '__main__':
     for output_toml in make():

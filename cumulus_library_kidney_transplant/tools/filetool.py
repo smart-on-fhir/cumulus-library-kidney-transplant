@@ -101,7 +101,6 @@ def path_llm_athena(filename: Path | str = None) -> Path:
 def save_llm_athena(file_sql: str, contents: str) -> Path:
     return Path(write_text(contents, path_llm_athena(file_sql)))
 
-
 #-----------------------------------------------------------------------------
 # Read/Write Text
 #-----------------------------------------------------------------------------
@@ -115,7 +114,7 @@ def read_text(text_file: Path | str, encoding: str = 'UTF-8') -> str:
     with m_open(file=text_file, encoding=encoding) as t_file:
         return t_file.read()
 
-def write_text(contents: str, file_path: Path | str, encoding: str = 'UTF-8') -> str:
+def write_text(contents: str, file_path: Path | str, encoding: str = 'UTF-8') -> Path:
     """
     Write file contents
     :param contents: string contents
@@ -123,10 +122,21 @@ def write_text(contents: str, file_path: Path | str, encoding: str = 'UTF-8') ->
     :param encoding: provided file's encoding
     :return: text_file name
     """
-    with m_open(file=file_path, mode='w', encoding=encoding) as file_path:
-        file_path.write(contents)
-        file_path.close()
-        return file_path.name
+    with m_open(file=file_path, mode='w', encoding=encoding) as f:
+        f.write(contents)
+        f.close()
+        return Path(file_path)
+
+def write_lines(contents: list[str], file_path: Path | str, encoding: str = 'UTF-8') -> Path:
+    """
+    Write a list of strings to a file, one string per line.
+
+    Returns the path to the file written.
+    """
+    with m_open(file=file_path, mode='w', encoding=encoding) as f:
+        for line in contents:
+            f.write(line.rstrip("\n") + "\n")
+    return Path(file_path)
 
 def m_open(**kwargs):
     """
@@ -162,10 +172,9 @@ def write_json(contents: Dict[Any, Any], json_file_path: Path | str, encoding: s
     """
     directory = os.path.dirname(json_file_path)
     os.makedirs(directory, exist_ok=True)
-    with m_open(file=json_file_path, mode='w', encoding=encoding) as json_file_path:
-        # json.dump(contents, json_file_path, indent=4, cls=jsonifiers.CustomJsonEncoder)
-        json.dump(contents, json_file_path, indent=4)
-        return Path(json_file_path.name)
+    with m_open(file=json_file_path, mode='w', encoding=encoding) as f:
+        json.dump(contents, f, indent=4)
+        return Path(json_file_path)
 
 #-----------------------------------------------------------------------------
 # filename to variable (tablespace) name

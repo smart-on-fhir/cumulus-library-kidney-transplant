@@ -13,4 +13,4 @@ class TestVariableAspect(unittest.TestCase):
 
         # test keys
         self.assertTrue('lab_hla' in aspect_dict[Aspect.lab])
-        self.assertTrue('rx_tacrolimus' in aspect_dict[Aspect.rx])
+        self.assertTrue('rx_cni_tacrolimus' in aspect_dict[Aspect.rx])

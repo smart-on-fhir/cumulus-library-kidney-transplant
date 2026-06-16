@@ -1,0 +1,75 @@
+system,code,display,priority,evidence
+http://loinc.org,16419-4,"azaTHIOprine, Blood",medium,confirmed
+http://loinc.org,43924-0,"azaTHIOprine, Blood",medium,confirmed
+http://loinc.org,82869-9,6-Thioguanine and 6-methylmercaptopurine panel - Red Blood Cells,high,
+http://loinc.org,32660-3,6-Thioguanine [Entitic substance] in Red Blood Cells,high,confirmed
+http://loinc.org,32654-6,6-Methylmercaptopurine [Entitic substance] in Red Blood Cells,high,confirmed
+http://loinc.org,23905-3,"Mycophenolate, Blood",high,confirmed
+http://loinc.org,23906-1,"Mycophenolate glucuronide, Blood",high,confirmed
+http://loinc.org,55806-4,"Mycophenolate, Blood",high,confirmed
+http://loinc.org,55807-2,"Mycophenolate glucuronide, Blood",high,confirmed
+http://loinc.org,70211-8,"Mycophenolate, Blood",high,confirmed
+http://loinc.org,72667-9,"Mycophenolate trough, Blood",high,confirmed
+http://loinc.org,73680-1,"Mycophenolate Peak, Blood",medium,confirmed
+http://loinc.org,80697-6,"Mycophenolate acyl-glucuronide, Blood",high,confirmed
+http://loinc.org,87432-1,"Mycophenolate and Mycophenolate glucuronide panel, Blood",high,
+http://loinc.org,14978-1,"cycloSPORINE, Blood",high,confirmed
+http://loinc.org,15103-5,"cycloSPORINE, Blood",high,confirmed
+http://loinc.org,16703-1,"cycloSPORINE, Blood",high,confirmed
+http://loinc.org,33955-6,"cycloSPORINE.monoclonal, Blood",high,confirmed
+http://loinc.org,33956-4,"cycloSPORINE.polyclonal, Blood",high,confirmed
+http://loinc.org,34426-7,"cycloSPORINE.monoclonal, Blood",high,confirmed
+http://loinc.org,3520-4,"cycloSPORINE, Blood",high,confirmed
+http://loinc.org,3521-2,"cycloSPORINE, Blood",high,confirmed
+http://loinc.org,3522-0,"cycloSPORINE+Metabolites, Blood",high,confirmed
+http://loinc.org,55805-6,"cycloSPORINE, Blood",high,confirmed
+http://loinc.org,78920-6,"cycloSPORINE, Blood",high,confirmed
+http://loinc.org,99413-7,"cycloSPORINE, Blood",high,confirmed
+http://loinc.org,32997-9,"cycloSPORINE 2 hr after dose, Blood",high,confirmed
+http://loinc.org,3523-8,"cycloSPORINE 12 hr after dose, Blood",high,confirmed
+http://loinc.org,3524-6,"cycloSPORINE 12 hr after dose, Blood",high,confirmed
+http://loinc.org,3525-3,"cycloSPORINE 24 hr after dose, Blood",high,confirmed
+http://loinc.org,3526-1,"cycloSPORINE 24 hr after dose, Blood",high,confirmed
+http://loinc.org,48597-9,"cycloSPORINE trough, Blood",high,confirmed
+http://loinc.org,53573-2,"cycloSPORINE after dose, Blood",high,confirmed
+http://loinc.org,53828-0,"cycloSPORINE trough, Blood",high,confirmed
+http://loinc.org,53834-8,"cycloSPORINE Peak, Blood",high,confirmed
+http://loinc.org,77167-5,"cycloSPORINE 3 hr after dose, Blood",high,confirmed
+http://loinc.org,77168-3,"cycloSPORINE 4 hr after dose, Blood",high,confirmed
+http://loinc.org,77169-1,"cycloSPORINE 1 hr after dose, Blood",high,confirmed
+http://loinc.org,17807-9,"cycloSPORINE, Body fluid",medium,confirmed
+http://loinc.org,45058-5,"cycloSPORINE monoclonal and Polyclonal panel, Blood",medium,
+http://loinc.org,80561-4,"cycloSPORINE, Dried blood spot",medium,confirmed
+http://loinc.org,11253-2,"Tacrolimus, Blood",high,confirmed
+http://loinc.org,32721-3,"Tacrolimus, Blood",high,confirmed
+http://loinc.org,74096-9,"Tacrolimus, Blood",high,confirmed
+http://loinc.org,74097-7,"Tacrolimus, Blood",high,confirmed
+http://loinc.org,76494-4,"Tacrolimus, Blood",high,confirmed
+http://loinc.org,92727-7,"Tacrolimus, Blood",high,confirmed
+http://loinc.org,33929-1,"Tacrolimus trough, Blood",high,confirmed
+http://loinc.org,59822-7,"Tacrolimus 4 hr after dose, Blood",high,confirmed
+http://loinc.org,59823-5,"Tacrolimus 2 hr after dose, Blood",high,confirmed
+http://loinc.org,77348-1,"Tacrolimus trough, Blood",high,confirmed
+http://loinc.org,92728-5,"Tacrolimus 4 hr after dose, Blood",high,confirmed
+http://loinc.org,92729-3,"Tacrolimus 2 hr after dose, Blood",high,confirmed
+http://loinc.org,92730-1,"Tacrolimus 1 hr after dose, Blood",high,confirmed
+http://loinc.org,80550-7,"Tacrolimus, Dried blood spot",medium,confirmed
+http://loinc.org,29247-4,"Sirolimus, Blood",high,confirmed
+http://loinc.org,72676-0,"Sirolimus trough, Blood",high,confirmed
+http://loinc.org,96462-7,"Sirolimus, Blood",high,confirmed
+http://loinc.org,80548-1,"Sirolimus, Dried blood spot",medium,confirmed
+http://loinc.org,50544-6,Everolimus [Mass/volume] in Blood,high,confirmed
+http://loinc.org,72671-1,Everolimus [Mass/volume] in Plasma --trough,high,confirmed
+http://loinc.org,77349-9,Everolimus [Mass/volume] in Blood by LC/MS/MS --trough,high,confirmed
+http://loinc.org,14186-1,Methylprednisolone [Mass/volume] in Serum or Plasma,low,confirmed
+http://loinc.org,101840-7,Methylprednisolone [Moles/volume] in Serum or Plasma,low,confirmed
+http://loinc.org,12727-4,prednisoLONE [Mass/volume] in Serum or Plasma,low,confirmed
+http://loinc.org,101841-5,prednisoLONE [Moles/volume] in Serum or Plasma,low,confirmed
+http://loinc.org,12434-7,predniSONE [Mass/volume] in Serum or Plasma,low,confirmed
+http://loinc.org,108813-7,predniSONE [Measurement] in Serum or Plasma,low,confirmed
+http://loinc.org,49709-9,predniSONE [Presence] in Serum or Plasma,low,
+http://loinc.org,43141-1,Synthetic glucocorticoid panel [Mass/volume] - Serum or Plasma,low,
+http://loinc.org,103148-3,Steroid drug screening panel - Serum or Plasma by LC/MS/MS,low,
+http://loinc.org,101828-2,Synthetic glucocorticoid panel - Serum or Plasma,low,
+http://loinc.org,103204-4,External Steroid panel - Serum or Plasma,low,
+http://loinc.org,82467-2,riTUXimab [Mass/volume] in Serum or Plasma by Immunoassay,medium,confirmed

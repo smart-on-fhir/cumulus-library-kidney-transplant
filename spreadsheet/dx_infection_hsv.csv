@@ -1,0 +1,25 @@
+system,code,display,priority,evidence
+http://hl7.org/fhir/sid/icd-10-cm,B00.0,Eczema herpeticum,high,confirmed
+http://hl7.org/fhir/sid/icd-10-cm,B00.1,Herpesviral vesicular dermatitis,high,confirmed
+http://hl7.org/fhir/sid/icd-10-cm,B00.2,Herpesviral gingivostomatitis and pharyngotonsillitis,high,confirmed
+http://hl7.org/fhir/sid/icd-10-cm,B00.3,Herpesviral meningitis,high,confirmed
+http://hl7.org/fhir/sid/icd-10-cm,B00.4,Herpesviral encephalitis,high,confirmed
+http://hl7.org/fhir/sid/icd-10-cm,B00.50,"Herpesviral ocular disease, unspecified",high,confirmed
+http://hl7.org/fhir/sid/icd-10-cm,B00.51,Herpesviral iridocyclitis,high,confirmed
+http://hl7.org/fhir/sid/icd-10-cm,B00.52,Herpesviral keratitis,high,confirmed
+http://hl7.org/fhir/sid/icd-10-cm,B00.53,Herpesviral conjunctivitis,high,confirmed
+http://hl7.org/fhir/sid/icd-10-cm,B00.59,Other herpesviral disease of eye,high,confirmed
+http://hl7.org/fhir/sid/icd-10-cm,B00.7,Disseminated herpesviral disease,high,confirmed
+http://hl7.org/fhir/sid/icd-10-cm,B00.81,Herpesviral hepatitis,high,confirmed
+http://hl7.org/fhir/sid/icd-10-cm,B00.82,Herpesviral whitlow,high,confirmed
+http://hl7.org/fhir/sid/icd-10-cm,B00.89,Other herpesviral infection,high,confirmed
+http://hl7.org/fhir/sid/icd-10-cm,B00.9,"Herpesviral infection, unspecified",medium,confirmed
+http://hl7.org/fhir/sid/icd-10-cm,A60.00,"Herpesviral infection of urogenital system, unspecified",high,confirmed
+http://hl7.org/fhir/sid/icd-10-cm,A60.01,Herpesviral infection of penis,high,confirmed
+http://hl7.org/fhir/sid/icd-10-cm,A60.02,Herpesviral infection of other male genital organs,high,confirmed
+http://hl7.org/fhir/sid/icd-10-cm,A60.03,Herpesviral cervicitis,high,confirmed
+http://hl7.org/fhir/sid/icd-10-cm,A60.04,Herpesviral vulvovaginitis,high,confirmed
+http://hl7.org/fhir/sid/icd-10-cm,A60.09,Herpesviral infection of other urogenital tract,high,confirmed
+http://hl7.org/fhir/sid/icd-10-cm,A60.1,Herpesviral infection of perianal skin and rectum,high,confirmed
+http://hl7.org/fhir/sid/icd-10-cm,A60.9,"Anogenital herpesviral infection, unspecified",medium,confirmed
+http://hl7.org/fhir/sid/icd-10-cm,P35.2,Congenital herpesviral infection,low,confirmed

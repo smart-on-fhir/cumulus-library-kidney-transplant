@@ -1,5 +1,9 @@
 study_prefix = "irae"
 
+[[stages.file_upload]]
+type = "submanifest"
+files = ['file_upload.toml']
+
 [[stages.study_population]]
 type = "submanifest"
 files = ['study_population.toml']

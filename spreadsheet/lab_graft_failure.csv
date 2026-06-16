@@ -1,0 +1,12 @@
+system,code,display,priority
+http://loinc.org,65757-7,Kidney Pathology biopsy report,high
+http://loinc.org,11529-5,Surgical pathology study,medium
+http://loinc.org,22637-3,Pathology report final diagnosis Narrative,medium
+http://loinc.org,35265-8,Pathology report addendum in Specimen Narrative,medium
+http://loinc.org,60567-5,Comprehensive pathology report panel,medium
+http://loinc.org,60568-3,Pathology report.synoptic Document,medium
+http://loinc.org,60569-1,Pathology Report addendum.synoptic Document,medium
+http://loinc.org,60570-9,Pathology Consult note,medium
+http://loinc.org,60571-7,Pathology Consult note.synoptic,medium
+http://loinc.org,66121-5,Tissue Pathology biopsy report,medium
+http://loinc.org,83321-0,Pathology report intraoperative observation in Specimen Document,medium

@@ -1,24 +1,48 @@
 [[actions]]
-description="samples for casedef temporality (pre, per, peri_post, post)"
-type="build:parallel"
-files= [
-	"athena/irae__sample_casedef.sql",
-	"athena/irae__sample_casedef_pre.sql",
-	"athena/irae__sample_casedef_peri.sql",
-	"athena/irae__sample_casedef_peri_post.sql",
-	"athena/irae__sample_casedef_post.sql",
+description = "sample_casedef (all)"
+type = "build:parallel"
+files = [
+    "athena/irae__sample_casedef.sql",
 ]
 
 [[actions]]
-description = 'samples for casedef temporality (limit 10 patients or 50 notes)'
-type="build:parallel"
-files= [
-	"athena/irae__sample_casedef_pre_limit_patient_10.sql",
-	"athena/irae__sample_casedef_pre_limit_note_50.sql",
-	"athena/irae__sample_casedef_peri_limit_patient_10.sql",
-	"athena/irae__sample_casedef_peri_limit_note_50.sql",
-	"athena/irae__sample_casedef_peri_post_limit_patient_10.sql",
-	"athena/irae__sample_casedef_peri_post_limit_note_50.sql",
-	"athena/irae__sample_casedef_post_limit_patient_10.sql",
-	"athena/irae__sample_casedef_post_limit_note_50.sql"
+description = "sample for aspects ('diag', 'doc', 'dx', 'lab', 'proc', 'rx')"
+type = "build:parallel"
+files = [
+    "athena/irae__sample_casedef_diag.sql",
+    "athena/irae__sample_casedef_doc.sql",
+    "athena/irae__sample_casedef_dx.sql",
+    "athena/irae__sample_casedef_lab.sql",
+    "athena/irae__sample_casedef_proc.sql",
+    "athena/irae__sample_casedef_rx.sql",
+]
+
+[[actions]]
+description = "sample temporality ('pre', 'peri', 'peri_post', 'post')"
+type = "build:parallel"
+files = [
+    "athena/irae__sample_casedef_pre.sql",
+    "athena/irae__sample_casedef_peri.sql",
+    "athena/irae__sample_casedef_peri_post.sql",
+    "athena/irae__sample_casedef_post.sql",
+]
+
+[[actions]]
+description = "sample size limit patients"
+type = "build:parallel"
+files = [
+    "athena/irae__sample_casedef_pre_limit_patient_10.sql",
+    "athena/irae__sample_casedef_peri_limit_patient_10.sql",
+    "athena/irae__sample_casedef_peri_post_limit_patient_10.sql",
+    "athena/irae__sample_casedef_post_limit_patient_10.sql",
+]
+
+[[actions]]
+description = "sample size limit notes"
+type = "build:parallel"
+files = [
+    "athena/irae__sample_casedef_pre_limit_note_50.sql",
+    "athena/irae__sample_casedef_peri_limit_note_50.sql",
+    "athena/irae__sample_casedef_peri_post_limit_note_50.sql",
+    "athena/irae__sample_casedef_post_limit_note_50.sql",
 ]

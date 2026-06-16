@@ -1,0 +1,16 @@
+system,code,display,priority
+http://snomed.info/sct,225067007,Therapeutic plasma exchange (procedure),high
+http://snomed.info/sct,440512006,Biopsy of transplanted kidney using ultrasound guidance (procedure),high
+http://snomed.info/sct,6501000179109,Laparoscopic biopsy of transplanted kidney (procedure),high
+http://www.ama-assn.org/go/cpt,36514,Therapeutic apheresis; for plasma pheresis,high
+http://www.cms.gov/Medicare/Coding/ICD10,6A550Z3,"Pheresis of plasma, single",high
+http://www.cms.gov/Medicare/Coding/ICD10,6A551Z3,"Pheresis of plasma, multiple",high
+http://snomed.info/sct,274326000,Percutaneous renal needle biopsy (procedure),medium
+http://snomed.info/sct,274358005,Surgical biopsy of kidney (procedure),medium
+http://snomed.info/sct,275155009,Needle biopsy of kidney (procedure),medium
+http://snomed.info/sct,40134000,Open biopsy of kidney (procedure),medium
+http://snomed.info/sct,438813007,Biopsy of kidney using ultrasound guidance (procedure),medium
+http://snomed.info/sct,438820000,Biopsy of kidney using computed tomography guidance (procedure),medium
+http://www.ama-assn.org/go/cpt,36516,Therapeutic apheresis; with extracorporeal selective adsorption or selective filtration and plasma reinfusion,medium
+http://www.ama-assn.org/go/cpt,50200,"Renal biopsy; percutaneous, by trocar or needle",medium
+http://www.ama-assn.org/go/cpt,50205,Renal biopsy; by surgical exposure of kidney,medium

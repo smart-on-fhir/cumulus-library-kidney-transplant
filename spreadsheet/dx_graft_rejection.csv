@@ -1,0 +1,23 @@
+system,code,display,priority
+http://hl7.org/fhir/sid/icd-10-cm,T86.11,Kidney transplant rejection,high
+http://snomed.info/sct,197747000,Renal tubulo-interstitial disorders in transplant rejection (disorder),high
+http://snomed.info/sct,213150003,Kidney transplant failure and rejection (disorder),high
+http://snomed.info/sct,236571000,Hyperacute rejection of renal transplant (disorder),high
+http://snomed.info/sct,236572007,Accelerated rejection of renal transplant (disorder),high
+http://snomed.info/sct,236574008,Acute rejection of renal transplant (disorder),high
+http://snomed.info/sct,236575009,Acute rejection of renal transplant - grade I (disorder),high
+http://snomed.info/sct,236576005,Acute rejection of renal transplant - grade II (disorder),high
+http://snomed.info/sct,236577001,Acute rejection of renal transplant - grade III (disorder),high
+http://snomed.info/sct,236578006,Chronic rejection of renal transplant (disorder),high
+http://snomed.info/sct,236579003,Chronic rejection of renal transplant - grade I (disorder),high
+http://snomed.info/sct,236580000,Chronic rejection of renal transplant - grade II (disorder),high
+http://snomed.info/sct,236581001,Chronic rejection of renal transplant - grade III (disorder),high
+http://hl7.org/fhir/sid/icd-10-cm,T86.91,Unspecified transplanted organ and tissue rejection,medium
+http://snomed.info/sct,213148006,Transplanted organ rejection (disorder),medium
+http://snomed.info/sct,236587002,Transplant glomerulopathy (disorder),medium
+http://snomed.info/sct,236588007,Transplant glomerulopathy - early form (disorder),medium
+http://snomed.info/sct,236589004,Transplant glomerulopathy - late form (disorder),medium
+http://hl7.org/fhir/sid/icd-10-cm,T86.90,Unspecified complication of unspecified transplanted organ and tissue,low
+http://hl7.org/fhir/sid/icd-10-cm,T86.99,Other complications of unspecified transplanted organ and tissue,low
+http://snomed.info/sct,277010001,Unexplained episode of renal transplant dysfunction (disorder),low
+http://snomed.info/sct,429451003,Disorder related to renal transplantation (disorder),low

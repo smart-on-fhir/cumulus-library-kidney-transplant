@@ -1,7 +1,0 @@
-create table irae__cohort_lab_hemoglobin_a1c as 
-select distinct * from 
- irae__cohort_study_population_lab , 
-irae__valueset_lab_hemoglobin_a1c
-WHERE
-irae__cohort_study_population_lab.lab_observation_code = irae__valueset_lab_hemoglobin_a1c.code and 
-irae__cohort_study_population_lab.lab_observation_system = irae__valueset_lab_hemoglobin_a1c.system

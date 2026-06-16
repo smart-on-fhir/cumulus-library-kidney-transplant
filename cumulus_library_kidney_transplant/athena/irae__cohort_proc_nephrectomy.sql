@@ -1,7 +1,0 @@
-create table irae__cohort_proc_nephrectomy as 
-select distinct * from 
- irae__cohort_study_population_proc , 
-irae__valueset_proc_nephrectomy
-WHERE
-irae__cohort_study_population_proc.proc_code = irae__valueset_proc_nephrectomy.code and 
-irae__cohort_study_population_proc.proc_system = irae__valueset_proc_nephrectomy.system

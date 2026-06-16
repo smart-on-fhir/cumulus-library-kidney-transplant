@@ -1,0 +1,180 @@
+system,code,display
+http://loinc.org,5002-1,Epstein Barr virus DNA [Presence] in Blood by NAA with probe detection
+http://loinc.org,5003-9,Epstein Barr virus DNA [Presence] in Tissue by Probe
+http://loinc.org,5004-7,Epstein Barr virus DNA [Presence] in Tissue by NAA with probe detection
+http://loinc.org,5005-4,Epstein Barr virus DNA [Presence] in Specimen by NAA with probe detection
+http://loinc.org,5153-2,Epstein Barr virus early Ab [Presence] in Serum by Immunoassay
+http://loinc.org,5154-0,Epstein Barr virus early Ab [Presence] in Serum by Immunofluorescence
+http://loinc.org,5155-7,Epstein Barr virus nuclear IgG Ab [Presence] in Serum by Immunofluorescence
+http://loinc.org,5156-5,Epstein Barr virus nuclear IgG Ab [Presence] in Serum by Immunoassay
+http://loinc.org,5157-3,Epstein Barr virus capsid IgG Ab [Units/volume] in Serum by Immunoassay
+http://loinc.org,5158-1,Epstein Barr virus capsid IgG Ab [Titer] in Serum by Immunofluorescence
+http://loinc.org,5159-9,Epstein Barr virus capsid IgM Ab [Units/volume] in Serum by Immunoassay
+http://loinc.org,5160-7,Epstein Barr virus capsid IgM Ab [Titer] in Serum by Immunofluorescence
+http://loinc.org,5213-4,Heterophile Ab [Presence] in Serum by Latex agglutination
+http://loinc.org,6425-3,Heterophile Ab [Presence] in Serum or Plasma by Immunoassay
+http://loinc.org,6814-8,Epstein Barr virus early IgG Ab [Presence] in Serum by Immunofluorescence
+http://loinc.org,6815-5,Epstein Barr virus nuclear IgM Ab [Presence] in Serum by Immunoassay
+http://loinc.org,7882-4,Epstein Barr virus early Ab [Presence] in Serum
+http://loinc.org,7883-2,Epstein Barr virus nuclear IgG Ab [Presence] in Serum
+http://loinc.org,7884-0,Epstein Barr virus nuclear IgM Ab [Presence] in Serum
+http://loinc.org,7885-7,Epstein Barr virus capsid IgG Ab [Units/volume] in Serum
+http://loinc.org,7886-5,Epstein Barr virus capsid IgM Ab [Units/volume] in Serum
+http://loinc.org,9633-9,Epstein Barr virus capsid IgA Ab [Titer] in Serum by Immunofluorescence
+http://loinc.org,11009-8,Epstein Barr virus capsid IgG Ab [Titer] in Cerebral spinal fluid by Immunofluorescence
+http://loinc.org,11010-6,Epstein Barr virus capsid IgM Ab [Titer] in Cerebral spinal fluid by Immunofluorescence
+http://loinc.org,12212-7,Epstein Barr virus nuclear IgG Ab [Titer] in Serum by Immunofluorescence
+http://loinc.org,12221-8,Heterophile Ab [Presence] in Serum by Sheep Cell Agglutination
+http://loinc.org,12263-0,Epstein Barr virus early diffuse Ab:ACnc:Pt:CSF:Ord:IF
+http://loinc.org,12264-8,EBV early restricted Ab (Body fld) [Mass/Vol]
+http://loinc.org,13236-5,Epstein Barr virus early diffuse Ab [Presence] in Serum by Immunofluorescence
+http://loinc.org,13237-3,Epstein Barr virus early restricted Ab [Presence] in Serum by Immunofluorescence
+http://loinc.org,13238-1,Epstein Barr virus Ab [Units/volume] in Serum
+http://loinc.org,13239-9,Epstein Barr virus nuclear Ab.IgG:ACnc:Pt:Ser/Plas:Ord
+http://loinc.org,14083-0,Epstein Barr virus early Ab [Titer] in Serum by Immunofluorescence
+http://loinc.org,16823-7,Epstein Barr virus early Ab [Units/volume] in Serum by Immunoassay
+http://loinc.org,16824-5,Epstein Barr virus nuclear Ab [Presence] in Cerebral spinal fluid
+http://loinc.org,16825-2,Epstein Barr virus nuclear IgG Ab [Presence] in Body fluid
+http://loinc.org,16826-0,Epstein Barr virus capsid IgG Ab [Units/volume] in Cerebral spinal fluid
+http://loinc.org,16827-8,Epstein Barr virus capsid IgG Ab [Presence] in Cerebral spinal fluid
+http://loinc.org,18427-5,Epstein Barr virus early Ab [Presence] in Body fluid
+http://loinc.org,18428-3,Epstein Barr virus nuclear IgG Ab [Presence] in Cerebral spinal fluid
+http://loinc.org,20432-1,Epstein Barr virus nuclear Ab [Presence] in Serum by Immunofluorescence
+http://loinc.org,20490-9,Epstein Barr virus capsid IgG Ab [Titer] in Serum
+http://loinc.org,20491-7,Epstein Barr virus capsid IgM Ab [Titer] in Serum
+http://loinc.org,21260-5,Epstein Barr virus nuclear Ab [Titer] in Serum by Immunofluorescence
+http://loinc.org,22290-1,Epstein Barr virus capsid IgA Ab [Titer] in Serum
+http://loinc.org,22291-9,Epstein Barr virus capsid IgG Ab [Titer] in Cerebral spinal fluid
+http://loinc.org,22292-7,Epstein Barr virus capsid IgM Ab [Titer] in Cerebral spinal fluid
+http://loinc.org,22293-5,Epstein Barr virus early Ab [Units/volume] in Serum
+http://loinc.org,22294-3,Epstein Barr virus early Ab [Titer] in Serum
+http://loinc.org,22295-0,Epstein Barr virus early IgG Ab [Presence] in Serum
+http://loinc.org,22296-8,Epstein Barr virus nuclear Ab [Presence] in Serum
+http://loinc.org,22297-6,Epstein Barr virus nuclear Ab [Titer] in Serum
+http://loinc.org,22298-4,Epstein Barr virus nuclear IgG Ab [Titer] in Serum
+http://loinc.org,23858-4,Epstein Barr virus DNA [Presence] in Cerebral spinal fluid by NAA with probe detection
+http://loinc.org,23970-7,Epstein Barr virus nuclear IgG Ab [Titer] in Cerebral spinal fluid
+http://loinc.org,23971-5,Epstein Barr virus early IgG Ab [Titer] in Serum
+http://loinc.org,23972-3,Epstein Barr virus early IgG Ab [Titer] in Cerebral spinal fluid
+http://loinc.org,23994-7,Epstein Barr virus nuclear IgG Ab [Titer] in Cerebral spinal fluid by Immunofluorescence
+http://loinc.org,23995-4,Epstein Barr virus early IgG Ab [Titer] in Serum by Immunofluorescence
+http://loinc.org,23996-2,Epstein Barr virus early IgG Ab [Titer] in Cerebral spinal fluid by Immunofluorescence
+http://loinc.org,24007-7,Epstein Barr virus early IgG Ab [Units/volume] in Serum
+http://loinc.org,24114-1,Epstein Barr virus capsid IgG Ab [Presence] in Serum by Immunoassay
+http://loinc.org,24115-8,Epstein Barr virus capsid IgM Ab [Presence] in Serum by Immunoassay
+http://loinc.org,24316-2,Epstein Barr virus capsid IgG and IgM panel - Serum
+http://loinc.org,26705-4,Epstein Barr virus nuclear IgM Ab [Titer] in Serum
+http://loinc.org,30083-0,Epstein Barr virus nuclear IgG Ab [Units/volume] in Serum by Immunoassay
+http://loinc.org,30136-6,Epstein Barr virus capsid IgG Ab [Presence] in Serum --2nd specimen
+http://loinc.org,30137-4,Epstein Barr virus capsid IgM Ab [Presence] in Serum --2nd specimen
+http://loinc.org,30138-2,Epstein Barr virus nuclear Ab [Presence] in Serum --2nd specimen
+http://loinc.org,30339-6,Epstein Barr virus capsid IgG Ab [Presence] in Serum
+http://loinc.org,30340-4,Epstein Barr virus capsid IgM Ab [Presence] in Serum
+http://loinc.org,31369-2,Epstein Barr virus capsid IgA Ab [Units/volume] in Serum
+http://loinc.org,31370-0,Epstein Barr virus capsid IgM Ab [Units/volume] in Cerebral spinal fluid
+http://loinc.org,31371-8,Epstein Barr virus early IgG Ab [Units/volume] in Cerebral spinal fluid
+http://loinc.org,31372-6,Epstein Barr virus nuclear Ab [Units/volume] in Serum
+http://loinc.org,31373-4,Epstein Barr virus nuclear IgG Ab [Units/volume] in Cerebral spinal fluid
+http://loinc.org,31374-2,Epstein Barr virus nuclear IgG Ab [Units/volume] in Serum
+http://loinc.org,31375-9,Epstein Barr virus nuclear IgM Ab [Units/volume] in Serum
+http://loinc.org,32585-2,Epstein Barr virus DNA [#/volume] (viral load) in Specimen by NAA with probe detection
+http://loinc.org,32828-6,Epstein Barr virus capsid IgG Ab [Units/volume] in Serum by Immunoassay --1st specimen
+http://loinc.org,32829-4,Epstein Barr virus capsid IgG Ab [Units/volume] in Serum by Immunoassay --2nd specimen
+http://loinc.org,32830-2,Epstein Barr virus capsid IgG Ab [Ratio] in Serum by Immunoassay --1st specimen/2nd specimen
+http://loinc.org,32843-5,Epstein Barr virus capsid IgG Ab [Units/volume] in Serum --1st specimen
+http://loinc.org,32844-3,Epstein Barr virus capsid IgG Ab [Units/volume] in Serum --2nd specimen
+http://loinc.org,32845-0,Epstein Barr virus capsid IgG Ab [Ratio] in Serum --1st specimen/2nd specimen
+http://loinc.org,33395-5,Epstein Barr virus capsid Ab [Presence] in Serum
+http://loinc.org,33479-7,Epstein Barr virus early restricted Ab [Titer] in Serum
+http://loinc.org,34593-4,Epstein Barr virus DNA [#/volume] (viral load) in Cerebral spinal fluid by NAA with probe detection
+http://loinc.org,34639-5,Epstein Barr virus capsid IgA Ab [Titer] in Cerebral spinal fluid
+http://loinc.org,35397-9,Epstein Barr virus DNA [Presence] in Bone marrow by NAA with probe detection
+http://loinc.org,35398-7,Epstein Barr virus DNA [Presence] in Mouth by NAA with probe detection
+http://loinc.org,36923-1,Epstein Barr virus DNA [#/volume] (viral load) in Blood by NAA with probe detection
+http://loinc.org,40750-2,Epstein Barr virus capsid IgG Ab [Presence] in Serum by Immunofluorescence
+http://loinc.org,40751-0,Epstein Barr virus capsid IgM Ab [Presence] in Serum by Immunofluorescence
+http://loinc.org,40752-8,Epstein Barr virus early IgG Ab [Presence] in Serum by Immunoassay
+http://loinc.org,40753-6,Epstein Barr virus nuclear IgG Ab [Units/volume] in Serum by Immunofluorescence
+http://loinc.org,42497-8,Epstein Barr virus early Ab [Titer] in Cerebral spinal fluid
+http://loinc.org,42498-6,Epstein Barr virus nuclear Ab [Titer] in Cerebral spinal fluid
+http://loinc.org,43730-1,Epstein Barr virus DNA [Units/volume] (viral load) in Serum or Plasma by NAA with probe detection
+http://loinc.org,47064-1,Epstein Barr virus capsid IgG Ab [Titer] in Body fluid by Immunofluorescence
+http://loinc.org,47066-6,Epstein Barr virus capsid IgM Ab [Titer] in Body fluid by Immunofluorescence
+http://loinc.org,47068-2,Epstein Barr virus early IgG Ab [Titer] in Body fluid by Immunofluorescence
+http://loinc.org,47072-4,Epstein Barr virus early IgA Ab [Titer] in Serum by Immunofluorescence
+http://loinc.org,47432-0,Epstein Barr virus capsid IgG Ab [Titer] in Body fluid
+http://loinc.org,47433-8,Epstein Barr virus capsid IgM Ab [Titer] in Body fluid
+http://loinc.org,47434-6,Epstein Barr virus early diffuse Ab [Presence] in Serum
+http://loinc.org,47435-3,Epstein Barr virus early IgA Ab [Titer] in Serum
+http://loinc.org,47436-1,Epstein Barr virus early IgG Ab [Titer] in Body fluid
+http://loinc.org,47437-9,Epstein Barr virus early restricted Ab [Presence] in Serum
+http://loinc.org,47982-4,Epstein Barr virus DNA [#/volume] (viral load) in Serum or Plasma by NAA with probe detection
+http://loinc.org,48673-8,EBV-LMP Ag [Presence] in Tissue by Immune stain
+http://loinc.org,48723-1,Epstein Barr virus Ab [Presence] in Serum by Immunofluorescence
+http://loinc.org,49069-8,Epstein Barr virus Ab [Titer] in Serum
+http://loinc.org,49178-7,Epstein Barr virus Ab [Presence] in Serum
+http://loinc.org,49352-8,Epstein Barr virus DNA [#/volume] (viral load) in Urine by NAA with probe detection
+http://loinc.org,49353-6,Epstein Barr virus DNA [#/volume] (viral load) in Bone marrow by NAA with probe detection
+http://loinc.org,49354-4,Epstein Barr virus DNA [#/volume] (viral load) in Bronchoalveolar lavage by NAA with probe detection
+http://loinc.org,49356-9,Epstein Barr virus DNA [#/volume] (viral load) in Tissue by NAA with probe detection
+http://loinc.org,49564-8,Epstein Barr virus band pattern [Interpretation] in Specimen by Immunoblot Narrative
+http://loinc.org,50969-5,Epstein Barr virus early diffuse IgG Ab [Units/volume] in Serum
+http://loinc.org,51454-7,Epstein Barr virus early diffuse Ab [Presence] in Cerebral spinal fluid
+http://loinc.org,53774-6,Epstein Barr virus DNA [Log #/volume] (viral load) in Specimen by NAA with probe detection
+http://loinc.org,56598-6,Epstein Barr virus early IgM Ab [Units/volume] in Serum by Immunoassay
+http://loinc.org,56599-4,Epstein Barr virus capsid IgM Ab [Units/volume] in Cerebral spinal fluid by Immunoassay
+http://loinc.org,58760-0,Epstein Barr virus capsid IgG Ab [Units/volume] in Cerebral spinal fluid by Immunoassay
+http://loinc.org,59183-4,Epstein Barr virus early diffuse IgG Ab [Presence] in Serum
+http://loinc.org,59805-2,Epstein Barr virus DNA [Presence] in Body fluid by NAA with probe detection
+http://loinc.org,66493-8,Epstein Barr virus nuclear 1 IgG Ab [Units/volume] in Serum
+http://loinc.org,68466-2,Epstein-Barr virus-encoded RNA 1 [Presence] in Tissue by Probe
+http://loinc.org,69420-8,Heterophile Ab [Presence] in Blood by Immunoassay
+http://loinc.org,69949-6,Epstein Barr virus capsid IgG Ab avidity [Presence] in Serum by Immunoassay
+http://loinc.org,72206-6,Epstein Barr virus nuclear 1 IgG and IgM [Color Ratio] in Serum or Plasma by Rapid immunoassay
+http://loinc.org,81119-0,Epstein Barr virus capsid IgG Ab avidity [Ratio] in Serum by Immunoassay
+http://loinc.org,83095-0,Epstein Barr virus capsid+early IgG Ab [Presence] in Serum by Immunoassay
+http://loinc.org,84871-3,Epstein Barr virus capsid p18 IgG Ab [Presence] in Serum by Rapid immunoassay
+http://loinc.org,84872-1,Epstein Barr virus nuclear 1 IgG Ab [Presence] in Serum by Rapid immunoassay
+http://loinc.org,87554-2,Epstein Barr virus Ab panel - Serum
+http://loinc.org,93711-0,Epstein Barr virus Ab panel - Serum from Donor
+http://loinc.org,93712-8,Epstein Barr virus nuclear Ab [Presence] in Serum from Donor by Immunoassay
+http://loinc.org,93713-6,Epstein Barr virus capsid IgG Ab [Presence] in Serum from Donor by Immunoassay
+http://loinc.org,93714-4,Epstein Barr virus capsid IgM Ab [Presence] in Serum from Donor by Immunoassay
+http://loinc.org,93840-7,Epstein Barr virus DNA [Units/volume] (viral load) in Blood by NAA with probe detection
+http://loinc.org,93841-5,Epstein Barr virus DNA [log units/volume] (viral load) in Blood by NAA with probe detection
+http://loinc.org,94102-1,Epstein Barr virus early diffuse IgA Ab [Units/volume] in Serum or Plasma by Immunoassay
+http://loinc.org,94149-2,"Heterophile Ab [Presence] in Serum, Plasma or Blood by Rapid immunoassay"
+http://loinc.org,97993-0,Epstein Barr virus early IgM Ab [Titer] in Serum by Immunofluorescence
+http://loinc.org,100677-4,Epstein Barr virus DNA [Log #/volume] (viral load) in Serum or Plasma by NAA with probe detection
+http://loinc.org,100678-2,Epstein Barr virus DNA [Log #/volume] (viral load) in Blood by NAA with probe detection
+http://loinc.org,101817-5,Epstein Barr virus DNA [Units/volume] (viral load) in Cerebral spinal fluid by NAA with probe detection
+http://loinc.org,104743-0,Epstein Barr virus DNA [#/volume] in Specimen by Molecular genetics method
+http://loinc.org,104811-5,Epstein Barr virus DNA [Log #/volume] in Specimen by Molecular genetics method
+http://loinc.org,105741-3,Epstein Barr virus DNA [Presence] in Pericardial fluid by NAA with probe detection
+http://loinc.org,105742-1,Epstein Barr virus DNA [#/volume] (viral load) in Pericardial fluid by NAA with probe detection
+http://loinc.org,107925-0,Epstein Barr virus DNA [Presence] in Serum or Plasma by NAA with probe detection
+http://loinc.org,108211-4,Epstein Barr virus DNA [Presence] in Urine by NAA with probe detection
+http://loinc.org,108212-2,Epstein Barr virus DNA [Log #/volume] (viral load) in Urine by NAA with probe detection
+http://loinc.org,108213-0,Epstein Barr virus DNA [log units/volume] (viral load) in Serum or Plasma by NAA with probe detection
+http://loinc.org,108214-8,Epstein Barr virus DNA [Log #/volume] (viral load) in Cerebral spinal fluid by NAA with probe detection
+http://loinc.org,108215-5,Epstein Barr virus DNA [log units/volume] (viral load) in Cerebral spinal fluid by NAA with probe detection
+http://loinc.org,108216-3,Epstein Barr virus DNA [log units/volume] (viral load) in Specimen by NAA with probe detection
+http://loinc.org,108217-1,Epstein Barr virus DNA [Units/volume] (viral load) in Specimen by NAA with probe detection
+http://loinc.org,108595-0,Epstein Barr virus DNA [Measurement] in Tissue
+http://loinc.org,109376-4,Epstein Barr virus early restricted Ab [Measurement] in Serum
+http://loinc.org,109377-2,Epstein Barr virus capsid IgA Ab [Measurement] in Serum
+http://loinc.org,109469-7,Epstein Barr virus early IgG Ab [Measurement] in Cerebral spinal fluid
+http://loinc.org,109470-5,Epstein Barr virus DNA [Measurement] in Cerebral spinal fluid
+http://loinc.org,109901-9,Epstein Barr virus nuclear IgG Ab [Measurement] in Cerebral spinal fluid
+http://loinc.org,109902-7,Epstein Barr virus capsid IgM Ab [Measurement] in Cerebral spinal fluid
+http://loinc.org,109938-1,Epstein Barr virus Ab [Measurement] in Serum
+http://loinc.org,109941-5,Epstein Barr virus nuclear IgM Ab [Measurement] in Serum
+http://loinc.org,110278-9,Epstein Barr virus DNA [Measurement] in Serum or Plasma
+http://loinc.org,110854-7,Epstein Barr virus nuclear Ab [Measurement] in Serum
+http://loinc.org,110873-7,Epstein Barr virus capsid IgG Ab [Measurement] in Cerebral spinal fluid
+http://loinc.org,110884-4,Epstein Barr virus DNA [Measurement] in Blood
+http://loinc.org,110954-5,Epstein Barr virus early IgG Ab [Measurement] in Serum
+http://loinc.org,111340-6,Epstein Barr virus early Ab [Measurement] in Serum
+http://loinc.org,111341-4,Epstein Barr virus capsid IgM Ab [Measurement] in Serum
+http://loinc.org,111342-2,Epstein Barr virus capsid IgG Ab [Measurement] in Serum
+http://loinc.org,111357-0,Epstein Barr virus nuclear IgG Ab [Measurement] in Serum
