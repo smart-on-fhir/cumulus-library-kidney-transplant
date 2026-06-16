@@ -260,7 +260,7 @@ def select_wide_doc(variable_list: list[str] = None, columns: dict = None) -> st
     """
     FHIR DocumentReference
     * https://build.fhir.org/documentreference.html
-z
+
     :param variable_list: default = Document Reference variables
     :param columns: default= author date, code
     :return: str SQL
