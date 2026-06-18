@@ -1,5 +1,3 @@
-import json
-import os
 from enum import StrEnum
 
 from pydantic import BaseModel, Field
@@ -10,38 +8,56 @@ from cumulus_library_kidney_transplant.llm.model.base import SpanAugmentedMentio
 ###############################################################################
 # Therapeutic Status Compliance
 ###############################################################################
+
+# THERAPEUTIC: Immunosuppression levels are documented as therapeutic, adequate, or within target range.
+# SUB_THERAPEUTIC: Immunosuppression levels are documented as subtherapeutic, insufficient, or below target range.
+# SUPRA_THERAPEUTIC: Immunosuppression levels are documented as supratherapeutic, above therapeutic level, or above target range.
+# NONE_OF_THE_ABOVE: None of the above
 class RxTherapeuticStatus(StrEnum):
-    THERAPEUTIC = (
-        "Immunosuppression levels are documented as therapeutic, adequate, or within target range."
-    )
-    SUB_THERAPEUTIC = "Immunosuppression levels are documented as subtherapeutic, insufficient, or below target range."
-    SUPRA_THERAPEUTIC = "Immunosuppression levels are documented as supratherapeutic, above therapeutic level, or above target range."
-    NONE_OF_THE_ABOVE = "None of the above"
+    THERAPEUTIC = "THERAPEUTIC"
+    SUB_THERAPEUTIC = "SUB_THERAPEUTIC"
+    SUPRA_THERAPEUTIC = "SUPRA_THERAPEUTIC"
+    NONE_OF_THE_ABOVE = "NONE_OF_THE_ABOVE"
 
 
 class RxTherapeuticStatusMention(SpanAugmentedMention):
     rx_therapeutic_status: RxTherapeuticStatus = Field(
         RxTherapeuticStatus.NONE_OF_THE_ABOVE,
-        description="In the present encounter, what is the documented immunosuppression level?",
+        description=(
+            "In the present encounter, what is the documented immunosuppression level? "
+            "THERAPEUTIC: Immunosuppression levels are documented as therapeutic, adequate, or within target range; "
+            "SUB_THERAPEUTIC: Immunosuppression levels are documented as subtherapeutic, insufficient, or below target range; "
+            "SUPRA_THERAPEUTIC: Immunosuppression levels are documented as supratherapeutic, above therapeutic level, or above target range; "
+            "NONE_OF_THE_ABOVE: None of the above"
+        ),
     )
 
 
 ###############################################################################
 # Medication Compliance
 ###############################################################################
+
+# COMPLIANT: Patient is documented as compliant with immunosuppressive medications.
+# PARTIALLY_COMPLIANT: Patient is documented as only partially compliant with immunosuppressive medications.
+# NON_COMPLIANT: Patient is documented as noncompliant with immunosuppressive medications.
+# NONE_OF_THE_ABOVE: None of the above
 class RxCompliance(StrEnum):
-    COMPLIANT = "Patient is documented as compliant with immunosuppressive medications."
-    PARTIALLY_COMPLIANT = (
-        "Patient is documented as only partially compliant with immunosuppressive medications."
-    )
-    NON_COMPLIANT = "Patient is documented as noncompliant with immunosuppressive medications."
-    NONE_OF_THE_ABOVE = "None of the above"
+    COMPLIANT = "COMPLIANT"
+    PARTIALLY_COMPLIANT = "PARTIALLY_COMPLIANT"
+    NON_COMPLIANT = "NON_COMPLIANT"
+    NONE_OF_THE_ABOVE = "NONE_OF_THE_ABOVE"
 
 
 class RxComplianceMention(SpanAugmentedMention):
     rx_compliance: RxCompliance = Field(
         RxCompliance.NONE_OF_THE_ABOVE,
-        description="In the present encounter, is the patient documented as compliant with immunosuppressive medications?",
+        description=(
+            "In the present encounter, is the patient documented as compliant with immunosuppressive medications? "
+            "COMPLIANT: Patient is documented as compliant with immunosuppressive medications; "
+            "PARTIALLY_COMPLIANT: Patient is documented as only partially compliant with immunosuppressive medications; "
+            "NON_COMPLIANT: Patient is documented as noncompliant with immunosuppressive medications; "
+            "NONE_OF_THE_ABOVE: None of the above"
+        ),
     )
 
 
@@ -54,6 +70,10 @@ class RxComplianceMention(SpanAugmentedMention):
 ###############################################################################
 # DSA Donor Specific Antibody
 ###############################################################################
+
+# CONFIRMED: DSA diagnostic test positive, DSA diagnosis 'confirmed' or 'positive', or increase in immunosuppression due to DSA
+# SUSPECTED: DSA suspected, DSA likely, DSA cannot be ruled out, DSA test result pending, or treatment with IVIG/plasmapheresis
+# NONE_OF_THE_ABOVE: None of the above
 class DSAPresent(StrEnum):
     """
     Notice: DSA is strongly related to `GraftRejectionPresent`.
@@ -64,13 +84,13 @@ class DSAPresent(StrEnum):
     as many of immunosuppressive drugs are routinely used for "maintenance" therapy.
 
     IVIG and plasmapheresis (PLEX) during the post-transplant (post induction) phase DOES imply
-    --> DSAPresent >  SUSPECTED (and possibly CONFIRMED)
+    --> DSAPresent > SUSPECTED (and possibly CONFIRMED)
     --> `GraftRejectionPresent` > SUSPECTED (and possibly CONFIRMED or BIOPSY_PROVEN)
     """
 
-    CONFIRMED = "DSA diagnostic test positive, DSA diagnosis 'confirmed' or 'positive', or increase in immunosuppression due to DSA"
-    SUSPECTED = "DSA suspected, DSA likely, DSA cannot be ruled out, DSA test result pending, or treatment with IVIG/plasmapheresis"
-    NONE_OF_THE_ABOVE = "None of the above"
+    CONFIRMED = "CONFIRMED"
+    SUSPECTED = "SUSPECTED"
+    NONE_OF_THE_ABOVE = "NONE_OF_THE_ABOVE"
 
 
 class DSAMention(SpanAugmentedMention):
@@ -80,7 +100,12 @@ class DSAMention(SpanAugmentedMention):
     )
     dsa: DSAPresent = Field(
         DSAPresent.NONE_OF_THE_ABOVE,
-        description="What evidence documents donor specific antibodies (DSA) as current, active, or being evaluated/treated now?",
+        description=(
+            "What evidence documents donor specific antibodies (DSA) as current, active, or being evaluated/treated now? "
+            "CONFIRMED: DSA diagnostic test positive, DSA diagnosis 'confirmed' or 'positive', or increase in immunosuppression due to DSA; "
+            "SUSPECTED: DSA suspected, DSA likely, DSA cannot be ruled out, DSA test result pending, or treatment with IVIG/plasmapheresis; "
+            "NONE_OF_THE_ABOVE: None of the above"
+        ),
     )
 
 
@@ -89,10 +114,14 @@ class DSAMention(SpanAugmentedMention):
 #   * necessary for PNA and UTI infections that often do not have a confirmed infection type!
 #   * useful as a secondary check to ensure more specific infection types are not missed
 ############################################################################################################
+
+# CONFIRMED: Infection confirmed by laboratory test or imaging, infection diagnosis was 'confirmed' or 'positive', or reduced immunosuppression due to infection
+# SUSPECTED: Infection is suspected, likely, cannot be ruled out, infection is a differential diagnosis or infectious test result is pending
+# NONE_OF_THE_ABOVE: None of the above
 class InfectionPresent(StrEnum):
-    CONFIRMED = "Infection confirmed by laboratory test or imaging, infection diagnosis was 'confirmed' or 'positive', or reduced immunosuppression due to infection"
-    SUSPECTED = "Infection is suspected, likely, cannot be ruled out, infection is a differential diagnosis or infectious test result is pending"
-    NONE_OF_THE_ABOVE = "None of the above"
+    CONFIRMED = "CONFIRMED"
+    SUSPECTED = "SUSPECTED"
+    NONE_OF_THE_ABOVE = "NONE_OF_THE_ABOVE"
 
 
 class InfectionMention(SpanAugmentedMention):
@@ -101,17 +130,26 @@ class InfectionMention(SpanAugmentedMention):
     )
     infection: InfectionPresent = Field(
         InfectionPresent.NONE_OF_THE_ABOVE,
-        description="What evidence documents infection as current, active, or being evaluated/treated now?",
+        description=(
+            "What evidence documents infection as current, active, or being evaluated/treated now? "
+            "CONFIRMED: Infection confirmed by laboratory test or imaging, infection diagnosis was 'confirmed' or 'positive', or reduced immunosuppression due to infection; "
+            "SUSPECTED: Infection is suspected, likely, cannot be ruled out, infection is a differential diagnosis or infectious test result is pending; "
+            "NONE_OF_THE_ABOVE: None of the above"
+        ),
     )
 
 
 ###############################################################################
 # Infection (Viral)
 ###############################################################################
+
+# CONFIRMED: Viral infection confirmed by laboratory test or imaging, viral infection diagnosis was 'confirmed' or 'positive', or reduced immunosuppression due to viral infection
+# SUSPECTED: Viral infection is suspected, likely, cannot be ruled out, viral infection is a differential diagnosis or viral test result is pending
+# NONE_OF_THE_ABOVE: None of the above
 class ViralInfectionPresent(StrEnum):
-    CONFIRMED = "Viral infection confirmed by laboratory test or imaging, viral infection diagnosis was 'confirmed' or 'positive', or reduced immunosuppression due to viral infection"
-    SUSPECTED = "Viral infection is suspected, likely, cannot be ruled out, viral infection is a differential diagnosis or viral test result is pending"
-    NONE_OF_THE_ABOVE = "None of the above"
+    CONFIRMED = "CONFIRMED"
+    SUSPECTED = "SUSPECTED"
+    NONE_OF_THE_ABOVE = "NONE_OF_THE_ABOVE"
 
 
 class ViralInfectionMention(SpanAugmentedMention):
@@ -120,17 +158,26 @@ class ViralInfectionMention(SpanAugmentedMention):
     )
     viral_infection: ViralInfectionPresent = Field(
         ViralInfectionPresent.NONE_OF_THE_ABOVE,
-        description="What evidence documents viral infection as current, active, or being evaluated/treated now?",
+        description=(
+            "What evidence documents viral infection as current, active, or being evaluated/treated now? "
+            "CONFIRMED: Viral infection confirmed by laboratory test or imaging, viral infection diagnosis was 'confirmed' or 'positive', or reduced immunosuppression due to viral infection; "
+            "SUSPECTED: Viral infection is suspected, likely, cannot be ruled out, viral infection is a differential diagnosis or viral test result is pending; "
+            "NONE_OF_THE_ABOVE: None of the above"
+        ),
     )
 
 
 ###############################################################################
 # Infection (Bacterial)
 ###############################################################################
+
+# CONFIRMED: Bacterial infection confirmed by laboratory test or imaging, bacterial infection diagnosis was 'confirmed' or 'positive', or reduced immunosuppression due to bacterial infection
+# SUSPECTED: Bacterial infection is suspected, likely, cannot be ruled out, bacterial infection is a differential diagnosis or bacterial test result is pending
+# NONE_OF_THE_ABOVE: None of the above
 class BacterialInfectionPresent(StrEnum):
-    CONFIRMED = "Bacterial infection confirmed by laboratory test or imaging, bacterial infection diagnosis was 'confirmed' or 'positive', or reduced immunosuppression due to bacterial infection"
-    SUSPECTED = "Bacterial infection is suspected, likely, cannot be ruled out, bacterial infection is a differential diagnosis or bacterial test result is pending"
-    NONE_OF_THE_ABOVE = "None of the above"
+    CONFIRMED = "CONFIRMED"
+    SUSPECTED = "SUSPECTED"
+    NONE_OF_THE_ABOVE = "NONE_OF_THE_ABOVE"
 
 
 class BacterialInfectionMention(SpanAugmentedMention):
@@ -139,17 +186,26 @@ class BacterialInfectionMention(SpanAugmentedMention):
     )
     bacterial_infection: BacterialInfectionPresent = Field(
         BacterialInfectionPresent.NONE_OF_THE_ABOVE,
-        description="What evidence documents bacterial infection as current, active, or being evaluated/treated now?",
+        description=(
+            "What evidence documents bacterial infection as current, active, or being evaluated/treated now? "
+            "CONFIRMED: Bacterial infection confirmed by laboratory test or imaging, bacterial infection diagnosis was 'confirmed' or 'positive', or reduced immunosuppression due to bacterial infection; "
+            "SUSPECTED: Bacterial infection is suspected, likely, cannot be ruled out, bacterial infection is a differential diagnosis or bacterial test result is pending; "
+            "NONE_OF_THE_ABOVE: None of the above"
+        ),
     )
 
 
 ###############################################################################
 # Infection (Fungal)
 ###############################################################################
+
+# CONFIRMED: Fungal infection confirmed by laboratory test or imaging, fungal infection diagnosis was 'confirmed' or 'positive', or reduced immunosuppression due to fungal infection
+# SUSPECTED: Fungal infection is suspected, likely, cannot be ruled out, fungal infection is a differential diagnosis or fungal test result is pending
+# NONE_OF_THE_ABOVE: None of the above
 class FungalInfectionPresent(StrEnum):
-    CONFIRMED = "Fungal infection confirmed by laboratory test or imaging, fungal infection diagnosis was 'confirmed' or 'positive', or reduced immunosuppression due to fungal infection"
-    SUSPECTED = "Fungal infection is suspected, likely, cannot be ruled out, fungal infection is a differential diagnosis or fungal test result is pending"
-    NONE_OF_THE_ABOVE = "None of the above"
+    CONFIRMED = "CONFIRMED"
+    SUSPECTED = "SUSPECTED"
+    NONE_OF_THE_ABOVE = "NONE_OF_THE_ABOVE"
 
 
 class FungalInfectionMention(SpanAugmentedMention):
@@ -158,13 +214,23 @@ class FungalInfectionMention(SpanAugmentedMention):
     )
     fungal_infection: FungalInfectionPresent = Field(
         FungalInfectionPresent.NONE_OF_THE_ABOVE,
-        description="What evidence documents fungal infection as current, active, or being evaluated/treated now?",
+        description=(
+            "What evidence documents fungal infection as current, active, or being evaluated/treated now? "
+            "CONFIRMED: Fungal infection confirmed by laboratory test or imaging, fungal infection diagnosis was 'confirmed' or 'positive', or reduced immunosuppression due to fungal infection; "
+            "SUSPECTED: Fungal infection is suspected, likely, cannot be ruled out, fungal infection is a differential diagnosis or fungal test result is pending; "
+            "NONE_OF_THE_ABOVE: None of the above"
+        ),
     )
 
 
 ###############################################################################
 # Graft Rejection
 ###############################################################################
+
+# BIOPSY_PROVEN: Biopsy proven kidney graft rejection or pathology proven kidney graft rejection
+# CONFIRMED: Kidney graft rejection was 'diagnosed', 'confirmed' or 'positive'
+# SUSPECTED: Kidney graft rejection presumed, suspected, likely, cannot be ruled out, biopsy result pending, or treatment with IVIG/plasmapheresis
+# NONE_OF_THE_ABOVE: None of the above
 class GraftRejectionPresent(StrEnum):
     """
     Notice: Graft rejection is strongly related to `DSAPresent`.
@@ -176,15 +242,13 @@ class GraftRejectionPresent(StrEnum):
 
     IVIG and plasmapheresis (PLEX) during the post-transplant (post induction) phase DOES imply
     --> `GraftRejectionPresent` > SUSPECTED (and possibly CONFIRMED or BIOPSY_PROVEN)
-    --> DSAPresent >  SUSPECTED (and possibly CONFIRMED)
+    --> DSAPresent > SUSPECTED (and possibly CONFIRMED)
     """
 
-    BIOPSY_PROVEN = (
-        "Biopsy proven kidney graft rejection or pathology proven kidney graft rejection"
-    )
-    CONFIRMED = "Kidney graft rejection was 'diagnosed', 'confirmed' or 'positive'"
-    SUSPECTED = "Kidney graft rejection presumed, suspected, likely, cannot be ruled out, biopsy result pending, or treatment with IVIG/plasmapheresis"
-    NONE_OF_THE_ABOVE = "None of the above"
+    BIOPSY_PROVEN = "BIOPSY_PROVEN"
+    CONFIRMED = "CONFIRMED"
+    SUSPECTED = "SUSPECTED"
+    NONE_OF_THE_ABOVE = "NONE_OF_THE_ABOVE"
 
 
 class GraftRejectionMention(SpanAugmentedMention):
@@ -193,17 +257,27 @@ class GraftRejectionMention(SpanAugmentedMention):
     )
     graft_rejection: GraftRejectionPresent = Field(
         GraftRejectionPresent.NONE_OF_THE_ABOVE,
-        description="What evidence documents kidney graft rejection as current, active, or being evaluated/treated now?",
+        description=(
+            "What evidence documents kidney graft rejection as current, active, or being evaluated/treated now? "
+            "BIOPSY_PROVEN: Biopsy proven kidney graft rejection or pathology proven kidney graft rejection; "
+            "CONFIRMED: Kidney graft rejection was 'diagnosed', 'confirmed' or 'positive'; "
+            "SUSPECTED: Kidney graft rejection presumed, suspected, likely, cannot be ruled out, biopsy result pending, or treatment with IVIG/plasmapheresis; "
+            "NONE_OF_THE_ABOVE: None of the above"
+        ),
     )
 
 
 ###############################################################################
 # Graft Failure
 ###############################################################################
+
+# CONFIRMED: Kidney graft has failed or kidney graft loss
+# SUSPECTED: Kidney graft failure presumed, suspected, likely, or cannot be ruled out
+# NONE_OF_THE_ABOVE: None of the above
 class GraftFailurePresent(StrEnum):
-    CONFIRMED = "Kidney graft has failed or kidney graft loss"
-    SUSPECTED = "Kidney graft failure presumed, suspected, likely, or cannot be ruled out"
-    NONE_OF_THE_ABOVE = "None of the above"
+    CONFIRMED = "CONFIRMED"
+    SUSPECTED = "SUSPECTED"
+    NONE_OF_THE_ABOVE = "NONE_OF_THE_ABOVE"
 
 
 class GraftFailureMention(SpanAugmentedMention):
@@ -212,23 +286,33 @@ class GraftFailureMention(SpanAugmentedMention):
     )
     graft_failure: GraftFailurePresent = Field(
         GraftFailurePresent.NONE_OF_THE_ABOVE,
-        description="What evidence documents kidney graft failure as current, active, or being evaluated/treated now?",
+        description=(
+            "What evidence documents kidney graft failure as current, active, or being evaluated/treated now? "
+            "CONFIRMED: Kidney graft has failed or kidney graft loss; "
+            "SUSPECTED: Kidney graft failure presumed, suspected, likely, or cannot be ruled out; "
+            "NONE_OF_THE_ABOVE: None of the above"
+        ),
     )
 
 
 ###############################################################################
 # PTLD
 ###############################################################################
+
+# BIOPSY_PROVEN: Biopsy proven or pathology proven PTLD
+# CONFIRMED: PTLD was 'diagnosed', 'confirmed' or 'positive' or viral positive lymphoma
+# SUSPECTED: PTLD presumed, suspected, likely, cannot be ruled out, PTLD biopsy result pending, or treatment with chemotherapy/radiation
+# NONE_OF_THE_ABOVE: None of the above
 class PTLDPresent(StrEnum):
     """
     Notice: PTLD treatments may also be used in 'rescue' therapy (DSA/graft rejection) or other cancers.
     One notable difference from other cancers (such as skin cancer) is the absence of "surgical excision" (lymphoma).
     """
 
-    BIOPSY_PROVEN = "Biopsy proven or pathology proven PTLD"
-    CONFIRMED = "PTLD was 'diagnosed', 'confirmed' or 'positive' or viral positive lymphoma"
-    SUSPECTED = "PTLD presumed, suspected, likely, cannot be ruled out, PTLD biopsy result pending, or treatment with chemotherapy/radiation"
-    NONE_OF_THE_ABOVE = "None of the above"
+    BIOPSY_PROVEN = "BIOPSY_PROVEN"
+    CONFIRMED = "CONFIRMED"
+    SUSPECTED = "SUSPECTED"
+    NONE_OF_THE_ABOVE = "NONE_OF_THE_ABOVE"
 
 
 class PTLDMention(SpanAugmentedMention):
@@ -238,13 +322,24 @@ class PTLDMention(SpanAugmentedMention):
     )
     ptld: PTLDPresent = Field(
         PTLDPresent.NONE_OF_THE_ABOVE,
-        description="What evidence documents post transplant lymphoproliferative disorder (PTLD) as current, active, or being evaluated/treated now?",
+        description=(
+            "What evidence documents post transplant lymphoproliferative disorder (PTLD) as current, active, or being evaluated/treated now? "
+            "BIOPSY_PROVEN: Biopsy proven or pathology proven PTLD; "
+            "CONFIRMED: PTLD was 'diagnosed', 'confirmed' or 'positive' or viral positive lymphoma; "
+            "SUSPECTED: PTLD presumed, suspected, likely, cannot be ruled out, PTLD biopsy result pending, or treatment with chemotherapy/radiation; "
+            "NONE_OF_THE_ABOVE: None of the above"
+        ),
     )
 
 
 ###############################################################################
 # Cancer
 ###############################################################################
+
+# BIOPSY_PROVEN: Biopsy proven or pathology proven cancer
+# CONFIRMED: Cancer was 'diagnosed', 'confirmed' or 'positive'
+# SUSPECTED: Cancer is presumed, suspected, likely, cannot be ruled out, biopsy of any lesion, or treatment with chemotherapy/radiation
+# NONE_OF_THE_ABOVE: None of the above
 class CancerPresent(StrEnum):
     """
     Notice: Cancer treatments may also be used in 'rescue' therapy (DSA/graft rejection).
@@ -252,10 +347,10 @@ class CancerPresent(StrEnum):
     Skin cancer (of which there are many types carcinoma and melanoma) is treated with surgical excision.
     """
 
-    BIOPSY_PROVEN = "Biopsy proven or pathology proven cancer"
-    CONFIRMED = "Cancer was 'diagnosed', 'confirmed' or 'positive'"
-    SUSPECTED = "Cancer is presumed, suspected, likely, cannot be ruled out, biopsy of any lesion, or treatment with chemotherapy/radiation"
-    NONE_OF_THE_ABOVE = "None of the above"
+    BIOPSY_PROVEN = "BIOPSY_PROVEN"
+    CONFIRMED = "CONFIRMED"
+    SUSPECTED = "SUSPECTED"
+    NONE_OF_THE_ABOVE = "NONE_OF_THE_ABOVE"
 
 
 class CancerMention(SpanAugmentedMention):
@@ -264,7 +359,13 @@ class CancerMention(SpanAugmentedMention):
     )
     cancer: CancerPresent = Field(
         CancerPresent.NONE_OF_THE_ABOVE,
-        description="What evidence documents cancer as current, active, or being evaluated/treated now?",
+        description=(
+            "What evidence documents cancer as current, active, or being evaluated/treated now? "
+            "BIOPSY_PROVEN: Biopsy proven or pathology proven cancer; "
+            "CONFIRMED: Cancer was 'diagnosed', 'confirmed' or 'positive'; "
+            "SUSPECTED: Cancer is presumed, suspected, likely, cannot be ruled out, biopsy of any lesion, or treatment with chemotherapy/radiation; "
+            "NONE_OF_THE_ABOVE: None of the above"
+        ),
     )
 
 
@@ -320,10 +421,3 @@ class KidneyTransplantLongitudinalAnnotation(BaseModel):
     ptld_mention: PTLDMention
     cancer_mention: CancerMention
     deceased_mention: DeceasedMention
-
-
-if __name__ == "__main__":
-    basedir = os.path.dirname(__file__)
-
-    with open(f"{basedir}/schemas/irae_outcomes.json", "w", encoding="utf8") as f:
-        json.dump(KidneyTransplantLongitudinalAnnotation.model_json_schema(), f, indent=2)

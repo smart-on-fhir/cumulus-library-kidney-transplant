@@ -2,12 +2,21 @@ from enum import StrEnum
 from pydantic import BaseModel, Field
 
 class SpanAugmentedMention(BaseModel):
+    """
+    A mention of a particular concept in the text, augmented with the character spans 
+    where the mention was found.
+    This allows for validation of LLM-generated findings, as well as the ability to link
+    mentions back to the original text for review and auditing purposes.
+    """
     has_mention: bool = Field(
-        False, description="Whether there is any mention of this variable in the text."
-    )
+        ...,
+        description='Indicates whether the concept was mentioned in the text.'
+    )   
     spans: list[str] = Field(
-        default_factory=list, description="The text spans where this variable is mentioned."
+        ...,
+        description='The verbatim text where this concept was mentioned.'
     )
+
 
 ##########################################################
 #
@@ -19,27 +28,49 @@ class SpanAugmentedMention(BaseModel):
 # Timing related to MedicationRequest.frequency
 
 
+# QD: once daily (1x/day)
+# BID: twice daily (2x/day)
+# TID: three times daily (3x/day)
+# QID: four times daily (4x/day)
+# QOD: every other day (1/2x/day)
+# Q6H: every 6 hours (4x/day)
+# Q8H: every 8 hours (3x/day)
+# Q12H: every 12 hours (2x/day)
+# WEEKLY: once every 7 days
+# Q2W: once every 2 weeks (14 days)
+# Q4W: once every 4 weeks (28 days)
+# MONTHLY: once every 4 weeks (28 days)
+# OTHER: use timing_text for non-standard frequency
+# NONE_OF_THE_ABOVE: None of the above
 class RxFrequency(StrEnum):
-    QD = "QD"  # 1X (once daily)
-    BID = "BID"  # 2X (twice daily)
-    TID = "TID"  # 3X (three times daily)
-    QID = "QID"  # 4X (four times daily)
-    QOD = "QOD"  # 1/2X (every other day)
-    Q6H = "Q6H"  # 4X (every 6 hours)
-    Q8H = "Q8H"  # 3X (every 8 hours)
-    Q12H = "Q12H"  # 2X (every 12 hours)
-    WEEKLY = "WEEKLY"  # 1/7X (once every 7 days)
-    Q2W = "Q2W"  # 1/14X (once every 2 weeks = 14 days)
-    Q4W = "Q4W"  # 1/28X (once every 4 weeks = 28 days)
-    MONTHLY = "MONTHLY"  # 1/28X (once every 4 weeks = 28 days)
-    OTHER = "OTHER"  # use timing_text
-    NONE = "None of the above"
+    QD = "QD"
+    BID = "BID"
+    TID = "TID"
+    QID = "QID"
+    QOD = "QOD"
+    Q6H = "Q6H"
+    Q8H = "Q8H"
+    Q12H = "Q12H"
+    WEEKLY = "WEEKLY"
+    Q2W = "Q2W"
+    Q4W = "Q4W"
+    MONTHLY = "MONTHLY"
+    OTHER = "OTHER"
+    NONE_OF_THE_ABOVE = "NONE_OF_THE_ABOVE"
 
 
 ###############################################################################
 # MedicationRequest.status
 
 
+
+# ACTIVE: Medication order is active (currently prescribed and intended for ongoing use).
+# INTENDED: Medication is planned/ordered/prescribed but therapy has not yet started.
+# COMPLETED: Medication course is finished (all doses given or intended duration completed).
+# STOPPED: Medication was stopped or permanently discontinued before completion.
+# CANCELED: Medication order was canceled/withdrawn before any doses were administered.
+# ON_HOLD: Medication is temporarily paused (on-hold, suspended, or interrupted).
+# NONE_OF_THE_ABOVE: None of the above
 class RxStatus(StrEnum):
     """
     Medication Status (including Intent because chart review is NOT always identical to Med Request)
@@ -47,34 +78,44 @@ class RxStatus(StrEnum):
     https://build.fhir.org/valueset-medicationrequest-intent.html
     """
 
-    ACTIVE = "Medication order is active (currently prescribed and intended for ongoing use)."
-    INTENDED = "Medication is planned/ordered/prescribed but therapy has not yet started."
-    COMPLETED = "Medication course is finished (all doses given or intended duration completed)."
-    STOPPED = "Medication was stopped or permanently discontinued before completion."
-    CANCELED = "Medication order was canceled/withdrawn before any doses were administered."
-    ON_HOLD = "Medication is temporarily paused (on-hold, suspended, or interrupted)."
-    NONE = "None of the above"
+    ACTIVE = "ACTIVE"
+    INTENDED = "INTENDED"
+    COMPLETED = "COMPLETED"
+    STOPPED = "STOPPED"
+    CANCELED = "CANCELED"
+    ON_HOLD = "ON_HOLD"
+    NONE_OF_THE_ABOVE = "NONE_OF_THE_ABOVE"
 
 
 ###############################################################################
 # MedicationRequest.category
 
 
+# INPATIENT: Medication ordered/administered during an inpatient/acute care setting
+# OUTPATIENT: Medication ordered/administered during an outpatient setting
+# COMMUNITY: Medication ordered/consumed by the patient in their home (including long term care, nursing homes, etc)
+# NONE_OF_THE_ABOVE: None of the above
 class RxCategory(StrEnum):
     """
     https://build.fhir.org/valueset-medicationrequest-admin-location.html
     """
 
-    INPATIENT = "Medication ordered/administered during an inpatient/acute care setting"
-    OUTPATIENT = "Medication ordered/administered during an outpatient setting"
-    COMMUNITY = "Medication ordered/consumed by the patient in their home (including long term care, nursing homes, etc)"
-    NONE = "None of the above"
+    INPATIENT = "INPATIENT"
+    OUTPATIENT = "OUTPATIENT"
+    COMMUNITY = "COMMUNITY"
+    NONE_OF_THE_ABOVE = "NONE_OF_THE_ABOVE"
 
 
 ###############################################################################
 # MedicationRequest.route
 
 
+# PO: Oral (includes swallowed and sublingual routes)
+# NG: Nasogastric/Feeding tube (NG/PEG)
+# INJECTION: Injection (IV, SC, or IM)
+# INHALATION: Inhalation (respiratory route)
+# TOPICAL: Topical (skin or mucosal surface)
+# NONE_OF_THE_ABOVE: None of the above
 class RxRoute(StrEnum):
     """
     Route of Administration can "help" (but not deterministic) for drug metadata, examples
@@ -84,12 +125,12 @@ class RxRoute(StrEnum):
     https://build.fhir.org/valueset-route-codes.html
     """
 
-    PO = "Oral (includes swallowed and sublingual routes)"
-    NG = "Nasogastric/Feeding tube (NG/PEG)"
-    INJECTION = "Injection (IV, SC, or IM)"
-    INHALATION = "Inhalation (respiratory route)"
-    TOPICAL = "Topical (skin or mucosal surface)"
-    NONE = "None of the above"
+    PO = "PO"
+    NG = "NG"
+    INJECTION = "INJECTION"
+    INHALATION = "INHALATION"
+    TOPICAL = "TOPICAL"
+    NONE_OF_THE_ABOVE = "NONE_OF_THE_ABOVE"
 
 
 ###############################################################################
@@ -124,39 +165,50 @@ class RxValidityPeriodMention(SpanAugmentedMention):
     )
 
 
+# Mass: MG=mg, G=g, UG=ug (microgram/mcg), KG=kg
+# Volume: ML=mL, L=L
+# International Units: U=U, IU=[iU]
+# Countable: TABLET={tablet}, CAPSULE={capsule}, PUFF={puff}, PATCH={patch}, SUPPOSITORY={suppository}
+# Ratios: MG_PER_ML=mg/mL, MG_PER_KG=mg/kg, U_PER_KG=U/kg, UG_PER_KG_PER_MIN=ug/kg/min
+# Time (infusion rates): H=h, MIN=min, D=d
+# NONE_OF_THE_ABOVE: None of the above
 class RxQuantityUnit(StrEnum):
+    """
+    UCUM unit codes for medication quantity.
+    """
+
     # Mass
-    MG = "mg"
-    G = "g"
-    UG = "ug"  # microgram (mcg)
-    KG = "kg"
+    MG = "MG"
+    G = "G"
+    UG = "UG"
+    KG = "KG"
 
     # Volume
-    ML = "mL"
+    ML = "ML"
     L = "L"
 
     # International Units
     U = "U"
-    IU = "[iU]"
+    IU = "IU"
 
     # Countable units
-    TABLET = "{tablet}"
-    CAPSULE = "{capsule}"
-    PUFF = "{puff}"
-    PATCH = "{patch}"
-    SUPPOSITORY = "{suppository}"
+    TABLET = "TABLET"
+    CAPSULE = "CAPSULE"
+    PUFF = "PUFF"
+    PATCH = "PATCH"
+    SUPPOSITORY = "SUPPOSITORY"
 
     # Ratios
-    MG_PER_ML = "mg/mL"
-    MG_PER_KG = "mg/kg"
-    U_PER_KG = "U/kg"
-    UG_PER_KG_PER_MIN = "ug/kg/min"
+    MG_PER_ML = "MG_PER_ML"
+    MG_PER_KG = "MG_PER_KG"
+    U_PER_KG = "U_PER_KG"
+    UG_PER_KG_PER_MIN = "UG_PER_KG_PER_MIN"
 
     # Time units (for infusion rates)
-    H = "h"
-    MIN = "min"
-    D = "d"
-    NONE = "None of the above"
+    H = "H"
+    MIN = "MIN"
+    D = "D"
+    NONE_OF_THE_ABOVE = "NONE_OF_THE_ABOVE"
 
 
 # MedicationRequest.dispenseRequest.quantity
@@ -166,8 +218,17 @@ class RxQuantity(SpanAugmentedMention):
     """
 
     unit: RxQuantityUnit = Field(
-        default=RxQuantityUnit.NONE,
-        description="Medication prescribed unit (examples: 'mg', 'ug/kg/min', 'tablet', etc)",
+        default=RxQuantityUnit.NONE_OF_THE_ABOVE,
+        description=(
+            "Medication prescribed unit. "
+            "Mass: MG=mg, G=g, UG=ug (microgram), KG=kg; "
+            "Volume: ML=mL, L=L; "
+            "International Units: U=U, IU=[iU]; "
+            "Countable: TABLET, CAPSULE, PUFF, PATCH, SUPPOSITORY; "
+            "Ratios: MG_PER_ML, MG_PER_KG, U_PER_KG, UG_PER_KG_PER_MIN; "
+            "Time: H=hours, MIN=minutes, D=days; "
+            "NONE_OF_THE_ABOVE: None of the above"
+        ),
     )
 
     value: str | None = Field(
@@ -180,15 +241,15 @@ class RxQuantity(SpanAugmentedMention):
 # Treatment Phase
 
 
+# INDUCTION: Induction therapy``
+# MAINTENANCE: Maintenance therapy
+# RESCUE: Rescue therapy
+# NONE_OF_THE_ABOVE: None of the above
 class TreatmentPhase(StrEnum):
-    """
-    Treatment Phase
-    """
-
-    INDUCTION = "Induction therapy"
-    MAINTENANCE = "Maintenance therapy"
-    RESCUE = "Rescue therapy"
-    NONE = "None of the above"
+    INDUCTION = "INDUCTION"
+    MAINTENANCE = "MAINTENANCE"
+    RESCUE = "RESCUE"
+    NONE_OF_THE_ABOVE = "NONE_OF_THE_ABOVE"
 
 
 ###############################################################################
@@ -206,21 +267,52 @@ class MedicationMention(SpanAugmentedMention):
     """
 
     status: RxStatus = Field(
-        default=RxStatus.NONE, description="What is the status of this medication?"
+        default=RxStatus.NONE_OF_THE_ABOVE,
+        description=(
+            "What is the status of this medication? "
+            "ACTIVE: Medication order is active (currently prescribed and intended for ongoing use); "
+            "INTENDED: Medication is planned/ordered/prescribed but therapy has not yet started; "
+            "COMPLETED: Medication course is finished (all doses given or intended duration completed); "
+            "STOPPED: Medication was stopped or permanently discontinued before completion; "
+            "CANCELED: Medication order was canceled/withdrawn before any doses were administered; "
+            "ON_HOLD: Medication is temporarily paused (on-hold, suspended, or interrupted); "
+            "NONE_OF_THE_ABOVE: None of the above"
+        ),
     )
 
     category: RxCategory = Field(
-        default=RxCategory.NONE,
-        description="In which healthcare setting is this medication prescribed/administered?",
+        default=RxCategory.NONE_OF_THE_ABOVE,
+        description=(
+            "In which healthcare setting is this medication prescribed/administered? "
+            "INPATIENT: Medication ordered/administered during an inpatient/acute care setting; "
+            "OUTPATIENT: Medication ordered/administered during an outpatient setting; "
+            "COMMUNITY: Medication ordered/consumed by the patient in their home (including long term care, nursing homes, etc); "
+            "NONE_OF_THE_ABOVE: None of the above"
+        ),
     )
 
     route: RxRoute = Field(
-        default=RxRoute.NONE,
-        description="What is the the route of administration for this medication?",
+        default=RxRoute.NONE_OF_THE_ABOVE,
+        description=(
+            "What is the route of administration for this medication? "
+            "PO: Oral (includes swallowed and sublingual routes); "
+            "NG: Nasogastric/Feeding tube (NG/PEG); "
+            "INJECTION: Injection (IV, SC, or IM); "
+            "INHALATION: Inhalation (respiratory route); "
+            "TOPICAL: Topical (skin or mucosal surface); "
+            "NONE_OF_THE_ABOVE: None of the above"
+        ),
     )
 
     phase: TreatmentPhase = Field(
-        default=TreatmentPhase.NONE, description="What is the treatment phase for this medication?"
+        default=TreatmentPhase.NONE_OF_THE_ABOVE,
+        description=(
+            "What is the treatment phase for this medication? "
+            "INDUCTION: Induction therapy; "
+            "MAINTENANCE: Maintenance therapy; "
+            "RESCUE: Rescue therapy; "
+            "NONE_OF_THE_ABOVE: None of the above"
+        ),
     )
 
     expected_supply_days: int | None = Field(
@@ -234,7 +326,15 @@ class MedicationMention(SpanAugmentedMention):
     )
 
     frequency: RxFrequency = Field(
-        default=RxFrequency.NONE, description="What is the frequency of this medication?"
+        default=RxFrequency.NONE_OF_THE_ABOVE,
+        description=(
+            "What is the frequency of this medication? "
+            "QD: once daily; BID: twice daily; TID: three times daily; QID: four times daily; "
+            "QOD: every other day; Q6H: every 6 hours; Q8H: every 8 hours; Q12H: every 12 hours; "
+            "WEEKLY: once weekly; Q2W: once every 2 weeks; Q4W: once every 4 weeks; MONTHLY: once monthly; "
+            "OTHER: non-standard frequency (use timing_text); "
+            "NONE_OF_THE_ABOVE: None of the above"
+        ),
     )
 
     start_date: str | None = Field(
@@ -246,11 +346,20 @@ class MedicationMention(SpanAugmentedMention):
     )
 
     quantity_unit: RxQuantityUnit = Field(
-        RxQuantityUnit.NONE, description="Medication prescribed unit"
+        RxQuantityUnit.NONE_OF_THE_ABOVE,
+        description=(
+            "Medication prescribed unit. "
+            "Mass: MG=mg, G=g, UG=ug (microgram), KG=kg; "
+            "Volume: ML=mL, L=L; "
+            "International Units: U=U, IU=[iU]; "
+            "Countable: TABLET, CAPSULE, PUFF, PATCH, SUPPOSITORY; "
+            "Ratios: MG_PER_ML, MG_PER_KG, U_PER_KG, UG_PER_KG_PER_MIN; "
+            "Time: H=hours, MIN=minutes, D=days; "
+            "NONE_OF_THE_ABOVE: None of the above"
+        ),
     )
 
     quantity_value: str | None = Field(
         None,
         description="Numeric amount of medication prescribed or administered (FHIR Quantity.value)",
     )
-

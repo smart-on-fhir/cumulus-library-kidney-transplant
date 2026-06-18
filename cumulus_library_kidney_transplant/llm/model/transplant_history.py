@@ -1,5 +1,3 @@
-import json 
-import os
 from pydantic import BaseModel, Field
 
 from cumulus_library_kidney_transplant.llm.model.base import SpanAugmentedMention
@@ -41,9 +39,3 @@ class MultipleTransplantHistoryAnnotation(BaseModel):
 
     multiple_transplant_history_mention: MultipleTransplantHistoryMention
 
-
-if __name__ == "__main__":
-    basedir = os.path.dirname(__file__)
-
-    with open(f"{basedir}/schemas/irae_multiple_transplant_history.json", "w", encoding="utf8") as f:
-        json.dump(MultipleTransplantHistoryAnnotation.model_json_schema(), f, indent=2)

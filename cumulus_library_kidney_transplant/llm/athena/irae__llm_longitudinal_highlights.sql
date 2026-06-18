@@ -16,7 +16,7 @@ CREATE TABLE irae__llm_longitudinal_highlights AS
         UNNEST(src.result.rx_therapeutic_status_mention.spans) AS t3(span)
     -- Custom filtering per mention_key
     WHERE
-        src.result.rx_therapeutic_status_mention.rx_therapeutic_status != 'None of the above'
+        src.result.rx_therapeutic_status_mention.rx_therapeutic_status != 'NONE_OF_THE_ABOVE'
 
     UNION ALL
     SELECT
@@ -36,7 +36,7 @@ CREATE TABLE irae__llm_longitudinal_highlights AS
         UNNEST(src.result.rx_compliance_mention.spans) AS t3(span)
     -- Custom filtering per mention_key
     WHERE
-        src.result.rx_compliance_mention.rx_compliance != 'None of the above'
+        src.result.rx_compliance_mention.rx_compliance != 'NONE_OF_THE_ABOVE'
 
     UNION ALL
     SELECT
@@ -55,9 +55,9 @@ CREATE TABLE irae__llm_longitudinal_highlights AS
         irae__nlp_longitudinal_gpt_oss_120b AS src, 
         UNNEST(src.result.dsa_mention.spans) AS t3(span)
     -- Custom filtering per mention_key
-    WHERE 
+    WHERE
         src.result.dsa_mention.dsa_history
-        AND src.result.dsa_mention.dsa != 'None of the above'
+        AND src.result.dsa_mention.dsa != 'NONE_OF_THE_ABOVE'
 
     UNION ALL
     SELECT
@@ -76,9 +76,9 @@ CREATE TABLE irae__llm_longitudinal_highlights AS
         irae__nlp_longitudinal_gpt_oss_120b AS src, 
         UNNEST(src.result.infection_mention.spans) AS t3(span)
     -- Custom filtering per mention_key
-    WHERE 
+    WHERE
         src.result.infection_mention.infection_history
-        AND src.result.infection_mention.infection != 'None of the above'
+        AND src.result.infection_mention.infection != 'NONE_OF_THE_ABOVE'
 
     UNION ALL
     SELECT
@@ -97,9 +97,9 @@ CREATE TABLE irae__llm_longitudinal_highlights AS
         irae__nlp_longitudinal_gpt_oss_120b AS src, 
         UNNEST(src.result.viral_infection_mention.spans) AS t3(span)
     -- Custom filtering per mention_key
-    WHERE 
+    WHERE
         src.result.viral_infection_mention.viral_infection_history
-        AND src.result.viral_infection_mention.viral_infection != 'None of the above'
+        AND src.result.viral_infection_mention.viral_infection != 'NONE_OF_THE_ABOVE'
 
     UNION ALL
     SELECT
@@ -118,9 +118,9 @@ CREATE TABLE irae__llm_longitudinal_highlights AS
         irae__nlp_longitudinal_gpt_oss_120b AS src, 
         UNNEST(src.result.bacterial_infection_mention.spans) AS t3(span)
     -- Custom filtering per mention_key
-    WHERE 
+    WHERE
         src.result.bacterial_infection_mention.bacterial_infection_history
-        AND src.result.bacterial_infection_mention.bacterial_infection != 'None of the above'
+        AND src.result.bacterial_infection_mention.bacterial_infection != 'NONE_OF_THE_ABOVE'
 
     UNION ALL
     SELECT
@@ -139,9 +139,9 @@ CREATE TABLE irae__llm_longitudinal_highlights AS
         irae__nlp_longitudinal_gpt_oss_120b AS src, 
         UNNEST(src.result.fungal_infection_mention.spans) AS t3(span)
     -- Custom filtering per mention_key
-    WHERE 
+    WHERE
         src.result.fungal_infection_mention.fungal_infection_history
-        AND src.result.fungal_infection_mention.fungal_infection != 'None of the above'
+        AND src.result.fungal_infection_mention.fungal_infection != 'NONE_OF_THE_ABOVE'
 
     UNION ALL
     SELECT
@@ -160,9 +160,9 @@ CREATE TABLE irae__llm_longitudinal_highlights AS
         irae__nlp_longitudinal_gpt_oss_120b AS src, 
         UNNEST(src.result.graft_rejection_mention.spans) AS t3(span)
     -- Custom filtering per mention_key
-    WHERE 
+    WHERE
         src.result.graft_rejection_mention.graft_rejection_history
-        AND src.result.graft_rejection_mention.graft_rejection != 'None of the above'
+        AND src.result.graft_rejection_mention.graft_rejection != 'NONE_OF_THE_ABOVE'
 
     UNION ALL
     SELECT
@@ -181,9 +181,9 @@ CREATE TABLE irae__llm_longitudinal_highlights AS
         irae__nlp_longitudinal_gpt_oss_120b AS src, 
         UNNEST(src.result.graft_failure_mention.spans) AS t3(span)
     -- Custom filtering per mention_key
-    WHERE 
+    WHERE
         src.result.graft_failure_mention.graft_failure_history
-        AND src.result.graft_failure_mention.graft_failure != 'None of the above'
+        AND src.result.graft_failure_mention.graft_failure != 'NONE_OF_THE_ABOVE'
 
     UNION ALL
     SELECT
@@ -202,9 +202,9 @@ CREATE TABLE irae__llm_longitudinal_highlights AS
         irae__nlp_longitudinal_gpt_oss_120b AS src, 
         UNNEST(src.result.ptld_mention.spans) AS t3(span)
     -- Custom filtering per mention_key
-    WHERE 
+    WHERE
         src.result.ptld_mention.ptld_history
-        AND src.result.ptld_mention.ptld != 'None of the above'
+        AND src.result.ptld_mention.ptld != 'NONE_OF_THE_ABOVE'
 
     UNION ALL
     SELECT
@@ -223,9 +223,9 @@ CREATE TABLE irae__llm_longitudinal_highlights AS
         irae__nlp_longitudinal_gpt_oss_120b AS src, 
         UNNEST(src.result.cancer_mention.spans) AS t3(span)
     -- Custom filtering per mention_key
-    WHERE 
+    WHERE
         src.result.cancer_mention.cancer_history
-        AND src.result.cancer_mention.cancer != 'None of the above'
+        AND src.result.cancer_mention.cancer != 'NONE_OF_THE_ABOVE'
 
     UNION ALL
     SELECT

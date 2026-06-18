@@ -4,13 +4,12 @@
       "description": "Does this patient have a history of multiple transplants, renal or otherwise?\nFor use in reevaluating the patients in our cohort, excluding patients with a history\nof multiple transplants from our analysis.",
       "properties": {
         "has_mention": {
-          "default": false,
-          "description": "Whether there is any mention of this variable in the text.",
+          "description": "Indicates whether the concept was mentioned in the text.",
           "title": "Has Mention",
           "type": "boolean"
         },
         "spans": {
-          "description": "The text spans where this variable is mentioned.",
+          "description": "The verbatim text where this concept was mentioned.",
           "items": {
             "type": "string"
           },
@@ -24,6 +23,10 @@
           "type": "boolean"
         }
       },
+      "required": [
+        "has_mention",
+        "spans"
+      ],
       "title": "MultipleTransplantHistoryMention",
       "type": "object"
     }

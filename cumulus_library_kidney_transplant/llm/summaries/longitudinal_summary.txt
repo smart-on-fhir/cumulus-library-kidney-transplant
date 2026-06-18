@@ -1,124 +1,124 @@
 model = "KidneyTransplantLongitudinalAnnotation"
 rx_therapeutic_status_mention:
     rx_therapeutic_status = RxTherapeuticStatus (Choice Value)
-        # In the present encounter, what is the documented immunosuppression level?
+        # In the present encounter, what is the documented immunosuppression level? THERAPEUTIC: Immunosuppression levels are documented as therapeutic, adequate, or within target range; SUB_THERAPEUTIC: Immunosuppression levels are documented as subtherapeutic, insufficient, or below target range; SUPRA_THERAPEUTIC: Immunosuppression levels are documented as supratherapeutic, above therapeutic level, or above target range; NONE_OF_THE_ABOVE: None of the above
         # Possible Values:
-        #   - Immunosuppression levels are documented as therapeutic, adequate, or within target range.
-        #   - Immunosuppression levels are documented as subtherapeutic, insufficient, or below target range.
-        #   - Immunosuppression levels are documented as supratherapeutic, above therapeutic level, or above target range.
-        #   - None of the above
+        #   - THERAPEUTIC
+        #   - SUB_THERAPEUTIC
+        #   - SUPRA_THERAPEUTIC
+        #   - NONE_OF_THE_ABOVE
 
 
 rx_compliance_mention:
     rx_compliance = RxCompliance (Choice Value)
-        # In the present encounter, is the patient documented as compliant with immunosuppressive medications?
+        # In the present encounter, is the patient documented as compliant with immunosuppressive medications? COMPLIANT: Patient is documented as compliant with immunosuppressive medications; PARTIALLY_COMPLIANT: Patient is documented as only partially compliant with immunosuppressive medications; NON_COMPLIANT: Patient is documented as noncompliant with immunosuppressive medications; NONE_OF_THE_ABOVE: None of the above
         # Possible Values:
-        #   - Patient is documented as compliant with immunosuppressive medications.
-        #   - Patient is documented as only partially compliant with immunosuppressive medications.
-        #   - Patient is documented as noncompliant with immunosuppressive medications.
-        #   - None of the above
+        #   - COMPLIANT
+        #   - PARTIALLY_COMPLIANT
+        #   - NON_COMPLIANT
+        #   - NONE_OF_THE_ABOVE
 
 
 dsa_mention:
     dsa_history = True or False
         # Does the patient have a past medical history of donor specific antibodies (DSA)?
     dsa = DSAPresent (Choice Value)
-        # What evidence documents donor specific antibodies (DSA) as current, active, or being evaluated/treated now?
+        # What evidence documents donor specific antibodies (DSA) as current, active, or being evaluated/treated now? CONFIRMED: DSA diagnostic test positive, DSA diagnosis 'confirmed' or 'positive', or increase in immunosuppression due to DSA; SUSPECTED: DSA suspected, DSA likely, DSA cannot be ruled out, DSA test result pending, or treatment with IVIG/plasmapheresis; NONE_OF_THE_ABOVE: None of the above
         # Possible Values:
-        #   - DSA diagnostic test positive, DSA diagnosis 'confirmed' or 'positive', or increase in immunosuppression due to DSA
-        #   - DSA suspected, DSA likely, DSA cannot be ruled out, DSA test result pending, or treatment with IVIG/plasmapheresis
-        #   - None of the above
+        #   - CONFIRMED
+        #   - SUSPECTED
+        #   - NONE_OF_THE_ABOVE
 
 
 infection_mention:
     infection_history = True or False
         # Does the patient have a past medical history of an infection?
     infection = InfectionPresent (Choice Value)
-        # What evidence documents infection as current, active, or being evaluated/treated now?
+        # What evidence documents infection as current, active, or being evaluated/treated now? CONFIRMED: Infection confirmed by laboratory test or imaging, infection diagnosis was 'confirmed' or 'positive', or reduced immunosuppression due to infection; SUSPECTED: Infection is suspected, likely, cannot be ruled out, infection is a differential diagnosis or infectious test result is pending; NONE_OF_THE_ABOVE: None of the above
         # Possible Values:
-        #   - Infection confirmed by laboratory test or imaging, infection diagnosis was 'confirmed' or 'positive', or reduced immunosuppression due to infection
-        #   - Infection is suspected, likely, cannot be ruled out, infection is a differential diagnosis or infectious test result is pending
-        #   - None of the above
+        #   - CONFIRMED
+        #   - SUSPECTED
+        #   - NONE_OF_THE_ABOVE
 
 
 viral_infection_mention:
     viral_infection_history = True or False
         # Does the patient have a past medical history of a viral infection?
     viral_infection = ViralInfectionPresent (Choice Value)
-        # What evidence documents viral infection as current, active, or being evaluated/treated now?
+        # What evidence documents viral infection as current, active, or being evaluated/treated now? CONFIRMED: Viral infection confirmed by laboratory test or imaging, viral infection diagnosis was 'confirmed' or 'positive', or reduced immunosuppression due to viral infection; SUSPECTED: Viral infection is suspected, likely, cannot be ruled out, viral infection is a differential diagnosis or viral test result is pending; NONE_OF_THE_ABOVE: None of the above
         # Possible Values:
-        #   - Viral infection confirmed by laboratory test or imaging, viral infection diagnosis was 'confirmed' or 'positive', or reduced immunosuppression due to viral infection
-        #   - Viral infection is suspected, likely, cannot be ruled out, viral infection is a differential diagnosis or viral test result is pending
-        #   - None of the above
+        #   - CONFIRMED
+        #   - SUSPECTED
+        #   - NONE_OF_THE_ABOVE
 
 
 bacterial_infection_mention:
     bacterial_infection_history = True or False
         # Does the patient have a past medical history of a bacterial infection?
     bacterial_infection = BacterialInfectionPresent (Choice Value)
-        # What evidence documents bacterial infection as current, active, or being evaluated/treated now?
+        # What evidence documents bacterial infection as current, active, or being evaluated/treated now? CONFIRMED: Bacterial infection confirmed by laboratory test or imaging, bacterial infection diagnosis was 'confirmed' or 'positive', or reduced immunosuppression due to bacterial infection; SUSPECTED: Bacterial infection is suspected, likely, cannot be ruled out, bacterial infection is a differential diagnosis or bacterial test result is pending; NONE_OF_THE_ABOVE: None of the above
         # Possible Values:
-        #   - Bacterial infection confirmed by laboratory test or imaging, bacterial infection diagnosis was 'confirmed' or 'positive', or reduced immunosuppression due to bacterial infection
-        #   - Bacterial infection is suspected, likely, cannot be ruled out, bacterial infection is a differential diagnosis or bacterial test result is pending
-        #   - None of the above
+        #   - CONFIRMED
+        #   - SUSPECTED
+        #   - NONE_OF_THE_ABOVE
 
 
 fungal_infection_mention:
     fungal_infection_history = True or False
         # Does the patient have a past medical history of a fungal infection?
     fungal_infection = FungalInfectionPresent (Choice Value)
-        # What evidence documents fungal infection as current, active, or being evaluated/treated now?
+        # What evidence documents fungal infection as current, active, or being evaluated/treated now? CONFIRMED: Fungal infection confirmed by laboratory test or imaging, fungal infection diagnosis was 'confirmed' or 'positive', or reduced immunosuppression due to fungal infection; SUSPECTED: Fungal infection is suspected, likely, cannot be ruled out, fungal infection is a differential diagnosis or fungal test result is pending; NONE_OF_THE_ABOVE: None of the above
         # Possible Values:
-        #   - Fungal infection confirmed by laboratory test or imaging, fungal infection diagnosis was 'confirmed' or 'positive', or reduced immunosuppression due to fungal infection
-        #   - Fungal infection is suspected, likely, cannot be ruled out, fungal infection is a differential diagnosis or fungal test result is pending
-        #   - None of the above
+        #   - CONFIRMED
+        #   - SUSPECTED
+        #   - NONE_OF_THE_ABOVE
 
 
 graft_rejection_mention:
     graft_rejection_history = True or False
         # Does the patient have a past medical history of kidney graft rejection?
     graft_rejection = GraftRejectionPresent (Choice Value)
-        # What evidence documents kidney graft rejection as current, active, or being evaluated/treated now?
+        # What evidence documents kidney graft rejection as current, active, or being evaluated/treated now? BIOPSY_PROVEN: Biopsy proven kidney graft rejection or pathology proven kidney graft rejection; CONFIRMED: Kidney graft rejection was 'diagnosed', 'confirmed' or 'positive'; SUSPECTED: Kidney graft rejection presumed, suspected, likely, cannot be ruled out, biopsy result pending, or treatment with IVIG/plasmapheresis; NONE_OF_THE_ABOVE: None of the above
         # Possible Values:
-        #   - Biopsy proven kidney graft rejection or pathology proven kidney graft rejection
-        #   - Kidney graft rejection was 'diagnosed', 'confirmed' or 'positive'
-        #   - Kidney graft rejection presumed, suspected, likely, cannot be ruled out, biopsy result pending, or treatment with IVIG/plasmapheresis
-        #   - None of the above
+        #   - BIOPSY_PROVEN
+        #   - CONFIRMED
+        #   - SUSPECTED
+        #   - NONE_OF_THE_ABOVE
 
 
 graft_failure_mention:
     graft_failure_history = True or False
         # Does the patient have a past medical history of kidney graft failure?
     graft_failure = GraftFailurePresent (Choice Value)
-        # What evidence documents kidney graft failure as current, active, or being evaluated/treated now?
+        # What evidence documents kidney graft failure as current, active, or being evaluated/treated now? CONFIRMED: Kidney graft has failed or kidney graft loss; SUSPECTED: Kidney graft failure presumed, suspected, likely, or cannot be ruled out; NONE_OF_THE_ABOVE: None of the above
         # Possible Values:
-        #   - Kidney graft has failed or kidney graft loss
-        #   - Kidney graft failure presumed, suspected, likely, or cannot be ruled out
-        #   - None of the above
+        #   - CONFIRMED
+        #   - SUSPECTED
+        #   - NONE_OF_THE_ABOVE
 
 
 ptld_mention:
     ptld_history = True or False
         # Does the patient have a past medical history of post transplant lymphoproliferative disorder (PTLD)?
     ptld = PTLDPresent (Choice Value)
-        # What evidence documents post transplant lymphoproliferative disorder (PTLD) as current, active, or being evaluated/treated now?
+        # What evidence documents post transplant lymphoproliferative disorder (PTLD) as current, active, or being evaluated/treated now? BIOPSY_PROVEN: Biopsy proven or pathology proven PTLD; CONFIRMED: PTLD was 'diagnosed', 'confirmed' or 'positive' or viral positive lymphoma; SUSPECTED: PTLD presumed, suspected, likely, cannot be ruled out, PTLD biopsy result pending, or treatment with chemotherapy/radiation; NONE_OF_THE_ABOVE: None of the above
         # Possible Values:
-        #   - Biopsy proven or pathology proven PTLD
-        #   - PTLD was 'diagnosed', 'confirmed' or 'positive' or viral positive lymphoma
-        #   - PTLD presumed, suspected, likely, cannot be ruled out, PTLD biopsy result pending, or treatment with chemotherapy/radiation
-        #   - None of the above
+        #   - BIOPSY_PROVEN
+        #   - CONFIRMED
+        #   - SUSPECTED
+        #   - NONE_OF_THE_ABOVE
 
 
 cancer_mention:
     cancer_history = True or False
         # Does the patient have a past medical history of cancer?
     cancer = CancerPresent (Choice Value)
-        # What evidence documents cancer as current, active, or being evaluated/treated now?
+        # What evidence documents cancer as current, active, or being evaluated/treated now? BIOPSY_PROVEN: Biopsy proven or pathology proven cancer; CONFIRMED: Cancer was 'diagnosed', 'confirmed' or 'positive'; SUSPECTED: Cancer is presumed, suspected, likely, cannot be ruled out, biopsy of any lesion, or treatment with chemotherapy/radiation; NONE_OF_THE_ABOVE: None of the above
         # Possible Values:
-        #   - Biopsy proven or pathology proven cancer
-        #   - Cancer was 'diagnosed', 'confirmed' or 'positive'
-        #   - Cancer is presumed, suspected, likely, cannot be ruled out, biopsy of any lesion, or treatment with chemotherapy/radiation
-        #   - None of the above
+        #   - BIOPSY_PROVEN
+        #   - CONFIRMED
+        #   - SUSPECTED
+        #   - NONE_OF_THE_ABOVE
 
 
 deceased_mention:

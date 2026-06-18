@@ -34,20 +34,18 @@ Here is the clinical document for you to analyze:
 %CLINICAL-NOTE%
 """
 
-# 
-# 
-# 
 
 [tables.donor]
 response_schema = "llm/schemas/irae_donor.json"
 # Version History:
+# ** 8 (2026-06): Enum alignment (key=value CAPS_UNDER_BAR) **
 # ** 7 (2025-12): Serostatus mentions added
 # ** 6 (2025-11): Pydantic updates (donors refer to 1st transplant;
 #                 POD inference guidance; new multiple transplant task) **
 # ** 5 (2025-10): Update pydantic model (biological relation;
 #                 Defaults for SpanAugmentedMention properties) **
 # ** 4 (2025-10): Initial version**
-version = 7
+version = 8
 # When we add document-level tasks, we can use `select_by_table` to specify 
 # that this table should only be built for documents that meet certain criteria. 
 # select_by_table = "irae__llm_document_task_diagnosis"
@@ -55,18 +53,20 @@ version = 7
 
 
 [tables.immunosuppressive_medications]
-response_schema = "llm/schemas/irae_meds.json"
+response_schema = "llm/schemas/irae_medications.json"
 # Version History:
+# ** 7 (2026-06): Enum alignment (key=value CAPS_UNDER_BAR) **
 # ** 6 (2025-12): Initial version
-version = 6
+version = 7
 # When we add document-level tasks, we can use `select_by_table` to specify 
 # that this table should only be built for documents that meet certain criteria. 
 # select_by_table = "irae__llm_document_task_diagnosis"
 
 
 [tables.longitudinal]
-response_schema = "llm/schemas/irae_longitudinal.json"
+response_schema = "llm/schemas/irae_outcomes.json"
 # Version History:
+# ** 7 (2026-06): Enum alignment (key=value CAPS_UNDER_BAR) **
 # ** 6 (2025-11): Pydantic updates (donors refer to 1st transplant;
 #                 POD inference guidance; new multiple transplant task) **
 # ** 5 (2025-10): Update pydantic model (biological relation;
@@ -76,7 +76,7 @@ response_schema = "llm/schemas/irae_longitudinal.json"
 # ** 2 (2025-09): Updated prompt and schema **
 # ** 1 (2025-08): Updated prompt **
 # ** 0 (2025-08): Initial version **
-version = 6
+version = 7
 # When we add document-level tasks, we can use `select_by_table` to specify 
 # that this table should only be built for documents that meet certain criteria. 
 # select_by_table = "irae__llm_document_task_diagnosis"
@@ -84,7 +84,7 @@ version = 6
 
 
 [tables.multiple_transplant_history]
-response_schema = "llm/schemas/irae_history.json"
+response_schema = "llm/schemas/irae_multiple_transplant_history.json"
 # Version History:
 # ** 6 (2025-12): Initial version
 version = 6

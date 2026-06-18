@@ -2,10 +2,10 @@
   "$defs": {
     "DonorHlaMatchQuality": {
       "enum": [
-        "Well matched (0-1 mismatches) OR recipient explicitly documented as not sensitized",
-        "Moderately matched (2-4 mismatches) OR recipient explicitly documented as sensitized",
-        "Poorly matched (5-6 mismatches) OR recipient explicitly documented as highly sensitized",
-        "HLA match quality not mentioned"
+        "WELL",
+        "MODERATE",
+        "POOR",
+        "NOT_MENTIONED"
       ],
       "title": "DonorHlaMatchQuality",
       "type": "string"
@@ -14,13 +14,12 @@
       "description": "Human leukocyte antigen (HLA) match quality of the first renal transplant. If there is only one\ntransplant mentioned, assume that this is the first transplant.",
       "properties": {
         "has_mention": {
-          "default": false,
-          "description": "Whether there is any mention of this variable in the text.",
+          "description": "Indicates whether the concept was mentioned in the text.",
           "title": "Has Mention",
           "type": "boolean"
         },
         "spans": {
-          "description": "The text spans where this variable is mentioned.",
+          "description": "The verbatim text where this concept was mentioned.",
           "items": {
             "type": "string"
           },
@@ -29,23 +28,28 @@
         },
         "donor_hla_match_quality": {
           "$ref": "#/$defs/DonorHlaMatchQuality",
-          "default": "HLA match quality not mentioned",
-          "description": "What was the HLA match quality for the first renal transplant?"
+          "default": "NOT_MENTIONED",
+          "description": "What was the HLA match quality for the first renal transplant? WELL: Well matched (0-1 mismatches) OR recipient explicitly documented as not sensitized; MODERATE: Moderately matched (2-4 mismatches) OR recipient explicitly documented as sensitized; POOR: Poorly matched (5-6 mismatches) OR recipient explicitly documented as highly sensitized; NOT_MENTIONED: HLA match quality not mentioned"
         }
       },
+      "required": [
+        "has_mention",
+        "spans"
+      ],
       "title": "DonorHlaMatchQualityMention",
       "type": "object"
     },
     "DonorHlaMismatchCount": {
+      "description": "Number of HLA mismatches between donor and recipient.",
       "enum": [
-        "0",
-        "1",
-        "2",
-        "3",
-        "4",
-        "5",
-        "6",
-        "HLA mismatch count not mentioned"
+        "ZERO",
+        "ONE",
+        "TWO",
+        "THREE",
+        "FOUR",
+        "FIVE",
+        "SIX",
+        "NOT_MENTIONED"
       ],
       "title": "DonorHlaMismatchCount",
       "type": "string"
@@ -54,13 +58,12 @@
       "description": "Human leukocyte antigen (HLA) mismatch count for the first renal transplant. If there is only\none transplant mentioned, assume that this is the first transplant.",
       "properties": {
         "has_mention": {
-          "default": false,
-          "description": "Whether there is any mention of this variable in the text.",
+          "description": "Indicates whether the concept was mentioned in the text.",
           "title": "Has Mention",
           "type": "boolean"
         },
         "spans": {
-          "description": "The text spans where this variable is mentioned.",
+          "description": "The verbatim text where this concept was mentioned.",
           "items": {
             "type": "string"
           },
@@ -69,18 +72,22 @@
         },
         "donor_hla_mismatch_count": {
           "$ref": "#/$defs/DonorHlaMismatchCount",
-          "default": "HLA mismatch count not mentioned",
-          "description": "What was the donor-recipient HLA mismatch count for the first renal transplant?"
+          "default": "NOT_MENTIONED",
+          "description": "What was the donor-recipient HLA mismatch count for the first renal transplant? ZERO: 0 mismatches; ONE: 1 mismatch; TWO: 2 mismatches; THREE: 3 mismatches; FOUR: 4 mismatches; FIVE: 5 mismatches; SIX: 6 mismatches; NOT_MENTIONED: HLA mismatch count not mentioned"
         }
       },
+      "required": [
+        "has_mention",
+        "spans"
+      ],
       "title": "DonorHlaMismatchCountMention",
       "type": "object"
     },
     "DonorRelationship": {
       "enum": [
-        "Donor was biologically related to the renal transplant recipient",
-        "Donor was biologically unrelated to the renal transplant recipient",
-        "Donor relationship status was not mentioned"
+        "RELATED",
+        "UNRELATED",
+        "NOT_MENTIONED"
       ],
       "title": "DonorRelationship",
       "type": "string"
@@ -89,13 +96,12 @@
       "description": "Relatedness of the donor and recipient in the first renal transplant. If there is only one\ntransplant mentioned, assume that this is the first transplant. Exclude donors that are only\nhypothetical or under evaluation/assessment.",
       "properties": {
         "has_mention": {
-          "default": false,
-          "description": "Whether there is any mention of this variable in the text.",
+          "description": "Indicates whether the concept was mentioned in the text.",
           "title": "Has Mention",
           "type": "boolean"
         },
         "spans": {
-          "description": "The text spans where this variable is mentioned.",
+          "description": "The verbatim text where this concept was mentioned.",
           "items": {
             "type": "string"
           },
@@ -104,10 +110,14 @@
         },
         "donor_relationship": {
           "$ref": "#/$defs/DonorRelationship",
-          "default": "Donor relationship status was not mentioned",
-          "description": "Was the first renal transplant donor biologically related to the recipient?"
+          "default": "NOT_MENTIONED",
+          "description": "Was the first renal transplant donor biologically related to the recipient? RELATED: Donor was biologically related to the renal transplant recipient; UNRELATED: Donor was biologically unrelated to the renal transplant recipient; NOT_MENTIONED: Donor relationship status was not mentioned"
         }
       },
+      "required": [
+        "has_mention",
+        "spans"
+      ],
       "title": "DonorRelationshipMention",
       "type": "object"
     },
@@ -115,13 +125,12 @@
       "description": "Date of the first renal transplant. If there is only one transplant mentioned,\nassume that this is the first transplant. If a POD (post-operative day) is mentioned,\nuse that to infer the date.",
       "properties": {
         "has_mention": {
-          "default": false,
-          "description": "Whether there is any mention of this variable in the text.",
+          "description": "Indicates whether the concept was mentioned in the text.",
           "title": "Has Mention",
           "type": "boolean"
         },
         "spans": {
-          "description": "The text spans where this variable is mentioned.",
+          "description": "The verbatim text where this concept was mentioned.",
           "items": {
             "type": "string"
           },
@@ -142,14 +151,18 @@
           "title": "Donor Transplant Date"
         }
       },
+      "required": [
+        "has_mention",
+        "spans"
+      ],
       "title": "DonorTransplantDateMention",
       "type": "object"
     },
     "DonorType": {
       "enum": [
-        "Donor was alive at time of renal transplant",
-        "Donor was deceased at time of renal transplant",
-        "Donor was not mentioned as living or deceased"
+        "LIVING",
+        "DECEASED",
+        "NOT_MENTIONED"
       ],
       "title": "DonorType",
       "type": "string"
@@ -158,13 +171,12 @@
       "description": "Type of donor in the first renal transplant. If there is only one transplant\nmentioned, assume that this is the first transplant. Exclude donors that are only\nhypothetical or under evaluation/assessment.",
       "properties": {
         "has_mention": {
-          "default": false,
-          "description": "Whether there is any mention of this variable in the text.",
+          "description": "Indicates whether the concept was mentioned in the text.",
           "title": "Has Mention",
           "type": "boolean"
         },
         "spans": {
-          "description": "The text spans where this variable is mentioned.",
+          "description": "The verbatim text where this concept was mentioned.",
           "items": {
             "type": "string"
           },
@@ -173,15 +185,19 @@
         },
         "donor_type": {
           "$ref": "#/$defs/DonorType",
-          "default": "Donor was not mentioned as living or deceased",
-          "description": "Was the first renal donor living at the time of renal transplant?"
+          "default": "NOT_MENTIONED",
+          "description": "Was the first renal donor living at the time of renal transplant? LIVING: Donor was alive at time of renal transplant; DECEASED: Donor was deceased at time of renal transplant; NOT_MENTIONED: Donor was not mentioned as living or deceased"
         }
       },
+      "required": [
+        "has_mention",
+        "spans"
+      ],
       "title": "DonorTypeMention",
       "type": "object"
     },
     "Serostatus": {
-      "description": "Serostatus classification based on IgG serology or explicit seropositive/seronegative statements.\n- SEROPOSITIVE: Documented IgG positive / seropositive\n- SERONEGATIVE: Documented IgG negative / seronegative\n- NOT_MENTIONED: No serostatus documentation found",
+      "description": "Serostatus classification based on IgG serology or explicit seropositive/seronegative statements.",
       "enum": [
         "SEROPOSITIVE",
         "SERONEGATIVE",
@@ -194,13 +210,12 @@
       "description": "CMV serostatus of the donor at the time of first renal transplant.",
       "properties": {
         "has_mention": {
-          "default": false,
-          "description": "Whether there is any mention of this variable in the text.",
+          "description": "Indicates whether the concept was mentioned in the text.",
           "title": "Has Mention",
           "type": "boolean"
         },
         "spans": {
-          "description": "The text spans where this variable is mentioned.",
+          "description": "The verbatim text where this concept was mentioned.",
           "items": {
             "type": "string"
           },
@@ -210,9 +225,13 @@
         "serostatus": {
           "$ref": "#/$defs/Serostatus",
           "default": "NOT_MENTIONED",
-          "description": "CMV serostatus of the renal donor. Choose one of: 'SEROPOSITIVE', 'SERONEGATIVE', 'NOT_MENTIONED'. Look for patterns like 'CMV D+', 'CMV D-', 'donor CMV IgG positive', 'donor CMV IgG negative', etc."
+          "description": "CMV serostatus of the renal donor. Choose one of: 'SEROPOSITIVE', 'SERONEGATIVE', 'NOT_MENTIONED'. SEROPOSITIVE: Documented IgG positive / seropositiveSERONEGATIVE: Documented IgG negative / seronegativeNOT_MENTIONED: No serostatus documentation foundLook for patterns like 'CMV D+', 'CMV D-', 'donor CMV IgG positive', 'donor CMV IgG negative', etc."
         }
       },
+      "required": [
+        "has_mention",
+        "spans"
+      ],
       "title": "SerostatusDonorCMVMention",
       "type": "object"
     },
@@ -220,13 +239,12 @@
       "description": "EBV serostatus of the donor at the time of first renal transplant.",
       "properties": {
         "has_mention": {
-          "default": false,
-          "description": "Whether there is any mention of this variable in the text.",
+          "description": "Indicates whether the concept was mentioned in the text.",
           "title": "Has Mention",
           "type": "boolean"
         },
         "spans": {
-          "description": "The text spans where this variable is mentioned.",
+          "description": "The verbatim text where this concept was mentioned.",
           "items": {
             "type": "string"
           },
@@ -236,9 +254,13 @@
         "serostatus": {
           "$ref": "#/$defs/Serostatus",
           "default": "NOT_MENTIONED",
-          "description": "EBV serostatus of the renal donor. Choose one of: 'SEROPOSITIVE', 'SERONEGATIVE', 'NOT_MENTIONED'. Look for patterns like 'EBV D+', 'EBV D-', 'donor EBV IgG positive', 'donor EBV IgG negative', etc."
+          "description": "EBV serostatus of the renal donor. Choose one of: 'SEROPOSITIVE', 'SERONEGATIVE', 'NOT_MENTIONED'. SEROPOSITIVE: Documented IgG positive / seropositiveSERONEGATIVE: Documented IgG negative / seronegativeNOT_MENTIONED: No serostatus documentation foundLook for patterns like 'EBV D+', 'EBV D-', 'donor EBV IgG positive', 'donor EBV IgG negative', etc."
         }
       },
+      "required": [
+        "has_mention",
+        "spans"
+      ],
       "title": "SerostatusDonorEBVMention",
       "type": "object"
     },
@@ -246,13 +268,12 @@
       "description": "Overall serostatus of the donor at the time of first renal transplant.",
       "properties": {
         "has_mention": {
-          "default": false,
-          "description": "Whether there is any mention of this variable in the text.",
+          "description": "Indicates whether the concept was mentioned in the text.",
           "title": "Has Mention",
           "type": "boolean"
         },
         "spans": {
-          "description": "The text spans where this variable is mentioned.",
+          "description": "The verbatim text where this concept was mentioned.",
           "items": {
             "type": "string"
           },
@@ -262,9 +283,13 @@
         "serostatus": {
           "$ref": "#/$defs/Serostatus",
           "default": "NOT_MENTIONED",
-          "description": "Overall serostatus of the renal donor for ANY virus. Set SEROPOSITIVE if the note documents the donor as seropositive for ANY virus (including CMV, EBV, HBV, HCV, HSV, VZV, or an unspecified virus), or uses generic language such as 'donor is seropositive' without naming the virus. Set SERONEGATIVE only if it explicitly states the donor was seronegative for all IgG tests. Otherwise use NOT_MENTIONED."
+          "description": "Overall serostatus of the renal donor for ANY virus. SEROPOSITIVE: Documented IgG positive / seropositiveSERONEGATIVE: Documented IgG negative / seronegativeNOT_MENTIONED: No serostatus documentation foundSet SEROPOSITIVE if the note documents the donor as seropositive for ANY virus (including CMV, EBV, HBV, HCV, HSV, VZV, or an unspecified virus), or uses generic language such as 'donor is seropositive' without naming the virus. Set SERONEGATIVE only if it explicitly states the donor was seronegative for all IgG tests. Otherwise use NOT_MENTIONED."
         }
       },
+      "required": [
+        "has_mention",
+        "spans"
+      ],
       "title": "SerostatusDonorMention",
       "type": "object"
     },
@@ -272,13 +297,12 @@
       "description": "CMV serostatus of the recipient at the time of first renal transplant.",
       "properties": {
         "has_mention": {
-          "default": false,
-          "description": "Whether there is any mention of this variable in the text.",
+          "description": "Indicates whether the concept was mentioned in the text.",
           "title": "Has Mention",
           "type": "boolean"
         },
         "spans": {
-          "description": "The text spans where this variable is mentioned.",
+          "description": "The verbatim text where this concept was mentioned.",
           "items": {
             "type": "string"
           },
@@ -288,9 +312,13 @@
         "serostatus": {
           "$ref": "#/$defs/Serostatus",
           "default": "NOT_MENTIONED",
-          "description": "CMV serostatus of the recipient at the time of renal transplant. Choose one of: 'SEROPOSITIVE', 'SERONEGATIVE', 'NOT_MENTIONED'. Look for patterns like 'CMV R+', 'CMV R-', 'recipient CMV IgG positive', 'recipient CMV IgG negative', etc."
+          "description": "CMV serostatus of the recipient at the time of renal transplant. SEROPOSITIVE: Documented IgG positive / seropositiveSERONEGATIVE: Documented IgG negative / seronegativeNOT_MENTIONED: No serostatus documentation foundChoose one of: 'SEROPOSITIVE', 'SERONEGATIVE', 'NOT_MENTIONED'. Look for patterns like 'CMV R+', 'CMV R-', 'recipient CMV IgG positive', 'recipient CMV IgG negative', etc."
         }
       },
+      "required": [
+        "has_mention",
+        "spans"
+      ],
       "title": "SerostatusRecipientCMVMention",
       "type": "object"
     },
@@ -298,13 +326,12 @@
       "description": "EBV serostatus of the recipient at the time of first renal transplant.",
       "properties": {
         "has_mention": {
-          "default": false,
-          "description": "Whether there is any mention of this variable in the text.",
+          "description": "Indicates whether the concept was mentioned in the text.",
           "title": "Has Mention",
           "type": "boolean"
         },
         "spans": {
-          "description": "The text spans where this variable is mentioned.",
+          "description": "The verbatim text where this concept was mentioned.",
           "items": {
             "type": "string"
           },
@@ -314,9 +341,13 @@
         "serostatus": {
           "$ref": "#/$defs/Serostatus",
           "default": "NOT_MENTIONED",
-          "description": "EBV serostatus of the recipient at the time of renal transplant. Choose one of: 'SEROPOSITIVE', 'SERONEGATIVE', 'NOT_MENTIONED'. Look for patterns like 'EBV R+', 'EBV R-', 'recipient EBV IgG positive', 'recipient EBV IgG negative', etc."
+          "description": "EBV serostatus of the recipient at the time of renal transplant. SEROPOSITIVE: Documented IgG positive / seropositiveSERONEGATIVE: Documented IgG negative / seronegativeNOT_MENTIONED: No serostatus documentation foundChoose one of: 'SEROPOSITIVE', 'SERONEGATIVE', 'NOT_MENTIONED'. Look for patterns like 'EBV R+', 'EBV R-', 'recipient EBV IgG positive', 'recipient EBV IgG negative', etc."
         }
       },
+      "required": [
+        "has_mention",
+        "spans"
+      ],
       "title": "SerostatusRecipientEBVMention",
       "type": "object"
     },
@@ -324,13 +355,12 @@
       "description": "Overall serostatus of the recipient at the time of first renal transplant.",
       "properties": {
         "has_mention": {
-          "default": false,
-          "description": "Whether there is any mention of this variable in the text.",
+          "description": "Indicates whether the concept was mentioned in the text.",
           "title": "Has Mention",
           "type": "boolean"
         },
         "spans": {
-          "description": "The text spans where this variable is mentioned.",
+          "description": "The verbatim text where this concept was mentioned.",
           "items": {
             "type": "string"
           },
@@ -340,9 +370,13 @@
         "serostatus": {
           "$ref": "#/$defs/Serostatus",
           "default": "NOT_MENTIONED",
-          "description": "Serostatus of the recipient at the time of renal transplant for ANY virus. Set SEROPOSITIVE if the note documents the recipient as seropositive for ANY virus (including CMV, EBV, HBV, HCV, HSV, VZV, or an unspecified virus), or if the text states 'recipient is seropositive' without naming the virus. Set SERONEGATIVE only if explicitly stated the recipient was seronegative. Otherwise use NOT_MENTIONED."
+          "description": "Serostatus of the recipient at the time of renal transplant for ANY virus. SEROPOSITIVE: Documented IgG positive / seropositiveSERONEGATIVE: Documented IgG negative / seronegativeNOT_MENTIONED: No serostatus documentation foundSet SEROPOSITIVE if the note documents the recipient as seropositive for ANY virus (including CMV, EBV, HBV, HCV, HSV, VZV, or an unspecified virus), or if the text states 'recipient is seropositive' without naming the virus. Set SERONEGATIVE only if explicitly stated the recipient was seronegative. Otherwise use NOT_MENTIONED."
         }
       },
+      "required": [
+        "has_mention",
+        "spans"
+      ],
       "title": "SerostatusRecipientMention",
       "type": "object"
     }
