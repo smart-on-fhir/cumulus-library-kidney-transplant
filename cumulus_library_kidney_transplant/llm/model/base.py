@@ -2,12 +2,21 @@ from enum import StrEnum
 from pydantic import BaseModel, Field
 
 class SpanAugmentedMention(BaseModel):
+    """
+    A mention of a particular concept in the text, augmented with the character spans 
+    where the mention was found.
+    This allows for validation of LLM-generated findings, as well as the ability to link
+    mentions back to the original text for review and auditing purposes.
+    """
     has_mention: bool = Field(
-        False, description="Whether there is any mention of this variable in the text."
-    )
+        ...,
+        description='Indicates whether the concept was mentioned in the text.'
+    )   
     spans: list[str] = Field(
-        default_factory=list, description="The text spans where this variable is mentioned."
+        ...,
+        description='The verbatim text where this concept was mentioned.'
     )
+
 
 ##########################################################
 #
