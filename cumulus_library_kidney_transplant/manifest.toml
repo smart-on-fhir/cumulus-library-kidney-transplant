@@ -24,6 +24,12 @@ files = ['casedef.toml']
 type = "submanifest"
 files = ['sample.toml']
 
+[[stages.nlp_casedef_peri_tasks]]
+files = ['nlp_casedef_peri_tasks.toml']
+
+[[stages.nlp_casedef_post_tasks]]
+files = ['nlp_casedef_post_tasks.toml']
+
 [[stages.cube]]
 type = "submanifest"
 files = ['cube.toml']
