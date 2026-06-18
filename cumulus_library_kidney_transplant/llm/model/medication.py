@@ -11,22 +11,21 @@ from cumulus_library_kidney_transplant.llm.model.base import MedicationMention
 #           Immunosuppression ** DRUG CLASS **
 #
 ##########################################################
+
+# ANTIMET: Anti-Metabolite (e.g., azathioprine, mycophenolate)
+# CNI: Calcineurin Inhibitor (e.g., tacrolimus, cyclosporine)
+# STEROID: Corticosteroid (e.g., prednisone, methylprednisolone)
+# MTOR: mTOR Inhibitor (e.g., sirolimus, everolimus)
+# COSTIM: Costimulation Blocker/blockade (e.g., belatacept)
+# IVIG: Immunoglobulin (e.g., IVIG, Cytogam)
+# POLYCLONAL: Polyclonal antibody (e.g., ATG, ALG)
+# MONOCLONAL: Monoclonal antibody (mAb, e.g., basiliximab, rituximab)
+# OTHER: Other immunosuppressive drug
+# NONE: None of the above
 class RxClassImmunosuppression(StrEnum):
     """
     Immunosuppressive drug class or therapy modality.
-
-    ANTIMET: Anti-Metabolite (e.g., azathioprine, mycophenolate)
-    CNI: Calcineurin Inhibitor (e.g., tacrolimus, cyclosporine)
-    STEROID: Corticosteroid (e.g., prednisone, methylprednisolone)
-    MTOR: mTOR Inhibitor (e.g., sirolimus, everolimus)
-    COSTIM: Costimulation Blocker/blockade (e.g., belatacept)
-    IVIG: Immunoglobulin (e.g., IVIG, Cytogam)
-    POLYCLONAL: Polyclonal antibody (e.g., ATG, ALG)
-    MONOCLONAL: Monoclonal antibody (mAb, e.g., basiliximab, rituximab)
-    OTHER: Other immunosuppressive drug
-    NONE: None of the above
     """
-
     ANTIMET = "ANTIMET"
     CNI = "CNI"
     STEROID = "STEROID"
@@ -39,19 +38,19 @@ class RxClassImmunosuppression(StrEnum):
     NONE = "NONE"
 
 
+
+# ANTIMET group: AZA=Azathioprine, MMF=Mycophenolate Mofetil, ANTIMET_OTHER=Other anti-metabolite
+# CNI group: CYA=Cyclosporine, TAC=Tacrolimus, CNI_OTHER=Other calcineurin inhibitor
+# STEROID group: MEDROL=Methylprednisolone, PDL=Prednisolone, PRED=Prednisone, STEROID_OTHER=Other corticosteroid
+# COSTIM group: BEL=Belatacept, ABA=Abatacept, COSTIM_OTHER=Other costimulation blocker
+# IVIG group: IVIG=Intravenous Immunoglobulin, CYTOGAM=Cytogam (CMV-specific hyperimmune globulin), IVIG_OTHER=Other immunoglobulin
+# MTOR group: EVE=Everolimus, SRL=Sirolimus, MTOR_OTHER=Other mTOR inhibitor
+# MONOCLONAL group: ALEM=Alemtuzumab, BASI=Basiliximab, DAC=Daclizumab, RTX=Rituximab, MONOCLONAL_OTHER=Other monoclonal antibody
+# POLYCLONAL group: ATG=Antithymocyte Globulin, POLYCLONAL_OTHER=Other polyclonal antibody
+# NONE: None of the above
 class RxIngredientImmunosuppression(StrEnum):
     """
     The specific immunosuppressive drug ingredient.
-
-    ANTIMET group: AZA=Azathioprine, MMF=Mycophenolate Mofetil, ANTIMET_OTHER=Other anti-metabolite
-    CNI group: CYA=Cyclosporine, TAC=Tacrolimus, CNI_OTHER=Other calcineurin inhibitor
-    STEROID group: MEDROL=Methylprednisolone, PDL=Prednisolone, PRED=Prednisone, STEROID_OTHER=Other corticosteroid
-    COSTIM group: BEL=Belatacept, ABA=Abatacept, COSTIM_OTHER=Other costimulation blocker
-    IVIG group: IVIG=Intravenous Immunoglobulin, CYTOGAM=Cytogam (CMV-specific hyperimmune globulin), IVIG_OTHER=Other immunoglobulin
-    MTOR group: EVE=Everolimus, SRL=Sirolimus, MTOR_OTHER=Other mTOR inhibitor
-    MONOCLONAL group: ALEM=Alemtuzumab, BASI=Basiliximab, DAC=Daclizumab, RTX=Rituximab, MONOCLONAL_OTHER=Other monoclonal antibody
-    POLYCLONAL group: ATG=Antithymocyte Globulin, POLYCLONAL_OTHER=Other polyclonal antibody
-    NONE: None of the above
     """
 
     # ANTIMET Types

@@ -12,15 +12,13 @@ from cumulus_library_kidney_transplant.llm.model.base import SpanAugmentedMentio
 # For a given transplant, these should be static over time
 ###############################################################################
 
-
+# SEROPOSITIVE: Documented IgG positive / seropositive
+# SERONEGATIVE: Documented IgG negative / seronegative
+# NOT_MENTIONED: No serostatus documentation found
 class Serostatus(StrEnum):
     """
     Serostatus classification based on IgG serology or explicit seropositive/seronegative statements.
-    - SEROPOSITIVE: Documented IgG positive / seropositive
-    - SERONEGATIVE: Documented IgG negative / seronegative
-    - NOT_MENTIONED: No serostatus documentation found
     """
-
     SEROPOSITIVE = "SEROPOSITIVE"
     SERONEGATIVE = "SERONEGATIVE"
     NOT_MENTIONED = "NOT_MENTIONED"
@@ -30,11 +28,13 @@ class SerostatusDonorMention(SpanAugmentedMention):
     """
     Overall serostatus of the donor at the time of first renal transplant.
     """
-
     serostatus: Serostatus = Field(
         Serostatus.NOT_MENTIONED,
         description=(
             "Overall serostatus of the renal donor for ANY virus. "
+            "SEROPOSITIVE: Documented IgG positive / seropositive"
+            "SERONEGATIVE: Documented IgG negative / seronegative"
+            "NOT_MENTIONED: No serostatus documentation found"
             "Set SEROPOSITIVE if the note documents the donor as seropositive for "
             "ANY virus (including CMV, EBV, HBV, HCV, HSV, VZV, or an unspecified virus), "
             "or uses generic language such as 'donor is seropositive' without naming the virus. "
@@ -48,11 +48,13 @@ class SerostatusDonorCMVMention(SpanAugmentedMention):
     """
     CMV serostatus of the donor at the time of first renal transplant.
     """
-
     serostatus: Serostatus = Field(
         Serostatus.NOT_MENTIONED,
         description=(
             "CMV serostatus of the renal donor. Choose one of: 'SEROPOSITIVE', 'SERONEGATIVE', 'NOT_MENTIONED'. "
+            "SEROPOSITIVE: Documented IgG positive / seropositive"
+            "SERONEGATIVE: Documented IgG negative / seronegative"
+            "NOT_MENTIONED: No serostatus documentation found"
             "Look for patterns like 'CMV D+', 'CMV D-', 'donor CMV IgG positive', 'donor CMV IgG negative', etc."
         ),
     )
@@ -62,11 +64,13 @@ class SerostatusDonorEBVMention(SpanAugmentedMention):
     """
     EBV serostatus of the donor at the time of first renal transplant.
     """
-
     serostatus: Serostatus = Field(
         Serostatus.NOT_MENTIONED,
         description=(
             "EBV serostatus of the renal donor. Choose one of: 'SEROPOSITIVE', 'SERONEGATIVE', 'NOT_MENTIONED'. "
+            "SEROPOSITIVE: Documented IgG positive / seropositive"
+            "SERONEGATIVE: Documented IgG negative / seronegative"
+            "NOT_MENTIONED: No serostatus documentation found"
             "Look for patterns like 'EBV D+', 'EBV D-', 'donor EBV IgG positive', 'donor EBV IgG negative', etc."
         ),
     )
@@ -76,11 +80,13 @@ class SerostatusRecipientMention(SpanAugmentedMention):
     """
     Overall serostatus of the recipient at the time of first renal transplant.
     """
-
     serostatus: Serostatus = Field(
         Serostatus.NOT_MENTIONED,
         description=(
             "Serostatus of the recipient at the time of renal transplant for ANY virus. "
+            "SEROPOSITIVE: Documented IgG positive / seropositive"
+            "SERONEGATIVE: Documented IgG negative / seronegative"
+            "NOT_MENTIONED: No serostatus documentation found"
             "Set SEROPOSITIVE if the note documents the recipient as seropositive for "
             "ANY virus (including CMV, EBV, HBV, HCV, HSV, VZV, or an unspecified virus), "
             "or if the text states 'recipient is seropositive' without naming the virus. "
@@ -94,11 +100,13 @@ class SerostatusRecipientCMVMention(SpanAugmentedMention):
     """
     CMV serostatus of the recipient at the time of first renal transplant.
     """
-
     serostatus: Serostatus = Field(
         Serostatus.NOT_MENTIONED,
         description=(
             "CMV serostatus of the recipient at the time of renal transplant. "
+            "SEROPOSITIVE: Documented IgG positive / seropositive"
+            "SERONEGATIVE: Documented IgG negative / seronegative"
+            "NOT_MENTIONED: No serostatus documentation found"
             "Choose one of: 'SEROPOSITIVE', 'SERONEGATIVE', 'NOT_MENTIONED'. "
             "Look for patterns like 'CMV R+', 'CMV R-', 'recipient CMV IgG positive', 'recipient CMV IgG negative', etc."
         ),
@@ -109,11 +117,13 @@ class SerostatusRecipientEBVMention(SpanAugmentedMention):
     """
     EBV serostatus of the recipient at the time of first renal transplant.
     """
-
     serostatus: Serostatus = Field(
         Serostatus.NOT_MENTIONED,
         description=(
             "EBV serostatus of the recipient at the time of renal transplant. "
+            "SEROPOSITIVE: Documented IgG positive / seropositive"
+            "SERONEGATIVE: Documented IgG negative / seronegative"
+            "NOT_MENTIONED: No serostatus documentation found"
             "Choose one of: 'SEROPOSITIVE', 'SERONEGATIVE', 'NOT_MENTIONED'. "
             "Look for patterns like 'EBV R+', 'EBV R-', 'recipient EBV IgG positive', 'recipient EBV IgG negative', etc."
         ),
@@ -134,13 +144,10 @@ class DonorTransplantDateMention(SpanAugmentedMention):
     )
 
 
+# LIVING: Donor was alive at time of renal transplant
+# DECEASED: Donor was deceased at time of renal transplant
+# NOT_MENTIONED: Donor was not mentioned as living or deceased
 class DonorType(StrEnum):
-    """
-    LIVING: Donor was alive at time of renal transplant
-    DECEASED: Donor was deceased at time of renal transplant
-    NOT_MENTIONED: Donor was not mentioned as living or deceased
-    """
-
     LIVING = "LIVING"
     DECEASED = "DECEASED"
     NOT_MENTIONED = "NOT_MENTIONED"
@@ -163,14 +170,10 @@ class DonorTypeMention(SpanAugmentedMention):
         ),
     )
 
-
+# RELATED: Donor was biologically related to the renal transplant recipient
+# UNRELATED: Donor was biologically unrelated to the renal transplant recipient
+# NOT_MENTIONED: Donor relationship status was not mentioned
 class DonorRelationship(StrEnum):
-    """
-    RELATED: Donor was biologically related to the renal transplant recipient
-    UNRELATED: Donor was biologically unrelated to the renal transplant recipient
-    NOT_MENTIONED: Donor relationship status was not mentioned
-    """
-
     RELATED = "RELATED"
     UNRELATED = "UNRELATED"
     NOT_MENTIONED = "NOT_MENTIONED"
@@ -194,14 +197,11 @@ class DonorRelationshipMention(SpanAugmentedMention):
     )
 
 
+# WELL: Well matched (0-1 mismatches) OR recipient explicitly documented as not sensitized
+# MODERATE: Moderately matched (2-4 mismatches) OR recipient explicitly documented as sensitized
+# POOR: Poorly matched (5-6 mismatches) OR recipient explicitly documented as highly sensitized
+# NOT_MENTIONED: HLA match quality not mentioned
 class DonorHlaMatchQuality(StrEnum):
-    """
-    WELL: Well matched (0-1 mismatches) OR recipient explicitly documented as not sensitized
-    MODERATE: Moderately matched (2-4 mismatches) OR recipient explicitly documented as sensitized
-    POOR: Poorly matched (5-6 mismatches) OR recipient explicitly documented as highly sensitized
-    NOT_MENTIONED: HLA match quality not mentioned
-    """
-
     WELL = "WELL"
     MODERATE = "MODERATE"
     POOR = "POOR"
@@ -226,18 +226,18 @@ class DonorHlaMatchQualityMention(SpanAugmentedMention):
     )
 
 
+
+# ZERO: 0 mismatches
+# ONE: 1 mismatch
+# TWO: 2 mismatches
+# THREE: 3 mismatches
+# FOUR: 4 mismatches
+# FIVE: 5 mismatches
+# SIX: 6 mismatches
+# NOT_MENTIONED: HLA mismatch count not mentioned
 class DonorHlaMismatchCount(StrEnum):
     """
     Number of HLA mismatches between donor and recipient.
-
-    ZERO: 0 mismatches
-    ONE: 1 mismatch
-    TWO: 2 mismatches
-    THREE: 3 mismatches
-    FOUR: 4 mismatches
-    FIVE: 5 mismatches
-    SIX: 6 mismatches
-    NOT_MENTIONED: HLA mismatch count not mentioned
     """
 
     ZERO = "ZERO"

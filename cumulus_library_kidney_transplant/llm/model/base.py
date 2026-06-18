@@ -28,24 +28,21 @@ class SpanAugmentedMention(BaseModel):
 # Timing related to MedicationRequest.frequency
 
 
+# QD: once daily (1x/day)
+# BID: twice daily (2x/day)
+# TID: three times daily (3x/day)
+# QID: four times daily (4x/day)
+# QOD: every other day (1/2x/day)
+# Q6H: every 6 hours (4x/day)
+# Q8H: every 8 hours (3x/day)
+# Q12H: every 12 hours (2x/day)
+# WEEKLY: once every 7 days
+# Q2W: once every 2 weeks (14 days)
+# Q4W: once every 4 weeks (28 days)
+# MONTHLY: once every 4 weeks (28 days)
+# OTHER: use timing_text for non-standard frequency
+# NONE_OF_THE_ABOVE: None of the above
 class RxFrequency(StrEnum):
-    """
-    QD: once daily (1x/day)
-    BID: twice daily (2x/day)
-    TID: three times daily (3x/day)
-    QID: four times daily (4x/day)
-    QOD: every other day (1/2x/day)
-    Q6H: every 6 hours (4x/day)
-    Q8H: every 8 hours (3x/day)
-    Q12H: every 12 hours (2x/day)
-    WEEKLY: once every 7 days
-    Q2W: once every 2 weeks (14 days)
-    Q4W: once every 4 weeks (28 days)
-    MONTHLY: once every 4 weeks (28 days)
-    OTHER: use timing_text for non-standard frequency
-    NONE_OF_THE_ABOVE: None of the above
-    """
-
     QD = "QD"
     BID = "BID"
     TID = "TID"
@@ -66,19 +63,19 @@ class RxFrequency(StrEnum):
 # MedicationRequest.status
 
 
+
+# ACTIVE: Medication order is active (currently prescribed and intended for ongoing use).
+# INTENDED: Medication is planned/ordered/prescribed but therapy has not yet started.
+# COMPLETED: Medication course is finished (all doses given or intended duration completed).
+# STOPPED: Medication was stopped or permanently discontinued before completion.
+# CANCELED: Medication order was canceled/withdrawn before any doses were administered.
+# ON_HOLD: Medication is temporarily paused (on-hold, suspended, or interrupted).
+# NONE_OF_THE_ABOVE: None of the above
 class RxStatus(StrEnum):
     """
     Medication Status (including Intent because chart review is NOT always identical to Med Request)
     https://build.fhir.org/valueset-medicationrequest-status.html
     https://build.fhir.org/valueset-medicationrequest-intent.html
-
-    ACTIVE: Medication order is active (currently prescribed and intended for ongoing use).
-    INTENDED: Medication is planned/ordered/prescribed but therapy has not yet started.
-    COMPLETED: Medication course is finished (all doses given or intended duration completed).
-    STOPPED: Medication was stopped or permanently discontinued before completion.
-    CANCELED: Medication order was canceled/withdrawn before any doses were administered.
-    ON_HOLD: Medication is temporarily paused (on-hold, suspended, or interrupted).
-    NONE_OF_THE_ABOVE: None of the above
     """
 
     ACTIVE = "ACTIVE"
@@ -94,14 +91,13 @@ class RxStatus(StrEnum):
 # MedicationRequest.category
 
 
+# INPATIENT: Medication ordered/administered during an inpatient/acute care setting
+# OUTPATIENT: Medication ordered/administered during an outpatient setting
+# COMMUNITY: Medication ordered/consumed by the patient in their home (including long term care, nursing homes, etc)
+# NONE_OF_THE_ABOVE: None of the above
 class RxCategory(StrEnum):
     """
     https://build.fhir.org/valueset-medicationrequest-admin-location.html
-
-    INPATIENT: Medication ordered/administered during an inpatient/acute care setting
-    OUTPATIENT: Medication ordered/administered during an outpatient setting
-    COMMUNITY: Medication ordered/consumed by the patient in their home (including long term care, nursing homes, etc)
-    NONE_OF_THE_ABOVE: None of the above
     """
 
     INPATIENT = "INPATIENT"
@@ -114,6 +110,12 @@ class RxCategory(StrEnum):
 # MedicationRequest.route
 
 
+# PO: Oral (includes swallowed and sublingual routes)
+# NG: Nasogastric/Feeding tube (NG/PEG)
+# INJECTION: Injection (IV, SC, or IM)
+# INHALATION: Inhalation (respiratory route)
+# TOPICAL: Topical (skin or mucosal surface)
+# NONE_OF_THE_ABOVE: None of the above
 class RxRoute(StrEnum):
     """
     Route of Administration can "help" (but not deterministic) for drug metadata, examples
@@ -121,13 +123,6 @@ class RxRoute(StrEnum):
     * Topical --> skin lesions
     * Inhalation --> Steroid
     https://build.fhir.org/valueset-route-codes.html
-
-    PO: Oral (includes swallowed and sublingual routes)
-    NG: Nasogastric/Feeding tube (NG/PEG)
-    INJECTION: Injection (IV, SC, or IM)
-    INHALATION: Inhalation (respiratory route)
-    TOPICAL: Topical (skin or mucosal surface)
-    NONE_OF_THE_ABOVE: None of the above
     """
 
     PO = "PO"
@@ -170,17 +165,16 @@ class RxValidityPeriodMention(SpanAugmentedMention):
     )
 
 
+# Mass: MG=mg, G=g, UG=ug (microgram/mcg), KG=kg
+# Volume: ML=mL, L=L
+# International Units: U=U, IU=[iU]
+# Countable: TABLET={tablet}, CAPSULE={capsule}, PUFF={puff}, PATCH={patch}, SUPPOSITORY={suppository}
+# Ratios: MG_PER_ML=mg/mL, MG_PER_KG=mg/kg, U_PER_KG=U/kg, UG_PER_KG_PER_MIN=ug/kg/min
+# Time (infusion rates): H=h, MIN=min, D=d
+# NONE_OF_THE_ABOVE: None of the above
 class RxQuantityUnit(StrEnum):
     """
     UCUM unit codes for medication quantity.
-
-    Mass: MG=mg, G=g, UG=ug (microgram/mcg), KG=kg
-    Volume: ML=mL, L=L
-    International Units: U=U, IU=[iU]
-    Countable: TABLET={tablet}, CAPSULE={capsule}, PUFF={puff}, PATCH={patch}, SUPPOSITORY={suppository}
-    Ratios: MG_PER_ML=mg/mL, MG_PER_KG=mg/kg, U_PER_KG=U/kg, UG_PER_KG_PER_MIN=ug/kg/min
-    Time (infusion rates): H=h, MIN=min, D=d
-    NONE_OF_THE_ABOVE: None of the above
     """
 
     # Mass
@@ -247,16 +241,11 @@ class RxQuantity(SpanAugmentedMention):
 # Treatment Phase
 
 
+# INDUCTION: Induction therapy``
+# MAINTENANCE: Maintenance therapy
+# RESCUE: Rescue therapy
+# NONE_OF_THE_ABOVE: None of the above
 class TreatmentPhase(StrEnum):
-    """
-    Treatment Phase
-
-    INDUCTION: Induction therapy
-    MAINTENANCE: Maintenance therapy
-    RESCUE: Rescue therapy
-    NONE_OF_THE_ABOVE: None of the above
-    """
-
     INDUCTION = "INDUCTION"
     MAINTENANCE = "MAINTENANCE"
     RESCUE = "RESCUE"
