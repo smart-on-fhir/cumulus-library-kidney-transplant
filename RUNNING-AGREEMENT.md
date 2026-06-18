@@ -271,8 +271,8 @@ docker compose run --rm \
   --ls-token <PATH_TO_LS_TOKEN> \
   --athena-database <relevant_cumulus_library_database> \
   --athena-workgroup <relevant_cumulus_library_workgroup> \
-  --select-by-athena-table irae_donor_highlights \
-  --label-by-athena-table irae_donor_highlights
+  --select-by-athena-table irae__llm_donor_highlights \
+  --label-by-athena-table irae__llm_donor_highlights
 ```
 
 Once you've gone through, manually confirmed all the LLM predictions, exported the LabelStudio 
