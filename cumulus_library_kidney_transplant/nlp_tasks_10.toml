@@ -1,8 +1,8 @@
 [[actions]]
 description = "NLP on Peri notes"
-files = ['nlp_casedef_peri_10_tasks.workflow']
+files = ['nlp_casedef_peri_tasks_10.workflow']
 
 
 [[actions]]
 description = "NLP on Post notes"
-files = ['nlp_casedef_post_10_tasks.workflow']
+files = ['nlp_casedef_post_tasks_10.workflow']
