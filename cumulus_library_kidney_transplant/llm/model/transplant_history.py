@@ -1,5 +1,3 @@
-import json 
-import os
 from pydantic import BaseModel, Field
 
 from cumulus_library_kidney_transplant.llm.model.base import SpanAugmentedMention
