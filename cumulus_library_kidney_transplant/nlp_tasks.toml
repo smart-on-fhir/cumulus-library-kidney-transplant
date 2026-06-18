@@ -1,0 +1,8 @@
+[[actions]]
+description = "NLP on Peri notes"
+files = ['nlp_clinical_peri_tasks.workflow']
+
+
+[[actions]]
+description = "NLP on Post notes"
+files = ['nlp_clinical_post_tasks.workflow']

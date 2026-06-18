@@ -17,7 +17,7 @@ The guide's steps break down as follows:
 2. Sample from our cohort for 100 notes using Athena.
 3. Upload those notes to labelstudio projects for chart reviewers using `cumulus-etl upload-notes`.
 4. Have chart reviewers annotate those notes using labelstudio.
-5. Run Donor-task NLP for those 100 notes using `cumulus-etl nlp` and 
+5. Run Donor-task NLP for those 100 notes and 
    generate highlights for LS using `cumulus-library build`.
 6. Calculate agreement scores using `chart-review`.
 
@@ -28,8 +28,11 @@ The guide's steps break down as follows:
 - An existing Cumulus stack, with an already-built `core` study.
   - See the general [Cumulus documentation](https://docs.smarthealthit.org/cumulus/)
     for setting that up.
-- Familiarity with [creating new cumulus library studies](https://docs.smarthealthit.org/cumulus/library/creating-studies.html#creating-library-studies)
-- Familiarity with [running NLP workflows using cumulus etl](https://docs.smarthealthit.org/cumulus/etl/nlp/example.html)
+- Familiarity with 
+  [creating new cumulus library studies](https://docs.smarthealthit.org/cumulus/library/creating-studies.html#creating-library-studies)
+- Familiarity with 
+  [running NLP workflows using cumulus-library](https://docs.smarthealthit.org/cumulus/nlp/example.html/) 
+  See [here](https://docs.smarthealthit.org/cumulus/library/workflows/nlp.html#nlp) as well.
 - This module should be installed in the same python environment as the cumulus stack. This can 
   be done by running `pip install cumulus-library-kidney-transplant`, which will add 
   an `irae` target to `cumulus-library`.
@@ -50,7 +53,7 @@ cumulus-library build \
   -t irae 
 ```
 
-We will use the `irae__sample_casedef_index_100` tables we just created to sample for some notes of interest.
+We will use the `irae__sample_casedef_peri` tables we just created to sample for some notes of interest.
 
 
 ## 2 Sample and Unarchive Notes 
@@ -64,7 +67,7 @@ SELECT DISTINCT
 	encounter_ref,
 	documentreference_ref
 FROM 
-   irae__sample_casedef_index_100
+   irae__sample_casedef_peri
 ORDER BY
 	documentreference_ref
 LIMIT 100;
@@ -79,7 +82,7 @@ SELECT
 	subject_ref, 
 	encounter_ref, 
 	MAX(group_name) as group_name
-FROM irae__sample_casedef_index_100
+FROM irae__sample_casedef_peri
 GROUP BY 
 	documentreference_ref, 
 	subject_ref, 
@@ -144,37 +147,37 @@ is helpful for this annotation process.
 
 ## 5 Run Donor NLP Task
 
-In parallel to human annotation, we want to generate some LLM-based annotations for this task. 
-For the 100 notes previously idenfitied, run: 
+In parallel to human annotation, we want to generate some LLM-based annotations for this task.
+For the 100 notes previously identified, run the peri-operative NLP stage. This stage covers
+the donor task along with immunosuppressive medications and transplant history.
 
-```sh
-docker compose run --rm -it\
-  cumulus-etl nlp \
-  --task irae__nlp_donor_gpt_oss_120b_OR_WHATEVER_MODEL_YOU_ARE_USING \
-  <input folder with ndjson files from step 2 above> \
-  <your typical ETL PHI folder> \
-  <your typical ETL OUTPUT folder> \
-  --athena-database <relevant_cumulus_library_database> \
-  --athena-workgroup <relevant_cumulus_library_workgroup> 
-```
-
-Importantly: re-run your [Cumulus AWS Glue crawler](https://docs.smarthealthit.org/cumulus/etl/setup/#create-tables-with-glue) 
-at this point in order to pick up the newly created NLP table and it's schema. Note
-that if you run any new tasks or existing tasks against _new models_, you will 
-need to run this crawler again (though only for the first time).
-
-After you've run the task and rerun Glue crawlers, 
-we want to transform these LLM responses into a format that can be 
-used to populate a labelstudio project. We will do this 
-by using a specific builder identified in our kidney study. 
 
 ```sh
 cumulus-library build \
+  --target irae \
+  --stage nlp_clinical_peri_tasks \
   --database <relevant_cumulus_library_database> \
+  --region <relevant_aws_region> \
   --workgroup <relevant_cumulus_library_workgroup> \
-  --profile <relevant_cumulus_library_profile> \
-  -t irae \
-  --builder irae_donor_highlights
+  --note-dir <input folder with ndjson files from step 2 above> \
+  --etl-phi-dir <your typical ETL PHI folder> \
+  --nlp-model gpt-oss-120b_OR_WHATEVER_MODEL_YOU_ARE_USING \
+  --nlp-provider azure
+```
+
+After running the NLP stage, we want to transform these 
+LLM responses into a format that can be 
+used to populate a labelstudio project. We will do this 
+by using a specific builder identified in our kidney study.
+
+```sh
+cumulus-library build \
+  --target irae \
+  --stage nlp_post_processing \
+  --database <relevant_cumulus_library_database> \
+  --region <relevant_aws_region> \
+  --workgroup <relevant_cumulus_library_workgroup> \
+  --profile <relevant_cumulus_library_profile>
 ```
 
 This will produce a `irae__llm_donor_highlights` table for future use. Note that 

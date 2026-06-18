@@ -16,7 +16,10 @@ Note that these instructions only use the `irae__sample_casedef_*_10` sample of 
 created by the kidney study. Full runs of this work should reference the full set of notes, at 
 `irae__sample_casedef_*`.
 
-A reminder that PHI-free example notes and example LLM responses can be found in our [cumulus-kidney-transplant-examples](https://github.com/smart-on-fhir/cumulus-kidney-transplant-examples) repo. Specifically, LLM responses for our four tasks can be found under [/examples/fhir/llm-output](https://github.com/smart-on-fhir/cumulus-kidney-transplant-examples/tree/main/examples/fhir/llm-output)
+A reminder that PHI-free example notes and example LLM responses can be found in our 
+[cumulus-kidney-transplant-examples](https://github.com/smart-on-fhir/cumulus-kidney-transplant-examples) 
+repo. Specifically, LLM responses for our four tasks can be found under 
+[/examples/fhir/llm-output](https://github.com/smart-on-fhir/cumulus-kidney-transplant-examples/tree/main/examples/fhir/llm-output)
 
 ## Prerequisites
 
@@ -24,11 +27,14 @@ A reminder that PHI-free example notes and example LLM responses can be found in
   - See the general [Cumulus documentation](https://docs.smarthealthit.org/cumulus/)
     for setting that up.
 - Familiarity with [creating new cumulus library studies](https://docs.smarthealthit.org/cumulus/library/creating-studies.html#creating-library-studies)
-- Familiarity with [running NLP workflows using cumulus etl](https://docs.smarthealthit.org/cumulus/etl/nlp/example.html)
+- Familiarity with [running NLP workflows using cumulus-library](https://docs.smarthealthit.org/cumulus/nlp/example.html). 
+  See [here](https://docs.smarthealthit.org/cumulus/library/workflows/nlp.html#nlp) as well.
 - This module should be installed in the same python environment as the cumulus stack. This can 
   be done by running `pip install cumulus-library-kidney-transplant`, which will add an `irae` target 
   to `cumulus-library`. 
-- **Lastly, make sure that your cloud environment has been updated to use the [latest set of DeltaTables](https://github.com/smart-on-fhir/cumulus-etl/blob/main/docs/setup/cumulus-aws-template.yaml). To support these numerous new tasks, new tables have been introduced.**
+- **Lastly, make sure that your cloud environment has been updated to use the 
+  [latest set of DeltaTables](https://github.com/smart-on-fhir/cumulus-etl/blob/main/docs/setup/cumulus-aws-template.yaml). 
+  To support these numerous new tasks, new tables have been introduced.**
 
 ## 1. Run the ETL & Library study
 
@@ -37,10 +43,10 @@ study and [cumulus-library](https://docs.smarthealthit.org/cumulus/library/)
 like so: 
 ```sh
 cumulus-library build \
+  --target irae \
   --database <relevant_cumulus_library_database> \
   --workgroup <relevant_cumulus_library_workgroup> \
-  --profile <relevant_cumulus_library_profile> \
-  -t irae 
+  --profile <relevant_cumulus_library_profile>
 ```
 
 You should now have all the interesting results sitting in Athena, with the exception of 
@@ -50,7 +56,7 @@ building our study and defining our patient cohort.
 ## 2. Preparing our DocumentReferences 
 
 Our various NLP tasks will examine two sets of document references: 
-1. Peri-operative Notes (defined by `irae__sample_casedef_index_10`)
+1. Peri-operative Notes (defined by `irae__sample_casedef_peri_10`)
 2. Post-transplant Notes (defined by `irae__sample_casedef_post_10`) 
 
 You can save off the information your data unarchive process will need from these 
@@ -63,7 +69,7 @@ select
        count(distinct subject_ref)   as cnt_pat, 
        count(distinct encounter_ref) as cnt_enc,
        count(distinct documentreference_ref) as cnt_doc
-from irae__sample_casedef_index_10
+from irae__sample_casedef_peri_10
 ```
 
 
@@ -78,148 +84,72 @@ You can either re-export the documents of interest,
 or use ndjson from a previous export. Ideally these notes
 are pre-inlined with clinical note content, as this will 
 save time/hassle re-downloading the notes every time we run 
-NLP. If you're gathering notes using our `smart-fetch` tool 
-the notes should be [inlined automatically when exporting](https://docs.smarthealthit.org/cumulus/fetch/hydration.html#inlining-clinical-notes).
+NLP. If you're gathering notes using our `smart-fetch` tool the notes should be 
+[inlined automatically when exporting](https://docs.smarthealthit.org/cumulus/fetch/hydration.html#inlining-clinical-notes).
 
 Place the ndjson in a folder, and take note of the paths to 
 both your peri-operative notes and your post-operative notes
 for later steps.
 
 
-## 4. Run NLP 
+## 4. Run NLP
 
-Using the `cumulus-etl` tool, we will now run our IRAE specific NLP tasks. These instructions  
-are for an [on-prem](https://docs.smarthealthit.org/cumulus/etl/nlp/example.html#local-on-prem-options) `gpt-oss-120b` instance, 
-but support for other cloud-based models is available in the [example-nlp setup docs](https://docs.smarthealthit.org/cumulus/etl/nlp/example.html#model-setup).
-Note that using other models will require updating the `gpt-oss-120b` specific arguments below. 
+Using `cumulus-library`, we will now run our IRAE-specific NLP tasks directly against Athena.
+The example commands below use `gpt-oss-120b` on Azure, but other models and providers are 
+supported via `--nlp-model` and `--nlp-provider`. See 
+[here](https://docs.smarthealthit.org/cumulus/nlp/models.html) for a full list
 
-First you want to set up the GPT-OSS instance to run locally:
+The NLP tasks are split into two stages based on which note set they operate on. 
+The note cohort each stage selects is controlled by `select_by_table` in each workflow file 
+(`nlp_clinical_peri_tasks.toml` and `nlp_clinical_post_tasks.toml`). The instructions here will 
+use a stage defined to work against a small sample of notes, suffixed with `_10`. To 
+run the study's full NLP, just remove this suffix from the stages mentioned
+
 ```sh
-docker compose up --wait gpt-oss-120b
+cumulus-library build \
+  --target irae \
+  --stage nlp_tasks_10 \
+  --database <relevant_cumulus_library_database> \
+  --region <relevant_aws_region> \
+  --workgroup <relevant_cumulus_library_workgroup> \
+  --note-dir <input folder with post-transplant ndjson files from step 3 above> \
+  --etl-phi-dir <your typical ETL PHI folder> \
+  --nlp-model gpt-oss-120b \
+  --nlp-provider azure
 ```
 
-Once the LLM instance is up and running via docker, you can run the various `cumulus-etl nlp` tasks.
+For notes in our `sample_casedef_peri` table, this will generate NLP annotations for: 
+- Diagnosis 
+- History of Multiple Transplants 
+- Immunosuppressive Medications
 
-### 4.a. Immunosuppressive Medications against peri-operative notes
-```sh
-docker compose run --rm -it\
-  cumulus-etl nlp \
-  --task irae__nlp_immunosuppressive_medications_gpt_oss_120b \
-  <input folder with peri-operative ndjson files from step 3 above> \
-  <your typical ETL PHI folder> \
-  <your typical ETL OUTPUT folder> \
-  --athena-database <relevant_cumulus_library_database> \
-  --athena-workgroup <relevant_cumulus_library_workgroup> \
-  --select-by-athena-table irae__sample_casedef_index_10
-```
-
-### 4.b. History of Multiple Transplants against peri-operative notes
-```sh
-docker compose run --rm -it\
-  cumulus-etl nlp \
-  --task irae__nlp_multiple_transplant_history_gpt_oss_120b \
-  <input folder with peri-operative ndjson files from step 3 above> \
-  <your typical ETL PHI folder> \
-  <your typical ETL OUTPUT folder> \
-  --athena-database <relevant_cumulus_library_database> \
-  --athena-workgroup <relevant_cumulus_library_workgroup> \
-  --select-by-athena-table irae__sample_casedef_index_10
-```
-
-### 4.c. Donor Characteristics against peri-operative notes
-```sh
-docker compose run --rm -it\
-  cumulus-etl nlp \
-  --task irae__nlp_donor_gpt_oss_120b \
-  <input folder with peri-operative ndjson files from step 3 above> \
-  <your typical ETL PHI folder> \
-  <your typical ETL OUTPUT folder> \
-  --athena-database <relevant_cumulus_library_database> \
-  --athena-workgroup <relevant_cumulus_library_workgroup> \
-  --select-by-athena-table irae__sample_casedef_index_10
-```
-
-### 4.d. Outcome Variables against post-operative notes
-```sh
-docker compose run --rm -it\
-  cumulus-etl nlp \
-  --task irae__nlp_gpt_oss_120b \
-  <input folder with **post-operative** ndjson files from step 3 above> \
-  <your typical ETL PHI folder> \
-  <your typical ETL OUTPUT folder> \
-  --athena-database <relevant_cumulus_library_database> \
-  --athena-workgroup <relevant_cumulus_library_workgroup> \
-  --select-by-athena-table **irae__sample_casedef_post_10**
-```
-
-Note: by running with `-it` we can trigger an interactive run of docker compose, which 
-allows us to take advantage of the `cumulus-etl nlp`'s support for verifying the number of notes 
-that will be processed with NLP before starting a run. This can be useful in ensuring that you 
-don't spend a lot of money/time running NLP on an unintentionally large selection of notes.
+And for notes in our `sample_casedef_post` table, this will generate NLP annotations for
+a variety of outcome variables
 
 And with that, the natural language processing of notes is finished.
 The rest of this guide will be about setting up a chart review for human comparison with NLP.
 
-Importantly: re-run your [Cumulus AWS Glue crawler](https://docs.smarthealthit.org/cumulus/etl/setup/#create-tables-with-glue) 
-at this point in order to pick up the newly created NLP tables and their schemas. Note
-that as you run these tasks against _new models_, you will need to run this crawler again (though
-only for the first time)
-
 ## 5. Generate NLP Highlights
 
-Returning to the `cumulus-library`, we want to rebuild the study now that we have LLM response
-tables in order to generate span-highlights tables for each task. We could do this by 
-re-running the whole study, or we could target a table-builder in particular using 
-the `--builder` argument. Since we don't need to rebuild the whole study, we will do the latter 
-to save time, targeting the following builders: 
-1. `irae_immunosuppressive_medications_highlights`. 
-2. `irae_multiple_transplant_history_highlights`. 
-3. `irae_donor_highlights`. 
-4. `irae_longitudinal_highlights`. 
+We now want to rebuild the study now that we have LLM response
+tables in order to generate span-highlights tables for each task. We will do this 
+by targetting a specific stage in our study build process - `nlp_post_processing`
 
-### 5.a Immunosuppressive Medications against peri-operative notes
 ```sh
 cumulus-library build \
+  --target irae \
   --database <relevant_cumulus_library_database> \
   --workgroup <relevant_cumulus_library_workgroup> \
   --profile <relevant_cumulus_library_profile> \
-  -t irae \
-  --builder irae_immunosuppressive_medications_highlights
+  --stage nlp_post_processing
 ```
 
-### 5.b History of Multiple Transplants against peri-operative notes
-```sh
-cumulus-library build \
-  --database <relevant_cumulus_library_database> \
-  --workgroup <relevant_cumulus_library_workgroup> \
-  --profile <relevant_cumulus_library_profile> \
-  -t irae \
-  --builder irae_multiple_transplant_history_highlights
-```
-
-### 5.c Donor Characteristics against peri-operative notes
-```sh
-cumulus-library build \
-  --database <relevant_cumulus_library_database> \
-  --workgroup <relevant_cumulus_library_workgroup> \
-  --profile <relevant_cumulus_library_profile> \
-  -t irae \
-  --builder irae_donor_highlights
-```
-
-### 5.d Outcome Variables against post-operative notes
-```sh
-cumulus-library build \
-  --database <relevant_cumulus_library_database> \
-  --workgroup <relevant_cumulus_library_workgroup> \
-  --profile <relevant_cumulus_library_profile> \
-  -t irae \
-  --builder irae_longitudinal_highlights
-```
-
-The resulting highlights tables format LLM annotations to be digestible in
-uploading notes to a label studio project. 
-
+For each of the nlp sub-tasks defined in our previously referenced `nlp_tasks_10` stage, 
+we will now have the following: 
+- Flattened, wide-representation tables of all the NLP based observations 
+  we have for each task, namespaced as `irae__llm_{task}_wide`
+- Highlights tables, formatting LLM annotations to be digestible when
+  uploading notes to a label studio project. 
 
 ## 6. Configure Label Studio
 

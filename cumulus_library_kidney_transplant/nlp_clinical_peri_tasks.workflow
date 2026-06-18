@@ -34,9 +34,8 @@ Here is the clinical document for you to analyze:
 %CLINICAL-NOTE%
 """
 
-# Peri-operative notes are selected from the index case definition sample.
-# For a full run, change this to `irae__sample_casedef_index`.
-select_by_table = "irae__sample_casedef_index_10"
+# Peri-operative notes are selected from the peri case definition sample.
+select_by_table = "irae__sample_casedef_peri"
 
 
 [tables.donor]

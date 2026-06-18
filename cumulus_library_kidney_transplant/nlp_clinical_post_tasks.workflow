@@ -35,8 +35,7 @@ Here is the clinical document for you to analyze:
 """
 
 # Post-transplant notes are selected from the post case definition sample.
-# For a full run, change this to `irae__sample_casedef_post`.
-select_by_table = "irae__sample_casedef_post_10"
+select_by_table = "irae__sample_casedef_post"
 
 
 [tables.longitudinal]
