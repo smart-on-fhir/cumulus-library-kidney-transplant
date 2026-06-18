@@ -3,13 +3,12 @@
     "BacterialInfectionMention": {
       "properties": {
         "has_mention": {
-          "default": false,
-          "description": "Whether there is any mention of this variable in the text.",
+          "description": "Indicates whether the concept was mentioned in the text.",
           "title": "Has Mention",
           "type": "boolean"
         },
         "spans": {
-          "description": "The text spans where this variable is mentioned.",
+          "description": "The verbatim text where this concept was mentioned.",
           "items": {
             "type": "string"
           },
@@ -28,11 +27,14 @@
           "description": "What evidence documents bacterial infection as current, active, or being evaluated/treated now? CONFIRMED: Bacterial infection confirmed by laboratory test or imaging, bacterial infection diagnosis was 'confirmed' or 'positive', or reduced immunosuppression due to bacterial infection; SUSPECTED: Bacterial infection is suspected, likely, cannot be ruled out, bacterial infection is a differential diagnosis or bacterial test result is pending; NONE_OF_THE_ABOVE: None of the above"
         }
       },
+      "required": [
+        "has_mention",
+        "spans"
+      ],
       "title": "BacterialInfectionMention",
       "type": "object"
     },
     "BacterialInfectionPresent": {
-      "description": "CONFIRMED: Bacterial infection confirmed by laboratory test or imaging, bacterial infection diagnosis was 'confirmed' or 'positive', or reduced immunosuppression due to bacterial infection\nSUSPECTED: Bacterial infection is suspected, likely, cannot be ruled out, bacterial infection is a differential diagnosis or bacterial test result is pending\nNONE_OF_THE_ABOVE: None of the above",
       "enum": [
         "CONFIRMED",
         "SUSPECTED",
@@ -44,13 +46,12 @@
     "CancerMention": {
       "properties": {
         "has_mention": {
-          "default": false,
-          "description": "Whether there is any mention of this variable in the text.",
+          "description": "Indicates whether the concept was mentioned in the text.",
           "title": "Has Mention",
           "type": "boolean"
         },
         "spans": {
-          "description": "The text spans where this variable is mentioned.",
+          "description": "The verbatim text where this concept was mentioned.",
           "items": {
             "type": "string"
           },
@@ -69,11 +70,15 @@
           "description": "What evidence documents cancer as current, active, or being evaluated/treated now? BIOPSY_PROVEN: Biopsy proven or pathology proven cancer; CONFIRMED: Cancer was 'diagnosed', 'confirmed' or 'positive'; SUSPECTED: Cancer is presumed, suspected, likely, cannot be ruled out, biopsy of any lesion, or treatment with chemotherapy/radiation; NONE_OF_THE_ABOVE: None of the above"
         }
       },
+      "required": [
+        "has_mention",
+        "spans"
+      ],
       "title": "CancerMention",
       "type": "object"
     },
     "CancerPresent": {
-      "description": "Notice: Cancer treatments may also be used in 'rescue' therapy (DSA/graft rejection).\nPTLD is a type of cancer. PTLD is a lymphoma and thus not treated with \"surgical excision\".\nSkin cancer (of which there are many types carcinoma and melanoma) is treated with surgical excision.\n\nBIOPSY_PROVEN: Biopsy proven or pathology proven cancer\nCONFIRMED: Cancer was 'diagnosed', 'confirmed' or 'positive'\nSUSPECTED: Cancer is presumed, suspected, likely, cannot be ruled out, biopsy of any lesion, or treatment with chemotherapy/radiation\nNONE_OF_THE_ABOVE: None of the above",
+      "description": "Notice: Cancer treatments may also be used in 'rescue' therapy (DSA/graft rejection).\nPTLD is a type of cancer. PTLD is a lymphoma and thus not treated with \"surgical excision\".\nSkin cancer (of which there are many types carcinoma and melanoma) is treated with surgical excision.",
       "enum": [
         "BIOPSY_PROVEN",
         "CONFIRMED",
@@ -86,13 +91,12 @@
     "DSAMention": {
       "properties": {
         "has_mention": {
-          "default": false,
-          "description": "Whether there is any mention of this variable in the text.",
+          "description": "Indicates whether the concept was mentioned in the text.",
           "title": "Has Mention",
           "type": "boolean"
         },
         "spans": {
-          "description": "The text spans where this variable is mentioned.",
+          "description": "The verbatim text where this concept was mentioned.",
           "items": {
             "type": "string"
           },
@@ -111,11 +115,15 @@
           "description": "What evidence documents donor specific antibodies (DSA) as current, active, or being evaluated/treated now? CONFIRMED: DSA diagnostic test positive, DSA diagnosis 'confirmed' or 'positive', or increase in immunosuppression due to DSA; SUSPECTED: DSA suspected, DSA likely, DSA cannot be ruled out, DSA test result pending, or treatment with IVIG/plasmapheresis; NONE_OF_THE_ABOVE: None of the above"
         }
       },
+      "required": [
+        "has_mention",
+        "spans"
+      ],
       "title": "DSAMention",
       "type": "object"
     },
     "DSAPresent": {
-      "description": "Notice: DSA is strongly related to `GraftRejectionPresent`.\n\nTreatment of DSA includes immunosuppressive drugs, IVIG, and plasmapheresis (PLEX).\n\nTreatment with immunosuppressive drugs does *NOT* imply SUSPECTED DSA,\nas many of immunosuppressive drugs are routinely used for \"maintenance\" therapy.\n\nIVIG and plasmapheresis (PLEX) during the post-transplant (post induction) phase DOES imply\n--> DSAPresent > SUSPECTED (and possibly CONFIRMED)\n--> `GraftRejectionPresent` > SUSPECTED (and possibly CONFIRMED or BIOPSY_PROVEN)\n\nCONFIRMED: DSA diagnostic test positive, DSA diagnosis 'confirmed' or 'positive', or increase in immunosuppression due to DSA\nSUSPECTED: DSA suspected, DSA likely, DSA cannot be ruled out, DSA test result pending, or treatment with IVIG/plasmapheresis\nNONE_OF_THE_ABOVE: None of the above",
+      "description": "Notice: DSA is strongly related to `GraftRejectionPresent`.\n\nTreatment of DSA includes immunosuppressive drugs, IVIG, and plasmapheresis (PLEX).\n\nTreatment with immunosuppressive drugs does *NOT* imply SUSPECTED DSA,\nas many of immunosuppressive drugs are routinely used for \"maintenance\" therapy.\n\nIVIG and plasmapheresis (PLEX) during the post-transplant (post induction) phase DOES imply\n--> DSAPresent > SUSPECTED (and possibly CONFIRMED)\n--> `GraftRejectionPresent` > SUSPECTED (and possibly CONFIRMED or BIOPSY_PROVEN)",
       "enum": [
         "CONFIRMED",
         "SUSPECTED",
@@ -127,13 +135,12 @@
     "DeceasedMention": {
       "properties": {
         "has_mention": {
-          "default": false,
-          "description": "Whether there is any mention of this variable in the text.",
+          "description": "Indicates whether the concept was mentioned in the text.",
           "title": "Has Mention",
           "type": "boolean"
         },
         "spans": {
-          "description": "The text spans where this variable is mentioned.",
+          "description": "The verbatim text where this concept was mentioned.",
           "items": {
             "type": "string"
           },
@@ -167,19 +174,22 @@
           "title": "Deceased Date"
         }
       },
+      "required": [
+        "has_mention",
+        "spans"
+      ],
       "title": "DeceasedMention",
       "type": "object"
     },
     "FungalInfectionMention": {
       "properties": {
         "has_mention": {
-          "default": false,
-          "description": "Whether there is any mention of this variable in the text.",
+          "description": "Indicates whether the concept was mentioned in the text.",
           "title": "Has Mention",
           "type": "boolean"
         },
         "spans": {
-          "description": "The text spans where this variable is mentioned.",
+          "description": "The verbatim text where this concept was mentioned.",
           "items": {
             "type": "string"
           },
@@ -198,11 +208,14 @@
           "description": "What evidence documents fungal infection as current, active, or being evaluated/treated now? CONFIRMED: Fungal infection confirmed by laboratory test or imaging, fungal infection diagnosis was 'confirmed' or 'positive', or reduced immunosuppression due to fungal infection; SUSPECTED: Fungal infection is suspected, likely, cannot be ruled out, fungal infection is a differential diagnosis or fungal test result is pending; NONE_OF_THE_ABOVE: None of the above"
         }
       },
+      "required": [
+        "has_mention",
+        "spans"
+      ],
       "title": "FungalInfectionMention",
       "type": "object"
     },
     "FungalInfectionPresent": {
-      "description": "CONFIRMED: Fungal infection confirmed by laboratory test or imaging, fungal infection diagnosis was 'confirmed' or 'positive', or reduced immunosuppression due to fungal infection\nSUSPECTED: Fungal infection is suspected, likely, cannot be ruled out, fungal infection is a differential diagnosis or fungal test result is pending\nNONE_OF_THE_ABOVE: None of the above",
       "enum": [
         "CONFIRMED",
         "SUSPECTED",
@@ -214,13 +227,12 @@
     "GraftFailureMention": {
       "properties": {
         "has_mention": {
-          "default": false,
-          "description": "Whether there is any mention of this variable in the text.",
+          "description": "Indicates whether the concept was mentioned in the text.",
           "title": "Has Mention",
           "type": "boolean"
         },
         "spans": {
-          "description": "The text spans where this variable is mentioned.",
+          "description": "The verbatim text where this concept was mentioned.",
           "items": {
             "type": "string"
           },
@@ -239,11 +251,14 @@
           "description": "What evidence documents kidney graft failure as current, active, or being evaluated/treated now? CONFIRMED: Kidney graft has failed or kidney graft loss; SUSPECTED: Kidney graft failure presumed, suspected, likely, or cannot be ruled out; NONE_OF_THE_ABOVE: None of the above"
         }
       },
+      "required": [
+        "has_mention",
+        "spans"
+      ],
       "title": "GraftFailureMention",
       "type": "object"
     },
     "GraftFailurePresent": {
-      "description": "CONFIRMED: Kidney graft has failed or kidney graft loss\nSUSPECTED: Kidney graft failure presumed, suspected, likely, or cannot be ruled out\nNONE_OF_THE_ABOVE: None of the above",
       "enum": [
         "CONFIRMED",
         "SUSPECTED",
@@ -255,13 +270,12 @@
     "GraftRejectionMention": {
       "properties": {
         "has_mention": {
-          "default": false,
-          "description": "Whether there is any mention of this variable in the text.",
+          "description": "Indicates whether the concept was mentioned in the text.",
           "title": "Has Mention",
           "type": "boolean"
         },
         "spans": {
-          "description": "The text spans where this variable is mentioned.",
+          "description": "The verbatim text where this concept was mentioned.",
           "items": {
             "type": "string"
           },
@@ -280,11 +294,15 @@
           "description": "What evidence documents kidney graft rejection as current, active, or being evaluated/treated now? BIOPSY_PROVEN: Biopsy proven kidney graft rejection or pathology proven kidney graft rejection; CONFIRMED: Kidney graft rejection was 'diagnosed', 'confirmed' or 'positive'; SUSPECTED: Kidney graft rejection presumed, suspected, likely, cannot be ruled out, biopsy result pending, or treatment with IVIG/plasmapheresis; NONE_OF_THE_ABOVE: None of the above"
         }
       },
+      "required": [
+        "has_mention",
+        "spans"
+      ],
       "title": "GraftRejectionMention",
       "type": "object"
     },
     "GraftRejectionPresent": {
-      "description": "Notice: Graft rejection is strongly related to `DSAPresent`.\n\nTreatment of graft rejection includes immunosuppressive drugs, IVIG, and plasmapheresis (PLEX).\n\nTreatment with immunosuppressive drugs does *NOT* imply outcome is SUSPECTED,\nas many of immunosuppressive drugs are routinely used for \"maintenance\" therapy.\n\nIVIG and plasmapheresis (PLEX) during the post-transplant (post induction) phase DOES imply\n--> `GraftRejectionPresent` > SUSPECTED (and possibly CONFIRMED or BIOPSY_PROVEN)\n--> DSAPresent > SUSPECTED (and possibly CONFIRMED)\n\nBIOPSY_PROVEN: Biopsy proven kidney graft rejection or pathology proven kidney graft rejection\nCONFIRMED: Kidney graft rejection was 'diagnosed', 'confirmed' or 'positive'\nSUSPECTED: Kidney graft rejection presumed, suspected, likely, cannot be ruled out, biopsy result pending, or treatment with IVIG/plasmapheresis\nNONE_OF_THE_ABOVE: None of the above",
+      "description": "Notice: Graft rejection is strongly related to `DSAPresent`.\n\nTreatment of graft rejection includes immunosuppressive drugs, IVIG, and plasmapheresis (PLEX).\n\nTreatment with immunosuppressive drugs does *NOT* imply outcome is SUSPECTED,\nas many of immunosuppressive drugs are routinely used for \"maintenance\" therapy.\n\nIVIG and plasmapheresis (PLEX) during the post-transplant (post induction) phase DOES imply\n--> `GraftRejectionPresent` > SUSPECTED (and possibly CONFIRMED or BIOPSY_PROVEN)\n--> DSAPresent > SUSPECTED (and possibly CONFIRMED)",
       "enum": [
         "BIOPSY_PROVEN",
         "CONFIRMED",
@@ -297,13 +315,12 @@
     "InfectionMention": {
       "properties": {
         "has_mention": {
-          "default": false,
-          "description": "Whether there is any mention of this variable in the text.",
+          "description": "Indicates whether the concept was mentioned in the text.",
           "title": "Has Mention",
           "type": "boolean"
         },
         "spans": {
-          "description": "The text spans where this variable is mentioned.",
+          "description": "The verbatim text where this concept was mentioned.",
           "items": {
             "type": "string"
           },
@@ -322,11 +339,14 @@
           "description": "What evidence documents infection as current, active, or being evaluated/treated now? CONFIRMED: Infection confirmed by laboratory test or imaging, infection diagnosis was 'confirmed' or 'positive', or reduced immunosuppression due to infection; SUSPECTED: Infection is suspected, likely, cannot be ruled out, infection is a differential diagnosis or infectious test result is pending; NONE_OF_THE_ABOVE: None of the above"
         }
       },
+      "required": [
+        "has_mention",
+        "spans"
+      ],
       "title": "InfectionMention",
       "type": "object"
     },
     "InfectionPresent": {
-      "description": "CONFIRMED: Infection confirmed by laboratory test or imaging, infection diagnosis was 'confirmed' or 'positive', or reduced immunosuppression due to infection\nSUSPECTED: Infection is suspected, likely, cannot be ruled out, infection is a differential diagnosis or infectious test result is pending\nNONE_OF_THE_ABOVE: None of the above",
       "enum": [
         "CONFIRMED",
         "SUSPECTED",
@@ -338,13 +358,12 @@
     "PTLDMention": {
       "properties": {
         "has_mention": {
-          "default": false,
-          "description": "Whether there is any mention of this variable in the text.",
+          "description": "Indicates whether the concept was mentioned in the text.",
           "title": "Has Mention",
           "type": "boolean"
         },
         "spans": {
-          "description": "The text spans where this variable is mentioned.",
+          "description": "The verbatim text where this concept was mentioned.",
           "items": {
             "type": "string"
           },
@@ -363,11 +382,15 @@
           "description": "What evidence documents post transplant lymphoproliferative disorder (PTLD) as current, active, or being evaluated/treated now? BIOPSY_PROVEN: Biopsy proven or pathology proven PTLD; CONFIRMED: PTLD was 'diagnosed', 'confirmed' or 'positive' or viral positive lymphoma; SUSPECTED: PTLD presumed, suspected, likely, cannot be ruled out, PTLD biopsy result pending, or treatment with chemotherapy/radiation; NONE_OF_THE_ABOVE: None of the above"
         }
       },
+      "required": [
+        "has_mention",
+        "spans"
+      ],
       "title": "PTLDMention",
       "type": "object"
     },
     "PTLDPresent": {
-      "description": "Notice: PTLD treatments may also be used in 'rescue' therapy (DSA/graft rejection) or other cancers.\nOne notable difference from other cancers (such as skin cancer) is the absence of \"surgical excision\" (lymphoma).\n\nBIOPSY_PROVEN: Biopsy proven or pathology proven PTLD\nCONFIRMED: PTLD was 'diagnosed', 'confirmed' or 'positive' or viral positive lymphoma\nSUSPECTED: PTLD presumed, suspected, likely, cannot be ruled out, PTLD biopsy result pending, or treatment with chemotherapy/radiation\nNONE_OF_THE_ABOVE: None of the above",
+      "description": "Notice: PTLD treatments may also be used in 'rescue' therapy (DSA/graft rejection) or other cancers.\nOne notable difference from other cancers (such as skin cancer) is the absence of \"surgical excision\" (lymphoma).",
       "enum": [
         "BIOPSY_PROVEN",
         "CONFIRMED",
@@ -378,7 +401,6 @@
       "type": "string"
     },
     "RxCompliance": {
-      "description": "COMPLIANT: Patient is documented as compliant with immunosuppressive medications.\nPARTIALLY_COMPLIANT: Patient is documented as only partially compliant with immunosuppressive medications.\nNON_COMPLIANT: Patient is documented as noncompliant with immunosuppressive medications.\nNONE_OF_THE_ABOVE: None of the above",
       "enum": [
         "COMPLIANT",
         "PARTIALLY_COMPLIANT",
@@ -391,13 +413,12 @@
     "RxComplianceMention": {
       "properties": {
         "has_mention": {
-          "default": false,
-          "description": "Whether there is any mention of this variable in the text.",
+          "description": "Indicates whether the concept was mentioned in the text.",
           "title": "Has Mention",
           "type": "boolean"
         },
         "spans": {
-          "description": "The text spans where this variable is mentioned.",
+          "description": "The verbatim text where this concept was mentioned.",
           "items": {
             "type": "string"
           },
@@ -410,11 +431,14 @@
           "description": "In the present encounter, is the patient documented as compliant with immunosuppressive medications? COMPLIANT: Patient is documented as compliant with immunosuppressive medications; PARTIALLY_COMPLIANT: Patient is documented as only partially compliant with immunosuppressive medications; NON_COMPLIANT: Patient is documented as noncompliant with immunosuppressive medications; NONE_OF_THE_ABOVE: None of the above"
         }
       },
+      "required": [
+        "has_mention",
+        "spans"
+      ],
       "title": "RxComplianceMention",
       "type": "object"
     },
     "RxTherapeuticStatus": {
-      "description": "THERAPEUTIC: Immunosuppression levels are documented as therapeutic, adequate, or within target range.\nSUB_THERAPEUTIC: Immunosuppression levels are documented as subtherapeutic, insufficient, or below target range.\nSUPRA_THERAPEUTIC: Immunosuppression levels are documented as supratherapeutic, above therapeutic level, or above target range.\nNONE_OF_THE_ABOVE: None of the above",
       "enum": [
         "THERAPEUTIC",
         "SUB_THERAPEUTIC",
@@ -427,13 +451,12 @@
     "RxTherapeuticStatusMention": {
       "properties": {
         "has_mention": {
-          "default": false,
-          "description": "Whether there is any mention of this variable in the text.",
+          "description": "Indicates whether the concept was mentioned in the text.",
           "title": "Has Mention",
           "type": "boolean"
         },
         "spans": {
-          "description": "The text spans where this variable is mentioned.",
+          "description": "The verbatim text where this concept was mentioned.",
           "items": {
             "type": "string"
           },
@@ -446,19 +469,22 @@
           "description": "In the present encounter, what is the documented immunosuppression level? THERAPEUTIC: Immunosuppression levels are documented as therapeutic, adequate, or within target range; SUB_THERAPEUTIC: Immunosuppression levels are documented as subtherapeutic, insufficient, or below target range; SUPRA_THERAPEUTIC: Immunosuppression levels are documented as supratherapeutic, above therapeutic level, or above target range; NONE_OF_THE_ABOVE: None of the above"
         }
       },
+      "required": [
+        "has_mention",
+        "spans"
+      ],
       "title": "RxTherapeuticStatusMention",
       "type": "object"
     },
     "ViralInfectionMention": {
       "properties": {
         "has_mention": {
-          "default": false,
-          "description": "Whether there is any mention of this variable in the text.",
+          "description": "Indicates whether the concept was mentioned in the text.",
           "title": "Has Mention",
           "type": "boolean"
         },
         "spans": {
-          "description": "The text spans where this variable is mentioned.",
+          "description": "The verbatim text where this concept was mentioned.",
           "items": {
             "type": "string"
           },
@@ -477,11 +503,14 @@
           "description": "What evidence documents viral infection as current, active, or being evaluated/treated now? CONFIRMED: Viral infection confirmed by laboratory test or imaging, viral infection diagnosis was 'confirmed' or 'positive', or reduced immunosuppression due to viral infection; SUSPECTED: Viral infection is suspected, likely, cannot be ruled out, viral infection is a differential diagnosis or viral test result is pending; NONE_OF_THE_ABOVE: None of the above"
         }
       },
+      "required": [
+        "has_mention",
+        "spans"
+      ],
       "title": "ViralInfectionMention",
       "type": "object"
     },
     "ViralInfectionPresent": {
-      "description": "CONFIRMED: Viral infection confirmed by laboratory test or imaging, viral infection diagnosis was 'confirmed' or 'positive', or reduced immunosuppression due to viral infection\nSUSPECTED: Viral infection is suspected, likely, cannot be ruled out, viral infection is a differential diagnosis or viral test result is pending\nNONE_OF_THE_ABOVE: None of the above",
       "enum": [
         "CONFIRMED",
         "SUSPECTED",
