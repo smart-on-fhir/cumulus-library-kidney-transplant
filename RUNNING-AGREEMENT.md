@@ -148,22 +148,30 @@ is helpful for this annotation process.
 ## 5 Run Donor NLP Task
 
 In parallel to human annotation, we want to generate some LLM-based annotations for this task.
-For the 100 notes previously identified, run the peri-operative NLP stage. This stage covers
-the donor task along with immunosuppressive medications and transplant history.
+For the 100 notes previously identified, run the `nlp` stage. Its peri-operative workflow 
+covers the donor task along with immunosuppressive medications and transplant history — that 
+workflow is the one relevant here. Note that the stage also runs the post-transplant outcome 
+workflow in the same invocation; there is no peri-only stage.
 
 
 ```sh
 cumulus-library build \
   --target irae \
-  --stage nlp_clinical_peri_tasks \
+  --stage nlp \
   --database <relevant_cumulus_library_database> \
   --region <relevant_aws_region> \
   --workgroup <relevant_cumulus_library_workgroup> \
   --note-dir <input folder with ndjson files from step 2 above> \
   --etl-phi-dir <your typical ETL PHI folder> \
   --nlp-model gpt-oss-120b_OR_WHATEVER_MODEL_YOU_ARE_USING \
-  --nlp-provider azure
+  --nlp-provider azure \
+  --nlp-chunksize 5000
 ```
+
+`--nlp-chunksize 5000` sets how many notes are processed before results are written out to 
+storage, so the NLP result tables are created and materialized gradually over the course of 
+the run instead of only at the very end. Pass it as a matter of practice on any NLP run.
+
 
 After running the NLP stage, we want to transform these 
 LLM responses into a format that can be 
