@@ -24,14 +24,25 @@ files = ['casedef.toml']
 type = "submanifest"
 files = ['sample.toml']
 
+# ------ <NLP LLM Tasks> ------
+# These stages are for the NLP tasks, which are skipped by default to avoid unnecessary build times
+# Run these stages directly using the --stage flag when running library command. 
+# See docs for more details on how to run specific stages.
 [[stages.nlp]]
 type = "submanifest"
 files = ['nlp_tasks.toml']
+skip_by_default = true
 
 [[stages.nlp_10]]
 type = "submanifest"
 files = ['nlp_tasks_10.toml']
+skip_by_default = true
+# ------ </NLP LLM Tasks> ------
 
+# Translating NLP results into LLM tables, however, is _NOT_ skipped by default. Since these
+# builders can handle cases where the source NLP tables are missing, they can be run without 
+# having to run the NLP tasks first. It's also worth always rebuilding these tables to
+# ensure that any new NLP results are captured in the LLM tables.
 [[stages.nlp_post_processing]]
 type = "submanifest"
 files = ['nlp_post_processing.toml']
