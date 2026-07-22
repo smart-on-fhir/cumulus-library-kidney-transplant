@@ -99,23 +99,31 @@ The example commands below use `gpt-oss-120b` on Azure, but other models and pro
 supported via `--nlp-model` and `--nlp-provider`. See 
 [here](https://docs.smarthealthit.org/cumulus/nlp/models.html) for a full list
 
-The NLP tasks are split into two stages based on which note set they operate on. 
-The note cohort each stage selects is controlled by `select_by_table` in each workflow file 
-(`nlp_clinical_peri_tasks.toml` and `nlp_clinical_post_tasks.toml`). The instructions here will 
-use a stage defined to work against a small sample of notes, suffixed with `_10`. To 
-run the study's full NLP, just remove this suffix from the stages mentioned
+As a matter of practice, always pass `--nlp-chunksize 5000`. This tells `cumulus-library` how 
+many notes to process before writing results out to storage, so the NLP result tables are 
+created and materialized gradually over the course of a run rather than all at once at the 
+end. 
+
+A single `nlp.toml` manifest runs both note sets, via two workflow files — 
+`nlp_clinical_peri_tasks.workflow` (peri-operative notes) and 
+`nlp_clinical_post_tasks.workflow` (post-transplant notes). The note cohort each one selects 
+is controlled by its `select_by_table` setting. The instructions here use `nlp_10`,  
+defined to work against a small sample of notes. 
+
+To run the study's full NLP, use the `nlp` stage instead
 
 ```sh
 cumulus-library build \
   --target irae \
-  --stage nlp_tasks_10 \
+  --stage nlp_10 \
   --database <relevant_cumulus_library_database> \
   --region <relevant_aws_region> \
   --workgroup <relevant_cumulus_library_workgroup> \
   --note-dir <input folder with post-transplant ndjson files from step 3 above> \
   --etl-phi-dir <your typical ETL PHI folder> \
   --nlp-model gpt-oss-120b \
-  --nlp-provider azure
+  --nlp-provider azure \
+  --nlp-chunksize 5000
 ```
 
 For notes in our `sample_casedef_peri` table, this will generate NLP annotations for: 
@@ -144,7 +152,7 @@ cumulus-library build \
   --stage nlp_post_processing
 ```
 
-For each of the nlp sub-tasks defined in our previously referenced `nlp_tasks_10` stage, 
+For each of the nlp sub-tasks defined in our previously referenced `nlp_10` stage, 
 we will now have the following: 
 - Flattened, wide-representation tables of all the NLP based observations 
   we have for each task, namespaced as `irae__llm_{task}_wide`
